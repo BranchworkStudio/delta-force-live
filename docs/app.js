@@ -52,7 +52,7 @@
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
   async function load() {
     const since = encodeURIComponent(rangeStart().toISOString());
-    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples] = await Promise.all([
+    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
@@ -65,9 +65,12 @@
       rest(`player_rank?select=openid,report_type,rank_score,highest_rank,fetched_at&report_type=eq.${state.mode}`),
       // Every sample, not just the range: the movement inside a range is measured against the
       // standing that came before it, which is a sample from outside it.
-      rest(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc&limit=5000`)
+      rest(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc&limit=5000`),
+      // HQ only ever reports the current week, so the newest week_start present is the live one;
+      // the rest is whatever weeks the poller happened to be running for.
+      rest("carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&order=week_start.desc,item_value.desc&limit=600")
     ]);
-    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent, rank, rankSamples });
+    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent, rank, rankSamples, carried });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
@@ -187,6 +190,7 @@
     renderRaidsChart(ms, sol);
     renderNudge(ms);
     renderReds();
+    renderCarried();
     renderPasswords();
   }
 
@@ -592,6 +596,40 @@
         <div class="n">${esc(it.name)}</div>
         <div class="v">${r.value ? fmt(r.value) : "–"}</div>
         <div class="m">${many ? sq(colorFor(r.openid)) : ""}${esc(mapBase(r.map_id))} · ${ago(r.unlock_time)}</div></div>`;
+    }).join("")}</div>`;
+    attachTips(el);
+  }
+
+  // The gold items. They are not in the drop record list above and never will be: HQ calls that
+  // endpoint with exactly the six params we do, filters no grades of its own, and gets grade 6
+  // back. Gold only appears in the week calendar, and there as a *tally* — an item, its unit
+  // value, and how many were carried out — with no drop time and no map, and no way to ask for a
+  // week other than the current one. So it reads as a tally here too, in its own strip, rather
+  // than being mixed into a dated feed where it would need times it does not have.
+  function renderCarried() {
+    const el = $("#carried"), foot = $("#carriedFoot"), band = $("#carriedBand");
+    if (!el) return;
+    const all = scoped(state.carried || []);
+    // Only the newest week. An older one is a leftover from whenever the poller last ran through
+    // that week, not a second column of the same tally.
+    const week = all.length ? all.map(r => r.week_start).sort()[all.length - 1] : null;
+    const rows = all.filter(r => r.week_start === week).sort((a, b) => (b.item_value || 0) - (a.item_value || 0));
+    if (band) band.hidden = !rows.length;
+    if (!rows.length) { el.innerHTML = ""; if (foot) foot.textContent = ""; return; }
+    const many = state.players.length > 1;
+    const total = rows.reduce((n, r) => n + (r.item_value || 0) * (r.carry_out_count || 0), 0);
+    if (foot) foot.textContent = `week of ${new Date(week).toLocaleDateString([], { day: "numeric", month: "short" })} · ${plain(total)} carried out`;
+    el.innerHTML = `<div class="reds">${rows.map(r => {
+      const it = item(r.item_id), n = r.carry_out_count || 0;
+      // The grade is the game's own word for these — gold and red — so the card says which, in
+      // text as well as in the colour of its edge: two identical-looking cards is exactly what a
+      // colourblind reader would be left with otherwise.
+      const g = it.grade === 5 ? "Gold" : it.grade === 6 ? "Red" : "";
+      return `<div class="red" data-grade="${it.grade}" data-tip="<b>${esc(it.name)}</b>${g ? " · " + g : ""}<br>${esc(playerName(r.openid))}<br>${n}\u00d7 at ${plain(r.item_value)} = ${plain((r.item_value || 0) * n)}">
+        ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ph"></div>`}
+        <div class="n">${esc(it.name)}</div>
+        <div class="v">${fmt(r.item_value)}</div>
+        <div class="m">${many ? sq(colorFor(r.openid)) : ""}${n}\u00d7${g ? " · " + g : ""}</div></div>`;
     }).join("")}</div>`;
     attachTips(el);
   }

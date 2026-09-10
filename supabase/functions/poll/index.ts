@@ -4,7 +4,7 @@
 //   { secret } -> poll every connected player
 //   { secret, openid } -> poll one (used by the connect page right after a hand-over)
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedDrops, isAuthError, type Session } from "./hq.ts";
+import { getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedDrops, getWeekCalendar, isAuthError, type Session } from "./hq.ts";
 
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
@@ -76,6 +76,7 @@ async function pollOne(row: Row) {
     report.details = await storeDetails(s, openid);
     report.reds = await storeReds(s, openid, bf);
     report.stats = await storeStats(s, openid);
+    report.carried = await storeCarryOut(s, openid);
     await maybePasswords(openid);
 
     await supabase.from("players").update({ token_ok: true, last_poll_at: nowIso() }).eq("openid", openid);
@@ -195,6 +196,33 @@ async function storeStats(s: Session, openid: string) {
     done++;
   }
   return done;
+}
+
+/**
+ * The gold items. HQ's drop record list returns grade 6 and nothing else — it calls that endpoint
+ * with exactly our six params and filters no grades client-side, so grade 6 is the endpoint's
+ * whole answer. Gold lives in the week calendar instead, as a tally of the current week: an item,
+ * its unit value, and how many were carried out. There is no per-drop time or map to be had, and
+ * no way to ask for an earlier week, so each run refreshes the current week in place.
+ */
+async function storeCarryOut(s: Session, openid: string) {
+  const env = await getWeekCalendar(s).catch(() => null);
+  if (!env || Number(env.code) !== 0 || !env.data) return 0;
+  const items = env.data.carry_out_items ?? [];
+  if (!Array.isArray(items) || !items.length) return 0;
+  // Which week this is, in HQ's own reckoning rather than ours: the latest quarter week that has
+  // already started. Falling back to Monday 00:00 UTC keeps a row landing if that list is absent.
+  const now = Date.now() / 1000;
+  const starts = (env.data.quarter_weeks ?? []).map((w: any) => toInt(w?.week_start_timestamp)).filter((t: number | null): t is number => !!t && t <= now);
+  const weekStart = starts.length ? Math.max(...starts) : Math.floor((now - ((new Date().getUTCDay() + 6) % 7) * 86400) / 86400) * 86400;
+  const rows = items.map((r: any) => ({
+    openid, week_start: new Date(weekStart * 1000).toISOString(),
+    item_id: clampStr(r.item_id, 32), item_value: toInt(r.item_value), carry_out_count: toInt(r.carry_out_count),
+    fetched_at: nowIso(),
+  })).filter((r: any) => r.item_id);
+  if (!rows.length) return 0;
+  const { error } = await supabase.from("carry_out_week").upsert(rows, { onConflict: "openid,week_start,item_id" });
+  return error ? 0 : rows.length;
 }
 
 /** Daily private-room passwords: unauthenticated, so whoever polls first refreshes them hourly. */
