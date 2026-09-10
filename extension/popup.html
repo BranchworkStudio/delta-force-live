@@ -2,41 +2,55 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Barlow:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: dark; }
-  body { width: 320px; margin: 0; padding: 14px; font: 13px/1.4 system-ui, sans-serif; background: #141413; color: #f0efec; }
-  h1 { font-size: 15px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; background: #6b6a66; }
-  .dot.ok { background: #0ca30c; } .dot.bad { background: #d03b3b; } .dot.warn { background: #fab219; }
-  .row { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; border-bottom: 1px solid #2a2a28; }
-  .row span:first-child { color: #a9a8a1; }
-  .err { margin-top: 8px; padding: 8px; background: #2b1c1c; border-left: 3px solid #d03b3b; border-radius: 4px; word-break: break-word; }
-  label { display: block; margin-top: 12px; color: #a9a8a1; }
-  input { width: 100%; box-sizing: border-box; margin-top: 4px; padding: 7px 8px; background: #1f1f1e; border: 1px solid #3a3a37; border-radius: 6px; color: #f0efec; font: inherit; }
-  .btns { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-  button, a.btn { flex: 1; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a3a37; background: #1f1f1e; color: #f0efec; font: inherit; cursor: pointer; text-align: center; text-decoration: none; }
-  button.primary { background: #2a78d6; border-color: #2a78d6; color: #fff; }
-  small { color: #7d7c76; display: block; margin-top: 10px; }
+  :root { color-scheme: dark; --hud: 'Chakra Petch', Barlow, system-ui, sans-serif; }
+  body { width: 320px; margin: 0; background: #0c1416; color: #e9eeed; font: 13px/1.4 Barlow, system-ui, sans-serif; }
+  @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .3 } }
+  .hero { padding: 18px 16px 16px; background: linear-gradient(180deg, #132227, #0c1416); border-bottom: 1px solid rgba(29, 224, 140, .2); }
+  .mark { font: 700 11px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: #6d7f80; display: flex; align-items: center; gap: 8px; }
+  .mark i { width: 9px; height: 9px; background: #1de08c; clip-path: polygon(50% 0, 100% 100%, 0 100%); display: inline-block; }
+  .id { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+  .ava { width: 44px; height: 44px; border-radius: 50%; flex: none; background: repeating-linear-gradient(135deg, #1a2a30 0 4px, #15232a 4px 8px); border: 2px solid #e6b34a; }
+  .nick { font: 600 16px Barlow, system-ui, sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .st { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; color: #e6b34a; }
+  .st i { width: 7px; height: 7px; background: currentColor; display: inline-block; animation: pulse 2s infinite; }
+  .cells { display: grid; grid-template-columns: 1fr 1fr 1fr; margin-top: 16px; border-top: 1px solid #1d2b30; padding-top: 12px; }
+  .cells > div + div { border-left: 1px solid #1d2b30; padding-left: 12px; }
+  .cells .v { font: 700 20px var(--hud); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .cells .v.green { color: #1de08c; }
+  .cells .k { font-size: 11px; color: #6d7f80; text-transform: uppercase; letter-spacing: .8px; }
+  .body { padding: 14px 16px 16px; display: grid; gap: 10px; }
+  .field { display: flex; align-items: center; gap: 8px; background: #121c20; border: 1px solid #1d2b30; padding: 8px 10px; }
+  .field label { font: 600 10px var(--hud); letter-spacing: 1px; color: #6d7f80; text-transform: uppercase; }
+  .field input { flex: 1; min-width: 0; background: transparent; border: 0; color: #e9eeed; font: 600 13px 'Share Tech Mono', ui-monospace, monospace; outline: none; }
+  .field button { border: 0; background: #1de08c; color: #0b0f11; font: 700 11px var(--hud); padding: 6px 10px; cursor: pointer; white-space: nowrap; }
+  .field button:disabled { opacity: .7; cursor: default; }
+  .links { display: flex; gap: 16px; font: 600 12px var(--hud); text-transform: uppercase; letter-spacing: .8px; }
+  .links a { color: #1de08c; text-decoration: none; }
+  .note { font-size: 11px; color: #6d7f80; line-height: 1.4; }
+  .err { border-left: 3px solid #e0463f; background: #1a1416; padding: 8px 10px; color: #f0d0d0; font-size: 12px; word-break: break-word; }
 </style>
 </head>
 <body>
-  <h1><span class="dot" id="dot"></span> Delta Force Live</h1>
-  <div class="row"><span>Player</span><b id="nick">–</b></div>
-  <div class="row"><span>HQ session</span><b id="session">–</b></div>
-  <div class="row"><span>Last poll</span><b id="lastPoll">–</b></div>
-  <div class="row"><span>Newest match</span><b id="newest">–</b></div>
-  <div class="row"><span>Matches pushed</span><b id="pushed">–</b></div>
-  <div class="row"><span>History details left</span><b id="pending">–</b></div>
-  <div class="err" id="err" hidden></div>
-
-  <label>Squad code <input id="squad" placeholder="ask Pelle"></label>
-
-  <div class="btns">
-    <button class="primary" id="save">Save &amp; poll now</button>
-    <a class="btn" id="hq" href="https://www.playdeltaforce.com/events/hq/en/" target="_blank">Open HQ (log in)</a>
-    <a class="btn" id="site" href="#" target="_blank">Open live site</a>
+  <div class="hero">
+    <div class="mark"><i></i>Delta Force Live</div>
+    <div class="id">
+      <div class="ava" id="ava"></div>
+      <div style="min-width:0"><div class="nick" id="nick">–</div><div class="st" id="st"><i></i><span id="session">Session unknown</span></div></div>
+    </div>
+    <div class="cells">
+      <div><div class="v" id="lastPoll">–</div><div class="k">last poll</div></div>
+      <div><div class="v" id="newest">–</div><div class="k">newest match</div></div>
+      <div><div class="v green" id="pushed">–</div><div class="k">pushed</div></div>
+    </div>
   </div>
-  <small>Your login stays in this browser. Only finished match rows are sent to the squad site.</small>
+  <div class="body">
+    <div class="field"><label for="squad">Squad</label><input id="squad" placeholder="ask Pelle" spellcheck="false"><button id="save">Save &amp; poll</button></div>
+    <div class="links"><a id="hq" href="https://www.playdeltaforce.com/events/hq/en/" target="_blank">Open HQ ›</a><a id="site" href="#" target="_blank">Live site ›</a></div>
+    <div class="err" id="err" hidden></div>
+    <div class="note" id="note">Login stays in this browser. Only finished match rows leave it.</div>
+  </div>
   <script src="popup.js" type="module"></script>
 </body>
 </html>

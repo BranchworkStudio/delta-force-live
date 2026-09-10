@@ -4,113 +4,169 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Delta Force Live</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='%231a1a19'/><circle cx='11' cy='5' r='2.5' fill='%230ca30c'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230c1416'/><polygon points='8,2 14,14 2,14' fill='%231de08c'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #141413; --surface: #1a1a19; --surface-2: #232321; --line: #2e2e2b;
-    --text: #f0efec; --text-2: #b4b3ac; --muted: #7d7c76;
-    --blue: #3987e5; --red: #e66767; --good: #0ca30c; --warn: #fab219; --crit: #d03b3b;
+    --ground: #0c1416; --hero-top: #132227; --panel: #121c20; --hair: #1d2b30; --hair-2: #16232a; --div: #2b3d43; --tick: #3a4f56; --track: #16232a;
+    --text: #e9eeed; --text-2: #a4b3b3; --muted: #6d7f80;
+    --green: #1de08c; --on-green: #0b0f11; --red: #e0463f; --amber: #e6b34a;
     --s1: #3987e5; --s2: #e8a33d; --s3: #58b368; --s4: #c77dd9; --s5: #4fb8c9; --s6: #e66767;
-    --g1: #8a8a85; --g2: #58b368; --g3: #3987e5; --g4: #a86bd9; --g5: #e8a33d; --g6: #e05252;
+    --hud: 'Chakra Petch', 'Barlow', system-ui, sans-serif;
+    --body: Barlow, system-ui, -apple-system, sans-serif;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  header { display: flex; align-items: center; gap: 14px; padding: 16px 22px; border-bottom: 1px solid var(--line); flex-wrap: wrap; position: sticky; top: 0; background: var(--bg); z-index: 5; }
-  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
-  .live { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-2); }
-  .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+  html, body { margin: 0; background: var(--ground); color: var(--text); font: 14px/1.45 var(--body); }
+  a { color: var(--green); text-decoration: none; } a:hover { color: #6ff0b8; }
+  @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .3 } }
+  .num { font-family: var(--hud); font-variant-numeric: tabular-nums; }
+  .board { max-width: 1400px; margin: 0 auto; }
+
+  /* ---- hero ---- */
+  .hero { position: relative; padding: 22px 32px 26px; background: linear-gradient(180deg, var(--hero-top) 0%, var(--ground) 100%); border-bottom: 1px solid rgba(29, 224, 140, .2); overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-radial-gradient(circle at 85% 30%, transparent 0 22px, rgba(255, 255, 255, .035) 22px 23px); }
+  .hero > * { position: relative; }
+  .top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .mark { font: 700 15px var(--hud); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .tri { width: 12px; height: 12px; background: var(--green); clip-path: polygon(50% 0, 100% 100%, 0 100%); display: inline-block; flex: none; }
+  .vdiv { width: 1px; height: 18px; background: var(--div); }
+  .modes { display: flex; gap: 2px; font: 600 12px var(--hud); text-transform: uppercase; letter-spacing: .6px; }
+  .modes button { border: 0; padding: 6px 14px; background: #1a2a30; color: var(--text-2); font: inherit; cursor: pointer; text-transform: inherit; letter-spacing: inherit; }
+  .modes button.on { background: var(--green); color: var(--on-green); }
   .spacer { flex: 1; }
-  .filters { display: flex; gap: 6px; flex-wrap: wrap; }
-  .chip { padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text-2); cursor: pointer; font-size: 12px; }
-  .chip.on { background: var(--surface-2); color: var(--text); border-color: #4a4a46; }
-  main { padding: 18px 22px 40px; display: grid; gap: 18px; max-width: 1400px; margin: 0 auto; }
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
-  .tile .k { font-size: 12px; color: var(--muted); }
-  .tile .v { font-size: 24px; font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; }
-  .tile .sub { font-size: 12px; color: var(--text-2); }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .grid31 { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; }
-  @media (max-width: 900px) { .grid2, .grid31 { grid-template-columns: 1fr; } }
-  section.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; }
-  section.card h2 { font-size: 13px; color: var(--text-2); margin: 0 0 10px; text-transform: uppercase; letter-spacing: .6px; font-weight: 600; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  section.card h2 small { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--muted); }
-  .players { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
-  .player { background: var(--surface-2); border-radius: 10px; padding: 12px; border-left: 3px solid var(--s1); }
-  .player .name { font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-  .player .state { font-size: 11px; color: var(--muted); display: inline-flex; gap: 5px; align-items: center; white-space: nowrap; }
-  .player .state i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-  .player .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--text-2); }
-  .player .stats b { display: block; color: var(--text); font-size: 15px; font-variant-numeric: tabular-nums; }
-  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-  th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
-  td.num, th.num { text-align: right; }
-  tr.match { cursor: pointer; } tr.match:hover td { background: var(--surface-2); }
-  tr.detail td { background: #1d1d1c; padding: 8px 12px 12px; white-space: normal; }
-  tr.detail table { font-size: 12px; } tr.detail th, tr.detail td { padding: 4px 8px; border-bottom: 1px solid #2a2a28; }
-  .tag { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; }
-  .tag.win { background: rgba(12,163,12,.18); color: #6fd66f; } .tag.loss { background: rgba(208,59,59,.18); color: #f08a8a; }
-  .tag.draw, .tag.left { background: rgba(250,178,25,.18); color: #f5c65c; } .tag.mixed { background: rgba(120,120,120,.2); color: var(--text-2); }
-  .tag.squad { background: rgba(57,135,229,.18); color: #7fb4f2; margin-left: 6px; }
-  .pos { color: #7fb4f2; } .neg { color: var(--red); }
-  .tblwrap { overflow-x: auto; }
-  .empty { color: var(--muted); padding: 24px; text-align: center; }
-  .chart { position: relative; width: 100%; }
+  .ranges { display: flex; gap: 18px; font: 600 12px var(--hud); text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
+  .ranges button, .link { border: 0; background: none; padding: 0 0 3px; color: inherit; font: inherit; cursor: pointer; text-transform: inherit; letter-spacing: inherit; border-bottom: 2px solid transparent; }
+  .ranges button.on { color: var(--green); border-bottom-color: var(--green); }
+  .status { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .statrow { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: end; margin-top: 28px; }
+  .eyebrow { font: 600 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--green); display: flex; align-items: center; gap: 8px; }
+  .eyebrow i { width: 7px; height: 7px; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
+  .big { font: 700 96px/1 var(--hud); letter-spacing: -1px; font-variant-numeric: tabular-nums; margin-top: 14px; white-space: nowrap; }
+  .cells { display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); border-left: 1px solid var(--div); }
+  .cell { padding: 0 20px; border-right: 1px solid var(--div); min-width: 0; }
+  .cell .v { font: 700 30px var(--hud); color: var(--green); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .cell .k { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-2); margin-top: 2px; }
+
+  /* ---- roster ---- */
+  .roster { display: grid; grid-template-columns: repeat(var(--n, 1), 1fr); border-bottom: 1px solid var(--hair); }
+  .pl { display: flex; gap: 14px; padding: 16px 24px; border-right: 1px solid var(--hair); position: relative; min-width: 0; }
+  .pl .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; }
+  .pl .ava { width: 52px; height: 52px; flex: none; border: 1px solid var(--div); background: repeating-linear-gradient(135deg, #1a2a30 0 5px, #15232a 5px 10px); object-fit: cover; }
+  .pl .body { flex: 1; min-width: 0; }
+  .pl .nm { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .pl .nm span:first-child { font: 600 16px var(--body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pl .st { font: 600 10px var(--hud); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .pl .ln { display: flex; gap: 14px; margin-top: 6px; font-size: 12px; color: var(--text-2); flex-wrap: wrap; }
+  .pl .ln b { font: 700 15px var(--hud); color: var(--text); font-variant-numeric: tabular-nums; }
+
+  /* ---- full-width bands ---- */
+  .band { padding: 22px 32px; border-bottom: 1px solid var(--hair); }
+  .band .items { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); border-left: 1px solid var(--div); }
+  .band .it { padding: 0 20px; border-right: 1px solid var(--div); min-width: 0; margin-bottom: 8px; }
+  .band .it .v { font: 700 22px var(--hud); color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .band .it .k { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-2); margin-top: 2px; line-height: 1.3; }
+  .band .it .k b { color: var(--text); font-weight: 600; }
+  .mod-label { font: 700 13px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--text-2); margin-bottom: 12px; }
+  .empty { font-size: 13px; color: var(--muted); }
+
+  /* ---- body ---- */
+  .cols { display: grid; grid-template-columns: 1.2fr .8fr; }
+  .left { padding: 22px 32px; border-right: 1px solid var(--hair); min-width: 0; }
+  .right { padding: 22px 32px; display: grid; gap: 26px; align-content: start; min-width: 0; }
+  .feedhead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 12px; flex-wrap: wrap; }
+  .feedhead .mod-label { margin: 0; }
+  .note { font-size: 12px; color: var(--muted); }
+  .note b { color: var(--green); font-family: var(--hud); }
+  .row { display: grid; grid-template-columns: 54px 4px 1fr auto auto; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--hair-2); cursor: pointer; }
+  .row:hover { background: rgba(255, 255, 255, .015); }
+  .row .t { font: 600 12px var(--hud); color: var(--muted); }
+  .row .rail { height: 34px; display: flex; flex-direction: column; }
+  .row .rail i { flex: 1; display: block; }
+  .row .l1 { font-size: 15px; } .row .l1 b { font-weight: 600; }
+  .row .tag { font: 600 11px var(--hud); text-transform: uppercase; letter-spacing: 1px; margin-left: 8px; }
+  .row .l2 { font-size: 12px; color: var(--muted); }
+  .row .kl { font: 600 13px var(--hud); color: var(--text-2); white-space: nowrap; }
+  .row .nt { font: 700 16px var(--hud); font-variant-numeric: tabular-nums; min-width: 100px; text-align: right; white-space: nowrap; }
+  .good { color: var(--green); } .bad { color: var(--red); } .warn { color: var(--amber); } .neutral { color: var(--text-2); }
+  .det { padding: 8px 0 12px 72px; border-bottom: 1px solid var(--hair-2); }
+  .det table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .det th { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); text-align: left; padding: 3px 8px 5px 0; border-bottom: 1px solid var(--hair); }
+  .det td { padding: 4px 8px 4px 0; border-bottom: 1px solid var(--hair-2); white-space: nowrap; }
+  .det th.n, .det td.n { text-align: right; font-family: var(--hud); font-variant-numeric: tabular-nums; }
+  .det .mate { color: var(--muted); }
+  .more { margin-top: 12px; font: 600 12px var(--hud); text-transform: uppercase; letter-spacing: .6px; }
+  .more .link { color: var(--green); }
   .chart svg { width: 100%; height: auto; display: block; }
-  .tip { position: fixed; pointer-events: none; background: #0f0f0e; color: var(--text); border: 1px solid #3a3a37; border-radius: 6px; padding: 6px 9px; font-size: 12px; display: none; z-index: 10; white-space: nowrap; }
-  .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-2); margin-bottom: 6px; }
-  .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; vertical-align: -1px; margin-right: 5px; }
-  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
-  .reds { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
-  .red { display: flex; gap: 10px; background: var(--surface-2); border-radius: 10px; padding: 8px; align-items: center; border-left: 3px solid var(--g6); }
-  .red img { width: 48px; height: 48px; object-fit: contain; background: #111; border-radius: 6px; flex: none; }
-  .red .n { font-weight: 600; font-size: 13px; line-height: 1.25; }
-  .red .m { font-size: 11px; color: var(--muted); margin-top: 2px; }
-  .grade { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
-  .kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px; }
-  .kv span:first-child { color: var(--muted); }
-  .pw { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 15px; letter-spacing: 1px; }
+  .rate { display: grid; grid-template-columns: 80px 1fr 52px; gap: 10px; align-items: center; font-size: 13px; }
+  .rate .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rate .tr { height: 8px; background: var(--track); } .rate .tr i { display: block; height: 100%; }
+  .rate .v { font: 600 13px var(--hud); text-align: right; }
+  .reds { display: grid; gap: 10px; }
+  .red { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; }
+  .red img, .red .ph { width: 40px; height: 40px; border: 1px solid var(--div); background: var(--panel); object-fit: contain; }
+  .red .n { font: 600 14px var(--body); } .red .m { font-size: 12px; color: var(--muted); }
+  .red .v { font: 600 13px var(--hud); color: var(--text-2); text-align: right; white-space: nowrap; }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 13px; }
+  .kv span:first-child { color: var(--muted); text-transform: uppercase; letter-spacing: .6px; font: 600 11px var(--hud); padding-top: 2px; }
+  .pw { font: 600 15px 'Share Tech Mono', ui-monospace, monospace; letter-spacing: 1px; }
+  .kvt { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .kvt th { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); text-align: left; padding: 3px 10px 5px 0; border-bottom: 1px solid var(--hair); }
+  .kvt td { padding: 5px 10px 5px 0; border-bottom: 1px solid var(--hair-2); }
+  .tip { position: fixed; pointer-events: none; display: none; z-index: 10; background: #0a1012; border: 1px solid var(--div); color: var(--text); font: 12px var(--body); padding: 6px 9px; white-space: nowrap; }
+  .tip b { font-family: var(--hud); }
   footer { color: var(--muted); font-size: 12px; text-align: center; padding: 20px; }
-  a { color: #7fb4f2; }
-  .banner { background: #2b1c1c; border: 1px solid #5a2a2a; border-radius: 8px; padding: 10px 14px; color: #f0d0d0; }
+  .banner { margin: 22px 32px 0; border-left: 3px solid var(--red); background: #1a1416; padding: 8px 10px; color: #f0d0d0; }
+
+  @media (max-width: 900px) {
+    .hero { padding: 18px 20px 22px; }
+    .statrow { grid-template-columns: 1fr; gap: 24px; }
+    .big { font-size: 64px; }
+    .cells { grid-template-columns: 1fr 1fr; } .cell { padding: 8px 16px; }
+    .roster { grid-template-columns: 1fr 1fr; }
+    .cols { grid-template-columns: 1fr; } .left { border-right: 0; border-bottom: 1px solid var(--hair); }
+    .left, .right, .band { padding: 20px; }
+    .row .nt { min-width: 0; } .det { padding-left: 0; }
+    .banner { margin: 20px 20px 0; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>Delta Force Live</h1>
-  <span class="live"><i></i><span id="status">connecting…</span></span>
-  <span class="spacer"></span>
-  <div class="filters">
-    <button class="chip on" data-range="today">Today</button>
-    <button class="chip" data-range="24h">24 h</button>
-    <button class="chip" data-range="7d">7 days</button>
-    <button class="chip" data-range="all">All</button>
-    <span style="width:10px"></span>
-    <button class="chip on" data-mode="1">Operations</button>
-    <button class="chip" data-mode="2">Warfare</button>
-  </div>
-</header>
-<main>
+<div class="board">
+  <header class="hero">
+    <div class="top">
+      <div class="mark"><span class="tri"></span>Delta Force Live</div>
+      <span class="vdiv"></span>
+      <div class="modes"><button class="on" data-mode="1">Operations</button><button data-mode="2">Warfare</button></div>
+      <span class="spacer"></span>
+      <span class="status" id="status">connecting</span>
+      <div class="ranges"><button class="on" data-range="today">Today</button><button data-range="24h">24 h</button><button data-range="7d">7 days</button><button data-range="all">All</button></div>
+    </div>
+    <div class="statrow">
+      <div><div class="eyebrow"><i></i><span id="eyebrow">Squad net income · today</span></div><div class="big" id="big">–</div></div>
+      <div class="cells" id="cells"></div>
+    </div>
+  </header>
   <div id="banner" class="banner" hidden></div>
-  <div class="tiles" id="tiles"></div>
-  <section class="card"><h2>Squad</h2><div class="players" id="players"></div></section>
-  <div class="grid31">
-    <section class="card"><h2>Red drops <small id="redsSub"></small></h2><div class="reds" id="reds"></div></section>
-    <section class="card"><h2>Daily passwords <small id="pwSub"></small></h2><div id="passwords"></div></section>
+  <section class="roster" id="roster"></section>
+  <section class="band" id="mapsBand"></section>
+  <section class="band" id="opsBand"></section>
+  <div class="cols">
+    <div class="left">
+      <div class="feedhead"><span class="mod-label">Feed</span><span class="note" id="latNote"></span></div>
+      <div id="feed"></div>
+      <div class="more" id="more"></div>
+    </div>
+    <div class="right">
+      <div><div class="mod-label" id="incomeTitle">Net income · last 12</div><div class="chart" id="incomeChart"></div></div>
+      <div><div class="mod-label" id="rateTitle">Extraction rate</div><div id="rateChart"></div></div>
+      <div><div class="mod-label">Red drops</div><div id="reds"></div></div>
+      <div><div class="mod-label">Daily passwords</div><div id="passwords"></div></div>
+    </div>
   </div>
-  <div class="grid2">
-    <section class="card"><h2 id="incomeTitle">Net income per match</h2><div class="chart" id="incomeChart"></div></section>
-    <section class="card"><h2>Extraction rate per player</h2><div class="chart" id="rateChart"></div></section>
-  </div>
-  <div class="grid2">
-    <section class="card"><h2>Maps <small>extraction rate · avg net · n</small></h2><div class="chart" id="mapChart"></div></section>
-    <section class="card"><h2>Operators <small>matches · extraction rate</small></h2><div class="chart" id="opChart"></div></section>
-  </div>
-  <section class="card"><h2>Match feed <small>click a row for the roster</small></h2><div class="tblwrap"><table id="feed"><thead></thead><tbody></tbody></table></div></section>
-</main>
-<footer>Data comes from each player's own HQ session via the Delta Force Live browser extension. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
+  <footer>Data comes from each player's own HQ session via the Delta Force Live browser extension. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
+</div>
 <div class="tip" id="tip"></div>
 
 <script src="config.js"></script>

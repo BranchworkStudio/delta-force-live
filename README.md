@@ -43,7 +43,7 @@ one page per minute, so the site has something to show right away.
 | `extension/` | Chrome MV3 extension (poller in `background.js`, API client in `dfapi.js`) |
 | `supabase/migrations/` | Postgres schema, RLS, views |
 | `supabase/functions/ingest/` | Edge function that the extension posts to |
-| `docs/` | The static site served by GitHub Pages |
+| `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff) |
 
 ## Backend
 
