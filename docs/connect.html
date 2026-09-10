@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect HQ · Delta Force Live</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230c1416'/><polygon points='8,2 14,14 2,14' fill='%231de08c'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #0c1416; --hero-top: #132227; --panel: #121c20; --hair: #1d2b30; --hair-2: #16232a; --div: #2b3d43;
+    --text: #e9eeed; --text-2: #a4b3b3; --muted: #6d7f80;
+    --green: #1de08c; --on-green: #0b0f11; --red: #e0463f; --amber: #e6b34a;
+    --hud: 'Chakra Petch', 'Barlow', system-ui, sans-serif;
+    --body: Barlow, system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ground); color: var(--text); font: 14px/1.5 var(--body); }
+  a { color: var(--green); text-decoration: none; } a:hover { color: #6ff0b8; }
+  @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .3 } }
+  @keyframes nudge { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-5px) } }
+
+  .hero { padding: 20px 32px 22px; background: linear-gradient(180deg, var(--hero-top) 0%, var(--ground) 100%); border-bottom: 1px solid rgba(29, 224, 140, .2); }
+  .top { display: flex; align-items: center; gap: 16px; }
+  .mark { font: 700 15px var(--hud); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+  .tri { width: 12px; height: 12px; background: var(--green); clip-path: polygon(50% 0, 100% 100%, 0 100%); flex: none; }
+  .vdiv { width: 1px; height: 18px; background: var(--div); }
+  .crumb { font: 600 12px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); }
+  .spacer { flex: 1; }
+  h1 { font: 700 34px/1.1 var(--hud); letter-spacing: -.2px; margin: 22px 0 6px; }
+  .sub { color: var(--text-2); max-width: 620px; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 26px 32px 60px; }
+
+  /* ---- stepper ---- */
+  .step { display: grid; grid-template-columns: 34px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--hair); }
+  .step .no { width: 26px; height: 26px; border: 1px solid var(--div); color: var(--muted); font: 700 12px var(--hud); display: grid; place-items: center; margin-top: 1px; }
+  .step.on .no { border-color: var(--green); color: var(--green); }
+  .step.done .no { background: var(--green); border-color: var(--green); color: var(--on-green); }
+  .step.off { opacity: .38; }
+  .step h2 { font: 600 16px var(--body); margin: 2px 0 4px; }
+  .step p { margin: 0 0 4px; color: var(--text-2); max-width: 560px; }
+  .step .hint { font-size: 12px; color: var(--muted); }
+  .step .acts { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
+
+  button.go, a.go { border: 0; display: inline-block; background: var(--green); color: var(--on-green); font: 700 11px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; padding: 9px 14px; cursor: pointer; }
+  a.go:hover { color: var(--on-green); background: #6ff0b8; }
+  button.go:disabled { opacity: .5; cursor: default; }
+  button.ghost { border: 1px solid var(--div); background: none; color: var(--text-2); font: 700 11px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; padding: 8px 13px; cursor: pointer; }
+  button.ghost:hover { color: var(--text); border-color: var(--text-2); }
+  .link { border: 0; background: none; padding: 0; color: var(--green); font: 600 12px var(--hud); letter-spacing: .8px; text-transform: uppercase; cursor: pointer; }
+
+  /* ---- the draggable bookmark chip ---- */
+  .bar { margin-top: 16px; border: 1px solid var(--hair); background: var(--panel); }
+  .bar .chrome { display: flex; align-items: center; gap: 7px; padding: 7px 10px; border-bottom: 1px dashed var(--div); }
+  .bar .chrome i { width: 9px; height: 9px; border-radius: 50%; background: var(--div); }
+  .bar .chrome span { font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
+  .bar .shelf { padding: 12px 12px 16px; display: flex; align-items: center; gap: 10px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--on-green); font: 700 12px var(--hud); letter-spacing: .8px; padding: 8px 13px; cursor: grab; animation: nudge 2.6s ease-in-out infinite; }
+  .chip:hover { color: var(--on-green); }
+  .chip .tri { width: 9px; height: 9px; background: var(--on-green); }
+  .bar .arrow { font-size: 12px; color: var(--muted); }
+
+  .field { display: flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--hair); padding: 9px 11px; max-width: 340px; margin-top: 14px; }
+  .field input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--text); font: 600 14px 'Share Tech Mono', ui-monospace, monospace; outline: none; }
+
+  .box { border-left: 3px solid var(--div); padding: 10px 12px; background: var(--hair-2); font-size: 13px; color: var(--text-2); margin-top: 14px; }
+  .box.bad { border-color: var(--red); color: #f3cfcd; background: #1b1416; }
+  .box.warn { border-color: var(--amber); color: #efe2c2; background: #191c17; }
+  .box b { color: var(--text); }
+  .box code { font-family: 'Share Tech Mono', ui-monospace, monospace; color: var(--text); }
+
+  /* ---- result ---- */
+  .result { padding: 26px 0 8px; }
+  .state { display: flex; align-items: center; gap: 10px; font: 600 13px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; }
+  .state i { width: 9px; height: 9px; background: currentColor; flex: none; }
+  .state i.live { animation: pulse 2s infinite; }
+  .who { font: 700 40px/1.1 var(--hud); margin: 12px 0 2px; }
+  .facts { display: grid; gap: 5px; font-size: 13px; color: var(--text-2); margin-top: 10px; }
+  .facts b { font-family: var(--hud); color: var(--text); }
+  .waiting { display: flex; align-items: center; gap: 10px; font: 600 12px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--amber); }
+  .waiting i { width: 9px; height: 9px; background: currentColor; animation: pulse 1.4s infinite; }
+  .foot { margin-top: 30px; font-size: 12px; color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+  @media (max-width: 620px) { .wrap, .hero { padding-left: 18px; padding-right: 18px; } h1 { font-size: 27px; } }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="top">
+      <div class="mark"><span class="tri"></span>Delta&nbsp;Force&nbsp;Live</div>
+      <div class="vdiv"></div>
+      <div class="crumb">Connect HQ</div>
+      <div class="spacer"></div>
+      <a class="crumb" style="color:var(--green)" href="./">‹ Board</a>
+    </div>
+    <h1 id="title">Connect your HQ account</h1>
+    <p class="sub" id="lede">One setup, then two clicks whenever your HQ login runs out. Nothing to install.</p>
+  </div>
+  <div class="wrap"><div id="flow"></div></div>
+  <script src="config.js?v=6"></script>
+  <script src="connect.js?v=6"></script>
+</body>
+</html>
