@@ -60,4 +60,12 @@ Requests mirror what the HQ page itself does: POST JSON to
 `sg-act.playerinfinite.com/api/proxy/logicial/DfTools/*`, signed with the page's
 own scheme. `report_type` 1 = Operations, 2 = Warfare. `result` 1 = extracted /
 victory, 2 = failed / defeat, 3 = draw, `is_leave` = quit. Map and operator
-names come from the public `basic_info/*_en.js` tables.
+names come from the public `basic_info/*_en.js` tables; red-drop item names from
+`collections_en.js` (`collection_id` = `prop_id`).
+
+Per poll the extension also fetches `GetMatchDetail` for new matches (plus two older
+ones, so history fills in slowly), `GetRedDropRecordList` page 1 (plus one deeper
+page), and `GetPrivateRoomKey` (daily room passwords, hourly). `match_time` is the
+match *start*; a member's `finish_time` is when that player extracted or died, and is
+what the latency stat measures against. Operations details always report `death = 0`,
+so the site counts a failed, non-quit raid as a death for K/D.

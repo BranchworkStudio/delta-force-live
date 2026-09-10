@@ -52,7 +52,21 @@ export function getMatchList(session, reportType, page = 1, pageSize = 20) {
 }
 
 export function getMatchDetail(session, reportType, roomId, matchTime) {
-  return call(session, "GetMatchDetail", { room_id: roomId, report_type: reportType, match_time: matchTime });
+  const body = { room_id: roomId, report_type: reportType };
+  if (matchTime) body.match_time = String(matchTime);
+  return call(session, "GetMatchDetail", body);
+}
+
+export function getRedDrops(session, page = 1, pageSize = 20) {
+  return call(session, "GetRedDropRecordList", { page, page_size: pageSize, collection_id: "", map_id: "", value_order: 0, unlock_time_order: 0 });
+}
+
+/** Daily private-room passwords. No login needed (proxy_direct), but still signed. */
+export async function getPrivateRoomKey() {
+  const url = signedUrl("/api/proxy_direct/logicial/DfTools/GetPrivateRoomKey", { lang_type: "en" });
+  const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ needLogin: false, lang_type: "en" }) });
+  if (!res.ok) throw new Error(`HTTP ${res.status} from GetPrivateRoomKey`);
+  return res.json();
 }
 
 export function getMyData(session, reportType) {

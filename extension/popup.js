@@ -20,6 +20,7 @@ async function render() {
   $("lastPoll").textContent = ago(state.lastPoll);
   $("newest").textContent = state.newest ? ago(state.newest.match_time * 1000) : "–";
   $("pushed").textContent = state.pushed ?? 0;
+  $("pending").textContent = state.detailsPending ?? "–";
   const dot = $("dot");
   dot.className = "dot " + (state.tokenOk === false || (state.lastError && !/squad code/i.test(state.lastError)) ? "bad" : state.tokenOk ? "ok" : "warn");
   $("err").hidden = !state.lastError;
