@@ -79,11 +79,10 @@ Deno.serve(async (req) => {
     }
 
     const st = body.status ?? {};
-    await supabase.from("players").update({
-      token_ok: typeof st.token_ok === "boolean" ? st.token_ok : null,
-      token_expires: toInt(st.token_expires) ? new Date(toInt(st.token_expires)! * 1000).toISOString() : null,
-      last_poll_at: new Date().toISOString(),
-    }).eq("openid", openid);
+    const patch: Record<string, unknown> = { last_poll_at: new Date().toISOString() };
+    if (typeof st.token_ok === "boolean") patch.token_ok = st.token_ok;
+    if (toInt(st.token_expires)) patch.token_expires = new Date(toInt(st.token_expires)! * 1000).toISOString();
+    await supabase.from("players").update(patch).eq("openid", openid);
 
     return json({ inserted });
   }
