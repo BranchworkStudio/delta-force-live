@@ -6,7 +6,7 @@
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const SERIES = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6"].map(css);
   const GREEN = "#1de08c", RED = "#e0463f", AMBER = "#e6b34a";
-  const state = { range: "today", mode: 1, focus: null, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], open: new Set(), showAll: false };
+  const state = { range: "today", mode: 1, focus: null, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], sessions: [], open: new Set(), showAll: false };
 
   // ---------- lookups (official basic_info tables, with a fallback) ----------
   const MAP_FALLBACK = { 22: "Zero Dam", 19: "Layali Grove", 39: "Space City", 81: "Brakkesh", 88: "Tide Prison", 10: "Trench Lines", 24: "Cracked", 11: "Trainwreck", 54: "Ascension", 12: "Knife Edge", 15: "Fault", 30: "Cyclone", 14: "Aftershock", 55: "Island Warfare", 31: "Akh Canal", 21: "Shafted", 75: "Threshold", 89: "AZ3", 17: "Coliseum", 26: "The Mog" };
@@ -44,15 +44,16 @@
   async function load() {
     await refreshExt().catch(() => { });
     const since = encodeURIComponent(rangeStart().toISOString());
-    const [players, matches, members, reds, pw, latency] = await Promise.all([
+    const [players, matches, members, reds, pw, latency, sessions] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
       rest("red_drops?select=openid,collection_id,map_id,unlock_time,value,collection_count,first_seen_at&order=unlock_time.desc&limit=12"),
       rest("site_data?select=value,updated_at&key=eq.daily_passwords"),
-      rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50")
+      rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50"),
+      rest("public_sessions?select=*")
     ]);
-    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency });
+    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
@@ -281,36 +282,59 @@
   }
 
   // ---------- session (right column, top) ----------
+  // Three possible truths, in order of authority: the extension running in THIS browser, the
+  // session the player handed to the server from the connect page, and the last thing pushed.
   function renderSession() {
     const el = $("#session");
     if (!el) return;
     const s = ext.present ? ext.s : null;
+    const me = state.focus === "all" ? null : state.players.find(p => p.openid === state.focus);
+    const srv = me ? state.sessions.find(x => x.openid === me.openid) : state.sessions.length === 1 ? state.sessions[0] : null;
+    const srvFresh = srv && srv.last_ok_at && Date.now() - new Date(srv.last_ok_at) < 30 * 60e3;
     const out = [];
+
     if (s) {
       const [c, t] = s.tokenOk === false ? [RED, "HQ session expired"] : s.tokenOk ? [GREEN, "HQ session OK"] : [AMBER, "Session unknown"];
       out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${t}${s.nickname ? " · " + esc(s.nickname) : ""}</div>`);
-      const facts = [];
+    } else if (srv) {
+      const [c, t] = srv.has_error ? [AMBER, "Server session needs a nudge"] : srvFresh ? [GREEN, "Server collecting"] : [AMBER, "Server session idle"];
+      out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${t}${me ? " · " + esc(playerName(me.openid)) : ""}</div>`);
+    } else if (me) {
+      const [c, t] = liveState(me);
+      out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${esc(playerName(me.openid))} · ${t}</div>`);
+    }
+
+    const facts = [];
+    if (s) {
       if (s.sessionSince && s.tokenOk !== false) facts.push(`Signed in for <b>${span((Date.now() - s.sessionSince) / 1000)}</b>`);
       if (s.lastPoll) facts.push(`Polled <b>${span((Date.now() - s.lastPoll) / 1000)}</b> ago`);
       if (s.detailsPending) facts.push(`Importing history · <b>${s.detailsPending}</b> details left`);
       facts.push(`Tracking from this browser · extension <b>${esc(s.version)}</b>`);
-      out.push(`<div class="facts">${facts.map(f => `<div>${f}</div>`).join("")}</div>`);
-      if (!s.hasCode) out.push(`<div class="field"><input id="sqcode" placeholder="squad code" spellcheck="false" autocomplete="off"><button class="go" id="sqsave">Save</button></div>`);
-      out.push(`<div class="acts"><button class="go" id="pollnow">Poll now</button><a class="out" href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">${s.tokenOk === false ? "Log in to HQ ›" : "Open HQ ›"}</a></div>`);
-      if (s.error) out.push(`<div class="warn">${esc(s.error)}</div>`);
-    } else {
-      const me = state.focus === "all" ? null : state.players.find(p => p.openid === state.focus);
-      if (me) {
-        const [c, t] = liveState(me);
-        out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${esc(playerName(me.openid))} · ${t}</div>`);
-        const facts = [];
-        if (me.token_seen_since) facts.push(`Signed in for <b>${span((Date.now() - new Date(me.token_seen_since)) / 1000)}</b>`);
-        if (me.last_poll_at) facts.push(`Last push <b>${ago(me.last_poll_at)}</b>`);
-        if (facts.length) out.push(`<div class="facts">${facts.map(f => `<div>${f}</div>`).join("")}</div>`);
-      }
-      out.push(`<div class="facts"><div>${ext.checked ? "No extension in this browser, so this page only reads." : "Looking for the extension…"}</div></div>`);
-      out.push(`<div class="acts"><a class="out" href="https://github.com/BranchworkStudio/delta-force-live#install-the-extension-chrome--edge--brave" target="_blank" rel="noopener">Track your own matches ›</a></div>`);
+    } else if (me) {
+      if (me.token_seen_since) facts.push(`HQ login held for <b>${span((Date.now() - new Date(me.token_seen_since)) / 1000)}</b>`);
+      if (me.last_poll_at) facts.push(`Last push <b>${ago(me.last_poll_at)}</b>`);
     }
+    if (srv) {
+      facts.push(`Handed to the server <b>${ago(srv.connected_at)}</b>`);
+      if (srv.last_ok_at) facts.push(`Server read HQ <b>${ago(srv.last_ok_at)}</b>`);
+    } else if (!me && state.sessions.length > 1) {
+      facts.push(`<b>${state.sessions.length}</b> players handed over to the server`);
+    } else if (s) {
+      facts.push("Collecting only while this browser runs.");
+    } else {
+      facts.push(ext.checked ? "Nothing collects from this browser — it only reads." : "Looking for the extension…");
+    }
+    out.push(`<div class="facts">${facts.map(f => `<div>${f}</div>`).join("")}</div>`);
+
+    if (s && !s.hasCode) out.push(`<div class="field"><input id="sqcode" placeholder="squad code" spellcheck="false" autocomplete="off"><button class="go" id="sqsave">Save</button></div>`);
+
+    const acts = [];
+    if (s) acts.push(`<button class="go" id="pollnow">Poll now</button>`);
+    acts.push(`<a class="out" href="connect.html">${srv ? "Reconnect HQ ›" : "Connect HQ ›"}</a>`);
+    acts.push(`<a class="out" href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">${s && s.tokenOk === false ? "Log in to HQ ›" : "Open HQ ›"}</a>`);
+    out.push(`<div class="acts">${acts.join("")}</div>`);
+    if (s && s.error) out.push(`<div class="warn">${esc(s.error)}</div>`);
+
     el.className = "sess";
     el.innerHTML = out.join("");
     const poll = $("#pollnow");

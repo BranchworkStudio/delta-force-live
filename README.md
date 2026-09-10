@@ -16,10 +16,11 @@ Live site: **https://branchworkstudio.github.io/delta-force-live/**
 ## How it works
 
 ```
-Your browser (logged in on playdeltaforce.com)
-   └─ Chrome extension polls the HQ backend every minute with YOUR session
-        └─ new finished matches are POSTed to Supabase (edge function `ingest`)
-              └─ the GitHub Pages site reads them with a public read-only key
+Your HQ login on playdeltaforce.com
+   ├─ Chrome extension polls the HQ backend every 30 s with YOUR session
+   │    └─ new finished matches are POSTed to Supabase (edge function `ingest`)
+   └─ or the connect page hands the session to the backend (edge function `connect`)
+        └─ either way the GitHub Pages site reads them with a public read-only key
 ```
 
 * Your Level Infinite login never leaves your browser. The extension only sends
@@ -28,6 +29,39 @@ Your browser (logged in on playdeltaforce.com)
 * Anyone with the site link can read the squad's matches. Nothing else is exposed.
 * Every row records `first_seen_at`, so the site can show how far behind the
   official API actually is ("API latency" tile).
+
+## Connect from the site, without installing anything
+
+There are two ways to get matches into the board. The extension pushes them from a
+browser that is running; the **connect page** hands your HQ session to the backend so
+it can read them on its own, with your PC off.
+
+```
+docs/connect.html            the guided flow: squad code → bookmark → HQ login → click
+   └─ one bookmarklet, clicked on playdeltaforce.com
+        └─ reads that page's own Wand_DF_* cookies, navigates back to connect.html#s=…
+              └─ edge function `connect` verifies them against HQ, then stores them
+```
+
+Why a bookmark and not a redirect: HQ has no way to log you in *for* us. Their API
+answers only their own origin (a preflight from ours gets `405` with no CORS headers),
+and their login lands in cookies on their domain, which no other origin may read. A
+bookmarklet runs *as their page*, so it is the only route that does not need an install.
+It carries no secret — the squad code stays in the site's `localStorage`.
+
+The fragment (`#s=…`) is deliberate: fragments are never sent to a server, so the token
+does not appear in any access log, and the page strips it from the address bar on arrival.
+
+**What gets stored:** the nine `Wand_DF_*` login cookies, in `player_sessions`, which is
+service-role only (RLS on, no policies). The board reads `public_sessions`, a view that
+exposes when a session arrived and whether it still works — never the cookies. Nothing
+about your Level Infinite password is involved at any point. **Disconnect** on the connect
+page deletes the row.
+
+The connect function verifies a hand-over with one real HQ call (`GetMyData`) before
+storing anything, so "Connected" always means the backend can actually read your matches.
+Failure modes are named in the flow, not in this file: not logged in on HQ, bookmark
+clicked on the wrong site, a token the HQ page keeps to itself, a refused squad code.
 
 ## Install the extension (Chrome / Edge / Brave)
 
@@ -66,6 +100,8 @@ one page per minute, so the site has something to show right away.
 | `extension/` | Chrome MV3 extension (poller in `background.js`, API client in `dfapi.js`, site bridge in `bridge.js`, popup as a fallback control panel) |
 | `supabase/migrations/` | Postgres schema, RLS, views |
 | `supabase/functions/ingest/` | Edge function that the extension posts to |
+| `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it (`hq.ts` is the server-side twin of `dfapi.js`) |
+| `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
 | `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()` |
 
 ## Backend
