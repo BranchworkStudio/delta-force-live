@@ -121,7 +121,6 @@
   function finish(r) {
     ls.set(K.bm, "1"); S.bm = true;
     if (r.control_key) { ls.set(K.ctl, r.openid); ls.set(K.ctl + "-key", r.control_key); }   // only this browser may disconnect
-    if (r.invite) ls.set(K.inv, r.invite);                     // so this player can invite the next one
     if (r.openid) ls.set(K.focus, r.openid);                   // the board opens on the player who just connected
     ls.set(K.conn, JSON.stringify({ openid: r.openid, nickname: r.nickname || null, at: Date.now() }));  // tells the other tab
     S.phase = "done"; S.res = r; S.err = null;
@@ -163,7 +162,7 @@
     if (r.httpOk && r.ok) return finish(r);
     S.phase = "steps";
     if (r.reason === "not-enrolled") S.err = { title: "You need the squad's invite link", body: "This board is already tracking players, so a new account joins through an invite link. Ask whoever sent you here to send the <code>?i=…</code> version of it." };
-    else if (r.reason === "bad-invite") S.err = { title: "That invite link is out of date", body: "The squad's invite has been rotated since the link was shared. Ask for a fresh one." };
+    else if (r.reason === "bad-invite") S.err = { title: "That invite link does not work", body: "Either the link was mistyped, or it has been withdrawn since it was shared. Ask whoever sent it for a fresh one." };
     else if (r.reason === "not-logged-in") S.err = { title: "HQ says that login is not valid", body: `Open HQ, log in properly, then click the bookmark again. <span class="hint">(${esc(r.error || "")})</span>` };
     else if (r.reason === "no-cookies") S.err = { title: "No HQ login in that browser", body: "Log in on HQ first, then click the bookmark on the HQ tab." };
     else S.err = { title: "The server could not reach HQ", body: `Try the bookmark again in a minute. <span class="hint">(${esc(r.error || r.status)})</span>`, kind: "warn" };
