@@ -1,8 +1,15 @@
 # Delta Force Live
 
-A live squad tracker for **Delta Force (global client)**. The official HQ page
-(https://www.playdeltaforce.com/events/hq/en/) shows your matches, but this site
-shows the whole squad's matches on one page and refreshes every 30 seconds.
+A live match tracker for **Delta Force (global client)**. The official HQ page
+(https://www.playdeltaforce.com/events/hq/en/) is a day or two behind; this site
+shows your own matches seconds after you leave the raid and refreshes every 30
+seconds.
+
+The board is **personal-first**: every module is scoped to one player, and the
+roster strip doubles as the picker. The squad code is only how a player registers
+their browser and how mates get read access, not a request to merge everyone's
+numbers. "All squad" is an opt-in tile that appears once more than one player is
+tracked, and the choice is remembered per browser.
 
 Live site: **https://branchworkstudio.github.io/delta-force-live/**
 
@@ -43,7 +50,7 @@ one page per minute, so the site has something to show right away.
 | `extension/` | Chrome MV3 extension (poller in `background.js`, API client in `dfapi.js`) |
 | `supabase/migrations/` | Postgres schema, RLS, views |
 | `supabase/functions/ingest/` | Edge function that the extension posts to |
-| `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff) |
+| `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()` |
 
 ## Backend
 

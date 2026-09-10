@@ -60,6 +60,10 @@
   .pl .st { font: 600 10px var(--hud); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
   .pl .ln { display: flex; gap: 14px; margin-top: 6px; font-size: 12px; color: var(--text-2); flex-wrap: wrap; }
   .pl .ln b { font: 700 15px var(--hud); color: var(--text); font-variant-numeric: tabular-nums; }
+  .pl[data-focus] { cursor: pointer; }
+  .pl[data-focus]:not(.on) { opacity: .5; }
+  .pl[data-focus]:not(.on):hover { opacity: .85; background: var(--hair-2); }
+  .pl.on { background: var(--hair-2); }
 
   /* ---- full-width bands ---- */
   .band { padding: 22px 32px; border-bottom: 1px solid var(--hair); }
@@ -144,7 +148,7 @@
       <div class="ranges"><button class="on" data-range="today">Today</button><button data-range="24h">24 h</button><button data-range="7d">7 days</button><button data-range="all">All</button></div>
     </div>
     <div class="statrow">
-      <div><div class="eyebrow"><i></i><span id="eyebrow">Squad net income · today</span></div><div class="big" id="big">–</div></div>
+      <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div></div>
       <div class="cells" id="cells"></div>
     </div>
   </header>
@@ -169,10 +173,10 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=3"></script>
+<script src="config.js?v=4"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
