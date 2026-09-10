@@ -20,7 +20,10 @@
     }
   } catch (e) { /* fallback below */ }
   try { for (const o of window.basic_info_operators || []) opIndex[String(o.operator_id)] = { name: (o.language && o.language.en) || o.operator_id, icon: absUrl(o.image_url) }; } catch (e) { /* ignore */ }
-  try { for (const c of window.basic_info_collection || []) itemIndex[String(c.prop_id)] = { name: (c.language && c.language.en) || c.prop_id, img: absUrl(c.image_url), grade: Number(c.grade) || 0 }; } catch (e) { /* ignore */ }
+  // `value` and `is_collectible` come from the same official table: the collection endpoints send
+  // an item id and a count and nothing else, so a red's worth and whether it belongs on the wall
+  // at all are only knowable here. The wall's denominator is the count of collectible grade 6.
+  try { for (const c of window.basic_info_collection || []) itemIndex[String(c.prop_id)] = { name: (c.language && c.language.en) || c.prop_id, img: absUrl(c.image_url), grade: Number(c.grade) || 0, value: Number(c.value) || 0, collectible: !!c.is_collectible, maps: [c.source_map_1_i18n, c.source_map_2_i18n].map(m => m && m.en).filter(Boolean) }; } catch (e) { /* ignore */ }
   const mapName = (id) => mapIndex[String(id)] || MAP_FALLBACK[String(id).slice(0, 2)] || ("Map " + id);
   // HQ gives every map *and difficulty* its own id, named "Zero Dam - Easy" or "Space City_Normal"
   // with the separator chosen at random. Easy and Normal are genuinely different raids, so the
@@ -34,13 +37,22 @@
   const mapFull = (id) => { const m = mapParts(id); return m.diff ? m.base + " · " + m.diff : m.base; };
   const opName = (id) => (opIndex[String(id)] && opIndex[String(id)].name) || (id ? "Op " + id : "–");
   const opIcon = (id) => (opIndex[String(id)] && opIndex[String(id)].icon) || null;
-  const item = (id) => itemIndex[String(id)] || { name: "Item " + id, img: null, grade: 0 };
+  const item = (id) => itemIndex[String(id)] || { name: "Item " + id, img: null, grade: 0, value: 0, collectible: false, maps: [] };
+  // How many reds exist to be found. Counted from the official table rather than hard-coded, so a
+  // season that adds reds moves the denominator on its own.
+  const RED_TYPES = Object.values(itemIndex).filter(i => i.grade === 6 && i.collectible).length || 0;
 
   // ---------- data ----------
   async function rest(path) {
     const res = await fetch(C.SUPABASE_URL + "/rest/v1/" + path, { headers: { apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY } });
     if (!res.ok) throw new Error("REST " + res.status + " on " + path);
     return res.json();
+  }
+  // The panels that hang off the end of the board — the week's tally, the career wall — are extras:
+  // if one of them fails, the board should lose that panel and nothing else. Everything above them
+  // shares a Promise.all, where a single rejection would blank the page.
+  async function restSoft(path) {
+    try { return await rest(path); } catch (e) { console.warn(e); return []; }
   }
   function rangeStart() {
     const now = new Date();
@@ -52,7 +64,7 @@
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
   async function load() {
     const since = encodeURIComponent(rangeStart().toISOString());
-    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried] = await Promise.all([
+    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
@@ -68,9 +80,13 @@
       rest(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc&limit=5000`),
       // HQ only ever reports the current week, so the newest week_start present is the live one;
       // the rest is whatever weeks the poller happened to be running for.
-      rest("carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&order=week_start.desc,item_value.desc&limit=600")
+      restSoft("carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&order=week_start.desc,item_value.desc&limit=600"),
+      // The career wall is not range-scoped: it is everything the account has ever found, which is
+      // the whole point of it — the dated drop feed above is capped at HQ's latest 50 rows.
+      restSoft("red_collection?select=openid,item_id,owned_count,is_new&limit=1000"),
+      restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count")
     ]);
-    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent, rank, rankSamples, carried });
+    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
@@ -191,6 +207,7 @@
     renderNudge(ms);
     renderReds();
     renderCarried();
+    renderWall();
     renderPasswords();
   }
 
@@ -631,6 +648,46 @@
         <div class="v">${fmt(r.item_value)}</div>
         <div class="m">${many ? sq(colorFor(r.openid)) : ""}${n}\u00d7${g ? " · " + g : ""}</div></div>`;
     }).join("")}</div>`;
+    attachTips(el);
+  }
+
+  // The career red wall. The dated feed above is HQ's latest 50 rows and nothing older, so it can
+  // never say what an account has found over its whole life — this can. It is a per-*type* view:
+  // one card per red ever found, with how many, so it answers a different question than the feed
+  // and belongs in its own band rather than as another sort of the same cards.
+  function renderWall() {
+    const el = $("#wall"), foot = $("#wallFoot"), band = $("#wallBand");
+    if (!el) return;
+    const rows = scoped(state.wall || []);
+    if (band) band.hidden = !rows.length;
+    if (!rows.length) { el.innerHTML = ""; if (foot) foot.textContent = ""; return; }
+    // One card per type even when the squad is shown together: two players owning the same red is
+    // one type found between them, not two. The counts add up; the types do not.
+    const by = {};
+    for (const r of rows) {
+      const v = by[r.item_id] = by[r.item_id] || { item_id: r.item_id, n: 0, is_new: false, who: [] };
+      v.n += r.owned_count || 0; v.is_new = v.is_new || !!r.is_new; v.who.push(r.openid);
+    }
+    const types = Object.values(by).sort((a, b) => item(b.item_id).value - item(a.item_id).value);
+    const sums = scoped(state.wallSum || []);
+    // HQ's own career figures where they exist, since a total we add up ourselves would quietly
+    // disagree with the number HQ shows. Falling back to the wall itself keeps the band honest if
+    // the summary has not landed yet.
+    const found = sums.length ? sums.reduce((n, r) => n + (r.total_count || 0), 0) : types.reduce((n, t) => n + t.n, 0);
+    const worth = sums.length ? sums.reduce((n, r) => n + (r.total_value || 0), 0) : types.reduce((n, t) => n + t.n * item(t.item_id).value, 0);
+    const many = state.players.length > 1;
+    if (foot) foot.textContent = `${found} found · ${plain(worth)} all told`;
+    const denom = RED_TYPES || types.length;
+    el.innerHTML = `<div class="wallbar" data-tip="<b>${types.length} of ${denom}</b> red types found<br>Counted against every collectible red in the game">
+        <span class="nm">Types found</span>${barCell(types.length, denom, GREEN)}<span class="v">${types.length} of ${denom}</span></div>
+      <div class="reds">${types.map(t => {
+        const it = item(t.item_id);
+        return `<div class="red" data-tip="<b>${esc(it.name)}</b>${it.maps.length ? " · " + esc(it.maps.join(", ")) : ""}<br>${t.n}\u00d7 at ${plain(it.value)} = ${plain(t.n * it.value)}${many ? "<br>" + esc([...new Set(t.who)].map(playerName).join(", ")) : ""}">
+          ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ph"></div>`}
+          <div class="n">${esc(it.name)}</div>
+          <div class="v">${fmt(it.value)}</div>
+          <div class="m">${t.n}\u00d7${t.is_new ? ' · <b style="color:' + GREEN + '">NEW</b>' : ""}</div></div>`;
+      }).join("")}</div>`;
     attachTips(el);
   }
 

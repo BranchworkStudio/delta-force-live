@@ -4,7 +4,7 @@
 //   { secret } -> poll every connected player
 //   { secret, openid } -> poll one (used by the connect page right after a hand-over)
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedDrops, getWeekCalendar, isAuthError, type Session } from "./hq.ts";
+import { getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedCollection, getRedDrops, getWeekCalendar, isAuthError, type Session } from "./hq.ts";
 
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
@@ -77,6 +77,7 @@ async function pollOne(row: Row) {
     report.reds = await storeReds(s, openid, bf);
     report.stats = await storeStats(s, openid);
     report.carried = await storeCarryOut(s, openid);
+    report.wall = await storeCollection(s, openid);
     await maybePasswords(openid);
 
     await supabase.from("players").update({ token_ok: true, last_poll_at: nowIso() }).eq("openid", openid);
@@ -223,6 +224,30 @@ async function storeCarryOut(s: Session, openid: string) {
   if (!rows.length) return 0;
   const { error } = await supabase.from("carry_out_week").upsert(rows, { onConflict: "openid,week_start,item_id" });
   return error ? 0 : rows.length;
+}
+
+/**
+ * The career red wall. The drop record list is capped at its latest 50 rows, so it cannot say what
+ * an account has found over its whole life; this can — one entry per red type ever found, with how
+ * many of each, and HQ's own career totals. Names, values and source maps are deliberately not
+ * stored: they are in the official basic_info table the page already loads.
+ */
+async function storeCollection(s: Session, openid: string) {
+  const env = await getRedCollection(s).catch(() => null);
+  if (!env || Number(env.code) !== 0 || !env.data) return 0;
+  const list = env.data.collection_list ?? [];
+  if (!Array.isArray(list)) return 0;
+  const rows = list.map((r: any) => ({
+    openid, item_id: clampStr(r.item_id, 32), owned_count: toInt(r.count), is_new: !!r.is_new, fetched_at: nowIso(),
+  })).filter((r: any) => r.item_id);
+  if (rows.length) await supabase.from("red_collection").upsert(rows, { onConflict: "openid,item_id" });
+  await supabase.from("red_collection_summary").upsert({
+    openid,
+    type_count: toInt(env.data.dahong_type_count), total_count: toInt(env.data.dahong_total_count),
+    total_value: toInt(env.data.dahong_total_value), weekly_count: toInt(env.data.weekly_collect_count),
+    fetched_at: nowIso(),
+  }, { onConflict: "openid" });
+  return rows.length;
 }
 
 /** Daily private-room passwords: unauthenticated, so whoever polls first refreshes them hourly. */
