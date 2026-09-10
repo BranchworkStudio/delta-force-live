@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delta Force Live</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='%231a1a19'/><circle cx='11' cy='5' r='2.5' fill='%230ca30c'/></svg>">
+<style>
+  :root {
+    --bg: #141413; --surface: #1a1a19; --surface-2: #232321; --line: #2e2e2b;
+    --text: #f0efec; --text-2: #b4b3ac; --muted: #7d7c76;
+    --blue: #3987e5; --red: #e66767; --good: #0ca30c; --warn: #fab219; --crit: #d03b3b;
+    --s1: #3987e5; --s2: #e8a33d; --s3: #58b368; --s4: #c77dd9; --s5: #4fb8c9; --s6: #e66767;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: center; gap: 14px; padding: 16px 22px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  .live { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-2); }
+  .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+  .spacer { flex: 1; }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text-2); cursor: pointer; font-size: 12px; }
+  .chip.on { background: var(--surface-2); color: var(--text); border-color: #4a4a46; }
+  main { padding: 18px 22px 40px; display: grid; gap: 18px; max-width: 1400px; margin: 0 auto; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .tile .k { font-size: 12px; color: var(--muted); }
+  .tile .v { font-size: 26px; font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .tile .sub { font-size: 12px; color: var(--text-2); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
+  section.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  section.card h2 { font-size: 13px; color: var(--text-2); margin: 0 0 10px; text-transform: uppercase; letter-spacing: .6px; font-weight: 600; }
+  .players { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .player { background: var(--surface-2); border-radius: 10px; padding: 12px; border-left: 3px solid var(--s1); }
+  .player .name { font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .player .state { font-size: 11px; color: var(--muted); display: inline-flex; gap: 5px; align-items: center; }
+  .player .state i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .player .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--text-2); }
+  .player .stats b { display: block; color: var(--text); font-size: 15px; font-variant-numeric: tabular-nums; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
+  td.num, th.num { text-align: right; }
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+  .tag.win { background: rgba(12,163,12,.18); color: #6fd66f; } .tag.loss { background: rgba(208,59,59,.18); color: #f08a8a; }
+  .tag.draw, .tag.left { background: rgba(250,178,25,.18); color: #f5c65c; }
+  .pos { color: #7fb4f2; } .neg { color: var(--red); }
+  .tblwrap { overflow-x: auto; }
+  .empty { color: var(--muted); padding: 24px; text-align: center; }
+  .chart { position: relative; width: 100%; }
+  .chart svg { width: 100%; height: auto; display: block; }
+  .tip { position: fixed; pointer-events: none; background: #0f0f0e; color: var(--text); border: 1px solid #3a3a37; border-radius: 6px; padding: 6px 9px; font-size: 12px; display: none; z-index: 10; white-space: nowrap; }
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-2); margin-bottom: 6px; }
+  .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; vertical-align: -1px; margin-right: 5px; }
+  footer { color: var(--muted); font-size: 12px; text-align: center; padding: 20px; }
+  a { color: #7fb4f2; }
+  .banner { background: #2b1c1c; border: 1px solid #5a2a2a; border-radius: 8px; padding: 10px 14px; color: #f0d0d0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Delta Force Live</h1>
+  <span class="live"><i></i><span id="status">connecting…</span></span>
+  <span class="spacer"></span>
+  <div class="filters">
+    <button class="chip on" data-range="today">Today</button>
+    <button class="chip" data-range="24h">24 h</button>
+    <button class="chip" data-range="7d">7 days</button>
+    <button class="chip" data-range="all">All</button>
+    <span style="width:10px"></span>
+    <button class="chip on" data-mode="1">Operations</button>
+    <button class="chip" data-mode="2">Warfare</button>
+  </div>
+</header>
+<main>
+  <div id="banner" class="banner" hidden></div>
+  <div class="tiles" id="tiles"></div>
+  <section class="card"><h2>Squad</h2><div class="players" id="players"></div></section>
+  <div class="grid2">
+    <section class="card"><h2 id="incomeTitle">Net income per match</h2><div class="chart" id="incomeChart"></div></section>
+    <section class="card"><h2>Extraction rate per player</h2><div class="chart" id="rateChart"></div></section>
+  </div>
+  <section class="card"><h2>Match feed</h2><div class="tblwrap"><table id="feed"><thead></thead><tbody></tbody></table></div></section>
+</main>
+<footer>Data comes from each player's own HQ session via the Delta Force Live browser extension. Latency = time from match end until the official API first showed it.</footer>
+<div class="tip" id="tip"></div>
+
+<script src="config.js"></script>
+<script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
+<script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
+<script src="app.js"></script>
+</body>
+</html>
