@@ -43,12 +43,34 @@ docs/connect.html            the guided flow: bookmark → HQ login → click th
                    └─ and kicks `poll` immediately, so the first matches land in seconds
 ```
 
-There is no shared code on this path, on purpose: a hand-over is proved against HQ
+There is no code to type on this path, on purpose: a hand-over is proved against HQ
 itself before anything is stored, and only the account owner can produce cookies HQ
-accepts. That is stronger than a secret the page would have to hold. The one thing a
-secret was actually needed for is enrolment, so an `openid` the board has never seen
-is refused (`reason: "not-enrolled"`) — unless the board is empty, in which case the
-first hand-over claims it.
+accepts. That is stronger than a secret the page would have to hold.
+
+**Inviting mates.** The only thing a secret was really needed for is enrolment, so that
+travels in the link instead of anyone's fingers. Share the invite URL:
+
+```
+https://branchworkstudio.github.io/delta-force-live/connect.html?i=<invite_code>
+```
+
+They click it, do the same three steps, and they are on the board — their own player,
+their own session, polled by the same job. The invite survives the hand-over for free:
+the bookmarklet returns to `location.href` minus the fragment, so the `?i=` rides along.
+The connect page also remembers it (`df-invite`), so a later reconnect works from a bare
+URL. An openid the board already knows never needs an invite; a stranger without one is
+refused (`reason: "not-enrolled"`, or `"bad-invite"` if it has been rotated); and an empty
+board is claimed by its first hand-over.
+
+Anyone already on the board can pass the link on: the account control in the top-right
+corner of the board has an **Invite a mate** item that copies the link to the clipboard.
+Rotate the code whenever you want:
+
+```sql
+update app_settings set value = encode(extensions.gen_random_bytes(9),'hex') where key = 'invite_code';
+```
+
+`players.enrolled_via` / `enrolled_at` record how and when each account got in.
 
 Why a bookmark and not a redirect: HQ has no way to log you in *for* us. Their API
 answers only their own origin (a preflight from ours gets `405` with no CORS headers),
@@ -120,10 +142,14 @@ page and log in again, that is all.
 force a poll, over `window.postMessage` with the `df-live` namespace. The page never
 sees the HQ token, the session cookies or the ingest key.
 
-The site's *Session* block leads with the server session — "Server collecting · read
-HQ 40 s ago · every minute, PC off" — and mentions the extension underneath only when
-one is present in this browser, with a **Poll now** button. With no session at all it
-says so plainly and offers **Connect HQ**.
+The board's account control — the chip in the top-right corner, where a website would
+put "logged in" — is where all of this surfaces, in plain language rather than in
+plumbing: your nickname, a status dot, and "Your matches are collected for you
+automatically — nothing needs to be running, not even this tab." Its menu holds *Invite
+a mate*, *Open Delta Force HQ*, *Reconnect*, a **Check for new matches** item that only
+appears when the extension is present in this browser, and — only in the browser that
+handed the session over — a two-click *Stop collecting*. With nothing connected the chip
+is replaced by a green **Connect** button.
 
 The first hour also imports your recent history (about 300 matches per mode),
 one page per minute, so the site has something to show right away.
@@ -143,18 +169,19 @@ one page per minute, so the site has something to show right away.
 ## Backend
 
 Supabase project **Delta Force Live** (Branchwork Studio org, eu-central-1).
-`app_settings` is service-role only and holds two secrets: `poll_secret` (between
-`pg_cron` and the `poll` function) and the legacy `squad_code`, which now only gates
-extension registration — the connect path does not use it. To rotate either:
+`app_settings` is service-role only and holds three secrets: `poll_secret` (between
+`pg_cron` and the `poll` function), `invite_code` (the link mates join with) and the
+legacy `squad_code`, which now only gates extension registration. To rotate any:
 
 ```sql
 update app_settings set value = encode(extensions.gen_random_bytes(24),'hex') where key = 'poll_secret';
+update app_settings set value = encode(extensions.gen_random_bytes(9),'hex')  where key = 'invite_code';
 update app_settings set value = 'new-code' where key = 'squad_code';
 ```
 
-Enrolment on the connect path is by `players.openid` instead: to let a mate in, add
-their openid to `players` (they can read it off the HQ page, or the connect flow's
-error names it), and their next hand-over is accepted.
+Enrolment on the connect path uses `invite_code` in the same table — see **Inviting
+mates** above. It is a capability, not a password: it lets someone add *their own*
+proven HQ session to the board and nothing else.
 
 ## Notes on the data source
 

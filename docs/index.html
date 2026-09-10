@@ -40,6 +40,34 @@
   .ranges button, .link { border: 0; background: none; padding: 0 0 3px; color: inherit; font: inherit; cursor: pointer; text-transform: inherit; letter-spacing: inherit; border-bottom: 2px solid transparent; }
   .ranges button.on { color: var(--green); border-bottom-color: var(--green); }
   .status { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+  /* account control, top right — the "you are logged in" corner */
+  .acct { position: relative; }
+  .acct .chip { display: flex; align-items: center; gap: 9px; border: 0; background: none; padding: 3px 0; cursor: pointer; color: var(--text); font: 600 13px 'Barlow', sans-serif; }
+  .acct .chip:hover .nm { color: var(--green); }
+  .acct .ava { width: 24px; height: 24px; flex: none; display: grid; place-items: center; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2); font: 700 12px var(--hud); text-transform: uppercase; }
+  .acct .nm { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .acct .dot { width: 7px; height: 7px; flex: none; background: var(--muted); }
+  .acct .dot.ok { background: var(--green); animation: pulse 2s infinite; }
+  .acct .dot.warn { background: var(--amber); }
+  .acct .dot.bad { background: var(--red); }
+  .acct a.signin { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--on-green); font: 700 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 7px 13px; text-decoration: none; }
+  .acct a.signin:hover { filter: brightness(1.08); }
+
+  .menu { position: absolute; right: 0; top: calc(100% + 10px); z-index: 60; width: min(300px, calc(100vw - 40px)); background: var(--panel); border: 1px solid var(--hair); padding: 16px; text-align: left; }
+  .menu .hd { display: flex; align-items: center; gap: 11px; }
+  .menu .hd .ava { width: 34px; height: 34px; font-size: 14px; }
+  .menu .hd b { display: block; font: 700 15px 'Barlow', sans-serif; color: var(--text); }
+  .menu .hd span { font-size: 11px; color: var(--muted); }
+  .menu .msg { margin: 13px 0 0; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+  .menu .meta { margin-top: 9px; font-size: 11px; color: var(--muted); }
+  .menu .mi { margin-top: 15px; padding-top: 13px; border-top: 1px solid var(--hair); display: grid; gap: 11px; }
+  .menu .mi a, .menu .mi button { border: 0; background: none; padding: 0; text-align: left; cursor: pointer; color: var(--text-2); font: 600 12px var(--hud); letter-spacing: .8px; text-transform: uppercase; text-decoration: none; }
+  .menu .mi a:hover, .menu .mi button:hover { color: var(--text); }
+  .menu .mi button.bad { color: var(--red); }
+  .menu .mi button.bad:hover { filter: brightness(1.2); }
+  .menu .go { background: var(--green); color: var(--on-green); padding: 8px 12px; text-align: center; }
+  .menu .go:hover { filter: brightness(1.08); color: var(--on-green); }
   .statrow { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: end; margin-top: 28px; }
   .eyebrow { font: 600 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--green); display: flex; align-items: center; gap: 8px; }
   .eyebrow i { width: 7px; height: 7px; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
@@ -82,20 +110,6 @@
   .feedhead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 12px; flex-wrap: wrap; }
   .feedhead .mod-label { margin: 0; }
   .note { font-size: 12px; color: var(--muted); }
-  /* ---- session / control block ---- */
-  .sess { display: grid; gap: 12px; }
-  .sess .state { display: flex; align-items: center; gap: 9px; font: 600 13px var(--hud); letter-spacing: 1px; text-transform: uppercase; }
-  .sess .state i { width: 8px; height: 8px; background: currentColor; display: inline-block; flex: none; }
-  .sess .state i.live { animation: pulse 2s infinite; }
-  .sess .facts { display: grid; gap: 5px; font-size: 12px; color: var(--text-2); }
-  .sess .facts b { font-family: var(--hud); color: var(--text); font-variant-numeric: tabular-nums; }
-  .sess .acts { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .sess button.go { border: 0; background: var(--green); color: var(--on-green); font: 700 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 7px 12px; cursor: pointer; }
-  .sess button.go:disabled { opacity: .6; cursor: default; }
-  .sess a.out { font: 600 12px var(--hud); letter-spacing: .8px; text-transform: uppercase; }
-  .sess .field { display: flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--hair); padding: 8px 10px; }
-  .sess .field input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--text); font: 600 13px 'Share Tech Mono', ui-monospace, monospace; outline: none; }
-  .sess .warn { border-left: 3px solid var(--amber); padding: 8px 10px; background: #191c17; font-size: 12px; color: #efe2c2; }
   .note b { color: var(--green); font-family: var(--hud); }
   .row { display: grid; grid-template-columns: 54px 4px 1fr auto auto; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--hair-2); cursor: pointer; }
   .row:hover { background: rgba(255, 255, 255, .015); }
@@ -147,6 +161,10 @@
     .left, .right, .band { padding: 20px; }
     .row .nt { min-width: 0; } .det { padding-left: 0; }
     .banner { margin: 20px 20px 0; }
+    /* the header row wraps here, so the account control gets its own line and keeps
+       the menu inside the page instead of hanging off the left edge */
+    .acct-div { display: none; }
+    .acct { flex: 1 0 100%; display: flex; justify-content: flex-end; }
   }
 </style>
 </head>
@@ -160,6 +178,8 @@
       <span class="spacer"></span>
       <span class="status" id="status">connecting</span>
       <div class="ranges"><button class="on" data-range="today">Today</button><button data-range="24h">24 h</button><button data-range="7d">7 days</button><button data-range="all">All</button></div>
+      <span class="vdiv acct-div"></span>
+      <div class="acct" id="acct"></div>
     </div>
     <div class="statrow">
       <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div></div>
@@ -177,21 +197,20 @@
       <div class="more" id="more"></div>
     </div>
     <div class="right">
-      <div><div class="mod-label">Session</div><div id="session"></div></div>
       <div><div class="mod-label" id="incomeTitle">Net income · last 12</div><div class="chart" id="incomeChart"></div></div>
       <div><div class="mod-label" id="rateTitle">Extraction rate</div><div id="rateChart"></div></div>
       <div><div class="mod-label">Red drops</div><div id="reds"></div></div>
       <div><div class="mod-label">Daily passwords</div><div id="passwords"></div></div>
     </div>
   </div>
-  <footer>Data comes from each player's own HQ session &mdash; handed to the server from the <a href="connect.html">connect page</a>, or pushed by the browser extension. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
+  <footer>Matches come from each player's own Delta Force account, connected once from the <a href="connect.html" id="connectLink">connect page</a> and then read for you every minute. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=7"></script>
+<script src="config.js?v=8"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>

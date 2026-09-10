@@ -4,12 +4,14 @@
    cookies and navigates back here with them in the URL fragment, which never reaches a server log.
    This page then POSTs them to the `connect` function, which verifies them against HQ before storing.
    There is nothing to type: only the account owner can produce cookies that HQ accepts, so the
-   hand-over authenticates itself. */
+   hand-over authenticates itself. Joining a board that already has players needs an invite, and that
+   rides along in the query string (`connect.html?i=...`) — the bookmarklet keeps it, because it
+   navigates back to this URL minus only the fragment. */
 (function () {
   const C = window.DF_CONFIG;
   const $ = (s) => document.querySelector(s);
   const HQ = "https://www.playdeltaforce.com/events/hq/en/";
-  const K = { bm: "df-bm", conn: "df-connected", ctl: "df-control" };
+  const K = { bm: "df-bm", conn: "df-connected", ctl: "df-control", inv: "df-invite", focus: "df-focus" };
   const ls = {
     get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private window */ } },
@@ -17,12 +19,16 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const span = (s) => s < 90 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : s < 172800 ? (s / 3600).toFixed(1) + " h" : (s / 86400).toFixed(1) + " d";
 
+  // The invite comes from the shared link; remembered so a later reconnect works from a bare URL.
+  const invite = new URLSearchParams(location.search).get("i") || ls.get(K.inv) || "";
+  if (invite) ls.set(K.inv, invite);
+
   const S = {
     bm: ls.get(K.bm) === "1",
     phase: "steps",          // steps | sending | done
     busy: "",
     err: null,               // { title, body, kind }
-    res: null,               // connect response
+    res: null,               // connect response, while the confirmation is on screen
     since: Date.now(),
   };
 
@@ -45,7 +51,7 @@
     const res = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
       method: "POST",
       headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
-      body: JSON.stringify(body),
+      body: JSON.stringify({ invite, ...body }),
     });
     let j = {}; try { j = await res.json(); } catch (e) { /* empty body */ }
     return { httpOk: res.ok, status: res.status, ...j };
@@ -107,36 +113,37 @@
     if (hq) hq.onclick = () => window.open(HQ, "_blank", "noopener");
   }
 
-  // ---------- result ----------
-  function renderDone() {
+  // ---------- success ----------
+  // Connected is a beat, not a destination: it confirms who was connected and then hands over to the
+  // board on its own. Everything you might want to *do* afterwards (invite, disconnect) lives there.
+  const HOLD = 3200;
+
+  function finish(r) {
+    ls.set(K.bm, "1"); S.bm = true;
+    if (r.control_key) { ls.set(K.ctl, r.openid); ls.set(K.ctl + "-key", r.control_key); }   // only this browser may disconnect
+    if (r.invite) ls.set(K.inv, r.invite);                     // so this player can invite the next one
+    if (r.openid) ls.set(K.focus, r.openid);                   // the board opens on the player who just connected
+    ls.set(K.conn, JSON.stringify({ openid: r.openid, nickname: r.nickname || null, at: Date.now() }));  // tells the other tab
+    S.phase = "done"; S.res = r; S.err = null;
+    render();
+  }
+
+  function renderConnected() {
     const r = S.res || {};
-    const ctl = ls.get(K.ctl) === r.openid ? true : false;
-    $("#title").textContent = "HQ connected";
+    $("#title").textContent = r.joined ? "You're on the board" : "HQ connected";
     $("#lede").textContent = "The server reads your matches on its own now — once a minute, PC off.";
     $("#flow").innerHTML = `<div class="result">
       <div class="state" style="color:var(--green)"><i class="live"></i>Connected</div>
       <div class="who">${esc(r.nickname || "Your account")}</div>
       <div class="facts">
         ${r.level ? `<div>Level <b>${esc(r.level)}</b></div>` : ""}
-        <div>Player id <b>${esc(r.openid)}</b></div>
         <div>${r.fresh ? "New HQ login, clock started now." : `Same login as before · running for <b>${span((Date.now() - new Date(r.connected_at)) / 1000)}</b>`}</div>
         <div>First matches land within a minute.</div>
       </div>
-      <div class="acts" style="margin-top:22px"><a class="go" href="./">Open the board ›</a>
-      ${ctl ? `<button class="ghost" id="disc">Disconnect</button>` : ""}</div>
-      <div class="box">Stored: the nine HQ login cookies, so the backend can call HQ as you. Not stored: anything to do with your Level Infinite password. Disconnect deletes them.</div>
-    </div>` + foot();
-    const d = $("#disc");
-    if (d) d.onclick = async () => {
-      d.disabled = true; d.textContent = "…";
-      const out = await post({ action: "disconnect", openid: r.openid, control_key: ls.get(K.ctl + "-key") || "" }).catch(() => null);
-      if (!out || !out.ok) { d.disabled = false; d.textContent = "Disconnect"; S.err = { title: "Could not disconnect", body: "Only the browser that handed the session over can remove it.", kind: "warn" }; return renderDone(); }
-      ls.set(K.ctl, ""); ls.set(K.ctl + "-key", "");
-      S.phase = "steps"; S.res = null; S.err = { title: "Disconnected", body: "The server no longer holds your HQ session.", kind: "" };
-      $("#title").textContent = "Connect your HQ account";
-      $("#lede").textContent = "Two clicks, nothing to install and nothing to type. Then the server collects on its own.";
-      render();
-    };
+      <a class="hand" href="./">Opening the board<span class="dots"><i></i><i></i><i></i></span></a>
+      <div class="bead"><span></span></div>
+    </div>`;
+    setTimeout(() => { if (S.phase === "done") location.replace("./"); }, HOLD);
   }
 
   function renderSending() {
@@ -144,7 +151,7 @@
   }
 
   function render() {
-    if (S.phase === "done") return renderDone();
+    if (S.phase === "done") return renderConnected();
     if (S.phase === "sending") return renderSending();
     renderSteps();
   }
@@ -153,15 +160,10 @@
   async function handOver(cookies) {
     S.phase = "sending"; S.busy = "Checking the session with HQ"; render();
     const r = await post({ action: "connect", cookies }).catch((e) => ({ httpOk: false, status: 0, error: String(e) }));
-    if (r.httpOk && r.ok) {
-      S.res = r; S.phase = "done"; S.err = null;
-      ls.set(K.bm, "1"); S.bm = true;
-      if (r.control_key) { ls.set(K.ctl, r.openid); ls.set(K.ctl + "-key", r.control_key); }   // only this browser may disconnect
-      ls.set(K.conn, JSON.stringify({ openid: r.openid, nickname: r.nickname || null, at: Date.now() }));  // tells the other tab
-      return render();
-    }
+    if (r.httpOk && r.ok) return finish(r);
     S.phase = "steps";
-    if (r.reason === "not-enrolled") S.err = { title: "This board already belongs to someone else", body: "It tracks one squad's accounts. Whoever set it up has to add your player id before a hand-over is accepted." };
+    if (r.reason === "not-enrolled") S.err = { title: "You need the squad's invite link", body: "This board is already tracking players, so a new account joins through an invite link. Ask whoever sent you here to send the <code>?i=…</code> version of it." };
+    else if (r.reason === "bad-invite") S.err = { title: "That invite link is out of date", body: "The squad's invite has been rotated since the link was shared. Ask for a fresh one." };
     else if (r.reason === "not-logged-in") S.err = { title: "HQ says that login is not valid", body: `Open HQ, log in properly, then click the bookmark again. <span class="hint">(${esc(r.error || "")})</span>` };
     else if (r.reason === "no-cookies") S.err = { title: "No HQ login in that browser", body: "Log in on HQ first, then click the bookmark on the HQ tab." };
     else S.err = { title: "The server could not reach HQ", body: `Try the bookmark again in a minute. <span class="hint">(${esc(r.error || r.status)})</span>`, kind: "warn" };
@@ -178,8 +180,7 @@
       try {
         const v = JSON.parse(e.newValue);
         if (Date.now() - v.at > 120000) return;
-        S.res = { ok: true, openid: v.openid, nickname: v.nickname, fresh: true, connected_at: new Date(v.at).toISOString() };
-        S.phase = "done"; render();
+        finish({ openid: v.openid, nickname: v.nickname, fresh: true, connected_at: new Date(v.at).toISOString() });
       } catch (x) { /* ignore */ }
     });
     // Fallback for browsers that hand the bookmark to a different tab group: watch the public view.
@@ -190,8 +191,7 @@
         const hit = rows.find((r) => new Date(r.updated_at).getTime() > S.since);
         if (!hit) return;
         const players = await rest("public_players?select=openid,nickname,level&openid=eq." + encodeURIComponent(hit.openid)).catch(() => []);
-        S.res = { ok: true, openid: hit.openid, nickname: (players[0] || {}).nickname, level: (players[0] || {}).level, fresh: true, connected_at: hit.connected_at };
-        S.phase = "done"; render();
+        finish({ openid: hit.openid, nickname: (players[0] || {}).nickname, level: (players[0] || {}).level, fresh: true, connected_at: hit.connected_at });
       } catch (x) { /* offline, keep waiting */ }
     }, 6000);
   }
