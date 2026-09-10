@@ -133,6 +133,11 @@ async function storeDetails(s: Session, openid: string) {
     const durMin = Number(env.data.match_duration);
     if (fin) patch.finished_at = new Date(fin * 1000).toISOString();
     if (Number.isFinite(durMin)) patch.match_duration_min = durMin;
+    // Only the detail splits the kill total into players and AI, and only operator kills belong
+    // in a K/D. The list row has the total alone, so carry the split over while we have it.
+    const ko = toInt(me?.kill_operator), kai = toInt(me?.kill_other);
+    if (ko !== null) patch.kill_operator = ko;
+    if (kai !== null) patch.kill_other = kai;
     if (Object.keys(patch).length) await supabase.from("matches").update(patch).eq("openid", openid).eq("report_type", p.report_type).eq("room_id", p.room_id);
     done++;
   }

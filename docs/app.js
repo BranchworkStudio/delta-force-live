@@ -22,7 +22,16 @@
   try { for (const o of window.basic_info_operators || []) opIndex[String(o.operator_id)] = { name: (o.language && o.language.en) || o.operator_id, icon: absUrl(o.image_url) }; } catch (e) { /* ignore */ }
   try { for (const c of window.basic_info_collection || []) itemIndex[String(c.prop_id)] = { name: (c.language && c.language.en) || c.prop_id, img: absUrl(c.image_url), grade: Number(c.grade) || 0 }; } catch (e) { /* ignore */ }
   const mapName = (id) => mapIndex[String(id)] || MAP_FALLBACK[String(id).slice(0, 2)] || ("Map " + id);
-  const mapBase = (id) => mapName(id).split(/ - |_/)[0].trim();
+  // HQ gives every map *and difficulty* its own id, named "Zero Dam - Easy" or "Space City_Normal"
+  // with the separator chosen at random. Easy and Normal are genuinely different raids, so the
+  // difficulty is kept — just held apart from the name so the board can show both.
+  const mapParts = (id) => {
+    const s = mapName(id), i = s.search(/ - |_/);
+    if (i < 0) return { base: s.trim(), diff: null };
+    return { base: s.slice(0, i).trim(), diff: s.slice(i).replace(/^( - |_)/, "").trim() || null };
+  };
+  const mapBase = (id) => mapParts(id).base;
+  const mapFull = (id) => { const m = mapParts(id); return m.diff ? m.base + " · " + m.diff : m.base; };
   const opName = (id) => (opIndex[String(id)] && opIndex[String(id)].name) || (id ? "Op " + id : "–");
   const opIcon = (id) => (opIndex[String(id)] && opIndex[String(id)].icon) || null;
   const item = (id) => itemIndex[String(id)] || { name: "Item " + id, img: null, grade: 0 };
@@ -45,9 +54,9 @@
     const since = encodeURIComponent(rangeStart().toISOString());
     const [players, matches, members, reds, pw, latency, sessions, recent] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
-      rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
+      rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
-      rest("red_drops?select=openid,collection_id,map_id,unlock_time,value,collection_count,first_seen_at&order=unlock_time.desc&limit=12"),
+      rest("red_drops?select=openid,collection_id,map_id,unlock_time,value,collection_count,first_seen_at&order=unlock_time.desc&limit=60"),
       rest("site_data?select=value,updated_at&key=eq.daily_passwords"),
       rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50"),
       rest("public_sessions?select=*"),
@@ -115,7 +124,16 @@
   const colorFor = (() => { const idx = {}; return (openid) => { if (!(openid in idx)) idx[openid] = Object.keys(idx).length; return SERIES[idx[openid] % SERIES.length]; }; })();
   const selfRow = (m) => state.members.find(x => x.openid === m.openid && x.room_id === m.room_id && x.is_self);
   const roster = (m) => state.members.filter(x => x.openid === m.openid && x.room_id === m.room_id);
-  const kd = (kills, deaths, n) => !n ? "–" : deaths ? (kills / deaths).toFixed(1) : "∞";
+  // HQ counts kills twice over: kill_operator is other players, kill_other is AI, and the two add
+  // up to kill_count. Only operator kills belong in a K/D — an AI body count is just that.
+  const opKills = (ms) => sum(ms, m => m.kill_operator);
+  const aiKills = (ms) => sum(ms, m => m.kill_other);
+  const splitKnown = (ms) => ms.some(m => m.kill_operator != null);
+  // Operations details always report death = 0, so the only record of dying is a raid that failed
+  // without being quit. Warfare counts deaths properly, so use them there.
+  const diedIn = (m) => state.mode === 1 ? (m.result === 2 && !m.is_leave ? 1 : 0) : ((selfRow(m) || {}).death || 0);
+  const deathsOf = (ms) => sum(ms, diedIn);
+  const kdOf = (k, d) => d ? (k / d).toFixed(1) : k ? "∞" : "0.0";
   const liveState = (p) => {
     const fresh = p.last_poll_at && Date.now() - new Date(p.last_poll_at) < 5 * 60e3;
     return !p.token_ok ? [RED, "logged out"] : fresh ? [GREEN, "live"] : [AMBER, p.last_poll_at ? "last seen " + ago(p.last_poll_at) : "never polled"];
@@ -124,11 +142,11 @@
   const rateWord = () => state.mode === 1 ? "extracted" : "won";
   const lostWord = () => state.mode === 1 ? "failed" : "lost";
   const raid = (n) => state.mode === 1 ? (n === 1 ? "raid" : "raids") : (n === 1 ? "match" : "matches");
-  // The board has one bar shape: the full width is the busiest row in the module, and the filled
-  // part is the ones that ended in an extraction. Volume and outcome in a single mark, so two
-  // raids on a map can never look like a hundred and thirty-nine.
-  const barCell = (n, w, max, color) =>
-    `<div class="tr"><i class="b" style="width:${(max ? 100 * n / max : 0).toFixed(1)}%"></i><i class="f" style="width:${(max ? 100 * w / max : 0).toFixed(1)}%;background:${color}"></i></div>`;
+  // The board has one bar shape: the whole track is the sample and the fill is the share of it
+  // that ended in an extraction. Scaling the track to the busiest row instead implied a ceiling
+  // on how much you can play, which there is not — the count underneath carries the weight.
+  const barCell = (w, n, color) =>
+    `<div class="tr"><i class="f" style="width:${(n ? 100 * w / n : 0).toFixed(1)}%;background:${color}"></i></div>`;
   const sq = (color) => `<span style="display:inline-block;width:8px;height:8px;background:${color};margin-right:6px;vertical-align:0"></span>`;
 
   // ---------- render ----------
@@ -149,21 +167,23 @@
   }
 
   function renderHero(ms, sol) {
-    const wins = ms.filter(isWin).length, kills = sum(ms, m => m.kill_count);
+    const wins = ms.filter(isWin).length;
+    const known = splitKnown(ms), kOp = opKills(ms), kAi = aiKills(ms), deaths = deathsOf(ms);
     const selves = ms.map(selfRow).filter(Boolean), alive = selves.filter(s => s.survival_min != null);
     const best = ms.length ? Math.max(...ms.map(m => Number(sol ? m.net_income : m.score) || 0)) : null;
     $("#eyebrow").textContent = focusName() + (sol ? " · net income · " : " · score · ") + rangeWord();
     $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "0";
     const cells = [
-      ["Kills", kills],
-      [sol ? "Extraction" : "Win rate", pct(wins, ms.length)],
-      ["Matches", ms.length],
-      // Operations details always report death = 0, so a real K/D only exists in Warfare.
-      sol ? ["Best raid", best == null ? "–" : signed(best)] : ["K/D", kd(kills, sum(selves, s => s.death), ms.length)],
-      ["Avg alive · min", alive.length ? (sum(alive, s => s.survival_min) / alive.length).toFixed(1) : "–"]
+      // The split only exists once the match detail has landed, which is within the minute. Until
+      // then say the total rather than a confidently wrong zero.
+      known ? ["Operator kills", kOp, kAi + " AI kills"] : ["Kills", sum(ms, m => m.kill_count), ms.length ? "operators vs AI in a moment" : null],
+      ["K/D", ms.length && known ? kdOf(kOp, deaths) : "–", !ms.length ? null : deaths ? deaths + (sol ? " " + lostWord() : " deaths") : "no deaths yet"],
+      [sol ? "Extraction" : "Win rate", pct(wins, ms.length), ms.length ? `${wins} of ${ms.length} ${raid(ms.length)}` : null],
+      ["Best " + raid(1), best == null ? "–" : sol ? signed(best) : plain(best), null],
+      ["Avg alive · min", alive.length ? (sum(alive, s => s.survival_min) / alive.length).toFixed(1) : "–", null]
     ];
     const el = $("#cells"); el.style.setProperty("--n", cells.length);
-    el.innerHTML = cells.map(([k, v]) => `<div class="cell"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
+    el.innerHTML = cells.map(([k, v, s]) => `<div class="cell"><div class="v">${v}</div><div class="k">${k}</div>${s ? `<div class="s">${esc(s)}</div>` : ""}</div>`).join("");
   }
 
   // The roster doubles as the scope picker: click a player to make the whole board theirs.
@@ -181,7 +201,7 @@
           <div class="nm"><span>${esc(p.nickname || p.openid.slice(0, 8))}</span><span class="st" style="color:${stc}">${stt}</span></div>
           <div class="ln">
             <span><b>${pct(w, pm.length)}</b> ${rateWord()}</span>
-            <span><b>${sum(pm, m => m.kill_count)}</b> kills</span>
+            <span><b>${splitKnown(pm) ? opKills(pm) : sum(pm, m => m.kill_count)}</b> ${splitKnown(pm) ? "op kills" : "kills"}</span>
             ${sol ? `<span><b style="color:${net < 0 ? RED : GREEN}">${pm.length ? signed(net) : "–"}</b></span>` : `<span><b>${fmt(score)}</b> score</span>`}
           </div>
         </div></div>`;
@@ -191,7 +211,7 @@
         <div class="ava sig"></div>
         <div class="body">
           <div class="nm"><span>All squad</span></div>
-          <div class="ln"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> matches</span><span><b>${sum(ms, m => m.kill_count)}</b> kills</span></div>
+          <div class="ln"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> ${raid(ms.length)}</span><span><b>${opKills(ms)}</b> op kills</span></div>
         </div></div>`);
     el.style.setProperty("--n", cards.length);
     el.innerHTML = cards.join("");
@@ -199,39 +219,47 @@
   }
 
   // Full-width bands: one item per map / operator, separated by hero-style dividers. The rate is
-  // the headline, the bar under it is the sample it came from, and a sample too small to mean
-  // anything says so instead of quietly topping the list.
-  const THIN = 5;
+  // the headline and the bar under it is that same rate as a length, so rows compare directly
+  // however much each was played. The count underneath is what says how much weight to give it.
   function band(el, label, items) {
     if (!items.length) { el.innerHTML = `<div class="mod-label">${label}</div><div class="empty">No ${raid(2)} in this range.</div>`; return; }
-    const legend = `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span><span>bar = ${raid(2)} played</span></div>`;
-    el.innerHTML = `<div class="mod-label">${label}</div>${legend}<div class="items">${items.map(it => `<div class="it${it.thin ? " thin" : ""}" data-tip="${esc(it.tip)}">
+    const legend = `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span></div>`;
+    el.innerHTML = `<div class="mod-label">${label}</div>${legend}<div class="items">${items.map(it => `<div class="it" data-tip="${esc(it.tip)}">
         <div class="v">${it.v}</div><div class="k">${it.k}</div>${it.bar}<div class="sub">${it.sub}</div></div>`).join("")}</div>`;
     attachTips(el);
   }
   function bandItems(by, sol, extra) {
-    const rows = Object.entries(by).sort((a, b) => b[1].n - a[1].n).slice(0, 8);
-    const max = Math.max(1, ...rows.map(([, v]) => v.n));
-    return rows.map(([k, v]) => ({
-      thin: v.n < THIN,
+    const rows = Object.values(by).sort((a, b) => b.n - a.n).slice(0, 8);
+    return rows.map(v => ({
       v: pct(v.w, v.n),
-      k: `<b>${esc(k)}</b>${v.n < THIN ? ` <span class="thin-tag">thin</span>` : ""}`,
-      bar: barCell(v.n, v.w, max, GREEN),
+      k: `<b>${esc(v.name)}</b>${v.diff ? ` <span class="diff">${esc(v.diff)}</span>` : ""}`,
+      bar: barCell(v.w, v.n, GREEN),
       sub: `${v.n} ${raid(v.n)}` + extra(v),
-      tip: `<b>${esc(k)}</b>: ${v.w} of ${v.n} ${rateWord()}<br>${(v.kills / v.n).toFixed(1)} kills per ${raid(1)}${sol ? `<br>Net ${full(v.net)} total` : ""}${v.n < THIN ? `<br>Too few ${raid(2)} to read a rate from` : ""}`,
+      tip: `<b>${esc(v.name + (v.diff ? " · " + v.diff : ""))}</b>: ${v.w} of ${v.n} ${rateWord()}<br>
+        ${v.ops} operator + ${v.ai} AI kills · ${v.d} ${sol ? lostWord() : "deaths"} · K/D ${kdOf(v.ops, v.d)}${sol ? `<br>Net ${full(v.net)} total` : ""}`,
     }));
   }
-  function renderMapsBand(ms, sol) {
+  // Buckets carry both kill kinds and the deaths, so any band can show a real K/D.
+  function tally(ms, keyOf) {
     const by = {};
-    for (const m of ms) { const k = mapBase(m.map_id); (by[k] = by[k] || { n: 0, w: 0, net: 0, kills: 0 }); by[k].n++; by[k].w += isWin(m) ? 1 : 0; by[k].net += Number(m.net_income) || 0; by[k].kills += m.kill_count || 0; }
+    for (const m of ms) {
+      const { key, name, diff } = keyOf(m);
+      const v = by[key] = by[key] || { n: 0, w: 0, net: 0, ops: 0, ai: 0, d: 0, name, diff };
+      v.n++; v.w += isWin(m) ? 1 : 0; v.net += Number(m.net_income) || 0;
+      v.ops += m.kill_operator || 0; v.ai += m.kill_other || 0; v.d += diedIn(m);
+    }
+    return by;
+  }
+  function renderMapsBand(ms, sol) {
+    // Keyed by map *and* difficulty: Zero Dam Easy and Zero Dam Normal are separate rows.
+    const by = tally(ms, (m) => { const p = mapParts(m.map_id); return { key: p.base + "|" + (p.diff || ""), name: p.base, diff: p.diff }; });
     band($("#mapsBand"), "Maps · " + (sol ? "extraction rate" : "win rate"),
-      bandItems(by, sol, (v) => sol ? ` · <span style="color:${v.net < 0 ? RED : GREEN}">${signed(Math.round(v.net / v.n))}</span> avg` : ` · ${(v.kills / v.n).toFixed(1)} kills`));
+      bandItems(by, sol, (v) => sol ? ` · <span style="color:${v.net < 0 ? RED : GREEN}">${signed(Math.round(v.net / v.n))}</span> avg` : ` · K/D ${kdOf(v.ops, v.d)}`));
   }
   function renderOpsBand(ms, sol) {
-    const by = {};
-    for (const m of ms) { const k = opName(m.operator_id); (by[k] = by[k] || { n: 0, w: 0, net: 0, kills: 0 }); by[k].n++; by[k].w += isWin(m) ? 1 : 0; by[k].net += Number(m.net_income) || 0; by[k].kills += m.kill_count || 0; }
+    const by = tally(ms, (m) => ({ key: opName(m.operator_id), name: opName(m.operator_id), diff: null }));
     band($("#opsBand"), "Operators · " + (sol ? "extraction rate" : "win rate"),
-      bandItems(by, sol, (v) => ` · ${(v.kills / v.n).toFixed(1)} kills each`));
+      bandItems(by, sol, (v) => ` · K/D <b style="color:var(--text-2)">${kdOf(v.ops, v.d)}</b>`));
   }
 
   // ---------- feed ----------
@@ -252,14 +280,19 @@
       const isLive = new Date(m.first_seen_at) - new Date(m.match_time) > 1000;
       const latS = isLive ? Math.max(0, (new Date(m.first_seen_at) - new Date(m.finished_at || m.match_time)) / 1000) : null;
       const when = m.finished_at || m.match_time;
-      const meta = [dayLabel(when), mapName(m.map_id), g.map(x => opName(x.operator_id)).join(" / "), m.match_duration_min != null ? m.match_duration_min + " min" : null, latS != null ? "seen " + dur(latS) + (m.finished_at ? "" : "*") : "history"].filter(Boolean).join(" · ");
+      // The date used to sit at the front of the meta line, where it pushed the map name around.
+      // It belongs with the time it qualifies, so it goes under the clock instead.
+      const day = dayLabel(when);
+      const meta = [mapFull(m.map_id), g.map(x => opName(x.operator_id)).join(" / "), m.match_duration_min != null ? m.match_duration_min + " min" : null, latS != null ? "seen " + dur(latS) + (m.finished_at ? "" : "*") : "history"].filter(Boolean).join(" · ");
       const net = sum(g, x => x.net_income), score = sum(g, x => x.score);
       const names = g.map((x, i) => `<b>${esc(playerName(x.openid))}</b><span class="tag ${outs[i][0]}">${outs[i][1]}</span>`).join(" ");
       return `<div class="row" data-key="${esc(key)}" title="Started ${new Date(m.match_time).toLocaleString()}">
-        <span class="t">${hhmm(when)}</span>
+        <span class="t">${hhmm(when)}${day ? `<span class="d">${esc(day)}</span>` : ""}</span>
         <span class="rail">${g.map(x => `<i style="background:${colorFor(x.openid)}"></i>`).join("")}</span>
         <div><div class="l1">${names}</div><div class="l2">${esc(meta)}</div></div>
-        <span class="kl">${sum(g, x => x.kill_count)} K</span>
+        <span class="kl">${splitKnown(g)
+          ? `<span>${opKills(g)} <em>op</em></span><span class="ai">${aiKills(g)} <em>ai</em></span>`
+          : `<span>${sum(g, x => x.kill_count)} <em>kills</em></span>`}</span>
         <span class="nt ${sol ? (net < 0 ? "bad" : "good") : ""}">${sol ? full(net) : plain(score)}</span>
       </div>${state.open.has(key) ? detailRow(g, sol) : ""}`;
     }).join("");
@@ -389,35 +422,64 @@
     const el = $("#incomeChart"), foot = $("#incomeFoot");
     const rows = ms.slice().reverse();                                  // a running total only reads forwards
     $("#incomeTitle").textContent = (sol ? "Net income" : "Score") + " · running total · " + rangeWord();
-    if (!rows.length) { el.innerHTML = `<div class="empty">No ${raid(2)} in this range.</div>`; foot.innerHTML = ""; return; }
+    if (!rows.length) { el.innerHTML = `<div class="empty">No ${raid(2)} in this range.</div>`; foot.innerHTML = ""; const lg0 = $("#incomeLegend"); if (lg0) lg0.innerHTML = ""; return; }
     const val = (m) => Number(sol ? m.net_income : m.score) || 0;
     let acc = 0;
     const pts = rows.map(m => ({ m, v: val(m), c: (acc += val(m)) }));
-    const W = 640, H = 190, padT = 12, padB = 20;
+    // The running total's own median: half the range was spent above this level, half below. It is
+    // the reference the line is coloured against, so green and red mean "better or worse than
+    // your typical standing" rather than repeating the sign of the number.
+    const sorted = pts.map(p => p.c).sort((a, b) => a - b);
+    const med = sorted.length % 2 ? sorted[(sorted.length - 1) / 2] : (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2;
+    // padR leaves room for the running total to sit at the end of the line without falling off.
+    const W = 640, H = 190, padT = 14, padB = 22, padR = 92;
+    const PW = W - padR;
     const hi = Math.max(0, ...pts.map(p => p.c)), lo = Math.min(0, ...pts.map(p => p.c)), spanV = (hi - lo) || 1;
-    const x = (i) => pts.length === 1 ? W / 2 : i / (pts.length - 1) * W;
+    const x = (i) => pts.length === 1 ? PW / 2 : i / (pts.length - 1) * PW;
     const y = (v) => padT + (hi - v) / spanV * (H - padT - padB);
-    const end = pts[pts.length - 1].c, color = end < 0 ? RED : GREEN, zero = y(0);
+    const end = pts[pts.length - 1].c, zero = y(0), medY = y(med);
     const peak = pts.reduce((a, p) => p.c > a.c ? p : a, pts[0]);
+    // Two stops at the same offset make a hard edge exactly on the median line, so the stroke and
+    // the fill change colour where they cross it. No path-splitting, no rounding seams.
+    const stop = (medY / H).toFixed(4);
     // A range with a single raid still deserves a readable level: draw it flat across the plot.
     const line = pts.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.c).toFixed(1)}`).join("")
-      + (pts.length === 1 ? `L${W},${y(pts[0].c).toFixed(1)}` : "");
-    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sol ? "Net income" : "Score"} running total across ${pts.length} ${raid(pts.length)}, oldest first; ends at ${sol ? full(end) : plain(end)}">
-        <defs><linearGradient id="ig" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stop-color="${color}" stop-opacity=".26"/><stop offset="1" stop-color="${color}" stop-opacity=".02"/></linearGradient></defs>
-        ${pts.length > 1 ? `<path d="${line}L${x(pts.length - 1).toFixed(1)},${zero.toFixed(1)}L${x(0).toFixed(1)},${zero.toFixed(1)}Z" fill="url(#ig)"/>` : ""}
-        <line class="zero" x1="0" x2="${W}" y1="${zero.toFixed(1)}" y2="${zero.toFixed(1)}"/>
-        <path d="${line}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="${pts.length === 1 ? W / 2 : x(pts.length - 1).toFixed(1)}" cy="${y(end).toFixed(1)}" r="3.5" fill="${color}"/>
+      + (pts.length === 1 ? `L${PW},${y(pts[0].c).toFixed(1)}` : "");
+    const endTxt = sol ? full(end) : plain(end);
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sol ? "Net income" : "Score"} running total across ${pts.length} ${raid(pts.length)}, oldest first; ends at ${endTxt}, median ${sol ? full(med) : plain(med)}">
+        <defs>
+          <linearGradient id="il" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${H}">
+            <stop offset="${stop}" stop-color="${GREEN}"/><stop offset="${stop}" stop-color="${RED}"/></linearGradient>
+          <linearGradient id="ig" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${H}">
+            <stop offset="0" stop-color="${GREEN}" stop-opacity=".28"/>
+            <stop offset="${stop}" stop-color="${GREEN}" stop-opacity=".05"/>
+            <stop offset="${stop}" stop-color="${RED}" stop-opacity=".05"/>
+            <stop offset="1" stop-color="${RED}" stop-opacity=".28"/></linearGradient>
+        </defs>
+        ${pts.length > 1 ? `<path d="${line}L${x(pts.length - 1).toFixed(1)},${medY.toFixed(1)}L${x(0).toFixed(1)},${medY.toFixed(1)}Z" fill="url(#ig)"/>` : ""}
+        ${Math.abs(zero - medY) > 6 ? `<line class="zero" x1="0" x2="${PW}" y1="${zero.toFixed(1)}" y2="${zero.toFixed(1)}"/>` : ""}
+        <line class="med" x1="0" x2="${PW}" y1="${medY.toFixed(1)}" y2="${medY.toFixed(1)}"/>
+        <path d="${line}" fill="none" stroke="url(#il)" stroke-width="2" stroke-linejoin="round"/>
+        <circle class="tipend" cx="${x(pts.length - 1).toFixed(1)}" cy="${y(end).toFixed(1)}" r="3.5" fill="${end >= med ? GREEN : RED}"/>
         <line class="cross" x1="0" x2="0" y1="${padT}" y2="${H - padB}" style="display:none"/>
-        <circle r="4.5" fill="${color}" stroke="var(--ground)" stroke-width="2" style="display:none"/>
-      </svg>`;
+        <circle class="tipdot" r="4.5" fill="${GREEN}" stroke="var(--ground)" stroke-width="2" style="display:none"/>
+      </svg>
+      <div class="endv" style="left:${(100 * x(pts.length - 1) / W).toFixed(2)}%;top:${(100 * y(end) / H).toFixed(2)}%">${endTxt}</div>`;
     foot.innerHTML = `<span>${pts.length} ${raid(pts.length)} · from ${new Date(rows[0].match_time).toLocaleDateString([], { day: "numeric", month: "short" })}</span>
       ${peak.c > end ? `<span>peak ${sol ? full(peak.c) : plain(peak.c)}</span>` : ""}
-      <span style="color:${color}">ends ${sol ? full(end) : plain(end)}</span>`;
+      <span>median ${sol ? full(med) : plain(med)}</span>`;
+    const lg = $("#incomeLegend");
+    if (lg) lg.innerHTML = `<span><i style="background:${GREEN}"></i>above median</span><span><i style="background:${RED}"></i>below</span>`;
+
+    // The label is sized in real pixels over a plot that is not, so at a narrow column it can
+    // reach past the right edge. Measure once and pin it to the edge instead of letting it clip.
+    const ev = el.querySelector(".endv");
+    if (ev && ev.getBoundingClientRect().right > el.getBoundingClientRect().right) {
+      ev.style.left = "auto"; ev.style.right = "0"; ev.style.marginLeft = "0";
+    }
 
     // Crosshair: the whole plot is the hit target, so no raid is too thin to point at.
-    const svg = el.querySelector("svg"), cross = svg.querySelector(".cross"), dot = svg.querySelector("circle");
+    const svg = el.querySelector("svg"), cross = svg.querySelector(".cross"), dot = svg.querySelector(".tipdot");
     const nearest = (clientX) => {
       const r = svg.getBoundingClientRect(), fx = (clientX - r.left) / r.width * W;
       let best = 0;
@@ -427,9 +489,11 @@
     const move = (clientX, clientY) => {
       const i = nearest(clientX), p = pts[i], px = x(i).toFixed(1);
       cross.setAttribute("x1", px); cross.setAttribute("x2", px); cross.style.display = "";
-      dot.setAttribute("cx", px); dot.setAttribute("cy", y(p.c).toFixed(1)); dot.style.display = "";
-      showTip(clientX, clientY, `<b>${esc(playerName(p.m.openid))}</b> · ${esc(mapName(p.m.map_id))}<br>
-        ${outcome(p.m)[1]} · ${p.m.kill_count || 0} kills · ${dayLabel(p.m.finished_at || p.m.match_time) || "today"} ${hhmm(p.m.finished_at || p.m.match_time)}<br>
+      dot.setAttribute("cx", px); dot.setAttribute("cy", y(p.c).toFixed(1));
+      dot.setAttribute("fill", p.c >= med ? GREEN : RED); dot.style.display = "";
+      const k = p.m.kill_operator != null ? `${p.m.kill_operator} operator + ${p.m.kill_other} AI` : `${p.m.kill_count || 0} kills`;
+      showTip(clientX, clientY, `<b>${esc(playerName(p.m.openid))}</b> · ${esc(mapFull(p.m.map_id))}<br>
+        ${outcome(p.m)[1]} · ${k} · ${dayLabel(p.m.finished_at || p.m.match_time) || "today"} ${hhmm(p.m.finished_at || p.m.match_time)}<br>
         This ${raid(1)} ${sol ? full(p.v) : plain(p.v)} · running total ${sol ? full(p.c) : plain(p.c)}`);
     };
     svg.addEventListener("mousemove", (e) => move(e.clientX, e.clientY));
@@ -458,12 +522,11 @@
     }
     const el = $("#rateChart");
     if (!rows.length) { el.innerHTML = `<div class="empty">No ${raid(2)} in this range.</div>`; return; }
-    const max = Math.max(...rows.map(r => r.n));
     const legend = one
-      ? `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span><span>bar = ${raid(2)} that day</span></div>`
-      : `<div class="legend"><span><i style="background:var(--fail)"></i>${raid(2)}</span><span>filled = ${rateWord()}, in each player's colour</span></div>`;
+      ? `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span></div>`
+      : `<div class="legend"><span><i style="background:var(--fail)"></i>${lostWord()}</span><span>filled = ${rateWord()}, in each player's colour</span></div>`;
     el.innerHTML = legend + `<div class="gauge">${rows.map(r => `<div class="g" data-tip="<b>${esc(r.label)}</b>: ${r.w} of ${r.n} ${raid(r.n)} ${rateWord()}">
-        <span class="nm">${esc(r.label)}</span>${barCell(r.n, r.w, max, r.color)}<span class="v">${pct(r.w, r.n)}</span></div>`).join("")}</div>`;
+        <span class="nm">${esc(r.label)}</span>${barCell(r.w, r.n, r.color)}<span class="v">${pct(r.w, r.n)}</span></div>`).join("")}</div>`;
     attachTips(el);
   }
 
@@ -480,23 +543,43 @@
     el.querySelectorAll("[data-jump]").forEach(b => b.onclick = () => setRange(b.dataset.jump));
   }
 
+  // The valuable things, newest first, across the page instead of stacked in the sidebar — there
+  // is room for the whole history that way, and the feed is capped regardless.
   function renderReds() {
-    const el = $("#reds"), reds = scoped(state.reds);
-    if (!reds.length) { el.innerHTML = `<div class="empty">No red drops yet.</div>`; return; }
+    const el = $("#reds"), reds = scoped(state.reds), foot = $("#redsFoot");
+    if (!reds.length) { el.innerHTML = `<div class="empty">Nothing picked up yet.</div>`; if (foot) foot.textContent = ""; return; }
+    const many = state.players.length > 1;
+    if (foot) foot.textContent = `${reds.length} since ${new Date(reds[reds.length - 1].unlock_time).toLocaleDateString([], { day: "numeric", month: "short" })}`;
     el.innerHTML = `<div class="reds">${reds.map(r => {
       const it = item(r.collection_id);
-      return `<div class="red" title="${esc(new Date(r.unlock_time).toLocaleString())}">
-        ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy">` : `<div class="ph"></div>`}
-        <div><div class="n">${esc(it.name)}</div><div class="m">${sq(colorFor(r.openid))}${esc(playerName(r.openid))} · ${esc(mapBase(r.map_id))} · ${ago(r.unlock_time)}</div></div>
-        <div class="v">${r.value ? fmt(r.value) : ""}</div></div>`;
+      return `<div class="red" data-tip="<b>${esc(it.name)}</b><br>${esc(playerName(r.openid))} · ${esc(mapFull(r.map_id))}<br>${esc(new Date(r.unlock_time).toLocaleString())}${r.value ? `<br>Worth ${plain(r.value)}` : ""}">
+        ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ph"></div>`}
+        <div class="n">${esc(it.name)}</div>
+        <div class="v">${r.value ? fmt(r.value) : "–"}</div>
+        <div class="m">${many ? sq(colorFor(r.openid)) : ""}${esc(mapBase(r.map_id))} · ${ago(r.unlock_time)}</div></div>`;
     }).join("")}</div>`;
+    attachTips(el);
   }
 
-  // Daily passwords: response shape is discovered at runtime, so render generically.
+  // HQ keys the passwords by internal map slugs — "bakshe", "spaceport", "longbow_valley" — which
+  // are not what any of these maps is called in the game. These are the six Operations maps in the
+  // official English wording; anything new falls back to a tidied-up slug.
+  const PW_MAPS = {
+    zero_dam: "Zero Dam", longbow_valley: "Layali Grove", layali_grove: "Layali Grove",
+    spaceport: "Space City", space_city: "Space City", bakshe: "Brakkesh", brakkesh: "Brakkesh",
+    tide_prison: "Tide Prison", az3: "AZ3",
+  };
+  const pwMap = (k) => PW_MAPS[String(k).toLowerCase()] || label(k).replace(/\b\w/g, c => c.toUpperCase());
   function renderPasswords() {
-    const el = $("#passwords"), pw = state.passwords;
-    if (!pw) { el.innerHTML = `<div class="empty">Not fetched yet.</div>`; return; }
-    el.innerHTML = renderAny(pw.value) + `<div class="empty" style="margin-top:10px;font-size:12px">Fetched ${ago(pw.updated_at)}</div>`;
+    const el = $("#passwords"), pw = state.passwords, foot = $("#pwFoot");
+    if (foot) foot.textContent = pw ? "fetched " + ago(pw.updated_at) : "";
+    if (!pw || !pw.value || typeof pw.value !== "object") { el.innerHTML = `<div class="empty">Not fetched yet.</div>`; return; }
+    const rows = Object.entries(pw.value).filter(([, v]) => v != null && v !== "");
+    if (!rows.length) { el.innerHTML = `<div class="empty">None published today.</div>`; return; }
+    // A flat map -> code object is the shape it has always had. If that ever changes, fall back to
+    // the generic renderer rather than showing "[object Object]" as a password.
+    if (!rows.every(([, v]) => typeof v === "string" || typeof v === "number")) { el.innerHTML = renderAny(pw.value); return; }
+    el.innerHTML = rows.map(([k, v]) => `<div class="pwi"><div class="m">${esc(pwMap(k))}</div><div class="c">${esc(String(v))}</div></div>`).join("");
   }
   const label = (k) => String(k).replace(/_/g, " ").replace(/\bid\b/i, "").trim();
   function renderAny(v) {
@@ -547,7 +630,7 @@
 
   // ---------- boot ----------
   // HTML and JS are deployed together but cached separately (Pages CDN, max-age 600). If they mismatch, reload once.
-  if (!$("#cells") || !$("#feed")) {
+  if (!$("#cells") || !$("#feed") || !$("#pwBand") || !$("#redsBand")) {
     try { if (!sessionStorage.getItem("df-reloaded")) { sessionStorage.setItem("df-reloaded", "1"); location.reload(); return; } } catch (e) { /* ignore */ }
     return;
   }
