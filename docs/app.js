@@ -39,7 +39,7 @@
     const since = rangeStart().toISOString();
     const [players, matches, latency] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
-      rest(`matches?select=openid,report_type,room_id,match_time,map_id,result,is_leave,kill_count,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${encodeURIComponent(since)}&order=match_time.desc&limit=1000`),
+      rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${encodeURIComponent(since)}&order=match_time.desc&limit=1000`),
       rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50")
     ]);
     state.players = players; state.matches = matches; state.latency = latency;
@@ -52,7 +52,7 @@
   const signed = (n) => (n > 0 ? "+" : "") + fmt(n);
   const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "–";
   const ago = (iso) => { const s = (Date.now() - new Date(iso)) / 1000; return s < 60 ? "just now" : s < 3600 ? Math.round(s / 60) + " min ago" : s < 86400 ? (s / 3600).toFixed(1) + " h ago" : Math.round(s / 86400) + " d ago"; };
-  const dur = (s) => s < 90 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : (s / 3600).toFixed(1) + " h";
+  const dur = (s) => s < 120 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : (s / 3600).toFixed(1) + " h";
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const playerName = (openid) => { const p = state.players.find(p => p.openid === openid); return (p && p.nickname) || openid.slice(0, 6); };
   const isWin = (m) => m.result === 1, isLoss = (m) => m.result === 2;
@@ -74,7 +74,7 @@
       ["Kills", kills, ms.length ? (kills / ms.length).toFixed(1) + " per match" : ""],
       sol ? ["Net income", signed(income), "carried out minus lost"] : ["Score", fmt(ms.reduce((a, m) => a + (m.score || 0), 0)), "total"],
       ["Trackers online", `${online}/${state.players.length}`, "polled in last 5 min"],
-      ["API latency", medLat != null ? dur(medLat) : "–", medLat != null ? `median, last ${lat.length} matches` : "no live matches yet"]
+      ["API latency", medLat != null ? dur(medLat) : "–", medLat != null ? `median of ${lat.length} live match${lat.length === 1 ? "" : "es"}, after extraction` : "no live matches yet"]
     ].map(([k, v, sub]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="sub">${sub}</div></div>`).join("");
 
     $("#players").innerHTML = state.players.length ? state.players.map(p => {
@@ -151,8 +151,10 @@
     $("#feed thead").innerHTML = `<tr><th>When</th><th>Player</th><th>Map</th><th>Result</th><th>Operator</th><th class="num">Kills</th>${sol ? `<th class="num">Carried out</th><th class="num">Net</th>` : `<th class="num">Score</th>`}<th class="num">Seen after</th></tr>`;
     $("#feed tbody").innerHTML = ms.length ? ms.slice(0, 200).map(m => {
       const [cls, txt] = outcome(m);
-      const lat = (new Date(m.first_seen_at) - new Date(m.match_time)) / 1000;
-      return `<tr><td title="${new Date(m.match_time).toLocaleString()}">${ago(m.match_time)}</td><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${colorFor(m.openid)};margin-right:6px"></span>${esc(playerName(m.openid))}</td><td>${esc(mapName(m.map_id))}</td><td><span class="tag ${cls}">${txt}</span></td><td>${esc(opName(m.operator_id))}</td><td class="num">${m.kill_count ?? "–"}</td>${sol ? `<td class="num">${fmt(m.carry_out_value)}</td><td class="num ${m.net_income < 0 ? "neg" : "pos"}">${signed(m.net_income || 0)}</td>` : `<td class="num">${fmt(m.score)}</td>`}<td class="num" style="color:#7d7c76">${lat > 1 ? dur(lat) : "backfill"}</td></tr>`;
+      const isLive = new Date(m.first_seen_at) - new Date(m.match_time) > 1000;
+      const lat = isLive ? (new Date(m.first_seen_at) - new Date(m.finished_at || m.match_time)) / 1000 : 0;
+      const when = m.finished_at || m.match_time;
+      return `<tr><td title="Started ${new Date(m.match_time).toLocaleString()}${m.match_duration_min != null ? " · " + m.match_duration_min + " min" : ""}">${ago(when)}</td><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${colorFor(m.openid)};margin-right:6px"></span>${esc(playerName(m.openid))}</td><td>${esc(mapName(m.map_id))}</td><td><span class="tag ${cls}">${txt}</span></td><td>${esc(opName(m.operator_id))}</td><td class="num">${m.kill_count ?? "–"}</td>${sol ? `<td class="num">${fmt(m.carry_out_value)}</td><td class="num ${m.net_income < 0 ? "neg" : "pos"}">${signed(m.net_income || 0)}</td>` : `<td class="num">${fmt(m.score)}</td>`}<td class="num" style="color:#7d7c76" title="${isLive ? (m.finished_at ? "after your extraction/death" : "after match start (no detail record)") : "imported history"}">${isLive ? dur(Math.max(0, lat)) + (m.finished_at ? "" : "*") : "backfill"}</td></tr>`;
     }).join("") : `<tr><td colspan="9" class="empty">No matches in this range.</td></tr>`;
   }
 

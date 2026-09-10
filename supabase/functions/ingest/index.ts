@@ -76,6 +76,17 @@ Deno.serve(async (req) => {
         .map((d: any) => ({ openid, report_type: toInt(d.report_type), room_id: clampStr(d.room_id, 64), raw: d.raw }))
         .filter((d: any) => d.room_id && d.report_type && d.raw && typeof d.raw === "object");
       if (drows.length) await supabase.from("match_details").upsert(drows, { onConflict: "openid,report_type,room_id" });
+      // Copy the player's own finish_time onto the match row: that is the real "match ended" moment for latency stats.
+      for (const d of drows) {
+        const members = Array.isArray(d.raw.members) ? d.raw.members : [];
+        const me = members.find((x: any) => x && (x.is_self === true || x.is_self === 1 || x.is_self === "1"));
+        const fin = toInt(me?.finish_time);
+        const durMin = Number(d.raw.match_duration);
+        const patch: Record<string, unknown> = {};
+        if (fin) patch.finished_at = new Date(fin * 1000).toISOString();
+        if (Number.isFinite(durMin)) patch.match_duration_min = durMin;
+        if (Object.keys(patch).length) await supabase.from("matches").update(patch).eq("openid", openid).eq("report_type", d.report_type).eq("room_id", d.room_id);
+      }
     }
 
     const st = body.status ?? {};
