@@ -42,6 +42,7 @@
   }
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
   async function load() {
+    await refreshExt().catch(() => { });
     const since = encodeURIComponent(rangeStart().toISOString());
     const [players, matches, members, reds, pw, latency] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
@@ -65,6 +66,7 @@
   const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "–";
   const ago = (iso) => { const s = (Date.now() - new Date(iso)) / 1000; return s < 60 ? "just now" : s < 3600 ? Math.round(s / 60) + " min ago" : s < 86400 ? (s / 3600).toFixed(1) + " h ago" : Math.round(s / 86400) + " d ago"; };
   const dur = (s) => s < 120 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : (s / 3600).toFixed(1) + " h";
+  const span = (s) => s < 90 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : s < 172800 ? (s / 3600).toFixed(1) + " h" : (s / 86400).toFixed(1) + " d";
   const mins = (m) => m == null ? "–" : m < 1 ? Math.round(m * 60) + " s" : m.toFixed(1) + " min";
   const hhmm = (d) => new Date(d).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
   const dayLabel = (d) => { const x = new Date(d), now = new Date(); return x.toDateString() === now.toDateString() ? null : x.toLocaleDateString([], { day: "numeric", month: "short" }); };
@@ -106,11 +108,42 @@
   const rateWord = () => state.mode === 1 ? "extracted" : "won";
   const sq = (color) => `<span style="display:inline-block;width:8px;height:8px;background:${color};margin-right:6px;vertical-align:0"></span>`;
 
+  // ---------- extension bridge ----------
+  // The extension injects bridge.js into this page, which makes the site the control
+  // panel: read session status, force a poll, register a squad code. The page never
+  // sees the HQ token or the ingest key, and nothing here works without the extension.
+  const ext = { checked: false, present: false, s: null };
+  const askExt = (() => {
+    let seq = 0;
+    const waiting = new Map();
+    window.addEventListener("message", (e) => {
+      if (e.source !== window || !e.data || e.data.ns !== "df-live-reply") return;
+      const done = waiting.get(e.data.id);
+      if (!done) return;
+      waiting.delete(e.data.id); done(e.data);
+    });
+    return (type, payload, ms) => new Promise((resolve) => {
+      const id = "df" + (++seq);
+      const timer = setTimeout(() => { waiting.delete(id); resolve(null); }, ms || 3000);
+      waiting.set(id, (msg) => { clearTimeout(timer); resolve(msg); });
+      window.postMessage({ ns: "df-live", id, type, payload }, location.origin);
+    });
+  })();
+  const extHere = () => document.documentElement.hasAttribute("data-df-live");
+  async function refreshExt(type, payload, ms) {
+    if (!extHere()) { ext.checked = true; ext.present = false; ext.s = null; return null; }
+    const res = await askExt(type || "status", payload, ms);
+    ext.checked = true; ext.present = !!res;
+    if (res && res.data) ext.s = res.data;
+    return res;
+  }
+
   // ---------- render ----------
   function render() {
     const ms = scoped(state.matches), sol = state.mode === 1;
     state.players.forEach(p => colorFor(p.openid));   // colours follow the player, assigned on first sight
     renderHero(ms, sol);
+    renderSession();
     renderRoster(state.matches, sol);
     renderMapsBand(ms, sol);
     renderOpsBand(ms, sol);
@@ -247,6 +280,55 @@
       </tbody></table></div>`;
   }
 
+  // ---------- session (right column, top) ----------
+  function renderSession() {
+    const el = $("#session");
+    if (!el) return;
+    const s = ext.present ? ext.s : null;
+    const out = [];
+    if (s) {
+      const [c, t] = s.tokenOk === false ? [RED, "HQ session expired"] : s.tokenOk ? [GREEN, "HQ session OK"] : [AMBER, "Session unknown"];
+      out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${t}${s.nickname ? " · " + esc(s.nickname) : ""}</div>`);
+      const facts = [];
+      if (s.sessionSince && s.tokenOk !== false) facts.push(`Signed in for <b>${span((Date.now() - s.sessionSince) / 1000)}</b>`);
+      if (s.lastPoll) facts.push(`Polled <b>${span((Date.now() - s.lastPoll) / 1000)}</b> ago`);
+      if (s.detailsPending) facts.push(`Importing history · <b>${s.detailsPending}</b> details left`);
+      facts.push(`Tracking from this browser · extension <b>${esc(s.version)}</b>`);
+      out.push(`<div class="facts">${facts.map(f => `<div>${f}</div>`).join("")}</div>`);
+      if (!s.hasCode) out.push(`<div class="field"><input id="sqcode" placeholder="squad code" spellcheck="false" autocomplete="off"><button class="go" id="sqsave">Save</button></div>`);
+      out.push(`<div class="acts"><button class="go" id="pollnow">Poll now</button><a class="out" href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">${s.tokenOk === false ? "Log in to HQ ›" : "Open HQ ›"}</a></div>`);
+      if (s.error) out.push(`<div class="warn">${esc(s.error)}</div>`);
+    } else {
+      const me = state.focus === "all" ? null : state.players.find(p => p.openid === state.focus);
+      if (me) {
+        const [c, t] = liveState(me);
+        out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${esc(playerName(me.openid))} · ${t}</div>`);
+        const facts = [];
+        if (me.token_seen_since) facts.push(`Signed in for <b>${span((Date.now() - new Date(me.token_seen_since)) / 1000)}</b>`);
+        if (me.last_poll_at) facts.push(`Last push <b>${ago(me.last_poll_at)}</b>`);
+        if (facts.length) out.push(`<div class="facts">${facts.map(f => `<div>${f}</div>`).join("")}</div>`);
+      }
+      out.push(`<div class="facts"><div>${ext.checked ? "No extension in this browser, so this page only reads." : "Looking for the extension…"}</div></div>`);
+      out.push(`<div class="acts"><a class="out" href="https://github.com/BranchworkStudio/delta-force-live#install-the-extension-chrome--edge--brave" target="_blank" rel="noopener">Track your own matches ›</a></div>`);
+    }
+    el.className = "sess";
+    el.innerHTML = out.join("");
+    const poll = $("#pollnow");
+    if (poll) poll.onclick = async () => {
+      poll.disabled = true; poll.textContent = "Polling…";
+      await refreshExt("poll-now", null, 90000);
+      await load().catch(() => { });
+    };
+    const save = $("#sqsave");
+    if (save) save.onclick = async () => {
+      const v = $("#sqcode").value.trim();
+      if (!v) return;
+      save.disabled = true; save.textContent = "…";
+      await refreshExt("set-code", { code: v }, 90000);
+      await load().catch(() => { });
+    };
+  }
+
   // ---------- right column ----------
   function renderIncomeChart(ms, sol) {
     const el = $("#incomeChart");
@@ -350,6 +432,7 @@
   try { sessionStorage.removeItem("df-reloaded"); } catch (e) { /* ignore */ }
   if (!C || !C.SUPABASE_URL || C.SUPABASE_URL.startsWith("__")) { $("#banner").hidden = false; $("#banner").textContent = "config.js is not filled in."; return; }
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
+  window.addEventListener("df-live-ready", () => { refreshExt().then(renderSession).catch(() => { }); });
   load().catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; $("#status").textContent = "error"; });
   setInterval(() => load().catch(() => { $("#status").textContent = "refresh failed"; }), (C.REFRESH_SECONDS || 30) * 1000);
 })();

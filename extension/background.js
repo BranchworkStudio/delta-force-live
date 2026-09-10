@@ -30,9 +30,42 @@ chrome.runtime.onInstalled.addListener(() => schedule());
 chrome.runtime.onStartup.addListener(() => schedule());
 chrome.alarms.onAlarm.addListener(a => { if (a.name === ALARM) poll().catch(e => console.error(e)); });
 chrome.runtime.onMessage.addListener((msg, _sender, reply) => {
-  if (msg && msg.type === "poll-now") { poll().then(() => reply({ ok: true })).catch(e => reply({ ok: false, error: String(e) })); return true; }
+  if (msg && msg.type === "poll-now") { poll().then(async () => reply({ ok: true, ...(await publicStatus()) })).catch(e => reply({ ok: false, error: String(e) })); return true; }
   if (msg && msg.type === "reset-known") { chrome.storage.local.set({ known: {} }).then(() => reply({ ok: true })); return true; }
+  if (msg && msg.type === "status") { publicStatus().then(s => reply({ ok: true, ...s })).catch(e => reply({ ok: false, error: String(e) })); return true; }
+  if (msg && msg.type === "set-code") { setSquadCode(msg.payload && msg.payload.code).then(reply).catch(e => reply({ ok: false, error: String(e) })); return true; }
 });
+
+/* What the popup and the live site are allowed to see: never the HQ session, the token or the ingest key. */
+async function publicStatus() {
+  const { state, settings } = await getState();
+  return {
+    version: chrome.runtime.getManifest().version,
+    tokenOk: state.tokenOk, sessionSince: state.tokenSeenSince || null,
+    lastPoll: state.lastPoll || null, newest: state.newest ? state.newest.match_time : null,
+    pushed: state.pushed || 0, detailsPending: state.detailsPending || 0,
+    nickname: state.nickname || null, hasCode: !!settings.squadCode, registered: !!settings.ingestKey,
+    error: state.lastError || null
+  };
+}
+
+async function setSquadCode(code) {
+  const c = String(code || "").trim();
+  if (!c) return { ok: false, error: "Empty squad code" };
+  const { settings } = await getState();
+  const changed = c !== settings.squadCode;
+  await chrome.storage.local.set({ settings: { ...settings, squadCode: c, ingestKey: changed ? "" : settings.ingestKey } });
+  await poll();
+  return { ok: true, ...(await publicStatus()) };
+}
+
+/* The HQ token cookie carries no expiry, so the only way to learn a session's real
+   lifetime is to watch one: fingerprint it (never store or send the token itself)
+   and remember when that fingerprint first appeared. */
+async function tokenFingerprint(token) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(String(token)));
+  return [...new Uint8Array(buf)].slice(0, 8).map(b => b.toString(16).padStart(2, "0")).join("");
+}
 
 async function schedule() {
   await chrome.alarms.clear(ALARM);
@@ -52,6 +85,11 @@ async function poll() {
       await setBadge("!", "#d03b3b");
       return;
     }
+    const { state: st0 } = await getState();
+    const fp = await tokenFingerprint(session.token);
+    const tokenSeenSince = st0.tokenFp === fp && st0.tokenSeenSince ? st0.tokenSeenSince : Date.now();
+    if (st0.tokenFp !== fp || !st0.tokenSeenSince) await saveState({ tokenFp: fp, tokenSeenSince });
+
     if (!settings.squadCode) {
       await saveState({ tokenOk: true, lastPoll: Date.now(), lastError: "Enter your squad code in the popup" });
       await setBadge("?", "#fab219");
@@ -140,7 +178,7 @@ async function poll() {
     const body = {
       action: "ingest", openid: session.openid, ingest_key: ingestKey,
       matches: newRows.map(({ _backfill, ...m }) => m), details, red_drops: redDrops, daily_passwords: dailyPasswords,
-      status: { token_ok: true, token_expires: session.token_expires || null }
+      status: { token_ok: true, token_expires: session.token_expires || null, token_seen_since: Math.round(tokenSeenSince / 1000) }
     };
     const res = await postIngest(body);
     if (!res.ok) { await saveState({ lastPoll: Date.now(), lastError: "Ingest failed: " + res.error }); await setBadge("!", "#d03b3b"); return; }
