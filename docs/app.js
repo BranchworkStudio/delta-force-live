@@ -6,7 +6,7 @@
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const SERIES = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6"].map(css);
   const GREEN = "#1de08c", RED = "#e0463f", AMBER = "#e6b34a";
-  const state = { range: "today", mode: 1, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], open: new Set(), showAll: false };
+  const state = { range: "today", mode: 1, focus: null, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], open: new Set(), showAll: false };
 
   // ---------- lookups (official basic_info tables, with a fallback) ----------
   const MAP_FALLBACK = { 22: "Zero Dam", 19: "Layali Grove", 39: "Space City", 81: "Brakkesh", 88: "Tide Prison", 10: "Trench Lines", 24: "Cracked", 11: "Trainwreck", 54: "Ascension", 12: "Knife Edge", 15: "Fault", 30: "Cyclone", 14: "Aftershock", 55: "Island Warfare", 31: "Akh Canal", 21: "Shafted", 75: "Threshold", 89: "AZ3", 17: "Coliseum", 26: "The Mog" };
@@ -52,6 +52,7 @@
       rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50")
     ]);
     Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency });
+    resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
   }
@@ -70,6 +71,25 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const sum = (arr, f) => arr.reduce((a, x) => a + (Number(f(x)) || 0), 0);
   const playerName = (openid) => { const p = state.players.find(p => p.openid === openid); return (p && p.nickname) || openid.slice(0, 6); };
+  // The board is personal-first: every module is scoped to one player. "all" aggregates the whole squad.
+  const FOCUS_KEY = "df-focus";
+  function resolveFocus() {
+    const ids = state.players.map(p => p.openid);
+    if (state.focus === null) { try { state.focus = localStorage.getItem(FOCUS_KEY); } catch (e) { /* ignore */ } }
+    if (state.focus === "all" || ids.includes(state.focus)) return;
+    // Personal-first default: the busiest player, then remembered so a new squad mate never steals the board.
+    const n = {};
+    for (const m of state.matches) n[m.openid] = (n[m.openid] || 0) + 1;
+    state.focus = ids.slice().sort((a, b) => (n[b] || 0) - (n[a] || 0))[0] || "all";
+    try { localStorage.setItem(FOCUS_KEY, state.focus); } catch (e) { /* ignore */ }
+  }
+  function setFocus(v) {
+    state.focus = v; state.open.clear(); state.showAll = false;
+    try { localStorage.setItem(FOCUS_KEY, v); } catch (e) { /* ignore */ }
+    render();
+  }
+  const scoped = (arr) => state.focus === "all" ? arr : arr.filter(x => x.openid === state.focus);
+  const focusName = () => state.focus === "all" ? "Squad" : playerName(state.focus);
   const isWin = (m) => m.result === 1, isLoss = (m) => m.result === 2;
   const outcome = (m) => m.is_leave ? ["warn", "Quit"] : isWin(m) ? ["good", state.mode === 1 ? "Extracted" : "Victory"] : isLoss(m) ? ["bad", state.mode === 1 ? "Failed" : "Defeat"] : ["warn", "Draw"];
   const colorFor = (() => { const idx = {}; return (openid) => { if (!(openid in idx)) idx[openid] = Object.keys(idx).length; return SERIES[idx[openid] % SERIES.length]; }; })();
@@ -88,10 +108,10 @@
 
   // ---------- render ----------
   function render() {
-    const ms = state.matches, sol = state.mode === 1;
+    const ms = scoped(state.matches), sol = state.mode === 1;
     state.players.forEach(p => colorFor(p.openid));   // colours follow the player, assigned on first sight
     renderHero(ms, sol);
-    renderRoster(ms, sol);
+    renderRoster(state.matches, sol);
     renderMapsBand(ms, sol);
     renderOpsBand(ms, sol);
     renderFeed(ms, sol);
@@ -105,7 +125,7 @@
     const wins = ms.filter(isWin).length, kills = sum(ms, m => m.kill_count);
     const selves = ms.map(selfRow).filter(Boolean), alive = selves.filter(s => s.survival_min != null);
     const deaths = deathsOf(ms, selves);
-    $("#eyebrow").textContent = (sol ? "Squad net income · " : "Squad score · ") + rangeWord();
+    $("#eyebrow").textContent = focusName() + (sol ? " · net income · " : " · score · ") + rangeWord();
     $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "0";
     const cells = [
       ["Kills", kills],
@@ -118,15 +138,15 @@
     el.innerHTML = cells.map(([k, v]) => `<div class="cell"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
   }
 
+  // The roster doubles as the scope picker: click a player to make the whole board theirs.
   function renderRoster(ms, sol) {
     const el = $("#roster");
-    if (!state.players.length) { el.style.setProperty("--n", 1); el.innerHTML = `<div class="pl"><div class="body"><div class="empty">No players yet. Install the extension and enter the squad code.</div></div></div>`; return; }
-    el.style.setProperty("--n", state.players.length);
-    el.innerHTML = state.players.map(p => {
+    if (!state.players.length) { el.style.setProperty("--n", 1); el.innerHTML = `<div class="pl on"><div class="body"><div class="empty">No players yet. Install the extension and enter the squad code.</div></div></div>`; return; }
+    const cards = state.players.map(p => {
       const pm = ms.filter(m => m.openid === p.openid), w = pm.filter(isWin).length, net = sum(pm, m => m.net_income), score = sum(pm, m => m.score);
       const [stc, stt] = liveState(p);
       const icon = opIcon(mostUsedOp(pm.length ? pm : state.matches.filter(m => m.openid === p.openid)));
-      return `<div class="pl">
+      return `<div class="pl${state.focus === p.openid ? " on" : ""}" data-focus="${esc(p.openid)}" title="Show only ${esc(p.nickname || "this player")}">
         <div class="bar" style="background:${colorFor(p.openid)}"></div>
         ${icon ? `<img class="ava" src="${esc(icon)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ava"></div>`}
         <div class="body">
@@ -137,7 +157,17 @@
             ${sol ? `<span><b style="color:${net < 0 ? RED : GREEN}">${pm.length ? signed(net) : "–"}</b></span>` : `<span><b>${fmt(score)}</b> score</span>`}
           </div>
         </div></div>`;
-    }).join("");
+    });
+    if (state.players.length > 1) cards.push(`<div class="pl squad${state.focus === "all" ? " on" : ""}" data-focus="all" title="Add every tracked player together">
+        <div class="bar" style="background:var(--div)"></div>
+        <div class="ava sig"></div>
+        <div class="body">
+          <div class="nm"><span>All squad</span></div>
+          <div class="ln"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> matches</span><span><b>${sum(ms, m => m.kill_count)}</b> kills</span></div>
+        </div></div>`);
+    el.style.setProperty("--n", cards.length);
+    el.innerHTML = cards.join("");
+    el.querySelectorAll("[data-focus]").forEach(n => n.onclick = () => setFocus(n.dataset.focus));
   }
 
   // Full-width bands: one item per map / operator, separated by hero-style dividers.
@@ -194,9 +224,9 @@
         <span class="nt ${sol ? (net < 0 ? "bad" : "good") : ""}">${sol ? full(net) : plain(score)}</span>
       </div>${state.open.has(key) ? detailRow(g, sol) : ""}`;
     }).join("");
-    el.querySelectorAll(".row").forEach(r => r.onclick = () => { const k = r.dataset.key; state.open.has(k) ? state.open.delete(k) : state.open.add(k); renderFeed(state.matches, sol); });
+    el.querySelectorAll(".row").forEach(r => r.onclick = () => { const k = r.dataset.key; state.open.has(k) ? state.open.delete(k) : state.open.add(k); renderFeed(scoped(state.matches), sol); });
     more.innerHTML = groups.length > 8 ? `<button class="link" id="toggleAll">${state.showAll ? "Show latest 8 ›" : `Show all ${Math.min(groups.length, 200)} ›`}</button>` : "";
-    const t = $("#toggleAll"); if (t) t.onclick = () => { state.showAll = !state.showAll; renderFeed(state.matches, sol); };
+    const t = $("#toggleAll"); if (t) t.onclick = () => { state.showAll = !state.showAll; renderFeed(scoped(state.matches), sol); };
   }
 
   function detailRow(g, sol) {
@@ -237,17 +267,34 @@
     attachTips(el);
   }
 
+  // One player in focus reads as a trend over days; the whole squad reads as a comparison.
   function renderRateChart(ms, sol) {
-    $("#rateTitle").textContent = sol ? "Extraction rate" : "Win rate";
-    const rows = state.players.map(p => { const pm = ms.filter(m => m.openid === p.openid); return { p, n: pm.length, w: pm.filter(isWin).length }; }).filter(r => r.n).sort((a, b) => b.w / b.n - a.w / a.n);
-    $("#rateChart").innerHTML = rows.length ? `<div style="display:grid;gap:10px">${rows.map(r => `<div class="rate" data-tip="<b>${esc(playerName(r.p.openid))}</b>: ${r.w} of ${r.n} ${rateWord()}"><span class="nm">${esc(playerName(r.p.openid))}</span><div class="tr"><i style="width:${Math.round(100 * r.w / r.n)}%;background:${colorFor(r.p.openid)}"></i></div><span class="v">${pct(r.w, r.n)}</span></div>`).join("")}</div>` : `<div class="empty">No matches in this range.</div>`;
+    const one = state.focus !== "all";
+    $("#rateTitle").textContent = (sol ? "Extraction rate" : "Win rate") + (one ? " · by day" : " · by player");
+    let rows;
+    if (one) {
+      const by = new Map();
+      for (const m of ms) {
+        const d = new Date(m.match_time); d.setHours(d.getHours() - 4);   // the gaming day starts at 04:00
+        const k = d.toISOString().slice(0, 10), e = by.get(k) || { n: 0, w: 0, d };
+        e.n++; e.w += isWin(m) ? 1 : 0; by.set(k, e);
+      }
+      rows = [...by.entries()].sort((a, b) => a[0] < b[0] ? 1 : -1).slice(0, 10)
+        .map(([, v]) => ({ label: v.d.toLocaleDateString([], { day: "numeric", month: "short" }), n: v.n, w: v.w, color: colorFor(state.focus) }));
+    } else {
+      rows = state.players.map(p => { const pm = ms.filter(m => m.openid === p.openid); return { label: playerName(p.openid), n: pm.length, w: pm.filter(isWin).length, color: colorFor(p.openid) }; })
+        .filter(r => r.n).sort((a, b) => b.w / b.n - a.w / a.n);
+    }
+    $("#rateChart").innerHTML = rows.length
+      ? `<div style="display:grid;gap:10px">${rows.map(r => `<div class="rate" data-tip="<b>${esc(r.label)}</b>: ${r.w} of ${r.n} ${rateWord()}"><span class="nm">${esc(r.label)}</span><div class="tr"><i style="width:${Math.round(100 * r.w / r.n)}%;background:${r.color}"></i></div><span class="v">${pct(r.w, r.n)}</span></div>`).join("")}</div>`
+      : `<div class="empty">No matches in this range.</div>`;
     attachTips($("#rateChart"));
   }
 
   function renderReds() {
-    const el = $("#reds");
-    if (!state.reds.length) { el.innerHTML = `<div class="empty">No red drops recorded yet.</div>`; return; }
-    el.innerHTML = `<div class="reds">${state.reds.map(r => {
+    const el = $("#reds"), reds = scoped(state.reds);
+    if (!reds.length) { el.innerHTML = `<div class="empty">No red drops recorded yet.</div>`; return; }
+    el.innerHTML = `<div class="reds">${reds.map(r => {
       const it = item(r.collection_id);
       return `<div class="red" title="${esc(new Date(r.unlock_time).toLocaleString())}">
         ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy">` : `<div class="ph"></div>`}
