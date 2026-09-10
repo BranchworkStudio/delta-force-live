@@ -54,6 +54,9 @@ export const getMatchDetail = (s: Session, reportType: number, roomId: string, m
   call(s, "GetMatchDetail", matchTime ? { room_id: roomId, report_type: reportType, match_time: String(matchTime) } : { room_id: roomId, report_type: reportType });
 export const getRedDrops = (s: Session, page = 1, pageSize = 20) =>
   call(s, "GetRedDropRecordList", { page, page_size: pageSize, collection_id: "", map_id: "", value_order: 0, unlock_time_order: 0 });
+// The week's carry-out tally, and the only place gold items appear: the drop record list above
+// answers with grade 6 alone. Takes no arguments — HQ can only ever ask for the current week.
+export const getWeekCalendar = (s: Session) => call(s, "GetAssetWeekCalendar", {});
 
 /** Daily private-room passwords: signed but unauthenticated, so also a signature self-test. */
 export async function getPrivateRoomKey(): Promise<Envelope> {
