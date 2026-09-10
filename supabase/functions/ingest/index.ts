@@ -111,6 +111,7 @@ Deno.serve(async (req) => {
     const patch: Record<string, unknown> = { last_poll_at: new Date().toISOString() };
     if (typeof st.token_ok === "boolean") patch.token_ok = st.token_ok;
     if (toInt(st.token_expires)) patch.token_expires = new Date(toInt(st.token_expires)! * 1000).toISOString();
+    if (toInt(st.token_seen_since)) patch.token_seen_since = new Date(toInt(st.token_seen_since)! * 1000).toISOString();
     await supabase.from("players").update(patch).eq("openid", openid);
 
     return json({ inserted });

@@ -35,10 +35,26 @@ Your browser (logged in on playdeltaforce.com)
 2. Open `chrome://extensions`, turn on **Developer mode** (top right).
 3. Click **Load unpacked** and pick the `extension/` folder.
 4. Log in on https://www.playdeltaforce.com/events/hq/en/ (normal LI Pass login).
-5. Click the extension icon, enter the **squad code** (ask Pelle), press **Save & poll now**.
+5. Enter the **squad code** (ask Pelle) either on the live site's *Session* block
+   or in the extension popup, and press save.
 
-The icon shows a red `!` when your HQ session has expired: open the HQ page and
-log in again, that is all. Sessions last roughly a week.
+After that you never have to touch the extension again: it polls on its own every
+30 seconds, and the live site is the control panel (see below).
+
+The extension icon shows a red `!` when your HQ session has expired: open the HQ
+page and log in again, that is all.
+
+### Run it from the site
+
+`extension/bridge.js` is a content script injected only into the live site (and
+`localhost:3010` for development). It lets the page ask the extension for status,
+force a poll and set the squad code, over `window.postMessage` with the `df-live`
+namespace. The page never sees the HQ token, the session cookies or the ingest key.
+
+The site's *Session* block therefore shows whether tracking is running in *this*
+browser, with a **Poll now** button and a link to the HQ login. Open the site in a
+browser without the extension (a phone, a mate's laptop) and the same block falls
+back to what the database knows: session state and when that player last pushed.
 
 The first hour also imports your recent history (about 300 matches per mode),
 one page per minute, so the site has something to show right away.
@@ -47,7 +63,7 @@ one page per minute, so the site has something to show right away.
 
 | Path | What |
 |---|---|
-| `extension/` | Chrome MV3 extension (poller in `background.js`, API client in `dfapi.js`) |
+| `extension/` | Chrome MV3 extension (poller in `background.js`, API client in `dfapi.js`, site bridge in `bridge.js`, popup as a fallback control panel) |
 | `supabase/migrations/` | Postgres schema, RLS, views |
 | `supabase/functions/ingest/` | Edge function that the extension posts to |
 | `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()` |
@@ -76,3 +92,24 @@ page), and `GetPrivateRoomKey` (daily room passwords, hourly). `match_time` is t
 match *start*; a member's `finish_time` is when that player extracted or died, and is
 what the latency stat measures against. Operations details always report `death = 0`,
 so the site counts a failed, non-quit raid as a death for K/D.
+
+### How long an HQ login lasts
+
+Measured, not guessed: the `Wand_DF_token` cookie is a **session cookie**. It
+carries no expiry date, so `chrome.cookies` reports no `expirationDate` and
+`players.token_expires` stays null. There is no clock to read and no refresh the
+extension can perform. In practice the login survives as long as the browser
+profile keeps its session cookies (Chrome's "continue where you left off" restores
+them across restarts) and until the server decides to invalidate the token.
+
+Because that server-side lifetime is not published anywhere, the extension now
+measures it: every poll hashes the token (SHA-256, first 8 bytes, the token itself
+is never stored or sent), and when that fingerprint changes it records a new
+`token_seen_since`. The site shows it as "Signed in for …", so the real lifetime
+becomes an observation instead of an assumption.
+
+This is also why the poller has to live in a browser extension. The HQ API takes
+the token as a request parameter rather than a cookie, but it sends no CORS
+headers, so a plain web page on our own domain cannot read a response from it; and
+a server-side poller would need the token copied out of the browser by hand, with
+no way to refresh it once the session dies.

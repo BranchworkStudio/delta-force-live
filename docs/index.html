@@ -82,6 +82,20 @@
   .feedhead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 12px; flex-wrap: wrap; }
   .feedhead .mod-label { margin: 0; }
   .note { font-size: 12px; color: var(--muted); }
+  /* ---- session / control block ---- */
+  .sess { display: grid; gap: 12px; }
+  .sess .state { display: flex; align-items: center; gap: 9px; font: 600 13px var(--hud); letter-spacing: 1px; text-transform: uppercase; }
+  .sess .state i { width: 8px; height: 8px; background: currentColor; display: inline-block; flex: none; }
+  .sess .state i.live { animation: pulse 2s infinite; }
+  .sess .facts { display: grid; gap: 5px; font-size: 12px; color: var(--text-2); }
+  .sess .facts b { font-family: var(--hud); color: var(--text); font-variant-numeric: tabular-nums; }
+  .sess .acts { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .sess button.go { border: 0; background: var(--green); color: var(--on-green); font: 700 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 7px 12px; cursor: pointer; }
+  .sess button.go:disabled { opacity: .6; cursor: default; }
+  .sess a.out { font: 600 12px var(--hud); letter-spacing: .8px; text-transform: uppercase; }
+  .sess .field { display: flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--hair); padding: 8px 10px; }
+  .sess .field input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--text); font: 600 13px 'Share Tech Mono', ui-monospace, monospace; outline: none; }
+  .sess .warn { border-left: 3px solid var(--amber); padding: 8px 10px; background: #191c17; font-size: 12px; color: #efe2c2; }
   .note b { color: var(--green); font-family: var(--hud); }
   .row { display: grid; grid-template-columns: 54px 4px 1fr auto auto; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--hair-2); cursor: pointer; }
   .row:hover { background: rgba(255, 255, 255, .015); }
@@ -163,6 +177,7 @@
       <div class="more" id="more"></div>
     </div>
     <div class="right">
+      <div><div class="mod-label">Session</div><div id="session"></div></div>
       <div><div class="mod-label" id="incomeTitle">Net income · last 12</div><div class="chart" id="incomeChart"></div></div>
       <div><div class="mod-label" id="rateTitle">Extraction rate</div><div id="rateChart"></div></div>
       <div><div class="mod-label">Red drops</div><div id="reds"></div></div>
@@ -173,10 +188,10 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=4"></script>
+<script src="config.js?v=5"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=4"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>
