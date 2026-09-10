@@ -6,7 +6,7 @@
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const SERIES = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6"].map(css);
   const GREEN = "#1de08c", RED = "#e0463f", AMBER = "#e6b34a";
-  const state = { range: "today", mode: 1, focus: null, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], sessions: [], open: new Set(), showAll: false };
+  const state = { range: "today", mode: 1, focus: null, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], sessions: [], recent: [], open: new Set(), showAll: false };
 
   // ---------- lookups (official basic_info tables, with a fallback) ----------
   const MAP_FALLBACK = { 22: "Zero Dam", 19: "Layali Grove", 39: "Space City", 81: "Brakkesh", 88: "Tide Prison", 10: "Trench Lines", 24: "Cracked", 11: "Trainwreck", 54: "Ascension", 12: "Knife Edge", 15: "Fault", 30: "Cyclone", 14: "Aftershock", 55: "Island Warfare", 31: "Akh Canal", 21: "Shafted", 75: "Threshold", 89: "AZ3", 17: "Coliseum", 26: "The Mog" };
@@ -42,18 +42,19 @@
   }
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
   async function load() {
-    await refreshExt().catch(() => { });
     const since = encodeURIComponent(rangeStart().toISOString());
-    const [players, matches, members, reds, pw, latency, sessions] = await Promise.all([
+    const [players, matches, members, reds, pw, latency, sessions, recent] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
       rest("red_drops?select=openid,collection_id,map_id,unlock_time,value,collection_count,first_seen_at&order=unlock_time.desc&limit=12"),
       rest("site_data?select=value,updated_at&key=eq.daily_passwords"),
       rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50"),
-      rest("public_sessions?select=*")
+      rest("public_sessions?select=*"),
+      // Unfiltered by range: how long ago the last raid was, for when the chosen range is empty.
+      rest(`matches?select=openid,match_time&report_type=eq.${state.mode}&order=match_time.desc&limit=200`)
     ]);
-    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions });
+    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
@@ -114,8 +115,6 @@
   const colorFor = (() => { const idx = {}; return (openid) => { if (!(openid in idx)) idx[openid] = Object.keys(idx).length; return SERIES[idx[openid] % SERIES.length]; }; })();
   const selfRow = (m) => state.members.find(x => x.openid === m.openid && x.room_id === m.room_id && x.is_self);
   const roster = (m) => state.members.filter(x => x.openid === m.openid && x.room_id === m.room_id);
-  // Operations detail records report death=0 even for failed raids, so a death there = a failed (non-quit) raid. Warfare has a real death counter.
-  const deathsOf = (ms, selves) => state.mode === 1 ? ms.filter(m => isLoss(m) && !m.is_leave).length : sum(selves, s => s.death);
   const kd = (kills, deaths, n) => !n ? "–" : deaths ? (kills / deaths).toFixed(1) : "∞";
   const liveState = (p) => {
     const fresh = p.last_poll_at && Date.now() - new Date(p.last_poll_at) < 5 * 60e3;
@@ -123,37 +122,14 @@
   };
   const mostUsedOp = (ms) => { const c = {}; for (const m of ms) if (m.operator_id) c[m.operator_id] = (c[m.operator_id] || 0) + 1; return Object.entries(c).sort((a, b) => b[1] - a[1])[0]?.[0] || null; };
   const rateWord = () => state.mode === 1 ? "extracted" : "won";
+  const lostWord = () => state.mode === 1 ? "failed" : "lost";
+  const raid = (n) => state.mode === 1 ? (n === 1 ? "raid" : "raids") : (n === 1 ? "match" : "matches");
+  // The board has one bar shape: the full width is the busiest row in the module, and the filled
+  // part is the ones that ended in an extraction. Volume and outcome in a single mark, so two
+  // raids on a map can never look like a hundred and thirty-nine.
+  const barCell = (n, w, max, color) =>
+    `<div class="tr"><i class="b" style="width:${(max ? 100 * n / max : 0).toFixed(1)}%"></i><i class="f" style="width:${(max ? 100 * w / max : 0).toFixed(1)}%;background:${color}"></i></div>`;
   const sq = (color) => `<span style="display:inline-block;width:8px;height:8px;background:${color};margin-right:6px;vertical-align:0"></span>`;
-
-  // ---------- extension bridge ----------
-  // The extension injects bridge.js into this page, which makes the site the control
-  // panel: read session status, force a poll, register a squad code. The page never
-  // sees the HQ token or the ingest key, and nothing here works without the extension.
-  const ext = { checked: false, present: false, s: null };
-  const askExt = (() => {
-    let seq = 0;
-    const waiting = new Map();
-    window.addEventListener("message", (e) => {
-      if (e.source !== window || !e.data || e.data.ns !== "df-live-reply") return;
-      const done = waiting.get(e.data.id);
-      if (!done) return;
-      waiting.delete(e.data.id); done(e.data);
-    });
-    return (type, payload, ms) => new Promise((resolve) => {
-      const id = "df" + (++seq);
-      const timer = setTimeout(() => { waiting.delete(id); resolve(null); }, ms || 3000);
-      waiting.set(id, (msg) => { clearTimeout(timer); resolve(msg); });
-      window.postMessage({ ns: "df-live", id, type, payload }, location.origin);
-    });
-  })();
-  const extHere = () => document.documentElement.hasAttribute("data-df-live");
-  async function refreshExt(type, payload, ms) {
-    if (!extHere()) { ext.checked = true; ext.present = false; ext.s = null; return null; }
-    const res = await askExt(type || "status", payload, ms);
-    ext.checked = true; ext.present = !!res;
-    if (res && res.data) ext.s = res.data;
-    return res;
-  }
 
   // ---------- render ----------
   function render() {
@@ -166,7 +142,8 @@
     renderOpsBand(ms, sol);
     renderFeed(ms, sol);
     renderIncomeChart(ms, sol);
-    renderRateChart(ms, sol);
+    renderRaidsChart(ms, sol);
+    renderNudge(ms);
     renderReds();
     renderPasswords();
   }
@@ -174,14 +151,15 @@
   function renderHero(ms, sol) {
     const wins = ms.filter(isWin).length, kills = sum(ms, m => m.kill_count);
     const selves = ms.map(selfRow).filter(Boolean), alive = selves.filter(s => s.survival_min != null);
-    const deaths = deathsOf(ms, selves);
+    const best = ms.length ? Math.max(...ms.map(m => Number(sol ? m.net_income : m.score) || 0)) : null;
     $("#eyebrow").textContent = focusName() + (sol ? " · net income · " : " · score · ") + rangeWord();
     $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "0";
     const cells = [
       ["Kills", kills],
       [sol ? "Extraction" : "Win rate", pct(wins, ms.length)],
       ["Matches", ms.length],
-      sol ? ["K/D", kd(kills, deaths, ms.length)] : ["Score", fmt(sum(ms, m => m.score))],
+      // Operations details always report death = 0, so a real K/D only exists in Warfare.
+      sol ? ["Best raid", best == null ? "–" : signed(best)] : ["K/D", kd(kills, sum(selves, s => s.death), ms.length)],
       ["Avg alive · min", alive.length ? (sum(alive, s => s.survival_min) / alive.length).toFixed(1) : "–"]
     ];
     const el = $("#cells"); el.style.setProperty("--n", cells.length);
@@ -191,7 +169,7 @@
   // The roster doubles as the scope picker: click a player to make the whole board theirs.
   function renderRoster(ms, sol) {
     const el = $("#roster");
-    if (!state.players.length) { el.style.setProperty("--n", 1); el.innerHTML = `<div class="pl on"><div class="body"><div class="empty">No players yet. Install the extension and enter the squad code.</div></div></div>`; return; }
+    if (!state.players.length) { el.style.setProperty("--n", 1); el.innerHTML = `<div class="pl on"><div class="body"><div class="empty">No players yet. Connect an account to start collecting.</div></div></div>`; return; }
     const cards = state.players.map(p => {
       const pm = ms.filter(m => m.openid === p.openid), w = pm.filter(isWin).length, net = sum(pm, m => m.net_income), score = sum(pm, m => m.score);
       const [stc, stt] = liveState(p);
@@ -220,43 +198,54 @@
     el.querySelectorAll("[data-focus]").forEach(n => n.onclick = () => setFocus(n.dataset.focus));
   }
 
-  // Full-width bands: one item per map / operator, separated by hero-style dividers.
+  // Full-width bands: one item per map / operator, separated by hero-style dividers. The rate is
+  // the headline, the bar under it is the sample it came from, and a sample too small to mean
+  // anything says so instead of quietly topping the list.
+  const THIN = 5;
   function band(el, label, items) {
-    if (!items.length) { el.innerHTML = `<div class="mod-label">${label}</div><div class="empty">No matches in this range.</div>`; return; }
-    el.innerHTML = `<div class="mod-label">${label}</div><div class="items">${items.map(it => `<div class="it" data-tip="${esc(it.tip)}"><div class="v">${it.v}</div><div class="k">${it.k}</div></div>`).join("")}</div>`;
+    if (!items.length) { el.innerHTML = `<div class="mod-label">${label}</div><div class="empty">No ${raid(2)} in this range.</div>`; return; }
+    const legend = `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span><span>bar = ${raid(2)} played</span></div>`;
+    el.innerHTML = `<div class="mod-label">${label}</div>${legend}<div class="items">${items.map(it => `<div class="it${it.thin ? " thin" : ""}" data-tip="${esc(it.tip)}">
+        <div class="v">${it.v}</div><div class="k">${it.k}</div>${it.bar}<div class="sub">${it.sub}</div></div>`).join("")}</div>`;
     attachTips(el);
+  }
+  function bandItems(by, sol, extra) {
+    const rows = Object.entries(by).sort((a, b) => b[1].n - a[1].n).slice(0, 8);
+    const max = Math.max(1, ...rows.map(([, v]) => v.n));
+    return rows.map(([k, v]) => ({
+      thin: v.n < THIN,
+      v: pct(v.w, v.n),
+      k: `<b>${esc(k)}</b>${v.n < THIN ? ` <span class="thin-tag">thin</span>` : ""}`,
+      bar: barCell(v.n, v.w, max, GREEN),
+      sub: `${v.n} ${raid(v.n)}` + extra(v),
+      tip: `<b>${esc(k)}</b>: ${v.w} of ${v.n} ${rateWord()}<br>${(v.kills / v.n).toFixed(1)} kills per ${raid(1)}${sol ? `<br>Net ${full(v.net)} total` : ""}${v.n < THIN ? `<br>Too few ${raid(2)} to read a rate from` : ""}`,
+    }));
   }
   function renderMapsBand(ms, sol) {
     const by = {};
     for (const m of ms) { const k = mapBase(m.map_id); (by[k] = by[k] || { n: 0, w: 0, net: 0, kills: 0 }); by[k].n++; by[k].w += isWin(m) ? 1 : 0; by[k].net += Number(m.net_income) || 0; by[k].kills += m.kill_count || 0; }
-    const items = Object.entries(by).sort((a, b) => b[1].n - a[1].n).slice(0, 8).map(([k, v]) => ({
-      v: pct(v.w, v.n),
-      k: `<b>${esc(k)}</b> · ${v.n} ${v.n === 1 ? "match" : "matches"}${sol ? ` · <span style="color:${v.net < 0 ? RED : GREEN}">${signed(Math.round(v.net / v.n))}</span> avg` : ""}`,
-      tip: `<b>${esc(k)}</b>: ${v.w} of ${v.n} ${rateWord()}<br>${(v.kills / v.n).toFixed(1)} kills per match${sol ? `<br>Net ${full(v.net)} total` : ""}`
-    }));
-    band($("#mapsBand"), "Maps · " + (sol ? "extraction rate" : "win rate"), items);
+    band($("#mapsBand"), "Maps · " + (sol ? "extraction rate" : "win rate"),
+      bandItems(by, sol, (v) => sol ? ` · <span style="color:${v.net < 0 ? RED : GREEN}">${signed(Math.round(v.net / v.n))}</span> avg` : ` · ${(v.kills / v.n).toFixed(1)} kills`));
   }
   function renderOpsBand(ms, sol) {
     const by = {};
-    for (const m of ms) { const k = opName(m.operator_id); (by[k] = by[k] || { n: 0, w: 0, kills: 0 }); by[k].n++; by[k].w += isWin(m) ? 1 : 0; by[k].kills += m.kill_count || 0; }
-    const items = Object.entries(by).sort((a, b) => b[1].n - a[1].n).slice(0, 8).map(([k, v]) => ({
-      v: v.n,
-      k: `<b>${esc(k)}</b> · <span style="color:${GREEN}">${pct(v.w, v.n)}</span> ${rateWord()}`,
-      tip: `<b>${esc(k)}</b>: ${v.n} matches, ${v.w} ${rateWord()}<br>${(v.kills / v.n).toFixed(1)} kills per match`
-    }));
-    band($("#opsBand"), "Operators · matches", items);
+    for (const m of ms) { const k = opName(m.operator_id); (by[k] = by[k] || { n: 0, w: 0, net: 0, kills: 0 }); by[k].n++; by[k].w += isWin(m) ? 1 : 0; by[k].net += Number(m.net_income) || 0; by[k].kills += m.kill_count || 0; }
+    band($("#opsBand"), "Operators · " + (sol ? "extraction rate" : "win rate"),
+      bandItems(by, sol, (v) => ` · ${(v.kills / v.n).toFixed(1)} kills each`));
   }
 
   // ---------- feed ----------
   function renderFeed(ms, sol) {
     const lat = state.latency.map(l => l.latency_seconds).filter(x => x > 0);
     const medLat = lat.length ? lat.slice().sort((a, b) => a - b)[Math.floor(lat.length / 2)] : null;
-    $("#latNote").innerHTML = medLat != null ? `API latency median <b>${dur(medLat)}</b> after extraction · ${lat.length} live` : `No live matches seen yet`;
+    $("#latNote").innerHTML = medLat != null
+      ? `New ${raid(2)} usually appear here <b>${dur(medLat)}</b> after you leave the ${raid(1)}`
+      : `Nothing caught live yet — new ${raid(2)} land here within a minute`;
     // Group tracked players who were in the same raid.
     const groups = [], seen = {};
     for (const m of ms) { const k = m.room_id; if (seen[k]) { seen[k].push(m); continue; } seen[k] = [m]; groups.push(seen[k]); }
     const el = $("#feed"), more = $("#more");
-    if (!groups.length) { el.innerHTML = `<div class="empty">No matches in this range.</div>`; more.innerHTML = ""; return; }
+    if (!groups.length) { el.innerHTML = `<div class="empty">No ${raid(2)} in this range.</div>`; more.innerHTML = ""; return; }
     const shown = state.showAll ? groups.slice(0, 200) : groups.slice(0, 8);
     el.innerHTML = shown.map(g => {
       const m = g[0], key = m.room_id, outs = g.map(outcome);
@@ -283,7 +272,7 @@
     const tracked = new Set(g.map(x => x.openid));
     let rows = [];
     for (const m of g) { const r = roster(m); if (r.length > rows.length) rows = r; }
-    if (!rows.length) return `<div class="det"><span class="empty">No roster yet for this match. History details are still being imported by the extension.</span></div>`;
+    if (!rows.length) return `<div class="det"><span class="empty">No roster yet for this match. Older raids are still being filled in, a few per minute.</span></div>`;
     const byNick = {}; for (const p of state.players) if (tracked.has(p.openid) && p.nickname) byNick[p.nickname] = p.openid;
     rows = rows.slice().sort((a, b) => (b.is_self - a.is_self) || ((b.nickname in byNick) - (a.nickname in byNick)) || (b.kill_count || 0) - (a.kill_count || 0));
     const th = ["Player", "Operator", "Result", "Kills", "Players", "AI", "Assists", "Rescues", "Revives", "Alive", sol ? "Carried out" : "Score"];
@@ -306,46 +295,38 @@
   function renderAccount() {
     const el = $("#acct");
     if (!el) return;
-    const s = ext.present ? ext.s : null;
     const me = state.focus === "all" ? null : state.players.find(p => p.openid === state.focus);
     const srv = me ? state.sessions.find(x => x.openid === me.openid) : state.sessions.length === 1 ? state.sessions[0] : null;
     const mine = ls(CTL_KEY);                                   // the account this browser connected itself
     const own = srv ? srv.openid === mine : false;
     const player = srv ? state.players.find(p => p.openid === srv.openid) : me;
-    const name = s && s.nickname ? s.nickname : player ? playerName(player.openid) : null;
+    const name = player ? playerName(player.openid) : null;
 
-    // Nobody is connected in a way this browser can speak for: offer the front-door button.
-    if (!srv && !s) {
+    // Nothing is being collected for this player: offer the front door.
+    if (!srv) {
       el.innerHTML = `<a class="signin" href="${connectHref()}">${state.players.length ? "Connect" : "Connect account"}</a>`;
       return;
     }
 
-    const secs = srv && srv.last_ok_at ? (Date.now() - new Date(srv.last_ok_at)) / 1000 : null;
+    const secs = srv.last_ok_at ? (Date.now() - new Date(srv.last_ok_at)) / 1000 : null;
     let dot = "ok", msg, meta = null;
-    if (srv && srv.has_error) {
+    if (srv.has_error) {
       dot = "bad";
       msg = "Your Delta Force login has run out, so nothing new is coming in. Reconnecting takes two clicks.";
-    } else if (srv && secs !== null && secs > 30 * 60) {
+    } else if (secs !== null && secs > 30 * 60) {
       dot = "warn";
       msg = "Collection has gone quiet. It usually catches up on its own; reconnect if it stays like this.";
       meta = `Last checked ${ago(srv.last_ok_at)}`;
-    } else if (srv) {
+    } else {
       msg = "Your matches are collected for you automatically — nothing needs to be running, not even this tab.";
       meta = srv.last_ok_at ? `Last checked ${ago(srv.last_ok_at)}` : "First check due any moment";
-    } else {
-      dot = s.tokenOk === false ? "bad" : "ok";
-      msg = s.tokenOk === false
-        ? "Your Delta Force login has run out. Sign in to Delta Force again, or connect your account so the collecting happens for you."
-        : "Collected by the add-on in this browser, so only while it is open. Connect your account to have it done for you instead.";
     }
 
     const acts = [];
-    if (srv && srv.has_error) acts.push(`<a class="go" href="${connectHref()}">Reconnect</a>`);
-    else if (!srv) acts.push(`<a class="go" href="${connectHref()}">Collect for me</a>`);
+    if (srv.has_error) acts.push(`<a class="go" href="${connectHref()}">Reconnect</a>`);
     if (inviteQS) acts.push(`<button id="invite">Invite a mate</button>`);
-    if (s) acts.push(`<button id="pollnow">Check for new matches</button>`);
     acts.push(`<a href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">Open Delta Force HQ ›</a>`);
-    if (srv && !srv.has_error) acts.push(`<a href="${connectHref()}">Reconnect</a>`);
+    if (!srv.has_error) acts.push(`<a href="${connectHref()}">Reconnect</a>`);
     if (own) acts.push(`<button class="bad" id="disc">Stop collecting</button>`);
 
     el.innerHTML = `<button class="chip" id="acctBtn" aria-expanded="${menuOpen}">
@@ -361,13 +342,6 @@
       </div>`;
 
     $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; $("#acctMenu").hidden = !menuOpen; };
-
-    const poll = $("#pollnow");
-    if (poll) poll.onclick = async () => {
-      poll.disabled = true; poll.textContent = "Checking…";
-      await refreshExt("poll-now", null, 90000);
-      await load().catch(() => { });
-    };
 
     const inv = $("#invite");
     if (inv) inv.onclick = async () => {
@@ -408,52 +382,107 @@
   });
 
   // ---------- right column ----------
+  // Per-match bars answered "how did that one go", which the feed already says in words. The
+  // question they could not answer is the one that matters over a range: am I up or down, and
+  // which raid moved it. So this is a running total, oldest to newest, with a zero line.
   function renderIncomeChart(ms, sol) {
-    const el = $("#incomeChart");
-    const rows = ms.slice(0, 12).reverse();
-    $("#incomeTitle").textContent = (sol ? "Net income" : "Score") + " · last " + (rows.length || 12);
-    if (!rows.length) { el.innerHTML = `<div class="empty">No matches in this range.</div>`; return; }
-    const val = (m) => sol ? (Number(m.net_income) || 0) : (Number(m.score) || 0);
-    const W = 640, H = 200, pad = 10, max = Math.max(1, ...rows.map(m => Math.abs(val(m))));
-    const y = sol ? (v) => pad + (max - v) / (2 * max) * (H - 2 * pad) : (v) => pad + (max - v) / max * (H - 2 * pad);
-    const zero = y(0), bw = W / rows.length;
-    const ticks = Array.from({ length: 13 }, (_, i) => `<line x1="${i * W / 12}" x2="${i * W / 12}" y1="${zero - 4}" y2="${zero + 4}" stroke="#3a4f56"/>`).join("");
-    const bars = rows.map((m, i) => {
-      const v = val(m), top = Math.min(y(v), zero), h = Math.max(1, Math.abs(y(v) - zero));
-      const tip = `<b>${esc(playerName(m.openid))}</b> · ${esc(mapName(m.map_id))}<br>${outcome(m)[1]} · ${m.kill_count || 0} kills<br>${sol ? "Net " + full(v) : "Score " + plain(v)} · ${hhmm(m.finished_at || m.match_time)}`;
-      return `<rect x="${i * bw + 2}" y="${top}" width="${Math.max(1, bw - 4)}" height="${h}" fill="${v < 0 ? RED : GREEN}" data-tip="${esc(tip)}"/>`;
-    }).join("");
-    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sol ? "Net income" : "Score"} per match, oldest to newest"><line x1="0" x2="${W}" y1="${zero}" y2="${zero}" stroke="#2b3d43" stroke-width="1.5"/>${ticks}${bars}</svg>`;
-    attachTips(el);
+    const el = $("#incomeChart"), foot = $("#incomeFoot");
+    const rows = ms.slice().reverse();                                  // a running total only reads forwards
+    $("#incomeTitle").textContent = (sol ? "Net income" : "Score") + " · running total · " + rangeWord();
+    if (!rows.length) { el.innerHTML = `<div class="empty">No ${raid(2)} in this range.</div>`; foot.innerHTML = ""; return; }
+    const val = (m) => Number(sol ? m.net_income : m.score) || 0;
+    let acc = 0;
+    const pts = rows.map(m => ({ m, v: val(m), c: (acc += val(m)) }));
+    const W = 640, H = 190, padT = 12, padB = 20;
+    const hi = Math.max(0, ...pts.map(p => p.c)), lo = Math.min(0, ...pts.map(p => p.c)), spanV = (hi - lo) || 1;
+    const x = (i) => pts.length === 1 ? W / 2 : i / (pts.length - 1) * W;
+    const y = (v) => padT + (hi - v) / spanV * (H - padT - padB);
+    const end = pts[pts.length - 1].c, color = end < 0 ? RED : GREEN, zero = y(0);
+    const peak = pts.reduce((a, p) => p.c > a.c ? p : a, pts[0]);
+    // A range with a single raid still deserves a readable level: draw it flat across the plot.
+    const line = pts.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.c).toFixed(1)}`).join("")
+      + (pts.length === 1 ? `L${W},${y(pts[0].c).toFixed(1)}` : "");
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sol ? "Net income" : "Score"} running total across ${pts.length} ${raid(pts.length)}, oldest first; ends at ${sol ? full(end) : plain(end)}">
+        <defs><linearGradient id="ig" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="${color}" stop-opacity=".26"/><stop offset="1" stop-color="${color}" stop-opacity=".02"/></linearGradient></defs>
+        ${pts.length > 1 ? `<path d="${line}L${x(pts.length - 1).toFixed(1)},${zero.toFixed(1)}L${x(0).toFixed(1)},${zero.toFixed(1)}Z" fill="url(#ig)"/>` : ""}
+        <line class="zero" x1="0" x2="${W}" y1="${zero.toFixed(1)}" y2="${zero.toFixed(1)}"/>
+        <path d="${line}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="${pts.length === 1 ? W / 2 : x(pts.length - 1).toFixed(1)}" cy="${y(end).toFixed(1)}" r="3.5" fill="${color}"/>
+        <line class="cross" x1="0" x2="0" y1="${padT}" y2="${H - padB}" style="display:none"/>
+        <circle r="4.5" fill="${color}" stroke="var(--ground)" stroke-width="2" style="display:none"/>
+      </svg>`;
+    foot.innerHTML = `<span>${pts.length} ${raid(pts.length)} · from ${new Date(rows[0].match_time).toLocaleDateString([], { day: "numeric", month: "short" })}</span>
+      ${peak.c > end ? `<span>peak ${sol ? full(peak.c) : plain(peak.c)}</span>` : ""}
+      <span style="color:${color}">ends ${sol ? full(end) : plain(end)}</span>`;
+
+    // Crosshair: the whole plot is the hit target, so no raid is too thin to point at.
+    const svg = el.querySelector("svg"), cross = svg.querySelector(".cross"), dot = svg.querySelector("circle");
+    const nearest = (clientX) => {
+      const r = svg.getBoundingClientRect(), fx = (clientX - r.left) / r.width * W;
+      let best = 0;
+      pts.forEach((p, i) => { if (Math.abs(x(i) - fx) < Math.abs(x(best) - fx)) best = i; });
+      return best;
+    };
+    const move = (clientX, clientY) => {
+      const i = nearest(clientX), p = pts[i], px = x(i).toFixed(1);
+      cross.setAttribute("x1", px); cross.setAttribute("x2", px); cross.style.display = "";
+      dot.setAttribute("cx", px); dot.setAttribute("cy", y(p.c).toFixed(1)); dot.style.display = "";
+      showTip(clientX, clientY, `<b>${esc(playerName(p.m.openid))}</b> · ${esc(mapName(p.m.map_id))}<br>
+        ${outcome(p.m)[1]} · ${p.m.kill_count || 0} kills · ${dayLabel(p.m.finished_at || p.m.match_time) || "today"} ${hhmm(p.m.finished_at || p.m.match_time)}<br>
+        This ${raid(1)} ${sol ? full(p.v) : plain(p.v)} · running total ${sol ? full(p.c) : plain(p.c)}`);
+    };
+    svg.addEventListener("mousemove", (e) => move(e.clientX, e.clientY));
+    svg.addEventListener("touchstart", (e) => { const t = e.touches[0]; if (t) move(t.clientX, t.clientY); }, { passive: true });
+    svg.addEventListener("mouseleave", () => { cross.style.display = "none"; dot.style.display = "none"; hideTip(); });
   }
 
-  // One player in focus reads as a trend over days; the whole squad reads as a comparison.
-  function renderRateChart(ms, sol) {
+  // Same bar as the bands: length is how much you played, the filled part is how it went. A day
+  // with one lucky raid stays a sliver instead of reading as a hundred per cent day.
+  function renderRaidsChart(ms, sol) {
     const one = state.focus !== "all";
-    $("#rateTitle").textContent = (sol ? "Extraction rate" : "Win rate") + (one ? " · by day" : " · by player");
+    $("#rateTitle").textContent = one ? "By day · " + raid(2) : "By player · " + raid(2);
     let rows;
     if (one) {
       const by = new Map();
       for (const m of ms) {
-        const d = new Date(m.match_time); d.setHours(d.getHours() - 4);   // the gaming day starts at 04:00
+        const d = new Date(m.match_time); d.setHours(d.getHours() - 4);  // the gaming day starts at 04:00
         const k = d.toISOString().slice(0, 10), e = by.get(k) || { n: 0, w: 0, d };
         e.n++; e.w += isWin(m) ? 1 : 0; by.set(k, e);
       }
-      rows = [...by.entries()].sort((a, b) => a[0] < b[0] ? 1 : -1).slice(0, 10)
-        .map(([, v]) => ({ label: v.d.toLocaleDateString([], { day: "numeric", month: "short" }), n: v.n, w: v.w, color: colorFor(state.focus) }));
+      rows = [...by.entries()].sort((a, b) => a[0] < b[0] ? 1 : -1).slice(0, 12)
+        .map(([, v]) => ({ label: v.d.toLocaleDateString([], { day: "numeric", month: "short" }), n: v.n, w: v.w, color: GREEN }));
     } else {
       rows = state.players.map(p => { const pm = ms.filter(m => m.openid === p.openid); return { label: playerName(p.openid), n: pm.length, w: pm.filter(isWin).length, color: colorFor(p.openid) }; })
-        .filter(r => r.n).sort((a, b) => b.w / b.n - a.w / a.n);
+        .filter(r => r.n).sort((a, b) => b.n - a.n);
     }
-    $("#rateChart").innerHTML = rows.length
-      ? `<div style="display:grid;gap:10px">${rows.map(r => `<div class="rate" data-tip="<b>${esc(r.label)}</b>: ${r.w} of ${r.n} ${rateWord()}"><span class="nm">${esc(r.label)}</span><div class="tr"><i style="width:${Math.round(100 * r.w / r.n)}%;background:${r.color}"></i></div><span class="v">${pct(r.w, r.n)}</span></div>`).join("")}</div>`
-      : `<div class="empty">No matches in this range.</div>`;
-    attachTips($("#rateChart"));
+    const el = $("#rateChart");
+    if (!rows.length) { el.innerHTML = `<div class="empty">No ${raid(2)} in this range.</div>`; return; }
+    const max = Math.max(...rows.map(r => r.n));
+    const legend = one
+      ? `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span><span>bar = ${raid(2)} that day</span></div>`
+      : `<div class="legend"><span><i style="background:var(--fail)"></i>${raid(2)}</span><span>filled = ${rateWord()}, in each player's colour</span></div>`;
+    el.innerHTML = legend + `<div class="gauge">${rows.map(r => `<div class="g" data-tip="<b>${esc(r.label)}</b>: ${r.w} of ${r.n} ${raid(r.n)} ${rateWord()}">
+        <span class="nm">${esc(r.label)}</span>${barCell(r.n, r.w, max, r.color)}<span class="v">${pct(r.w, r.n)}</span></div>`).join("")}</div>`;
+    attachTips(el);
+  }
+
+  // He plays in bursts, so "today" is often genuinely empty. One clear line beats five modules
+  // each saying nothing, and it offers the range that does have something in it.
+  function renderNudge(ms) {
+    const el = $("#nudge");
+    if (!el) return;
+    const last = scoped(state.recent).map(r => r.match_time).sort().pop();
+    if (ms.length || !last) { el.hidden = true; el.innerHTML = ""; return; }
+    el.hidden = false;
+    el.innerHTML = `<span>No ${raid(2)} ${state.range === "today" ? "yet today" : "in this range"}. The last one was <b>${ago(last)}</b>.</span>
+      ${state.range === "7d" ? "" : `<button data-jump="7d">Show 7 days</button>`}<button data-jump="all">Show everything</button>`;
+    el.querySelectorAll("[data-jump]").forEach(b => b.onclick = () => setRange(b.dataset.jump));
   }
 
   function renderReds() {
     const el = $("#reds"), reds = scoped(state.reds);
-    if (!reds.length) { el.innerHTML = `<div class="empty">No red drops recorded yet.</div>`; return; }
+    if (!reds.length) { el.innerHTML = `<div class="empty">No red drops yet.</div>`; return; }
     el.innerHTML = `<div class="reds">${reds.map(r => {
       const it = item(r.collection_id);
       return `<div class="red" title="${esc(new Date(r.unlock_time).toLocaleString())}">
@@ -490,15 +519,30 @@
 
   // ---------- tooltips ----------
   const tip = $("#tip");
+  function showTip(clientX, clientY, html) {
+    tip.innerHTML = html;
+    tip.style.display = "block";
+    tip.style.left = Math.max(8, Math.min(window.innerWidth - tip.offsetWidth - 8, clientX + 12)) + "px";
+    tip.style.top = Math.max(8, Math.min(window.innerHeight - tip.offsetHeight - 8, clientY + 12)) + "px";
+  }
+  const hideTip = () => { tip.style.display = "none"; };
   function attachTips(root) {
     root.querySelectorAll("[data-tip]").forEach(n => {
-      n.addEventListener("mousemove", (e) => { tip.innerHTML = n.getAttribute("data-tip"); tip.style.display = "block"; tip.style.left = Math.min(window.innerWidth - tip.offsetWidth - 8, e.clientX + 12) + "px"; tip.style.top = (e.clientY + 12) + "px"; });
-      n.addEventListener("mouseleave", () => tip.style.display = "none");
+      n.addEventListener("mousemove", (e) => showTip(e.clientX, e.clientY, n.getAttribute("data-tip")));
+      n.addEventListener("mouseleave", hideTip);
+      // A phone has no hover, so a tap on the mark shows the same numbers.
+      n.addEventListener("touchstart", (e) => { const t = e.touches[0]; if (t) showTip(t.clientX, t.clientY, n.getAttribute("data-tip")); }, { passive: true });
     });
   }
+  document.addEventListener("touchstart", (e) => { if (tip.style.display === "block" && !e.target.closest("[data-tip], .chart")) hideTip(); }, { passive: true });
 
   // ---------- filters ----------
-  document.querySelectorAll("[data-range]").forEach(b => b.onclick = () => { document.querySelectorAll("[data-range]").forEach(x => x.classList.toggle("on", x === b)); state.range = b.dataset.range; state.showAll = false; load(); });
+  function setRange(v) {
+    document.querySelectorAll("[data-range]").forEach(x => x.classList.toggle("on", x.dataset.range === v));
+    state.range = v; state.showAll = false;
+    load().catch(() => { });
+  }
+  document.querySelectorAll("[data-range]").forEach(b => b.onclick = () => setRange(b.dataset.range));
   document.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { document.querySelectorAll("[data-mode]").forEach(x => x.classList.toggle("on", x === b)); state.mode = Number(b.dataset.mode); state.showAll = false; load(); });
 
   // ---------- boot ----------
@@ -510,7 +554,6 @@
   try { sessionStorage.removeItem("df-reloaded"); } catch (e) { /* ignore */ }
   if (!C || !C.SUPABASE_URL || C.SUPABASE_URL.startsWith("__")) { $("#banner").hidden = false; $("#banner").textContent = "config.js is not filled in."; return; }
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
-  window.addEventListener("df-live-ready", () => { refreshExt().then(renderAccount).catch(() => { }); });
   load().catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; $("#status").textContent = "error"; });
   setInterval(() => load().catch(() => { $("#status").textContent = "refresh failed"; }), (C.REFRESH_SECONDS || 30) * 1000);
 })();
