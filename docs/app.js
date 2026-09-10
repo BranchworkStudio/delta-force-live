@@ -106,7 +106,7 @@
     const selves = ms.map(selfRow).filter(Boolean), alive = selves.filter(s => s.survival_min != null);
     const deaths = deathsOf(ms, selves);
     $("#eyebrow").textContent = (sol ? "Squad net income · " : "Squad score · ") + rangeWord();
-    $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "–";
+    $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "0";
     const cells = [
       ["Kills", kills],
       [sol ? "Extraction" : "Win rate", pct(wins, ms.length)],
@@ -295,6 +295,12 @@
   document.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { document.querySelectorAll("[data-mode]").forEach(x => x.classList.toggle("on", x === b)); state.mode = Number(b.dataset.mode); state.showAll = false; load(); });
 
   // ---------- boot ----------
+  // HTML and JS are deployed together but cached separately (Pages CDN, max-age 600). If they mismatch, reload once.
+  if (!$("#cells") || !$("#feed")) {
+    try { if (!sessionStorage.getItem("df-reloaded")) { sessionStorage.setItem("df-reloaded", "1"); location.reload(); return; } } catch (e) { /* ignore */ }
+    return;
+  }
+  try { sessionStorage.removeItem("df-reloaded"); } catch (e) { /* ignore */ }
   if (!C || !C.SUPABASE_URL || C.SUPABASE_URL.startsWith("__")) { $("#banner").hidden = false; $("#banner").textContent = "config.js is not filled in."; return; }
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
   load().catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; $("#status").textContent = "error"; });
