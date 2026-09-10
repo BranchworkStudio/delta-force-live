@@ -52,7 +52,7 @@
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
   async function load() {
     const since = encodeURIComponent(rangeStart().toISOString());
-    const [players, matches, members, reds, pw, latency, sessions, recent] = await Promise.all([
+    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
@@ -61,9 +61,13 @@
       rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50"),
       rest("public_sessions?select=*"),
       // Unfiltered by range: how long ago the last raid was, for when the chosen range is empty.
-      rest(`matches?select=openid,match_time&report_type=eq.${state.mode}&order=match_time.desc&limit=200`)
+      rest(`matches?select=openid,match_time&report_type=eq.${state.mode}&order=match_time.desc&limit=200`),
+      rest(`player_rank?select=openid,report_type,rank_score,highest_rank,fetched_at&report_type=eq.${state.mode}`),
+      // Every sample, not just the range: the movement inside a range is measured against the
+      // standing that came before it, which is a sample from outside it.
+      rest(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc&limit=5000`)
     ]);
-    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent });
+    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent, rank, rankSamples });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
@@ -134,6 +138,26 @@
   const diedIn = (m) => state.mode === 1 ? (m.result === 2 && !m.is_leave ? 1 : 0) : ((selfRow(m) || {}).death || 0);
   const deathsOf = (ms) => sum(ms, diedIn);
   const kdOf = (k, d) => d ? (k / d).toFixed(1) : k ? "∞" : "0.0";
+  // HQ never says what a match was worth in rank score: the per-match rank_score is 0 on every
+  // row, and the only figure it reports is the standing as it is right now. So a gained/lost
+  // number has to be read off the standing itself, which the poller samples every minute and
+  // records whenever it moves. Nothing from before the first sample can be recovered, so a range
+  // reaching back further than the samples do says how far back it actually knows.
+  function rankMove() {
+    // A ladder is personal. Adding up the squad's standings would be adding up unrelated numbers.
+    if (state.focus === "all") return null;
+    const row = (state.rank || []).find(r => r.openid === state.focus);
+    const ss = (state.rankSamples || []).filter(s => s.openid === state.focus);
+    const now = ss.length ? ss[ss.length - 1].rank_score : row ? row.rank_score : null;
+    if (now == null) return null;
+    const from = rangeStart().getTime();
+    const before = ss.filter(s => new Date(s.taken_at).getTime() <= from);
+    // The standing in force when the range opened is the one to measure against; without a sample
+    // that old, the earliest one there is becomes the baseline and the label says so.
+    const base = before.length ? before[before.length - 1] : ss[0] || null;
+    return { now, delta: base ? now - base.rank_score : null, since: base ? base.taken_at : null, partial: !before.length };
+  }
+  const rankSince = (iso) => { const d = new Date(iso); return Date.now() - d < 20 * 3600e3 ? hhmm(d) : d.toLocaleDateString([], { day: "numeric", month: "short" }); };
   const liveState = (p) => {
     const fresh = p.last_poll_at && Date.now() - new Date(p.last_poll_at) < 5 * 60e3;
     return !p.token_ok ? [RED, "logged out"] : fresh ? [GREEN, "live"] : [AMBER, p.last_poll_at ? "last seen " + ago(p.last_poll_at) : "never polled"];
@@ -176,12 +200,23 @@
     const cells = [
       // The split only exists once the match detail has landed, which is within the minute. Until
       // then say the total rather than a confidently wrong zero.
-      known ? ["Operator kills", kOp, kAi + " AI kills"] : ["Kills", sum(ms, m => m.kill_count), ms.length ? "operators vs AI in a moment" : null],
+      known ? ["Operator kills", kOp, kAi + (kAi === 1 ? " AI kill" : " AI kills")] : ["Kills", sum(ms, m => m.kill_count), ms.length ? "operators vs AI in a moment" : null],
       ["K/D", ms.length && known ? kdOf(kOp, deaths) : "–", !ms.length ? null : deaths ? deaths + (sol ? " " + lostWord() : " deaths") : "no deaths yet"],
       [sol ? "Extraction" : "Win rate", pct(wins, ms.length), ms.length ? `${wins} of ${ms.length} ${raid(ms.length)}` : null],
       ["Best " + raid(1), best == null ? "–" : sol ? signed(best) : plain(best), null],
       ["Avg alive · min", alive.length ? (sum(alive, s => s.survival_min) / alive.length).toFixed(1) : "–", null]
     ];
+    // The movement is the point, so it takes the value slot when there is one to state, with the
+    // standing underneath it. Until the samples cover the range, the standing leads instead —
+    // a "±0" would read as a quiet session rather than as history we do not have.
+    const r = rankMove();
+    if (r) {
+      const moved = r.delta != null && !(r.partial && r.delta === 0);
+      cells.push(moved
+        ? ["Rank score", `<span style="color:${r.delta < 0 ? RED : r.delta > 0 ? GREEN : "var(--text-2)"}">${full(r.delta)}</span>`,
+           r.now.toLocaleString("en-US") + " now" + (r.partial ? " · since " + rankSince(r.since) : "")]
+        : ["Rank score", r.now.toLocaleString("en-US"), "tracking since " + rankSince(r.since || new Date().toISOString())]);
+    }
     const el = $("#cells"); el.style.setProperty("--n", cells.length);
     el.innerHTML = cells.map(([k, v, s]) => `<div class="cell"><div class="v">${v}</div><div class="k">${k}</div>${s ? `<div class="s">${esc(s)}</div>` : ""}</div>`).join("");
   }
