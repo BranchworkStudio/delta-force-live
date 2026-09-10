@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Delta Force Live",
+  "version": "0.1.0",
+  "description": "Pushes your Delta Force (global) match results to your squad's live tracker. Uses your existing login on the official HQ page; your session never leaves this browser.",
+  "permissions": ["cookies", "alarms", "storage"],
+  "host_permissions": [
+    "https://www.playdeltaforce.com/*",
+    "https://sg-act.playerinfinite.com/*",
+    "https://*.supabase.co/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Delta Force Live",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+}

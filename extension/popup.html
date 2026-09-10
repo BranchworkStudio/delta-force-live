@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { color-scheme: dark; }
+  body { width: 320px; margin: 0; padding: 14px; font: 13px/1.4 system-ui, sans-serif; background: #141413; color: #f0efec; }
+  h1 { font-size: 15px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #6b6a66; }
+  .dot.ok { background: #0ca30c; } .dot.bad { background: #d03b3b; } .dot.warn { background: #fab219; }
+  .row { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; border-bottom: 1px solid #2a2a28; }
+  .row span:first-child { color: #a9a8a1; }
+  .err { margin-top: 8px; padding: 8px; background: #2b1c1c; border-left: 3px solid #d03b3b; border-radius: 4px; word-break: break-word; }
+  label { display: block; margin-top: 12px; color: #a9a8a1; }
+  input { width: 100%; box-sizing: border-box; margin-top: 4px; padding: 7px 8px; background: #1f1f1e; border: 1px solid #3a3a37; border-radius: 6px; color: #f0efec; font: inherit; }
+  .btns { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  button, a.btn { flex: 1; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a3a37; background: #1f1f1e; color: #f0efec; font: inherit; cursor: pointer; text-align: center; text-decoration: none; }
+  button.primary { background: #2a78d6; border-color: #2a78d6; color: #fff; }
+  small { color: #7d7c76; display: block; margin-top: 10px; }
+</style>
+</head>
+<body>
+  <h1><span class="dot" id="dot"></span> Delta Force Live</h1>
+  <div class="row"><span>Player</span><b id="nick">–</b></div>
+  <div class="row"><span>HQ session</span><b id="session">–</b></div>
+  <div class="row"><span>Last poll</span><b id="lastPoll">–</b></div>
+  <div class="row"><span>Newest match</span><b id="newest">–</b></div>
+  <div class="row"><span>Matches pushed</span><b id="pushed">–</b></div>
+  <div class="err" id="err" hidden></div>
+
+  <label>Squad code <input id="squad" placeholder="ask Pelle"></label>
+
+  <div class="btns">
+    <button class="primary" id="save">Save &amp; poll now</button>
+    <a class="btn" id="hq" href="https://www.playdeltaforce.com/events/hq/en/" target="_blank">Open HQ (log in)</a>
+    <a class="btn" id="site" href="#" target="_blank">Open live site</a>
+  </div>
+  <small>Your login stays in this browser. Only finished match rows are sent to the squad site.</small>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
