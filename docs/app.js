@@ -217,7 +217,7 @@
            r.now.toLocaleString("en-US") + " now" + (r.partial ? " · since " + rankSince(r.since) : "")]
         : ["Rank score", r.now.toLocaleString("en-US"), "tracking since " + rankSince(r.since || new Date().toISOString())]);
     }
-    const el = $("#cells"); el.style.setProperty("--n", cells.length);
+    const el = $("#cells");
     el.innerHTML = cells.map(([k, v, s]) => `<div class="cell"><div class="v">${v}</div><div class="k">${k}</div>${s ? `<div class="s">${esc(s)}</div>` : ""}</div>`).join("");
   }
 
