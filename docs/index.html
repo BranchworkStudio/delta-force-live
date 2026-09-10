@@ -76,6 +76,8 @@
   .cell { padding: 0 20px; border-right: 1px solid var(--div); min-width: 0; }
   .cell .v { font: 700 30px var(--hud); color: var(--green); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .cell .k { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-2); margin-top: 2px; }
+  /* The sample a headline came from: AI kills beside operator kills, deaths beside a K/D. */
+  .cell .s { font: 600 11px var(--hud); letter-spacing: .5px; color: var(--muted); margin-top: 5px; }
 
   /* ---- roster ---- */
   .roster { display: grid; grid-template-columns: repeat(var(--n, 1), 1fr); border-bottom: 1px solid var(--hair); }
@@ -102,16 +104,14 @@
   .band .it .k b { color: var(--text); font-weight: 600; }
   .band .it .tr { margin-top: 10px; max-width: 240px; }
   .band .it .sub { font: 600 11px var(--hud); letter-spacing: .5px; color: var(--muted); margin-top: 7px; }
-  /* Too few raids to read a rate from: say so instead of letting 2 of 3 look like a talent. */
-  .band .it.thin .v { color: var(--muted); }
-  .band .it .thin-tag { color: var(--amber); }
+  /* Zero Dam - Easy and Zero Dam - Normal are not the same raid, so the difficulty rides along
+     with the name instead of being averaged away into one "Zero Dam". */
+  .band .it .diff { color: var(--amber); }
 
-  /* ---- the board's one bar: full width = the busiest row, filled part = raids you got out of ---- */
-  .tr { height: 10px; background: var(--track); position: relative; overflow: hidden; }
+  /* ---- the board's one bar: the whole track is the sample, the fill is the share that got out.
+     A rate reads the same at two raids and at a hundred and thirty-nine; the count says which. ---- */
+  .tr { height: 10px; background: var(--fail); position: relative; overflow: hidden; }
   .tr i { position: absolute; top: 0; bottom: 0; left: 0; display: block; }
-  /* The raids that did not work out. Its own step in the grey ramp, not the empty track:
-     #2b3d43 against #16232a is only ΔE 10 to normal vision, which is not a difference. */
-  .tr i.b { background: var(--fail); }
   .tr i.f { box-shadow: 2px 0 0 var(--ground); }
   .gauge { display: grid; gap: 9px; }
   .gauge .g { display: grid; grid-template-columns: 74px 1fr 46px; gap: 11px; align-items: center; font-size: 13px; }
@@ -129,16 +129,23 @@
   .feedhead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 12px; flex-wrap: wrap; }
   .feedhead .mod-label { margin: 0; }
   .note { font-size: 12px; color: var(--muted); }
+  .mod-label .note { text-transform: none; letter-spacing: 0; font-weight: 400; margin-left: 4px; }
   .note b { color: var(--green); font-family: var(--hud); }
   .row { display: grid; grid-template-columns: 54px 4px 1fr auto auto; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--hair-2); cursor: pointer; }
   .row:hover { background: rgba(255, 255, 255, .015); }
-  .row .t { font: 600 12px var(--hud); color: var(--muted); }
+  .row .t { font: 600 12px var(--hud); color: var(--muted); align-self: start; padding-top: 2px; }
+  .row .t .d { display: block; font-size: 10px; letter-spacing: .5px; margin-top: 3px; opacity: .75; }
   .row .rail { height: 34px; display: flex; flex-direction: column; }
   .row .rail i { flex: 1; display: block; }
   .row .l1 { font-size: 15px; } .row .l1 b { font-weight: 600; }
   .row .tag { font: 600 11px var(--hud); text-transform: uppercase; letter-spacing: 1px; margin-left: 8px; }
   .row .l2 { font-size: 12px; color: var(--muted); }
-  .row .kl { font: 600 13px var(--hud); color: var(--text-2); white-space: nowrap; }
+  /* Operator kills are the ones that mean something; AI kills are a body count. Two lines,
+     the real number first, so the eye never adds them together by accident. */
+  .row .kl { font: 600 13px var(--hud); color: var(--text-2); white-space: nowrap; text-align: right; line-height: 1.35; }
+  .row .kl span { display: block; }
+  .row .kl .ai { color: var(--muted); font-size: 11px; }
+  .row .kl em { font-style: normal; font-size: 10px; letter-spacing: .5px; color: var(--muted); }
   .row .nt { font: 700 16px var(--hud); font-variant-numeric: tabular-nums; min-width: 100px; text-align: right; white-space: nowrap; }
   .good { color: var(--green); } .bad { color: var(--red); } .warn { color: var(--amber); } .neutral { color: var(--text-2); }
   .det { padding: 8px 0 12px 72px; border-bottom: 1px solid var(--hair-2); }
@@ -152,13 +159,31 @@
   .chart svg { width: 100%; height: auto; display: block; }
   .chart .ax { font: 600 10px var(--hud); letter-spacing: .8px; fill: var(--muted); text-transform: uppercase; }
   .chart .zero { stroke: var(--div); stroke-width: 1.5; }
+  .chart .med { stroke: var(--tick); stroke-width: 1; stroke-dasharray: 4 4; }
+  /* The running total itself, parked at the end of the line. Text ink, never a series colour:
+     the line is already carrying the above/below-median encoding. */
+  /* The running total, parked at the end of the line and riding it as new raids come in. Real
+     HTML, not SVG text: the plot's viewBox is squeezed, and squeezed numerals get unreadable.
+     Text ink, never a series colour — the line already carries the above/below-median encoding. */
+  .chart { position: relative; }
+  .chart .endv { position: absolute; transform: translateY(-50%); margin-left: 9px; white-space: nowrap;
+    font: 700 13px var(--hud); font-variant-numeric: tabular-nums; color: var(--text); pointer-events: none; }
   .chart .cross { stroke: var(--tick); stroke-width: 1; }
   .foot { display: flex; justify-content: space-between; gap: 12px; font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
-  .reds { display: grid; gap: 10px; }
-  .red { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; }
-  .red img, .red .ph { width: 40px; height: 40px; border: 1px solid var(--div); background: var(--panel); object-fit: contain; }
-  .red .n { font: 600 14px var(--body); } .red .m { font-size: 12px; color: var(--muted); }
-  .red .v { font: 600 13px var(--hud); color: var(--text-2); text-align: right; white-space: nowrap; }
+  /* Recent high-value items, newest first, reading left to right. A row that scrolls inside
+     itself shows far more of them than a column in the sidebar ever did. */
+  .reds { display: flex; gap: 0; overflow-x: auto; scrollbar-width: thin; border-left: 1px solid var(--div); }
+  .red { flex: 0 0 148px; padding: 0 16px; border-right: 1px solid var(--div); min-width: 0; }
+  .red img, .red .ph { width: 44px; height: 44px; border: 1px solid var(--div); background: var(--panel); object-fit: contain; display: block; }
+  .red .n { font: 600 13px var(--body); margin-top: 9px; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .red .v { font: 700 15px var(--hud); color: var(--text); font-variant-numeric: tabular-nums; margin-top: 5px; }
+  .red .m { font: 600 10px var(--hud); letter-spacing: .5px; text-transform: uppercase; color: var(--muted); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Daily private-room passwords: six numbers, so a row of them and nothing more. */
+  .pws { display: flex; flex-wrap: wrap; gap: 0; border-left: 1px solid var(--div); }
+  .pwi { flex: 1 1 130px; padding: 0 18px; border-right: 1px solid var(--div); min-width: 0; }
+  .pwi .m { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pwi .c { font: 600 22px 'Share Tech Mono', ui-monospace, monospace; letter-spacing: 2px; color: var(--text); margin-top: 4px; }
   .kv { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 13px; }
   .kv span:first-child { color: var(--muted); text-transform: uppercase; letter-spacing: .6px; font: 600 11px var(--hud); padding-top: 2px; }
   .pw { font: 600 15px 'Share Tech Mono', ui-monospace, monospace; letter-spacing: 1px; }
@@ -190,6 +215,9 @@
     .det { padding-left: 0; }
     .gauge .g { grid-template-columns: 62px 1fr 42px; gap: 9px; }
     .band .it .tr { max-width: none; }
+    .pwi { flex: 1 1 96px; padding: 0 12px; }
+    .pwi .c { font-size: 18px; }
+    .red { flex-basis: 132px; padding: 0 12px; }
     .banner { margin: 20px 20px 0; } .nudge { padding: 12px 20px; }
     /* the header row wraps here, so the account control gets its own line and keeps
        the menu inside the page instead of hanging off the left edge */
@@ -221,6 +249,10 @@
   <section class="roster" id="roster"></section>
   <section class="band" id="mapsBand"></section>
   <section class="band" id="opsBand"></section>
+  <section class="band" id="pwBand">
+    <div class="mod-label">Daily passwords <span class="note" id="pwFoot"></span></div>
+    <div class="pws" id="passwords"></div>
+  </section>
   <div class="cols">
     <div class="left">
       <div class="feedhead"><span class="mod-label">Feed</span><span class="note" id="latNote"></span></div>
@@ -228,20 +260,22 @@
       <div class="more" id="more"></div>
     </div>
     <div class="right">
-      <div><div class="mod-label" id="incomeTitle">Net income · running total</div><div class="chart" id="incomeChart"></div><div class="foot" id="incomeFoot"></div></div>
+      <div><div class="mod-label" id="incomeTitle">Net income · running total</div><div class="legend" id="incomeLegend"></div><div class="chart" id="incomeChart"></div><div class="foot" id="incomeFoot"></div></div>
       <div><div class="mod-label" id="rateTitle">Raids by day</div><div id="rateChart"></div></div>
-      <div><div class="mod-label">Red drops</div><div id="reds"></div></div>
-      <div><div class="mod-label">Daily passwords</div><div id="passwords"></div></div>
     </div>
   </div>
+  <section class="band" id="redsBand">
+    <div class="mod-label">Recent high-value items <span class="note" id="redsFoot"></span></div>
+    <div id="reds"></div>
+  </section>
   <footer>Matches come from each player's own Delta Force account, connected once from the <a href="connect.html" id="connectLink">connect page</a> and then read for you every minute. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=9"></script>
+<script src="config.js?v=10"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=9"></script>
+<script src="app.js?v=10"></script>
 </body>
 </html>
