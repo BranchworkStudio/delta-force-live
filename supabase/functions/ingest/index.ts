@@ -89,6 +89,24 @@ Deno.serve(async (req) => {
       }
     }
 
+    const reds = Array.isArray(body.red_drops) ? body.red_drops.slice(0, 200) : [];
+    if (reds.length) {
+      const rrows = reds.map((r: any) => {
+        const t = toInt(r.unlock_time);
+        return {
+          openid, collection_id: clampStr(r.collection_id, 32), map_id: toInt(r.map_id),
+          unlock_time: t ? new Date(t * 1000).toISOString() : null, value: toInt(r.value), collection_count: toInt(r.collection_count),
+          first_seen_at: t && Date.now() / 1000 - t > 6 * 3600 ? new Date(t * 1000).toISOString() : new Date().toISOString(),
+          raw: r,
+        };
+      }).filter((r: any) => r.collection_id && r.unlock_time);
+      if (rrows.length) await supabase.from("red_drops").upsert(rrows, { onConflict: "openid,collection_id,unlock_time", ignoreDuplicates: true });
+    }
+
+    if (body.daily_passwords && typeof body.daily_passwords === "object") {
+      await supabase.from("site_data").upsert({ key: "daily_passwords", value: body.daily_passwords, updated_at: new Date().toISOString(), updated_by: openid }, { onConflict: "key" });
+    }
+
     const st = body.status ?? {};
     const patch: Record<string, unknown> = { last_poll_at: new Date().toISOString() };
     if (typeof st.token_ok === "boolean") patch.token_ok = st.token_ok;

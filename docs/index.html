@@ -11,10 +11,11 @@
     --text: #f0efec; --text-2: #b4b3ac; --muted: #7d7c76;
     --blue: #3987e5; --red: #e66767; --good: #0ca30c; --warn: #fab219; --crit: #d03b3b;
     --s1: #3987e5; --s2: #e8a33d; --s3: #58b368; --s4: #c77dd9; --s5: #4fb8c9; --s6: #e66767;
+    --g1: #8a8a85; --g2: #58b368; --g3: #3987e5; --g4: #a86bd9; --g5: #e8a33d; --g6: #e05252;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  header { display: flex; align-items: center; gap: 14px; padding: 16px 22px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  header { display: flex; align-items: center; gap: 14px; padding: 16px 22px; border-bottom: 1px solid var(--line); flex-wrap: wrap; position: sticky; top: 0; background: var(--bg); z-index: 5; }
   header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
   .live { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-2); }
   .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; animation: pulse 2s infinite; }
@@ -24,19 +25,21 @@
   .chip { padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text-2); cursor: pointer; font-size: 12px; }
   .chip.on { background: var(--surface-2); color: var(--text); border-color: #4a4a46; }
   main { padding: 18px 22px 40px; display: grid; gap: 18px; max-width: 1400px; margin: 0 auto; }
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
   .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
   .tile .k { font-size: 12px; color: var(--muted); }
-  .tile .v { font-size: 26px; font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .tile .v { font-size: 24px; font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; }
   .tile .sub { font-size: 12px; color: var(--text-2); }
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
-  section.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-  section.card h2 { font-size: 13px; color: var(--text-2); margin: 0 0 10px; text-transform: uppercase; letter-spacing: .6px; font-weight: 600; }
-  .players { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .grid31 { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; }
+  @media (max-width: 900px) { .grid2, .grid31 { grid-template-columns: 1fr; } }
+  section.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; }
+  section.card h2 { font-size: 13px; color: var(--text-2); margin: 0 0 10px; text-transform: uppercase; letter-spacing: .6px; font-weight: 600; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  section.card h2 small { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--muted); }
+  .players { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
   .player { background: var(--surface-2); border-radius: 10px; padding: 12px; border-left: 3px solid var(--s1); }
   .player .name { font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-  .player .state { font-size: 11px; color: var(--muted); display: inline-flex; gap: 5px; align-items: center; }
+  .player .state { font-size: 11px; color: var(--muted); display: inline-flex; gap: 5px; align-items: center; white-space: nowrap; }
   .player .state i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
   .player .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--text-2); }
   .player .stats b { display: block; color: var(--text); font-size: 15px; font-variant-numeric: tabular-nums; }
@@ -44,9 +47,13 @@
   th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
   th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
   td.num, th.num { text-align: right; }
+  tr.match { cursor: pointer; } tr.match:hover td { background: var(--surface-2); }
+  tr.detail td { background: #1d1d1c; padding: 8px 12px 12px; white-space: normal; }
+  tr.detail table { font-size: 12px; } tr.detail th, tr.detail td { padding: 4px 8px; border-bottom: 1px solid #2a2a28; }
   .tag { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; }
   .tag.win { background: rgba(12,163,12,.18); color: #6fd66f; } .tag.loss { background: rgba(208,59,59,.18); color: #f08a8a; }
-  .tag.draw, .tag.left { background: rgba(250,178,25,.18); color: #f5c65c; }
+  .tag.draw, .tag.left { background: rgba(250,178,25,.18); color: #f5c65c; } .tag.mixed { background: rgba(120,120,120,.2); color: var(--text-2); }
+  .tag.squad { background: rgba(57,135,229,.18); color: #7fb4f2; margin-left: 6px; }
   .pos { color: #7fb4f2; } .neg { color: var(--red); }
   .tblwrap { overflow-x: auto; }
   .empty { color: var(--muted); padding: 24px; text-align: center; }
@@ -55,6 +62,16 @@
   .tip { position: fixed; pointer-events: none; background: #0f0f0e; color: var(--text); border: 1px solid #3a3a37; border-radius: 6px; padding: 6px 9px; font-size: 12px; display: none; z-index: 10; white-space: nowrap; }
   .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-2); margin-bottom: 6px; }
   .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; vertical-align: -1px; margin-right: 5px; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+  .reds { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+  .red { display: flex; gap: 10px; background: var(--surface-2); border-radius: 10px; padding: 8px; align-items: center; border-left: 3px solid var(--g6); }
+  .red img { width: 48px; height: 48px; object-fit: contain; background: #111; border-radius: 6px; flex: none; }
+  .red .n { font-weight: 600; font-size: 13px; line-height: 1.25; }
+  .red .m { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .grade { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px; }
+  .kv span:first-child { color: var(--muted); }
+  .pw { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 15px; letter-spacing: 1px; }
   footer { color: var(--muted); font-size: 12px; text-align: center; padding: 20px; }
   a { color: #7fb4f2; }
   .banner { background: #2b1c1c; border: 1px solid #5a2a2a; border-radius: 8px; padding: 10px 14px; color: #f0d0d0; }
@@ -79,11 +96,19 @@
   <div id="banner" class="banner" hidden></div>
   <div class="tiles" id="tiles"></div>
   <section class="card"><h2>Squad</h2><div class="players" id="players"></div></section>
+  <div class="grid31">
+    <section class="card"><h2>Red drops <small id="redsSub"></small></h2><div class="reds" id="reds"></div></section>
+    <section class="card"><h2>Daily passwords <small id="pwSub"></small></h2><div id="passwords"></div></section>
+  </div>
   <div class="grid2">
     <section class="card"><h2 id="incomeTitle">Net income per match</h2><div class="chart" id="incomeChart"></div></section>
     <section class="card"><h2>Extraction rate per player</h2><div class="chart" id="rateChart"></div></section>
   </div>
-  <section class="card"><h2>Match feed</h2><div class="tblwrap"><table id="feed"><thead></thead><tbody></tbody></table></div></section>
+  <div class="grid2">
+    <section class="card"><h2>Maps <small>extraction rate · avg net · n</small></h2><div class="chart" id="mapChart"></div></section>
+    <section class="card"><h2>Operators <small>matches · extraction rate</small></h2><div class="chart" id="opChart"></div></section>
+  </div>
+  <section class="card"><h2>Match feed <small>click a row for the roster</small></h2><div class="tblwrap"><table id="feed"><thead></thead><tbody></tbody></table></div></section>
 </main>
 <footer>Data comes from each player's own HQ session via the Delta Force Live browser extension. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
 <div class="tip" id="tip"></div>
@@ -91,6 +116,7 @@
 <script src="config.js"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
+<script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
 <script src="app.js"></script>
 </body>
 </html>

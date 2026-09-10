@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Delta Force Live",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pushes your Delta Force (global) match results to your squad's live tracker. Uses your existing login on the official HQ page; your session never leaves this browser.",
   "permissions": ["cookies", "alarms", "storage"],
   "host_permissions": [
