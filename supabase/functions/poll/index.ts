@@ -4,7 +4,7 @@
 //   { secret } -> poll every connected player
 //   { secret, openid } -> poll one (used by the connect page right after a hand-over)
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { getMatchDetail, getMatchList, getPrivateRoomKey, getRedDrops, isAuthError, type Session } from "./hq.ts";
+import { getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedDrops, isAuthError, type Session } from "./hq.ts";
 
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
@@ -75,6 +75,7 @@ async function pollOne(row: Row) {
     report.matches = await storeMatches(openid, fresh);
     report.details = await storeDetails(s, openid);
     report.reds = await storeReds(s, openid, bf);
+    report.stats = await storeStats(s, openid);
     await maybePasswords(openid);
 
     await supabase.from("players").update({ token_ok: true, last_poll_at: nowIso() }).eq("openid", openid);
@@ -170,6 +171,30 @@ async function storeReds(s: Session, openid: string, bf: Record<string, unknown>
     else bf.red = list.length < PAGE_SIZE ? "done" : page + 1;
   }
   return stored;
+}
+
+/** The career/season summary HQ shows above the match list, and the rank score inside it. */
+async function storeStats(s: Session, openid: string) {
+  let done = 0;
+  for (const rt of MODES) {
+    const env = await getMyData(s, rt).catch(() => null);
+    if (!env || Number(env.code) !== 0 || !env.data) continue;
+    await supabase.from("player_stats").upsert({ openid, report_type: rt, raw: env.data, fetched_at: nowIso() }, { onConflict: "openid,report_type" });
+    // HQ only ever states the standing, never what a match was worth, so the history is made here:
+    // one row each time the number moves. Sampling an unchanged score every minute would bury the
+    // movements in duplicates, so the previous sample is the one thing worth reading first.
+    const score = toInt(env.data?.rank_data?.current_rank_score);
+    if (score !== null) {
+      const { data: last } = await supabase
+        .from("rank_samples").select("rank_score")
+        .eq("openid", openid).eq("report_type", rt).order("taken_at", { ascending: false }).limit(1).maybeSingle();
+      if (!last || last.rank_score !== score) {
+        await supabase.from("rank_samples").insert({ openid, report_type: rt, rank_score: score, taken_at: nowIso() });
+      }
+    }
+    done++;
+  }
+  return done;
 }
 
 /** Daily private-room passwords: unauthenticated, so whoever polls first refreshes them hourly. */
