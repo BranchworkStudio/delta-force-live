@@ -1,9 +1,13 @@
 // Delta Force Live: takes an HQ session handed over from the site's connect flow.
 // The bookmarklet reads the HQ page's own cookies and navigates to /connect.html#..., which POSTs here.
-//   { action: "connect", code, cookies: { openid, token, ... } }
-//     -> { ok, openid, nickname, avatar, level, fresh, connected_at, visible }
-//   { action: "disconnect", code, openid } -> { ok }
-// Custom auth: the squad code, same shared secret the extension registers with. No JWT.
+//   { cookies: { openid, token, ... } } -> { ok, openid, nickname, avatar, level, fresh, connected_at, control_key }
+//   { action: "disconnect", openid, control_key } -> { ok }
+//   { action: "probe" } -> signature self-test
+//
+// There is no shared code on this path on purpose. A hand-over is proved against HQ itself before
+// anything is stored, which is stronger than any secret the page could hold: only the account owner
+// can produce working cookies for their openid. The one thing that still needs a gate is enrolment,
+// so an openid the board has never seen is refused — unless the board is empty and this is the claim.
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { cleanSession, fingerprint, getMyData, getPrivateRoomKey, isAuthError, md5, REPORT_TYPE } from "./hq.ts";
 
@@ -16,12 +20,7 @@ const cors = {
 };
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
-
-async function squadCodeOk(given: unknown) {
-  const { data } = await supabase.from("app_settings").select("value").eq("key", "squad_code").maybeSingle();
-  const code = data?.value ?? "";
-  return !!code && typeof given === "string" && given.trim().toLowerCase() === String(code).toLowerCase();
-}
+const randomKey = () => crypto.randomUUID().replaceAll("-", "") + crypto.randomUUID().replaceAll("-", "");
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -29,9 +28,8 @@ Deno.serve(async (req) => {
 
   let body: any;
   try { body = await req.json(); } catch { return json({ error: "invalid json" }, 400); }
-  if (!(await squadCodeOk(body?.code))) return json({ error: "wrong squad code" }, 403);
 
-  // Signature self-test: an unauthenticated but signed endpoint. code 0 means our MD5 signing is right.
+  // Signature self-test: an unauthenticated but signed HQ endpoint. code 0 means our MD5 signing is right.
   if (body.action === "probe") {
     const env = await getPrivateRoomKey().catch((e) => ({ code: -1, msg: String(e) }));
     return json({ ok: Number(env.code) === 0, code: env.code, msg: env.msg ?? null, md5: await md5("delta-force-live") });
@@ -39,15 +37,27 @@ Deno.serve(async (req) => {
 
   if (body.action === "disconnect") {
     const openid = typeof body.openid === "string" ? body.openid.slice(0, 128) : "";
-    if (!openid) return json({ error: "openid required" }, 400);
+    const key = typeof body.control_key === "string" ? body.control_key.slice(0, 128) : "";
+    if (!openid || !key) return json({ error: "openid and control_key required" }, 400);
+    const { data: row } = await supabase.from("player_sessions").select("openid").eq("openid", openid).eq("control_key", key).maybeSingle();
+    if (!row) return json({ error: "not the browser that connected this session" }, 403);
     await supabase.from("player_sessions").delete().eq("openid", openid);
+    await supabase.from("players").update({ token_ok: false }).eq("openid", openid);
     return json({ ok: true });
   }
 
   const session = cleanSession(body?.cookies);
   if (!session) return json({ error: "no HQ login found in that browser", reason: "no-cookies" }, 400);
+  const openid = session.openid;
 
-  // Prove the handover works before storing it: one authenticated call, as the poller will make.
+  // Enrolment gate, checked before we spend an HQ call on an unknown player.
+  const { data: existing } = await supabase.from("players").select("openid").eq("openid", openid).maybeSingle();
+  if (!existing) {
+    const { count } = await supabase.from("players").select("openid", { count: "exact", head: true });
+    if ((count ?? 0) > 0) return json({ error: "this board is not taking new players", reason: "not-enrolled" }, 403);
+  }
+
+  // Prove the handover works before storing it: one authenticated call, exactly as the poller makes.
   let env;
   try { env = await getMyData(session, REPORT_TYPE.OPERATIONS); } catch (e) { return json({ error: String(e), reason: "hq-unreachable" }, 502); }
   if (Number(env.code) !== 0) {
@@ -59,15 +69,12 @@ Deno.serve(async (req) => {
   const nickname = typeof p.nickname === "string" ? p.nickname.slice(0, 64) : null;
   const avatar = typeof p.avatar === "string" ? p.avatar.slice(0, 64) : null;
   const level = Number.isFinite(Number(p.level)) ? Math.trunc(Number(p.level)) : null;
-  const openid = session.openid;
 
-  // Keep an existing player's ingest key: the extension in his browser may still be using it.
-  const { data: existing } = await supabase.from("players").select("openid").eq("openid", openid).maybeSingle();
   if (existing) {
     await supabase.from("players").update({ nickname, avatar, level, token_ok: true }).eq("openid", openid);
   } else {
-    const key = crypto.randomUUID().replaceAll("-", "") + crypto.randomUUID().replaceAll("-", "");
-    const { error } = await supabase.from("players").insert({ openid, ingest_key: key, nickname, avatar, level, token_ok: true });
+    // First player claims the board. The ingest key is only for the legacy extension path.
+    const { error } = await supabase.from("players").insert({ openid, ingest_key: randomKey(), nickname, avatar, level, token_ok: true });
     if (error) return json({ error: error.message }, 500);
   }
 
@@ -76,9 +83,10 @@ Deno.serve(async (req) => {
   const fresh = !prev || prev.token_fp !== fp;                       // a different token means a new HQ login
   const connectedAt = fresh ? new Date().toISOString() : prev!.connected_at;
   const now = new Date().toISOString();
+  const controlKey = randomKey();
 
   const { error: serr } = await supabase.from("player_sessions").upsert({
-    openid, cookies: session, token_fp: fp, source: "bookmarklet",
+    openid, cookies: session, token_fp: fp, source: "bookmarklet", control_key: controlKey,
     connected_at: connectedAt, updated_at: now, last_ok_at: now, last_error: null,
   }, { onConflict: "openid" });
   if (serr) return json({ error: serr.message }, 500);
@@ -86,5 +94,19 @@ Deno.serve(async (req) => {
   // Same measurement the extension makes: how long one HQ login actually survives.
   if (fresh) await supabase.from("players").update({ token_seen_since: now }).eq("openid", openid);
 
-  return json({ ok: true, openid, nickname, avatar, level, fresh, connected_at: connectedAt });
+  // Don't wait a minute for cron: start collecting straight away, in the background.
+  const kick = pokePoller(openid);
+  // @ts-ignore EdgeRuntime is Supabase-specific
+  if (typeof EdgeRuntime !== "undefined" && EdgeRuntime.waitUntil) EdgeRuntime.waitUntil(kick); else await kick.catch(() => {});
+
+  return json({ ok: true, openid, nickname, avatar, level, fresh, connected_at: connectedAt, control_key: controlKey });
 });
+
+async function pokePoller(openid: string) {
+  const { data } = await supabase.from("app_settings").select("value").eq("key", "poll_secret").maybeSingle();
+  if (!data?.value) return;
+  await fetch(Deno.env.get("SUPABASE_URL")! + "/functions/v1/poll", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ secret: data.value, openid }),
+  });
+}
