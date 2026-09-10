@@ -84,9 +84,9 @@ Deno.serve(async (req) => {
   if (existing) {
     await supabase.from("players").update({ nickname, avatar, level, token_ok: true }).eq("openid", openid);
   } else {
-    // A new mate joins. The ingest key is only for the legacy extension path.
+    // A new mate joins.
     const { error } = await supabase.from("players").insert({
-      openid, ingest_key: randomKey(), nickname, avatar, level, token_ok: true,
+      openid, nickname, avatar, level, token_ok: true,
       enrolled_via: via, enrolled_at: new Date().toISOString(),
     });
     if (error) return json({ error: error.message }, 500);
@@ -105,7 +105,7 @@ Deno.serve(async (req) => {
   }, { onConflict: "openid" });
   if (serr) return json({ error: serr.message }, 500);
 
-  // Same measurement the extension makes: how long one HQ login actually survives.
+  // How long one HQ login actually survives, measured rather than assumed.
   if (fresh) await supabase.from("players").update({ token_seen_since: now }).eq("openid", openid);
 
   // Don't wait a minute for cron: start collecting straight away, in the background.

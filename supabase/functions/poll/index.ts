@@ -1,6 +1,6 @@
 // Delta Force Live: the server-side poller. pg_cron calls this every minute; for every session
 // handed over from the connect page it reads HQ as that player and writes new matches straight
-// into Postgres. This is what makes the browser extension unnecessary.
+// into Postgres, so nothing has to run on the player's machine.
 //   { secret } -> poll every connected player
 //   { secret, openid } -> poll one (used by the connect page right after a hand-over)
 import { createClient } from "npm:@supabase/supabase-js@2";

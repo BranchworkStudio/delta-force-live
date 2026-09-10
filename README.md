@@ -18,22 +18,20 @@ Your HQ login on playdeltaforce.com
    └─ the connect page hands that session to the backend (edge function `connect`)
         └─ pg_cron calls `poll` every minute, which reads HQ as you and writes matches
              └─ the GitHub Pages site reads them with a public read-only key
-
-fallback: the Chrome extension polls from a running browser and POSTs to `ingest`
 ```
 
 * **Nothing has to run on your machine.** Once the session is handed over, the
-  server collects every minute with your PC off. The extension is a fallback for
-  when the bookmark route cannot carry a token.
-* Your Level Infinite password is never involved, in either route. What moves is
-  the HQ session cookie — the same thing the HQ page itself uses.
+  server collects every minute with your PC off — no browser, no add-on, no
+  tab left open.
+* Your Level Infinite password is never involved. What moves is the HQ session
+  cookie — the same thing the HQ page itself uses.
 * Anyone with the site link can read the squad's matches. Nothing else is exposed.
 * Every row records `first_seen_at`, so the site can show how far behind the
   official API actually is ("API latency" tile).
 
-## Connect from the site, without installing anything
+## Connect from the site
 
-The primary route. Three steps, no install, and **nothing to type**:
+Three steps, no install, and **nothing to type**:
 
 ```
 docs/connect.html            the guided flow: bookmark → HQ login → click the bookmark
@@ -115,41 +113,15 @@ select net.http_post(
            from app_settings where key = 'poll_secret'));
 ```
 
-## Install the extension (fallback, Chrome / Edge / Brave)
-
-Only needed if the bookmark route cannot get a token out of the HQ page in your
-browser. Everything below is the older push path; it still works and still coexists
-with the server poller (both write the same rows, duplicates are ignored).
-
-1. Download this repo (green **Code** button → **Download ZIP**) and unzip it.
-2. Open `chrome://extensions`, turn on **Developer mode** (top right).
-3. Click **Load unpacked** and pick the `extension/` folder.
-4. Log in on https://www.playdeltaforce.com/events/hq/en/ (normal LI Pass login).
-5. Enter the **squad code** (ask Pelle) in the extension popup and press save. This
-   is the only place a code is still asked for — it registers the browser and gets it
-   a private `ingest_key`. The connect page needs none.
-
-After that you never have to touch the extension again: it polls on its own every
-30 seconds, and the live site is the control panel (see below).
-
-The extension icon shows a red `!` when your HQ session has expired: open the HQ
-page and log in again, that is all.
-
-### Run it from the site
-
-`extension/bridge.js` is a content script injected only into the live site (and
-`localhost:3010` for development). It lets the page ask the extension for status and
-force a poll, over `window.postMessage` with the `df-live` namespace. The page never
-sees the HQ token, the session cookies or the ingest key.
+### The account control
 
 The board's account control — the chip in the top-right corner, where a website would
 put "logged in" — is where all of this surfaces, in plain language rather than in
 plumbing: your nickname, a status dot, and "Your matches are collected for you
 automatically — nothing needs to be running, not even this tab." Its menu holds *Invite
-a mate*, *Open Delta Force HQ*, *Reconnect*, a **Check for new matches** item that only
-appears when the extension is present in this browser, and — only in the browser that
-handed the session over — a two-click *Stop collecting*. With nothing connected the chip
-is replaced by a green **Connect** button.
+a mate*, *Open Delta Force HQ*, *Reconnect*, and — only in the browser that handed the
+session over — a two-click *Stop collecting*. With nothing connected the chip is
+replaced by a green **Connect** button.
 
 The first hour also imports your recent history (about 300 matches per mode),
 one page per minute, so the site has something to show right away.
@@ -158,10 +130,8 @@ one page per minute, so the site has something to show right away.
 
 | Path | What |
 |---|---|
-| `extension/` | Chrome MV3 extension (poller in `background.js`, API client in `dfapi.js`, site bridge in `bridge.js`, popup as a fallback control panel) |
 | `supabase/migrations/` | Postgres schema, RLS, views |
-| `supabase/functions/ingest/` | Edge function that the extension posts to |
-| `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it (`hq.ts` is the server-side twin of `dfapi.js`) |
+| `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it (`hq.ts` signs requests the way the HQ page itself does) |
 | `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute |
 | `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
 | `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()` |
@@ -169,14 +139,13 @@ one page per minute, so the site has something to show right away.
 ## Backend
 
 Supabase project **Delta Force Live** (Branchwork Studio org, eu-central-1).
-`app_settings` is service-role only and holds three secrets: `poll_secret` (between
-`pg_cron` and the `poll` function), `invite_code` (the link mates join with) and the
-legacy `squad_code`, which now only gates extension registration. To rotate any:
+`app_settings` is service-role only and holds two secrets: `poll_secret` (between
+`pg_cron` and the `poll` function) and `invite_code` (the link mates join with).
+To rotate either:
 
 ```sql
 update app_settings set value = encode(extensions.gen_random_bytes(24),'hex') where key = 'poll_secret';
 update app_settings set value = encode(extensions.gen_random_bytes(9),'hex')  where key = 'invite_code';
-update app_settings set value = 'new-code' where key = 'squad_code';
 ```
 
 Enrolment on the connect path uses `invite_code` in the same table — see **Inviting
@@ -192,7 +161,7 @@ victory, 2 = failed / defeat, 3 = draw, `is_leave` = quit. Map and operator
 names come from the public `basic_info/*_en.js` tables; red-drop item names from
 `collections_en.js` (`collection_id` = `prop_id`).
 
-Per poll the extension also fetches `GetMatchDetail` for new matches (plus two older
+Per run the poller also fetches `GetMatchDetail` for new matches (plus a few older
 ones, so history fills in slowly), `GetRedDropRecordList` page 1 (plus one deeper
 page), and `GetPrivateRoomKey` (daily room passwords, hourly). `match_time` is the
 match *start*; a member's `finish_time` is when that player extracted or died, and is
@@ -202,17 +171,14 @@ so the site counts a failed, non-quit raid as a death for K/D.
 ### How long an HQ login lasts
 
 Measured, not guessed: the `Wand_DF_token` cookie is a **session cookie**. It
-carries no expiry date, so `chrome.cookies` reports no `expirationDate` and
-`players.token_expires` stays null. There is no clock to read and no refresh the
-extension can perform. In practice the login survives as long as the browser
-profile keeps its session cookies (Chrome's "continue where you left off" restores
-them across restarts) and until the server decides to invalidate the token.
+carries no expiry date, so `players.token_expires` stays null. There is no clock to
+read and no refresh anyone can perform. In practice the login survives until the
+server decides to invalidate the token.
 
-Because that server-side lifetime is not published anywhere, both routes measure it:
+Because that server-side lifetime is not published anywhere, the board measures it:
 the token is hashed (SHA-256, first 8 bytes; the token itself is never stored in that
 field or logged), and when the fingerprint changes a new `token_seen_since` is
-recorded. The site shows it as "HQ login held for …", so the real lifetime becomes an
-observation instead of an assumption.
+recorded, so the real lifetime becomes an observation instead of an assumption.
 
 That the API takes the token as a *request parameter* rather than a cookie is what
 makes the server poller possible at all: the backend can replay it indefinitely, and

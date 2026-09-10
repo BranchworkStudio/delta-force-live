@@ -81,7 +81,7 @@
       id: "click", title: "Click the bookmark on that tab", done: false,
       body: `<p>On the HQ tab, click <b>Connect HQ</b> in your bookmarks bar. That tab comes back here connected, and this page finishes on its own.</p>
         <div class="waiting"><i></i>Waiting for the hand-over</div>
-        <div class="box">Your HQ session gets stored on the server, which then reads your matches every minute — with your PC off and no extension installed. You can disconnect any time, and it never includes your password.</div>`,
+        <div class="box">Your HQ session gets stored on the server, which then reads your matches every minute — with your PC off and nothing installed. You can disconnect any time, and it never includes your password.</div>`,
     }];
   }
 
@@ -221,7 +221,7 @@
       S.bm = true; ls.set(K.bm, "1");
       const found = (q.get("f") || "").split(",").filter(Boolean);
       S.err = found.length
-        ? { title: "Your HQ login is only half there", body: `The HQ page shows <code>${esc(found.join(", "))}</code> but not the token, so the bookmark route cannot carry it. Log out and back in on HQ and try once more — if it keeps happening, the extension is the only way in.`, kind: "warn" }
+        ? { title: "Your HQ login is only half there", body: `The HQ page shows <code>${esc(found.join(", "))}</code> but not the token, so the bookmark route cannot carry it. Log out and back in on HQ, then try once more.`, kind: "warn" }
         : { title: "You are not logged in on HQ yet", body: "Log in on the HQ tab, then click the bookmark there." };
       render();
     } else {

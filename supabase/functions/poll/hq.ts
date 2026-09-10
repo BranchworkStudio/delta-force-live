@@ -1,4 +1,4 @@
-// Server-side twin of extension/dfapi.js: signs and calls the official HQ backend with a
+// Signs and calls the official HQ backend the way the HQ page itself does, with a
 // session handed over from the browser. Same signature scheme the HQ page itself uses.
 // MD5 comes from the Deno standard library rather than a hand-rolled copy: a wrong digest
 // here would fail every call in a way that looks like a login problem.
