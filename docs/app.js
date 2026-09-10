@@ -76,6 +76,22 @@
   const playerName = (openid) => { const p = state.players.find(p => p.openid === openid); return (p && p.nickname) || openid.slice(0, 6); };
   // The board is personal-first: every module is scoped to one player. "all" aggregates the whole squad.
   const FOCUS_KEY = "df-focus";
+
+  // An invite can arrive on the board's own URL too, so sharing either link works. It is kept for
+  // the connect page, which is where it is actually used.
+  const inviteQS = (() => {
+    let inv = new URLSearchParams(location.search).get("i") || "";
+    try {
+      if (inv) localStorage.setItem("df-invite", inv);
+      else inv = localStorage.getItem("df-invite") || "";
+    } catch (e) { /* private window */ }
+    return inv ? "?i=" + encodeURIComponent(inv) : "";
+  })();
+  const connectHref = () => "connect.html" + inviteQS;
+  const CTL_KEY = "df-control";
+  const ls = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  // The footer link is static HTML, so give it the invite too.
+  if (inviteQS) { const a = document.getElementById("connectLink"); if (a) a.href = connectHref(); }
   function resolveFocus() {
     const ids = state.players.map(p => p.openid);
     if (state.focus === null) { try { state.focus = localStorage.getItem(FOCUS_KEY); } catch (e) { /* ignore */ } }
@@ -144,7 +160,7 @@
     const ms = scoped(state.matches), sol = state.mode === 1;
     state.players.forEach(p => colorFor(p.openid));   // colours follow the player, assigned on first sight
     renderHero(ms, sol);
-    renderSession();
+    renderAccount();
     renderRoster(state.matches, sol);
     renderMapsBand(ms, sol);
     renderOpsBand(ms, sol);
@@ -281,74 +297,115 @@
       </tbody></table></div>`;
   }
 
-  // ---------- session (right column, top) ----------
-  // The server is the collector: a session handed over from the connect page is read every minute
-  // whether or not any browser is open. The extension is the fallback, reported underneath.
-  function renderSession() {
-    const el = $("#session");
+  // ---------- account (top right) ----------
+  // Reads like being logged in to a website, because that is what it is from the player's side:
+  // who you are, whether your matches are being collected, and the few things you can do about it.
+  // No openids, no cookies, no poll intervals — those live in the README.
+  let menuOpen = false;
+
+  function renderAccount() {
+    const el = $("#acct");
     if (!el) return;
     const s = ext.present ? ext.s : null;
     const me = state.focus === "all" ? null : state.players.find(p => p.openid === state.focus);
     const srv = me ? state.sessions.find(x => x.openid === me.openid) : state.sessions.length === 1 ? state.sessions[0] : null;
-    const srvFresh = srv && srv.last_ok_at && Date.now() - new Date(srv.last_ok_at) < 5 * 60e3;
-    const srvStale = srv && srv.last_ok_at && Date.now() - new Date(srv.last_ok_at) > 30 * 60e3;
-    const who = me ? " · " + esc(playerName(me.openid)) : "";
-    const out = [];
+    const mine = ls(CTL_KEY);                                   // the account this browser connected itself
+    const own = srv ? srv.openid === mine : false;
+    const player = srv ? state.players.find(p => p.openid === srv.openid) : me;
+    const name = s && s.nickname ? s.nickname : player ? playerName(player.openid) : null;
 
-    if (srv) {
-      const [c, t] = srv.has_error ? [RED, "Server session expired"] : srvFresh ? [GREEN, "Server collecting"] : srvStale ? [AMBER, "Server has gone quiet"] : [GREEN, "Server connected"];
-      out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${t}${who}</div>`);
-    } else if (s) {
-      const [c, t] = s.tokenOk === false ? [RED, "HQ session expired"] : s.tokenOk ? [GREEN, "Pushing from this browser"] : [AMBER, "Session unknown"];
-      out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${t}${s.nickname ? " · " + esc(s.nickname) : ""}</div>`);
-    } else if (me) {
-      const [c, t] = liveState(me);
-      out.push(`<div class="state" style="color:${c}"><i class="${c === GREEN ? "live" : ""}"></i>${esc(playerName(me.openid))} · ${t}</div>`);
+    // Nobody is connected in a way this browser can speak for: offer the front-door button.
+    if (!srv && !s) {
+      el.innerHTML = `<a class="signin" href="${connectHref()}">${state.players.length ? "Connect" : "Connect account"}</a>`;
+      return;
     }
 
-    const facts = [];
-    if (srv) {
-      if (srv.last_ok_at) facts.push(`Read HQ <b>${ago(srv.last_ok_at)}</b> · every minute, PC off`);
-      else facts.push("Handed over, first read due within a minute.");
-      if (me && me.token_seen_since) facts.push(`HQ login held for <b>${span((Date.now() - new Date(me.token_seen_since)) / 1000)}</b>`);
-      facts.push(`Connected <b>${ago(srv.connected_at)}</b>`);
-      if (srv.has_error) facts.push("HQ stopped accepting it — reconnect below.");
-      if (s) facts.push(`This browser also pushes · extension <b>${esc(s.version)}</b>`);
-    } else if (s) {
-      if (s.sessionSince && s.tokenOk !== false) facts.push(`Signed in for <b>${span((Date.now() - s.sessionSince) / 1000)}</b>`);
-      if (s.lastPoll) facts.push(`Polled <b>${span((Date.now() - s.lastPoll) / 1000)}</b> ago`);
-      if (s.detailsPending) facts.push(`Importing history · <b>${s.detailsPending}</b> details left`);
-      facts.push(`Extension <b>${esc(s.version)}</b> · only collects while this browser runs`);
-      facts.push("Connect HQ to let the server take over.");
-    } else if (me) {
-      // No server session and no extension here: whatever is arriving comes from another browser.
-      const pushing = me.last_poll_at && Date.now() - new Date(me.last_poll_at) < 5 * 60e3;
-      if (me.token_seen_since) facts.push(`HQ login held for <b>${span((Date.now() - new Date(me.token_seen_since)) / 1000)}</b>`);
-      if (me.last_poll_at) facts.push(`Last data <b>${ago(me.last_poll_at)}</b>`);
-      facts.push(pushing ? "Pushed from another browser · connect HQ to collect server-side." : "Nothing is collecting right now.");
-    } else if (state.sessions.length > 1) {
-      facts.push(`<b>${state.sessions.length}</b> players connected to the server`);
+    const secs = srv && srv.last_ok_at ? (Date.now() - new Date(srv.last_ok_at)) / 1000 : null;
+    let dot = "ok", msg, meta = null;
+    if (srv && srv.has_error) {
+      dot = "bad";
+      msg = "Your Delta Force login has run out, so nothing new is coming in. Reconnecting takes two clicks.";
+    } else if (srv && secs !== null && secs > 30 * 60) {
+      dot = "warn";
+      msg = "Collection has gone quiet. It usually catches up on its own; reconnect if it stays like this.";
+      meta = `Last checked ${ago(srv.last_ok_at)}`;
+    } else if (srv) {
+      msg = "Your matches are collected for you automatically — nothing needs to be running, not even this tab.";
+      meta = srv.last_ok_at ? `Last checked ${ago(srv.last_ok_at)}` : "First check due any moment";
     } else {
-      facts.push(ext.checked ? "Nobody is connected — the board only reads." : "Looking for a session…");
+      dot = s.tokenOk === false ? "bad" : "ok";
+      msg = s.tokenOk === false
+        ? "Your Delta Force login has run out. Sign in to Delta Force again, or connect your account so the collecting happens for you."
+        : "Collected by the add-on in this browser, so only while it is open. Connect your account to have it done for you instead.";
     }
-    out.push(`<div class="facts">${facts.map(f => `<div>${f}</div>`).join("")}</div>`);
 
     const acts = [];
-    acts.push(`<a class="out" href="connect.html">${srv && !srv.has_error ? "Reconnect HQ ›" : "Connect HQ ›"}</a>`);
-    if (s) acts.push(`<button class="go" id="pollnow">Poll now</button>`);
-    acts.push(`<a class="out" href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">${(srv && srv.has_error) || (s && s.tokenOk === false) ? "Log in to HQ ›" : "Open HQ ›"}</a>`);
-    out.push(`<div class="acts">${acts.join("")}</div>`);
-    if (s && s.error) out.push(`<div class="warn">${esc(s.error)}</div>`);
+    if (srv && srv.has_error) acts.push(`<a class="go" href="${connectHref()}">Reconnect</a>`);
+    else if (!srv) acts.push(`<a class="go" href="${connectHref()}">Collect for me</a>`);
+    if (inviteQS) acts.push(`<button id="invite">Invite a mate</button>`);
+    if (s) acts.push(`<button id="pollnow">Check for new matches</button>`);
+    acts.push(`<a href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">Open Delta Force HQ ›</a>`);
+    if (srv && !srv.has_error) acts.push(`<a href="${connectHref()}">Reconnect</a>`);
+    if (own) acts.push(`<button class="bad" id="disc">Stop collecting</button>`);
 
-    el.className = "sess";
-    el.innerHTML = out.join("");
+    el.innerHTML = `<button class="chip" id="acctBtn" aria-expanded="${menuOpen}">
+        <span class="ava">${esc((name || "?").trim().charAt(0))}</span>
+        <span class="nm">${esc(name || "Connected")}</span><i class="dot ${dot}"></i>
+      </button>
+      <div class="menu" id="acctMenu"${menuOpen ? "" : " hidden"}>
+        <div class="hd"><span class="ava">${esc((name || "?").trim().charAt(0))}</span>
+          <div><b>${esc(name || "Your account")}</b>${player && player.level ? `<span>Level ${esc(player.level)}</span>` : ""}</div></div>
+        <p class="msg">${msg}</p>
+        ${meta ? `<div class="meta">${meta}</div>` : ""}
+        <div class="mi">${acts.join("")}</div>
+      </div>`;
+
+    $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; $("#acctMenu").hidden = !menuOpen; };
+
     const poll = $("#pollnow");
     if (poll) poll.onclick = async () => {
-      poll.disabled = true; poll.textContent = "Polling…";
+      poll.disabled = true; poll.textContent = "Checking…";
       await refreshExt("poll-now", null, 90000);
       await load().catch(() => { });
     };
+
+    const inv = $("#invite");
+    if (inv) inv.onclick = async () => {
+      const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html" + inviteQS;
+      try { await navigator.clipboard.writeText(url); inv.textContent = "Link copied"; }
+      catch (e) { inv.textContent = "Copy failed"; prompt("Send them this link:", url); }
+      setTimeout(() => { if ($("#invite")) $("#invite").textContent = "Invite a mate"; }, 1800);
+    };
+
+    // Two clicks, because it throws away the login the server is collecting with.
+    const disc = $("#disc");
+    if (disc) disc.onclick = async () => {
+      if (disc.dataset.armed !== "1") { disc.dataset.armed = "1"; disc.textContent = "Sure? Click again"; return; }
+      disc.disabled = true; disc.textContent = "…";
+      const r = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
+        body: JSON.stringify({ action: "disconnect", openid: mine, control_key: ls(CTL_KEY + "-key") || "" }),
+      }).then(x => x.json()).catch(() => null);
+      if (r && r.ok) { try { localStorage.removeItem(CTL_KEY); localStorage.removeItem(CTL_KEY + "-key"); } catch (e) { /* ignore */ } }
+      menuOpen = false;
+      await load().catch(() => { });
+    };
   }
+
+  // Click anywhere else, or press Escape, and the menu closes — standard behaviour for this corner.
+  document.addEventListener("click", () => {
+    if (!menuOpen) return;
+    menuOpen = false;
+    const m = $("#acctMenu");
+    if (m) m.hidden = true;
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || !menuOpen) return;
+    menuOpen = false;
+    const m = $("#acctMenu");
+    if (m) m.hidden = true;
+  });
 
   // ---------- right column ----------
   function renderIncomeChart(ms, sol) {
@@ -453,7 +510,7 @@
   try { sessionStorage.removeItem("df-reloaded"); } catch (e) { /* ignore */ }
   if (!C || !C.SUPABASE_URL || C.SUPABASE_URL.startsWith("__")) { $("#banner").hidden = false; $("#banner").textContent = "config.js is not filled in."; return; }
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
-  window.addEventListener("df-live-ready", () => { refreshExt().then(renderSession).catch(() => { }); });
+  window.addEventListener("df-live-ready", () => { refreshExt().then(renderAccount).catch(() => { }); });
   load().catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; $("#status").textContent = "error"; });
   setInterval(() => load().catch(() => { $("#status").textContent = "refresh failed"; }), (C.REFRESH_SECONDS || 30) * 1000);
 })();

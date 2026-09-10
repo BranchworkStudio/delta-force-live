@@ -4,10 +4,11 @@
 //   { action: "disconnect", openid, control_key } -> { ok }
 //   { action: "probe" } -> signature self-test
 //
-// There is no shared code on this path on purpose. A hand-over is proved against HQ itself before
-// anything is stored, which is stronger than any secret the page could hold: only the account owner
-// can produce working cookies for their openid. The one thing that still needs a gate is enrolment,
-// so an openid the board has never seen is refused — unless the board is empty and this is the claim.
+// Nobody types anything on this path. A hand-over is proved against HQ itself before anything is
+// stored, which is stronger than any secret the page could hold: only the account owner can produce
+// working cookies for their openid. The one thing that still needs a gate is enrolment, and that
+// travels in the link instead of the player's fingers — `connect.html?i=<invite_code>`. An openid
+// the board already knows needs no invite; an empty board is claimed by its first hand-over.
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { cleanSession, fingerprint, getMyData, getPrivateRoomKey, isAuthError, md5, REPORT_TYPE } from "./hq.ts";
 
@@ -52,9 +53,19 @@ Deno.serve(async (req) => {
 
   // Enrolment gate, checked before we spend an HQ call on an unknown player.
   const { data: existing } = await supabase.from("players").select("openid").eq("openid", openid).maybeSingle();
+  let via: string | null = null;
   if (!existing) {
     const { count } = await supabase.from("players").select("openid", { count: "exact", head: true });
-    if ((count ?? 0) > 0) return json({ error: "this board is not taking new players", reason: "not-enrolled" }, 403);
+    if ((count ?? 0) === 0) {
+      via = "first";                                                   // empty board: the first hand-over claims it
+    } else {
+      const invite = typeof body.invite === "string" ? body.invite.trim().slice(0, 128) : "";
+      const { data: want } = await supabase.from("app_settings").select("value").eq("key", "invite_code").maybeSingle();
+      if (!invite || !want?.value || invite.toLowerCase() !== want.value.toLowerCase()) {
+        return json({ error: "this board needs an invite link", reason: invite ? "bad-invite" : "not-enrolled" }, 403);
+      }
+      via = "invite";
+    }
   }
 
   // Prove the handover works before storing it: one authenticated call, exactly as the poller makes.
@@ -73,8 +84,11 @@ Deno.serve(async (req) => {
   if (existing) {
     await supabase.from("players").update({ nickname, avatar, level, token_ok: true }).eq("openid", openid);
   } else {
-    // First player claims the board. The ingest key is only for the legacy extension path.
-    const { error } = await supabase.from("players").insert({ openid, ingest_key: randomKey(), nickname, avatar, level, token_ok: true });
+    // A new mate joins. The ingest key is only for the legacy extension path.
+    const { error } = await supabase.from("players").insert({
+      openid, ingest_key: randomKey(), nickname, avatar, level, token_ok: true,
+      enrolled_via: via, enrolled_at: new Date().toISOString(),
+    });
     if (error) return json({ error: error.message }, 500);
   }
 
@@ -99,7 +113,13 @@ Deno.serve(async (req) => {
   // @ts-ignore EdgeRuntime is Supabase-specific
   if (typeof EdgeRuntime !== "undefined" && EdgeRuntime.waitUntil) EdgeRuntime.waitUntil(kick); else await kick.catch(() => {});
 
-  return json({ ok: true, openid, nickname, avatar, level, fresh, connected_at: connectedAt, control_key: controlKey });
+  // Anyone already on the board can invite the next mate, so hand the code back for the share link.
+  const { data: inv } = await supabase.from("app_settings").select("value").eq("key", "invite_code").maybeSingle();
+
+  return json({
+    ok: true, openid, nickname, avatar, level, fresh, connected_at: connectedAt,
+    control_key: controlKey, invite: inv?.value ?? null, joined: !existing,
+  });
 });
 
 async function pokePoller(openid: string) {
