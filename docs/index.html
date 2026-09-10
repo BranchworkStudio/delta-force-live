@@ -199,6 +199,13 @@
      a 2px edge — a gradient rather than a border, which would shift the cell by a pixel, or a
      shadow, which this board does not use. The grade is written in the card as well: the colour
      is the fast read, not the only one. */
+  /* One row of the board's standard bar, above the wall it describes: the track is every
+     collectible red in the game and the fill is the share found. Same shape as the map and
+     operator bands, so it reads without a second explanation. */
+  .wallbar { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .wallbar .nm { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--text-2); flex: 0 0 auto; }
+  .wallbar .tr { flex: 1 1 auto; }
+  .wallbar .v { font: 700 13px var(--hud); font-variant-numeric: tabular-nums; color: var(--text); flex: 0 0 auto; }
   #carried .red[data-grade="5"] { background: linear-gradient(to right, var(--amber) 0 2px, transparent 2px); }
   #carried .red[data-grade="6"] { background: linear-gradient(to right, var(--red) 0 2px, transparent 2px); }
   .red img, .red .ph { width: 44px; height: 44px; border: 1px solid var(--div); background: var(--panel); object-fit: contain; display: block; }
@@ -299,14 +306,19 @@
     <div class="mod-label">Carried out this week <span class="note" id="carriedFoot"></span></div>
     <div id="carried"></div>
   </section>
+
+  <section class="band" id="wallBand" hidden>
+    <div class="mod-label">Red collection <span class="note" id="wallFoot"></span></div>
+    <div id="wall"></div>
+  </section>
   <footer>Matches come from each player's own Delta Force account, connected once from the <a href="connect.html" id="connectLink">connect page</a> and then read for you every minute. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=14"></script>
+<script src="config.js?v=15"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 </body>
 </html>

@@ -57,6 +57,9 @@ export const getRedDrops = (s: Session, page = 1, pageSize = 20) =>
 // The week's carry-out tally, and the only place gold items appear: the drop record list above
 // answers with grade 6 alone. Takes no arguments — HQ can only ever ask for the current week.
 export const getWeekCalendar = (s: Session) => call(s, "GetAssetWeekCalendar", {});
+// The career red wall: every red type this account has ever found, with how many of each, plus
+// HQ's own career totals. An empty seasonno asks for all seasons rather than the current one.
+export const getRedCollection = (s: Session) => call(s, "GetDahongCollection", { seasonno: [] });
 
 /** Daily private-room passwords: signed but unauthenticated, so also a signature self-test. */
 export async function getPrivateRoomKey(): Promise<Envelope> {
