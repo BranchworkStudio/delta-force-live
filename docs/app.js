@@ -86,7 +86,21 @@
       restSoft("red_collection?select=openid,item_id,owned_count,is_new&limit=1000"),
       restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count")
     ]);
-    Object.assign(state, { players, matches, members, reds, passwords: pw[0] || null, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum });
+    // Who this board is for. A solo invite puts a player on the tracker rather than in the squad:
+    // their board is themselves alone, and they appear on nobody else's. It is a presentation
+    // boundary and not a privacy one — the API this page reads is public by design, so a solo
+    // player's rows stay readable by anyone who queries it directly, which is what they were told.
+    const mine = ls(CTL_KEY);
+    const meRow = mine ? players.find(p => p.openid === mine) : null;
+    const roster = meRow && meRow.on_squad === false ? [meRow] : players.filter(p => p.on_squad !== false);
+    const here = new Set(roster.map(p => p.openid));
+    const ours = (rows) => Array.isArray(rows) ? rows.filter(r => !r.openid || here.has(r.openid)) : rows;
+
+    Object.assign(state, {
+      players: roster, matches: ours(matches), members: ours(members), reds: ours(reds),
+      passwords: pw[0] || null, latency, sessions: ours(sessions), recent: ours(recent),
+      rank: ours(rank), rankSamples: ours(rankSamples), carried: ours(carried), wall: ours(wall), wallSum: ours(wallSum),
+    });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
@@ -380,6 +394,7 @@
   // who you are, whether your matches are being collected, and the few things you can do about it.
   // No openids, no cookies, no poll intervals — those live in the README.
   let menuOpen = false;
+  let madeLink = null;                                        // the invite link just made, shown until the menu closes
 
   function renderAccount() {
     const el = $("#acct");
@@ -411,9 +426,14 @@
       meta = srv.last_ok_at ? `Last checked ${ago(srv.last_ok_at)}` : "First check due any moment";
     }
 
+    // Two kinds of link, because "come and play with us" and "here, use this for your own stats"
+    // are two different invitations. Only the browser holding this account's control key may make
+    // one, and a solo player can only hand on what they have themselves.
+    const solo = player ? player.on_squad === false : false;
     const acts = [];
     if (srv.has_error) acts.push(`<a class="go" href="${connectHref()}">Reconnect</a>`);
-    if (inviteQS) acts.push(`<button id="invite">Invite a mate</button>`);
+    if (own && !solo) acts.push(`<button id="invSquad">Invite to the squad</button>`);
+    if (own) acts.push(`<button id="invSolo">Invite to the tracker only</button>`);
     acts.push(`<a href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">Open Delta Force HQ ›</a>`);
     if (!srv.has_error) acts.push(`<a href="${connectHref()}">Reconnect</a>`);
     if (own) acts.push(`<button class="bad" id="disc">Stop collecting</button>`);
@@ -428,17 +448,40 @@
         <p class="msg">${msg}</p>
         ${meta ? `<div class="meta">${meta}</div>` : ""}
         <div class="mi">${acts.join("")}</div>
+        ${madeLink ? `<div class="lk"><b>${madeLink.kind === "solo" ? "Tracker link" : "Squad link"}</b>
+          <input readonly value="${esc(madeLink.url)}">
+          <span>${madeLink.kind === "solo"
+            ? "They get the tracker for their own stats, and stay off this board."
+            : "They join the board and show up in the roster with everyone else."}</span></div>` : ""}
       </div>`;
 
-    $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; $("#acctMenu").hidden = !menuOpen; };
+    $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; if (!menuOpen) { madeLink = null; renderAccount(); } else $("#acctMenu").hidden = false; };
 
-    const inv = $("#invite");
-    if (inv) inv.onclick = async () => {
-      const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html" + inviteQS;
-      try { await navigator.clipboard.writeText(url); inv.textContent = "Link copied"; }
-      catch (e) { inv.textContent = "Copy failed"; prompt("Send them this link:", url); }
-      setTimeout(() => { if ($("#invite")) $("#invite").textContent = "Invite a mate"; }, 1800);
+    // A fresh link every time, so one can be withdrawn later without cutting off everyone else.
+    // It is shown as well as copied: the clipboard is invisible, and a link you can read is a link
+    // you can check before you send it.
+    const mint = (btn, kind, label) => {
+      if (!btn) return;
+      btn.onclick = async (e) => {
+        e.stopPropagation();
+        btn.disabled = true; btn.textContent = "Making a link…";
+        const r = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
+          body: JSON.stringify({ action: "invite", openid: mine, control_key: ls(CTL_KEY + "-key") || "", kind }),
+        }).then(x => x.json()).catch(() => null);
+        if (!r || !r.ok || !r.code) { btn.disabled = false; btn.textContent = "Could not make a link"; setTimeout(() => { if (btn.isConnected) btn.textContent = label; }, 2200); return; }
+        const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?i=" + encodeURIComponent(r.code);
+        madeLink = { kind: r.kind || kind, url };
+        try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
+        renderAccount();
+        const f = $("#acctMenu input"); if (f) f.select();
+      };
     };
+    mint($("#invSquad"), "squad", "Invite to the squad");
+    mint($("#invSolo"), "solo", "Invite to the tracker only");
+    const fld = $("#acctMenu input");
+    if (fld) fld.onclick = (e) => { e.stopPropagation(); fld.select(); };
 
     // Two clicks, because it throws away the login the server is collecting with.
     const disc = $("#disc");
@@ -459,13 +502,13 @@
   // Click anywhere else, or press Escape, and the menu closes — standard behaviour for this corner.
   document.addEventListener("click", () => {
     if (!menuOpen) return;
-    menuOpen = false;
+    menuOpen = false; madeLink = null;
     const m = $("#acctMenu");
     if (m) m.hidden = true;
   });
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || !menuOpen) return;
-    menuOpen = false;
+    menuOpen = false; madeLink = null;
     const m = $("#acctMenu");
     if (m) m.hidden = true;
   });

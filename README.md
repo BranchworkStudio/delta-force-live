@@ -49,26 +49,43 @@ accepts. That is stronger than a secret the page would have to hold.
 travels in the link instead of anyone's fingers. Share the invite URL:
 
 ```
-https://branchworkstudio.github.io/delta-force-live/connect.html?i=<invite_code>
+https://branchworkstudio.github.io/delta-force-live/connect.html?i=<code>
 ```
 
-They click it, do the same three steps, and they are on the board — their own player,
-their own session, polled by the same job. The invite survives the hand-over for free:
-the bookmarklet returns to `location.href` minus the fragment, so the `?i=` rides along.
-The connect page also remembers it (`df-invite`), so a later reconnect works from a bare
-URL. An openid the board already knows never needs an invite; a stranger without one is
-refused (`reason: "not-enrolled"`, or `"bad-invite"` if it has been rotated); and an empty
-board is claimed by its first hand-over.
+They click it, do the same three steps, and they are collected — their own player, their
+own session, polled by the same job. The invite survives the hand-over for free: the
+bookmarklet returns to `location.href` minus the fragment, so the `?i=` rides along. The
+connect page also remembers it (`df-invite`), so a later reconnect works from a bare URL.
+An openid the board already knows never needs an invite; a stranger without one is
+refused (`reason: "not-enrolled"`, or `"bad-invite"` if the code is unknown or withdrawn);
+and an empty board is claimed by its first hand-over.
 
-Anyone already on the board can pass the link on: the account control in the top-right
-corner of the board has an **Invite a mate** item that copies the link to the clipboard.
-Rotate the code whenever you want:
+Links are made on the site, not in SQL: the account control in the top-right corner offers
+**Invite to the squad** and **Invite to the tracker only**, and either one mints a fresh
+row in `invites` and copies the URL. The two kinds differ in one thing:
+
+| Kind | What the mate gets |
+|---|---|
+| `squad` | joins the board and appears in the roster with everyone else |
+| `solo` | polled the same way, but the board shows them themselves alone, and they show up on nobody else's |
+
+The solo boundary is presentational, and deliberately so: the read API this site runs on
+is public by design, so a solo player's rows stay readable by anyone querying it directly.
+It keeps them off the shared board; it does not hide them, and a solo invite says as much
+before it is sent.
+
+Only the browser holding an account's `control_key` can mint a link — the same key that
+may stop collection — and a solo player can only pass on another solo link. Every row
+records who made it, what it was for, and how often it has been used, so one link can be
+withdrawn without touching the rest:
 
 ```sql
-update app_settings set value = encode(extensions.gen_random_bytes(9),'hex') where key = 'invite_code';
+select code, kind, uses, last_used_at from invites where revoked_at is null;
+update invites set revoked_at = now() where code = '<code>';
 ```
 
-`players.enrolled_via` / `enrolled_at` record how and when each account got in.
+`players.enrolled_via` holds the code that let each account in (`first` for the account
+that claimed the empty board), and `players.on_squad` says which board they belong on.
 
 Why a bookmark and not a redirect: HQ has no way to log you in *for* us. Their API
 answers only their own origin (a preflight from ours gets `405` with no CORS headers),
@@ -139,18 +156,18 @@ one page per minute, so the site has something to show right away.
 ## Backend
 
 Supabase project **Delta Force Live** (Branchwork Studio org, eu-central-1).
-`app_settings` is service-role only and holds two secrets: `poll_secret` (between
-`pg_cron` and the `poll` function) and `invite_code` (the link mates join with).
-To rotate either:
+`app_settings` is service-role only and holds `poll_secret`, the shared secret between
+`pg_cron` and the `poll` function. To rotate it:
 
 ```sql
 update app_settings set value = encode(extensions.gen_random_bytes(24),'hex') where key = 'poll_secret';
-update app_settings set value = encode(extensions.gen_random_bytes(9),'hex')  where key = 'invite_code';
 ```
 
-Enrolment on the connect path uses `invite_code` in the same table — see **Inviting
-mates** above. It is a capability, not a password: it lets someone add *their own*
-proven HQ session to the board and nothing else.
+`invites` is service-role only for the same reason — a code is a secret, so there is no
+grant to `anon` and only the `connect` function ever reads it. An invite is a capability
+and not a password: it lets someone add *their own* proven HQ session and nothing else.
+The code that used to live in `app_settings.invite_code` is now a `squad` row in `invites`
+so no link already in circulation broke; see **Inviting mates** above.
 
 ## Notes on the data source
 
