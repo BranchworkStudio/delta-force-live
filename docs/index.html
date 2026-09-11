@@ -158,6 +158,19 @@
   .legend i { display: inline-block; width: 9px; height: 9px; margin-right: 6px; vertical-align: 0; }
   .mod-label { font: 700 13px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--text-2); margin-bottom: 12px; }
   .empty { font-size: 13px; color: var(--muted); }
+  .empty .gatelink { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(29, 224, 140, .45); }
+  .empty .gatelink:hover { border-bottom-color: var(--green); }
+
+  /* ---- the private-board gate: what a visitor without a session sees instead of an empty board ---- */
+  .gate { padding: 64px 32px 72px; border-bottom: 1px solid var(--hair); text-align: center; }
+  .gate h2 { font: 700 22px var(--hud); letter-spacing: 2px; text-transform: uppercase; margin: 0 0 14px; color: var(--text); }
+  .gate p { max-width: 560px; margin: 0 auto 8px; font-size: 14px; line-height: 1.6; color: var(--text-2); }
+  .gate p.fine { font-size: 12px; color: var(--muted); }
+  .gate .go { display: inline-block; margin-top: 22px; padding: 11px 22px; background: var(--green); color: var(--on-green);
+              font: 700 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; text-decoration: none; }
+  .gate .go:hover { filter: brightness(1.08); }
+  body.gated .statrow, body.gated .roster, body.gated .band, body.gated .cols, body.gated .nudge,
+  body.gated .modes, body.gated .ranges, body.gated .acct-div, body.gated .status { display: none; }
 
   /* ---- body ---- */
   .cols { display: grid; grid-template-columns: 1.2fr .8fr; }
@@ -309,6 +322,7 @@
     </div>
   </header>
   <div id="banner" class="banner" hidden></div>
+  <section class="gate" id="gate" hidden></section>
   <section class="nudge" id="nudge" hidden></section>
   <section class="roster" id="roster"></section>
   <section class="band" id="mapsBand"></section>
@@ -346,10 +360,10 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=18"></script>
+<script src="config.js?v=19"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=18"></script>
+<script src="app.js?v=19"></script>
 </body>
 </html>

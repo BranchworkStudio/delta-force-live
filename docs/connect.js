@@ -59,12 +59,6 @@
     let j = {}; try { j = await res.json(); } catch (e) { /* empty body */ }
     return { httpOk: res.ok, status: res.status, ...j };
   }
-  async function rest(path) {
-    const res = await fetch(C.SUPABASE_URL + "/rest/v1/" + path, { headers: { apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY } });
-    if (!res.ok) throw new Error("REST " + res.status);
-    return res.json();
-  }
-
   // ---------- steps ----------
   function stepList() {
     return [{
@@ -193,17 +187,12 @@
         finish({ openid: v.openid, nickname: v.nickname, fresh: true, connected_at: new Date(v.at).toISOString() });
       } catch (x) { /* ignore */ }
     });
-    // Fallback for browsers that hand the bookmark to a different tab group: watch the public view.
-    setInterval(async () => {
-      if (S.phase !== "steps" || !S.bm) return;
-      try {
-        const rows = await rest("public_sessions?select=openid,connected_at,updated_at");
-        const hit = rows.find((r) => new Date(r.updated_at).getTime() > S.since);
-        if (!hit) return;
-        const players = await rest("public_players?select=openid,nickname,level&openid=eq." + encodeURIComponent(hit.openid)).catch(() => []);
-        finish({ openid: hit.openid, nickname: (players[0] || {}).nickname, level: (players[0] || {}).level, fresh: true, connected_at: hit.connected_at });
-      } catch (x) { /* offline, keep waiting */ }
-    }, 6000);
+    // There used to be a fallback here that polled `public_sessions` for any session that had
+    // appeared since this page opened, for browsers that hand the bookmark to a different tab
+    // group. Boards are private now: the publishable key reads nothing, and a visitor who has not
+    // connected yet has no session to read with — so that poll could only ever 401. The two paths
+    // that matter both still work: the tab the bookmark returns to finishes the hand-over itself,
+    // and any other tab of the same browser hears it on the `storage` event above.
   }
 
   // ---------- boot ----------
