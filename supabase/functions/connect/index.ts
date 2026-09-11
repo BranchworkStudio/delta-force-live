@@ -1,7 +1,7 @@
 // Delta Force Live: takes an HQ session handed over from the site's connect flow.
 // The bookmarklet reads the HQ page's own cookies and navigates to /connect.html#..., which POSTs here.
 //   { cookies: { openid, token, ... } } -> { ok, openid, nickname, avatar, level, fresh, connected_at, control_key }
-//   { action: "invite", openid, control_key, kind } -> { ok, code, kind }
+//   { action: "invite", openid, control_key, kind, group_id } -> { ok, kind, code, group }
 //   { action: "session", openid, control_key } -> { ok, session }
 //   { action: "disconnect", openid, control_key } -> { ok }
 //   { action: "probe" } -> signature self-test
@@ -12,9 +12,10 @@
 // travels in the link instead of the player's fingers — `connect.html?i=<code>`. An openid the
 // board already knows needs no invite; an empty board is claimed by its first hand-over.
 //
-// An invite is a row in `invites` rather than one shared secret, so it carries what it was for:
-// a squad link puts the mate on the board, a solo link gives them the tracker for their own stats
-// and leaves them off it.
+// Two shapes of code open the door, and both are looked up by equality against the column that
+// holds them. A group's own six-character code (`?g=7559SW`) puts the mate on that group's board —
+// one code per group, short enough to read down the phone, rotatable if it ever gets out. A long
+// hex row in `invites` (`?i=...`) is the tracker on its own: no group, their stats, their board.
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { cleanSession, fingerprint, getMyData, getPrivateRoomKey, isAuthError, md5, REPORT_TYPE } from "./hq.ts";
 
@@ -75,7 +76,23 @@ Deno.serve(async (req) => {
     const { data: row } = await supabase.from("player_sessions").select("openid").eq("openid", openid).eq("control_key", key).maybeSingle();
     if (!row) return json({ error: "not the browser that connected this session" }, 403);
     const { data: who } = await supabase.from("players").select("nickname, on_squad").eq("openid", openid).maybeSingle();
-    if (kind === "squad" && who?.on_squad === false) return json({ error: "a solo tracker cannot invite anyone to the squad" }, 403);
+
+    // A link into a group is that group's code: there is one, everybody in the group hands out the
+    // same one, and it can be read aloud. Only somebody already in the group can pass it on.
+    if (kind === "squad") {
+      const gid = typeof body.group_id === "string" ? body.group_id.slice(0, 64) : "";
+      const q = supabase.from("group_members").select("group_id").eq("openid", openid);
+      const { data: mem } = gid
+        ? await q.eq("group_id", gid).maybeSingle()
+        : await q.order("joined_at", { ascending: true }).limit(1).maybeSingle();
+      if (!mem) return json({ error: "you are not in that group" }, 403);
+      const { data: g } = await supabase.from("groups").select("id, name, code").eq("id", mem.group_id).maybeSingle();
+      if (!g) return json({ error: "no such group" }, 404);
+      // `code` as well as `group`, so a page still running yesterday's script builds a link that
+      // works: the gate below takes either shape of code from either parameter.
+      return json({ ok: true, kind, code: g.code, group: { id: g.id, name: g.name, code: g.code } });
+    }
+
     const code = randomCode();
     const { error } = await supabase.from("invites").insert({
       code, kind, created_by: openid, label: `${kind} link from ${who?.nickname ?? openid.slice(0, 6)}`,
@@ -101,28 +118,19 @@ Deno.serve(async (req) => {
 
   // Enrolment gate, checked before we spend an HQ call on an unknown player.
   const { data: existing } = await supabase.from("players").select("openid, on_squad").eq("openid", openid).maybeSingle();
+  const join = await resolveCode(typeof body.group === "string" ? body.group : typeof body.invite === "string" ? body.invite : "");
   let via: string | null = null;
   let onSquad = existing ? existing.on_squad !== false : true;
   if (!existing) {
     const { count } = await supabase.from("players").select("openid", { count: "exact", head: true });
     if ((count ?? 0) === 0) {
       via = "first";                                                   // empty board: the first hand-over claims it
+    } else if (join) {
+      via = join.via;                                                  // what the join traces back to
+      onSquad = !join.solo;
     } else {
-      // Codes are lowercase hex both when we make them and when Postgres made the original, so the
-      // link can be matched case-insensitively with a plain equality on the lowercased input. Never
-      // a pattern match: `ilike` on anything a caller sends would let `%` match every row.
-      const invite = typeof body.invite === "string" ? body.invite.trim().slice(0, 128).toLowerCase() : "";
-      const link = invite
-        ? (await supabase.from("invites").select("code, kind, revoked_at, uses").eq("code", invite).maybeSingle()).data
-        : null;
-      if (!link || link.revoked_at) {
-        return json({ error: "this board needs an invite link", reason: invite ? "bad-invite" : "not-enrolled" }, 403);
-      }
-      via = link.code;                                                 // the code itself, so a join traces back to its link
-      onSquad = link.kind !== "solo";
-      await supabase.from("invites")
-        .update({ uses: (link.uses ?? 0) + 1, last_used_at: new Date().toISOString() })
-        .eq("code", link.code);
+      const had = typeof body.group === "string" ? body.group : typeof body.invite === "string" ? body.invite : "";
+      return json({ error: "this board needs an invite link", reason: had ? "bad-invite" : "not-enrolled" }, 403);
     }
   }
 
@@ -148,6 +156,13 @@ Deno.serve(async (req) => {
       enrolled_via: via, enrolled_at: new Date().toISOString(),
     });
     if (error) return json({ error: error.message }, 500);
+  }
+
+  // The link decides which board they land on, and this runs for players already here too: opening a
+  // second group's link is how somebody ends up on more than one board.
+  if (join?.group) {
+    await supabase.from("group_members")
+      .upsert({ group_id: join.group, openid }, { onConflict: "group_id,openid", ignoreDuplicates: true });
   }
 
   const fp = await fingerprint(session.token);
@@ -181,6 +196,28 @@ Deno.serve(async (req) => {
     control_key: controlKey, joined: !existing, on_squad: onSquad, session: authSession,
   });
 });
+
+/**
+ * What a code in the link entitles the bearer to, or null if it entitles them to nothing.
+ *
+ * Both shapes are matched by equality against the column that stores them — never a pattern match,
+ * because `like` on a string a caller sends would let `%` match every row in the table. Group codes
+ * are upper-case and invite codes are lower-case hex, so either can be typed in any case.
+ */
+async function resolveCode(raw: string) {
+  const code = (raw || "").trim().slice(0, 128);
+  if (!code) return null;
+
+  const { data: g } = await supabase.from("groups").select("id, code").eq("code", code.toUpperCase()).maybeSingle();
+  if (g) return { group: g.id as string, via: "group:" + g.code, solo: false };
+
+  const { data: l } = await supabase.from("invites").select("code, kind, group_id, revoked_at, uses").eq("code", code.toLowerCase()).maybeSingle();
+  if (!l || l.revoked_at) return null;
+  await supabase.from("invites")
+    .update({ uses: (l.uses ?? 0) + 1, last_used_at: new Date().toISOString() })
+    .eq("code", l.code);
+  return { group: (l.group_id as string | null) ?? null, via: l.code as string, solo: l.kind === "solo" };
+}
 
 /**
  * A real Supabase session for the openid HQ has just vouched for.

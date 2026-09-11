@@ -45,39 +45,52 @@ There is no code to type on this path, on purpose: a hand-over is proved against
 itself before anything is stored, and only the account owner can produce cookies HQ
 accepts. That is stronger than a secret the page would have to hold.
 
-**Inviting mates.** The only thing a secret was really needed for is enrolment, so that
-travels in the link instead of anyone's fingers. Share the invite URL:
+**Boards, and inviting mates.** The only thing a secret was really needed for is enrolment,
+so that travels in the link instead of anyone's fingers. Share the board's URL:
 
 ```
-https://branchworkstudio.github.io/delta-force-live/connect.html?i=<code>
+https://branchworkstudio.github.io/delta-force-live/connect.html?g=<code>
 ```
 
 They click it, do the same three steps, and they are collected — their own player, their
-own session, polled by the same job. The invite survives the hand-over for free: the
-bookmarklet returns to `location.href` minus the fragment, so the `?i=` rides along. The
-connect page also remembers it (`df-invite`), so a later reconnect works from a bare URL.
-An openid the board already knows never needs an invite; a stranger without one is
-refused (`reason: "not-enrolled"`, or `"bad-invite"` if the code is unknown or withdrawn);
-and an empty board is claimed by its first hand-over.
+own session, polled by the same job — and they land in the board the code belongs to. The
+code survives the hand-over for free: the bookmarklet returns to `location.href` minus the
+fragment, so the `?g=` rides along. The connect page also remembers it (`df-invite`), so a
+later reconnect works from a bare URL. An openid the board already knows never needs a
+code; a stranger without one is refused (`reason: "not-enrolled"`, or `"bad-invite"` if the
+code is unknown or withdrawn); and an empty board is claimed by its first hand-over.
 
-Links are made on the site, not in SQL: the account control in the top-right corner offers
-**Invite to the squad** and **Invite to the tracker only**, and either one mints a fresh
-row in `invites` and copies the URL. The two kinds differ in one thing:
+A **board** is a group, and the group's code *is* the invitation — six characters from an
+alphabet with no O/0 and no I/1, because these get read down a phone. One account can be on
+several: the account control lists them under **BOARDS**, switching is one click, and
+**Just me** is always there. New boards are made from the same menu (*New board*), joined
+with *Join with a code*, and left with *Leave this board*; the last member out takes the
+group with them. Nothing here goes through SQL.
 
-| Kind | What the mate gets |
-|---|---|
-| `squad` | joins the board and appears in the roster with everyone else |
-| `solo` | polled the same way, but the board shows them themselves alone, and they show up on nobody else's |
+Codes are not fished for. `groups` is unreadable to the public key, and a member reads only
+their own row:
 
-The solo boundary is presentational, and deliberately so: the read API this site runs on
-is public by design, so a solo player's rows stay readable by anyone querying it directly.
-It keeps them off the shared board; it does not hide them, and a solo invite says as much
-before it is sent.
+```sql
+create policy groups_readable_by_members on public.groups for select to authenticated
+  using (exists (select 1 from public.group_members m
+                 where m.group_id = groups.id and m.openid = public.my_openid()));
+```
 
-Only the browser holding an account's `control_key` can mint a link — the same key that
-may stop collection — and a solo player can only pass on another solo link. Every row
-records who made it, what it was for, and how often it has been used, so one link can be
-withdrawn without touching the rest:
+so the site can print the code next to the link without a round trip, and a stranger
+querying the API directly gets nothing. `public_groups` publishes names and member counts
+and never a code. A code is matched with `=`, never `like` — a pattern would match every
+row at once.
+
+The old per-link `invites` rows still work and are still what *Invite to the tracker only*
+mints: `solo` is a link that collects a mate's matches without putting them on anybody's
+board, and says as much before it is sent. That boundary is presentational, deliberately so:
+the read API this site runs on is public by design, so a solo player's rows stay readable by
+anyone querying it directly. It keeps them off the shared board; it does not hide them.
+
+Only the browser holding an account's `control_key` can mint a link — the same key that may
+stop collection — and a solo player can only pass on another solo link. Every row records
+who made it, what it was for, and how often it has been used, so one link can be withdrawn
+without touching the rest:
 
 ```sql
 select code, kind, uses, last_used_at from invites where revoked_at is null;
@@ -85,7 +98,9 @@ update invites set revoked_at = now() where code = '<code>';
 ```
 
 `players.enrolled_via` holds the code that let each account in (`first` for the account
-that claimed the empty board), and `players.on_squad` says which board they belong on.
+that claimed the empty board), and `group_members` says which boards they are on.
+`players.on_squad` is what the board fell back to before groups existed, and still does for
+an account that is in no group at all.
 
 Why a bookmark and not a redirect: HQ has no way to log you in *for* us. Their API
 answers only their own origin (a preflight from ours gets `405` with no CORS headers),
@@ -108,6 +123,34 @@ storing anything, so "Connected" always means the backend can actually read your
 Failure modes are named in the flow, not in this file: not logged in on HQ, bookmark
 clicked on the wrong site, a token the HQ page keeps to itself, an openid this board
 does not track.
+
+### The session the hand-over mints
+
+A verified hand-over is also a login — the only one this site has. Once `connect` has
+proved the cookies against HQ, it mints a real Supabase session for that openid and hands
+it back with the rest of the answer: `admin.createUser` for a first-timer (address
+`<openid>@openid.deltaforce.local`, no password anywhere, `app_metadata.openid` set),
+`admin.generateLink` for a magic link that is never mailed, and one `POST /auth/v1/verify`
+to turn it into `{access_token, refresh_token}`. The browser keeps it as `df-session` and
+the board sends it as the bearer; a browser that never connected sends the public key
+instead, and a session the server refuses is dropped and the read retried with that key,
+so the board never goes blank because of auth.
+
+An account that connected before all this does not have to hand over again: `connect`
+answers `{action: "session", openid, control_key}` with a freshly minted session, because
+`control_key` already carries the same authority — it can stop collection and mint links.
+
+The claim that matters is `app_metadata.openid`, read back in SQL as
+
+```sql
+create function public.my_openid() returns text language sql stable as
+  $$ select nullif(auth.jwt() -> 'app_metadata' ->> 'openid', '') $$;
+```
+
+— no table lookup, so it can be used inside a policy on any table without recursion. This
+is *not* a Level Infinite login on our domain: no LI password is ever seen, typed or
+stored, and none ever will be. It is our own session, issued on the strength of a hand-over
+HQ itself validated.
 
 ### The server-side poller
 
@@ -135,10 +178,15 @@ select net.http_post(
 The board's account control — the chip in the top-right corner, where a website would
 put "logged in" — is where all of this surfaces, in plain language rather than in
 plumbing: your nickname, a status dot, and "Your matches are collected for you
-automatically — nothing needs to be running, not even this tab." Its menu holds *Invite
-a mate*, *Open Delta Force HQ*, *Reconnect*, and — only in the browser that handed the
-session over — a two-click *Stop collecting*. With nothing connected the chip is
-replaced by a green **Connect** button.
+automatically — nothing needs to be running, not even this tab." Its menu holds the
+**BOARDS** list (every group you are on, plus *Just me*, plus *New board* / *Join with a
+code* / *Leave this board*), *Invite a mate*, *Open Delta Force HQ*, *Reconnect*, and —
+only in the browser that handed the session over — a two-click *Stop collecting*. With
+nothing connected the chip is replaced by a green **Connect** button.
+
+An invite made while a board is selected is that board's own link and code, printed
+together so either can be passed on; it needs no request, because the code came down with
+the page.
 
 The first hour also imports your recent history (about 300 matches per mode),
 one page per minute, so the site has something to show right away.
@@ -151,7 +199,7 @@ one page per minute, so the site has something to show right away.
 | `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it (`hq.ts` signs requests the way the HQ page itself does) |
 | `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute |
 | `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
-| `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()` |
+| `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()`. Which board is shown lives in `state.group`, persisted as `df-group` |
 
 ## Backend
 
@@ -167,7 +215,21 @@ update app_settings set value = encode(extensions.gen_random_bytes(24),'hex') wh
 grant to `anon` and only the `connect` function ever reads it. An invite is a capability
 and not a password: it lets someone add *their own* proven HQ session and nothing else.
 The code that used to live in `app_settings.invite_code` is now a `squad` row in `invites`
-so no link already in circulation broke; see **Inviting mates** above.
+so no link already in circulation broke; see **Boards, and inviting mates** above.
+
+`groups` holds the boards and their codes and is unreadable to the public key; a member
+reads their own row through `groups_readable_by_members`. `group_members` is world-readable
+— the board it describes is already public — but nothing writes to either table directly:
+`create_group`, `join_group_by_code` and `leave_group` are `security definer`, granted to
+`authenticated` only, and each of them decides who you are from `my_openid()` rather than
+from anything the caller passes. `public_groups` is the anonymous view: names and member
+counts, no codes.
+
+The read boundary is still the public key, which is the last thing left to change: every
+player-keyed table is readable by anyone holding it, so a board is private in presentation
+and not yet in the database. Now that hand-overs mint real sessions, those policies can be
+rewritten onto `my_openid()` and the anonymous grants withdrawn — one way, so it waits
+until every tracked account has connected at least once since sessions shipped.
 
 ## Notes on the data source
 
