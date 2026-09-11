@@ -130,6 +130,9 @@
       keepSession(null);
       return rest(path);
     }
+    // The public key may read nothing at all now — every board is private. That is a locked door,
+    // not a failure: answer empty and let the page say so once, instead of a banner per request.
+    if ((res.status === 401 || res.status === 403) && token === C.SUPABASE_ANON_KEY) return [];
     if (!res.ok) throw new Error("REST " + res.status + " on " + path);
     return res.json();
   }
@@ -180,9 +183,9 @@
     ]);
     // Which board this is. A group is a set of mates who share one; a player in no group has a
     // board of themselves alone, which is what a tracker-only link gives them. It is still a
-    // presentation boundary and not a privacy one — the API this page reads answers the public key,
-    // so these rows stay readable by anyone who queries it directly. The step that closes that is
-    // the next one, and it needs the session above to exist first.
+    // presentation boundary and not a privacy one, but the database boundary agrees with it now:
+    // every policy asks shares_group(openid), so what arrives here is already only the players this
+    // session may see. A tracker-only player is still filtered out of the shared board here.
     const mine = ls(CTL_KEY) || (session && session.openid) || null;
     const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
     state.group = pickGroup(groups, myIds, mine);
@@ -255,7 +258,9 @@
       // A visitor who is on no board sees the oldest group, which is the board this site was
       // before there was more than one.
       : (groups[0] && groups[0].id) || "solo";
-    try { localStorage.setItem(GROUP_KEY, pick); } catch (e) { /* private window */ }
+    // Only a signed-in browser has a board worth remembering: a locked-out visitor would otherwise
+    // store "solo" and land there the moment they connect, instead of on the board they were invited to.
+    if (mine) { try { localStorage.setItem(GROUP_KEY, pick); } catch (e) { /* private window */ } }
     return pick;
   }
   const groupName = (id) => (state.groups.find(g => g.id === id) || {}).name || null;
@@ -328,8 +333,24 @@
   const sq = (color) => `<span style="display:inline-block;width:8px;height:8px;background:${color};margin-right:6px;vertical-align:0"></span>`;
 
   // ---------- render ----------
+  // A visitor with no session reads nothing at all now (every policy asks shares_group()), so an
+  // empty board is a locked door rather than a broken page, and it should say so instead of
+  // drawing a hero full of dashes.
+  function renderGate() {
+    const shut = !state.players.length && !live(session);
+    document.body.classList.toggle("gated", shut);
+    const el = $("#gate");
+    el.hidden = !shut;
+    if (!shut) return;
+    el.innerHTML = `<h2>This board is private</h2>
+      <p>Its matches are visible to the players who share it. If you were sent here with a board's link, connect your own Delta Force HQ account and you land on it.</p>
+      <p class="fine">Three steps, nothing to type, and your Level Infinite password never comes near this site.</p>
+      <a class="go" href="${connectHref()}">Connect account</a>`;
+  }
+
   function render() {
     const ms = scoped(state.matches), sol = state.mode === 1;
+    renderGate();
     state.players.forEach(p => colorFor(p.openid));   // colours follow the player, assigned on first sight
     renderHero(ms, sol);
     renderAccount();
@@ -380,7 +401,16 @@
   // The roster doubles as the scope picker: click a player to make the whole board theirs.
   function renderRoster(ms, sol) {
     const el = $("#roster");
-    if (!state.players.length) { el.style.setProperty("--n", 1); el.innerHTML = `<div class="pl on"><div class="body"><div class="empty">No players yet. Connect an account to start collecting.</div></div></div>`; return; }
+    if (!state.players.length) {
+      // Reads answer 200 with no rows when nobody is signed in, so an empty board means one of two
+      // different things: this browser has no account yet, or it has one and shares no board with anyone.
+      el.style.setProperty("--n", 1);
+      const gate = live(session)
+        ? "Nobody on this board yet. Invite a mate with the board's code."
+        : `This board is private. <a class="gatelink" href="${connectHref()}">Connect your HQ account</a> to see it.`;
+      el.innerHTML = `<div class="pl on"><div class="body"><div class="empty">${gate}</div></div></div>`;
+      return;
+    }
     const cards = state.players.map(p => {
       const pm = ms.filter(m => m.openid === p.openid), w = pm.filter(isWin).length, net = sum(pm, m => m.net_income), score = sum(pm, m => m.score);
       const [stc, stt] = liveState(p);
@@ -546,9 +576,13 @@
   function renderAccount() {
     const el = $("#acct");
     if (!el) return;
-    const me = state.focus === "all" ? null : state.players.find(p => p.openid === state.focus);
+    const mine = ls(CTL_KEY) || (session && session.openid) || null;   // the account this browser connected itself
+    // In "All squad" there is no focused player to speak for, so the chip speaks for this browser's
+    // own account. It carries the boards list and the invite, which must not disappear on a tab click.
+    const me = state.focus === "all"
+      ? (mine ? state.players.find(p => p.openid === mine) : null)
+      : state.players.find(p => p.openid === state.focus);
     const srv = me ? state.sessions.find(x => x.openid === me.openid) : state.sessions.length === 1 ? state.sessions[0] : null;
-    const mine = ls(CTL_KEY);                                   // the account this browser connected itself
     const own = srv ? srv.openid === mine : false;
     const player = srv ? state.players.find(p => p.openid === srv.openid) : me;
     const name = player ? playerName(player.openid) : null;

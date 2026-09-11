@@ -25,7 +25,8 @@ Your HQ login on playdeltaforce.com
   tab left open.
 * Your Level Infinite password is never involved. What moves is the HQ session
   cookie — the same thing the HQ page itself uses.
-* Anyone with the site link can read the squad's matches. Nothing else is exposed.
+* A board is private: you see your own matches, and the matches of the people you
+  share a board with. The site link alone shows a locked page.
 * Every row records `first_seen_at`, so the site can show how far behind the
   official API actually is ("API latency" tile).
 
@@ -83,9 +84,10 @@ row at once.
 
 The old per-link `invites` rows still work and are still what *Invite to the tracker only*
 mints: `solo` is a link that collects a mate's matches without putting them on anybody's
-board, and says as much before it is sent. That boundary is presentational, deliberately so:
-the read API this site runs on is public by design, so a solo player's rows stay readable by
-anyone querying it directly. It keeps them off the shared board; it does not hide them.
+board. Until boards became a database boundary that was a presentational promise only — the
+read API answered the publishable key, so a solo player's rows stayed readable by anyone who
+queried it directly. That hole is closed: a player on no board matches nobody but themselves,
+so *solo* now means what it looked like it meant.
 
 Only the browser holding an account's `control_key` can mint a link — the same key that may
 stop collection — and a solo player can only pass on another solo link. Every row records
@@ -132,9 +134,11 @@ it back with the rest of the answer: `admin.createUser` for a first-timer (addre
 `<openid>@openid.deltaforce.local`, no password anywhere, `app_metadata.openid` set),
 `admin.generateLink` for a magic link that is never mailed, and one `POST /auth/v1/verify`
 to turn it into `{access_token, refresh_token}`. The browser keeps it as `df-session` and
-the board sends it as the bearer; a browser that never connected sends the public key
-instead, and a session the server refuses is dropped and the read retried with that key,
-so the board never goes blank because of auth.
+the board sends it as the bearer. The session is now the only thing that reads anything: a
+browser without one falls back to the publishable key, which the database answers with a
+locked door, and the site draws **This board is private** with the way in. A session the
+server refuses is dropped and the read retried the same way, so a stale token ends in that
+page rather than in an error.
 
 An account that connected before all this does not have to hand over again: `connect`
 answers `{action: "session", openid, control_key}` with a freshly minted session, because
@@ -225,11 +229,34 @@ reads their own row through `groups_readable_by_members`. `group_members` is wor
 from anything the caller passes. `public_groups` is the anonymous view: names and member
 counts, no codes.
 
-The read boundary is still the public key, which is the last thing left to change: every
-player-keyed table is readable by anyone holding it, so a board is private in presentation
-and not yet in the database. Now that hand-overs mint real sessions, those policies can be
-rewritten onto `my_openid()` and the anonymous grants withdrawn — one way, so it waits
-until every tracked account has connected at least once since sessions shipped.
+**The read boundary is the board itself** (migrations 0019-0021). Every player-keyed table
+answers one question:
+
+```sql
+create function public.shares_group(p_openid text) returns boolean ... as $$
+  select public.my_openid() is not null and (
+    p_openid = public.my_openid()
+    or exists (select 1 from public.group_members a
+               join public.group_members b on b.group_id = a.group_id
+               where a.openid = public.my_openid() and b.openid = p_openid))
+$$;
+```
+
+— yourself always, and anyone on a board with you. It is `security definer` so a policy on
+`group_members` can ask it without querying the table it guards and recursing.
+
+The publishable key now reads **nothing at all**: its `select` grants are gone, along with
+every policy that named `anon`. That is deliberate belt-and-braces — the policies alone would
+already return no rows, but with no grant a future table cannot be published by one careless
+`using (true)`. The site treats a 401 on that key as "locked" and shows the private-board
+page rather than a half-drawn board.
+
+The trap to remember: the public views are `security_invoker = false`, which **bypasses** the
+RLS on the tables underneath, so each one repeats the predicate itself. A view added later
+without it hands out everything, quietly. `public_groups` uses the sibling `in_group(id)`.
+
+None of this is one-way; the head of `0021_anon_reads_nothing.sql` carries the grants that
+undo it.
 
 ## Notes on the data source
 
