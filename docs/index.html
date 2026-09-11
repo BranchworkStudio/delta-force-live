@@ -57,7 +57,9 @@
   .acct a.signin { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--on-green); font: 700 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 7px 13px; text-decoration: none; }
   .acct a.signin:hover { filter: brightness(1.08); }
 
-  .menu { position: absolute; right: 0; top: calc(100% + 10px); z-index: 60; width: min(300px, calc(100vw - 40px)); background: var(--panel); border: 1px solid var(--hair); padding: 16px; text-align: left; }
+  /* The boards list makes this panel as tall as the player has boards, so it is capped at what the
+     window can show and scrolls past that — a menu taller than the screen has an unreachable end. */
+  .menu { position: absolute; right: 0; top: calc(100% + 10px); z-index: 60; width: min(300px, calc(100vw - 40px)); max-height: calc(100vh - 90px); overflow-y: auto; background: var(--panel); border: 1px solid var(--hair); padding: 16px; text-align: left; }
   .menu .hd { display: flex; align-items: center; gap: 11px; }
   .menu .hd .ava { width: 34px; height: 34px; font-size: 14px; }
   .menu .hd b { display: block; font: 700 15px 'Barlow', sans-serif; color: var(--text); }
@@ -71,12 +73,32 @@
   .menu .mi button.bad:hover { filter: brightness(1.2); }
   .menu .go { background: var(--green); color: var(--on-green); padding: 8px 12px; text-align: center; }
   .menu .go:hover { filter: brightness(1.08); color: var(--on-green); }
+  /* The boards this player is on. A list rather than a dropdown: there will never be many, and the
+     one you are looking at should be visible without opening anything. */
+  .menu .grp { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--hair); }
+  .menu .grp > b { display: block; font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .menu .grp .g { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 10px; background: none; border: 0; border-left: 2px solid transparent; color: var(--text-2); font: 400 13px 'Barlow', sans-serif; text-align: left; padding: 6px 0 6px 9px; cursor: pointer; }
+  .menu .grp .g:hover { color: var(--text); background: var(--hair-2); }
+  .menu .grp .g.on { color: var(--text); border-left-color: var(--green); }
+  .menu .grp .g span { font: 400 11px 'Barlow', sans-serif; color: var(--muted); white-space: nowrap; }
+  .menu .grp .gact { display: flex; gap: 8px; margin-top: 9px; }
+  .menu .grp .gact button { flex: 1; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2); font: 400 11px 'Barlow', sans-serif; padding: 6px 4px; cursor: pointer; }
+  .menu .grp .gact button:hover { color: var(--text); border-color: var(--div); }
+  .menu .grp .gleave { display: block; width: 100%; margin-top: 9px; background: none; border: 0; color: var(--muted); font: 400 11px 'Barlow', sans-serif; text-align: left; padding: 2px 0 0 9px; cursor: pointer; }
+  .menu .grp .gleave:hover { color: var(--red); }
+  .menu .grp .gf { display: flex; gap: 6px; margin-top: 9px; }
+  .menu .grp .gf input { flex: 1; min-width: 0; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text); font: 400 12px 'Barlow', sans-serif; padding: 6px 7px; }
+  .menu .grp .gf button { background: var(--green); border: 0; color: var(--on-green); font: 600 11px var(--hud); letter-spacing: .5px; padding: 6px 11px; cursor: pointer; }
+  .menu .grp .ge { margin-top: 7px; font-size: 11px; line-height: 1.4; color: var(--red); }
+
   /* An invite link that has just been made: copied to the clipboard, and shown here as well, since
      the clipboard is invisible and a link you can read is a link you can check before you send it. */
   .menu .lk { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--hair); }
   .menu .lk b { display: block; font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--green); margin-bottom: 7px; }
   .menu .lk input { width: 100%; box-sizing: border-box; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text); font: 400 11px 'Barlow', sans-serif; padding: 7px 8px; }
-  .menu .lk span { display: block; margin-top: 7px; font-size: 11px; line-height: 1.45; color: var(--muted); }
+  .menu .lk .code { margin-top: 7px; font-size: 11px; color: var(--text-2); }
+  .menu .lk .code b { font: 600 13px var(--hud); letter-spacing: 2px; color: var(--green); }
+.menu .lk span { display: block; margin-top: 7px; font-size: 11px; line-height: 1.45; color: var(--muted); }
   /* The headline takes its own line. Beside the cells it claimed a fixed ~480px and never gave
      any of it back, and with .board capped at 1400px that left the six cells under 810px between
      them — which is how "+4.63M" ended up across its divider. Full width they get 200px each. */
@@ -324,10 +346,10 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=17"></script>
+<script src="config.js?v=18"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=17"></script>
+<script src="app.js?v=18"></script>
 </body>
 </html>

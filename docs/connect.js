@@ -19,8 +19,11 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const span = (s) => s < 90 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : s < 172800 ? (s / 3600).toFixed(1) + " h" : (s / 86400).toFixed(1) + " d";
 
-  // The invite comes from the shared link; remembered so a later reconnect works from a bare URL.
-  const invite = new URLSearchParams(location.search).get("i") || ls.get(K.inv) || "";
+  // The code comes from the link a mate was sent; remembered so a later reconnect works from a bare
+  // URL. Two shapes arrive here — `?g=` is a group's own code, `?i=` a one-off tracker link — and
+  // the server takes either from either parameter, so this page does not have to tell them apart.
+  const qs = new URLSearchParams(location.search);
+  const invite = qs.get("g") || qs.get("i") || ls.get(K.inv) || "";
   if (invite) ls.set(K.inv, invite);
 
   const S = {
@@ -51,7 +54,7 @@
     const res = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
       method: "POST",
       headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
-      body: JSON.stringify({ invite, ...body }),
+      body: JSON.stringify({ invite, group: invite, ...body }),
     });
     let j = {}; try { j = await res.json(); } catch (e) { /* empty body */ }
     return { httpOk: res.ok, status: res.status, ...j };

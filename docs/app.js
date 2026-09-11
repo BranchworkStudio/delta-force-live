@@ -6,7 +6,7 @@
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const SERIES = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6"].map(css);
   const GREEN = "#1de08c", RED = "#e0463f", AMBER = "#e6b34a";
-  const state = { range: "today", mode: 1, focus: null, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], sessions: [], recent: [], open: new Set(), showAll: false };
+  const state = { range: "today", mode: 1, focus: null, group: undefined, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], sessions: [], recent: [], groups: [], memberships: [], myGroups: [], open: new Set(), showAll: false };
 
   // ---------- lookups (official basic_info tables, with a fallback) ----------
   const MAP_FALLBACK = { 22: "Zero Dam", 19: "Layali Grove", 39: "Space City", 81: "Brakkesh", 88: "Tide Prison", 10: "Trench Lines", 24: "Cracked", 11: "Trainwreck", 54: "Ascension", 12: "Knife Edge", 15: "Fault", 30: "Cyclone", 14: "Aftershock", 55: "Island Warfare", 31: "Akh Canal", 21: "Shafted", 75: "Threshold", 89: "AZ3", 17: "Coliseum", 26: "The Mog" };
@@ -103,6 +103,21 @@
     } catch (e) { console.warn("no session; reading with the public key", e); }
   }
 
+  // The two things a player does with groups — make one, join one — are functions in the database
+  // rather than routes in the edge function, because both need to know who is asking and the
+  // session already says. A player joining a group cannot read the table they are joining, which
+  // is the point: they send the code they were given and get back the name of what they joined.
+  async function rpc(fn, body) {
+    if (!live(session)) return { error: "this browser is not signed in" };
+    const res = await fetch(C.SUPABASE_URL + "/rest/v1/rpc/" + fn, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + session.access_token },
+      body: JSON.stringify(body),
+    });
+    const j = await res.json().catch(() => null);
+    return res.ok ? { data: j } : { error: (j && j.message) || ("HTTP " + res.status) };
+  }
+
   // ---------- data ----------
   async function rest(path) {
     // `apikey` only routes the request; the bearer is what says who is asking.
@@ -134,7 +149,7 @@
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
   async function load() {
     const since = encodeURIComponent(rangeStart().toISOString());
-    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum] = await Promise.all([
+    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum, groups, memberships, myGroups] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
@@ -154,15 +169,31 @@
       // The career wall is not range-scoped: it is everything the account has ever found, which is
       // the whole point of it — the dated drop feed above is capped at HQ's latest 50 rows.
       restSoft("red_collection?select=openid,item_id,owned_count,is_new&limit=1000"),
-      restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count")
+      restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count"),
+      // Names and sizes, which anyone may read, and memberships, which say whose rows belong on
+      // which board.
+      restSoft("public_groups?select=id,name,members,created_by,created_at&order=created_at"),
+      restSoft("group_members?select=group_id,openid,role"),
+      // The same groups again, but only the ones this player is in, and this time with their codes.
+      // Reading it needs a session; a browser without one gets nothing and simply cannot invite.
+      restSoft("groups?select=id,name,code")
     ]);
-    // Who this board is for. A solo invite puts a player on the tracker rather than in the squad:
-    // their board is themselves alone, and they appear on nobody else's. It is a presentation
-    // boundary and not a privacy one — the API this page reads is public by design, so a solo
-    // player's rows stay readable by anyone who queries it directly, which is what they were told.
-    const mine = ls(CTL_KEY);
-    const meRow = mine ? players.find(p => p.openid === mine) : null;
-    const roster = meRow && meRow.on_squad === false ? [meRow] : players.filter(p => p.on_squad !== false);
+    // Which board this is. A group is a set of mates who share one; a player in no group has a
+    // board of themselves alone, which is what a tracker-only link gives them. It is still a
+    // presentation boundary and not a privacy one — the API this page reads answers the public key,
+    // so these rows stay readable by anyone who queries it directly. The step that closes that is
+    // the next one, and it needs the session above to exist first.
+    const mine = ls(CTL_KEY) || (session && session.openid) || null;
+    const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
+    state.group = pickGroup(groups, myIds, mine);
+
+    const inGroup = new Set(memberships.filter(m => m.group_id === state.group).map(m => m.openid));
+    let roster = state.group === "solo"
+      ? players.filter(p => p.openid === mine)
+      : players.filter(p => inGroup.has(p.openid));
+    // A board with nobody on it is a bug, not a state worth rendering: fall back to everyone who
+    // used to be on the shared board, which is what this page showed before groups existed.
+    if (!roster.length) roster = players.filter(p => p.on_squad !== false);
     const here = new Set(roster.map(p => p.openid));
     const ours = (rows) => Array.isArray(rows) ? rows.filter(r => !r.openid || here.has(r.openid)) : rows;
 
@@ -170,6 +201,7 @@
       players: roster, matches: ours(matches), members: ours(members), reds: ours(reds),
       passwords: pw[0] || null, latency, sessions: ours(sessions), recent: ours(recent),
       rank: ours(rank), rankSamples: ours(rankSamples), carried: ours(carried), wall: ours(wall), wallSum: ours(wallSum),
+      groups, memberships, myGroups: Array.isArray(myGroups) ? myGroups : [],
     });
     resolveFocus();
     render();
@@ -197,7 +229,8 @@
   // An invite can arrive on the board's own URL too, so sharing either link works. It is kept for
   // the connect page, which is where it is actually used.
   const inviteQS = (() => {
-    let inv = new URLSearchParams(location.search).get("i") || "";
+    const q = new URLSearchParams(location.search);
+    let inv = q.get("g") || q.get("i") || "";
     try {
       if (inv) localStorage.setItem("df-invite", inv);
       else inv = localStorage.getItem("df-invite") || "";
@@ -207,6 +240,26 @@
   const connectHref = () => "connect.html" + inviteQS;
   // The footer link is static HTML, so give it the invite too.
   if (inviteQS) { const a = document.getElementById("connectLink"); if (a) a.href = connectHref(); }
+  const GROUP_KEY = "df-group";
+  // Which board to show, of the ones on offer. The choice sticks, but only while it is still a
+  // board this player is on: a group they have left stops being the answer to that question.
+  function pickGroup(groups, myIds, mine) {
+    const stored = state.group !== undefined ? state.group : ls(GROUP_KEY);
+    const mineSet = new Set(myIds);
+    const keep = stored === "solo"
+      ? !!mine                                   // "just me" is only a board if there is a me
+      : !!stored && (mine ? mineSet.has(stored) : groups.some(g => g.id === stored));
+    const pick = keep ? stored
+      : myIds.length ? myIds[0]
+      : mine ? "solo"
+      // A visitor who is on no board sees the oldest group, which is the board this site was
+      // before there was more than one.
+      : (groups[0] && groups[0].id) || "solo";
+    try { localStorage.setItem(GROUP_KEY, pick); } catch (e) { /* private window */ }
+    return pick;
+  }
+  const groupName = (id) => (state.groups.find(g => g.id === id) || {}).name || null;
+
   function resolveFocus() {
     const ids = state.players.map(p => p.openid);
     if (state.focus === null) { try { state.focus = localStorage.getItem(FOCUS_KEY); } catch (e) { /* ignore */ } }
@@ -463,6 +516,32 @@
   // No openids, no cookies, no poll intervals — those live in the README.
   let menuOpen = false;
   let madeLink = null;                                        // the invite link just made, shown until the menu closes
+  let grpMode = null;                                         // "new" | "join", while the field for it is open
+  let grpErr = null;                                          // what the database said, if it said no
+
+  // The boards this player is on, and the two ways to end up on another one. "Just me" is not a
+  // group and never needs to be: it is this player's own rows, which is what a board of one is.
+  function groupSection() {
+    const mine = ls(CTL_KEY) || (session && session.openid) || null;
+    const rows = state.memberships.filter(m => m.openid === mine)
+      .map(m => state.groups.find(g => g.id === m.group_id)).filter(Boolean);
+    const item = (id, label, sub) =>
+      `<button class="g${state.group === id ? " on" : ""}" data-g="${esc(id)}">${esc(label)}<span>${esc(sub)}</span></button>`;
+
+    return `<div class="grp">
+      <b>Boards</b>
+      ${rows.map(g => item(g.id, g.name, (g.members === 1 ? "1 player" : g.members + " players"))).join("")}
+      ${item("solo", "Just me", "on my own")}
+      ${state.group !== "solo" && rows.some(g => g.id === state.group)
+        ? `<button class="gleave" id="grpLeave">Leave ${esc(groupName(state.group) || "this board")}</button>` : ""}
+      ${grpMode ? `<div class="gf">
+          <input id="grpIn" placeholder="${grpMode === "new" ? "What are you calling it?" : "The six-character code"}"
+                 maxlength="${grpMode === "new" ? 48 : 6}" ${grpMode === "join" ? 'style="text-transform:uppercase"' : ""}>
+          <button id="grpGo">${grpMode === "new" ? "Make it" : "Join"}</button>
+        </div>${grpErr ? `<div class="ge">${esc(grpErr)}</div>` : ""}`
+        : `<div class="gact"><button id="grpNew">New board</button><button id="grpJoin">Join with a code</button></div>`}
+    </div>`;
+  }
 
   function renderAccount() {
     const el = $("#acct");
@@ -495,12 +574,12 @@
     }
 
     // Two kinds of link, because "come and play with us" and "here, use this for your own stats"
-    // are two different invitations. Only the browser holding this account's control key may make
-    // one, and a solo player can only hand on what they have themselves.
-    const solo = player ? player.on_squad === false : false;
+    // are two different invitations. A group link is the group's own code, which this browser is
+    // holding already — only a member can read it — so that one needs no request at all.
+    const here = state.myGroups.find(g => g.id === state.group) || null;
     const acts = [];
     if (srv.has_error) acts.push(`<a class="go" href="${connectHref()}">Reconnect</a>`);
-    if (own && !solo) acts.push(`<button id="invSquad">Invite to the squad</button>`);
+    if (own && here) acts.push(`<button id="invSquad">Invite to ${esc(here.name)}</button>`);
     if (own) acts.push(`<button id="invSolo">Invite to the tracker only</button>`);
     acts.push(`<a href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">Open Delta Force HQ ›</a>`);
     if (!srv.has_error) acts.push(`<a href="${connectHref()}">Reconnect</a>`);
@@ -515,40 +594,111 @@
           <div><b>${esc(name || "Your account")}</b>${player && player.level ? `<span>Level ${esc(player.level)}</span>` : ""}</div></div>
         <p class="msg">${msg}</p>
         ${meta ? `<div class="meta">${meta}</div>` : ""}
+        ${own ? groupSection() : ""}
         <div class="mi">${acts.join("")}</div>
-        ${madeLink ? `<div class="lk"><b>${madeLink.kind === "solo" ? "Tracker link" : "Squad link"}</b>
+        ${madeLink ? `<div class="lk"><b>${madeLink.kind === "solo" ? "Tracker link" : "Group link"}</b>
           <input readonly value="${esc(madeLink.url)}">
+          ${madeLink.code ? `<div class="code">or the code: <b>${esc(madeLink.code)}</b></div>` : ""}
           <span>${madeLink.kind === "solo"
             ? "They get the tracker for their own stats, and stay off this board."
-            : "They join the board and show up in the roster with everyone else."}</span></div>` : ""}
+            : "They land on this board and show up in the roster with everyone else."}</span></div>` : ""}
       </div>`;
 
-    $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; if (!menuOpen) { madeLink = null; renderAccount(); } else $("#acctMenu").hidden = false; };
+    $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; if (!menuOpen) { madeLink = null; grpMode = null; grpErr = null; renderAccount(); } else $("#acctMenu").hidden = false; };
 
-    // A fresh link every time, so one can be withdrawn later without cutting off everyone else.
+    // Switching boards is a read, so it costs a reload and nothing else.
+    $("#acctMenu").querySelectorAll("button.g").forEach(b => b.onclick = async (e) => {
+      e.stopPropagation();
+      state.group = b.dataset.g; grpMode = null; grpErr = null; madeLink = null;
+      try { localStorage.setItem(GROUP_KEY, state.group); } catch (err) { /* private window */ }
+      state.focus = null;                                     // the old focus may not be on this board
+      await load().catch(() => { });
+    });
+
+    const openField = (mode) => (e) => {
+      e.stopPropagation();
+      grpMode = mode; grpErr = null; renderAccount();
+      const f = $("#grpIn"); if (f) f.focus();
+    };
+    const nb = $("#grpNew"); if (nb) nb.onclick = openField("new");
+    const jb = $("#grpJoin"); if (jb) jb.onclick = openField("join");
+
+    const go = $("#grpGo");
+    if (go) go.onclick = async (e) => {
+      e.stopPropagation();
+      const v = ($("#grpIn").value || "").trim();
+      if (!v) return;
+      go.disabled = true; go.textContent = "…";
+      const r = grpMode === "new"
+        ? await rpc("create_group", { p_name: v })
+        : await rpc("join_group_by_code", { p_code: v });
+      if (r.error || !r.data || !r.data[0]) {
+        // What the database said, in its own words: "no group has that code" is the whole answer.
+        grpErr = r.error || "That did not work.";
+        renderAccount();
+        return;
+      }
+      state.group = r.data[0].id; grpMode = null; grpErr = null; madeLink = null;
+      try { localStorage.setItem(GROUP_KEY, state.group); } catch (err) { /* private window */ }
+      state.focus = null;
+      await load().catch(() => { });
+    };
+    // Leaving asks twice, because the way back in is a code this player may not have kept — and a
+    // board nobody is left on goes with its last member.
+    const lv = $("#grpLeave");
+    if (lv) lv.onclick = async (e) => {
+      e.stopPropagation();
+      if (lv.dataset.armed !== "1") { lv.dataset.armed = "1"; lv.textContent = "Sure? Click again"; return; }
+      lv.disabled = true; lv.textContent = "…";
+      const r = await rpc("leave_group", { p_group: state.group });
+      if (r.error) { grpErr = r.error; renderAccount(); return; }
+      state.group = undefined; state.focus = null; madeLink = null;
+      try { localStorage.removeItem(GROUP_KEY); } catch (err) { /* private window */ }
+      await load().catch(() => { });
+    };
+
+    const inp = $("#grpIn");
+    if (inp) {
+      inp.onclick = (e) => e.stopPropagation();
+      inp.onkeydown = (e) => { e.stopPropagation(); if (e.key === "Enter") go.click(); };
+    }
+
+    // The group link is the group's code, which this browser has already read — so it appears the
+    // moment it is asked for. The tracker link is a row the server has to make first.
+    const inv = $("#invSquad");
+    if (inv && here) inv.onclick = async (e) => {
+      e.stopPropagation();
+      const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?g=" + encodeURIComponent(here.code);
+      madeLink = { kind: "squad", url, code: here.code };
+      try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
+      renderAccount();
+      const f = $("#acctMenu .lk input"); if (f) f.select();
+    };
+
+    // A fresh row every time, so one can be withdrawn later without cutting off everyone else.
     // It is shown as well as copied: the clipboard is invisible, and a link you can read is a link
     // you can check before you send it.
-    const mint = (btn, kind, label) => {
-      if (!btn) return;
-      btn.onclick = async (e) => {
-        e.stopPropagation();
-        btn.disabled = true; btn.textContent = "Making a link…";
-        const r = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
-          body: JSON.stringify({ action: "invite", openid: mine, control_key: ls(CTL_KEY + "-key") || "", kind }),
-        }).then(x => x.json()).catch(() => null);
-        if (!r || !r.ok || !r.code) { btn.disabled = false; btn.textContent = "Could not make a link"; setTimeout(() => { if (btn.isConnected) btn.textContent = label; }, 2200); return; }
-        const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?i=" + encodeURIComponent(r.code);
-        madeLink = { kind: r.kind || kind, url };
-        try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
-        renderAccount();
-        const f = $("#acctMenu input"); if (f) f.select();
-      };
+    const solo = $("#invSolo");
+    if (solo) solo.onclick = async (e) => {
+      e.stopPropagation();
+      solo.disabled = true; solo.textContent = "Making a link…";
+      const r = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
+        body: JSON.stringify({ action: "invite", openid: mine, control_key: ls(CTL_KEY + "-key") || "", kind: "solo" }),
+      }).then(x => x.json()).catch(() => null);
+      if (!r || !r.ok || !r.code) {
+        solo.disabled = false; solo.textContent = "Could not make a link";
+        setTimeout(() => { if (solo.isConnected) solo.textContent = "Invite to the tracker only"; }, 2200);
+        return;
+      }
+      const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?i=" + encodeURIComponent(r.code);
+      madeLink = { kind: "solo", url };
+      try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
+      renderAccount();
+      const f = $("#acctMenu .lk input"); if (f) f.select();
     };
-    mint($("#invSquad"), "squad", "Invite to the squad");
-    mint($("#invSolo"), "solo", "Invite to the tracker only");
-    const fld = $("#acctMenu input");
+    const fld = $("#acctMenu .lk input");
     if (fld) fld.onclick = (e) => { e.stopPropagation(); fld.select(); };
 
     // Two clicks, because it throws away the login the server is collecting with.
@@ -570,13 +720,13 @@
   // Click anywhere else, or press Escape, and the menu closes — standard behaviour for this corner.
   document.addEventListener("click", () => {
     if (!menuOpen) return;
-    menuOpen = false; madeLink = null;
+    menuOpen = false; madeLink = null; grpMode = null; grpErr = null;
     const m = $("#acctMenu");
     if (m) m.hidden = true;
   });
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || !menuOpen) return;
-    menuOpen = false; madeLink = null;
+    menuOpen = false; madeLink = null; grpMode = null; grpErr = null;
     const m = $("#acctMenu");
     if (m) m.hidden = true;
   });
