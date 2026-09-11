@@ -2,6 +2,7 @@
 // The bookmarklet reads the HQ page's own cookies and navigates to /connect.html#..., which POSTs here.
 //   { cookies: { openid, token, ... } } -> { ok, openid, nickname, avatar, level, fresh, connected_at, control_key }
 //   { action: "invite", openid, control_key, kind } -> { ok, code, kind }
+//   { action: "session", openid, control_key } -> { ok, session }
 //   { action: "disconnect", openid, control_key } -> { ok }
 //   { action: "probe" } -> signature self-test
 //
@@ -17,7 +18,11 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { cleanSession, fingerprint, getMyData, getPrivateRoomKey, isAuthError, md5, REPORT_TYPE } from "./hq.ts";
 
-const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+const SUPA_URL = Deno.env.get("SUPABASE_URL")!;
+// Sent as the `apikey` when redeeming a magic link: that header only routes the request, while the
+// token in the body is what carries the identity.
+const ANON = Deno.env.get("SUPABASE_ANON_KEY") || "sb_publishable_Q75-W62B_ozzlnFPV61cqA_V9k7MOMX";
+const supabase = createClient(SUPA_URL, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -42,6 +47,20 @@ Deno.serve(async (req) => {
   if (body.action === "probe") {
     const env = await getPrivateRoomKey().catch((e) => ({ code: -1, msg: String(e) }));
     return json({ ok: Number(env.code) === 0, code: env.code, msg: env.msg ?? null, md5: await md5("delta-force-live") });
+  }
+
+  // A session for a browser that is already trusted. `control_key` is the same authority that may
+  // stop collection and mint invite links, so it may also ask for the session that replaces it —
+  // which means the two players already on the board get one without handing over again.
+  if (body.action === "session") {
+    const openid = typeof body.openid === "string" ? body.openid.slice(0, 128) : "";
+    const key = typeof body.control_key === "string" ? body.control_key.slice(0, 128) : "";
+    if (!openid || !key) return json({ error: "openid and control_key required" }, 400);
+    const { data: row } = await supabase.from("player_sessions").select("openid").eq("openid", openid).eq("control_key", key).maybeSingle();
+    if (!row) return json({ error: "not the browser that connected this session" }, 403);
+    const { data: who } = await supabase.from("players").select("nickname").eq("openid", openid).maybeSingle();
+    const session = await mintSession(openid, who?.nickname ?? null);
+    return session ? json({ ok: true, openid, session }) : json({ error: "could not mint a session" }, 500);
   }
 
   // Making an invite link, from the account panel instead of by hand in SQL. Only the browser that
@@ -152,18 +171,65 @@ Deno.serve(async (req) => {
   // @ts-ignore EdgeRuntime is Supabase-specific
   if (typeof EdgeRuntime !== "undefined" && EdgeRuntime.waitUntil) EdgeRuntime.waitUntil(kick); else await kick.catch(() => {});
 
+  // The hand-over is the login, so it ends by handing back a real session.
+  const authSession = await mintSession(openid, nickname);
+
   // No shared code goes back with the response any more: a player who wants to invite someone asks
   // the account panel for a link of the kind they mean, and gets a row of their own.
   return json({
     ok: true, openid, nickname, avatar, level, fresh, connected_at: connectedAt,
-    control_key: controlKey, joined: !existing, on_squad: onSquad,
+    control_key: controlKey, joined: !existing, on_squad: onSquad, session: authSession,
   });
 });
+
+/**
+ * A real Supabase session for the openid HQ has just vouched for.
+ *
+ * No password is created and no email is sent: the magic link is generated with the service role
+ * and redeemed here, so the browser only ever sees the finished session. The openid goes into
+ * `app_metadata`, which lands in the JWT, so RLS can name the player without a lookup.
+ */
+async function mintSession(openid: string, nickname: string | null) {
+  const email = `${openid}@openid.deltaforce.local`;
+  const { data: player } = await supabase.from("players").select("auth_user_id").eq("openid", openid).maybeSingle();
+  let userId: string | null = player?.auth_user_id ?? null;
+
+  if (!userId) {
+    const { data: made } = await supabase.auth.admin.createUser({
+      email, email_confirm: true, app_metadata: { openid }, user_metadata: { nickname },
+    });
+    userId = made?.user?.id ?? null;                       // may fail because the address already exists
+  }
+
+  const { data: link, error: lerr } = await supabase.auth.admin.generateLink({ type: "magiclink", email });
+  const hashed = (link as { properties?: { hashed_token?: string } } | null)?.properties?.hashed_token;
+  if (lerr || !hashed) return null;
+
+  // An address that existed without us knowing its id — an earlier mint whose bookkeeping failed —
+  // is adopted here rather than left to fail forever, and given the claim it was missing.
+  const linked = (link as { user?: { id?: string } } | null)?.user?.id ?? null;
+  if (!userId && linked) {
+    userId = linked;
+    await supabase.auth.admin.updateUserById(userId, { app_metadata: { openid } });
+  }
+  if (userId && userId !== player?.auth_user_id) {
+    await supabase.from("players").update({ auth_user_id: userId }).eq("openid", openid);
+  }
+
+  const res = await fetch(SUPA_URL + "/auth/v1/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", apikey: ANON },
+    body: JSON.stringify({ type: "email", token_hash: hashed }),
+  });
+  const j = await res.json().catch(() => null);
+  if (!j?.access_token) return null;
+  return { access_token: j.access_token, refresh_token: j.refresh_token ?? null, expires_in: Number(j.expires_in) || 3600 };
+}
 
 async function pokePoller(openid: string) {
   const { data } = await supabase.from("app_settings").select("value").eq("key", "poll_secret").maybeSingle();
   if (!data?.value) return;
-  await fetch(Deno.env.get("SUPABASE_URL")! + "/functions/v1/poll", {
+  await fetch(SUPA_URL + "/functions/v1/poll", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ secret: data.value, openid }),
   });
