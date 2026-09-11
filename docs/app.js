@@ -42,9 +42,79 @@
   // season that adds reds moves the denominator on its own.
   const RED_TYPES = Object.values(itemIndex).filter(i => i.grade === 6 && i.collectible).length || 0;
 
+  // ---------- who is asking ----------
+  // The HQ hand-over is the login, and `connect` finishes it by minting a real Supabase session.
+  // The board sends that when it has one and the publishable key when it does not, so a browser
+  // that never connected sees exactly what it saw before. This is not a boundary yet — the policies
+  // still let the public key read everything — but Postgres now knows who is asking, which is the
+  // thing a boundary needs before it can exist at all.
+  const CTL_KEY = "df-control";
+  const ls = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const SESS_KEY = "df-session";
+  let session = (() => { try { return JSON.parse(ls(SESS_KEY) || "null"); } catch (e) { return null; } })();
+  const keepSession = (s) => {
+    session = s;
+    try { s ? localStorage.setItem(SESS_KEY, JSON.stringify(s)) : localStorage.removeItem(SESS_KEY); } catch (e) { /* private window */ }
+  };
+  // A minute of margin: a token that expires in flight fails the request it was attached to.
+  const live = (s) => !!(s && s.access_token && s.expires_at && s.expires_at - 60000 > Date.now());
+  // The token says how long it lasts, not when it stops, so the moment it runs out is worked out here.
+  const stamp = (j, openid) => !j || !j.access_token ? null : {
+    openid: openid || (session && session.openid) || null,
+    access_token: j.access_token, refresh_token: j.refresh_token || null,
+    expires_at: Date.now() + (Number(j.expires_in) || 3600) * 1000,
+  };
+
+  async function refreshSession() {
+    if (!session || !session.refresh_token) return null;
+    const j = await fetch(C.SUPABASE_URL + "/auth/v1/token?grant_type=refresh_token", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY },
+      body: JSON.stringify({ refresh_token: session.refresh_token }),
+    }).then(r => r.ok ? r.json() : null).catch(() => null);
+    return keepSession(stamp(j, session && session.openid)), session;
+  }
+
+  // A browser that connected before sessions existed holds a control key and no session. That key is
+  // the same authority that may stop collecting and mint invite links, so it may also trade itself
+  // for the session that replaces it — which is how the players already on the board are upgraded on
+  // their next visit, without handing over a second time.
+  async function mintFromControlKey() {
+    const openid = ls(CTL_KEY), key = ls(CTL_KEY + "-key");
+    if (!openid || !key) return null;
+    const j = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
+      body: JSON.stringify({ action: "session", openid, control_key: key }),
+    }).then(r => r.json()).catch(() => null);
+    return keepSession(stamp(j && j.session, openid)), session;
+  }
+
+  // Run before every load, and never allowed to throw: a board that cannot get a session reads on
+  // with the publishable key, exactly as it did before any of this existed.
+  async function ensureSession() {
+    try {
+      const mine = ls(CTL_KEY);
+      // A different account connected in this browser since: that session belongs to someone else.
+      if (session && mine && session.openid && session.openid !== mine) keepSession(null);
+      if (live(session)) return;
+      if (session && session.refresh_token) { await refreshSession(); if (live(session)) return; }
+      await mintFromControlKey();
+    } catch (e) { console.warn("no session; reading with the public key", e); }
+  }
+
   // ---------- data ----------
   async function rest(path) {
-    const res = await fetch(C.SUPABASE_URL + "/rest/v1/" + path, { headers: { apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY } });
+    // `apikey` only routes the request; the bearer is what says who is asking.
+    const token = live(session) ? session.access_token : C.SUPABASE_ANON_KEY;
+    const res = await fetch(C.SUPABASE_URL + "/rest/v1/" + path, { headers: { apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + token } });
+    // A session the server has stopped accepting must not take the board down with it: drop it and
+    // read on with the public key, which is what a browser that never connected does anyway.
+    if ((res.status === 401 || res.status === 403) && token !== C.SUPABASE_ANON_KEY) {
+      console.warn("session refused; falling back to the public key");
+      keepSession(null);
+      return rest(path);
+    }
     if (!res.ok) throw new Error("REST " + res.status + " on " + path);
     return res.json();
   }
@@ -135,8 +205,6 @@
     return inv ? "?i=" + encodeURIComponent(inv) : "";
   })();
   const connectHref = () => "connect.html" + inviteQS;
-  const CTL_KEY = "df-control";
-  const ls = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   // The footer link is static HTML, so give it the invite too.
   if (inviteQS) { const a = document.getElementById("connectLink"); if (a) a.href = connectHref(); }
   function resolveFocus() {
@@ -810,6 +878,8 @@
   try { sessionStorage.removeItem("df-reloaded"); } catch (e) { /* ignore */ }
   if (!C || !C.SUPABASE_URL || C.SUPABASE_URL.startsWith("__")) { $("#banner").hidden = false; $("#banner").textContent = "config.js is not filled in."; return; }
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
-  load().catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; $("#status").textContent = "error"; });
-  setInterval(() => load().catch(() => { $("#status").textContent = "refresh failed"; }), (C.REFRESH_SECONDS || 30) * 1000);
+  // The session comes first, so the very first read already carries it — and again before each
+  // refresh, where it costs nothing while the token is still good and renews it when it is not.
+  ensureSession().then(load).catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; $("#status").textContent = "error"; });
+  setInterval(() => ensureSession().then(load).catch(() => { $("#status").textContent = "refresh failed"; }), (C.REFRESH_SECONDS || 30) * 1000);
 })();

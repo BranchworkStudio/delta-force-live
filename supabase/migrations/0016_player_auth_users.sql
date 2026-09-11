@@ -1,0 +1,18 @@
+-- The hand-over becomes a real session.
+--
+-- Identity was already proved better than a password can prove it: only the account owner can
+-- produce cookies HQ accepts. What was missing is a session *Postgres* can see. `control_key` is a
+-- string in localStorage that only our own edge function ever compares, so every boundary built on
+-- it could only ever be drawn in the page — which is why "solo" hides a player from the board and
+-- not from the API.
+--
+-- So each player gets an auth user keyed to their openid, minted by the connect function with the
+-- service role. No password exists to steal or forget and no email is ever sent: the magic link is
+-- generated and redeemed on the server side of the wire. The openid rides in the user's
+-- `app_metadata`, which lands in the JWT, so RLS can name the player with no lookup at all:
+--
+--   auth.jwt() -> 'app_metadata' ->> 'openid'
+--
+-- This is our own session for an account HQ vouched for. It is not, and cannot be, a Level
+-- Infinite login on our domain.
+alter table public.players add column if not exists auth_user_id uuid unique;

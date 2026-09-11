@@ -11,7 +11,7 @@
   const C = window.DF_CONFIG;
   const $ = (s) => document.querySelector(s);
   const HQ = "https://www.playdeltaforce.com/events/hq/en/";
-  const K = { bm: "df-bm", conn: "df-connected", ctl: "df-control", inv: "df-invite", focus: "df-focus" };
+  const K = { bm: "df-bm", conn: "df-connected", ctl: "df-control", inv: "df-invite", focus: "df-focus", sess: "df-session" };
   const ls = {
     get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private window */ } },
@@ -121,6 +121,14 @@
   function finish(r) {
     ls.set(K.bm, "1"); S.bm = true;
     if (r.control_key) { ls.set(K.ctl, r.openid); ls.set(K.ctl + "-key", r.control_key); }   // only this browser may disconnect
+    // The hand-over is the login, so it ends with a real session for the board to read with. Stored
+    // with the moment it runs out, because the token itself only says how long it lasts.
+    if (r.session && r.session.access_token) {
+      ls.set(K.sess, JSON.stringify({
+        openid: r.openid, access_token: r.session.access_token, refresh_token: r.session.refresh_token || null,
+        expires_at: Date.now() + (Number(r.session.expires_in) || 3600) * 1000,
+      }));
+    }
     if (r.openid) ls.set(K.focus, r.openid);                   // the board opens on the player who just connected
     ls.set(K.conn, JSON.stringify({ openid: r.openid, nickname: r.nickname || null, at: Date.now() }));  // tells the other tab
     S.phase = "done"; S.res = r; S.err = null;
