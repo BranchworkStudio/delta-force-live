@@ -124,7 +124,12 @@ async function storeDetails(s: Session, openid: string) {
     const secs = p.match_time ? Math.round(new Date(p.match_time).getTime() / 1000) : undefined;
     let env;
     try { env = await getMatchDetail(s, p.report_type, p.room_id, secs); } catch { env = null; }
-    if (!env || Number(env.code) !== 0 || !Array.isArray(env.data?.members)) {
+    // An empty roster is not an answer. Asked soon enough after a raid — ten seconds, once — HQ
+    // replies code 0 with a zeroed stub: no members, no map, no duration. Storing that counted as
+    // having the detail, which took the match out of `pending_details` for good and left its
+    // kill split null forever. Treat it as a miss, so it retries like any other failure and gives
+    // up after detail_tries hits 3 if the record really is empty.
+    if (!env || Number(env.code) !== 0 || !Array.isArray(env.data?.members) || env.data.members.length === 0) {
       await supabase.from("matches").update({ detail_tries: (p.detail_tries ?? 0) + 1 }).eq("openid", openid).eq("report_type", p.report_type).eq("room_id", p.room_id);
       continue;
     }
