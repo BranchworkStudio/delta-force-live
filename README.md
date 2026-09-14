@@ -308,7 +308,8 @@ undo it.
 The board is a set of tabs in the masthead, in the slot the mode picker used to hold. **Match
 data** is the board itself — both Operations and Warfare, which the mode buttons above the
 headline still pick between — and every other tab is
-a file in `docs/events/` that registers itself in `window.DF_TABS` before `app.js` runs.
+a file that registers itself in `window.DF_TABS` before `app.js` runs — in `docs/events/`
+when it belongs to a season, `docs/tabs/` when it is meant to stay.
 `app.js` builds the bar, makes each module a `<section class="pane">`, runs its queries
 alongside the board's own and hands it a small host object; it knows nothing about what any
 module contains. A module declares:
@@ -317,7 +318,7 @@ module contains. A module declares:
 |---|---|
 | `id`, `label` | identity; the pane becomes `pane-<id>` |
 | `filters` | true if the mode and range pickers apply — the range dims when they do not, the mode picker is hidden |
-| `queries()` | REST paths; answers arrive in the same order, already narrowed to this board's players |
+| `queries()` | REST paths; answers arrive in the same order, already narrowed to this board's players. Optional — a tab with nothing to ask the board leaves it out |
 | `hero(rows, host)` | `{eyebrow, big, cells}` to replace the board's headline while the tab is open, or null to leave it |
 | `aside(rows, host, active)` | HTML for the slot beside the big number — the open tab has first claim on it, and a module painting it from another tab should check `host.mode` before it does |
 | `render(el, rows, host)` | paint the pane |
@@ -346,6 +347,44 @@ Names, suits, ranks and the size of the deck all come from the official
 `basic_info/asala_pokers_en.js` manifest, the same way map and red names do — 55 entries,
 of which 54 are cards and one is the card box. If that manifest fails to load the module
 does not register at all: a tab that cannot name what is missing is worse than no tab.
+
+## Loadouts
+
+`docs/tabs/loadouts.js` is the one tab that asks the board for nothing at all: it has no
+`queries()`, reads `docs/data/loadouts.json` itself on first paint, and hangs it on the
+68-weapon spine in the official `basic_info/guns_en.js` manifest (names, class, image and
+the stat bars, the same way maps and cards are named). HQ knows what you own and what you
+did with it; it does not know what anyone thinks you should put on a rifle, so nothing on
+this page can come from the API.
+
+What a build really is, is its **import code** — `Weapon Name-Mode-<21 characters>`, pasted
+in game at Gun Customization Station → Preset → Import. That string is the object on the
+page; the creator's name, their own channels, the mode, the age and the attachment list are
+all there to help you decide whether to paste it.
+
+`docs/data/loadouts.json` is a curated static file, not a live feed:
+
+| Field | What |
+|---|---|
+| `updated` | the day the file was gathered — shown in the hero, because builds go stale |
+| `sources` | the sites the codes were copied from, linked on every card |
+| `creators` | `name`, profile `url`, `links` (their own Twitch/YouTube/X/Discord/TikTok), and `kind: "site"` for a house build rather than a person |
+| `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `popularity`, `level`, `att`, `note`, `tags` |
+
+Three rules the file is built on, and the reason for each:
+
+- **A build without a creator and a link back is not published.** The whole page is other
+  people's work; the credit is the point, and a code with no author is a code nobody can
+  ask about.
+- **Codes are copied as published and are not verified here.** We have no way to paste one
+  into the game and check, so the page says so rather than implying we did.
+- **A weapon the manifest does not have is dropped.** It means the name was mistyped or the
+  build is for another client (the same sites carry mobile and CN builds, whose codes do not
+  import into the global PC game) — either way it cannot be trusted.
+
+`tools/loadouts/` holds the fetcher and the builder that produced the file. Refreshing it is
+`fetch.sh` then `build.py`; both are rate-limited, identify themselves in the user agent and
+were pointed only at listings the sites' `robots.txt` allows.
 
 ## Notes on the data source
 
