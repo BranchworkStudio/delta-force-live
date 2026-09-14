@@ -1,0 +1,51 @@
+# Re-read the creators' build pages every morning and commit the result if it moved.
+#
+# The rest of the board is live: the poller writes to Supabase and the page reads it every 30
+# seconds. The Loadouts tab is the one part that is a file in this repo, so this is what keeps it
+# honest — a build a creator changed yesterday is on the page by breakfast, without anyone
+# remembering to run anything.
+#
+# It commits only when the builds actually changed. build.py keeps the previous `updated` date
+# when it reads the same pages and finds the same thing, so a quiet morning produces no commit
+# and the tab does not claim to have been updated when it was not. It also refuses to write a
+# file that lost a third of its builds — an unattended job that can quietly empty the page is
+# worse than one that fails.
+name: Loadouts
+
+on:
+  schedule:
+    - cron: "0 5 * * *"     # 07:00 in Copenhagen through the summer, 06:00 through the winter
+  workflow_dispatch:         # and by hand, from the Actions tab
+
+concurrency:
+  group: loadouts
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    if: github.repository == 'BranchworkStudio/delta-force-live'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the creators' pages
+        working-directory: tools/loadouts
+        run: bash fetch.sh
+
+      - name: Rebuild docs/data/loadouts.json
+        working-directory: tools/loadouts
+        run: python3 build.py
+
+      - name: Commit, if anything moved
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "nothing changed — no commit"; exit 0; fi
+          SUMMARY=$(python3 -c 'import json; d = json.load(open("docs/data/loadouts.json")); print("%d builds · %d creators · %d weapons · as of %s" % (len(d["builds"]), len(d["creators"]), len({b["weapon"] for b in d["builds"]}), d["updated"]))')
+          echo "$SUMMARY"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Loadouts: refresh from the creators' pages" -m "$SUMMARY"
+          git push

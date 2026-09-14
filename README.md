@@ -368,7 +368,7 @@ grid into a staircase.
 
 | Field | What |
 |---|---|
-| `updated` | the day the file was gathered — shown in the hero, because builds go stale |
+| `updated` | the day the builds last actually changed — shown in the hero. A morning that re-reads the same pages and finds the same thing does not move it |
 | `sources` | the page each code was copied from, named the way the card says it — "Leissik's build doc" — and linked on every card |
 | `creators` | `name`, `url` (their page), `links` (their own Twitch/YouTube/X/Discord/TikTok) and `avatar`, a path under `docs/img/creators/` |
 | `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `popularity`, `note`, `tags` |
@@ -406,6 +406,15 @@ Where a creator keeps builds in Discord, their card links to the server instead.
 `tools/loadouts/` holds the fetcher and the builder that produced the file. Refreshing it is
 `fetch.sh` then `build.py`; both are rate-limited, identify themselves in the user agent and
 fetch only pages their owners published for exactly this purpose.
+
+**It refreshes itself.** `.github/workflows/loadouts.yml` runs those two scripts every morning at
+05:00 UTC and commits the result — which, since Pages serves `main:/docs`, is also the deploy.
+Two things keep an unattended job from doing damage: `build.py` writes nothing when the pages
+say the same thing they said yesterday (so a quiet morning is no commit, and the hero's date
+stays honest), and it *refuses* to write a file that lost more than a third of its builds, on the
+grounds that a page answering with a login wall parses to an empty sheet and a green run that
+silently empties the tab is worse than a red one. The job is also the only way this file changes,
+so `git log docs/data/loadouts.json` is the history of what the creators published.
 
 ## Notes on the data source
 
