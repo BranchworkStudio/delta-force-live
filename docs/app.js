@@ -44,6 +44,12 @@
   const opName = (id) => (opIndex[String(id)] && opIndex[String(id)].name) || (id ? "Op " + id : "–");
   const opIcon = (id) => (opIndex[String(id)] && opIndex[String(id)].icon) || null;
   const faceIcon = (id) => (id && faceIndex[String(id)]) || null;
+  // Operator as a head plus their name. The picture never replaces the name: it is there to be
+  // recognised at a glance by somebody who plays them, and ignored by somebody who does not.
+  const opChip = (id) => {
+    const ic = opIcon(id);
+    return (ic ? `<img class="ophead" src="${esc(ic)}" alt="" loading="lazy" onerror="this.remove()">` : "") + esc(opName(id));
+  };
   const item = (id) => itemIndex[String(id)] || { name: "Item " + id, img: null, grade: 0, value: 0, collectible: false, maps: [] };
   // How many reds exist to be found. Counted from the official table rather than hard-coded, so a
   // season that adds reds moves the denominator on its own.
@@ -465,7 +471,7 @@
     const rows = Object.values(by).sort((a, b) => b.n - a.n).slice(0, 8);
     return rows.map(v => ({
       v: pct(v.w, v.n),
-      k: `<b>${esc(v.name)}</b>${v.diff ? ` <span class="diff">${esc(v.diff)}</span>` : ""}`,
+      k: `${v.icon ? `<img class="ophead lg" src="${esc(v.icon)}" alt="" loading="lazy" onerror="this.remove()">` : ""}<b>${esc(v.name)}</b>${v.diff ? ` <span class="diff">${esc(v.diff)}</span>` : ""}`,
       bar: barCell(v.w, v.n, GREEN),
       sub: `${v.n} ${raid(v.n)}` + extra(v),
       tip: `<b>${esc(v.name + (v.diff ? " · " + v.diff : ""))}</b>: ${v.w} of ${v.n} ${rateWord()}<br>
@@ -476,8 +482,8 @@
   function tally(ms, keyOf) {
     const by = {};
     for (const m of ms) {
-      const { key, name, diff } = keyOf(m);
-      const v = by[key] = by[key] || { n: 0, w: 0, net: 0, ops: 0, ai: 0, d: 0, name, diff };
+      const { key, name, diff, icon } = keyOf(m);
+      const v = by[key] = by[key] || { n: 0, w: 0, net: 0, ops: 0, ai: 0, d: 0, name, diff, icon };
       v.n++; v.w += isWin(m) ? 1 : 0; v.net += Number(m.net_income) || 0;
       v.ops += m.kill_operator || 0; v.ai += m.kill_other || 0; v.d += diedIn(m);
     }
@@ -490,7 +496,7 @@
       bandItems(by, sol, (v) => sol ? ` · <span style="color:${v.net < 0 ? RED : GREEN}">${signed(Math.round(v.net / v.n))}</span> avg` : ` · K/D ${kdOf(v.ops, v.d)}`));
   }
   function renderOpsBand(ms, sol) {
-    const by = tally(ms, (m) => ({ key: opName(m.operator_id), name: opName(m.operator_id), diff: null }));
+    const by = tally(ms, (m) => ({ key: opName(m.operator_id), name: opName(m.operator_id), diff: null, icon: opIcon(m.operator_id) }));
     band($("#opsBand"), "Operators · " + (sol ? "extraction rate" : "win rate"),
       bandItems(by, sol, (v) => ` · K/D <b style="color:var(--text-2)">${kdOf(v.ops, v.d)}</b>`));
   }
@@ -516,13 +522,13 @@
       // The date used to sit at the front of the meta line, where it pushed the map name around.
       // It belongs with the time it qualifies, so it goes under the clock instead.
       const day = dayLabel(when);
-      const meta = [mapFull(m.map_id), g.map(x => opName(x.operator_id)).join(" / "), m.match_duration_min != null ? m.match_duration_min + " min" : null, latS != null ? "seen " + dur(latS) + (m.finished_at ? "" : "*") : "history"].filter(Boolean).join(" · ");
+      const meta = [esc(mapFull(m.map_id)), g.map(x => opChip(x.operator_id)).join(" / "), m.match_duration_min != null ? esc(m.match_duration_min + " min") : null, latS != null ? esc("seen " + dur(latS) + (m.finished_at ? "" : "*")) : "history"].filter(Boolean).join(" · ");
       const net = sum(g, x => x.net_income), score = sum(g, x => x.score);
       const names = g.map((x, i) => `<b>${esc(playerName(x.openid))}</b><span class="tag ${outs[i][0]}">${outs[i][1]}</span>`).join(" ");
       return `<div class="row" data-key="${esc(key)}" title="Started ${new Date(m.match_time).toLocaleString()}">
         <span class="t">${hhmm(when)}${day ? `<span class="d">${esc(day)}</span>` : ""}</span>
         <span class="rail">${g.map(x => `<i style="background:${colorFor(x.openid)}"></i>`).join("")}</span>
-        <div><div class="l1">${names}</div><div class="l2">${esc(meta)}</div></div>
+        <div><div class="l1">${names}</div><div class="l2">${meta}</div></div>
         <span class="kl">${splitKnown(g)
           ? `<span>${opKills(g)} <em>op</em></span><span class="ai">${aiKills(g)} <em>ai</em></span>`
           : `<span>${sum(g, x => x.kill_count)} <em>kills</em></span>`}</span>
@@ -545,7 +551,7 @@
     return `<div class="det"><table><thead><tr>${th.map((h, i) => `<th class="${i >= 3 ? "n" : ""}">${h}</th>`).join("")}</tr></thead><tbody>
       ${rows.map(r => { const o = outcome({ result: r.result, is_leave: r.is_leave }); const mine = r.nickname in byNick;
         return `<tr><td>${mine ? sq(colorFor(byNick[r.nickname])) : ""}${esc(r.nickname || "?")}${mine ? "" : ` <span class="mate">teammate</span>`}</td>
-          <td>${esc(opName(r.operator_id))}</td><td><span class="tag ${o[0]}" style="margin:0">${o[1]}</span></td>
+          <td>${opChip(r.operator_id)}</td><td><span class="tag ${o[0]}" style="margin:0">${o[1]}</span></td>
           <td class="n">${r.kill_count ?? "–"}</td><td class="n">${r.kill_operator ?? "–"}</td><td class="n">${r.kill_other ?? "–"}</td>
           <td class="n">${r.assist ?? "–"}</td><td class="n">${r.rescue ?? "–"}</td><td class="n">${r.revive ?? "–"}</td>
           <td class="n">${mins(r.survival_min)}</td><td class="n">${sol ? fmt(r.carry_out_value) : fmt(r.score)}</td></tr>`; }).join("")}
