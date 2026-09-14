@@ -358,9 +358,13 @@
   const roster = (m) => state.members.filter(x => x.openid === m.openid && x.room_id === m.room_id);
   // HQ counts kills twice over: kill_operator is other players, kill_other is AI, and the two add
   // up to kill_count. Only operator kills belong in a K/D — an AI body count is just that.
+  // That is an Operations sentence. Warfare is players only, so there is no split to show there
+  // and the board says "kills" rather than parading a zero AI count next to every figure. (The
+  // numbers themselves are normalised before they get here: see 0027 and the poller.)
   const opKills = (ms) => sum(ms, m => m.kill_operator);
   const aiKills = (ms) => sum(ms, m => m.kill_other);
   const splitKnown = (ms) => ms.some(m => m.kill_operator != null);
+  const hasAI = () => state.mode === 1;
   // Operations details always report death = 0, so the only record of dying is a raid that failed
   // without being quit. Warfare counts deaths properly, so use them there.
   const diedIn = (m) => state.mode === 1 ? (m.result === 2 && !m.is_leave ? 1 : 0) : ((selfRow(m) || {}).death || 0);
@@ -567,7 +571,11 @@
   function renderHero(ms, sol) {
     const wins = ms.filter(isWin).length;
     const known = splitKnown(ms), kOp = opKills(ms), kAi = aiKills(ms), deaths = deathsOf(ms);
-    const selves = ms.map(selfRow).filter(Boolean), alive = selves.filter(s => s.survival_min != null);
+    // HQ fills survival_duration in Operations and combat_duration in Warfare, never both, so the
+    // cell reads whichever its mode keeps — otherwise every Warfare board showed a blank minute.
+    const selves = ms.map(selfRow).filter(Boolean);
+    const timeOf = (s) => sol ? s.survival_min : s.combat_min;
+    const alive = selves.filter(s => timeOf(s) != null);
     const best = ms.length ? Math.max(...ms.map(m => Number(sol ? m.net_income : m.score) || 0)) : null;
     $("#eyebrow").textContent = focusName() + (sol ? " · net income · " : " · score · ") + rangeWord();
     $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "0";
@@ -575,11 +583,13 @@
     const cells = [
       // The split only exists once the match detail has landed, which is within the minute. Until
       // then say the total rather than a confidently wrong zero.
-      known ? ["Operator kills", kOp, kAi + (kAi === 1 ? " AI kill" : " AI kills")] : ["Kills", sum(ms, m => m.kill_count), ms.length ? "operators vs AI in a moment" : null],
+      !hasAI() ? ["Kills", known ? kOp : sum(ms, m => m.kill_count), null]
+        : known ? ["Operator kills", kOp, kAi + (kAi === 1 ? " AI kill" : " AI kills")]
+          : ["Kills", sum(ms, m => m.kill_count), ms.length ? "operators vs AI in a moment" : null],
       ["K/D", ms.length && known ? kdOf(kOp, deaths) : "–", !ms.length ? null : deaths ? deaths + (sol ? " " + lostWord() : " deaths") : "no deaths yet"],
       [sol ? "Extraction" : "Win rate", pct(wins, ms.length), ms.length ? `${wins} of ${ms.length} ${raid(ms.length)}` : null],
       ["Best " + raid(1), best == null ? "–" : sol ? signed(best) : plain(best), null],
-      ["Avg alive · min", alive.length ? (sum(alive, s => s.survival_min) / alive.length).toFixed(1) : "–", null]
+      [sol ? "Avg alive · min" : "Avg in combat · min", alive.length ? (sum(alive, s => timeOf(s)) / alive.length).toFixed(1) : "–", null]
     ];
     // The movement is the point, so it takes the value slot when there is one to state, with the
     // standing underneath it. Until the samples cover the range, the standing leads instead —
@@ -632,7 +642,7 @@
           <div class="nm"><span>${esc(p.nickname || p.openid.slice(0, 8))}</span><span class="st" style="color:${stc}">${stt}</span></div>
           <div class="ln">
             <span><b>${pct(w, pm.length)}</b> ${rateWord()}</span>
-            <span><b>${splitKnown(pm) ? opKills(pm) : sum(pm, m => m.kill_count)}</b> ${splitKnown(pm) ? "op kills" : "kills"}</span>
+            <span><b>${splitKnown(pm) ? opKills(pm) : sum(pm, m => m.kill_count)}</b> ${splitKnown(pm) && hasAI() ? "op kills" : "kills"}</span>
             ${sol ? `<span><b style="color:${net < 0 ? RED : GREEN}">${pm.length ? signed(net) : "–"}</b></span>` : `<span><b>${fmt(score)}</b> score</span>`}
           </div>
         </div></div>`;
@@ -644,7 +654,7 @@
     const head = state.players.length < 2 ? "" : `<div class="rhead">
       <button class="allsq${state.focus === "all" ? " on" : ""}" data-focus="all" title="Add every tracked player together">
         <span class="lbl">Squad</span>
-        <span class="sum"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> ${raid(ms.length)}</span><span><b>${opKills(ms)}</b> op kills</span></span>
+        <span class="sum"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> ${raid(ms.length)}</span><span><b>${opKills(ms)}</b> ${hasAI() ? "op kills" : "kills"}</span></span>
       </button></div>`;
     el.style.setProperty("--n", cards.length);
     el.innerHTML = head + `<div class="rgrid">${cards.join("")}</div>`;
@@ -675,7 +685,7 @@
       bar: barCell(v.w, v.n, GREEN),
       sub: `${v.n} ${raid(v.n)}` + extra(v),
       tip: `<b>${esc(v.name + (v.diff ? " · " + v.diff : ""))}</b>: ${v.w} of ${v.n} ${rateWord()}<br>
-        ${v.ops} operator + ${v.ai} AI kills · ${v.d} ${sol ? lostWord() : "deaths"} · K/D ${kdOf(v.ops, v.d)}${sol ? `<br>Net ${full(v.net)} total` : ""}`,
+        ${hasAI() ? `${v.ops} operator + ${v.ai} AI kills` : `${v.ops} ${v.ops === 1 ? "kill" : "kills"}`} · ${v.d} ${sol ? lostWord() : "deaths"} · K/D ${kdOf(v.ops, v.d)}${sol ? `<br>Net ${full(v.net)} total` : ""}`,
     }));
   }
   // Buckets carry both kill kinds and the deaths, so any band can show a real K/D.
@@ -732,9 +742,9 @@
         <span class="t">${hhmm(when)}${day ? `<span class="d">${esc(day)}</span>` : ""}</span>
         <span class="rail">${g.map(x => `<i style="background:${colorFor(x.openid)}"></i>`).join("")}</span>
         <div><div class="l1">${names}</div><div class="l2">${esc(meta)}</div></div>
-        <span class="kl">${splitKnown(g)
+        <span class="kl">${splitKnown(g) && hasAI()
           ? `<span>${opKills(g)} <em>op</em></span><span class="ai">${aiKills(g)} <em>ai</em></span>`
-          : `<span>${sum(g, x => x.kill_count)} <em>kills</em></span>`}</span>
+          : `<span>${splitKnown(g) ? opKills(g) : sum(g, x => x.kill_count)} <em>kills</em></span>`}</span>
         <span class="nt ${sol ? (net < 0 ? "bad" : "good") : ""}">${sol ? full(net) : plain(score)}</span>
       </div>${state.open.has(key) ? detailRow(g, sol) : ""}`;
     }).join("");
@@ -750,14 +760,23 @@
     if (!rows.length) return `<div class="det"><span class="empty">No roster yet for this match. Older raids are still being filled in, a few per minute.</span></div>`;
     const byNick = {}; for (const p of state.players) if (tracked.has(p.openid) && p.nickname) byNick[p.nickname] = p.openid;
     rows = rows.slice().sort((a, b) => (b.is_self - a.is_self) || ((b.nickname in byNick) - (a.nickname in byNick)) || (b.kill_count || 0) - (a.kill_count || 0));
-    const th = ["Player", "Operator", "Result", "Kills", "Players", "AI", "Assists", "Rescues", "Revives", "Alive", sol ? "Carried out" : "Score"];
+    // Two scoreboards, because the modes keep score of different things. Operations splits the
+    // kills into players and AI and asks how long you stayed alive and what you carried out;
+    // Warfare has no AI to split off, respawns you rather than ending your raid — so deaths are a
+    // column instead of a result — and measures time in combat rather than time alive.
+    const cols = sol
+      ? [["Kills", r => r.kill_count ?? "–"], ["Players", r => r.kill_operator ?? "–"], ["AI", r => r.kill_other ?? "–"],
+         ["Assists", r => r.assist ?? "–"], ["Rescues", r => r.rescue ?? "–"], ["Revives", r => r.revive ?? "–"],
+         ["Alive", r => mins(r.survival_min)], ["Carried out", r => fmt(r.carry_out_value)]]
+      : [["Kills", r => r.kill_count ?? "–"], ["Deaths", r => r.death ?? "–"], ["Assists", r => r.assist ?? "–"],
+         ["Revives", r => r.revive ?? "–"], ["K/D", r => r.kill_count == null ? "–" : kdOf(r.kill_count, r.death || 0)],
+         ["Combat", r => mins(r.combat_min)], ["Score", r => fmt(r.score)]];
+    const th = ["Player", "Operator", "Result"].concat(cols.map(c => c[0]));
     return `<div class="det"><table><thead><tr>${th.map((h, i) => `<th class="${i >= 3 ? "n" : ""}">${h}</th>`).join("")}</tr></thead><tbody>
       ${rows.map(r => { const o = outcome({ result: r.result, is_leave: r.is_leave }); const mine = r.nickname in byNick;
         return `<tr><td>${mine ? sq(colorFor(byNick[r.nickname])) : ""}${esc(r.nickname || "?")}${mine ? "" : ` <span class="mate">teammate</span>`}</td>
           <td>${opChip(r.operator_id)}</td><td><span class="tag ${o[0]}" style="margin:0">${o[1]}</span></td>
-          <td class="n">${r.kill_count ?? "–"}</td><td class="n">${r.kill_operator ?? "–"}</td><td class="n">${r.kill_other ?? "–"}</td>
-          <td class="n">${r.assist ?? "–"}</td><td class="n">${r.rescue ?? "–"}</td><td class="n">${r.revive ?? "–"}</td>
-          <td class="n">${mins(r.survival_min)}</td><td class="n">${sol ? fmt(r.carry_out_value) : fmt(r.score)}</td></tr>`; }).join("")}
+          ${cols.map(c => `<td class="n">${c[1](r)}</td>`).join("")}</tr>`; }).join("")}
       </tbody></table></div>`;
   }
 
@@ -1129,7 +1148,9 @@
       cross.setAttribute("x1", px); cross.setAttribute("x2", px); cross.style.display = "";
       dot.setAttribute("cx", px); dot.setAttribute("cy", y(p.c).toFixed(1));
       dot.setAttribute("fill", p.c >= med ? GREEN : RED); dot.style.display = "";
-      const k = p.m.kill_operator != null ? `${p.m.kill_operator} operator + ${p.m.kill_other} AI` : `${p.m.kill_count || 0} kills`;
+      const k = p.m.kill_operator == null ? `${p.m.kill_count || 0} kills`
+        : hasAI() ? `${p.m.kill_operator} operator + ${p.m.kill_other} AI`
+          : `${p.m.kill_operator} ${p.m.kill_operator === 1 ? "kill" : "kills"}`;
       showTip(clientX, clientY, `<b>${esc(playerName(p.m.openid))}</b> · ${esc(mapFull(p.m.map_id))}<br>
         ${outcome(p.m)[1]} · ${k} · ${dayLabel(p.m.finished_at || p.m.match_time) || "today"} ${hhmm(p.m.finished_at || p.m.match_time)}<br>
         This ${raid(1)} ${sol ? full(p.v) : plain(p.v)} · running total ${sol ? full(p.c) : plain(p.c)}`);

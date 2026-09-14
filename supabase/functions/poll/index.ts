@@ -174,11 +174,24 @@ async function storeDetails(s: Session, openid: string) {
     const durMin = Number(env.data.match_duration);
     if (fin) patch.finished_at = new Date(fin * 1000).toISOString();
     if (Number.isFinite(durMin)) patch.match_duration_min = durMin;
-    // Only the detail splits the kill total into players and AI, and only operator kills belong
-    // in a K/D. The list row has the total alone, so carry the split over while we have it.
-    const ko = toInt(me?.kill_operator), kai = toInt(me?.kill_other);
-    if (ko !== null) patch.kill_operator = ko;
-    if (kai !== null) patch.kill_other = kai;
+    // Kills, which the two modes report in disjoint halves of the same member object.
+    //
+    // Operations fills kill_count / kill_operator / kill_other and leaves `kill` at zero; Warfare
+    // fills `kill` and leaves all three of those at zero — and its list row says kill_count 0 too,
+    // so the detail is the only place a Warfare kill count exists at all. Reading only the
+    // Operations half is why every Warfare match on the board read 0 kills.
+    //
+    // The split is normalised on the way in so "kills" means one thing everywhere it is added up.
+    // There is no AI to kill in Warfare — every kill is another player — so a Warfare row stores
+    // all of its kills as operator kills and zero as AI. That is the fact, not a stand-in.
+    if (p.report_type === 2) {
+      const k = toInt(me?.kill);
+      if (k !== null) { patch.kill_count = k; patch.kill_operator = k; patch.kill_other = 0; }
+    } else {
+      const ko = toInt(me?.kill_operator), kai = toInt(me?.kill_other);
+      if (ko !== null) patch.kill_operator = ko;
+      if (kai !== null) patch.kill_other = kai;
+    }
     if (Object.keys(patch).length) await supabase.from("matches").update(patch).eq("openid", openid).eq("report_type", p.report_type).eq("room_id", p.room_id);
     done++;
   }

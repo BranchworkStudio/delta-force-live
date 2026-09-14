@@ -533,10 +533,30 @@ page), `GetPrivateRoomKey` (daily room passwords, hourly), and one call per entr
 `EVENTS` for the running limited-time collections. `GetCardCollection` takes no
 parameters at all — there is only ever one collection to ask about. `match_time` is the
 match *start*; a member's `finish_time` is when that player extracted or died, and is
-what the latency stat measures against. Operations details always report `death = 0`,
-so the site counts a failed, non-quit raid as a death for K/D. A flawless stretch has
-no denominator to divide by, so its K/D is simply the kill count — the subline says
-"no deaths yet" so the number is not mistaken for an average.
+what the latency stat measures against. A flawless stretch has no denominator to divide
+by, so its K/D is simply the kill count — the subline says "no deaths yet" so the number
+is not mistaken for an average.
+
+**The two modes fill disjoint halves of the same member object**, which is the sort of
+thing you only find by testing the other one. Operations fills `kill_count`,
+`kill_operator` and `kill_other` and leaves `kill`, `death` and `assist` at zero;
+Warfare does the exact opposite — `kill: 22, death: 10, assist: 6` beside a `kill_count`
+of 0 — and the list endpoint's Warfare rows say `kill_count: 0` as well, so the detail is
+the only place a Warfare kill count exists at all. Reading only the Operations half is
+why every Warfare match on the board read 0 kills until `0027`. The same split runs
+through the rest of the row: `survival_duration` is Operations, `combat_duration` is
+Warfare, and a death ends the raid in one mode but is a respawn in the other — so
+Operations counts a failed, non-quit raid as the death, and Warfare uses the number HQ
+gives.
+
+This is normalised once, on the way in — the poller for `matches`, the `match_members`
+view for the roster — so that "kills" means one thing everywhere the board adds it up.
+**There is no AI in Warfare**: every kill is another player, so a Warfare row reports all
+of its kills as operator kills and zero as AI, and the page drops the operator/AI split
+from every figure and tooltip rather than printing a zero beside each one. The scoreboard
+under a match changes with it: Kills / Deaths / Assists / Revives / K/D / Combat / Score
+in Warfare, against Kills / Players / AI / Assists / Rescues / Revives / Alive / Carried
+out in Operations.
 
 ### How long an HQ login lasts
 
