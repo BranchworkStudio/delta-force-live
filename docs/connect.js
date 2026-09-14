@@ -132,6 +132,7 @@
     // A board code and an invite are no longer the same thing, so the refusal says which you have.
     else if (r.reason === "code-not-invite") S.err = { title: "That is a board code, not an invite", body: "A board's six characters put somebody who is <em>already</em> on the tracker onto that board. Opening a new account is the tracker owner's to give — ask them for the <code>?i=…</code> link instead." };
     else if (r.reason === "bad-invite") S.err = { title: "That invite link does not work", body: "Either the link was mistyped, or it has been withdrawn since it was shared. Ask whoever sent it for a fresh one." };
+    else if (r.reason === "invite-used-up") S.err = { title: "That invite link has been used", body: "An invite opens one account and then closes behind it. If this link reached you second-hand, it was spent by whoever had it first — ask the person running the tracker for one of your own." };
     else if (r.reason === "not-logged-in") S.err = { title: "HQ says that login is not valid", body: `Open HQ, log in properly, then click the bookmark again. <span class="hint">(${esc(r.error || "")})</span>` };
     else if (r.reason === "no-cookies") S.err = { title: "No HQ login in that browser", body: "Log in on HQ first, then click the bookmark on the HQ tab." };
     else S.err = { title: "The server could not reach HQ", body: `Try the bookmark again in a minute. <span class="hint">(${esc(r.error || r.status)})</span>`, kind: "warn" };

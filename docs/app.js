@@ -713,6 +713,11 @@
     solo: "They get the tracker for their own stats, and stay off every board.",
     squad: "For somebody already on the tracker: this admits them to the board, it does not sign anybody up.",
   };
+  // What the link is good for, said in the panel rather than left to be assumed. The server decides
+  // the number and sends it back; this only reads it out, so the two can never drift apart.
+  const linkLife = (cap) => cap === 1 ? "Good for one account. The moment somebody joins on it, it stops working — forwarding it on enrols nobody."
+    : cap ? `Good for ${cap} accounts, then it stops working.`
+    : "No limit: everybody it reaches can open an account, until you withdraw it.";
   let grpMode = null;                                         // "new" | "join", while the field for it is open
   let grpErr = null;                                          // what the database said, if it said no
 
@@ -828,7 +833,7 @@
         ${madeLink ? `<div class="lk"><b>${LINK_TITLE[madeLink.kind]}</b>
           <input readonly value="${esc(madeLink.url)}">
           ${madeLink.code ? `<div class="code">or the code: <b>${esc(madeLink.code)}</b></div>` : ""}
-          <span>${LINK_NOTE[madeLink.kind]}</span></div>` : ""}
+          <span>${LINK_NOTE[madeLink.kind]}${madeLink.kind === "squad" ? "" : " " + linkLife(madeLink.cap)}</span></div>` : ""}
       </div>`;
 
     $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; if (!menuOpen) { madeLink = null; grpMode = null; grpErr = null; renderAccount(); } else $("#acctMenu").hidden = false; };
@@ -954,7 +959,7 @@
         return;
       }
       const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?i=" + encodeURIComponent(r.code);
-      madeLink = { kind, url };
+      madeLink = { kind, url, cap: r.max_uses === undefined ? 1 : r.max_uses };
       try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
       renderAccount();
       const f = $("#acctMenu .lk input"); if (f) f.select();

@@ -127,9 +127,26 @@ what it was for, and how often it has been used, so one link can be withdrawn wi
 touching the rest:
 
 ```sql
-select code, kind, uses, last_used_at from invites where revoked_at is null;
+select code, kind, uses, max_uses, last_used_at from invites where revoked_at is null;
 update invites set revoked_at = now() where code = '<code>';
 ```
+
+**A link closes behind the person it was for** (migration 0025). `max_uses` is the number
+that was missing: `uses` had been counted since the beginning and never read, so a link sent
+to one stranger stayed open until somebody remembered to revoke it — and a link is a thing
+people forward. New links are minted with `max_uses = 1`, because the button that makes one
+says *invite somebody new*, singular. Null is no limit, which is what every link minted
+before this still has; `{"max_uses": null}` on the invite call asks for one deliberately.
+
+The use is spent at the one moment that costs anything — when a player row is actually
+created — and nowhere else. That is a fix as much as a feature: `uses` used to go up when an
+enrolled player reopened the link they joined on, and again when a hand-over failed at HQ a
+second later, so counting it was counting the wrong event. A link that fails at HQ is still
+good; a link that enrolled somebody is not. The increment is conditional on the count that
+was read (`update … where code = ? and uses = <seen>`), so two people redeeming the last use
+in the same second cannot both get in. Somebody arriving on a spent link is told so —
+`reason: "invite-used-up"` — because a used link and a wrong one are different answers: there
+is nothing to retype, only somebody to ask.
 
 `players.enrolled_via` holds the code that let each account in (`first` for the account
 that claimed the empty board), and `group_members` says which boards they are on.
