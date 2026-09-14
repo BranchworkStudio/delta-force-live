@@ -371,7 +371,7 @@ grid into a staircase.
 | `updated` | the day the builds last actually changed — shown in the hero. A morning that re-reads the same pages and finds the same thing does not move it |
 | `sources` | the page each code was copied from, named the way the card says it — "Leissik's build doc" — and linked on every card |
 | `creators` | `name`, `url` (their page), `links` (their own Twitch/YouTube/X/Discord/TikTok) and `avatar`, a path under `docs/img/creators/` |
-| `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `popularity`, `note`, `tags` |
+| `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `note`, `tags` |
 
 **Only the pages the creators run themselves.** The file was built from aggregators as well
 at first — sites that collect other people's builds — and they were dropped: four times the

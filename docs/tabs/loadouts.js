@@ -18,7 +18,7 @@
   const DATA_URL = "data/loadouts.json?v=1";
   const KEY = "df-loadouts";          // the rail's own state, per browser
 
-  let DB = null, state = { sel: null, mode: "all", cls: "all", creator: "all", sort: "pop", q: "" }, phase = "idle";
+  let DB = null, state = { sel: null, mode: "all", cls: "all", creator: "all", q: "" }, phase = "idle";
 
   try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* private window */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
@@ -172,11 +172,6 @@
             ${pill(state.cls === "all", "all", "All", "cls")}
             ${classes.map(c => pill(state.cls === c, c, e(c), "cls")).join("")}
           </div>
-          <div class="lfilters lsort">
-            <span>Sort</span>
-            ${pill(state.sort === "pop", "pop", "Most imported", "sort")}
-            ${pill(state.sort === "new", "new", "Newest", "sort")}
-          </div>
           <div class="lsearch lpick"><select id="loCreator" aria-label="Creator">
             <option value="all">Every creator (${creators.length})</option>
             ${creators.map(x => `<option value="${e(x.k)}"${state.creator === x.k ? " selected" : ""}>${e(x.c.name)} (${x.n})</option>`).join("")}
@@ -201,7 +196,7 @@
       el.querySelectorAll("[data-w]").forEach(n => n.onclick = () => { state.sel = n.dataset.w; save(); h.repaint(); });
       el.querySelectorAll("[data-f]").forEach(n => n.onclick = () => {
         const f = n.dataset.f;
-        if (f === "reset") { state = { sel: null, mode: "all", cls: "all", creator: "all", sort: "pop", q: "" }; }
+        if (f === "reset") { state = { sel: null, mode: "all", cls: "all", creator: "all", q: "" }; }
         else if (f === "creator") { state.creator = state.creator === n.dataset.v ? "all" : n.dataset.v; }
         else { state[f] = n.dataset.v; }
         save(); h.repaint();
@@ -214,12 +209,15 @@
   // ---------- the weapon panel ----------
   function weaponHtml(w, h) {
     const e = h.esc, g = w.gun;
-    // Newest first, or most imported first — and a dated build ahead of an undated one either way,
-    // because a code that carries no date is a code nobody has touched in a while.
-    const date = (a, b) => String(b.added || "").localeCompare(String(a.added || ""));
-    const pop = (a, b) => (b.popularity || 0) - (a.popularity || 0);
-    const builds = w.builds.slice().sort((a, b) => state.sort === "new"
-      ? (date(a, b) || pop(a, b)) : (pop(a, b) || date(a, b)));
+    // Newest first, and a dated build ahead of an undated one, because a date is the one thing
+    // here that says a build is still current. Only some creators publish one, so the rest fall
+    // back to their name and their own label for the build — an order, rather than an opinion.
+    // (There was a "most imported" sort next to this once. That count came off the aggregator
+    // sites, and those are gone, so it was sorting 477 builds by zero.)
+    const builds = w.builds.slice().sort((a, b) =>
+      String(b.added || "").localeCompare(String(a.added || "")) ||
+      creatorOf(a).name.localeCompare(creatorOf(b).name) ||
+      String(a.note || "").localeCompare(String(b.note || "")));
     // The stat block is the gun as the game ships it, with nothing bolted on. A bar on its own is
     // unreadable — 0 to 100 of what? — so the number is the figure and the bar is the shape of it,
     // and the caption says out loud that these are stock values, not this build's.
@@ -281,7 +279,6 @@
       note ? `<b>${e(note)}</b>` : "",
       ...(b.tags || []).map(t => e(t)),
       a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>` : "",
-      b.popularity ? Number(b.popularity).toLocaleString("en-US") + " imports" : "",
     ].filter(Boolean);
     return `<article class="lbuild">
       <div class="lbh">
@@ -354,8 +351,6 @@
            font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; }
   .lpill:hover { color: var(--text); }
   .lpill.on { background: var(--green); color: var(--on-green); }
-  .lsort { align-items: center; }
-  .lsort > span { font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
 
   .lwlist { margin-top: 16px; max-height: 620px; overflow-y: auto; overflow-x: hidden; }
   /* The board's own scrollbar, not the browser's: square, always visible, so the list reads as a
