@@ -1,0 +1,51 @@
+{
+ "built": "2026-09-14T18:41:11+00:00",
+ "status": "unchanged",
+ "note": null,
+ "builds": 637,
+ "creators": 9,
+ "weapons": 66,
+ "guns": 68,
+ "avatars": 9,
+ "by_creator": {
+  "roguemonkey": 120,
+  "medow": 108,
+  "leissik": 90,
+  "poach": 76,
+  "muomuo": 64,
+  "siingsong": 52,
+  "equalplays": 49,
+  "minda": 40,
+  "deathlapse": 38
+ },
+ "by_mode": {
+  "operations": 517,
+  "warfare": 120
+ },
+ "dated": 76,
+ "noted": 374,
+ "skipped": {
+  "leissik more than 3 per gun": 27,
+  "roguemonkey more than 3 per gun": 9,
+  "medow more than 3 per gun": 4,
+  "poach more than 3 per gun": 3,
+  "minda credited to Ideologist": 3,
+  "muomuo more than 3 per gun": 2,
+  "minda credited to Larry": 2,
+  "leissik duplicate code": 1,
+  "poach unknown weapon: Dragons Breath": 1,
+  "poach unknown weapon: GOLDEN GUNNER 1": 1,
+  "poach unknown weapon: GOLDEN GUNNER 2": 1,
+  "poach unknown weapon: GOLDEN GUNNER 3": 1,
+  "poach duplicate code": 1,
+  "poach unknown weapon: Layali NORM Destroyer": 1,
+  "roguemonkey duplicate code": 1,
+  "minda credited to SomeKindaDog": 1,
+  "minda credited to heromikttv": 1,
+  "minda credited to Mendo With tweeks": 1,
+  "minda credited to Ventiz": 1,
+  "minda credited to Haechi": 1,
+  "minda credited to Tekxan": 1,
+  "minda credited to Chronos": 1
+ }
+}

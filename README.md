@@ -262,6 +262,7 @@ one page per minute, so the site has something to show right away.
 | `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute |
 | `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
 | `docs/events/` | One file per limited-time event, each registering its own tab (see **Tabs and event modules**) |
+| `docs/tabs/` | The tabs that are meant to stay — `loadouts.js`, `admin.js` — registered the same way |
 | `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()`. Which board is shown lives in `state.group`, persisted as `df-group` |
 
 ## Backend
@@ -339,6 +340,8 @@ module contains. A module declares:
 | `hero(rows, host)` | `{eyebrow, big, cells}` to replace the board's headline while the tab is open, or null to leave it |
 | `aside(rows, host, active)` | HTML for the slot beside the big number — the open tab has first claim on it, and a module painting it from another tab should check `host.mode` before it does |
 | `render(el, rows, host)` | paint the pane |
+| `visible(host)` | optional — return false to leave the tab off the bar entirely (and its `queries()` unsent). Absent means always shown |
+| `scope` | optional — `"all"` to receive `queries()` rows exactly as the server sent them, instead of narrowed to this board's roster |
 
 This exists because a season's collection is temporary. Ending one is: delete the module
 file and its two script tags in `index.html`, and drop the event's entry from `EVENTS` in
@@ -452,6 +455,44 @@ stays honest), and it *refuses* to write a file that lost more than a third of i
 grounds that a page answering with a login wall parses to an empty sheet and a green run that
 silently empties the tab is worse than a red one. The job is also the only way this file changes,
 so `git log docs/data/loadouts.json` is the history of what the creators published.
+
+## The admin tab
+
+`docs/tabs/admin.js` is a fourth tab that only the owner of the tracker sees. It is the one
+page that is about the tracker rather than about the game: who can get in, whether collection
+is working, and whether the loadouts job ran.
+
+**The tab is a convenience; the protection is in Postgres.** `visible(host)` keeps it off the
+bar for everybody else, but that is a hint and nothing more — anyone can set
+`localStorage["df-admin"] = "1"`. What actually holds is migration `0026_admin_views.sql`:
+three views (`admin_invites`, `admin_players`, `admin_sessions`), each a definer view that
+ends `where public.is_admin()`, revoked from `anon` and granted to `authenticated` only. With
+the publishable key they answer **401**, so the tab a curious visitor unhides is a tab of
+empty tables. Two RPCs, `admin_revoke_invite(code)` and `admin_cap_invite(code, max)`, raise
+rather than act when the caller is not the admin.
+
+Deliberately not exposed by any of the three views: `player_sessions.cookies` and
+`players.control_key`. Those are the credentials the poller runs on, and a page never needs
+to see them to answer the questions this tab asks.
+
+The four sections:
+
+- **Ways in** — every invite link ever minted, with uses against its limit, who made it, and
+  whether it is open, used up or withdrawn. Each row can be copied as a full URL, capped, or
+  withdrawn (two clicks, since a withdrawal is not undoable from here). Below the table, the
+  mint row: pick one person / three / no limit, then **Tracker link** or **Board link**.
+- **People** — every account, when it enrolled, which link let it in, and which boards it is
+  on. The "let in by" cell is the invite code, so a person and the door they came through are
+  one glance apart.
+- **Collection** — per account: when it was last polled, how long the current HQ login has
+  lasted, when it was handed over, and the last error the poller saw. This is the page that
+  answers "why has this player stopped updating".
+- **Loadouts pipeline** — reads `docs/data/loadouts-meta.json`, which `build.py` now writes on
+  **every** run, including the runs that change nothing and the runs it refuses. `loadouts.json`
+  is unchanged by this: its `updated` field still moves only when the builds themselves move,
+  which is what the Loadouts hero prints. The meta file is how you tell "the job ran and found
+  nothing new" apart from "the job did not run", and it carries the per-creator counts and the
+  full list of what the build dropped and why.
 
 ## Notes on the data source
 
