@@ -87,7 +87,8 @@
    "links": [
     "https://www.twitch.tv/equalplays"
    ],
-   "kind": "creator"
+   "kind": "creator",
+   "avatar": "img/creators/equalplays.png"
   },
   "muomuo": {
    "name": "MuoMuo",
