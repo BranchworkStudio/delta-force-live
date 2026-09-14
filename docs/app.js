@@ -581,7 +581,7 @@
     // clicked; the four names below it get the room back.
     const head = state.players.length < 2 ? "" : `<div class="rhead">
       <button class="allsq${state.focus === "all" ? " on" : ""}" data-focus="all" title="Add every tracked player together">
-        <span class="lbl">All squad</span>
+        <span class="lbl">Squad</span>
         <span class="sum"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> ${raid(ms.length)}</span><span><b>${opKills(ms)}</b> op kills</span></span>
       </button></div>`;
     el.style.setProperty("--n", cards.length);
@@ -769,7 +769,7 @@
     const el = $("#acct");
     if (!el) return;
     const mine = ls(CTL_KEY) || (session && session.openid) || null;   // the account this browser connected itself
-    // In "All squad" there is no focused player to speak for, so the chip speaks for this browser's
+    // On the squad there is no focused player to speak for, so the chip speaks for this browser's
     // own account. It carries the boards list and the invite, which must not disappear on a tab click.
     const me = state.focus === "all"
       ? (mine ? state.players.find(p => p.openid === mine) : null)
