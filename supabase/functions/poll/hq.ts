@@ -60,6 +60,10 @@ export const getWeekCalendar = (s: Session) => call(s, "GetAssetWeekCalendar", {
 // The career red wall: every red type this account has ever found, with how many of each, plus
 // HQ's own career totals. An empty seasonno asks for all seasons rather than the current one.
 export const getRedCollection = (s: Session) => call(s, "GetDahongCollection", { seasonno: [] });
+// The season's card collection. Takes no parameters at all — there is only ever one collection to
+// ask about. The answer lists every card that exists, not only the owned ones: a card never found
+// comes back with card_count 0, which is what makes "what am I missing" answerable from it.
+export const getCardCollection = (s: Session) => call(s, "GetCardCollection", {});
 
 /** Daily private-room passwords: signed but unauthenticated, so also a signature self-test. */
 export async function getPrivateRoomKey(): Promise<Envelope> {

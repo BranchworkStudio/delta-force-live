@@ -6,7 +6,7 @@
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const SERIES = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6"].map(css);
   const GREEN = "#1de08c", RED = "#e0463f", AMBER = "#e6b34a";
-  const state = { range: "today", mode: 1, focus: null, group: undefined, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], sessions: [], recent: [], groups: [], memberships: [], myGroups: [], open: new Set(), showAll: false };
+  const state = { range: "today", mode: 1, focus: null, group: undefined, tab: null, me: null, players: [], matches: [], members: [], reds: [], passwords: null, latency: [], sessions: [], recent: [], groups: [], memberships: [], myGroups: [], open: new Set(), showAll: false, tabData: {} };
 
   // ---------- lookups (official basic_info tables, with a fallback) ----------
   const MAP_FALLBACK = { 22: "Zero Dam", 19: "Layali Grove", 39: "Space City", 81: "Brakkesh", 88: "Tide Prison", 10: "Trench Lines", 24: "Cracked", 11: "Trainwreck", 54: "Ascension", 12: "Knife Edge", 15: "Fault", 30: "Cyclone", 14: "Aftershock", 55: "Island Warfare", 31: "Akh Canal", 21: "Shafted", 75: "Threshold", 89: "AZ3", 17: "Coliseum", 26: "The Mog" };
@@ -62,6 +62,7 @@
   // still let the public key read everything — but Postgres now knows who is asking, which is the
   // thing a boundary needs before it can exist at all.
   const CTL_KEY = "df-control";
+  const TAB_KEY = "df-tab";
   const ls = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const SESS_KEY = "df-session";
   let session = (() => { try { return JSON.parse(ls(SESS_KEY) || "null"); } catch (e) { return null; } })();
@@ -165,6 +166,9 @@
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
   async function load() {
     const since = encodeURIComponent(rangeStart().toISOString());
+    // A tab module's reads go out with the board's own rather than after them, and softly: a tab
+    // that cannot load costs its own page and nothing else.
+    const extra = Promise.all(TABS.map(t => t.queries ? Promise.all(t.queries().map(restSoft)) : Promise.resolve([])));
     const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum, groups, memberships, myGroups] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
@@ -200,6 +204,7 @@
     // every policy asks shares_group(openid), so what arrives here is already only the players this
     // session may see. A tracker-only player is still filtered out of the shared board here.
     const mine = ls(CTL_KEY) || (session && session.openid) || null;
+    state.me = mine;
     const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
     state.group = pickGroup(groups, myIds, mine);
 
@@ -219,6 +224,9 @@
       rank: ours(rank), rankSamples: ours(rankSamples), carried: ours(carried), wall: ours(wall), wallSum: ours(wallSum),
       groups, memberships, myGroups: Array.isArray(myGroups) ? myGroups : [],
     });
+    const extraRows = await extra;
+    state.tabData = {};
+    TABS.forEach((t, i) => { state.tabData[t.id] = (extraRows[i] || []).map(ours); });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
@@ -364,6 +372,71 @@
       <a class="go" href="${connectHref()}">Connect account</a>`;
   }
 
+  // ---------- tabs ----------
+  // The board is one page per tab. "Match data" is this page's own modules, Operations and Warfare
+  // alike — the mode buttons still pick between those. Every other tab is a module that registered
+  // itself in window.DF_TABS before this file ran, which is what makes a limited-time event a file
+  // you delete rather than a feature you unpick.
+  //
+  // A module is an object:
+  //   id        unique; its pane becomes the element "pane-<id>"
+  //   label     the name on the tab
+  //   filters   true if the mode and range pickers apply to it (they dim when they do not)
+  //   queries() REST paths to read; the answers come back in the same order, already narrowed to
+  //             the players on this board
+  //   count(rows, host)          a short badge for the tab bar, or null
+  //   aside(rows, host, active)  HTML for the slot beside the big number, or null
+  //   render(el, rows, host)     paint the pane
+  const MATCH_TAB = { id: "match", label: "Match data", filters: true };
+  const TABS = [MATCH_TAB].concat(Array.isArray(window.DF_TABS) ? window.DF_TABS : []);
+  const tabOf = (id) => TABS.find(t => t.id === id) || MATCH_TAB;
+  const paneOf = (id) => document.getElementById("pane-" + id);
+  const rowsOf = (t) => state.tabData[t.id] || [];
+  // What a module is handed. It paints its own pane and reads the board; it does not reach into
+  // anything else, which is the whole reason the seam is here and not in the middle of render().
+  const host = {
+    esc, fmt, full, plain, pct, ago, barCell, attachTips, playerName, focusName, colorFor,
+    get focus() { return state.focus; },
+    get me() { return state.me; },
+    get players() { return state.players; },
+    goTab: (id) => setTab(id),
+    setFocus: (openid) => setFocus(openid),
+    repaint: () => render(),
+  };
+  function setTab(id) {
+    state.tab = tabOf(id).id;
+    try { localStorage.setItem(TAB_KEY, state.tab); } catch (e) { /* private window */ }
+    render();
+  }
+  function renderTabs() {
+    const bar = $("#tabs");
+    // One tab is not a choice: with no event running the bar would be a single word under the hero.
+    bar.hidden = TABS.length < 2;
+    const active = tabOf(state.tab);
+    bar.innerHTML = TABS.map(t => {
+      const c = t.count ? t.count(rowsOf(t), host) : null;
+      return `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}${c ? `<span class="cnt">${esc(c)}</span>` : ""}</button>`;
+    }).join("");
+    bar.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => setTab(b.dataset.tab));
+    TABS.forEach(t => { const el = paneOf(t.id); if (el) el.classList.toggle("on", t.id === active.id); });
+    document.querySelectorAll(".top .modes, .top .ranges").forEach(el => el.classList.toggle("quiet", !active.filters));
+
+    // The slot beside the big number. The open tab has first claim on it; otherwise the first
+    // module with something to say there takes it, which is how a tab advertises itself from a
+    // page you are not on.
+    let html = active.aside ? active.aside(rowsOf(active), host, true) : null;
+    if (!html) for (const t of TABS) { if (t !== active && t.aside) { html = t.aside(rowsOf(t), host, false); if (html) break; } }
+    const aside = $("#heroAside");
+    aside.innerHTML = html || "";
+    aside.querySelectorAll("[data-goto]").forEach(b => b.onclick = () => setTab(b.dataset.goto));
+    attachTips(aside);
+
+    // Only the open pane is painted. The others keep the markup they last had, so coming back to
+    // one is instant and a board refresh does not redraw four pages of it.
+    const pane = paneOf(active.id);
+    if (active.render && pane) active.render(pane, rowsOf(active), host);
+  }
+
   function render() {
     const ms = scoped(state.matches), sol = state.mode === 1;
     renderGate();
@@ -381,6 +454,7 @@
     renderCarried();
     renderWall();
     renderPasswords();
+    renderTabs();
   }
 
   function renderHero(ms, sol) {
@@ -1153,11 +1227,23 @@
 
   // ---------- boot ----------
   // HTML and JS are deployed together but cached separately (Pages CDN, max-age 600). If they mismatch, reload once.
-  if (!$("#cells") || !$("#feed") || !$("#pwBand") || !$("#redsBand")) {
+  if (!$("#cells") || !$("#feed") || !$("#pwBand") || !$("#redsBand") || !$("#tabs") || !$("#heroAside")) {
     try { if (!sessionStorage.getItem("df-reloaded")) { sessionStorage.setItem("df-reloaded", "1"); location.reload(); return; } } catch (e) { /* ignore */ }
     return;
   }
   try { sessionStorage.removeItem("df-reloaded"); } catch (e) { /* ignore */ }
+  // A module's pane is built here rather than written into index.html, so registering a tab costs
+  // one script tag and no markup. The match pane is the page itself and is already there.
+  let anchor = $("#pane-match");
+  for (const t of TABS) {
+    if (paneOf(t.id)) { anchor = paneOf(t.id); continue; }
+    const el = document.createElement("section");
+    el.className = "pane"; el.id = "pane-" + t.id;
+    anchor.insertAdjacentElement("afterend", el);
+    anchor = el;
+  }
+  // The tab you were last on, unless it was an event that has since ended and taken its file away.
+  state.tab = tabOf(ls(TAB_KEY)).id;
   if (!C || !C.SUPABASE_URL || C.SUPABASE_URL.startsWith("__")) { $("#banner").hidden = false; $("#banner").textContent = "config.js is not filled in."; return; }
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
   // The session comes first, so the very first read already carries it — and again before each

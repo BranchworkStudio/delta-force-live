@@ -113,6 +113,12 @@
      any of it back, and with .board capped at 1400px that left the six cells under 810px between
      them — which is how "+4.63M" ended up across its divider. Full width they get 200px each. */
   .statrow { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
+  /* The headline's own line is two columns, and the right one belongs to whichever tab is open:
+     the big number never moves, and a tab that has a second thing worth saying at a glance says it
+     in the space beside it that was empty anyway. A tab with nothing to say leaves it empty, and
+     :empty then collapses the column so the layout is exactly what it was before. */
+  .headline { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+  .headline .aside:empty { display: none; }
   .eyebrow { font: 600 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--green); display: flex; align-items: center; gap: 8px; }
   .eyebrow i { width: 7px; height: 7px; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
   .big { font: 700 96px/1 var(--hud); letter-spacing: -1px; font-variant-numeric: tabular-nums; margin-top: 14px; white-space: nowrap; }
@@ -194,7 +200,26 @@
               font: 700 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; text-decoration: none; }
   .gate .go:hover { filter: brightness(1.08); }
   body.gated .statrow, body.gated .roster, body.gated .band, body.gated .cols, body.gated .nudge,
-  body.gated .modes, body.gated .ranges, body.gated .acct-div, body.gated .status { display: none; }
+  body.gated .modes, body.gated .ranges, body.gated .acct-div, body.gated .status,
+  body.gated .tabs, body.gated .pane { display: none; }
+
+  /* ---- tabs ----
+     One tab per page of the board. "Match data" is the board itself and is always there; the rest
+     are registered by the module files loaded before app.js, so a season ending is a deleted script
+     tag and a deleted file rather than an edit to this page. The bar hides itself while only one
+     tab exists: a single tab is not a choice. */
+  .tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--hair); background: var(--ground); }
+  .tabs button { border: 0; background: none; padding: 15px 32px; font: 700 13px var(--hud); letter-spacing: 2px;
+                 text-transform: uppercase; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tabs button:hover { color: var(--text-2); }
+  .tabs button.on { color: var(--green); border-bottom-color: var(--green); }
+  .tabs .cnt { display: inline-block; margin-left: 10px; background: rgba(29, 224, 140, .14); color: var(--green); padding: 2px 8px; font-size: 11px; letter-spacing: 1px; }
+  .tabs button.on .cnt { background: var(--green); color: var(--on-green); }
+  .pane { display: none; } .pane.on { display: block; }
+  /* The range buttons pick a time window, and the mode buttons pick Operations or Warfare. Both
+     belong to the match data; a tab that is not range-scoped says so by dimming them rather than
+     by removing them, so the masthead does not change shape when you switch tabs. */
+  .top .quiet { opacity: .28; pointer-events: none; }
 
   /* ---- body ---- */
   .cols { display: grid; grid-template-columns: 1.2fr .8fr; }
@@ -304,6 +329,8 @@
   @media (max-width: 900px) {
     .hero { padding: 18px 20px 22px; }
     .big { font-size: 64px; }
+    .headline { grid-template-columns: 1fr; gap: 22px; }
+    .tabs button { padding: 13px 20px; font-size: 12px; letter-spacing: 1.4px; }
     .cells { grid-template-columns: 1fr 1fr; } .cell { padding: 8px 16px; }
     .roster { grid-template-columns: 1fr 1fr; }
     .cols { grid-template-columns: 1fr; } .left { border-right: 0; border-bottom: 1px solid var(--hair); }
@@ -341,12 +368,17 @@
       <div class="acct" id="acct"></div>
     </div>
     <div class="statrow">
-      <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div></div>
+      <div class="headline">
+        <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div></div>
+        <div class="aside" id="heroAside"></div>
+      </div>
       <div class="cells" id="cells"></div>
     </div>
   </header>
   <div id="banner" class="banner" hidden></div>
+  <nav class="tabs" id="tabs" hidden></nav>
   <section class="gate" id="gate" hidden></section>
+  <section class="pane on" id="pane-match">
   <section class="nudge" id="nudge" hidden></section>
   <section class="roster" id="roster"></section>
   <section class="band" id="mapsBand"></section>
@@ -380,15 +412,21 @@
     <div class="mod-label">Red collection <span class="note" id="wallFoot"></span></div>
     <div id="wall"></div>
   </section>
+  </section><!-- /pane-match -->
   <footer>Matches come from each player's own Delta Force account, connected once from the <a href="connect.html" id="connectLink">connect page</a> and then read for you every minute. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=25"></script>
+<script src="config.js?v=26"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=25"></script>
+<!-- Limited-time event modules. Each one registers a tab with itself and is otherwise unknown to
+     the board: when the season ends, delete the two lines below and docs/events/asala-cards.js,
+     drop the entry from EVENTS in supabase/functions/poll/index.ts, and nothing else changes. -->
+<script src="https://www.playdeltaforce.com/basic_info/asala_pokers_en.js" onerror="window.__cardsFailed=1"></script>
+<script src="events/asala-cards.js?v=26"></script>
+<script src="app.js?v=26"></script>
 </body>
 </html>
