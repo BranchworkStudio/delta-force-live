@@ -49,9 +49,13 @@ One entry per page:
 | `ext` | the extension the download is saved with, under `raw/own/` |
 | `links` | their channels, when the page itself does not carry them (a `dfbuild` page does) |
 | `mode` | only for a page that does not say: `poach` publishes bare codes with a Hazard Operations price on every row, so those are recorded as Operations |
+| `cols` | `sheet` only, and only for a sheet that has a real header row: `{"code": "Share code", "note": "Build name"}` names the creator's own columns so they are read rather than guessed at |
 
-`sheet` is the one to reach for when a creator keeps their builds in a Google Sheet, and it is
-worth knowing what it does *not* assume. No sheet agrees with another on columns — code beside
+`sheet` is the one to reach for when a creator keeps their builds in a Google Sheet. It reads two
+shapes. Give it `cols` and it finds the header row and reads the columns named in it, which is
+right whenever the sheet has one: RogueMonkeyJr's leads with a weapon-class column, and the
+columnless read below would have called every build of his "AR". Leave `cols` out and it falls
+back to the original read, which is worth knowing what it does *not* assume. No sheet agrees with another on columns — code beside
 the name, or a price or a "Meta" marker in between; one long list, or four class columns side by
 side — so it reads no columns at all. Any cell that is a code is a build; the cells immediately
 left of it, up to the first blank or the previous build's code, are what its maker wrote about it,
@@ -59,6 +63,15 @@ the leftmost being their name for it and anything between a tag. A row whose onl
 `Operations` or `Warfare` sets the mode below it, which is how a sheet of bare codes says which
 game its builds are for. A qualifier every build on a page carries is dropped rather than shown:
 "Meta" on all 52 of them tells nobody anything.
+
+Either shape drops a code that hands the build to somebody else — `…C0LGG (Larry)`,
+`…C0LGG(SomeKindaDog)` — and counts it in the skip list by the name it credits. A creator who
+keeps a few of other people's builds on their page is crediting them in the only place a
+spreadsheet has, and that credit is a name with nothing to link to, which is the one build this
+file does not publish; re-attributing it would be worse, since we cannot ask the person whose
+name is in the brackets. Twelve of Minda999's are dropped this way. The mode is parenthesised on
+some sheets too, so the code is always matched first: `Operations (Extraction Mode)` is the
+game's name for a mode, not a person.
 
 A creator who publishes on a page nobody else uses needs a parser of their own, which is the only
 part of adding one that is ever real work: `parse_medow` is thirty lines because that page keeps

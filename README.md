@@ -376,10 +376,16 @@ grid into a staircase.
 **Only the pages the creators run themselves.** The file was built from aggregators as well
 at first — sites that collect other people's builds — and they were dropped: four times the
 volume, a fraction of the value, most of it undated, reposted or uncredited, and a list you
-cannot trust is worse than a shorter one you can. What is left is 477 builds across 64 of the
+cannot trust is worse than a shorter one you can. What is left is 637 builds across 66 of the
 68 weapons, every one of them read off a page its maker publishes and keeps up to date.
 `tools/loadouts/creators.json` is the list of those pages; adding a creator is adding an
 entry there.
+
+**Both modes, since RogueMonkeyJr.** The file was Operations and nothing else for its whole
+life — all seven of the creators it started with publish for the extraction mode — so the tab's
+mode filter and the mode chip on each card stayed hidden, being furniture over a file that had
+only one answer. RogueMonkeyJr. keeps a sheet of 120 Warfare builds and a status column saying
+which of them he still stands behind, and adding it turned both on by themselves.
 
 **The face beside the name** is the creator's own channel picture, stored under
 `docs/img/creators/` rather than hotlinked: a CDN URL rotates, and a visitor should not have
@@ -389,7 +395,10 @@ Three rules the file is built on, and the reason for each:
 
 - **A build without a creator and a link back is not published.** The whole page is other
   people's work; the credit is the point, and a code with no author is a code nobody can
-  ask about.
+  ask about. This also decides what to do with the builds a creator keeps on their page that
+  are not theirs: Minda999 has a dozen credited in the only way a spreadsheet can, a name in
+  brackets after the code — `…C0LGG (Larry)` — and those are dropped rather than published
+  under his name or under a name with nothing behind it. A name in brackets is half the rule.
 - **Codes are copied as published and are not verified here.** We have no way to paste one
   into the game and check, so the page says so rather than implying we did.
 - **A weapon the manifest does not have is dropped.** It means the name was mistyped or the
@@ -405,7 +414,7 @@ its own, the name loses it: SammyMedows calls one build `$500k` on a row whose p
 *not* touched is everything they actually wrote — `Hipfire`, `High End - LONG RANGE`, `Bot
 blaster` are seven people's vocabularies, and flattening those into a house style would be us
 writing the page instead of them. A build whose maker published nothing but a name and a code
-(92 of them) shows nothing but a name and a code.
+(137 of them) shows nothing but a name and a code.
 
 Two things the page cannot do, said out loud rather than worked around: **codes published
 without the `Weapon Name-Mode-` prefix are shown exactly as their maker published them** (some

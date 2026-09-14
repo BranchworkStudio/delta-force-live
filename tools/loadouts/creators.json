@@ -83,5 +83,35 @@
    "https://www.twitch.tv/siingsong",
    "https://www.youtube.com/@siingsong"
   ]
+ },
+ {
+  "id": "roguemonkey",
+  "name": "RogueMonkeyJr.",
+  "source": "RogueMonkeyJr's build sheet",
+  "parser": "sheet",
+  "cols": {
+   "code": "Share code",
+   "note": "Build name"
+  },
+  "ext": "csv",
+  "fetch": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/export?format=csv",
+  "page": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+  "links": [
+   "https://www.youtube.com/@RogueMonkeyJr",
+   "https://www.twitch.tv/roguemonkeyjr"
+  ]
+ },
+ {
+  "id": "minda",
+  "name": "Minda999",
+  "source": "Minda999's build sheet",
+  "parser": "sheet",
+  "ext": "csv",
+  "fetch": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/export?format=csv",
+  "page": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+  "links": [
+   "https://www.youtube.com/@Minda999",
+   "https://www.twitch.tv/minda999"
+  ]
  }
 ]
