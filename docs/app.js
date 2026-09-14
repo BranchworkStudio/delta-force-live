@@ -309,7 +309,10 @@
   // without being quit. Warfare counts deaths properly, so use them there.
   const diedIn = (m) => state.mode === 1 ? (m.result === 2 && !m.is_leave ? 1 : 0) : ((selfRow(m) || {}).death || 0);
   const deathsOf = (ms) => sum(ms, diedIn);
-  const kdOf = (k, d) => d ? (k / d).toFixed(1) : k ? "∞" : "0.0";
+  // Nobody has an infinite K/D. A flawless run is worth exactly its kills — dividing by no deaths
+  // is a division that never happened, so the ratio is the kill count itself and reads as a number
+  // you can compare with the next line down.
+  const kdOf = (k, d) => (d ? k / d : k).toFixed(1);
   // HQ never says what a match was worth in rank score: the per-match rank_score is 0 on every
   // row, and the only figure it reports is the standing as it is right now. So a gained/lost
   // number has to be read off the standing itself, which the poller samples every minute and

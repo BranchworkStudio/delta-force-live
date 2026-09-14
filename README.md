@@ -324,7 +324,9 @@ ones, so history fills in slowly), `GetRedDropRecordList` page 1 (plus one deepe
 page), and `GetPrivateRoomKey` (daily room passwords, hourly). `match_time` is the
 match *start*; a member's `finish_time` is when that player extracted or died, and is
 what the latency stat measures against. Operations details always report `death = 0`,
-so the site counts a failed, non-quit raid as a death for K/D.
+so the site counts a failed, non-quit raid as a death for K/D. A flawless stretch has
+no denominator to divide by, so its K/D is simply the kill count — the subline says
+"no deaths yet" so the number is not mistaken for an average.
 
 ### How long an HQ login lasts
 
