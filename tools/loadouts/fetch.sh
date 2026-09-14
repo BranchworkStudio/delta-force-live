@@ -9,7 +9,9 @@ set -e
 cd "$(dirname "$0")"
 UA="DeltaForceLive/1.0 (personal dashboard; +https://github.com/BranchworkStudio/delta-force-live)"
 mkdir -p raw/own ../../docs/img/creators
-get () { [ -s "$2" ] || curl -sS -m 25 -A "$UA" "$1" -o "$2"; python3 -c 'import time;time.sleep(.7)'; }
+# --fail matters more than it looks: unattended, a 404 body saved as if it were the page is how a
+# build list quietly turns into nothing.
+get () { [ -s "$2" ] || curl -sS --fail --retry 2 -m 25 -A "$UA" "$1" -o "$2"; python3 -c 'import time;time.sleep(.7)'; }
 
 # The weapon spine, so build.py can drop a build whose weapon the game does not have.
 get "https://www.playdeltaforce.com/basic_info/guns_en.js" raw/guns_en.js
@@ -27,7 +29,7 @@ PY
 
 # The creators' own pages, one per entry in creators.json. A Google Doc needs the redirect
 # followed to its export host, which is the only reason this is not the same get() as above.
-python3 -c 'import json;print("\n".join(c["id"]+" "+c["ext"]+" "+c["fetch"] for c in json.load(open("creators.json"))))' | while read id ext url; do [ -s "raw/own/$id.$ext" ] || curl -sSL -m 40 -A "$UA" "$url" -o "raw/own/$id.$ext"; python3 -c 'import time;time.sleep(.7)'; done
+python3 -c 'import json;print("\n".join(c["id"]+" "+c["ext"]+" "+c["fetch"] for c in json.load(open("creators.json"))))' | while read id ext url; do [ -s "raw/own/$id.$ext" ] || curl -sSL --fail --retry 2 -m 40 -A "$UA" "$url" -o "raw/own/$id.$ext"; python3 -c 'import time;time.sleep(.7)'; done
 
 # Their faces. The build page itself carries one when the creator signed in with Twitch; otherwise
 # it is the og:image of the first channel they list, which is the same picture. Stored on our own

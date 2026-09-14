@@ -25,8 +25,25 @@ for cid, c in creators.items():
             break
 
 builds.sort(key=lambda b: (b['weapon'], b['creator'], b['code']))
-doc = dict(updated=datetime.date.today().isoformat(),
-           sources=sources, creators=creators, builds=builds)
+body = dict(sources=sources, creators=creators, builds=builds)
+
+# This runs unattended every morning, so it has to be able to refuse its own output. A creator's
+# page that answers with a login wall, an error page or an empty sheet parses to nothing at all,
+# and a green run that quietly empties the tab is the one failure mode worth spending code on.
+old = json.load(open(OUT)) if os.path.exists(OUT) else None
+if not builds:
+    raise SystemExit('refusing to write: no builds parsed at all — a page is down or has changed shape')
+if old and len(builds) < 0.6 * len(old['builds']):
+    raise SystemExit('refusing to write: %d builds, down from %d. Check the pages by hand.'
+                     % (len(builds), len(old['builds'])))
+
+# `updated` is the day the builds last actually changed, not the day this last ran. Re-reading the
+# same pages and finding the same thing is not an update, and a date that moves every morning
+# would say the opposite on a page that had not changed in a month.
+if old and all(old.get(k) == v for k, v in body.items()):
+    print('no change —', len(builds), 'builds, still as of', old.get('updated'))
+    raise SystemExit(0)
+doc = dict(updated=datetime.date.today().isoformat(), **body)
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 json.dump(doc, open(OUT, 'w'), indent=1, ensure_ascii=False)
 print('builds', len(builds), 'creators', len(creators), 'weapons', len({b['weapon'] for b in builds}), '/', len(GUNS))

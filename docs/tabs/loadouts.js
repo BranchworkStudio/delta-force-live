@@ -133,8 +133,8 @@
             GUNS.length ? "of every gun in the game" : null],
           ["Creators", String(Object.keys(DB.creators || {}).length), "every build is theirs, not ours",
             "Everything on this page was read off a page one of these people publishes themselves. Nothing is copied from a site that collects other people's builds."],
-          ["Last updated", DB.updated ? e(shortDate(DB.updated)) : "–", "when their pages were last read",
-            "The date this file was last rebuilt from the creators' pages. A build they changed after this date will not be here yet — the link on each card is always the live original."],
+          ["Last updated", DB.updated ? e(shortDate(DB.updated)) : "–", "the day these builds last changed",
+            "Their pages are re-read every morning. This is the day something in them last actually changed — a morning that finds the same builds does not move it. The link on each card is always the live original."],
         ],
       };
     },

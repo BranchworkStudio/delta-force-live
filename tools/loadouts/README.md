@@ -1,7 +1,8 @@
 # Loadouts data
 
-What produced `docs/data/loadouts.json`. Run it when the tab's builds need refreshing —
-by hand, not on a schedule.
+What produced `docs/data/loadouts.json`. `.github/workflows/loadouts.yml` runs both of these
+every morning and commits the result, so the hand-run below is for adding a creator, changing a
+parser, or checking what the job would do.
 
 ```bash
 ./fetch.sh        # downloads into ./raw and ../../docs/img/creators (rate-limited, under a minute)
@@ -21,6 +22,12 @@ An avatar already on disk is never re-fetched; delete the file to refresh it.
 creator and a link back, codes are copied as published and never verified here, and a weapon
 the manifest does not have is dropped — which is also what keeps mobile and CN builds out,
 since their codes do not import into the global PC game.
+
+Because it runs unattended it can also refuse its own output. It writes nothing when the rebuilt
+file is identical to the one on disk — `updated` then stays where it was, because re-reading the
+same pages is not an update — and it exits non-zero rather than writing a file with no builds in
+it, or one that lost more than a third of them. Both are what a page answering with a login wall
+or a redesign looks like from here.
 
 `raw/` (the saved pages) is not committed; regenerating it is the point of `fetch.sh`. The
 avatars are committed, because they are part of what the page shows.
