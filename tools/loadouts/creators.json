@@ -7,12 +7,14 @@
   "ext": "txt",
   "fetch": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/export?format=txt",
   "page": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
-  "links": ["https://www.twitch.tv/leissik"]
+  "links": [
+   "https://www.twitch.tv/leissik"
+  ]
  },
  {
   "id": "poach",
   "name": "POACH",
-  "source": "deltaforce.build/poach",
+  "source": "POACH's build page",
   "parser": "dfbuild",
   "ext": "html",
   "fetch": "https://www.deltaforce.build/poach",
@@ -22,7 +24,7 @@
  {
   "id": "deathlapse",
   "name": "Deathlapse",
-  "source": "deltaforce.build/deathlapse",
+  "source": "Deathlapse's build page",
   "parser": "dfbuild",
   "ext": "html",
   "fetch": "https://www.deltaforce.build/deathlapse",

@@ -357,26 +357,33 @@ the stat bars, the same way maps and cards are named). HQ knows what you own and
 did with it; it does not know what anyone thinks you should put on a rifle, so nothing on
 this page can come from the API.
 
-What a build really is, is its **import code** — `Weapon Name-Mode-<21 characters>`, pasted
-in game at Gun Customization Station → Preset → Import. That string is the object on the
-page; the creator's name, their own channels, the mode, the age and the attachment list are
-all there to help you decide whether to paste it.
+What a build really is, is its **import code** — `Weapon Name-Mode-<21 characters>`, imported
+in game from the weapon's preset menu. That string is the object on the page; the creator's
+face, their name, their own channels and the age of the build are all there to help you
+decide whether to paste it. Every card is the same four rows — who made it, what it is, the
+code, where it came from — so a page that carries more detail than another does not turn the
+grid into a staircase.
 
 `docs/data/loadouts.json` is a curated static file, not a live feed:
 
 | Field | What |
 |---|---|
 | `updated` | the day the file was gathered — shown in the hero, because builds go stale |
-| `sources` | the pages the codes were copied from, linked on every card; `kind` is `creator` for a page its own maker publishes and `aggregator` for a site that collects other people's builds |
-| `creators` | `name`, profile `url`, `links` (their own Twitch/YouTube/X/Discord/TikTok), and `kind`: `creator` for someone whose own page we read, `site` for a house build, absent for a person we only know through an aggregator |
-| `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `popularity`, `level`, `att`, `note`, `tags` |
+| `sources` | the page each code was copied from, named the way the card says it — "Leissik's build doc" — and linked on every card |
+| `creators` | `name`, `url` (their page), `links` (their own Twitch/YouTube/X/Discord/TikTok) and `avatar`, a path under `docs/img/creators/` |
+| `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `popularity`, `note`, `tags` |
 
-**Where a build was found is part of what it is.** A code on the page its maker runs — their
-doc, their site — is the code they still stand behind; a code on an aggregator is a copy
-somebody took, and nobody goes back to correct it. So the source carries a `kind`, own-page
-builds sort above everything else on a weapon, they are marked *their own page* on the card,
-and `Own pages` / `Aggregators` is a filter of its own in the rail. `tools/loadouts/creators.json`
-is the list of creator pages; adding a creator is adding an entry there.
+**Only the pages the creators run themselves.** The file was built from aggregators as well
+at first — sites that collect other people's builds — and they were dropped: four times the
+volume, a fraction of the value, most of it undated, reposted or uncredited, and a list you
+cannot trust is worse than a shorter one you can. What is left is 204 builds across 56 of the
+68 weapons, every one of them read off a page its maker publishes and keeps up to date.
+`tools/loadouts/creators.json` is the list of those pages; adding a creator is adding an
+entry there.
+
+**The face beside the name** is the creator's own channel picture, stored under
+`docs/img/creators/` rather than hotlinked: a CDN URL rotates, and a visitor should not have
+to call Twitch to see whose build they are reading.
 
 Three rules the file is built on, and the reason for each:
 
@@ -398,7 +405,7 @@ Where a creator keeps builds in Discord, their card links to the server instead.
 
 `tools/loadouts/` holds the fetcher and the builder that produced the file. Refreshing it is
 `fetch.sh` then `build.py`; both are rate-limited, identify themselves in the user agent and
-were pointed only at listings the sites' `robots.txt` allows.
+fetch only pages their owners published for exactly this purpose.
 
 ## Notes on the data source
 

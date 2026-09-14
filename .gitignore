@@ -1,8 +1,5 @@
 .DS_Store
 node_modules/
 tools/loadouts/raw/
-tools/loadouts/lists.json
-tools/loadouts/ids.txt
-tools/loadouts/profiles.txt
 tools/loadouts/__pycache__/
 docs/_harness.html
