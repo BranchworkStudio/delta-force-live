@@ -1,0 +1,6816 @@
+{
+ "updated": "2026-09-14",
+ "sources": {
+  "rnkd": {
+   "name": "rnkd.gg",
+   "url": "https://rnkd.gg/deltaforce/builds/"
+  },
+  "dft": {
+   "name": "deltaforcetools.gg",
+   "url": "https://deltaforcetools.gg/weapon-builds"
+  }
+ },
+ "creators": {
+  "rnkd": {
+   "name": "rnkd.gg",
+   "url": "https://rnkd.gg/deltaforce/builds/",
+   "links": [],
+   "kind": "site"
+  },
+  "narcissally": {
+   "name": "NarcisSally",
+   "url": "https://rnkd.gg/profile/narcissally",
+   "links": [
+    "https://instagram.com/NarcisSally",
+    "https://tiktok.com/@NarcisSally",
+    "https://twitch.tv/NarcisSally",
+    "https://twitter.com/NarcisSally",
+    "https://youtube.com/@NarcisSally"
+   ]
+  },
+  "tae": {
+   "name": "Tae",
+   "url": "https://rnkd.gg/profile/tae",
+   "links": []
+  },
+  "frank5": {
+   "name": "frank5",
+   "url": "https://rnkd.gg/profile/frank5",
+   "links": []
+  },
+  "kucing_gila": {
+   "name": "kucing_gila",
+   "url": "https://rnkd.gg/profile/kucing_gila",
+   "links": []
+  },
+  "akshay": {
+   "name": "akshay",
+   "url": "https://rnkd.gg/profile/akshay",
+   "links": []
+  },
+  "nafis": {
+   "name": "Zephyr",
+   "url": "https://rnkd.gg/profile/nafis",
+   "links": []
+  },
+  "minipoy": {
+   "name": "minipoy",
+   "url": "https://rnkd.gg/profile/minipoy",
+   "links": []
+  },
+  "visfly": {
+   "name": "VISFLY",
+   "url": "https://rnkd.gg/profile/visfly",
+   "links": []
+  },
+  "kiri86": {
+   "name": "Kiri86",
+   "url": "https://rnkd.gg/profile/kiri86",
+   "links": [
+    "https://tiktok.com/@oskar86",
+    "https://twitch.tv/IamKiri86",
+    "https://twitter.com/IamKiri86"
+   ]
+  },
+  "nuuskamuikku": {
+   "name": "nuuskamuikku",
+   "url": "https://rnkd.gg/profile/nuuskamuikku",
+   "links": []
+  },
+  "oneshotrich": {
+   "name": "OneShotRich",
+   "url": "https://rnkd.gg/profile/oneshotrich",
+   "links": []
+  },
+  "skyblack": {
+   "name": "skyblack",
+   "url": "https://rnkd.gg/profile/skyblack",
+   "links": []
+  },
+  "maxiq": {
+   "name": "Maxiq",
+   "url": "https://rnkd.gg/profile/maxiq",
+   "links": [
+    "https://twitch.tv/itzmaxiq",
+    "https://twitter.com/MaxiqYT",
+    "https://youtube.com/@Maxiq"
+   ]
+  },
+  "alex7": {
+   "name": "alex7",
+   "url": "https://rnkd.gg/profile/alex7",
+   "links": []
+  },
+  "rvl": {
+   "name": "rvl",
+   "url": "https://rnkd.gg/profile/rvl",
+   "links": []
+  },
+  "blend": {
+   "name": "blend",
+   "url": "https://rnkd.gg/profile/blend",
+   "links": []
+  },
+  "enders": {
+   "name": "Enders",
+   "url": "https://rnkd.gg/profile/enders",
+   "links": [
+    "https://instagram.com/endersfps",
+    "https://twitch.tv/EndersFPS",
+    "https://twitter.com/EndersFPS",
+    "https://youtube.com/@EndersFPS"
+   ]
+  },
+  "notoschool": {
+   "name": "notoschool",
+   "url": "https://rnkd.gg/profile/notoschool",
+   "links": []
+  },
+  "fewindu": {
+   "name": "FeWindu",
+   "url": "https://rnkd.gg/profile/fewindu",
+   "links": []
+  },
+  "synix": {
+   "name": "Synix",
+   "url": "https://rnkd.gg/profile/synix",
+   "links": []
+  },
+  "zenafps": {
+   "name": "ZenaFPS",
+   "url": "https://rnkd.gg/profile/zenafps",
+   "links": []
+  },
+  "bongog": {
+   "name": "BoNGoG",
+   "url": "https://rnkd.gg/profile/bongog",
+   "links": []
+  },
+  "barbadinos": {
+   "name": "BarbaDinos",
+   "url": "https://rnkd.gg/profile/barbadinos",
+   "links": []
+  },
+  "thecadwoman": {
+   "name": "TheCadWoman",
+   "url": "https://rnkd.gg/profile/thecadwoman",
+   "links": [
+    "https://twitter.com/TheCadWoman",
+    "https://youtube.com/@TheCadWoman"
+   ]
+  },
+  "erikgarridotv": {
+   "name": "ErikGarridoTv",
+   "url": "https://rnkd.gg/profile/erikgarridotv",
+   "links": []
+  },
+  "daniela": {
+   "name": "daniela",
+   "url": "https://rnkd.gg/profile/daniela",
+   "links": []
+  },
+  "dinerytv": {
+   "name": "DineryTV",
+   "url": "https://rnkd.gg/profile/dinerytv",
+   "links": []
+  },
+  "mark": {
+   "name": "mark",
+   "url": "https://rnkd.gg/profile/mark",
+   "links": []
+  },
+  "stonesy90": {
+   "name": "Stonesy90",
+   "url": "https://rnkd.gg/profile/stonesy90",
+   "links": []
+  },
+  "eric": {
+   "name": "eric",
+   "url": "https://rnkd.gg/profile/eric",
+   "links": []
+  },
+  "ajdin": {
+   "name": "ajdin",
+   "url": "https://rnkd.gg/profile/ajdin",
+   "links": []
+  },
+  "alex": {
+   "name": "alex",
+   "url": "https://rnkd.gg/profile/alex",
+   "links": []
+  },
+  "okkore": {
+   "name": "okkore",
+   "url": "https://rnkd.gg/profile/okkore",
+   "links": []
+  },
+  "geminibradley": {
+   "name": "GeminiBradley",
+   "url": "https://rnkd.gg/profile/geminibradley",
+   "links": []
+  },
+  "btoot": {
+   "name": "btoot",
+   "url": "https://rnkd.gg/profile/btoot",
+   "links": []
+  },
+  "x2194": {
+   "name": "x2194",
+   "url": "https://rnkd.gg/profile/x2194",
+   "links": []
+  },
+  "jestermad": {
+   "name": "JesterMad",
+   "url": "https://rnkd.gg/profile/jestermad",
+   "links": []
+  },
+  "jan": {
+   "name": "TTVcrnkie",
+   "url": "https://rnkd.gg/profile/jan",
+   "links": []
+  },
+  "deltaforcetools": {
+   "name": "deltaforcetools.gg",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "site"
+  },
+  "dft:nodesiretospeak": {
+   "name": "nodesiretospeak",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:chachesino": {
+   "name": "Chache Sino",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:tangsanghang": {
+   "name": "Tangsang Hang",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:olhimi": {
+   "name": "Oláh Imi",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:faizanahmed": {
+   "name": "Faizan Ahmed",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:hendriksmit": {
+   "name": "Hendrik Smit",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:panyawattitikinakorn": {
+   "name": "Panyawat Titikinakorn",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:nawafalmutairi": {
+   "name": "Nawaf AlMutairi",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:mhika": {
+   "name": "M Hika",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:labi": {
+   "name": "LaBi",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:radikgross": {
+   "name": "Radik Gross",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  },
+  "dft:serega666": {
+   "name": "Serega 666",
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "links": [],
+   "kind": "community"
+  }
+ },
+ "builds": [
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AK-12 Assault Rifle-Warfare-6HSGLAG0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/631",
+   "added": "2025-10-17",
+   "popularity": 5648,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AK-12 Assault Rifle-Operations-6FQ2FN804CN8B128UE6UU",
+   "url": "https://deltaforcetools.gg/weapon-builds/495",
+   "added": "2025-09-01",
+   "popularity": 1551,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Long-Range"
+   ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "Assault Rifle-Warfare-6ENTK0400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/35",
+   "added": "2024-12-19",
+   "popularity": 669,
+   "level": null,
+   "att": [],
+   "note": "Not highly recommended due to recoil patterns. Attachments: - Ranger Handguard - AK-12 Elite Bipod Long Barrel - Sandstorm vertical compensator - Secret order bevel…",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "AK-12 Assault Rifle-Operations-6FQ2FN804CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/104",
+   "added": "2025-03-29",
+   "popularity": 577,
+   "level": null,
+   "att": [],
+   "note": "250k mid range",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "AK-12 Assault Rifle-Warfare-6EO7J3C0B33QACKOKK8VA",
+   "url": "https://rnkd.gg/deltaforce/builds/18",
+   "added": "2024-12-17",
+   "popularity": 530,
+   "level": 76,
+   "att": [],
+   "note": "Full Control Kalashnikov Perfect for flanks. - Panaramic Red Dot Sight (personal preference) - AK-19 Stock - RK-3 Rear grip - 75 Round Polymer Drum Mag (just for fun)…",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "AK-12 Assault Rifle-Operations-6HUPVG008M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/216",
+   "added": "2025-10-24",
+   "popularity": 195,
+   "level": null,
+   "att": [
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Rear Grip",
+     "AK Heavy Tower Grip"
+    ],
+    [
+     "Grip Mount",
+     "Balanced Grip Base"
+    ],
+    [
+     "Magazine",
+     "AKS-74 45-Round Extended Mag"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Upper Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Foregrip",
+     "Secret Order Bevel Foregrip"
+    ],
+    [
+     "Barrel",
+     "AK-12 Elite Bipod Long Barrel"
+    ],
+    [
+     "Muzzle",
+     "M7 Practical Suppressor"
+    ],
+    [
+     "Optic",
+     "M157 Fire Control System"
+    ]
+   ],
+   "note": "AK-12 | 85 Control | 73 Stability",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "AK-12 Assault Rifle-Warfare-6HJ46Q008M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/173",
+   "added": "2025-08-27",
+   "popularity": 188,
+   "level": 76,
+   "att": [
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Magazine",
+     "AKS-74 45-Round Extended Mag"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Rear Grip",
+     "Scorpio Rear Grip"
+    ],
+    [
+     "Foregrip",
+     "Secret Order Bevel Foregrip"
+    ],
+    [
+     "Barrel",
+     "AK-12 Elite Bipod Long Barrel"
+    ],
+    [
+     "Optic",
+     "Recon 1.5/5 Adjustable Scope"
+    ]
+   ],
+   "note": "AK-12 excels at medium to long-range combat, offering low recoil, high accuracy, and excellent modularity. With the right attachments, it transforms into a precise…",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AKM Assault Rifle-Warfare-6HE0B9808M3TET99CEP38",
+   "url": "https://deltaforcetools.gg/weapon-builds/501",
+   "added": "2025-09-04",
+   "popularity": 8595,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Burst",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "AKM Assault Rifle-Warfare-6ENG08C0ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/21",
+   "added": "2024-12-18",
+   "popularity": 3985,
+   "level": 75,
+   "att": [],
+   "note": "The Best AKM Loadout",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AKMÂ AssaultÂ Rifle-Operations-6I01D880FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/638",
+   "added": "2025-10-21",
+   "popularity": 1484,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "AKM Assault Rifle-Operations-6FQ3G9404CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/112",
+   "added": "2025-03-29",
+   "popularity": 506,
+   "level": null,
+   "att": [],
+   "note": "300k mid -> long range",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "AKM Assault Rifle-Warfare-6ENTKG800U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/45",
+   "added": "2024-12-19",
+   "popularity": 353,
+   "level": 75,
+   "att": [],
+   "note": "This gun is rubbish, the recoil pattern is a bit better than the other AKM, but shoots worse.",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "AKM Assault Rifle-Warfare-6HKFALC0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/201",
+   "added": "2025-09-23",
+   "popularity": 140,
+   "level": 72,
+   "att": [],
+   "note": "Built purely for hipfire shooting. Best used for aggressive players with its high mag and great mobility while shooting.",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "AKM Assault Rifle-Warfare-6HE0B9808M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/181",
+   "added": "2025-09-03",
+   "popularity": 113,
+   "level": 89,
+   "att": [],
+   "note": "AKM build is tailored for long-range engagements, standing out for its excellent control and stability. Consistent and accurate, it rewards players who favor…",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "AKM Assault Rifle-Warfare-6JUSSIS0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/262",
+   "added": "2026-05-06",
+   "popularity": 40,
+   "level": 59,
+   "att": [
+    [
+     "Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Rear Grip",
+     "AK Skeleton Grip"
+    ],
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Charging Handle",
+     "ZenitCo Charging Handle Cap"
+    ],
+    [
+     "Mag Mount",
+     "Coyote Medium P. Mag Assist (Black)"
+    ],
+    [
+     "Magazine",
+     "AKM 30-Round Polymer Mag"
+    ],
+    [
+     "Barrel",
+     "AKM Beaver Barrel Combo"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Stock",
+     "Cardinal Stable Stock"
+    ],
+    [
+     "Upper Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Foregrip",
+     "Secret Order Bevel Foregrip"
+    ]
+   ],
+   "note": "This weapon has insane damage and can kill enemies in 3 shots in torso and 4 shots in non-head parts. Build enhances firing stability and recoil making it…",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Fusil d'assaut AKM-Opérations-6GJEP1S0FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/142",
+   "added": "2025-06-14",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "clik clik",
+   "tags": []
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AKS-74 Assault Rifle-Warfare-6I6KK3S00RR8JACO27GDL",
+   "url": "https://deltaforcetools.gg/weapon-builds/469",
+   "added": "2025-09-01",
+   "popularity": 3976,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AKS-74Â AssaultÂ Rifle-Operations-6I03U9C0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/642",
+   "added": "2025-10-28",
+   "popularity": 1613,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "AKS-74 Assault Rifle-Warfare-6EN605000U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/42",
+   "added": "2024-12-19",
+   "popularity": 1326,
+   "level": 75,
+   "att": [],
+   "note": "Attachments:",
+   "tags": []
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "warfare",
+   "creator": "alex",
+   "source": "rnkd",
+   "code": "Fusil de asalto AKS-74-Conflicto Bélico-6F4M5P80BQTFAML7K3GKL",
+   "url": "https://rnkd.gg/deltaforce/builds/82",
+   "added": "2025-01-23",
+   "popularity": 723,
+   "level": 65,
+   "att": [],
+   "note": "fAST MOVEMENT AND READY TO KILL. GOOD DAMAGE!",
+   "tags": []
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "AKS-74 Assault Rifle-Operations-6FQ2MQS04CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/105",
+   "added": "2025-03-29",
+   "popularity": 664,
+   "level": null,
+   "att": [],
+   "note": "150k close -> mid range",
+   "tags": []
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "warfare",
+   "creator": "dft:radikgross",
+   "source": "dft",
+   "code": "ÐÐ²ÑÐ¾Ð¼Ð°Ñ AR-57-Ð¡ÑÐ°Ð¶ÐµÐ½Ð¸Ñ-6JPPIOC01KLPVBIAJFKFN",
+   "url": "https://deltaforcetools.gg/weapon-builds/936",
+   "added": "2026-04-21",
+   "popularity": 1726,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AR-57 Assault Rifle-Operations-6JS0UO0073PLLBL5PBC5K",
+   "url": "https://deltaforcetools.gg/weapon-builds/948",
+   "added": "2026-04-28",
+   "popularity": 1135,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "warfare",
+   "creator": "dft:hendriksmit",
+   "source": "dft",
+   "code": "AR-57 Assault Rifle-Warfare-6K7APL40F1K14S136TTBV",
+   "url": "https://deltaforcetools.gg/weapon-builds/986",
+   "added": "2026-06-01",
+   "popularity": 474,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "All-Rounder"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AS Val Assault Rifle-Warfare-6HLPMQ80EIPHRNLI0J8JI",
+   "url": "https://deltaforcetools.gg/weapon-builds/575",
+   "added": "2025-09-28",
+   "popularity": 5724,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AS Val Assault Rifle-Operations-6HG75B805KBR2BJ359PNA",
+   "url": "https://deltaforcetools.gg/weapon-builds/513",
+   "added": "2025-09-10",
+   "popularity": 2209,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "warfare",
+   "creator": "bongog",
+   "source": "rnkd",
+   "code": "AS Val Assault Rifle-Warfare-6EU0U800CH9JKOV493VV2",
+   "url": "https://rnkd.gg/deltaforce/builds/57",
+   "added": "2025-01-03",
+   "popularity": 768,
+   "level": 49,
+   "att": [],
+   "note": "So here is an ASVAL build that has a 0.9 sec TTK on mid range. it has some nice control for the high fire rate and DMG, It is ideal for short and mid range. Use it,…",
+   "tags": []
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "warfare",
+   "creator": "dft:faizanahmed",
+   "source": "dft",
+   "code": "AS Val Assault Rifle-Warfare-6JDSDRG097DB490N0EHLA",
+   "url": "https://deltaforcetools.gg/weapon-builds/715",
+   "added": "2026-03-16",
+   "popularity": 496,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "dft:panyawattitikinakorn",
+   "source": "dft",
+   "code": "AS Val Assault Rifle-Operations-6J7VOFG08TI545120T9IT",
+   "url": "https://deltaforcetools.gg/weapon-builds/696",
+   "added": "2026-02-26",
+   "popularity": 454,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range",
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "AS Val Assault Rifle-Warfare-6ENTJPG00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/30",
+   "added": "2024-12-19",
+   "popularity": 332,
+   "level": null,
+   "att": [],
+   "note": "- Extreme close quarter combon only Attachments: - Laser sight - Barrel optimized for recoil control - 30 round mag with mag pull - Maximum control grip - Stability stock",
+   "tags": []
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "AS Val Assault Rifle-Warfare-6HLPMQ80EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/205",
+   "added": "2025-09-27",
+   "popularity": 144,
+   "level": 38,
+   "att": [],
+   "note": "1 Burst Kill at 30m. Great for close/mid range fights and does great head damage.",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "ASh-12 Assault Rifle-Warfare-6ENTK8000U98BTLV400GS",
+   "url": "https://deltaforcetools.gg/weapon-builds/394",
+   "added": "2025-09-01",
+   "popularity": 888,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "ASh-12 Assault Rifle-Warfare-6ENTK8000U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/41",
+   "added": "2024-12-19",
+   "popularity": 323,
+   "level": 75,
+   "att": [],
+   "note": "Best to stay in Mid-Range with this gun. Attachments: - ASh-12 Annihilator Precision Long Barrel - Titan Compensator - Resonant Ergonomic Grip - ASh-12 30-Round…",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "ASh-12 Battle Rifle-Warfare-6IG4QT40EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/232",
+   "added": "2025-12-15",
+   "popularity": 60,
+   "level": 45,
+   "att": [
+    [
+     "Barrel",
+     "ASh-12 Tomahawk Heavy Barrel"
+    ],
+    [
+     "Foregrip",
+     "Resonant Ergonomic Grip"
+    ],
+    [
+     "Right Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Upper Rail",
+     "PERST-7 Blue Laser-Light Combo"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Magazine",
+     "ASh-12 30-Round Extended Mag"
+    ],
+    [
+     "Muzzle",
+     "Titan Suppressor"
+    ],
+    [
+     "Stock",
+     "ASh-12 Skeleton Stock"
+    ]
+   ],
+   "note": "The new season 7 ASh-12 barrel increases the guns damage to 50 by losing the guns fire rate but the damage is enough to take down enemies with 2 shots on the upper…",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "ASh-12 Battle Rifle-Warfare-6K05SB40EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/265",
+   "added": "2026-05-10",
+   "popularity": 17,
+   "level": 29,
+   "att": [
+    [
+     "Barrel",
+     "ASh-12 Tomahawk Heavy Barrel"
+    ],
+    [
+     "Riser Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Upper Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Foregrip",
+     "Angled Hand Stop"
+    ],
+    [
+     "Magazine",
+     "ASh-12 30-Round Extended Mag"
+    ],
+    [
+     "Stock",
+     "ASh-12 Sniper Stock"
+    ],
+    [
+     "Muzzle",
+     "Titan Compensator"
+    ]
+   ],
+   "note": "This weapon has increased damage when equipped with the Tomahawk Barrel. It can now 2-shot @ 40m when hit on upper torso. This build heavily improves firing stability…",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AUG Assault Rifle-Operations-6I04C2G0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/645",
+   "added": "2025-10-28",
+   "popularity": 10173,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AUG Assault Rifle-Warfare-6HHH46C0EIPHRNLI0J8JI",
+   "url": "https://deltaforcetools.gg/weapon-builds/583",
+   "added": "2025-09-28",
+   "popularity": 2644,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "AUG Assault Rifle-Operations-6HJ3VP808M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/189",
+   "added": "2025-09-10",
+   "popularity": 809,
+   "level": null,
+   "att": [
+    [
+     "Optic",
+     "Holographic Sight Type II"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Foregrip",
+     "Tactical Vertical Foregrip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Bastion Horizontal Compensator"
+    ]
+   ],
+   "note": "Priced at just 200k, this AUG build is a budget - friendly laser for Operations. With near-perfect accuracy and minimal recoil, it offers incredible stability at any…",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "AUG Assault Rifle-Warfare-6EMFGI400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/38",
+   "added": "2024-12-19",
+   "popularity": 514,
+   "level": null,
+   "att": [],
+   "note": "Absolutely no recoil Attachments: - AUG Elite Bipod Long Barrel - KC Hound Handguard - Angled Hand Stop - Badger Small Mag Assist(Black) - AUG Stock Pad - Universal…",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "daniela",
+   "source": "rnkd",
+   "code": "Fusil de asalto AUG-Conflicto Bélico-6F2MAE408153E31HMGOHQ",
+   "url": "https://rnkd.gg/deltaforce/builds/69",
+   "added": "2025-01-17",
+   "popularity": 356,
+   "level": 50,
+   "att": [],
+   "note": "English: It has little recoil. The sight of the weapon is already a personal taste. Español: Tiene poco recoil. Lo que si la mira es a gusto personal.",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "AUG Assault Rifle-Warfare-6HJ4AGC08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/163",
+   "added": "2025-08-23",
+   "popularity": 144,
+   "level": 44,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Cheek Pad",
+     "Universal Cheek Pad"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Right Patch",
+     "DD Python Handguard"
+    ],
+    [
+     "Foregrip",
+     "Angled Hand Stop"
+    ],
+    [
+     "Barrel",
+     "AUG Vanguard Standard Barrel"
+    ],
+    [
+     "Stock",
+     "AUG Stock Pad"
+    ]
+   ],
+   "note": "AUG is a versatile rifle that adapts seamlessly to short, mid, and long-range combat. With virtually zero recoil even at long distances — it provides unmatched…",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "AUG Assault Rifle-Warfare-6HHH46C0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/195",
+   "added": "2025-09-14",
+   "popularity": 98,
+   "level": null,
+   "att": [],
+   "note": "Build for semi-aggressive playstyle. With its improved CONTROL and STABILITY, this can fight long ranges but doesn't take too much HANDLING making it also capable for…",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "AUG Assault Rifle-Operations-6JRRUIG0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/255",
+   "added": "2026-04-27",
+   "popularity": 50,
+   "level": null,
+   "att": [
+    [
+     "Optic",
+     "Prism Universal 2x Optic"
+    ],
+    [
+     "Magazine",
+     "AUG 45-Round Extended Mag"
+    ],
+    [
+     "Cheek Pad",
+     "Universal Cheek Pad"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Left Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Foregrip",
+     "CR Prism Hand stop"
+    ],
+    [
+     "Barrel",
+     "AUG Elite Bipod Long Barrel"
+    ],
+    [
+     "Stock",
+     "AUG Stock Pad"
+    ],
+    [
+     "Muzzle",
+     "Advanced Multi-Caliber Suppressor"
+    ]
+   ],
+   "note": "This updated AUG build now utilizes the new AUG 45-Round Extended Mag and it doesn't cost too much $$$ to build.",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "AUG Assault Rifle-Warfare-6JA310C0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/243",
+   "added": "2026-03-04",
+   "popularity": 33,
+   "level": 38,
+   "att": [
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Cheek Pad",
+     "Universal Cheek Pad"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Right Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Left Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Right Patch",
+     "DD Python Handguard"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Barrel",
+     "AUG Elite Bipod Long Barrel"
+    ]
+   ],
+   "note": "Built purely for long-range gunfights. Build focuses on improving firing stability and recoil making it a perfect gun for long range.",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "AUG Assault Rifle-Warfare-6KF1J5K0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/277",
+   "added": "2026-06-24",
+   "popularity": 20,
+   "level": 39,
+   "att": [
+    [
+     "Magazine",
+     "AUG 45-Round Extended Mag"
+    ],
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Cheek Pad",
+     "Universal Cheek Pad"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Right Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Left Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Right Patch",
+     "DD Python Handguard"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Barrel",
+     "AUG Elite Bipod Long Barrel"
+    ]
+   ],
+   "note": "This weapon is one of the most versatile weapons in the game and depending on the build, it can be used for different playstyles. This build has minimal recoil…",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Fusil d'assaut AUG-Opérations-6GIB7H00FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/140",
+   "added": "2025-06-14",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "low budget",
+   "tags": []
+  },
+  {
+   "weapon": "AWM",
+   "mode": "warfare",
+   "creator": "thecadwoman",
+   "source": "rnkd",
+   "code": "AWM Sniper Rifle-Warfare-6ESARC80BPQR609FCOJ8N",
+   "url": "https://rnkd.gg/deltaforce/builds/59",
+   "added": "2025-01-07",
+   "popularity": 1494,
+   "level": 31,
+   "att": [],
+   "note": "AWM - Long Range Build The AWM is optimized for maximum range engagements, featuring the highest damage output among sniper rifles. Attachments Muzzle: Sniper Rifle…",
+   "tags": []
+  },
+  {
+   "weapon": "AWM",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "AWM Sniper Rifle-Warfare-6EO539004RP0OU9EQA4FD",
+   "url": "https://deltaforcetools.gg/weapon-builds/407",
+   "added": "2025-09-01",
+   "popularity": 1377,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AWM",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "AWM Sniper Rifle-Warfare-6EO539004RP0OU9EQA4FD",
+   "url": "https://rnkd.gg/deltaforce/builds/48",
+   "added": "2024-12-20",
+   "popularity": 1039,
+   "level": 31,
+   "att": [],
+   "note": "Starter build for the AWM Sniper Rifle",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "Bizon Submachine Gun-Warfare-6EKH4280ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/27",
+   "added": "2024-12-18",
+   "popularity": 1700,
+   "level": 62,
+   "att": [],
+   "note": "Best Setup for the Bizon SMG!",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Bizon Submachine Gun-Warfare-6HH6ARO0EIPHRNLI0J8JI",
+   "url": "https://deltaforcetools.gg/weapon-builds/577",
+   "added": "2025-09-28",
+   "popularity": 697,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "warfare",
+   "creator": "okkore",
+   "source": "rnkd",
+   "code": "Fusil de asalto QBZ-95-1-Conflicto Bélico-6F4SUR409SFKBQISO64FO",
+   "url": "https://rnkd.gg/deltaforce/builds/84",
+   "added": "2025-01-24",
+   "popularity": 360,
+   "level": 58,
+   "att": [],
+   "note": "buen control del arma, manejo y estabilidad",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "warfare",
+   "creator": "tae",
+   "source": "rnkd",
+   "code": "Bizon Submachine Gun-Warfare-6EO16PO057RAU0E7AE9HI",
+   "url": "https://rnkd.gg/deltaforce/builds/14",
+   "added": "2024-12-16",
+   "popularity": 278,
+   "level": null,
+   "att": [],
+   "note": "Bizon run and gun. ADS speed",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "Bizon Submachine Gun-Warfare-6HH6ARO0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/194",
+   "added": "2025-09-13",
+   "popularity": 74,
+   "level": null,
+   "att": [],
+   "note": "Built for aggressive players who play for mid-range gunfights. Has high mag capacity with minimal downsides on other stats.",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "Bizon Submachine Gun-Operations-6HAGQRC0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/161",
+   "added": "2025-08-23",
+   "popularity": 69,
+   "level": null,
+   "att": [],
+   "note": "One of the most obtainable weapons in Delta Force - Operations. This build improves recoil and ADS mobility making it a viable option for low-risk runs.",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "Bizon Submachine Gun-Warfare-6KMV7N00EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/286",
+   "added": "2026-07-18",
+   "popularity": 10,
+   "level": 49,
+   "att": [
+    [
+     "Charging Handle",
+     "ZenitCo Charging Handle Cap"
+    ],
+    [
+     "Handguard",
+     "Bizon Carbon Fiber Handguard"
+    ],
+    [
+     "Magazine",
+     "Bizon 64-Round Helical Mag"
+    ],
+    [
+     "Rear Grip",
+     "AK Heavy Tower Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Barrel",
+     "Bizon Blade Ultra-Long Barrel"
+    ]
+   ],
+   "note": "High-mag SMG with good damage. Easy to use and to control and is great for close/mid gunfights.",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Warfare-6EKU0HK00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/31",
+   "added": "2024-12-19",
+   "popularity": 7517,
+   "level": null,
+   "att": [],
+   "note": "A starter weapon that performs excellently. Attachments: - Stacking handling - Longest range barrel - Sandstorm vertical compensator - Control grip - 45 round mag -…",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "CAR-15 Assault Rifle-Warfare-6HCOJIO08M3TET99CEP38",
+   "url": "https://deltaforcetools.gg/weapon-builds/483",
+   "added": "2025-09-01",
+   "popularity": 3798,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "CAR-15 Assault Rifle-Operations-6HRGMFG0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/615",
+   "added": "2025-10-16",
+   "popularity": 1947,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Operations-6HJ3IBC08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/186",
+   "added": "2025-09-05",
+   "popularity": 1608,
+   "level": null,
+   "att": [
+    [
+     "Barrel",
+     "AR Carbon Fiber Barrel Combo"
+    ],
+    [
+     "Stock",
+     "Practical Tactical Stock"
+    ],
+    [
+     "Foregrip",
+     "Practical Vertical Foregrip"
+    ],
+    [
+     "Magazine",
+     "5.56x45 30-Round Aluminum Mag"
+    ],
+    [
+     "Rear Grip",
+     "M7 Stable Rear Grip"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Hornet Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Muzzle",
+     "Bastion Horizontal Compensator"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ]
+   ],
+   "note": "CAR-15 setup costs only 160k and keeps up with the current meta thanks to its strong control and stability. Affordable yet reliable, it’s an excellent choice for…",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "jan",
+   "source": "rnkd",
+   "code": "CAR-15-Sturmgewehr-Krieg-6F9TSHK06FNFPTLU0F2DU",
+   "url": "https://rnkd.gg/deltaforce/builds/96",
+   "added": "2025-02-08",
+   "popularity": 1277,
+   "level": 75,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "oneshotrich",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Warfare-6EM985S06QO3HALFGUSFK",
+   "url": "https://rnkd.gg/deltaforce/builds/17",
+   "added": "2024-12-17",
+   "popularity": 466,
+   "level": 76,
+   "att": [],
+   "note": "Try this META Weapon Build for the Car-15 in Delta Force! This weapon loadout is in absolute laser beam in close, medium, and long range.",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Warfare-6ELQ8HS0ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/25",
+   "added": "2024-12-18",
+   "popularity": 369,
+   "level": 75,
+   "att": [],
+   "note": "Best Setup for the CAR-15!",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Warfare-6HJ44QC08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/178",
+   "added": "2025-08-30",
+   "popularity": 224,
+   "level": 65,
+   "att": [
+    [
+     "Muzzle",
+     "Practical Suppressor"
+    ],
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "AR Trench Standard Barrel Combo"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Magazine",
+     "M4 45-Round Extended Mag"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Grip Mount",
+     "Balanced Grip Base"
+    ]
+   ],
+   "note": "CAR-15 offers excellent control and reliable precision, making it a great choice for beginners. Easy to handle with smooth recoil and consistent accuracy, it provides…",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Warfare-6EKRRIK0B33QACKOKK8VA",
+   "url": "https://rnkd.gg/deltaforce/builds/2",
+   "added": "2024-12-10",
+   "popularity": 223,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Operations-6H9RP540EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/156",
+   "added": "2025-08-21",
+   "popularity": 83,
+   "level": null,
+   "att": [],
+   "note": "This build is for long range, improving both CONTROL and STABILITY with best value for its attachments. The calibration also improves the overall firing stability of…",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "operations",
+   "creator": "visfly",
+   "source": "rnkd",
+   "code": "CAR-15 Assault Rifle-Operations-6HAE3C40CS35QLV8B8R6M",
+   "url": "https://rnkd.gg/deltaforce/builds/157",
+   "added": "2025-08-23",
+   "popularity": 69,
+   "level": null,
+   "att": [],
+   "note": "Best for Starters",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "CI-19 Assault Rifle-Warfare-6HNEL2G0EIPHRNLI0J8JI",
+   "url": "https://deltaforcetools.gg/weapon-builds/636",
+   "added": "2025-10-21",
+   "popularity": 18128,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "All-Rounder",
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "erikgarridotv",
+   "source": "rnkd",
+   "code": "CI-19-Conflicto Bélico-6F0A8R80E1FK4BAMH9TD2",
+   "url": "https://rnkd.gg/deltaforce/builds/64",
+   "added": "2025-01-10",
+   "popularity": 10063,
+   "level": 68,
+   "att": [],
+   "note": "The best",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "CI-19 Assault Rifle-Operations-6HEQHRS08M3TET99CEP38",
+   "url": "https://deltaforcetools.gg/weapon-builds/509",
+   "added": "2025-09-06",
+   "popularity": 2446,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "synix",
+   "source": "rnkd",
+   "code": "CI-19-Warfare-6ES50V008EVAS5MG88P0S",
+   "url": "https://rnkd.gg/deltaforce/builds/52",
+   "added": "2024-12-29",
+   "popularity": 993,
+   "level": 68,
+   "att": [],
+   "note": "Very good: close and mid-range",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "CI-19-Warfare-6EMQLV400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/29",
+   "added": "2024-12-19",
+   "popularity": 700,
+   "level": null,
+   "att": [],
+   "note": "Attachments: - High fire rate gas block - Longest range barrel - Sandstorm vertical compensator to get rid of camera shake - Angled combat grip - Control stability…",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "dft:nawafalmutairi",
+   "source": "dft",
+   "code": "CI-19 Assault Rifle-Operations-6J2EDRC0CEDI6APUA25OK",
+   "url": "https://deltaforcetools.gg/weapon-builds/683",
+   "added": "2026-02-09",
+   "popularity": 456,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "CI-19 Assault Rifle-Warfare-6HJ47K808M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/172",
+   "added": "2025-08-27",
+   "popularity": 225,
+   "level": 67,
+   "att": [
+    [
+     "Magazine",
+     "5.8 Newtype 45-Round Extended Mag"
+    ],
+    [
+     "Gas Block",
+     "CI-19 Low Flow Gas Block"
+    ],
+    [
+     "Rear Grip",
+     "New Vanguard Light Grip"
+    ],
+    [
+     "Stock",
+     "Invasion Core Stock"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "Newtype Hadal Tactical Long Barrel"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Optic",
+     "M157 Fire Control System"
+    ]
+   ],
+   "note": "CI-19 is built for players with solid precision and experience, excelling in medium to long-range combat. Its controlled recoil and high accuracy reward steady aim,…",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "CI-19 Assault Rifle-Operations-6HRUQ3008M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/211",
+   "added": "2025-10-15",
+   "popularity": 211,
+   "level": null,
+   "att": [
+    [
+     "Rear Grip",
+     "Vanguard Newtype Grip"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Offset Optic",
+     "Offset Mini Red Dot Sight"
+    ],
+    [
+     "Barrel",
+     "Newtype Hadal Tactical Long Barrel"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Optic",
+     "Micro Sight Riser"
+    ],
+    [
+     "Gas Block",
+     "CI-19 High Flow Gas Block"
+    ],
+    [
+     "Muzzle",
+     "Bastion Horizontal Compensator"
+    ],
+    [
+     "Foregrip",
+     "Secret Order Bevel Foregrip"
+    ]
+   ],
+   "note": "CI-19 Meta Build",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "CI-19 Assault Rifle-Warfare-6HNEL2G0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/208",
+   "added": "2025-10-02",
+   "popularity": 185,
+   "level": 41,
+   "att": [],
+   "note": "Great versatile build with insane TTK. Highly improved recoil control while still having respectable HANDLING stats.",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "blend",
+   "source": "rnkd",
+   "code": "CI-19 Assault Rifle-Operations-6J95RFK098C7DR0N66TUO",
+   "url": "https://rnkd.gg/deltaforce/builds/242",
+   "added": "2026-03-01",
+   "popularity": 137,
+   "level": null,
+   "att": [
+    [
+     "Gas Block",
+     "CI-19 Low Flow Gas Block"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Stock",
+     "416 Light stock"
+    ],
+    [
+     "Foregrip",
+     "K1 Elite Bevel Foregrip"
+    ],
+    [
+     "Rear Grip",
+     "New Sword Heavy Grip"
+    ],
+    [
+     "Optic",
+     "Combat Red Dot Sight"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "Hornet Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Muzzle",
+     "Titanium Contest Muzzle Brake"
+    ]
+   ],
+   "note": "Budget to MID build, by the time I am creating this post the price is 256,224 Alloy. Perfect if you enjoy playing Easy and don't want to go with an expensive gun, or…",
+   "tags": []
+  },
+  {
+   "weapon": "Desert Eagle",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "DesertÂ Eagle-Operations-6JS2LTO073PLLBL5PBC5K",
+   "url": "https://deltaforcetools.gg/weapon-builds/946",
+   "added": "2026-04-28",
+   "popularity": 759,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range",
+    "High Burst"
+   ]
+  },
+  {
+   "weapon": "FS-12",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "FS-12 Shotgun-Warfare-6J13O2G0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/233",
+   "added": "2026-02-05",
+   "popularity": 127,
+   "level": 36,
+   "att": [
+    [
+     "Barrel",
+     "FS-12 Sword Tomb Long Barrel"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Rear Grip",
+     "Phantom Rear Grip"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Handguard",
+     "FS-12 Ergo Handguard"
+    ],
+    [
+     "Stock",
+     "Lightning Rail Stock"
+    ],
+    [
+     "Muzzle",
+     "Shotgun Vortex Choke"
+    ],
+    [
+     "Magazine",
+     "FS-12 Extended Drum Mag"
+    ]
+   ],
+   "note": "Brutal pump-action damage (25x8) at 12m and can even one-shot beyond the gun's first damage range. Insanely lethal for aggressive players.",
+   "tags": []
+  },
+  {
+   "weapon": "G18",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "G18-Operations-6HS2SV80FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/616",
+   "added": "2025-10-16",
+   "popularity": 931,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value"
+   ]
+  },
+  {
+   "weapon": "G18",
+   "mode": "warfare",
+   "creator": "dft:nodesiretospeak",
+   "source": "dft",
+   "code": "G18-Ð¡ÑÐ°Ð¶ÐµÐ½Ð¸Ñ-6IV2SRO027QRNIVPIH4H7",
+   "url": "https://deltaforcetools.gg/weapon-builds/679",
+   "added": "2026-01-30",
+   "popularity": 656,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range",
+    "High Burst"
+   ]
+  },
+  {
+   "weapon": "G3",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "G3 Battle Rifle-Warfare-6EME6M003PCD6I8KP0DLE",
+   "url": "https://deltaforcetools.gg/weapon-builds/472",
+   "added": "2025-09-01",
+   "popularity": 1176,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "G3 Battle Rifle-Warfare-6ENTJTC00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/33",
+   "added": "2024-12-19",
+   "popularity": 269,
+   "level": null,
+   "att": [],
+   "note": "A stable weapon with good accuracy. Attachments: - - Longest range barrel - Sandstorm vertical compensator - Resonant MKII Foregrip - 30 round mag - G3 Skeleton…",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "G3 Battle Rifle-Operations-6FQ2O7O04CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/106",
+   "added": "2025-03-29",
+   "popularity": 263,
+   "level": null,
+   "att": [],
+   "note": "150k close -> mid range",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "G3 Battle Rifle-Warfare-6EME6M003PCD6I8KP0DLE",
+   "url": "https://rnkd.gg/deltaforce/builds/10",
+   "added": "2024-12-16",
+   "popularity": 169,
+   "level": null,
+   "att": [],
+   "note": "- 2-3 tap full auto - low recoil",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "K416 Assault Rifle-Warfare-6HS36340FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/625",
+   "added": "2025-10-16",
+   "popularity": 6843,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "Sustained Fire"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Operations-6FQC5B804CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/113",
+   "added": "2025-03-30",
+   "popularity": 1091,
+   "level": null,
+   "att": [],
+   "note": "375k mid -> long range",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "K416 Assault Rifle-Operations-6HG7D0S05KBR2BJ359PNA",
+   "url": "https://deltaforcetools.gg/weapon-builds/516",
+   "added": "2025-09-10",
+   "popularity": 939,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Warfare-6ENTK6O00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/40",
+   "added": "2024-12-19",
+   "popularity": 750,
+   "level": null,
+   "att": [],
+   "note": "It's a bit of pea shooter, do not use at range. Attachments: - K416 AB Long Barrel Combo - Sandstorm Vertical Compensator - M4 45-Round Extended Mag - X25U Angled…",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "nafis",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Warfare-6GHV4NS0F1OFSC9L24MOS",
+   "url": "https://rnkd.gg/deltaforce/builds/136",
+   "added": "2025-06-10",
+   "popularity": 481,
+   "level": 70,
+   "att": [],
+   "note": "Low Recoil K416- Build Delta Force Steam",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "dft:mhika",
+   "source": "dft",
+   "code": "K416 Assault Rifle-Warfare-6K23GQ4073PMJFKOSCVEP",
+   "url": "https://deltaforcetools.gg/weapon-builds/964",
+   "added": "2026-05-16",
+   "popularity": 439,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Warfare-6EMGMP40ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/23",
+   "added": "2024-12-18",
+   "popularity": 319,
+   "level": 74,
+   "att": [],
+   "note": "HIGH PERFORMANCE WEAPON",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Operations-6EL6BL404HA3RLR85QVR8",
+   "url": "https://rnkd.gg/deltaforce/builds/8",
+   "added": "2024-12-16",
+   "popularity": 294,
+   "level": null,
+   "att": [],
+   "note": "- Great handling (Fast ADS)",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Warfare-6HJ4BI008M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/162",
+   "added": "2025-08-23",
+   "popularity": 174,
+   "level": 65,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "K416 SpecOps Short Barrel Combo"
+    ],
+    [
+     "Stock",
+     "416 Light stock"
+    ],
+    [
+     "Grip Mount",
+     "Balanced Grip Base"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ],
+    [
+     "Magazine",
+     "M4 45-Round Extended Mag"
+    ]
+   ],
+   "note": "K416 is a beginner-friendly weapon tailored for short to mid-range encounters. Easy to handle and highly reliable, it offers smooth recoil control, making it perfect…",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Warfare-6EN69TC0FIMI3HJQRGI6I",
+   "url": "https://rnkd.gg/deltaforce/builds/6",
+   "added": "2024-12-14",
+   "popularity": 169,
+   "level": null,
+   "att": [],
+   "note": "- Best stability build. - Only vertical recoil.",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "K416 Assault Rifle-Warfare-6K4JK0G0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/269",
+   "added": "2026-05-24",
+   "popularity": 28,
+   "level": 56,
+   "att": [
+    [
+     "Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Rear Grip",
+     "AR Modular Rear Grip"
+    ],
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Rear Grip Patch",
+     "AR Heavy Grip Piece"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Upper Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Magazine",
+     "M4 45-Round Extended Mag"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Barrel",
+     "K416 AB Long Barrel Combo"
+    ]
+   ],
+   "note": "This gun has high RPM with decent damage. This build negates the high recoil and bad stability making it a strong close/mid AR.",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Fusil d'assaut K416-Opérations-6GJEP8K0FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/143",
+   "added": "2025-06-14",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "K437 Assault Rifle-Warfare-6HPNFU80EIPHRNLI0J8JI",
+   "url": "https://deltaforcetools.gg/weapon-builds/639",
+   "added": "2025-10-21",
+   "popularity": 1413,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "K437 Assault Rifle-Operations-6HJAHKG08M3TET99CEP38",
+   "url": "https://deltaforcetools.gg/weapon-builds/587",
+   "added": "2025-09-28",
+   "popularity": 558,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "K437 Assault Rifle-Operations-6HJAHKG08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/198",
+   "added": "2025-09-19",
+   "popularity": 163,
+   "level": null,
+   "att": [
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Green)"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Grip Mount",
+     "Balanced Grip Base"
+    ],
+    [
+     "Foregrip",
+     "Resonant Ergonomic Grip"
+    ],
+    [
+     "Optic",
+     "Recon 1.5/5 Adjustable Scope"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Barrel",
+     "K437 Lancer Long Barrel Combo"
+    ],
+    [
+     "Upper Rail",
+     "Hornet Handguard"
+    ]
+   ],
+   "note": "K437 is a versatile weapon designed for short, medium, and long-range engagements. Renowned for its exceptional control and stability, it boasts 82 Control, 69…",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "K437 Assault Rifle-Warfare-6HJ49F408M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/164",
+   "added": "2025-08-23",
+   "popularity": 143,
+   "level": 58,
+   "att": [
+    [
+     "Optic",
+     "OSIGHT Red Dot"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Magazine",
+     "K437 45-Round Extended Mag"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Barrel",
+     "K437 Lancer Long Barrel Combo"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Foregrip",
+     "Resonant MKII Foregrip"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ]
+   ],
+   "note": "K437 is an ideal choice for beginners looking to master medium to long-range combat. With its minimal recoil and smooth handling, it allows for precise shots and…",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "K437 Assault Rifle-Warfare-6HPNFU80EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/210",
+   "added": "2025-10-08",
+   "popularity": 89,
+   "level": 57,
+   "att": [],
+   "note": "One of the most reliable ARs in the game. This build enhances CONTROL which compliments the gun's high RPM without taking too much on HANDLING making it also suitable…",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "K437 Assault Rifle-Operations-6J5VACK0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/240",
+   "added": "2026-02-20",
+   "popularity": 69,
+   "level": 1,
+   "att": [
+    [
+     "Optic",
+     "Holographic Sight Type II"
+    ],
+    [
+     "Stock",
+     "Practical Stable Stock"
+    ],
+    [
+     "Rear Grip",
+     "M7 Stable Rear Grip"
+    ],
+    [
+     "Muzzle",
+     "Practical Suppressor"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Barrel",
+     "K437 Lancer Long Barrel Combo"
+    ],
+    [
+     "Upper Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Left Patch",
+     "DD Python Handguard"
+    ],
+    [
+     "Right Patch",
+     "DD Python Handguard"
+    ]
+   ],
+   "note": "Easy-to-use balanced AR with a budget build (250K). Suitable for quick runs but can also be viable for close/mid range gunfights.",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "K437 Assault Rifle-Warfare-6KL5FK80EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/284",
+   "added": "2026-07-13",
+   "popularity": 36,
+   "level": 67,
+   "att": [
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "K437 Broken Blade Short Barrel Combo"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Magazine",
+     "K437 45-Round Extended Mag"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Foregrip",
+     "CR Prism Hand stop"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Stock",
+     "Shadow Buffer Tube Stock"
+    ]
+   ],
+   "note": "The K437 can be used for different playstyles and still be effective. This build is for aggressive playstyle with great overall mobility.",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Fusil d'assaut K437-Opérations-6GAID180FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/139",
+   "added": "2025-06-14",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "point rouge",
+   "tags": []
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "KC-17 Assault Rifle-Operations-6JGIO4C073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/744",
+   "added": "2026-03-26",
+   "popularity": 598,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "KC-17 Assault Rifle-Warfare-6JGSG5K073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/738",
+   "added": "2026-03-26",
+   "popularity": 456,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "KC17 Assault Rifle-Warfare-6HJ4C7808M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/158",
+   "added": "2025-08-23",
+   "popularity": 178,
+   "level": 43,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Magazine",
+     "AKS-74 45-Round Extended Mag"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Barrel",
+     "KC17 Longsword Barrel"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Rear Grip",
+     "Phantom Rear Grip"
+    ]
+   ],
+   "note": "KC17 is built for players who value precision and stability above all else. This setup delivers exceptional recoil control, making it feel almost recoil-free,…",
+   "tags": []
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "Lever-Action Rifle-Warfare-6K553SS0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/270",
+   "added": "2026-05-25",
+   "popularity": 30,
+   "level": 44,
+   "att": [
+    [
+     "Optic",
+     "LA Rifle Watcher Scope"
+    ],
+    [
+     "Muzzle",
+     "LA Rifle Watcher Steel Muzzle Brake"
+    ],
+    [
+     "Stock",
+     "Marlin Bullpup Rear Grip"
+    ],
+    [
+     "Foregrip",
+     "ZFSG Tactical Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "Hornet Handguard"
+    ],
+    [
+     "Left Patch",
+     "Hornet Handguard"
+    ],
+    [
+     "Right Patch",
+     "Hornet Handguard"
+    ],
+    [
+     "Lever",
+     "Marlin Rhino Lever"
+    ],
+    [
+     "Barrel",
+     "Marlin Hunter Barrel"
+    ]
+   ],
+   "note": "A highlight machine build that can one shot @ 30m. This build also maxes out the accuracy for close range fights.",
+   "tags": []
+  },
+  {
+   "weapon": "M1014",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "M1014 Shotgun-Operations-6EQAJGC02PHGPMJEC4E4L",
+   "url": "https://rnkd.gg/deltaforce/builds/51",
+   "added": "2024-12-26",
+   "popularity": 833,
+   "level": 75,
+   "att": [],
+   "note": "M1014 Shotgun Build Guide Overview Considered one of the best guns in the game Main focus: Building for control to enable rapid fire without recoil concerns Total…",
+   "tags": []
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M14 Marksman Rifle-Operations-6HSGI580FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/629",
+   "added": "2025-10-17",
+   "popularity": 2429,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability",
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "warfare",
+   "creator": "dft:olhimi",
+   "source": "dft",
+   "code": "M14 Marksman Rifle-Warfare-6J4S6CG02A6RQ50S59ASN",
+   "url": "https://deltaforcetools.gg/weapon-builds/691",
+   "added": "2026-02-16",
+   "popularity": 608,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Burst",
+    "Sustained Fire"
+   ]
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M16A4 Assault Rifle-Warfare-6ENTK5G00U98BTLV400GS",
+   "url": "https://deltaforcetools.gg/weapon-builds/491",
+   "added": "2025-09-01",
+   "popularity": 2181,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "M16A4 Assault Rifle-Warfare-6ENTK5G00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/39",
+   "added": "2024-12-19",
+   "popularity": 1422,
+   "level": null,
+   "att": [],
+   "note": "Don't push with it. Attachments: - Ranger Handguard, stacking for Control - AR Gabriel Long Barrel Combo - Laser: PEQ-2 Red Laser-Light Combo - Sandstorm Veritcal…",
+   "tags": []
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "warfare",
+   "creator": "frank5",
+   "source": "rnkd",
+   "code": "M16A4突擊步槍-全面戰場-6G4EEOO0913NFS94NIIG1",
+   "url": "https://rnkd.gg/deltaforce/builds/129",
+   "added": "2025-04-30",
+   "popularity": 624,
+   "level": null,
+   "att": [],
+   "note": "range snipping build",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M249 Light Machine Gun-Warfare-6ENLHP80E251LPP6RI7LF",
+   "url": "https://deltaforcetools.gg/weapon-builds/445",
+   "added": "2025-09-01",
+   "popularity": 2517,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "M249 Light Machine Gun-Warfare-6ENLHP80E251LPP6RI7LF",
+   "url": "https://rnkd.gg/deltaforce/builds/16",
+   "added": "2024-12-17",
+   "popularity": 1680,
+   "level": 69,
+   "att": [],
+   "note": "Low recoil LMG build",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M249 Light Machine Gun-Operations-6JF88H4073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/588",
+   "added": "2025-09-28",
+   "popularity": 1653,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "M249 Light Machine Gun-Operations-6HGQQAG0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/192",
+   "added": "2025-09-11",
+   "popularity": 162,
+   "level": null,
+   "att": [],
+   "note": "Budget build greatly improving control and handling. Would be great for those who prefer LMGs but on a budget build.",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M250 General Machine Gun-Warfare-6JF8JNC073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/524",
+   "added": "2025-09-11",
+   "popularity": 1601,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "zenafps",
+   "source": "rnkd",
+   "code": "M250 General Machine Gun-Warfare-6ELTGBG0B33QACKOKK8VA",
+   "url": "https://rnkd.gg/deltaforce/builds/54",
+   "added": "2024-12-30",
+   "popularity": 840,
+   "level": null,
+   "att": [],
+   "note": "The MOST POWERFUL LMG in the game?",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "M250 General Machine Gun-Warfare-6HE0GB008M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/182",
+   "added": "2025-09-03",
+   "popularity": 123,
+   "level": 49,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Magazine",
+     "M250 75-Round Belt"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Rear Grip",
+     "Invasion Rear Grip"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Barrel",
+     "M250 Titanium Long Barrel"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Muzzle",
+     "Bastion Horizontal Compensator"
+    ]
+   ],
+   "note": "M250 defines the current meta, excelling at short, medium, and long-range combat. Despite being a light machine gun, it stands out for its impressive control and…",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "M250 General Machine Gun-Warfare-6HGG07O0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/191",
+   "added": "2025-09-10",
+   "popularity": 100,
+   "level": null,
+   "att": [],
+   "note": "Hits hard long-range with insane TTK. When in closer ranges, it is better when tac stance aim is used to negate slow ADS speed. Also, it is great when used under…",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "akshay",
+   "source": "rnkd",
+   "code": "M250 General Machine Gun-Warfare-6G4MGQC0BFAG46AS3J0KF",
+   "url": "https://rnkd.gg/deltaforce/builds/134",
+   "added": "2025-06-04",
+   "popularity": 72,
+   "level": 71,
+   "att": [],
+   "note": "BEST M250 BUILD! Delta Force Gameplay Season 4",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "synix",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Warfare-6F3U0QS08EVAS5MG88P0S",
+   "url": "https://rnkd.gg/deltaforce/builds/79",
+   "added": "2025-01-21",
+   "popularity": 4946,
+   "level": 72,
+   "att": [],
+   "note": "Very good control and stability build",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M4A1 Assault Rifle-Warfare-6HGO8DS0ED9CPMQ5GIFT9",
+   "url": "https://deltaforcetools.gg/weapon-builds/586",
+   "added": "2025-09-28",
+   "popularity": 3354,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M4A1 Assault Rifle-Operations-6HLUDLK08M3TET99CEP38",
+   "url": "https://deltaforcetools.gg/weapon-builds/591",
+   "added": "2025-09-28",
+   "popularity": 2964,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "bongog",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Warfare-6ETN8RK0CH9JKOV493VV2",
+   "url": "https://rnkd.gg/deltaforce/builds/55",
+   "added": "2025-01-02",
+   "popularity": 1691,
+   "level": 76,
+   "att": [],
+   "note": "100 kills average per match, do i need to add more, it is a rapid fire laser machine capable to fullout kill snipers up to 120m. try it and see for yourself.",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "dinerytv",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Operations-6F2MGNC072LK5KS8S274A",
+   "url": "https://rnkd.gg/deltaforce/builds/70",
+   "added": "2025-01-17",
+   "popularity": 840,
+   "level": null,
+   "att": [],
+   "note": "AR Long Range",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Warfare-6EL4H880ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/26",
+   "added": "2024-12-18",
+   "popularity": 710,
+   "level": 75,
+   "att": [],
+   "note": "THE BEST GUN IN DELTA FORCE",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "dft:chachesino",
+   "source": "dft",
+   "code": "Fusil de asalto M4A1-OperaciÃ³n: ExtracciÃ³n-6J2RGAO083HJA4A0GV093",
+   "url": "https://deltaforcetools.gg/weapon-builds/687",
+   "added": "2026-02-10",
+   "popularity": 644,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Warfare-6HI5LKC0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/197",
+   "added": "2025-09-16",
+   "popularity": 381,
+   "level": null,
+   "att": [],
+   "note": "Built for close-range combat with its fast ADS speed and high mag capacity. The calibrations further improve ADS speed and CONTROL.",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Warfare-6ENTKI400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/46",
+   "added": "2024-12-19",
+   "popularity": 357,
+   "level": 75,
+   "att": [],
+   "note": "Attachments: - Stacking Stability: HC Hound Handguard or stacking handling but keeping it at the maximum acceptable ADS speed of 415ms - AR Gabriel Long Barrel Combo…",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Operations-6HLUDLK08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/206",
+   "added": "2025-09-27",
+   "popularity": 207,
+   "level": null,
+   "att": [
+    [
+     "Optic",
+     "M157 Fire Control System"
+    ],
+    [
+     "Magazine",
+     "5.56x45 30-Round Polymer Mag"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ],
+    [
+     "Left Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Barrel",
+     "AR Gabriel Long Barrel Combo"
+    ],
+    [
+     "Rear Grip",
+     "Phantom Rear Grip"
+    ],
+    [
+     "Foregrip",
+     "Secret Order Bevel Foregrip"
+    ],
+    [
+     "Muzzle",
+     "Titanium Contest Muzzle Brake"
+    ]
+   ],
+   "note": "M4A1 (Season 6 – Current Meta). A highly versatile rifle with virtually zero recoil, effective at short, medium, and long range. Reliable, precise, and easy to…",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "M4A1 Assault Rifle-Warfare-6HJ430C08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/183",
+   "added": "2025-09-03",
+   "popularity": 95,
+   "level": 46,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Magazine",
+     "M4 45-Round Extended Mag"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ],
+    [
+     "Left Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Barrel",
+     "AR Gabriel Long Barrel Combo"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Muzzle",
+     "Bastion Horizontal Compensator"
+    ]
+   ],
+   "note": "M4A1 is the assault rifle everyone knows, and this build is tuned for the current meta in the assault class. Effective at any range, it combines versatility,…",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M7Â BattleÂ Rifle-Operations-6I03ITO0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/641",
+   "added": "2025-10-28",
+   "popularity": 4243,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "High Handling"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M7 Battle Rifle-Warfare-6HGF7N408M3TET99CEP38",
+   "url": "https://deltaforcetools.gg/weapon-builds/523",
+   "added": "2025-09-11",
+   "popularity": 1831,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Operations-6FQ9SH004CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/115",
+   "added": "2025-03-30",
+   "popularity": 798,
+   "level": null,
+   "att": [],
+   "note": "400k mid -> long range",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Warfare-6ENTK2400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/37",
+   "added": "2024-12-19",
+   "popularity": 774,
+   "level": null,
+   "att": [],
+   "note": "Long Range weapon and build. Attachments: - M7 Tidal Ultra-Long Barrel Combo (Use another barrel if the recoil is to much for you) - Sandstorm Vertical Compensator -…",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "ajdin",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Warfare-6EVB1140D619NA5KCH3PT",
+   "url": "https://rnkd.gg/deltaforce/builds/77",
+   "added": "2025-01-19",
+   "popularity": 567,
+   "level": 99,
+   "att": [],
+   "note": "Best BUILD M7",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Warfare-6HGF7N408M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/190",
+   "added": "2025-09-10",
+   "popularity": 288,
+   "level": 66,
+   "att": [
+    [
+     "Mag Mount",
+     "Grizzly Full P. Mag Assist (Black)"
+    ],
+    [
+     "Magazine",
+     "M7 6.8 30-Round Mag"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Grip Mount",
+     "Balanced Grip Base"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Barrel",
+     "M7 Tidal Ultra-Long Barrel Combo"
+    ],
+    [
+     "Stock",
+     "Shadow Rail Stock"
+    ],
+    [
+     "Optic",
+     "Recon 1.5/5 Adjustable Scope"
+    ]
+   ],
+   "note": "M7 in Warfare mode is an excellent choice for medium to long-range combat, thanks to its very low recoil and consistent accuracy. At longer distances the weapon may…",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "skyblack",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Operations-6HBQUCO06F3769TRGAG41",
+   "url": "https://rnkd.gg/deltaforce/builds/175",
+   "added": "2025-08-29",
+   "popularity": 123,
+   "level": null,
+   "att": [],
+   "note": "BEST M7 850K",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Operations-6HRV1SK08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/212",
+   "added": "2025-10-15",
+   "popularity": 88,
+   "level": null,
+   "att": [
+    [
+     "Rear Grip",
+     "AR Modular Rear Grip"
+    ],
+    [
+     "Mag Mount",
+     "Grizzly Full P. Mag Assist (Black)"
+    ],
+    [
+     "Magazine",
+     "M7 6.8 30-Round Mag"
+    ],
+    [
+     "Foregrip",
+     "Resonant Ergonomic Grip"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Barrel",
+     "M7 Tidal Ultra-Long Barrel Combo"
+    ],
+    [
+     "Optic",
+     "M157 Fire Control System"
+    ]
+   ],
+   "note": "M7 Meta Build",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Warfare-6HC6LOC0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/174",
+   "added": "2025-08-28",
+   "popularity": 75,
+   "level": 68,
+   "att": [],
+   "note": "This build is best used for the Assault class. Strong in close/mid-range gunfights with fast ADS speeds with good recoil for mid-range.",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "M7 Battle Rifle-Warfare-6JVU15K0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/264",
+   "added": "2026-05-09",
+   "popularity": 14,
+   "level": 39,
+   "att": [
+    [
+     "Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Mag Mount",
+     "Grizzly Full P. Mag Assist (Black)"
+    ],
+    [
+     "Magazine",
+     "M7 6.8 30-Round Mag"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Stock",
+     "Cardinal Stable Stock"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Rear Grip",
+     "Phantom Rear Grip"
+    ],
+    [
+     "Barrel",
+     "M7 Tidal Ultra-Long Barrel Combo"
+    ]
+   ],
+   "note": "This weapon has high damage but with intense recoil and stability. This build heavily improves on recoil and firing stability making it viable for mid/long range.",
+   "tags": []
+  },
+  {
+   "weapon": "M700",
+   "mode": "warfare",
+   "creator": "thecadwoman",
+   "source": "rnkd",
+   "code": "M700: M700 Sniper Rifle-Warfare-6ESARE80BPQR609FCOJ8N",
+   "url": "https://rnkd.gg/deltaforce/builds/60",
+   "added": "2025-01-07",
+   "popularity": 901,
+   "level": 67,
+   "att": [],
+   "note": "M700 - Mid-Range Build This M700 configuration is designed for mid-range engagements, balancing fire rate, damage, and muzzle velocity. Attachments Muzzle: Practical…",
+   "tags": []
+  },
+  {
+   "weapon": "M700",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M700 Sniper Rifle-Warfare-6EUENL8040J98NG2P7599",
+   "url": "https://deltaforcetools.gg/weapon-builds/489",
+   "added": "2025-09-01",
+   "popularity": 569,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M700",
+   "mode": "warfare",
+   "creator": "barbadinos",
+   "source": "rnkd",
+   "code": "M700 Sniper Rifle-Warfare-6EUENL8040J98NG2P7599",
+   "url": "https://rnkd.gg/deltaforce/builds/58",
+   "added": "2025-01-06",
+   "popularity": 165,
+   "level": null,
+   "att": [],
+   "note": "Apla LASER M700",
+   "tags": []
+  },
+  {
+   "weapon": "M82",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M82 Sniper Rifle-Operations-6JS2R6S073PLLBL5PBC5K",
+   "url": "https://deltaforcetools.gg/weapon-builds/952",
+   "added": "2026-04-28",
+   "popularity": 1370,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Long-Range",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "M82",
+   "mode": "warfare",
+   "creator": "dft:serega666",
+   "source": "dft",
+   "code": "Ð¡Ð½Ð°Ð¹Ð¿ÐµÑÑÐºÐ°Ñ Ð²Ð¸Ð½ÑÐ¾Ð²ÐºÐ° M82-Ð¡ÑÐ°Ð¶ÐµÐ½Ð¸Ñ-6K71NQ0073PG53222MOI2",
+   "url": "https://deltaforcetools.gg/weapon-builds/984",
+   "added": "2026-05-31",
+   "popularity": 837,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "M870",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "M870 Shotgun-Warfare-6JF8N5K073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/511",
+   "added": "2025-09-09",
+   "popularity": 965,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "M870",
+   "mode": "warfare",
+   "creator": "oneshotrich",
+   "source": "rnkd",
+   "code": "M870 Shotgun-Warfare-6EOT7OG06QO3HALFGUSFK",
+   "url": "https://rnkd.gg/deltaforce/builds/53",
+   "added": "2024-12-30",
+   "popularity": 733,
+   "level": 43,
+   "att": [],
+   "note": "This SHOTGUN ABSOLUTELY shreds lobbies in Delta Force, it will 1 shot enemies up to 15 meters and it is no joke! Try this loadout and let me know how you dominated…",
+   "tags": []
+  },
+  {
+   "weapon": "M870",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "M870 Shotgun-Warfare-6HFQQE00EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/188",
+   "added": "2025-09-08",
+   "popularity": 65,
+   "level": 32,
+   "att": [
+    [
+     "Mag",
+     "Shotgun Speedloader"
+    ],
+    [
+     "Optic",
+     "OKP-7 Reflex Sight"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Barrel",
+     "M870 Extended Barrel"
+    ],
+    [
+     "Muzzle",
+     "Shotgun Practical Choke"
+    ],
+    [
+     "Foregrip",
+     "Angled Hand Stop"
+    ],
+    [
+     "Stock",
+     "Shadow Buffer Tube Stock"
+    ]
+   ],
+   "note": "One shot at 12M. Build for precise players who rarely miss. This gun has low RPM but can easily destroy enemies within its range.",
+   "tags": []
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MCX LT Assault Rifle-Operations-6JL5U1C073PI62OT9AFJ2",
+   "url": "https://deltaforcetools.gg/weapon-builds/886",
+   "added": "2026-04-09",
+   "popularity": 1936,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MCX LT Assault Rifle-Warfare-6JGS8C8073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/748",
+   "added": "2026-03-26",
+   "popularity": 732,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "warfare",
+   "creator": "dft:tangsanghang",
+   "source": "dft",
+   "code": "MCX LT Assault Rifle-Operations-6K588OO073PK2EQRTKOGH",
+   "url": "https://deltaforcetools.gg/weapon-builds/970",
+   "added": "2026-05-26",
+   "popularity": 614,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Handling",
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "MCX LT Assault Rifle-Warfare-6J1KH580EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/234",
+   "added": "2026-02-07",
+   "popularity": 179,
+   "level": 42,
+   "att": [
+    [
+     "Rear Grip",
+     "AR Modular Rear Grip"
+    ],
+    [
+     "Rear Grip Patch",
+     "AR Light Grip Piece"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "MCX LT Hunter Barrel"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Magazine",
+     "M4 45-Round Extended Mag"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ]
+   ],
+   "note": "Insanely versatile with respectable TTK. This build greatly improves CONTROL and not take too much on other stats.",
+   "tags": []
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "blend",
+   "source": "rnkd",
+   "code": "MCX LT Assault Rifle-Operations-6JBC59O032RDSN9T6B8BC",
+   "url": "https://rnkd.gg/deltaforce/builds/246",
+   "added": "2026-03-13",
+   "popularity": 91,
+   "level": null,
+   "att": [],
+   "note": "Cheap and lethal, you can swap the red dot scope to a panoramic or something else if you want it to be more cheap, personally I prefer the frameless one. Good…",
+   "tags": []
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "MCX LT Assault Rifle-Warfare-6K29SIG0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/266",
+   "added": "2026-05-17",
+   "popularity": 41,
+   "level": 44,
+   "att": [
+    [
+     "Rear Grip",
+     "AR Modular Rear Grip"
+    ],
+    [
+     "Riser Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Rear Grip Patch",
+     "AR Light Grip Piece"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "MCX LT Hunter Barrel"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Magazine",
+     "M4 45-Round Extended Mag"
+    ],
+    [
+     "Upper Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ]
+   ],
+   "note": "All-rounder AR for the Support/ Recon class. High RPM and great damage easily shredding enemies mid range.",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "MK4 Submachine Gun-Warfare-6I99RRG0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/227",
+   "added": "2025-11-25",
+   "popularity": 83,
+   "level": 43,
+   "att": [
+    [
+     "Magazine",
+     "MK4 48-Round Mag"
+    ],
+    [
+     "Mag Mount",
+     "Hornet SMG Mag Assist (Black)"
+    ],
+    [
+     "Foregrip",
+     "Resonant Ergonomic Grip"
+    ],
+    [
+     "Barrel",
+     "MK4 Fencer Barrel"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Rear Grip",
+     "Phantom Rear Grip"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ]
+   ],
+   "note": "The new SMG has a solid burst TTK. Therefore, this build focuses on having its vertical recoil controlled while not taking too much out of HANDLING. Shreds both in…",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "MK4 Submachine Gun-Warfare-6J2UUB80EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/236",
+   "added": "2026-02-11",
+   "popularity": 22,
+   "level": 51,
+   "att": [],
+   "note": "A support only 3-Bullet burst SMG with great damage. Can easily fight close/mid-range for players who prefer burst-fire guns.",
+   "tags": []
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MK47Â AssaultÂ Rifle-Operations-6I0476C0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/643",
+   "added": "2025-10-28",
+   "popularity": 1965,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MK47 Assault Rifle-Warfare-6HL3S480EIPHRNLI0J8JI",
+   "url": "https://deltaforcetools.gg/weapon-builds/571",
+   "added": "2025-09-28",
+   "popularity": 1061,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MK47",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "MK47 Assault Rifle-Warfare-6HL3S480EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/203",
+   "added": "2025-09-24",
+   "popularity": 325,
+   "level": 67,
+   "att": [],
+   "note": "Built for mid/long range. This build heavily improves recoil since it has terrible base recoil. The weapon has insane TTK and can 2-head kill in 46m while still…",
+   "tags": []
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "MK47 Assault Rifle-Operations-6J4JBOC0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/239",
+   "added": "2026-02-16",
+   "popularity": 65,
+   "level": 1,
+   "att": [
+    [
+     "Rear Grip",
+     "AR Modular Rear Grip"
+    ],
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Rear Grip Patch",
+     "AR Heavy Grip Piece"
+    ],
+    [
+     "Mag Mount",
+     "Coyote Medium P. Mag Assist (Black)"
+    ],
+    [
+     "Foregrip",
+     "RK-0 Foregrip"
+    ],
+    [
+     "Barrel",
+     "MK47 Battle Barrel"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Magazine",
+     "AKM 40-Round Extended Mag"
+    ],
+    [
+     "Stock",
+     "Shadow Rail Stock"
+    ]
+   ],
+   "note": "Has an insane damage output of 46 and can easily shred enemies up to 25m. Incredibly lethal to skilled players who can control its recoil.",
+   "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MP5 Submachine Gun-Warfare-6HSGMUO0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/632",
+   "added": "2025-10-17",
+   "popularity": 2939,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "MP5",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MP5 Submachine Gun-Warfare-6JF8PP0073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/481",
+   "added": "2025-09-01",
+   "popularity": 935,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "MP5",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "MP5 Submachine Gun-Operations-6FQ34UC04CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/111",
+   "added": "2025-03-29",
+   "popularity": 383,
+   "level": null,
+   "att": [],
+   "note": "150k close -> mid range",
+   "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "MP5 Submachine Gun-Warfare-6EO4KCC0ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/20",
+   "added": "2024-12-18",
+   "popularity": 323,
+   "level": 75,
+   "att": [],
+   "note": "Insane Mp5 Loadout!",
+   "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "warfare",
+   "creator": "jan",
+   "source": "rnkd",
+   "code": "MP5-Maschinenpistole-Krieg-6F9TU5S06FNFPTLU0F2DU",
+   "url": "https://rnkd.gg/deltaforce/builds/97",
+   "added": "2025-02-08",
+   "popularity": 296,
+   "level": 61,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "MP5 Submachine Gun-Warfare-6EKFI2G02FQO4P5ETCOA7",
+   "url": "https://rnkd.gg/deltaforce/builds/7",
+   "added": "2024-12-14",
+   "popularity": 131,
+   "level": null,
+   "att": [],
+   "note": "This MP5 build is for fast close range combat: - low recoil and better handling - fast Aim Downsight Speed - great accuracy",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MP7 Submachine Gun-Warfare-6HJ48GS08M3TET99CEP38",
+   "url": "https://deltaforcetools.gg/weapon-builds/573",
+   "added": "2025-09-28",
+   "popularity": 1698,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Pistolet mitrailleur MP7-Opérations-6FQP8280FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/151",
+   "added": "2025-06-14",
+   "popularity": 513,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "MP7 Submachine Gun-Operations-6HSGGQG0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/628",
+   "added": "2025-10-17",
+   "popularity": 465,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "MP7 Submachine Gun-Warfare-6HJ48GS08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/171",
+   "added": "2025-08-27",
+   "popularity": 154,
+   "level": 58,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Rear Grip",
+     "MP7 Balanced Rear Grip"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Left Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Barrel",
+     "MP7 Stinger Long Barrel Combo"
+    ],
+    [
+     "Magazine",
+     "MP7 60-Round Drum Mag"
+    ],
+    [
+     "Mag Mount",
+     "Hornet SMG Mag Assist (Black)"
+    ]
+   ],
+   "note": "MP7 stands out as one of the best weapons for the support class, thanks to its incredible fire rate and virtually zero recoil. Perfect for short to medium-range…",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "MP7 Submachine Gun-Warfare-6JE402K0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/247",
+   "added": "2026-03-16",
+   "popularity": 19,
+   "level": null,
+   "att": [
+    [
+     "Barrel",
+     "MP7 Lunar Chrome Barrel"
+    ],
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Rear Grip",
+     "MP7 Stable Rear Grip"
+    ],
+    [
+     "Stock",
+     "Lightning Rail Stock"
+    ],
+    [
+     "Magazine",
+     "MP7 60-Round Drum Mag"
+    ]
+   ],
+   "note": "MP7 can easily dominate up close, and this build further enhances that capability. This gun has insane mobility while ADS while not taking too much of recoil control.",
+   "tags": []
+  },
+  {
+   "weapon": "Mini-14",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Mini-14 Marksman Rifle-Warfare-6HM4U0C0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/560",
+   "added": "2025-09-28",
+   "popularity": 1600,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability",
+    "Long-Range"
+   ]
+  },
+  {
+   "weapon": "Mini-14",
+   "mode": "warfare",
+   "creator": "stonesy90",
+   "source": "rnkd",
+   "code": "Mini-14 Marksman Rifle-Warfare-6F37J4009B3MFSQKG5N2C",
+   "url": "https://rnkd.gg/deltaforce/builds/75",
+   "added": "2025-01-19",
+   "popularity": 975,
+   "level": 71,
+   "att": [],
+   "note": "Very Fast Marksmn Rifle got a good 3.5x Scope aswell as a offset Red dot Sight for close combat Recoil is low so can aim and fire multiple times to take target out…",
+   "tags": []
+  },
+  {
+   "weapon": "Mini-14",
+   "mode": "operations",
+   "creator": "visfly",
+   "source": "rnkd",
+   "code": "Mini-14 Marksman Rifle-Operations-6HAR6TK0CS35QLV8B8R6M",
+   "url": "https://rnkd.gg/deltaforce/builds/165",
+   "added": "2025-08-24",
+   "popularity": 66,
+   "level": null,
+   "att": [],
+   "note": "Build for beginners not costly",
+   "tags": []
+  },
+  {
+   "weapon": "P90",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "P90 Submachine Gun-Warfare-6HQ5DO80FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/600",
+   "added": "2025-10-10",
+   "popularity": 1271,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability",
+    "Sustained Fire"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "P90 Submachine Gun-Warfare-6EN2TAS04DND42VA1HHO5",
+   "url": "https://rnkd.gg/deltaforce/builds/5",
+   "added": "2024-12-14",
+   "popularity": 693,
+   "level": null,
+   "att": [],
+   "note": "Easy to use p90.",
+   "tags": []
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "fewindu",
+   "source": "rnkd",
+   "code": "P90 Submachine Gun-Warfare-6ER9UGS00D6A9FJLRHPO3",
+   "url": "https://rnkd.gg/deltaforce/builds/50",
+   "added": "2024-12-26",
+   "popularity": 630,
+   "level": 50,
+   "att": [],
+   "note": "My favourite P90 build for medic.",
+   "tags": []
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "P90 Submachine Gun-Operations-6HG8LMS0ANDGTQ80UJKN6",
+   "url": "https://deltaforcetools.gg/weapon-builds/518",
+   "added": "2025-09-10",
+   "popularity": 493,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "P90 Submachine Gun-Warfare-6JU78R80EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/260",
+   "added": "2026-05-04",
+   "popularity": 23,
+   "level": 45,
+   "att": [
+    [
+     "Barrel",
+     "P90 Longbow Stainless Steel Barrel"
+    ],
+    [
+     "Muzzle",
+     "FFC Double Port Muzzle Brake"
+    ],
+    [
+     "Riser Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Cheek Pad",
+     "Universal Cheek Pad"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ]
+   ],
+   "note": "New P90 Barrel extends first damage range by 8m now making it a great pick for midrange SMGs. It also has high mag capacity.",
+   "tags": []
+  },
+  {
+   "weapon": "PKM",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "PKM General Machine Gun-Warfare-6GN60K00ED9CPMQ5GIFT9",
+   "url": "https://deltaforcetools.gg/weapon-builds/397",
+   "added": "2025-09-01",
+   "popularity": 1183,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "PKM",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "PKM General Machine Gun-Warfare-6EP3SOS0ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/49",
+   "added": "2024-12-23",
+   "popularity": 1038,
+   "level": 75,
+   "att": [],
+   "note": "Hipfire Build. Optic: Panoramic Red Dot Sight Stock: PKM Bolt Cover Rear Grip: AK Heavy Tower Grip + Balanced Grip Base Magazine: PKM Extended Magazine (very long…",
+   "tags": []
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "PKM General Machine Gun-Operations-6IG6OHO00RR8JACO27GDL",
+   "url": "https://deltaforcetools.gg/weapon-builds/658",
+   "added": "2025-12-24",
+   "popularity": 644,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "warfare",
+   "creator": "daniela",
+   "source": "rnkd",
+   "code": "Ametralladora general PKM-Conflicto Bélico-6F1QAK808153E31HMGOHQ",
+   "url": "https://rnkd.gg/deltaforce/builds/68",
+   "added": "2025-01-17",
+   "popularity": 583,
+   "level": 75,
+   "att": [],
+   "note": "English: It has little recoil, ideal build for war conflict Español: Esta arma tiene poco recoit, ideal para conflicto bélico",
+   "tags": []
+  },
+  {
+   "weapon": "PSG-1",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "PSG-1 Marksman Rifle-Warfare-6HM527G0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/562",
+   "added": "2025-09-28",
+   "popularity": 454,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "PTR-32 Assault Rifle-Warfare-6HOS3H40ED9CPMQ5GIFT9",
+   "url": "https://deltaforcetools.gg/weapon-builds/635",
+   "added": "2025-10-21",
+   "popularity": 1124,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "PTR-32 Assault Rifle-Warfare-6ENTJS400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/32",
+   "added": "2024-12-19",
+   "popularity": 645,
+   "level": null,
+   "att": [],
+   "note": "A faster-firing SCAR variant. Attachments: - Longest range barrel - Sandstorm compensator - Secret order bevel grip - 40 round mag",
+   "tags": []
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "tae",
+   "source": "rnkd",
+   "code": "PTR-32 Assault Rifle-Warfare-6EO152G057RAU0E7AE9HI",
+   "url": "https://rnkd.gg/deltaforce/builds/11",
+   "added": "2024-12-16",
+   "popularity": 322,
+   "level": null,
+   "att": [],
+   "note": "PTR Beamer. Add laser for hipfire",
+   "tags": []
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "nuuskamuikku",
+   "source": "rnkd",
+   "code": "PTR-32 Assault Rifle-Warfare-6HBNCMS03DA9PA4CO77HB",
+   "url": "https://rnkd.gg/deltaforce/builds/168",
+   "added": "2025-08-27",
+   "popularity": 132,
+   "level": 46,
+   "att": [],
+   "note": "Close-MID Range",
+   "tags": []
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "PTR-32 Assault Rifle-Warfare-6HK56F00EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/200",
+   "added": "2025-09-22",
+   "popularity": 109,
+   "level": 74,
+   "att": [],
+   "note": "This is built for precise players who loves low RPM weapons. PTR-32 has insane headshot damage and this build improves it recoil while not taking too much handling.",
+   "tags": []
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "QBZ95-1 Assault Rifle-Warfare-6ENTKDO00U98BTLV400GS",
+   "url": "https://deltaforcetools.gg/weapon-builds/467",
+   "added": "2025-09-01",
+   "popularity": 1288,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Fusil de asalto QBZ-95-1-Conflicto BÃ©lico-6IN5780073PLDB2QNCRF2",
+   "url": "https://deltaforcetools.gg/weapon-builds/385",
+   "added": "2025-09-01",
+   "popularity": 636,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "QBZ95-1 Assault Rifle-Warfare-6ENTKDO00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/43",
+   "added": "2024-12-19",
+   "popularity": 597,
+   "level": 75,
+   "att": [],
+   "note": "Long-Range Assault Rifle. Attachments: - 95 Longbow Platform Kit (expands attachments slots) - DD PYthon Handguard - QBZ95-1 Longbow Barrel Combo - Sandstorm Vertical…",
+   "tags": []
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "operations",
+   "creator": "daniela",
+   "source": "rnkd",
+   "code": "Fusil de asalto QBZ-95-1-Conflicto Bélico-6F4PS9008153E31HMGOHQ",
+   "url": "https://rnkd.gg/deltaforce/builds/83",
+   "added": "2025-01-24",
+   "popularity": 391,
+   "level": 58,
+   "att": [],
+   "note": "This weapon has little recoil, little movement and is quite stable for shooting, ideal if you are looking for a good precision build. The weapon's sights are…",
+   "tags": []
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "QBZ95-1 Assault Rifle-Warfare-6EKTGKS06ST1MR5I9D59U",
+   "url": "https://rnkd.gg/deltaforce/builds/15",
+   "added": "2024-12-17",
+   "popularity": 174,
+   "level": 53,
+   "att": [],
+   "note": "- maximum control - no recoil",
+   "tags": []
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "QBZ95-1 Assault Rifle-Operations-6H976GO0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/154",
+   "added": "2025-08-19",
+   "popularity": 124,
+   "level": null,
+   "att": [],
+   "note": "This great value build focuses on improving the gun's recoil since it already has insane ttk. It is incredibly strong on most ranges at budget value.",
+   "tags": []
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "QCQ171 Submachine Gun-Warfare-6HS32SS0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/623",
+   "added": "2025-10-16",
+   "popularity": 931,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "QCQ171 Submachine Gun-Warfare-6HI6UPK0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/539",
+   "added": "2025-09-16",
+   "popularity": 800,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "warfare",
+   "creator": "btoot",
+   "source": "rnkd",
+   "code": "QCQ171 Submachine Gun-Warfare-6F7GHS809UHFFPHO2RIPH",
+   "url": "https://rnkd.gg/deltaforce/builds/89",
+   "added": "2025-02-01",
+   "popularity": 327,
+   "level": 70,
+   "att": [],
+   "note": "the handling and control on it has been reduced to the minimal, still does great in 50M avg range kills",
+   "tags": []
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "QCQ171 Submachine Gun-Warfare-6HHR3HK0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/196",
+   "added": "2025-09-15",
+   "popularity": 97,
+   "level": 60,
+   "att": [],
+   "note": "This build is for semi-aggressive playstyle. This weapon already has insane TTK with its high damage and RPM, therefore, this build greatly improves recoil control…",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "eric",
+   "source": "rnkd",
+   "code": "QJB201 Light Machine Gun-Warfare-6F394V80E741K7ABQTP6C",
+   "url": "https://rnkd.gg/deltaforce/builds/76",
+   "added": "2025-01-19",
+   "popularity": 1212,
+   "level": 51,
+   "att": [],
+   "note": "With this build the QJB201 plays like a terrifying AR. With an effective range of 52 metres and easy to manage recoil you can beam people with ease. Note that the 45…",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "QJB201 Light Machine Gun-Operations-6HGI6PK0ANDGTQ80UJKN6",
+   "url": "https://deltaforcetools.gg/weapon-builds/531",
+   "added": "2025-09-11",
+   "popularity": 652,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "warfare",
+   "creator": "x2194",
+   "source": "rnkd",
+   "code": "QJB201轻机枪-全面战场-6F7IVMO0FSE04FHHE9NE5",
+   "url": "https://rnkd.gg/deltaforce/builds/90",
+   "added": "2025-02-01",
+   "popularity": 338,
+   "level": 65,
+   "att": [],
+   "note": "Delta force mobile CN version Build",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "Ametralladora ligera QJB-201-Operación: Extracción-6HNTPV808M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/214",
+   "added": "2025-10-20",
+   "popularity": 45,
+   "level": null,
+   "att": [
+    [
+     "Magazine",
+     "5.8 Newtype 30-Round Mag"
+    ],
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Black)"
+    ],
+    [
+     "Stock",
+     "416 Light stock"
+    ],
+    [
+     "Rear Grip",
+     "New Sword Heavy Grip"
+    ],
+    [
+     "Barrel",
+     "QJB201 Newtype Sledgehammer Tactical Barrel"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Muzzle",
+     "Bastion Horizontal Compensator"
+    ],
+    [
+     "Foregrip",
+     "Secret Order Bevel Foregrip"
+    ]
+   ],
+   "note": "100% control",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "QJB201 Light Machine Gun-Warfare-6K7IK2C0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/274",
+   "added": "2026-06-02",
+   "popularity": 24,
+   "level": 56,
+   "att": [
+    [
+     "Rear Grip",
+     "New Vanguard Light Grip"
+    ],
+    [
+     "Foregrip",
+     "Resonant Ergonomic Grip"
+    ],
+    [
+     "Gas Block",
+     "QJB201 Newtype Stable Gas Block"
+    ],
+    [
+     "Muzzle",
+     "Advanced Multi-Caliber Suppressor"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Barrel",
+     "QJB201 Newtype Sledgehammer Tactical Barrel"
+    ],
+    [
+     "Upper Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Upper Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Magazine",
+     "5.8 Newtype 60-Round Drum Mag"
+    ],
+    [
+     "Optic",
+     "Micro Sight Riser"
+    ]
+   ],
+   "note": "The QJB201 has one of the most reliable recoils currently in the game. This build further enhances its long-range capabilities while also having high mag capacity.",
+   "tags": []
+  },
+  {
+   "weapon": "R93",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "R93: R93 Sniper Rifle-Warfare-6ESARI80BPQR609FCOJ8N",
+   "url": "https://deltaforcetools.gg/weapon-builds/470",
+   "added": "2025-09-01",
+   "popularity": 2526,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Burst"
+   ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "warfare",
+   "creator": "thecadwoman",
+   "source": "rnkd",
+   "code": "R93: R93 Sniper Rifle-Warfare-6ESARI80BPQR609FCOJ8N",
+   "url": "https://rnkd.gg/deltaforce/builds/62",
+   "added": "2025-01-07",
+   "popularity": 1275,
+   "level": 36,
+   "att": [],
+   "note": "R93 - Aggressive/Short Range Build This R93 setup is optimized for aggressive, mobile playstyle and closer-range engagements. Attachments Muzzle: Vortex Flash Hider -…",
+   "tags": []
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "R93 Sniper Rifle-Operations-6HS2U0C0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/617",
+   "added": "2025-10-16",
+   "popularity": 719,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability",
+    "Long-Range"
+   ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "warfare",
+   "creator": "jestermad",
+   "source": "rnkd",
+   "code": "R93 Sniper Rifle-Warfare-6F8ISEO06FFK13FM460QP",
+   "url": "https://rnkd.gg/deltaforce/builds/93",
+   "added": "2025-02-04",
+   "popularity": 78,
+   "level": 34,
+   "att": [],
+   "note": "A lot of people would argue that the R93 might be the worst choice for sniping due to its low stability, control, and accuracy. However, sniping is more than that,…",
+   "tags": []
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "R93 Sniper Rifle-Operations-6HBH1C80EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/167",
+   "added": "2025-08-26",
+   "popularity": 73,
+   "level": null,
+   "att": [],
+   "note": "This build improves overall versatility of R93. It has greatly improved range and velocity while still having fast ADS and movement speed making it also on close/mid…",
+   "tags": []
+  },
+  {
+   "weapon": "R93",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "R93 Sniper Rifle-Warfare-6IEROAK0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/231",
+   "added": "2025-12-12",
+   "popularity": 43,
+   "level": 24,
+   "att": [
+    [
+     "Optic",
+     "ACOG Precision 6x Scope"
+    ],
+    [
+     "Barrel",
+     "R93 Fission Long Barrel"
+    ],
+    [
+     "Heat Shield",
+     "R93 Barrel Heat Shield"
+    ],
+    [
+     "Muzzle",
+     "Resonant Sniper Rifle Suppressor"
+    ]
+   ],
+   "note": "One shot (torso) at 48m - 96m. Can also be used for closed range quick scoping with its fast ads speed.",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "dft:labi",
+   "source": "dft",
+   "code": "RM277-Operations-6KH75O8073PI62OT9AFJ2",
+   "url": "https://deltaforcetools.gg/weapon-builds/1025",
+   "added": "2026-07-02",
+   "popularity": 2094,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value",
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "RM277-Warfare-6KKRBSG0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/283",
+   "added": "2026-07-12",
+   "popularity": 89,
+   "level": 63,
+   "att": [
+    [
+     "Riser Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Mag Mount",
+     "Grizzly Full P. Mag Assist (Black)"
+    ],
+    [
+     "Stock",
+     "RM277 Pad"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Cheek Pad",
+     "RM277 Cheek Pad"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Foregrip",
+     "CR Prism Hand stop"
+    ],
+    [
+     "Rear Grip",
+     "Phantom Rear Grip"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Barrel",
+     "RM277 Whale Shark Barrel Combo"
+    ],
+    [
+     "Muzzle",
+     "RM277 Breaker Suppressor"
+    ]
+   ],
+   "note": "Steady-shooting rifle with good damage. This build focuses on improving the recoil making it deadly for mid/long range.",
+   "tags": []
+  },
+  {
+   "weapon": "S12K",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "S12KÂ Shotgun-Operations-6I049NO0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/644",
+   "added": "2025-10-28",
+   "popularity": 717,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Long-Range"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "geminibradley",
+   "source": "rnkd",
+   "code": "SCAR-H Battle Rifle-Warfare-6F64I1O024K5BCN2UCFKP",
+   "url": "https://rnkd.gg/deltaforce/builds/86",
+   "added": "2025-01-28",
+   "popularity": 2110,
+   "level": 75,
+   "att": [],
+   "note": "Easy to use, has low recoil, sacrificed some handling stat... nothing too absurd. Optic is completely preference based. I like this one for taking slightly longer…",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SCAR-H Battle Rifle-Operations-6HSGEJ40FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/626",
+   "added": "2025-10-17",
+   "popularity": 1429,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Stability"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SCAR-H Battle Rifle-Warfare-6F64I1O024K5BCN2UCFKP",
+   "url": "https://deltaforcetools.gg/weapon-builds/415",
+   "added": "2025-09-01",
+   "popularity": 936,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "bongog",
+   "source": "rnkd",
+   "code": "SCAR-H Battle Rifle-Warfare-6ETN9NS0CH9JKOV493VV2",
+   "url": "https://rnkd.gg/deltaforce/builds/56",
+   "added": "2025-01-02",
+   "popularity": 603,
+   "level": 75,
+   "att": [],
+   "note": "Nuke Farming Machine on engineer, average 1 nuke per game, focus on picking out flanks with it it has very nice control and high damage, focus on the tanks with Uluru.",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "SCAR-H Battle Rifle-Operations-6FQ303S04CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/108",
+   "added": "2025-03-29",
+   "popularity": 255,
+   "level": null,
+   "att": [],
+   "note": "300k mid -> long range",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "SCAR-H Battle Rifle-Warfare-6ENTJUK00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/34",
+   "added": "2024-12-19",
+   "popularity": 205,
+   "level": null,
+   "att": [],
+   "note": "Very effective with a drum magazine. Attachments: - Longest range barrel - Laser - Sandstorm vertical compensator - Angled Hand Stop - Drum magazine - Phantom rear…",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Fusil de combat SCAR-H-Opérations-6GJEQJO0FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/146",
+   "added": "2025-06-14",
+   "popularity": 143,
+   "level": null,
+   "att": [],
+   "note": "viseur clik clik",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "SCAR-H Battle Rifle-Warfare-6HJ45IS08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/177",
+   "added": "2025-08-30",
+   "popularity": 85,
+   "level": 74,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Mag Mount",
+     "Grizzly Full P. Mag Assist (Black)"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Barrel",
+     "SCAR-H Beaver Long Barrel"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Left Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Rear Grip",
+     "Phantom Rear Grip"
+    ],
+    [
+     "Stock",
+     "Cardinal Advanced Combat Stock"
+    ],
+    [
+     "Magazine",
+     "SCAR-H 30-Round Mag"
+    ]
+   ],
+   "note": "SCAR-H is one of the most versatile rifles, delivering near zero recoil and outstanding performance at any range. Powerful, stable, and adaptable, it excels in every…",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SCAR-H Battle Rifle-Operations-6JGRFMO0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/248",
+   "added": "2026-03-25",
+   "popularity": 36,
+   "level": null,
+   "att": [
+    [
+     "Riser Optic",
+     "Russian Accuracy 2x Scope"
+    ],
+    [
+     "Rear Grip",
+     "Marksman D-2 Rear Grip"
+    ],
+    [
+     "Stock",
+     "Invasion Core Stock"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Upper Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Barrel",
+     "SCAR-H Beaver Long Barrel"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Magazine",
+     "SCAR-H 30-Round Mag"
+    ],
+    [
+     "Muzzle",
+     "Whisper Tactical Suppressor"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ]
+   ],
+   "note": "Mid-budget all around BR build. Comes great for stealth mid/long engagements but can also fight in closer ranges.",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SCAR-H Battle Rifle-Warfare-6KM9P0S0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/285",
+   "added": "2026-07-16",
+   "popularity": 22,
+   "level": 71,
+   "att": [
+    [
+     "Rear Grip",
+     "AR Modular Rear Grip"
+    ],
+    [
+     "Riser Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Rear Grip Patch",
+     "AR Heavy Grip Piece"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Barrel",
+     "SCAR-H Beaver Long Barrel"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Magazine",
+     "SCAR-H 50-Round Drum Mag"
+    ],
+    [
+     "Muzzle",
+     "Advanced Multi-Caliber Suppressor"
+    ]
+   ],
+   "note": "One of the most versatile weapons in the game. This build is for long range gunfights with its steady RPM and minimal recoil.",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SG552 Assault Rifle-Warfare-6JF8L4G073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/505",
+   "added": "2025-09-04",
+   "popularity": 1449,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SG552 Assault Rifle-Operations-6HRGFNK0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/614",
+   "added": "2025-10-16",
+   "popularity": 1197,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "High Burst"
+   ]
+  },
+  {
+   "weapon": "SG552",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SG552 Assault Rifle-Warfare-6EMMLLC08V59ON780KONE",
+   "url": "https://rnkd.gg/deltaforce/builds/9",
+   "added": "2024-12-16",
+   "popularity": 930,
+   "level": null,
+   "att": [],
+   "note": "- Close to midrange - Fast ADS - Low recoil",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "SG552 Assault Rifle-Warfare-6ENTK1400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/36",
+   "added": "2024-12-19",
+   "popularity": 422,
+   "level": null,
+   "att": [],
+   "note": "High rate of fire with manageable recoil. Attachments: - DD Python Handguard (stacking handling) - SG552 Knight Heavy Barrel(only available barrel) - PERST-7 Blue…",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "SG552 Assault Rifle-Operations-6FQ32NG04CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/110",
+   "added": "2025-03-29",
+   "popularity": 368,
+   "level": null,
+   "att": [],
+   "note": "300k mid -> long range",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "warfare",
+   "creator": "nuuskamuikku",
+   "source": "rnkd",
+   "code": "SG552 Assault Rifle-Warfare-6HDMNBG03DA9PA4CO77HB",
+   "url": "https://rnkd.gg/deltaforce/builds/179",
+   "added": "2025-09-02",
+   "popularity": 190,
+   "level": 15,
+   "att": [],
+   "note": "Great for close-mid range combat. Scope can be changed if wanted. Scope: Prism universal 2x rear grip: AR MOE",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SG552 Assault Rifle-Operations-6JC91DK0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/245",
+   "added": "2026-03-11",
+   "popularity": 50,
+   "level": 1,
+   "att": [
+    [
+     "Optic",
+     "Holographic Sight Type II"
+    ],
+    [
+     "Barrel",
+     "SG552 Hound Light Barrel"
+    ],
+    [
+     "Stock",
+     "Elite Light Stock"
+    ],
+    [
+     "Magazine Mount",
+     "Badger Small Mag Assist (Sand)"
+    ],
+    [
+     "Foregrip",
+     "Tactical Vertical Foregrip"
+    ],
+    [
+     "Rear Grip",
+     "Invasion Rear Grip"
+    ],
+    [
+     "Upper Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Magazine",
+     "SG552 45-Round Extended Mag"
+    ],
+    [
+     "Muzzle",
+     "Titanium Contest Muzzle Brake"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ]
+   ],
+   "note": "Recently buffed SG552 is a good pick for budget builds since it already has good base recoil control and stability.",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "skyblack",
+   "source": "rnkd",
+   "code": "Fusil d'assaut AKM-Opérations-6HCGD5K0CNQOONMCR8ACH",
+   "url": "https://rnkd.gg/deltaforce/builds/176",
+   "added": "2025-08-29",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "AKM 425K",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SMG-45 Submachine Gun-Warfare-6EO15NC057RAU0E7AE9HI",
+   "url": "https://deltaforcetools.gg/weapon-builds/646",
+   "added": "2025-11-18",
+   "popularity": 4288,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "SMG-45 Submachine Gun-Warfare-6EOBLBS0ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/19",
+   "added": "2024-12-18",
+   "popularity": 2942,
+   "level": 75,
+   "att": [],
+   "note": "The Best SMG-45 Loadout",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "SMG-45 Submachine Gun-Warfare-6EL58L400U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/28",
+   "added": "2024-12-19",
+   "popularity": 880,
+   "level": null,
+   "att": [],
+   "note": "The BEST Starter Weapon in Delta Force!",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SMG-45 Submachine Gun-Operations-6HQE2HK0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/603",
+   "added": "2025-10-11",
+   "popularity": 843,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "tae",
+   "source": "rnkd",
+   "code": "SMG-45 Submachine Gun-Warfare-6EO1640057RAU0E7AE9HI",
+   "url": "https://rnkd.gg/deltaforce/builds/13",
+   "added": "2024-12-16",
+   "popularity": 453,
+   "level": null,
+   "att": [],
+   "note": "SMG-45 CQB ADS speed",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SMG-45 Submachine Gun-Operations-6HJOR0K0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/199",
+   "added": "2025-09-20",
+   "popularity": 235,
+   "level": null,
+   "att": [],
+   "note": "Built for close range with improved handling and control. Also, this build has silenced muzzle and higher mag capacity.",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "tae",
+   "source": "rnkd",
+   "code": "SMG-45 Submachine Gun-Warfare-6EO15NC057RAU0E7AE9HI",
+   "url": "https://rnkd.gg/deltaforce/builds/12",
+   "added": "2024-12-16",
+   "popularity": 231,
+   "level": null,
+   "att": [],
+   "note": "SMG-45 all rounder",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "SMG-45 Submachine Gun-Warfare-6I1QKUG08M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/222",
+   "added": "2025-11-02",
+   "popularity": 74,
+   "level": null,
+   "att": [
+    [
+     "Mag Mount",
+     "Hornet SMG Mag Assist (Black)"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Offset Optic",
+     "Offset Panoramic Red Dot Sight"
+    ],
+    [
+     "Muzzle",
+     "SMG Echo Suppressor"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Magazine",
+     "SMG-45 40-Round Extended Mag"
+    ],
+    [
+     "Barrel",
+     "SMG-45 Fission Long Barrel"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Foregrip",
+     "Secret Order Bevel Foregrip"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ]
+   ],
+   "note": "SMG-45 Meta warfare",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SMG-45 Submachine Gun-Warfare-6I2EA4G0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/223",
+   "added": "2025-11-04",
+   "popularity": 47,
+   "level": 59,
+   "att": [
+    [
+     "Mag Mount",
+     "Hornet SMG Mag Assist (Black)"
+    ],
+    [
+     "Rear Grip",
+     "AR Heavy Tower Grip"
+    ],
+    [
+     "Foregrip",
+     "Resonant Ergonomic Grip"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Magazine",
+     "SMG-45 40-Round Extended Mag"
+    ],
+    [
+     "Barrel",
+     "SMG-45 Fission Long Barrel"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ]
+   ],
+   "note": "One of the most easy-to-use guns in the game and is made more versatile with this build. This can handle mid/long range gunfights with stable and low recoil while…",
+   "tags": []
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SR-25 Marksman Rifle-Warfare-6HQEDTC0FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/609",
+   "added": "2025-10-11",
+   "popularity": 1111,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Long-Range",
+    "Recommended Build"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SR-3M Compact Assault Rifle-Operations-6I5KMSC00RR8JACO27GDL",
+   "url": "https://deltaforcetools.gg/weapon-builds/494",
+   "added": "2025-09-01",
+   "popularity": 1291,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Long-Range"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6EO7Q8G00U98BTLV400GS",
+   "url": "https://deltaforcetools.gg/weapon-builds/496",
+   "added": "2025-09-01",
+   "popularity": 549,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "enders",
+   "source": "rnkd",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6EO7Q8G00U98BTLV400GS",
+   "url": "https://rnkd.gg/deltaforce/builds/47",
+   "added": "2024-12-20",
+   "popularity": 294,
+   "level": 75,
+   "att": [],
+   "note": "The BEST Aggressive SMG in Delta Force!",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "mark",
+   "source": "rnkd",
+   "code": "SR-3M紧凑突击步枪-全面战场-6F28OLC09JQ9TE457BMIL",
+   "url": "https://rnkd.gg/deltaforce/builds/74",
+   "added": "2025-01-18",
+   "popularity": 255,
+   "level": null,
+   "att": [],
+   "note": "SR-3M紧凑突击步枪-全面战场-6F28OLC09JQ9TE457BMIL",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6EMQ35G0ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/22",
+   "added": "2024-12-18",
+   "popularity": 145,
+   "level": 75,
+   "att": [],
+   "note": "No recoil",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "kiri86",
+   "source": "rnkd",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6HJ421408M3TET99CEP38",
+   "url": "https://rnkd.gg/deltaforce/builds/184",
+   "added": "2025-09-03",
+   "popularity": 56,
+   "level": 50,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Mag Mount",
+     "Coyote Medium P. Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "SR-3M Cast Steel Tactical Barrel"
+    ],
+    [
+     "Muzzle",
+     "SMG Echo Suppressor"
+    ],
+    [
+     "Right Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Left Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Rail",
+     "DBAL-X2 Purple Laser-Light Combo"
+    ],
+    [
+     "Foregrip",
+     "RK-0 Foregrip"
+    ],
+    [
+     "Stock",
+     "UR Spec Ops Tactical Stock"
+    ],
+    [
+     "Magazine",
+     "VSS 45-Round Mag"
+    ],
+    [
+     "Rear Grip",
+     "Scorpio Rear Grip"
+    ]
+   ],
+   "note": "SR-3M is a lesser - used submachine gun in Warfare, but an excellent choice for the Support class. With outstanding control and a high rate of fire, it excels at…",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6I1M7JG0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/221",
+   "added": "2025-11-02",
+   "popularity": 31,
+   "level": 50,
+   "att": [
+    [
+     "Mag Mount",
+     "Coyote Medium P. Mag Assist (Black)"
+    ],
+    [
+     "Barrel",
+     "SR-3M Cast Steel Tactical Barrel"
+    ],
+    [
+     "Rear Grip",
+     "AK Heavy Tower Grip"
+    ],
+    [
+     "Right Rail",
+     "DD Python Handguard"
+    ],
+    [
+     "Muzzle",
+     "PBS Russian Suppressor"
+    ],
+    [
+     "Magazine",
+     "VSS 45-Round Mag"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ]
+   ],
+   "note": "Built for aggressive playstyle while still having good recoil and stability. Can take out distant enemies while still being suppressed with the suppressor.",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6JI6KOK0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/250",
+   "added": "2026-03-29",
+   "popularity": 30,
+   "level": 64,
+   "att": [
+    [
+     "Optic",
+     "Cobra Accuracy Sight"
+    ],
+    [
+     "Barrel",
+     "SR-3M Cast Steel Tactical Barrel"
+    ],
+    [
+     "Rear Grip",
+     "AK Heavy Tower Grip"
+    ],
+    [
+     "Muzzle",
+     "Russian SMG Precision Suppressor"
+    ],
+    [
+     "Upper Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Rail",
+     "KC Hound Handguard"
+    ],
+    [
+     "Left Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Right Patch",
+     "KC Hound Handguard"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Magazine",
+     "VSS 45-Round Mag"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Foregrip",
+     "CR Prism Hand stop"
+    ],
+    [
+     "Stock",
+     "Shadow Rail Stock"
+    ]
+   ],
+   "note": "Great overall SMG focused on close/mid range with great stability and has more than decent hip fire accuracy.",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Fusil d'assaut compact SR-3M-Opérations-6GJEQV40FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/147",
+   "added": "2025-06-14",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "low budget",
+   "tags": []
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "warfare",
+   "creator": "thecadwoman",
+   "source": "rnkd",
+   "code": "SV-98 Sniper Rifle-Warfare-6ESARGK0BPQR609FCOJ8N",
+   "url": "https://rnkd.gg/deltaforce/builds/61",
+   "added": "2025-01-07",
+   "popularity": 2050,
+   "level": 39,
+   "att": [],
+   "note": "SV-98 - Fast-Action Build The SV-98 offers a balance of damage, range, and high rate of fire with good muzzle velocity. Attachments Laser: Equipped - Improves…",
+   "tags": []
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SV-98 Sniper Rifle-Warfare-6EKJIJ80AVG5CJCFDNV7J",
+   "url": "https://deltaforcetools.gg/weapon-builds/461",
+   "added": "2025-09-01",
+   "popularity": 1812,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SV-98 Sniper Rifle-Warfare-6EKJIJ80AVG5CJCFDNV7J",
+   "url": "https://rnkd.gg/deltaforce/builds/3",
+   "added": "2024-12-14",
+   "popularity": 897,
+   "level": 39,
+   "att": [],
+   "note": "SV-98 Sniper Setup. Insanely accurate and steady when holding your breath making it easier to snipe beyond 200m+ with the help of the scope. The Insight scope allows…",
+   "tags": []
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
+   "creator": "dft:labi",
+   "source": "dft",
+   "code": "SVCH Marksman Rifle-Operations-6KHEEB8073PI62OT9AFJ2",
+   "url": "https://deltaforcetools.gg/weapon-builds/1026",
+   "added": "2026-07-02",
+   "popularity": 2546,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "SVCH Marksman Rifle-Warfare-6KN96R00EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/287",
+   "added": "2026-07-19",
+   "popularity": 45,
+   "level": 69,
+   "att": [
+    [
+     "Riser Optic",
+     "VMX Frameless Sight"
+    ],
+    [
+     "Stock",
+     "SVCH Supporting Stock"
+    ],
+    [
+     "Handguard",
+     "SVCH Assault Short Handguard"
+    ],
+    [
+     "Barrel",
+     "SVCH Carbon Fiber Long Barrel"
+    ],
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Tactical Device",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Rear Grip",
+     "SVCH Stellar Stable Grip"
+    ],
+    [
+     "Optic",
+     "Multi-Purpose Tactical Riser"
+    ],
+    [
+     "Bolt",
+     "SVCH Chrome-Plated Burst Bolt"
+    ],
+    [
+     "Magazine",
+     "SVCH Swiftwind Dual Mag"
+    ]
+   ],
+   "note": "This MR can be used with AUTO Mode and when used properly, can be insanely deadly with its damage.",
+   "tags": []
+  },
+  {
+   "weapon": "SVD",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Fusil sniper SVD-OpÃ©rations-6GJESJ40FGU21TB2NA8RD",
+   "url": "https://deltaforcetools.gg/weapon-builds/391",
+   "added": "2025-09-01",
+   "popularity": 918,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Best Value"
+   ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "SVD Sniper Rifle-Operations-6IC9ERK073PLD67R4E7P1",
+   "url": "https://deltaforcetools.gg/weapon-builds/654",
+   "added": "2025-12-08",
+   "popularity": 793,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "minipoy",
+   "source": "rnkd",
+   "code": "Fusil sniper SVD-Opérations-6GJESJ40FGU21TB2NA8RD",
+   "url": "https://rnkd.gg/deltaforce/builds/149",
+   "added": "2025-06-14",
+   "popularity": 222,
+   "level": null,
+   "att": [],
+   "note": "long range",
+   "tags": []
+  },
+  {
+   "weapon": "UZI",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Pistolet-mitrailleur UZI-Guerre-6HKOMFO09IK6448JCVE98",
+   "url": "https://deltaforcetools.gg/weapon-builds/589",
+   "added": "2025-09-28",
+   "popularity": 1186,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "UZl Submachine Gun-0perations-6IMH8MC073PLDB2QNCRF2",
+   "url": "https://deltaforcetools.gg/weapon-builds/566",
+   "added": "2025-09-28",
+   "popularity": 978,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range"
+   ]
+  },
+  {
+   "weapon": "UZI",
+   "mode": "warfare",
+   "creator": "alex7",
+   "source": "rnkd",
+   "code": "Pistolet-mitrailleur UZI-Guerre-6HKOMFO09IK6448JCVE98",
+   "url": "https://rnkd.gg/deltaforce/builds/202",
+   "added": "2025-09-23",
+   "popularity": 390,
+   "level": 61,
+   "att": [],
+   "note": "i use it since 2 month, and i'm addicted, u kill people in 100m easy with a good stability for this range of weapon. Maybe use the reflex with minimum zoom ?",
+   "tags": []
+  },
+  {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "UZI Submachine Gun-Operations-6H9I4S40EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/155",
+   "added": "2025-08-20",
+   "popularity": 116,
+   "level": null,
+   "att": [],
+   "note": "Uzi is one of the easiest guns to get in the game. This build makes it capable close/mid ranges using cheap attachments.",
+   "tags": []
+  },
+  {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "kucing_gila",
+   "source": "rnkd",
+   "code": "UZI Submachine Gun-Operations-6G6UO9O0712QKAVK4GF9L",
+   "url": "https://rnkd.gg/deltaforce/builds/133",
+   "added": "2025-05-21",
+   "popularity": 50,
+   "level": null,
+   "att": [],
+   "note": "Uzi Beast",
+   "tags": []
+  },
+  {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "notoschool",
+   "source": "rnkd",
+   "code": "UZI Submachine Gun-Warfare-6KH62HG0C9G0GN8V454A5",
+   "url": "https://rnkd.gg/deltaforce/builds/281",
+   "added": "2026-07-10",
+   "popularity": 9,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "VSS",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "VSS Marksman Rifle-Operations-6JJSP74073PI62OT9AFJ2",
+   "url": "https://deltaforcetools.gg/weapon-builds/839",
+   "added": "2026-04-03",
+   "popularity": 628,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Long-Range"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Vector Submachine Gun-Warfare-6JF8GPC073PLKDGT2OU3K",
+   "url": "https://deltaforcetools.gg/weapon-builds/435",
+   "added": "2025-09-01",
+   "popularity": 2375,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Meta Build"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "erikgarridotv",
+   "source": "rnkd",
+   "code": "Subametralladora Vector-Operación: Extracción-6F011SO0E1FK4BAMH9TD2",
+   "url": "https://rnkd.gg/deltaforce/builds/63",
+   "added": "2025-01-09",
+   "popularity": 1865,
+   "level": 1,
+   "att": [],
+   "note": "La mejor vector, precio algo alto",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "warfare",
+   "creator": "maxiq",
+   "source": "rnkd",
+   "code": "Vector Submachine Gun-Warfare-6ELOQQK0ANJRUOF7B9OHH",
+   "url": "https://rnkd.gg/deltaforce/builds/24",
+   "added": "2024-12-18",
+   "popularity": 785,
+   "level": 62,
+   "att": [],
+   "note": "THE BEST SUPPORT WEAPON",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Subametralladora Vector-OperaciÃ³n: ExtracciÃ³n-6IMPKPS073PLDB2QNCRF2",
+   "url": "https://deltaforcetools.gg/weapon-builds/448",
+   "added": "2025-09-01",
+   "popularity": 574,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Close-Range"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "narcissally",
+   "source": "rnkd",
+   "code": "Vector Submachine Gun-Operations-6FQ9MBO04CN8B128UE6UU",
+   "url": "https://rnkd.gg/deltaforce/builds/114",
+   "added": "2025-03-30",
+   "popularity": 314,
+   "level": null,
+   "att": [],
+   "note": "250k mid -> long range",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "warfare",
+   "creator": "rvl",
+   "source": "rnkd",
+   "code": "Vector Submachine Gun-Warfare-6I4096O0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/226",
+   "added": "2025-11-09",
+   "popularity": 73,
+   "level": 49,
+   "att": [
+    [
+     "Foregrip",
+     "RK-0 Foregrip"
+    ]
+   ],
+   "note": "Vector has one of the best TTK up close with its insane RPM. This build focuses on improving CONTROL while also improving ADS movement speed making it reliable choice…",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "Vector Submachine Gun-Warfare-6JIGH1O0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/251",
+   "added": "2026-03-30",
+   "popularity": 23,
+   "level": 57,
+   "att": [
+    [
+     "Foregrip",
+     "X25U Angled Combat Grip"
+    ],
+    [
+     "Right Rail",
+     "PEQ-2 Red Laser-Light Combo"
+    ],
+    [
+     "Upper Rail",
+     "Ranger Handguard"
+    ],
+    [
+     "Left Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Right Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Upper Patch",
+     "Ranger Handguard"
+    ],
+    [
+     "Optic",
+     "Panoramic Red Dot Sight"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Barrel",
+     "Vector Longsword Ultra-Long Barrel Combo"
+    ],
+    [
+     "Muzzle",
+     "Titanium Contest Muzzle Brake"
+    ],
+    [
+     "Magazine",
+     "Vector 70-Round Extended C-Mag"
+    ]
+   ],
+   "note": "With its incredible RPM, Vector offers one of the best TTK up close. This build concentrates on increasing CONTROL and ADS movement speed, giving it a dependable…",
+   "tags": []
+  },
+  {
+   "weapon": "Vityaz",
+   "mode": "warfare",
+   "creator": "deltaforcetools",
+   "source": "dft",
+   "code": "Vityaz Submachine Gun-Warfare-6HQ5FE40FSH6GRF76DG60",
+   "url": "https://deltaforcetools.gg/weapon-builds/601",
+   "added": "2025-10-10",
+   "popularity": 1029,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Recommended Build",
+    "Sustained Fire"
+   ]
+  },
+  {
+   "weapon": "Vityaz",
+   "mode": "warfare",
+   "creator": "rnkd",
+   "source": "rnkd",
+   "code": "Vityaz Submachine Gun-Warfare-6HFFFJC0EIPHRNLI0J8JI",
+   "url": "https://rnkd.gg/deltaforce/builds/187",
+   "added": "2025-09-07",
+   "popularity": 116,
+   "level": 58,
+   "att": [
+    [
+     "Optic",
+     "OKP-7 Reflex Sight"
+    ],
+    [
+     "Rear Grip",
+     "AK Heavy Tower Grip"
+    ],
+    [
+     "Muzzle",
+     "Sandstorm Vertical Compensator"
+    ],
+    [
+     "Stock",
+     "Skeleton Sniper Stock"
+    ],
+    [
+     "Grip Mount",
+     "Stable Grip Base"
+    ],
+    [
+     "Barrel",
+     "Vityaz Beaver Barrel"
+    ]
+   ],
+   "note": "Versatile build. Great for players who shoots for the head with its insane headshot damage. Good recoil and stability for mid-range with decent close-range capabilities",
+   "tags": []
+  }
+ ]
+}
