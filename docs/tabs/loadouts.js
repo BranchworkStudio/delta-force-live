@@ -2,10 +2,9 @@
  *
  * Nothing here comes from HQ. HQ knows what you own and what you did with it; it does not know
  * what the people who play this game for a living put on their rifles. That lives on their own
- * pages — a Google Doc, a build site of their own — and, second-hand, on the aggregators that
- * collect them. So this tab is a curated file (data/loadouts.json) rather than an API call, every
- * build in it carries the name of the person who made it and a link back to where it was
- * published, and a build read off its maker's own page says so and sorts first.
+ * pages — a Google Doc, a build site of their own — so this tab is a curated file
+ * (data/loadouts.json) rather than an API call, and every build in it carries the face and the
+ * name of the person who made it, next to a link to the page they published it on.
  *
  * The one thing a build is really for is its import code: in game, Gun Customization > Preset >
  * Import > paste. So the code is the object here — big, monospaced, one click to copy — and
@@ -19,7 +18,7 @@
   const DATA_URL = "data/loadouts.json?v=1";
   const KEY = "df-loadouts";          // the rail's own state, per browser
 
-  let DB = null, state = { sel: null, mode: "all", cls: "all", creator: "all", src: "all", sort: "pop", q: "" }, phase = "idle";
+  let DB = null, state = { sel: null, mode: "all", cls: "all", creator: "all", sort: "pop", q: "" }, phase = "idle";
 
   try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* private window */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
@@ -76,9 +75,10 @@
   const creatorOf = (b) => (DB.creators && DB.creators[b.creator]) || { name: b.creator || "Unknown" };
   const sourceOf = (b) => (DB.sources && DB.sources[b.source]) || { name: b.source || "" };
   const MODES = { operations: "Operations", warfare: "Warfare", both: "Both modes" };
-  // Where a build was found matters as much as who made it. A build sitting on the page its maker
-  // runs is a build they still stand behind; a build on an aggregator is a copy someone took.
-  const own = (b) => sourceOf(b).kind === "creator";
+  // Everything in the file is Operations today. A mode chip on every card, and a row of mode
+  // buttons that cannot change anything, would both be furniture — so they appear only once the
+  // file actually holds more than one mode.
+  const modes = () => [...new Set(DB.builds.map(b => b.mode))];
 
   // Everything the rail and the pane read goes through one filter, so the counts on the weapon
   // list are the counts of what clicking it would actually show.
@@ -87,7 +87,6 @@
     return DB.builds.filter(b =>
       (state.mode === "all" || b.mode === state.mode || b.mode === "both") &&
       (state.creator === "all" || b.creator === state.creator) &&
-      (state.src === "all" || (state.src === "own") === own(b)) &&
       (!q || norm(b.weapon).includes(q) || norm(creatorOf(b).name).includes(q) || norm((b.tags || []).join(" ")).includes(q)));
   }
   function weapons(list) {
@@ -118,8 +117,8 @@
     filters: false,
 
     // Three figures, because only three of them change what you do next: whether your gun is in
-    // here at all, how much of this is first-hand, and how old the whole file is. A count of
-    // Operations builds next to a button that filters to Operations builds is not a statistic.
+    // here at all, whose builds these are, and how old the file is. A count of Operations builds
+    // next to a button that filters to Operations builds is not a statistic.
     hero(data, h) {
       if (phase !== "ready" || !DB) return null;
       const all = DB.builds, list = visible(), e = h.esc;
@@ -132,10 +131,10 @@
         cells: [
           ["Weapons covered", `${cover.size}<span style="color:var(--muted)">/${GUNS.length || "?"}</span>`,
             GUNS.length ? "of every gun in the game" : null],
-          ["From own pages", String(all.filter(own).length), "the rest are from aggregators",
-            "A build taken from the page its maker publishes — their doc, their site — rather than from a site that collects other people's builds. Both are credited, but the creator's own page is the one they keep up to date."],
-          ["Gathered", DB.updated ? e(shortDate(DB.updated)) : "–", "builds go stale — check the source",
-            "These builds were copied from public pages on this date. Nothing here is checked against the game: a code can be from an older season, a different server region, or simply not to your taste. The link on each card is the original."],
+          ["Creators", String(Object.keys(DB.creators || {}).length), "every build is theirs, not ours",
+            "Everything on this page was read off a page one of these people publishes themselves. Nothing is copied from a site that collects other people's builds."],
+          ["Last updated", DB.updated ? e(shortDate(DB.updated)) : "–", "when their pages were last read",
+            "The date this file was last rebuilt from the creators' pages. A build they changed after this date will not be here yet — the link on each card is always the live original."],
         ],
       };
     },
@@ -164,16 +163,11 @@
       el.innerHTML = `<div class="lo">
         <div class="lo-rail">
           <div class="lsearch"><input id="loQ" type="search" placeholder="Search weapon, creator or tag" value="${e(state.q)}" autocomplete="off"></div>
-          <div class="lfilters">
+          ${modes().length > 1 ? `<div class="lfilters">
             ${pill(state.mode === "all", "all", "All modes", "mode")}
             ${pill(state.mode === "operations", "operations", "Operations", "mode")}
             ${pill(state.mode === "warfare", "warfare", "Warfare", "mode")}
-          </div>
-          <div class="lfilters">
-            ${pill(state.src === "all", "all", "Everywhere", "src")}
-            ${pill(state.src === "own", "own", "Own pages", "src")}
-            ${pill(state.src === "agg", "agg", "Aggregators", "src")}
-          </div>
+          </div>` : ""}
           <div class="lfilters">
             ${pill(state.cls === "all", "all", "All", "cls")}
             ${classes.map(c => pill(state.cls === c, c, e(c), "cls")).join("")}
@@ -194,17 +188,7 @@
               : `<div class="note">Nothing matches that. <button type="button" class="link" style="color:var(--green)" data-f="reset" data-v="1">Clear the filters</button></div>`}
           </div>
         </div>
-        <div class="lo-main">${sel ? weaponHtml(sel, h) : ""}
-          <div class="lcredits">
-            <div class="lsrc">${(() => {
-              const link = (k) => `<a href="${e(DB.sources[k].url)}" target="_blank" rel="noopener noreferrer">${e(DB.sources[k].name)}</a>`;
-              const keys = Object.keys(DB.sources || {});
-              const mine = keys.filter(k => DB.sources[k].kind === "creator"), rest = keys.filter(k => DB.sources[k].kind !== "creator");
-              return (mine.length ? `Gathered from the pages the creators run themselves — ${mine.map(link).join(" · ")}${rest.length ? ` — and from ${rest.map(link).join(" · ")}` : ""}`
-                : `Gathered from ${rest.map(link).join(" · ")}`) + (DB.updated ? " · " + e(DB.updated) : "");
-            })()}. Codes are copied as published and are not verified here — open the source if a build looks wrong, and credit the maker if it wins you a raid.</div>
-          </div>
-        </div>
+        <div class="lo-main">${sel ? weaponHtml(sel, h) : ""}</div>
       </div>`;
 
       const q = el.querySelector("#loQ");
@@ -217,7 +201,7 @@
       el.querySelectorAll("[data-w]").forEach(n => n.onclick = () => { state.sel = n.dataset.w; save(); h.repaint(); });
       el.querySelectorAll("[data-f]").forEach(n => n.onclick = () => {
         const f = n.dataset.f;
-        if (f === "reset") { state = { sel: null, mode: "all", cls: "all", creator: "all", src: "all", sort: "pop", q: "" }; }
+        if (f === "reset") { state = { sel: null, mode: "all", cls: "all", creator: "all", sort: "pop", q: "" }; }
         else if (f === "creator") { state.creator = state.creator === n.dataset.v ? "all" : n.dataset.v; }
         else { state[f] = n.dataset.v; }
         save(); h.repaint();
@@ -230,15 +214,12 @@
   // ---------- the weapon panel ----------
   function weaponHtml(w, h) {
     const e = h.esc, g = w.gun;
-    // A build from the maker's own page first, then a person's build on an aggregator, then the
-    // aggregator's own; inside each, the one most people have actually imported, then the newest —
-    // a code that is a year old is not wrong, but it was tuned for a different game.
-    const mine = (b) => own(b) ? 0 : (DB.creators[b.creator] || {}).kind === "site" ? 2 : 1;
+    // Newest first, or most imported first — and a dated build ahead of an undated one either way,
+    // because a code that carries no date is a code nobody has touched in a while.
     const date = (a, b) => String(b.added || "").localeCompare(String(a.added || ""));
     const pop = (a, b) => (b.popularity || 0) - (a.popularity || 0);
     const builds = w.builds.slice().sort((a, b) => state.sort === "new"
-      ? (date(a, b) || mine(a) - mine(b) || pop(a, b))
-      : (mine(a) - mine(b) || pop(a, b) || date(a, b)));
+      ? (date(a, b) || pop(a, b)) : (pop(a, b) || date(a, b)));
     // The stat block is the gun as the game ships it, with nothing bolted on. A bar on its own is
     // unreadable — 0 to 100 of what? — so the number is the figure and the bar is the shape of it,
     // and the caption says out loud that these are stock values, not this build's.
@@ -255,7 +236,6 @@
             <i class="lbar"><u style="width:${Math.max(0, Math.min(100, v))}%"></u></i></div>`).join("")}</div>
         </div>` : ""}
       </div>
-      <div class="lpaste">Every code below is pasted in game at <b>Gun Customization Station &rarr; Preset &rarr; Import</b></div>
       <div class="lbuilds">${builds.map(b => buildHtml(b, h)).join("")}</div>`;
   }
 
@@ -285,12 +265,15 @@
   }
 
   // Every card is the same four rows in the same order — who made it, what it is, the code, where
-  // it came from — whatever the source happened to carry. The sites publish wildly different
-  // amounts of detail (attachment lists on some, a required weapon level on others, nothing at all
-  // on most), and letting each card show whatever it had turned the grid into a jumble. What one
-  // source has and another does not is left out rather than shown on a third of the cards.
+  // it came from — whatever the source happened to carry. The pages publish wildly different
+  // amounts of detail, and letting each card show whatever it had turned the grid into a jumble.
+  // What one page has and another does not is left out rather than shown on a third of the cards.
+  //
+  // The face beside the name is the creator's own channel picture, stored on this site. It is the
+  // credit doing its job: at a glance you know whose build this is, which is the difference
+  // between a list of codes and a list of people's work.
   function buildHtml(b, h) {
-    const e = h.esc, c = creatorOf(b), s = sourceOf(b);
+    const e = h.esc, c = creatorOf(b), s = sourceOf(b), multimode = modes().length > 1;
     const links = (c.links || []).slice(0, 2);
     const a = age(b.added);
     const note = b.note && b.note.length > 72 ? b.note.slice(0, 69).replace(/\s+\S*$/, "") + "…" : b.note;
@@ -303,14 +286,14 @@
     ].filter(Boolean);
     return `<article class="lbuild">
       <div class="lbh">
-        <div class="lby">${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(c.name)}</a>` : e(c.name)}${
-          own(b) ? `<span class="lkind own" data-tip="Taken from ${e(s.name)} — the page ${e(c.name)} publishes, not a site that collects other people's builds">their own page</span>`
-            : c.kind === "site" ? `<span class="lkind">house build</span>` : ""}</div>
-        <span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>
+        ${c.avatar ? `<img class="lav" src="${e(c.avatar)}" alt="" loading="lazy" width="30" height="30">`
+          : `<span class="lav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
+        <div class="lby">${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(c.name)}</a>` : e(c.name)}</div>
+        ${multimode ? `<span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>` : ""}
       </div>
       <div class="lmeta">${meta.join('<span class="ldot">·</span>')}</div>
       <div class="lcode">
-        <code>${e(b.code)}</code>
+        <code data-tip="${e(b.code)}">${e(b.code)}</code>
         <button type="button" class="lcopy" data-code="${e(b.code)}">Copy</button>
       </div>
       <div class="lfoot">
@@ -411,22 +394,18 @@
   .lbar { display: block; height: 5px; background: var(--hair-2); }
   .lbar u { display: block; height: 100%; background: var(--green); }
 
-  .lpaste { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
-            margin-top: 16px; }
-  .lpaste b { color: var(--text-2); font-weight: 700; }
-
   /* One shape, repeated. Four rows: who, what, the code, where it came from. */
-  .lbuilds { display: grid; grid-template-columns: repeat(auto-fill, minmax(312px, 1fr)); gap: 12px; margin-top: 12px; }
+  .lbuilds { display: grid; grid-template-columns: repeat(auto-fill, minmax(312px, 1fr)); gap: 12px; margin-top: 18px; }
   .lbuild { border: 1px solid var(--hair); border-left: 2px solid var(--tick); padding: 13px 15px; background: var(--panel);
-            min-width: 0; display: grid; align-content: start; }
+            min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; }
   .lbuild:hover { border-left-color: var(--green); }
-  .lbh { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; }
+  .lbh { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 9px; }
+  .lav { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; background: var(--hair-2);
+         border: 1px solid var(--hair); display: block; }
+  .lav.none { display: grid; place-items: center; font: 700 13px var(--hud); color: var(--text-2); }
   .lby { font: 600 14px var(--body); color: var(--text); min-width: 0; overflow-wrap: anywhere; }
   .lby a { color: var(--text); border-bottom: 1px solid var(--tick); }
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
-  .lkind { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-left: 8px;
-           white-space: nowrap; }
-  .lkind.own { color: var(--green); }
   .lmode { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 3px 7px;
            white-space: nowrap; background: rgba(29, 224, 140, .14); color: var(--green); }
   .lmode.warfare { background: rgba(230, 179, 74, .14); color: var(--amber); }
@@ -440,9 +419,13 @@
   .lage { font-style: normal; }
   .lage.old { color: var(--amber); }
   .lage.none { color: var(--tick); }
-  .lcode { display: flex; align-items: stretch; gap: 8px; margin-top: 10px; }
+  .lcode { display: flex; align-items: stretch; gap: 8px; margin-top: 10px; min-width: 0; }
+  /* One line, always. The code is long enough to wrap on any card width, and a code that wraps
+     turns the row of cards into a staircase — so it is clipped here and copied whole by the
+     button beside it. Hovering shows all of it. */
   .lcode code { flex: 1; min-width: 0; background: var(--hair-2); border: 1px solid var(--hair); padding: 8px 10px;
-                font: 600 12px var(--hud); letter-spacing: .4px; line-height: 1.5; color: var(--text); word-break: break-all; }
+                font: 600 12px var(--hud); letter-spacing: .4px; line-height: 20px; color: var(--text);
+                white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: help; }
   .lcopy { border: 0; background: var(--green); color: var(--on-green); cursor: pointer; padding: 0 15px;
            font: 700 11px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap; align-self: stretch; }
   .lcopy:hover { background: #6ff0b8; }
@@ -457,9 +440,6 @@
   .lsrclink { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--text-2);
               white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
   .lsrclink:hover { color: var(--green); }
-
-  .lcredits { margin-top: 22px; border-top: 1px solid var(--hair); padding-top: 14px; }
-  .lsrc { color: var(--muted); font-size: 12px; line-height: 1.6; max-width: 900px; }
 
   @media (max-width: 1100px) {
     .lo { grid-template-columns: 1fr; }

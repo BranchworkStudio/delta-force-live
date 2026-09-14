@@ -4,19 +4,26 @@ What produced `docs/data/loadouts.json`. Run it when the tab's builds need refre
 by hand, not on a schedule.
 
 ```bash
-./fetch.sh      # downloads into ./raw (rate-limited, ~10 minutes)
+./fetch.sh        # downloads into ./raw and ../../docs/img/creators (rate-limited, under a minute)
 python3 build.py  # writes ../../docs/data/loadouts.json
 ```
 
-`fetch.sh` also writes `guns.json` (the weapon names from the official manifest) and
-`lists.json` (one row per build as the listing shows it); `build.py` reads both plus the
-saved build and profile pages, and applies the three rules in the root README under
-**Loadouts**: a build needs a creator and a link back, codes are copied as published and
-never verified here, and a weapon the manifest does not have is dropped — which is also
-what keeps mobile and CN builds out, since their codes do not import into the global PC game.
+Everything fetched is a page a creator publishes themselves — one entry per page in
+`creators.json`, read by `own.py`. The aggregators that used to be read as well (rnkd.gg,
+deltaforcetools.gg) were dropped: see the root README under **Loadouts** for why.
 
-`raw/` (the saved pages, including `raw/own/`) is not committed. It is a few hundred saved pages and regenerating it is the point
-of `fetch.sh`.
+`fetch.sh` also writes `guns.json` (the weapon names from the official manifest) and downloads
+each creator's avatar into `docs/img/creators/<id>.png` — from the build page's own payload
+where it has one, otherwise the `og:image` of the first channel they list, asked for at 150px.
+An avatar already on disk is never re-fetched; delete the file to refresh it.
+
+`build.py` applies the three rules in the root README under **Loadouts**: a build needs a
+creator and a link back, codes are copied as published and never verified here, and a weapon
+the manifest does not have is dropped — which is also what keeps mobile and CN builds out,
+since their codes do not import into the global PC game.
+
+`raw/` (the saved pages) is not committed; regenerating it is the point of `fetch.sh`. The
+avatars are committed, because they are part of what the page shows.
 
 ## The creators' own pages
 
@@ -26,7 +33,7 @@ One entry per page:
 | Field | What |
 |---|---|
 | `id` | the creator slug, used for the source and creator ids in the built file |
-| `name` / `source` | the person, and the name of the page they publish |
+| `name` / `source` | the person, and the name of the page they publish — `source` is the card's link text, so keep it in the creator's own terms ("Leissik's build doc") |
 | `parser` | `lines` for a text dump (a Google Doc exported as text), `dfbuild` for a `deltaforce.build/<name>` page |
 | `fetch` / `page` | what `fetch.sh` downloads, and the human URL every card links to |
 | `ext` | the extension the download is saved with, under `raw/own/` |

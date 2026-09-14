@@ -1,13 +1,14 @@
 #!/bin/zsh
 # Download the pages docs/data/loadouts.json is built from, into ./raw.
 #
-# Polite by construction and meant to stay that way: one request at a time, 0.7 s apart, a user
-# agent that says who is asking, and only the listing and build pages each site's robots.txt
-# allows. Nothing here is scheduled — it is run by hand when the file is refreshed.
+# Polite by construction and meant to stay that way: one request at a time, 0.7 s apart, and a user
+# agent that says who is asking. Nothing here is scheduled — it is run by hand when the file is
+# refreshed. Everything fetched here is a page a creator publishes themselves; the aggregators that
+# used to be read as well are gone, see build.py.
 set -e
 cd "$(dirname "$0")"
 UA="DeltaForceLive/1.0 (personal dashboard; +https://github.com/BranchworkStudio/delta-force-live)"
-mkdir -p raw/detail raw/prof raw/own
+mkdir -p raw/own ../../docs/img/creators
 get () { [ -s "$2" ] || curl -sS -m 25 -A "$UA" "$1" -o "$2"; python3 -c 'import time;time.sleep(.7)'; }
 
 # The weapon spine, so build.py can drop a build whose weapon the game does not have.
@@ -25,31 +26,49 @@ print('guns', len(names))
 PY
 
 # The creators' own pages, one per entry in creators.json. A Google Doc needs the redirect
-# followed to its export host, which is the only reason this is not the same get() as below.
+# followed to its export host, which is the only reason this is not the same get() as above.
 python3 -c 'import json;print("\n".join(c["id"]+" "+c["ext"]+" "+c["fetch"] for c in json.load(open("creators.json"))))' | while read id ext url; do [ -s "raw/own/$id.$ext" ] || curl -sSL -m 40 -A "$UA" "$url" -o "raw/own/$id.$ext"; python3 -c 'import time;time.sleep(.7)'; done
 
-# Listings. Both sites paginate; stop when a page stops adding builds.
-for i in $(seq 1 16); do get "https://deltaforcetools.gg/weapon-builds?page=$i" raw/dft_$i.html; done
-for i in $(seq 1 24); do get "https://rnkd.gg/deltaforce/builds?page=$i"          raw/rnkd_$i.html; done
-
-python3 lists.py
-
-# The import code only exists on the build page, and the creator's own channels only on their
-# profile, so both are a second pass over what the listings found.
+# Their faces. The build page itself carries one when the creator signed in with Twitch; otherwise
+# it is the og:image of the first channel they list, which is the same picture. Stored on our own
+# site rather than hotlinked: a CDN URL rotates, and a visitor should not have to call Twitch to
+# see who wrote a build.
 python3 - <<'PY'
-import json, os
-rows = json.load(open('lists.json'))
-open('ids.txt', 'w').write('\n'.join(r['id'] for r in rows if r['src'] == 'rnkd'))
-PY
-while read id; do get "https://rnkd.gg/deltaforce/builds/$id" raw/detail/$id.html; done < ids.txt
-python3 - <<'PY'
-import glob, re, json
-slugs = set()
-for f in glob.glob('raw/detail/*.html'):
-    m = re.search(r'<a href="/profile/([^"]+)"', open(f, encoding='utf8', errors='replace').read())
-    if m: slugs.add(m.group(1))
-open('profiles.txt', 'w').write('\n'.join(sorted(slugs)))
-PY
-while read p; do get "https://rnkd.gg/profile/$p" raw/prof/$p.html; done < profiles.txt
+import json, os, re, time, urllib.request
+import own
+UA = 'DeltaForceLive/1.0 (personal dashboard; +https://github.com/BranchworkStudio/delta-force-live)'
+BROWSER = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
+OUT = os.path.join('..', '..', 'docs', 'img', 'creators')
 
-echo "fetched: $(ls raw/detail | wc -l) builds, $(ls raw/prof | wc -l) profiles, $(ls raw/own | wc -l) creator pages — now run: python3 build.py"
+def read(url, ua):
+    r = urllib.request.Request(url, headers={'User-Agent': ua})
+    with urllib.request.urlopen(r, timeout=25) as f: return f.read()
+
+for cfg in json.load(open('creators.json')):
+    if any(os.path.exists(os.path.join(OUT, cfg['id'] + '.' + e)) for e in ('png', 'jpg', 'webp')): continue
+    f = os.path.join('raw', 'own', cfg['id'] + '.' + cfg['ext'])
+    url = own.avatar_url(open(f, encoding='utf8', errors='replace').read()) if os.path.exists(f) else None
+    for link in (cfg.get('links') or []):                      # a channel page, for the rest
+        if url: break
+        if not re.search(r'twitch\.tv|youtube\.com', link): continue
+        try: html = read(link, BROWSER).decode('utf8', 'replace')
+        except Exception as e: print('  ', cfg['id'], link, e); continue
+        m = re.search(r'<meta property="og:image" content="([^"]+)"', html)
+        if m: url = m.group(1)
+        time.sleep(.7)
+    if not url: print('  no avatar for', cfg['id']); continue
+    # Both CDNs size on request, and the card shows the face at 30px: ask for 150, not 600.
+    url = re.sub(r'-profile_image-\d+x\d+', '-profile_image-150x150', url)
+    url = re.sub(r'=s\d+-', '=s150-', url)
+    ext = 'jpg' if re.search(r'\.jpe?g(\?|$)', url) else 'webp' if '.webp' in url else 'png'
+    try: data = read(url, UA)
+    except Exception as e: print('  ', cfg['id'], 'avatar', e); continue
+    if data[:4] == b'\xff\xd8\xff\xe0' or data[:3] == b'\xff\xd8\xff': ext = 'jpg'
+    elif data[:8] == b'\x89PNG\r\n\x1a\n': ext = 'png'
+    elif data[8:12] == b'WEBP': ext = 'webp'
+    open(os.path.join(OUT, cfg['id'] + '.' + ext), 'wb').write(data)
+    print('  avatar', cfg['id'], len(data), 'bytes', ext)
+    time.sleep(.7)
+PY
+
+echo "fetched: $(ls raw/own | wc -l) creator pages, $(ls ../../docs/img/creators | wc -l) avatars — now run: python3 build.py"

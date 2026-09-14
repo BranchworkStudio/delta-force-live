@@ -135,6 +135,14 @@ def parse_dfbuild(txt, guns, cfg):
     return out
 
 
+def avatar_url(txt):
+    """The creator's own profile picture, if the page carries one. deltaforce.build stores the
+    Twitch avatar in its payload; everything else is looked up from the creator's channel by
+    fetch.sh, which is the half of this that needs the network."""
+    m = re.search(r'"avatar":"(https?://[^"]+)"', txt.replace('\\"', '"'))
+    return m.group(1) if m else None
+
+
 PARSER = {'lines': parse_lines, 'dfbuild': parse_dfbuild}
 SOCIAL = ('twitch', 'youtube', 'twitter', 'tiktok', 'kick', 'discord')
 
