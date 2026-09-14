@@ -131,6 +131,11 @@
   .pl { display: flex; gap: 14px; padding: 16px 24px; border-right: 1px solid var(--hair); position: relative; min-width: 0; }
   .pl .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; }
   .pl .ava { width: 52px; height: 52px; flex: none; border: 1px solid var(--div); background: repeating-linear-gradient(135deg, #1a2a30 0 5px, #15232a 5px 10px); object-fit: cover; }
+  /* The operator sits on the corner of the face, held off it by a ring of whatever the card is
+     standing on, so the two pictures never read as one. */
+  .pl .pic { position: relative; flex: none; width: 52px; height: 52px; }
+  .pl .pic .op { position: absolute; right: -5px; bottom: -5px; width: 24px; height: 24px; object-fit: cover; background: var(--panel); border: 2px solid var(--ground); }
+  .pl.on .pic .op, .pl[data-focus]:not(.on):hover .pic .op { border-color: var(--hair-2); }
   .pl .body { flex: 1; min-width: 0; }
   .pl .nm { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
   .pl .nm span:first-child { font: 600 16px var(--body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -370,10 +375,11 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=20"></script>
+<script src="config.js?v=21"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
+<script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=20"></script>
+<script src="app.js?v=21"></script>
 </body>
 </html>
