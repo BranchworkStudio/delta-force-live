@@ -2,9 +2,10 @@
  *
  * Nothing here comes from HQ. HQ knows what you own and what you did with it; it does not know
  * what the people who play this game for a living put on their rifles. That lives on their own
- * pages — build sites, creator profiles, videos — so this tab is a curated file (data/loadouts.json)
- * rather than an API call, and every build in it carries the name of the person who made it and a
- * link back to where it was published.
+ * pages — a Google Doc, a build site of their own — and, second-hand, on the aggregators that
+ * collect them. So this tab is a curated file (data/loadouts.json) rather than an API call, every
+ * build in it carries the name of the person who made it and a link back to where it was
+ * published, and a build read off its maker's own page says so and sorts first.
  *
  * The one thing a build is really for is its import code: in game, Gun Customization > Preset >
  * Import > paste. So the code is the object here — big, monospaced, one click to copy — and
@@ -18,7 +19,7 @@
   const DATA_URL = "data/loadouts.json?v=1";
   const KEY = "df-loadouts";          // the rail's own state, per browser
 
-  let DB = null, state = { sel: null, mode: "all", cls: "all", creator: "all", sort: "pop", q: "" }, phase = "idle";
+  let DB = null, state = { sel: null, mode: "all", cls: "all", creator: "all", src: "all", sort: "pop", q: "" }, phase = "idle";
 
   try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* private window */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
@@ -75,6 +76,9 @@
   const creatorOf = (b) => (DB.creators && DB.creators[b.creator]) || { name: b.creator || "Unknown" };
   const sourceOf = (b) => (DB.sources && DB.sources[b.source]) || { name: b.source || "" };
   const MODES = { operations: "Operations", warfare: "Warfare", both: "Both modes" };
+  // Where a build was found matters as much as who made it. A build sitting on the page its maker
+  // runs is a build they still stand behind; a build on an aggregator is a copy someone took.
+  const own = (b) => sourceOf(b).kind === "creator";
 
   // Everything the rail and the pane read goes through one filter, so the counts on the weapon
   // list are the counts of what clicking it would actually show.
@@ -83,6 +87,7 @@
     return DB.builds.filter(b =>
       (state.mode === "all" || b.mode === state.mode || b.mode === "both") &&
       (state.creator === "all" || b.creator === state.creator) &&
+      (state.src === "all" || (state.src === "own") === own(b)) &&
       (!q || norm(b.weapon).includes(q) || norm(creatorOf(b).name).includes(q) || norm((b.tags || []).join(" ")).includes(q)));
   }
   function weapons(list) {
@@ -125,6 +130,8 @@
           ["Weapons covered", `${cover.size}<span style="color:var(--muted)">/${GUNS.length || "?"}</span>`,
             GUNS.length ? "of every gun in the game" : null],
           ["Creators", String(creators.size), "credited on every build"],
+          ["From own pages", String(all.filter(own).length), "the rest are from aggregators",
+            "A build taken from the page its maker publishes — their doc, their site — rather than from a site that collects other people's builds. Both are credited, but the creator's own page is the one they keep up to date."],
           ["Operations", String(ops), null],
           ["Warfare", String(war), null],
           ["Under 9 months old", String(all.filter(b => { const a = age(b.added); return a && !a.stale; }).length),
@@ -165,6 +172,11 @@
             ${pill(state.mode === "warfare", "warfare", "Warfare", "mode")}
           </div>
           <div class="lfilters">
+            ${pill(state.src === "all", "all", "Everywhere", "src")}
+            ${pill(state.src === "own", "own", "Own pages", "src")}
+            ${pill(state.src === "agg", "agg", "Aggregators", "src")}
+          </div>
+          <div class="lfilters">
             ${pill(state.cls === "all", "all", "All", "cls")}
             ${classes.map(c => pill(state.cls === c, c, e(c), "cls")).join("")}
           </div>
@@ -186,10 +198,13 @@
             <div class="lcrow">${creators.map(x => `<button type="button" class="lcc ${state.creator === x.k ? "on" : ""}" data-f="creator" data-v="${e(x.k)}">
                 <span class="cn">${e(x.c.name)}</span><span class="cb">${x.n}</span></button>`).join("")}
               ${state.creator !== "all" ? `<button type="button" class="lcc clear" data-f="creator" data-v="all">Show everyone</button>` : ""}</div>
-            <div class="lsrc">Gathered from ${Object.keys(DB.sources || {}).map(k => {
-              const s = DB.sources[k];
-              return `<a href="${e(s.url)}" target="_blank" rel="noopener noreferrer">${e(s.name)}</a>`;
-            }).join(" · ")}${DB.updated ? " · " + e(DB.updated) : ""}. Codes are copied as published and are not verified here — open the source if a build looks wrong, and credit the maker if it wins you a raid.</div>
+            <div class="lsrc">${(() => {
+              const link = (k) => `<a href="${e(DB.sources[k].url)}" target="_blank" rel="noopener noreferrer">${e(DB.sources[k].name)}</a>`;
+              const keys = Object.keys(DB.sources || {});
+              const mine = keys.filter(k => DB.sources[k].kind === "creator"), rest = keys.filter(k => DB.sources[k].kind !== "creator");
+              return (mine.length ? `Gathered from the pages the creators run themselves — ${mine.map(link).join(" · ")}${rest.length ? ` — and from ${rest.map(link).join(" · ")}` : ""}`
+                : `Gathered from ${rest.map(link).join(" · ")}`) + (DB.updated ? " · " + e(DB.updated) : "");
+            })()}. Codes are copied as published and are not verified here — open the source if a build looks wrong, and credit the maker if it wins you a raid.</div>
           </div>
         </div>
       </div>`;
@@ -202,7 +217,7 @@
       el.querySelectorAll("[data-w]").forEach(n => n.onclick = () => { state.sel = n.dataset.w; save(); h.repaint(); });
       el.querySelectorAll("[data-f]").forEach(n => n.onclick = () => {
         const f = n.dataset.f;
-        if (f === "reset") { state = { sel: null, mode: "all", cls: "all", creator: "all", sort: "pop", q: "" }; }
+        if (f === "reset") { state = { sel: null, mode: "all", cls: "all", creator: "all", src: "all", sort: "pop", q: "" }; }
         else if (f === "creator") { state.creator = state.creator === n.dataset.v ? "all" : n.dataset.v; }
         else { state[f] = n.dataset.v; }
         save(); h.repaint();
@@ -215,9 +230,10 @@
   // ---------- the weapon panel ----------
   function weaponHtml(w, h) {
     const e = h.esc, g = w.gun;
-    // A person's build outranks a site's, then the one most people have actually imported, then
-    // the newest — a code that is a year old is not wrong, but it was tuned for a different game.
-    const mine = (b) => (DB.creators[b.creator] || {}).kind === "site" ? 1 : 0;
+    // A build from the maker's own page first, then a person's build on an aggregator, then the
+    // aggregator's own; inside each, the one most people have actually imported, then the newest —
+    // a code that is a year old is not wrong, but it was tuned for a different game.
+    const mine = (b) => own(b) ? 0 : (DB.creators[b.creator] || {}).kind === "site" ? 2 : 1;
     const date = (a, b) => String(b.added || "").localeCompare(String(a.added || ""));
     const pop = (a, b) => (b.popularity || 0) - (a.popularity || 0);
     const builds = w.builds.slice().sort((a, b) => state.sort === "new"
@@ -267,7 +283,8 @@
     return `<article class="lbuild">
       <div class="lbh">
         <div class="lby">${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(c.name)}</a>` : e(c.name)}
-          ${c.kind === "site" ? `<span class="lkind">house build</span>` : ""}
+          ${own(b) ? `<span class="lkind own" data-tip="Taken from ${e(s.name)} — the page ${e(c.name)} publishes, not a site that collects other people's builds">their own page</span>`
+            : c.kind === "site" ? `<span class="lkind">house build</span>` : ""}
           ${links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}</div>
         <div class="ltags"><span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>
           ${(b.tags || []).map(t => `<span class="ltag">${e(t)}</span>`).join("")}</div>
@@ -360,6 +377,7 @@
   .lby a { color: var(--text); border-bottom: 1px solid var(--tick); }
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
   .lkind { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-left: 8px; }
+  .lkind.own { color: var(--green); }
   .ltags { display: flex; gap: 5px; flex-wrap: wrap; }
   .lmode, .ltag { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 3px 7px; }
   .lmode { background: rgba(29, 224, 140, .14); color: var(--green); }

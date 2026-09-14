@@ -7,7 +7,7 @@
 set -e
 cd "$(dirname "$0")"
 UA="DeltaForceLive/1.0 (personal dashboard; +https://github.com/BranchworkStudio/delta-force-live)"
-mkdir -p raw/detail raw/prof
+mkdir -p raw/detail raw/prof raw/own
 get () { [ -s "$2" ] || curl -sS -m 25 -A "$UA" "$1" -o "$2"; python3 -c 'import time;time.sleep(.7)'; }
 
 # The weapon spine, so build.py can drop a build whose weapon the game does not have.
@@ -23,6 +23,10 @@ names = sorted({tail.sub('', g['language']['en']).strip() for g in d['guns']})
 json.dump(names, open('guns.json', 'w'), indent=1)
 print('guns', len(names))
 PY
+
+# The creators' own pages, one per entry in creators.json. A Google Doc needs the redirect
+# followed to its export host, which is the only reason this is not the same get() as below.
+python3 -c 'import json;print("\n".join(c["id"]+" "+c["ext"]+" "+c["fetch"] for c in json.load(open("creators.json"))))' | while read id ext url; do [ -s "raw/own/$id.$ext" ] || curl -sSL -m 40 -A "$UA" "$url" -o "raw/own/$id.$ext"; python3 -c 'import time;time.sleep(.7)'; done
 
 # Listings. Both sites paginate; stop when a page stops adding builds.
 for i in $(seq 1 16); do get "https://deltaforcetools.gg/weapon-builds?page=$i" raw/dft_$i.html; done
@@ -48,4 +52,4 @@ open('profiles.txt', 'w').write('\n'.join(sorted(slugs)))
 PY
 while read p; do get "https://rnkd.gg/profile/$p" raw/prof/$p.html; done < profiles.txt
 
-echo "fetched: $(ls raw/detail | wc -l) builds, $(ls raw/prof | wc -l) profiles — now run: python3 build.py"
+echo "fetched: $(ls raw/detail | wc -l) builds, $(ls raw/prof | wc -l) profiles, $(ls raw/own | wc -l) creator pages — now run: python3 build.py"

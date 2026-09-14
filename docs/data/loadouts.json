@@ -3,11 +3,28 @@
  "sources": {
   "rnkd": {
    "name": "rnkd.gg",
-   "url": "https://rnkd.gg/deltaforce/builds/"
+   "url": "https://rnkd.gg/deltaforce/builds/",
+   "kind": "aggregator"
   },
   "dft": {
    "name": "deltaforcetools.gg",
-   "url": "https://deltaforcetools.gg/weapon-builds"
+   "url": "https://deltaforcetools.gg/weapon-builds",
+   "kind": "aggregator"
+  },
+  "leissik": {
+   "name": "Leissik's build doc",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "kind": "creator"
+  },
+  "poach": {
+   "name": "deltaforce.build/poach",
+   "url": "https://www.deltaforce.build/poach",
+   "kind": "creator"
+  },
+  "deathlapse": {
+   "name": "deltaforce.build/deathlapse",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "kind": "creator"
   }
  },
  "creators": {
@@ -306,9 +323,70 @@
    "url": "https://deltaforcetools.gg/weapon-builds",
    "links": [],
    "kind": "community"
+  },
+  "leissik": {
+   "name": "Leissik",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "links": [
+    "https://www.twitch.tv/leissik"
+   ],
+   "kind": "creator"
+  },
+  "poach": {
+   "name": "POACH",
+   "url": "https://www.deltaforce.build/poach",
+   "links": [
+    "https://www.twitch.tv/poach",
+    "http://youtube.com/c/poaches",
+    "http://twitter.com/poach",
+    "https://discord.gg/2bU4Pxb"
+   ],
+   "kind": "creator"
+  },
+  "deathlapse": {
+   "name": "Deathlapse",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "links": [
+    "https://www.twitch.tv/deathlapse",
+    "https://www.youtube.com/@DeathLapseOG",
+    "https://discord.gg/Y6Qrv6SSvR"
+   ],
+   "kind": "creator"
   }
  },
  "builds": [
+  {
+   "weapon": ".357",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6FPCKGO06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2025-03-27",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Extra Storage",
+   "tags": [
+    "20K"
+   ]
+  },
+  {
+   "weapon": "93R",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOU7C06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Bot blaster",
+   "tags": [
+    "54K"
+   ]
+  },
   {
    "weapon": "AK-12",
    "mode": "warfare",
@@ -487,6 +565,52 @@
     ]
    ],
    "note": "AK-12 excels at medium to long-range combat, offering low recoil, high accuracy, and excellent modularity. With the right attachments, it transforms into a precise…",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AK-12 Assault Rifle-Operations-6IK0QLK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOTPC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "550K"
+   ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "AK-12 Assault Rifle-Operations-6F6V7M8098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High End",
    "tags": []
   },
   {
@@ -674,6 +798,144 @@
    "tags": []
   },
   {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AKM Assault Rifle-Operations-6KGABNK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AKM Assault Rifle-Operations-6KF82OG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "SUPPRESSED",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AKM Assault Rifle-Operations-6KF82R80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "LOUD BIPOD",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KI4U3S06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "455K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JLL6L806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-08",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "320K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOTC006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "CS/hipfire",
+   "tags": [
+    "230K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "AKM Assault Rifle-Operations-6H6PC84098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "AKM Assault Rifle-Operations-6H6PC74098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Mid Tier",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "AKM Assault Rifle-Operations-6H6P7S4098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
+   "tags": []
+  },
+  {
    "weapon": "AKS-74",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -792,6 +1054,86 @@
    ]
   },
   {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AR-57 Assault Rifle-Operations-6JPRNG40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AR-57 Assault Rifle-Operations-6JQ5FFS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "AR-56 SCOPED",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JV1VD006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-05-07",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red-dot",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JPVAM406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-21",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "99 ACC",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JTIG7006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-05-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Scoped",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
    "weapon": "AS Val",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -894,6 +1236,100 @@
    "level": 38,
    "att": [],
    "note": "1 Burst Kill at 30m. Great for close/mid range fights and does great head damage.",
+   "tags": []
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AS Val Assault Rifle-Operations-6JVP9BK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AS Val Assault Rifle-Operations-6J7CQQC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BEAM",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KT7CL406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-06",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "750K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L35FUO06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Burst",
+   "tags": [
+    "650K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOVO406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Burst Budget",
+   "tags": [
+    "320K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "AS Val Assault Rifle-Operations-6FMO7LO098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget/Mid",
    "tags": []
   },
   {
@@ -1028,6 +1464,68 @@
     ]
    ],
    "note": "This weapon has increased damage when equipped with the Tomahawk Barrel. It can now 2-shot @ 40m when hit on upper torso. This build heavily improves firing stability…",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "ASh-12 Battle Rifle-Operations-6KGT4HG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "SEASONAL BARREL",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "ASh-12 Battle Rifle-Operations-6IOV5GC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "TOMAHAWK",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KPT0NC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-27",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "ASh-12 Battle Rifle-Operations-6GBQG4O098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
    "tags": []
   },
   {
@@ -1375,6 +1873,100 @@
    "tags": []
   },
   {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AUG Assault Rifle-Operations-6K61U7G0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AUG Assault Rifle-Operations-6KKHA080FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AUG Assault Rifle-Operations-6J4GTLS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "FULL BUILD 60MAG",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6GTC61G06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2025-08-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6J95GHC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2025-06-09",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "160K"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "AUG Assault Rifle-Operations-6H7PV88098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
    "weapon": "AWM",
    "mode": "warfare",
    "creator": "thecadwoman",
@@ -1414,6 +2006,52 @@
    "level": 31,
    "att": [],
    "note": "Starter build for the AWM Sniper Rifle",
+   "tags": []
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AWM Sniper Rifle-Operations-6IBPQC40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOTL406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "AWM Sniper Rifle-Operations-6H4JIL4098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -1827,6 +2465,22 @@
    "tags": []
   },
   {
+   "weapon": "CAR-15",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQ9DTC02N2NQGF6IHVGC",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-22",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "PhD's",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
    "weapon": "CI-19",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -2121,6 +2775,130 @@
    "tags": []
   },
   {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "CI-19 Assault Rifle-Operations-6KU2PUC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "CI-19 Assault Rifle-Operations-6KGRCVG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "CI-19 Assault Rifle-Operations-6JT78Q40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "red dot",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KIBSS806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-04",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "600K"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KP7SH806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-25",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "290K"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "CI-19 Assault Rifle-Operations-6H63RQC098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High End - SHORT RANGE",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "CI-19 Assault Rifle-Operations-6H44J6C098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High End - LONG RANGE",
+   "tags": []
+  },
+  {
+   "weapon": "Compound Bow",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KMK3T006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-23",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "GAMING",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
    "weapon": "Desert Eagle",
    "mode": "operations",
    "creator": "deltaforcetools",
@@ -2185,6 +2963,22 @@
    "tags": []
   },
   {
+   "weapon": "FS-12",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "FS-12 Shotgun-Operations-6J3DMFG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Full",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
    "weapon": "G18",
    "mode": "operations",
    "creator": "deltaforcetools",
@@ -2215,6 +3009,22 @@
    "tags": [
     "Close-Range",
     "High Burst"
+   ]
+  },
+  {
+   "weapon": "G18",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQ9NHK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-22",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "100K"
    ]
   },
   {
@@ -2271,6 +3081,52 @@
    "level": null,
    "att": [],
    "note": "- 2-3 tap full auto - low recoil",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQ985C06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-22",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "304K"
+   ]
+  },
+  {
+   "weapon": "G3",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOVIK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "270K"
+   ]
+  },
+  {
+   "weapon": "G3",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "G3 Battle Rifle-Operations-6F8SQMK098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Mid Tier Build",
    "tags": []
   },
   {
@@ -2546,6 +3402,114 @@
    "level": null,
    "att": [],
    "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K416 Assault Rifle-Operations-6L31U7G0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "350K",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K416 Assault Rifle-Operations-6K8M8BS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K416 Assault Rifle-Operations-6JT5C600FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KA8B7406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-06-10",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "650K"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KQI3D806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-28",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "320K"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "K416 Assault Rifle-Operations-6G3GT7S098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "K416 Assault Rifle-Operations-6FNG77O04M1P14UOT9KEE",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
    "tags": []
   },
   {
@@ -2839,6 +3803,100 @@
    "tags": []
   },
   {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K437 Assault Rifle-Operations-6L2CNV80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K437 Assault Rifle-Operations-6KDK3V80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "SCOPED NEW",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K437 Assault Rifle-Operations-6JGL52G0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L83DNK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-09-08",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "900K"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQP10C06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2025-11-23",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "250K"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "K437 Assault Rifle-Operations-6G55EMK098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High End",
+   "tags": []
+  },
+  {
    "weapon": "KC-17",
    "mode": "operations",
    "creator": "deltaforcetools",
@@ -2922,6 +3980,102 @@
    "tags": []
   },
   {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "KC-17 Assault Rifle-Operations-6JU3O3K0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "cheater scope",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "KC-17 Assault Rifle-Operations-6JU58KS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red dot suppressor",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "KC-17 Assault Rifle-Operations-6JSPPL40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "300k",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JRJBCK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-23",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L93VMC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-09-11",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Scoped",
+   "tags": [
+    "650K"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JTIDL806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-05-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "350K"
+   ]
+  },
+  {
    "weapon": "Lever-action Rifle",
    "mode": "warfare",
    "creator": "rnkd",
@@ -2977,6 +4131,38 @@
    "tags": []
   },
   {
+   "weapon": "Lever-action Rifle",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "Lever-action Rifle-Operations-6IV5TP00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "HIPFIRE BUDGET",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6K8OPK006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-06-05",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Sniper",
+   "tags": [
+    "185K"
+   ]
+  },
+  {
    "weapon": "M1014",
    "mode": "operations",
    "creator": "rnkd",
@@ -2989,6 +4175,22 @@
    "att": [],
    "note": "M1014 Shotgun Build Guide Overview Considered one of the best guns in the game Main focus: Building for control to enable rapid fire without recoil concerns Total…",
    "tags": []
+  },
+  {
+   "weapon": "M1014",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOUD806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "162K"
+   ]
   },
   {
    "weapon": "M14",
@@ -3023,6 +4225,112 @@
     "High Burst",
     "Sustained Fire"
    ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M14 Marksman Rifle-Operations (Extraction Mode)-6L82MGG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M14 Marksman Rifle-Operations-6JUDL680FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "from Zap",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M14 Marksman Rifle-Operations-6K03CPS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "FAST",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L8PSVC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-09-10",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "800K"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M14 Marksman Rifle-Operations-6GDDJA8098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "LASER, no handling",
+   "tags": []
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M14 Marksman Rifle-Operations-6FD4FJS098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "DeathLapse edition",
+   "tags": []
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M14 Marksman Rifle-Operations-6GEC708098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "China Meta Laser",
+   "tags": []
   },
   {
    "weapon": "M16A4",
@@ -3067,6 +4375,22 @@
    "att": [],
    "note": "range snipping build",
    "tags": []
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M16A4 Assault Rifle-Operations-6I932PC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "M16 hip",
+   "tags": [
+    "Season 8"
+   ]
   },
   {
    "weapon": "M249",
@@ -3124,6 +4448,66 @@
    "level": null,
    "att": [],
    "note": "Budget build greatly improving control and handling. Would be great for those who prefer LMGs but on a budget build.",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KP8DV006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-25",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "426K"
+   ]
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JPUJ3K06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-21",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "NEW SAW",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M249 Light Machine Gun-Operations-6FN2KM0098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M249 Light Machine Gun-Operations-6HD359S098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High End",
    "tags": []
   },
   {
@@ -3229,6 +4613,68 @@
    "level": 71,
    "att": [],
    "note": "BEST M250 BUILD! Delta Force Gameplay Season 4",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M250 General Machine Gun-Operations (Extraction Mode)-6L82MA00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M250 General Machine Gun-Operations-6JLJI1S0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JUSSLC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-05-06",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "700K"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M250 General Machine Gun-Operations-6FJO53G098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High End",
    "tags": []
   },
   {
@@ -3472,6 +4918,86 @@
    ],
    "note": "M4A1 is the assault rifle everyone knows, and this build is tuned for the current meta in the assault class. Effective at any range, it combines versatility,…",
    "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M4A1 Assault Rifle-Operations-6K3E84K0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "budget",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M4A1 Assault Rifle-Operations-6K9BEAG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "budget",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M4A1 Assault Rifle-Operations-6I8O98K0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "M4 HIPFIRE ECO",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOV8K06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "440K"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOUVC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-03-27",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "270K"
+   ]
   },
   {
    "weapon": "M7",
@@ -3744,6 +5270,144 @@
    "tags": []
   },
   {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations (Extraction Mode)-6L82LJ00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6L3E76S0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Most recent",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6KUQA5G0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "40Handling",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KJFM9O06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-08",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L75QRK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-09-05",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Suppressed",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JFOAR006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-03-21",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "China",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M7 Battle Rifle-Operations-6HC4FGK098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Long Range",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M7 Battle Rifle-Operations-6GUITT8098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "red dot/cqc",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M7 Battle Rifle-Operations-6H8G194098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "laser just have faith",
+   "tags": []
+  },
+  {
    "weapon": "M700",
    "mode": "warfare",
    "creator": "thecadwoman",
@@ -3786,6 +5450,84 @@
    "tags": []
   },
   {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M700 Sniper Rifle-Operations (Extraction Mode)-6L82LQ40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M700 Sniper Rifle-Operations-6IP8LHS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "FULL BUILD",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M700 Sniper Rifle-Operations-6JD2RCG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "cheaper",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L3E8VG06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-25",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "M700 Sniper Rifle-Operations-6F4AMT4098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "M82",
    "mode": "operations",
    "creator": "deltaforcetools",
@@ -3817,6 +5559,38 @@
    "tags": [
     "Best Value",
     "Meta Build"
+   ]
+  },
+  {
+   "weapon": "M82",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M82 Sniper Rifle-Operations (Extraction Mode)-6L82LLC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "M82",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQ9ADK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-22",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1M"
    ]
   },
   {
@@ -4106,6 +5880,102 @@
    "tags": []
   },
   {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MCX LT Assault Rifle-Operations-6J0JEUG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Control",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KJFMJS06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-08",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "450K"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JTIH6K06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-05-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "240K"
+   ]
+  },
+  {
+   "weapon": "MDR",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6L7UUKS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "MDR",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6L9AT340FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red dot loud",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "MDR",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L7S1BS06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-09-07",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
    "weapon": "MK4",
    "mode": "warfare",
    "creator": "rvl",
@@ -4173,6 +6043,86 @@
    "att": [],
    "note": "A support only 3-Bullet burst SMG with great damage. Can easily fight close/mid-range for players who prefer burst-fire guns.",
    "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6L80AHG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK4 Submachine Gun-Operations-6L0MSHC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "FULL AUTO",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK4 Submachine Gun-Operations-6KRDQE40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KQTPJ406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-30",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6J9Q2O4073PH40I6AFVCE",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-01-30",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "budget",
+   "tags": [
+    "200K"
+   ]
   },
   {
    "weapon": "MK47",
@@ -4291,6 +6241,86 @@
    "tags": []
   },
   {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6L82M680FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK47 Assault Rifle-Operations-6KA0KAG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK47 Assault Rifle-Operations-6JEKMPO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L45SGK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-27",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Short Barrel",
+   "tags": [
+    "800K"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L3PCCS04R96VUC6OKBOP",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-26",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "800K"
+   ]
+  },
+  {
    "weapon": "MP5",
    "mode": "operations",
    "creator": "deltaforcetools",
@@ -4376,6 +6406,36 @@
    "level": null,
    "att": [],
    "note": "This MP5 build is for fast close range combat: - low recoil and better handling - fast Aim Downsight Speed - great accuracy",
+   "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOUH006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "260K"
+   ]
+  },
+  {
+   "weapon": "MP5",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "MP5 Submachine Gun-Operations-6H4879O098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Speed ( Budget )",
    "tags": []
   },
   {
@@ -4523,6 +6583,86 @@
    ],
    "note": "MP7 can easily dominate up close, and this build further enhances that capability. This gun has insane mobility while ADS while not taking too much of recoil control.",
    "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MP7 Submachine Gun-Operations (Extraction Mode)-6L80AKC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MP7 Submachine Gun-Operations-6JUS9E80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "cheap - new barrel kit",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MP7 Submachine Gun-Operations-6K1DNJS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Cheap hipfire",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JVSGH806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-02-07",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "350K"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6K4FO2G06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-02-07",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "120K"
+   ]
   },
   {
    "weapon": "Mini-14",
@@ -4682,6 +6822,100 @@
    "tags": []
   },
   {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "P90 Submachine Gun-Operations (Extraction Mode)-6L80AP00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "P90 Submachine Gun-Operations-6KLSJ440FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "P90 Submachine Gun-Operations-6KGTDJS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOUK406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "344K"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JGP0MC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-03-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "120K"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "P90 Submachine Gun-Operations-6F37H2S098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
+   "tags": []
+  },
+  {
    "weapon": "PKM",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -4741,6 +6975,100 @@
    "tags": []
   },
   {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "PKM General Machine Gun-Operations-6KV2LG00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "PKM General Machine Gun-Operations-6ILJ5QK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "260k",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "PKM General Machine Gun-Operations-6IPI5940FG9KB30JM1C45",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "300k beam",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KM9K6006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-16",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Reflex",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JTIBF806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-05-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "longbarrel",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "PKM General Machine Gun-Operations-6FH4F88098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
+   "tags": []
+  },
+  {
    "weapon": "PSG-1",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -4754,6 +7082,22 @@
    "note": "",
    "tags": [
     "High Stability"
+   ]
+  },
+  {
+   "weapon": "PSG-1",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOURO06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "411K"
    ]
   },
   {
@@ -4915,6 +7259,36 @@
    "tags": []
   },
   {
+   "weapon": "QBZ95-1",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "QBZ95-1 Assault Rifle-Operations-6IP78K40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "eco",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "QBZ95-1 Assault Rifle-Operations-6FMNQ6S098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
    "weapon": "QCQ171",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -4970,6 +7344,36 @@
    "level": 60,
    "att": [],
    "note": "This build is for semi-aggressive playstyle. This weapon already has insane TTK with its high damage and RPM, therefore, this build greatly improves recoil control…",
+   "tags": []
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "QCQ171 Submachine Gun-Operations-6JFV01K0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "QCQ171 Submachine Gun-Operations-6F2V4HK098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High End",
    "tags": []
   },
   {
@@ -5136,6 +7540,102 @@
    "tags": []
   },
   {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "QJB201 Light Machine Gun-Operations (Extraction Mode)-6L82MCC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "QJB201 Light Machine Gun-Operations-6KQR4TS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "QJB201 Light Machine Gun-Operations-6KCJM100FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "250k",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KRT7S806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Accuracy",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6K4SVT406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-05-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Basic's",
+   "tags": [
+    "450K"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KQ78R406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-28",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "280K"
+   ]
+  },
+  {
    "weapon": "R93",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -5242,6 +7742,54 @@
    "tags": []
   },
   {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "R93 Sniper Rifle-Operations (Extraction Mode)-6L82LNC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "R93 Sniper Rifle-Operations-6K1D7FO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6FDPM8807EP326IQSRQ4N",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2025-03-27",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "88K"
+   ]
+  },
+  {
    "weapon": "RM277",
    "mode": "operations",
    "creator": "dft:labi",
@@ -5334,6 +7882,68 @@
    "tags": []
   },
   {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "RM277-Operations-6KJ5J880FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "3/7 scope",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "RM277-Operations-6KL8FC00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "2/4 scope",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KLVH1806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-15",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KIB39K06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-04",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "300K"
+   ]
+  },
+  {
    "weapon": "S12K",
    "mode": "operations",
    "creator": "deltaforcetools",
@@ -5348,6 +7958,20 @@
    "tags": [
     "Long-Range"
    ]
+  },
+  {
+   "weapon": "S12K",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "S12K Shotgun-Operations-6FN2INO098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "SCAR-H",
@@ -5657,6 +8281,68 @@
    "tags": []
   },
   {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SCAR-H Battle Rifle-Operations-6IUIMUK0FG9KB30JM1C45",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SCAR-H Battle Rifle-Operations-6J8MMEO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "ELITE TICKET",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KRU96K06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "530K"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "SCAR-H Battle Rifle-Operations-6GV8KN4098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier Build",
+   "tags": []
+  },
+  {
    "weapon": "SG552",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -5812,6 +8498,22 @@
    "att": [],
    "note": "AKM 425K",
    "tags": []
+  },
+  {
+   "weapon": "SKS",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KHLOVO06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-02",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "450K"
+   ]
   },
   {
    "weapon": "SMG-45",
@@ -6032,6 +8734,52 @@
    "tags": []
   },
   {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SMG-45 Submachine Gun-Operations-6ICD3840FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOUMK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "250K"
+   ]
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "SMG-45 Submachine Gun-Operations-6FMNS90098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
    "weapon": "SR-25",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -6047,6 +8795,52 @@
     "Long-Range",
     "Recommended Build"
    ]
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SR-25 Marksman Rifle-Operations-6JAANR00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "SHORT BARREL SCOPED",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQBGS806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-22",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "700K"
+   ]
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "SR-25 Marksman Rifle-Operations-6F3SCMO098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "SR-3M",
@@ -6320,6 +9114,132 @@
    "tags": []
   },
   {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SR-3M Compact Assault Rifle-Operations (Extraction Mode)-6L80AMC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SR-3M Compact Assault Rifle-Operations-6JURBF80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SR-3M Compact Assault Rifle-Operations-6JDKMMG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "full",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KHDEL806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-01",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "220K"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQ98BO06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-22",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "520K"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "SR-3M Compact Assault Rifle-Operations-6FLM3MK098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
+   "tags": []
+  },
+  {
+   "weapon": "SR9",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SR9 Marksman Rifle-Operations-6KOGLU40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "The g18 only has 33 mag in it",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "SR9",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SR9 Marksman Rifle-Operations-6K7ASEG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "120k",
+   "tags": [
+    "Season 9"
+   ]
+  },
+  {
    "weapon": "SV-98",
    "mode": "warfare",
    "creator": "thecadwoman",
@@ -6459,6 +9379,68 @@
    "tags": []
   },
   {
+   "weapon": "SVCH",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SVCH Marksman Rifle-Operations (Extraction Mode)-6L82LTC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SVCH Marksman Rifle-Operations-6KJTSLK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "NEW Raspy",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SVCH Marksman Rifle-Operations-6KGRBOO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KI3TL006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-04",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "SVD",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -6501,6 +9483,130 @@
    "att": [],
    "note": "long range",
    "tags": []
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SVD Sniper Rifle-Operations (Extraction Mode)-6L82LVS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SVD Sniper Rifle-Operations-6KQR4QO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "BUDGET",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SVD Sniper Rifle-Operations-6KNSRGK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 10"
+   ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KRK3SC06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-08-01",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "300K"
+   ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "SVD Sniper Rifle-Operations-6GPCRJ4098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Mid Tier",
+   "tags": []
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "SVD Sniper Rifle-Operations-6GPCRQO098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
+   "tags": []
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6L7U9J40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6L7ROF406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-09-07",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1M"
+   ]
   },
   {
    "weapon": "UZI",
@@ -6589,6 +9695,36 @@
    "tags": []
   },
   {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOU0G06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Fun Thermal",
+   "tags": [
+    "229K"
+   ]
+  },
+  {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "UZI Submachine Gun-Operations-6FNN7KG0170JICI0JT98R",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Sniper ( Budget )",
+   "tags": []
+  },
+  {
    "weapon": "VSS",
    "mode": "operations",
    "creator": "deltaforcetools",
@@ -6602,6 +9738,38 @@
    "note": "",
    "tags": [
     "Long-Range"
+   ]
+  },
+  {
+   "weapon": "VSS",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "VSS Marksman Rifle-Operations (Extraction Mode)-6L82LRK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 11"
+   ]
+  },
+  {
+   "weapon": "VSS",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "VSSMarksmanRifle-Operations-6L6BNF80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "LARP",
+   "tags": [
+    "Season 10"
    ]
   },
   {
@@ -6757,6 +9925,52 @@
    "tags": []
   },
   {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "Vector Submachine Gun-Operations-6JAAPRO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "Season 8"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JB5Q7S06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-03-07",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "deathlapse",
+   "source": "deathlapse",
+   "code": "Vector Submachine Gun-Operations-6G55ETG098FA55KQ1KHBU",
+   "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "High Tier",
+   "tags": []
+  },
+  {
    "weapon": "Vityaz",
    "mode": "warfare",
    "creator": "deltaforcetools",
@@ -6811,6 +10025,22 @@
    ],
    "note": "Versatile build. Great for players who shoots for the head with its insane headshot damage. Good recoil and stability for mid-range with decent close-range capabilities",
    "tags": []
+  },
+  {
+   "weapon": "Vityaz",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOU3806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "RIP",
+   "tags": [
+    "120K"
+   ]
   }
  ]
 }

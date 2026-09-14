@@ -367,9 +367,16 @@ all there to help you decide whether to paste it.
 | Field | What |
 |---|---|
 | `updated` | the day the file was gathered — shown in the hero, because builds go stale |
-| `sources` | the sites the codes were copied from, linked on every card |
-| `creators` | `name`, profile `url`, `links` (their own Twitch/YouTube/X/Discord/TikTok), and `kind: "site"` for a house build rather than a person |
+| `sources` | the pages the codes were copied from, linked on every card; `kind` is `creator` for a page its own maker publishes and `aggregator` for a site that collects other people's builds |
+| `creators` | `name`, profile `url`, `links` (their own Twitch/YouTube/X/Discord/TikTok), and `kind`: `creator` for someone whose own page we read, `site` for a house build, absent for a person we only know through an aggregator |
 | `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `popularity`, `level`, `att`, `note`, `tags` |
+
+**Where a build was found is part of what it is.** A code on the page its maker runs — their
+doc, their site — is the code they still stand behind; a code on an aggregator is a copy
+somebody took, and nobody goes back to correct it. So the source carries a `kind`, own-page
+builds sort above everything else on a weapon, they are marked *their own page* on the card,
+and `Own pages` / `Aggregators` is a filter of its own in the rail. `tools/loadouts/creators.json`
+is the list of creator pages; adding a creator is adding an entry there.
 
 Three rules the file is built on, and the reason for each:
 
@@ -381,6 +388,13 @@ Three rules the file is built on, and the reason for each:
 - **A weapon the manifest does not have is dropped.** It means the name was mistyped or the
   build is for another client (the same sites carry mobile and CN builds, whose codes do not
   import into the global PC game) — either way it cannot be trusted.
+
+Two things the page cannot do, said out loud rather than worked around: **codes published
+without the `Weapon Name-Mode-` prefix are shown exactly as their maker published them** (some
+creators post only the tail), and **builds that live in a Discord server are not in here** —
+reading them would mean joining the server with an account and scraping it, which is both
+against Discord's terms and not something a public page should be doing on anyone's behalf.
+Where a creator keeps builds in Discord, their card links to the server instead.
 
 `tools/loadouts/` holds the fetcher and the builder that produced the file. Refreshing it is
 `fetch.sh` then `build.py`; both are rate-limited, identify themselves in the user agent and
