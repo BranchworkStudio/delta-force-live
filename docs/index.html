@@ -34,6 +34,9 @@
      that reads as two black bars with the theme painted between them. */
   .hero { position: relative; background: linear-gradient(180deg, var(--hero-top) 0%, var(--ground) 100%); border-bottom: 1px solid rgba(29, 224, 140, .2); }
   .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-radial-gradient(circle at 85% 30%, transparent 0 22px, rgba(255, 255, 255, .035) 22px 23px); }
+  /* hero-topo.js draws the contour map over the same box, and only then are the rings stood down */
+  .topo { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .hero.topo-on::before { display: none; }
   .hin { position: relative; max-width: 1400px; margin: 0 auto; padding: 22px 32px 26px; }
   .top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
   .mark { font: 700 15px var(--hud); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
@@ -466,6 +469,7 @@
 
 <script src="config.js?v=30"></script>
 <script src="connect-flow.js?v=31"></script>
+<script src="hero-topo.js?v=1" defer></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
