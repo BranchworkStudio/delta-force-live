@@ -110,17 +110,20 @@
   window.DF_TABS.push({
     id: "loadouts",
     label: "Loadouts",
+    // The card counter belongs to a page about a card collection. Nothing on this page is a
+    // match or a card, so the slot beside the headline stays empty here.
+    aside: false,
     // Nothing on this page is a match, so neither the mode nor the range picker applies: the mode
     // here is the mode a build is *for*, which is a filter of its own inside the pane.
     filters: false,
 
+    // Three figures, because only three of them change what you do next: whether your gun is in
+    // here at all, how much of this is first-hand, and how old the whole file is. A count of
+    // Operations builds next to a button that filters to Operations builds is not a statistic.
     hero(data, h) {
       if (phase !== "ready" || !DB) return null;
       const all = DB.builds, list = visible(), e = h.esc;
-      const creators = new Set(all.map(b => b.creator));
       const cover = new Set(all.filter(b => b.gun).map(b => b.gun.key));
-      const ops = all.filter(b => b.mode === "operations" || b.mode === "both").length;
-      const war = all.filter(b => b.mode === "warfare" || b.mode === "both").length;
       const shown = list.length !== all.length;
       return {
         eyebrow: "Loadouts · community builds",
@@ -129,13 +132,8 @@
         cells: [
           ["Weapons covered", `${cover.size}<span style="color:var(--muted)">/${GUNS.length || "?"}</span>`,
             GUNS.length ? "of every gun in the game" : null],
-          ["Creators", String(creators.size), "credited on every build"],
           ["From own pages", String(all.filter(own).length), "the rest are from aggregators",
             "A build taken from the page its maker publishes — their doc, their site — rather than from a site that collects other people's builds. Both are credited, but the creator's own page is the one they keep up to date."],
-          ["Operations", String(ops), null],
-          ["Warfare", String(war), null],
-          ["Under 9 months old", String(all.filter(b => { const a = age(b.added); return a && !a.stale; }).length),
-            "the rest are marked on the card"],
           ["Gathered", DB.updated ? e(shortDate(DB.updated)) : "–", "builds go stale — check the source",
             "These builds were copied from public pages on this date. Nothing here is checked against the game: a code can be from an older season, a different server region, or simply not to your taste. The link on each card is the original."],
         ],
@@ -185,6 +183,10 @@
             ${pill(state.sort === "pop", "pop", "Most imported", "sort")}
             ${pill(state.sort === "new", "new", "Newest", "sort")}
           </div>
+          <div class="lsearch lpick"><select id="loCreator" aria-label="Creator">
+            <option value="all">Every creator (${creators.length})</option>
+            ${creators.map(x => `<option value="${e(x.k)}"${state.creator === x.k ? " selected" : ""}>${e(x.c.name)} (${x.n})</option>`).join("")}
+          </select></div>
           <div class="lwlist">
             ${ws.length ? ws.map(w => `<button type="button" class="lw ${sel && w.key === sel.key ? "on" : ""}" data-w="${e(w.key)}">
                 <span class="ln">${e(w.name)}</span><span class="lc">${e(w.cls)}</span><span class="lb">${w.builds.length}</span>
@@ -194,10 +196,6 @@
         </div>
         <div class="lo-main">${sel ? weaponHtml(sel, h) : ""}
           <div class="lcredits">
-            <div class="mod-label">Credit <span class="note">every build here is someone else's work</span></div>
-            <div class="lcrow">${creators.map(x => `<button type="button" class="lcc ${state.creator === x.k ? "on" : ""}" data-f="creator" data-v="${e(x.k)}">
-                <span class="cn">${e(x.c.name)}</span><span class="cb">${x.n}</span></button>`).join("")}
-              ${state.creator !== "all" ? `<button type="button" class="lcc clear" data-f="creator" data-v="all">Show everyone</button>` : ""}</div>
             <div class="lsrc">${(() => {
               const link = (k) => `<a href="${e(DB.sources[k].url)}" target="_blank" rel="noopener noreferrer">${e(DB.sources[k].name)}</a>`;
               const keys = Object.keys(DB.sources || {});
@@ -214,6 +212,8 @@
         q.oninput = () => { state.q = q.value; save(); h.repaint(); };
         if (state.q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
       }
+      const who = el.querySelector("#loCreator");
+      if (who) who.onchange = () => { state.creator = who.value; save(); h.repaint(); };
       el.querySelectorAll("[data-w]").forEach(n => n.onclick = () => { state.sel = n.dataset.w; save(); h.repaint(); });
       el.querySelectorAll("[data-f]").forEach(n => n.onclick = () => {
         const f = n.dataset.f;
@@ -239,15 +239,23 @@
     const builds = w.builds.slice().sort((a, b) => state.sort === "new"
       ? (date(a, b) || mine(a) - mine(b) || pop(a, b))
       : (mine(a) - mine(b) || pop(a, b) || date(a, b)));
+    // The stat block is the gun as the game ships it, with nothing bolted on. A bar on its own is
+    // unreadable — 0 to 100 of what? — so the number is the figure and the bar is the shape of it,
+    // and the caption says out loud that these are stock values, not this build's.
     return `<div class="lhead">
         ${g && g.img ? `<img class="lgun" src="${e(g.img)}" alt="" loading="lazy">` : ""}
-        <div class="lmeta">
+        <div class="lwmeta">
           <div class="lname">${e(w.name)}</div>
           <div class="lsub">${e(w.cls)}${g && g.caliber ? " · " + e(g.caliber) : ""}${g && g.capacity ? " · " + e(g.capacity) + " rounds" : ""} · ${builds.length} ${builds.length === 1 ? "build" : "builds"}</div>
         </div>
-        ${g && g.stats.length ? `<div class="lstats">${g.stats.map(([k, v]) =>
-          `<div class="ls"><i class="lbar"><u style="width:${Math.max(0, Math.min(100, v))}%"></u></i><span>${e(k)}</span></div>`).join("")}</div>` : ""}
+        ${g && g.stats.length ? `<div class="lstatbox">
+          <div class="lstaph" data-tip="The gun's own figures from the game's weapon table, out of 100. Attachments are not counted: no build on this page changes these bars.">Stock weapon · before attachments</div>
+          <div class="lstats">${g.stats.map(([k, v]) => `<div class="ls">
+            <div class="lsl"><span>${e(k)}</span><b>${Math.round(v)}</b></div>
+            <i class="lbar"><u style="width:${Math.max(0, Math.min(100, v))}%"></u></i></div>`).join("")}</div>
+        </div>` : ""}
       </div>
+      <div class="lpaste">Every code below is pasted in game at <b>Gun Customization Station &rarr; Preset &rarr; Import</b></div>
       <div class="lbuilds">${builds.map(b => buildHtml(b, h)).join("")}</div>`;
   }
 
@@ -276,30 +284,40 @@
     return { text: t, stale: m >= 9 };
   }
 
+  // Every card is the same four rows in the same order — who made it, what it is, the code, where
+  // it came from — whatever the source happened to carry. The sites publish wildly different
+  // amounts of detail (attachment lists on some, a required weapon level on others, nothing at all
+  // on most), and letting each card show whatever it had turned the grid into a jumble. What one
+  // source has and another does not is left out rather than shown on a third of the cards.
   function buildHtml(b, h) {
     const e = h.esc, c = creatorOf(b), s = sourceOf(b);
-    const links = (c.links || []).slice(0, 4);
-    // The code is the payload; everything else on the card is there to tell you whether to paste it.
+    const links = (c.links || []).slice(0, 2);
+    const a = age(b.added);
+    const note = b.note && b.note.length > 72 ? b.note.slice(0, 69).replace(/\s+\S*$/, "") + "…" : b.note;
+    const meta = [
+      note ? `<b>${e(note)}</b>` : "",
+      ...(b.tags || []).map(t => e(t)),
+      a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>`
+        : `<i class="lage none" data-tip="This page carries no date for the build. The season it was posted under, when the creator gave one, is the tag beside this.">undated</i>`,
+      b.popularity ? Number(b.popularity).toLocaleString("en-US") + " imports" : "",
+    ].filter(Boolean);
     return `<article class="lbuild">
       <div class="lbh">
-        <div class="lby">${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(c.name)}</a>` : e(c.name)}
-          ${own(b) ? `<span class="lkind own" data-tip="Taken from ${e(s.name)} — the page ${e(c.name)} publishes, not a site that collects other people's builds">their own page</span>`
-            : c.kind === "site" ? `<span class="lkind">house build</span>` : ""}
-          ${links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}</div>
-        <div class="ltags"><span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>
-          ${(b.tags || []).map(t => `<span class="ltag">${e(t)}</span>`).join("")}</div>
+        <div class="lby">${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(c.name)}</a>` : e(c.name)}${
+          own(b) ? `<span class="lkind own" data-tip="Taken from ${e(s.name)} — the page ${e(c.name)} publishes, not a site that collects other people's builds">their own page</span>`
+            : c.kind === "site" ? `<span class="lkind">house build</span>` : ""}</div>
+        <span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>
       </div>
-      ${b.note ? `<div class="lnote">${e(b.note)}</div>` : ""}
+      <div class="lmeta">${meta.join('<span class="ldot">·</span>')}</div>
       <div class="lcode">
         <code>${e(b.code)}</code>
         <button type="button" class="lcopy" data-code="${e(b.code)}">Copy</button>
       </div>
-      <div class="lhow">Gun Customization Station &rarr; Preset &rarr; Import${b.level ? ` · needs weapon level ${e(b.level)}` : ""}</div>
-      ${(b.att || []).length ? `<div class="latt">${b.att.map(([slot, name]) =>
-        `<div class="la"><span class="las">${e(slot)}</span><span class="lan">${e(name)}</span></div>`).join("")}</div>` : ""}
       <div class="lfoot">
-        <span>${(() => { const a = age(b.added); return a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>` : ""; })()}${b.popularity ? (b.added ? " · " : "") + Number(b.popularity).toLocaleString("en-US") + " imports" : ""}</span>
-        <a href="${e(b.url || s.url)}" target="_blank" rel="noopener noreferrer">${e(s.name)} &rarr;</a>
+        <span class="lnets">${links.length
+          ? links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")
+          : `<span class="lnone">no channels listed</span>`}</span>
+        <a class="lsrclink" href="${e(b.url || s.url)}" target="_blank" rel="noopener noreferrer">${e(s.name)} &rarr;</a>
       </div>
     </article>`;
   }
@@ -340,16 +358,33 @@
   const style = document.createElement("style");
   style.textContent = `
   .lo { display: grid; grid-template-columns: 288px 1fr; align-items: start; }
-  .lo-rail { padding: 22px 20px 26px; border-right: 1px solid var(--hair); position: sticky; top: 0; }
-  .lsearch input { width: 100%; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text);
+  .lo-rail { padding: 22px 20px 26px; border-right: 1px solid var(--hair); position: sticky; top: 0; min-width: 0; }
+  .lsearch input, .lpick select { width: 100%; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text);
                    font: 400 13px var(--body); padding: 9px 10px; border-radius: 0; }
-  .lsearch input:focus { outline: 0; border-color: var(--tick); }
+  .lsearch input:focus, .lpick select:focus { outline: 0; border-color: var(--tick); }
+  .lpick { position: relative; margin-top: 12px; }
+  .lpick select { appearance: none; -webkit-appearance: none; padding-right: 26px; cursor: pointer;
+                  text-overflow: ellipsis; }
+  .lpick::after { content: "▾"; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+                  color: var(--muted); pointer-events: none; font-size: 12px; }
   .lfilters { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; }
   .lpill { border: 0; background: var(--hair-2); color: var(--text-2); cursor: pointer;
            font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; }
   .lpill:hover { color: var(--text); }
   .lpill.on { background: var(--green); color: var(--on-green); }
-  .lwlist { margin-top: 16px; max-height: 620px; overflow: auto; }
+  .lsort { align-items: center; }
+  .lsort > span { font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
+
+  .lwlist { margin-top: 16px; max-height: 620px; overflow-y: auto; overflow-x: hidden; }
+  /* The board's own scrollbar, not the browser's: square, always visible, so the list reads as a
+     list that continues rather than one that has ended. Same rule as the red-drop rail. */
+  .lwlist::-webkit-scrollbar { width: 10px; }
+  .lwlist::-webkit-scrollbar-track { background: var(--track); border-left: 1px solid var(--hair); }
+  .lwlist::-webkit-scrollbar-thumb { background: var(--tick); }
+  .lwlist::-webkit-scrollbar-thumb:hover { background: var(--fail); }
+  @supports not selector(::-webkit-scrollbar) {
+    .lwlist { scrollbar-width: thin; scrollbar-color: var(--tick) var(--track); }
+  }
   .lw { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 10px; width: 100%;
         border: 0; border-bottom: 1px solid var(--hair-2); background: none; cursor: pointer; padding: 9px 4px; text-align: left; }
   .lw:hover { background: var(--hair-2); }
@@ -360,64 +395,71 @@
   .lw.on .ln { color: var(--green); }
 
   .lo-main { padding: 22px 32px 28px; min-width: 0; }
-  .lhead { display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center;
+  .lhead { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center;
            border-bottom: 1px solid var(--hair); padding-bottom: 18px; }
   .lgun { width: 190px; max-width: 34vw; height: auto; }
-  .lname { font: 700 28px var(--hud); letter-spacing: 1px; text-transform: uppercase; }
+  .lwmeta { min-width: 0; }
+  .lname { font: 700 28px var(--hud); letter-spacing: 1px; text-transform: uppercase; overflow-wrap: anywhere; }
   .lsub { font: 600 12px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-  .lstats { display: grid; grid-template-columns: repeat(2, 132px); gap: 8px 18px; }
-  .lbar { display: block; height: 6px; background: var(--fail); }
+  .lstaph { font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted);
+            margin-bottom: 8px; border-bottom: 1px solid var(--hair); padding-bottom: 6px; }
+  .lstats { display: grid; grid-template-columns: repeat(2, 128px); gap: 10px 18px; }
+  .lsl { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+  .lsl span { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lsl b { font: 700 13px var(--hud); color: var(--text); }
+  .lbar { display: block; height: 5px; background: var(--hair-2); }
   .lbar u { display: block; height: 100%; background: var(--green); }
-  .lstats .ls span { display: block; font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 
-  .lbuilds { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; margin-top: 18px; }
-  .lbuild { border: 1px solid var(--hair); border-left: 2px solid var(--tick); padding: 14px 16px; background: var(--panel); }
-  .lbh { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .lby { font: 600 14px var(--body); color: var(--text); }
+  .lpaste { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+            margin-top: 16px; }
+  .lpaste b { color: var(--text-2); font-weight: 700; }
+
+  /* One shape, repeated. Four rows: who, what, the code, where it came from. */
+  .lbuilds { display: grid; grid-template-columns: repeat(auto-fill, minmax(312px, 1fr)); gap: 12px; margin-top: 12px; }
+  .lbuild { border: 1px solid var(--hair); border-left: 2px solid var(--tick); padding: 13px 15px; background: var(--panel);
+            min-width: 0; display: grid; align-content: start; }
+  .lbuild:hover { border-left-color: var(--green); }
+  .lbh { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; }
+  .lby { font: 600 14px var(--body); color: var(--text); min-width: 0; overflow-wrap: anywhere; }
   .lby a { color: var(--text); border-bottom: 1px solid var(--tick); }
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
-  .lkind { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-left: 8px; }
+  .lkind { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-left: 8px;
+           white-space: nowrap; }
   .lkind.own { color: var(--green); }
-  .ltags { display: flex; gap: 5px; flex-wrap: wrap; }
-  .lmode, .ltag { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 3px 7px; }
-  .lmode { background: rgba(29, 224, 140, .14); color: var(--green); }
+  .lmode { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 3px 7px;
+           white-space: nowrap; background: rgba(29, 224, 140, .14); color: var(--green); }
   .lmode.warfare { background: rgba(230, 179, 74, .14); color: var(--amber); }
   .lmode.both { background: var(--hair-2); color: var(--text-2); }
-  .ltag { background: var(--hair-2); color: var(--text-2); }
-  .lnote { color: var(--text-2); font-size: 13px; margin-top: 9px; }
-  .lnet { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
-          margin-left: 8px; border-bottom: 1px solid var(--tick); }
-  .lnet:hover { color: var(--green); border-bottom-color: var(--green); }
-  .lhow { font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-top: 7px; }
-  .latt { margin-top: 11px; border-top: 1px solid var(--hair); padding-top: 9px; display: grid; gap: 4px; }
-  .la { display: flex; gap: 10px; justify-content: space-between; font-size: 12px; }
-  .las { color: var(--muted); font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding-top: 2px; white-space: nowrap; }
-  .lan { color: var(--text-2); text-align: right; }
-  .lcode { display: flex; align-items: stretch; gap: 8px; margin-top: 12px; }
-  .lcode code { flex: 1; min-width: 0; background: var(--hair-2); border: 1px solid var(--hair); padding: 9px 10px;
-                font: 600 13px var(--hud); letter-spacing: 1px; color: var(--text); overflow-wrap: anywhere; }
-  .lcopy { border: 0; background: var(--green); color: var(--on-green); cursor: pointer; padding: 0 16px;
-           font: 700 11px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap; }
-  .lcopy:hover { background: #6ff0b8; }
-  .lcopy.ok { background: var(--tick); color: var(--text); }
-  .lfoot { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px;
-           font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-  .lfoot a { color: var(--text-2); } .lfoot a:hover { color: var(--green); }
+  /* Everything the card knows beyond the code, on one line, clamped to two so a long description
+     on one source cannot push the code button out of line with the card beside it. */
+  .lmeta { font-size: 12px; line-height: 1.6; color: var(--muted); margin-top: 7px; min-height: 38px;
+           display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .lmeta b { color: var(--text-2); font-weight: 600; }
+  .ldot { margin: 0 5px; color: var(--tick); }
   .lage { font-style: normal; }
   .lage.old { color: var(--amber); }
-  .lsort { align-items: center; }
-  .lsort > span { font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
+  .lage.none { color: var(--tick); }
+  .lcode { display: flex; align-items: stretch; gap: 8px; margin-top: 10px; }
+  .lcode code { flex: 1; min-width: 0; background: var(--hair-2); border: 1px solid var(--hair); padding: 8px 10px;
+                font: 600 12px var(--hud); letter-spacing: .4px; line-height: 1.5; color: var(--text); word-break: break-all; }
+  .lcopy { border: 0; background: var(--green); color: var(--on-green); cursor: pointer; padding: 0 15px;
+           font: 700 11px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap; align-self: stretch; }
+  .lcopy:hover { background: #6ff0b8; }
+  .lcopy.ok { background: var(--tick); color: var(--text); }
+  .lfoot { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; margin-top: 9px; }
+  .lnets { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lnet { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+          margin-right: 9px; border-bottom: 1px solid var(--tick); white-space: nowrap; }
+  .lnet:last-child { margin-right: 0; }
+  .lnet:hover { color: var(--green); border-bottom-color: var(--green); }
+  .lnone { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--tick); }
+  .lsrclink { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--text-2);
+              white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+  .lsrclink:hover { color: var(--green); }
 
-  .lcredits { margin-top: 26px; border-top: 1px solid var(--hair); padding-top: 18px; }
-  .lcrow { display: flex; flex-wrap: wrap; gap: 6px; }
-  .lcc { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--hair); background: none;
-         color: var(--text-2); cursor: pointer; padding: 6px 10px; font: 600 12px var(--body); }
-  .lcc:hover { color: var(--text); border-color: var(--tick); }
-  .lcc.on { border-color: var(--green); color: var(--green); }
-  .lcc .cb { font: 700 11px var(--hud); color: var(--muted); }
-  .lcc.on .cb { color: var(--green); }
-  .lcc.clear { color: var(--muted); }
-  .lsrc { color: var(--muted); font-size: 12px; line-height: 1.5; margin-top: 12px; max-width: 900px; }
+  .lcredits { margin-top: 22px; border-top: 1px solid var(--hair); padding-top: 14px; }
+  .lsrc { color: var(--muted); font-size: 12px; line-height: 1.6; max-width: 900px; }
 
   @media (max-width: 1100px) {
     .lo { grid-template-columns: 1fr; }
@@ -426,8 +468,9 @@
     .lo-main { padding: 20px; }
     .lhead { grid-template-columns: 1fr; gap: 14px; }
     .lgun { width: 150px; max-width: 60vw; }
-    .lstats { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    .lstats { grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); }
     .lbuilds { grid-template-columns: 1fr; }
-  }`;
+  }
+`;
   document.head.appendChild(style);
 })();
