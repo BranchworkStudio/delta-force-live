@@ -154,10 +154,20 @@
   .band .it .v { font: 700 22px var(--hud); color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .band .it .k { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-2); margin-top: 2px; line-height: 1.3; }
   .band .it .k b { color: var(--text); font-weight: 600; }
-  /* The operator's head, inline with their name. Square like everything else, and sized to the
-     text it sits in: a mark beside a label in the feed, a heading's own picture on a band tile. */
+  /* The operator's head, inline with their name in the expanded raid table, sized to the text
+     it sits in. A mark beside a label, never instead of it. */
   .ophead { width: 16px; height: 16px; object-fit: cover; vertical-align: -3px; margin-right: 5px; background: var(--hair-2); }
-  .ophead.lg { width: 22px; height: 22px; vertical-align: -6px; margin-right: 7px; }
+  /* A band tile with art is the roster tile's shape: the same 52px square, the same hairline and
+     the same hatched backing when the picture is missing, with the numbers stacked beside it
+     rather than under it. The column has to be wider than a bare band's to hold both. */
+  .band .items.has-art { grid-template-columns: repeat(auto-fit, minmax(212px, 1fr)); }
+  .band .items.has-art .it { display: flex; gap: 14px; align-items: stretch; }
+  /* The art sets the height and the numbers fill it, so every tile in the band is one block
+     rather than a picture with a ragged column beside it. Cover, because the source is a square
+     head and this is taller than it is wide. */
+  .band .it .art { width: 62px; flex: none; align-self: stretch; object-fit: cover; border: 1px solid var(--div);
+    background: repeating-linear-gradient(135deg, #1a2a30 0 5px, #15232a 5px 10px); }
+  .band .it .bd { flex: 1; min-width: 0; }
   .band .it .tr { margin-top: 10px; max-width: 240px; }
   .band .it .sub { font: 600 11px var(--hud); letter-spacing: .5px; color: var(--muted); margin-top: 7px; }
   /* Zero Dam - Easy and Zero Dam - Normal are not the same raid, so the difficulty rides along
@@ -379,11 +389,11 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=22"></script>
+<script src="config.js?v=23"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=22"></script>
+<script src="app.js?v=23"></script>
 </body>
 </html>
