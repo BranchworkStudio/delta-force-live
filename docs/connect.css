@@ -26,7 +26,7 @@
 .cflow .bar .shelf { padding: 12px 12px 16px; display: flex; align-items: center; gap: 10px; }
 .cflow .chip { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--on-green); font: 700 12px var(--hud); letter-spacing: .8px; padding: 8px 13px; cursor: grab; animation: cnudge 2.6s ease-in-out infinite; }
 .cflow .chip:hover { color: var(--on-green); }
-.cflow .chip .tri { width: 9px; height: 9px; background: var(--on-green); clip-path: polygon(50% 0, 100% 100%, 0 100%); flex: none; }
+.cflow .chip .mk { font-size: 10px; line-height: 1; flex: none; }
 .cflow .bar .arrow { font-size: 12px; color: var(--muted); }
 
 .cflow .box { border-left: 3px solid var(--div); padding: 10px 12px; background: var(--hair-2); font-size: 13px; color: var(--text-2); margin-top: 14px; text-align: left; }
