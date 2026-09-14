@@ -269,7 +269,7 @@ def collect(guns):
             seen.add(r['code']); per[(r['weapon'], r['mode'])] += 1; kept += 1
             builds.append(dict(weapon=r['weapon'], mode=r['mode'], creator=cfg['id'],
                                source=cfg['id'], code=r['code'], url=cfg['page'], added=r['added'],
-                               popularity=0, level=None, att=[], note=r['note'], tags=r['tags']))
+                               note=r['note'], tags=r['tags']))
         if not kept: continue
         sources[cfg['id']] = dict(name=cfg['source'], url=cfg['page'], kind='creator')
         creators[cfg['id']] = dict(name=cfg['name'], url=cfg['page'], links=links, kind='creator')
