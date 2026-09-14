@@ -30,5 +30,19 @@
   "fetch": "https://www.deltaforce.build/deathlapse",
   "page": "https://www.deltaforce.build/deathlapse",
   "mode": "operations"
+ },
+ {
+  "id": "medow",
+  "name": "SammyMedows",
+  "source": "SammyMedows' build page",
+  "parser": "medow",
+  "ext": "html",
+  "fetch": "https://medowmafia.com/pages/gun-builds",
+  "page": "https://medowmafia.com/pages/gun-builds",
+  "links": [
+   "https://www.twitch.tv/sammymedows",
+   "https://www.youtube.com/c/SammyMedowsShorts",
+   "https://www.tiktok.com/@sammymedows"
+  ]
  }
 ]
