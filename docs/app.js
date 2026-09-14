@@ -385,7 +385,8 @@
   //   queries() REST paths to read; the answers come back in the same order, already narrowed to
   //             the players on this board
   //   count(rows, host)          a short badge for the tab bar, or null
-  //   aside(rows, host, active)  HTML for the slot beside the big number, or null
+  //   aside(rows, host, active)  HTML for the slot beside the big number, or null; `aside: false`
+  //                              means the tab wants that slot left empty while it is open
   //   render(el, rows, host)     paint the pane
   const MATCH_TAB = { id: "match", label: "Match data", filters: true };
   const TABS = [MATCH_TAB].concat(Array.isArray(window.DF_TABS) ? window.DF_TABS : []);
@@ -426,9 +427,10 @@
 
     // The slot beside the big number. The open tab has first claim on it; otherwise the first
     // module with something to say there takes it, which is how a tab advertises itself from a
-    // page you are not on.
-    let html = active.aside ? active.aside(rowsOf(active), host, true) : null;
-    if (!html) for (const t of TABS) { if (t !== active && t.aside) { html = t.aside(rowsOf(t), host, false); if (html) break; } }
+    // page you are not on — unless the open tab has said `aside: false`, which means its headline
+    // is about something else entirely and another tab's badge beside it would just be confusing.
+    let html = typeof active.aside === "function" ? active.aside(rowsOf(active), host, true) : null;
+    if (!html && active.aside !== false) for (const t of TABS) { if (t !== active && typeof t.aside === "function") { html = t.aside(rowsOf(t), host, false); if (html) break; } }
     const aside = $("#heroAside");
     aside.innerHTML = html || "";
     aside.querySelectorAll("[data-goto]").forEach(b => b.onclick = () => setTab(b.dataset.goto));
