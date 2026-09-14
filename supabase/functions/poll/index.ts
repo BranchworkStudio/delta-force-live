@@ -4,7 +4,7 @@
 //   { secret } -> poll every connected player
 //   { secret, openid } -> poll one (used by the connect page right after a hand-over)
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedCollection, getRedDrops, getWeekCalendar, isAuthError, type Session } from "./hq.ts";
+import { getCardCollection, getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedCollection, getRedDrops, getWeekCalendar, isAuthError, type Session } from "./hq.ts";
 
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
@@ -20,6 +20,38 @@ const toInt = (v: unknown) => { const n = Number(v); return Number.isFinite(n) ?
 const clampStr = (v: unknown, n: number) => (typeof v === "string" ? v.slice(0, n) : null);
 // Anything first seen more than 6 h after it happened is history, not a live match: keep it out of latency stats.
 const firstSeen = (t: number | null) => (t && Date.now() / 1000 - t > 6 * 3600 ? new Date(t * 1000).toISOString() : nowIso());
+
+/**
+ * Limited-time collection events. Each entry says how to ask HQ for one and how to flatten the
+ * answer into (item, count) rows plus whatever totals HQ states itself; `event_collection` keys
+ * every row by `key`, so a season ending means deleting an entry here and a module on the site,
+ * with no migration and no table to drop.
+ *
+ * The Ahsarah cards arrive in six named groups rather than one list, and every group lists every
+ * card that exists — a card never found comes back at count 0. That zero is the whole point: it is
+ * what lets the board say which cards are missing instead of only which are held.
+ */
+const CARD_GROUPS = ["spade", "heart", "club", "diamond", "joker", "card_box"];
+const EVENTS: {
+  key: string;
+  fetch: (s: Session) => Promise<{ code: number; data?: any }>;
+  items: (d: any) => { item_id: unknown; owned_count: unknown }[];
+  summary: (d: any) => Record<string, unknown>;
+}[] = [
+  {
+    key: "asala_cards_s7",
+    fetch: getCardCollection,
+    items: (d) => CARD_GROUPS.flatMap((g) =>
+      (Array.isArray(d?.[g]?.card_list) ? d[g].card_list : []).map((c: any) => ({ item_id: c?.card_id, owned_count: c?.card_count }))),
+    // The six per-group progress figures sum to owned_count, so keeping both gives the page a free
+    // check on its own arithmetic rather than a number it has to trust.
+    summary: (d) => ({
+      owned_count: toInt(d?.owned_count), unowned_count: toInt(d?.unowned_count),
+      completed_suit_count: toInt(d?.completed_suit_count), high_grade_card_count: toInt(d?.high_grade_card_count),
+      groups: Object.fromEntries(CARD_GROUPS.map((g) => [g, toInt(d?.[g]?.unlock_progress)])),
+    }),
+  },
+];
 
 type Row = { openid: string; cookies: Session; backfill: Record<string, unknown> };
 
@@ -78,6 +110,7 @@ async function pollOne(row: Row) {
     report.stats = await storeStats(s, openid);
     report.carried = await storeCarryOut(s, openid);
     report.wall = await storeCollection(s, openid);
+    report.events = await storeEvents(s, openid);
     await maybePasswords(openid);
 
     await supabase.from("players").update({ token_ok: true, last_poll_at: nowIso() }).eq("openid", openid);
@@ -273,6 +306,39 @@ async function storeCollection(s: Session, openid: string) {
     fetched_at: nowIso(),
   }, { onConflict: "openid" });
   return rows.length;
+}
+
+/**
+ * The season's collection events, whatever they currently are. Every entry in EVENTS is asked for
+ * once a minute and flattened the same way, so a season ending is an edit to that array rather
+ * than to this function.
+ *
+ * One event failing must not cost the others theirs, and none of them is worth failing a poll
+ * over: a collection is a side panel, and matches are the point. So each is caught on its own.
+ */
+async function storeEvents(s: Session, openid: string) {
+  let stored = 0;
+  for (const ev of EVENTS) {
+    try {
+      const env = await ev.fetch(s).catch(() => null);
+      if (!env || Number(env.code) !== 0 || !env.data) continue;
+      const rows = ev.items(env.data)
+        .map((r) => ({ openid, event_key: ev.key, item_id: clampStr(String(r.item_id ?? ""), 32), owned_count: toInt(r.owned_count), fetched_at: nowIso() }))
+        .filter((r) => r.item_id);
+      if (rows.length) {
+        const { error } = await supabase.from("event_collection").upsert(rows, { onConflict: "openid,event_key,item_id" });
+        if (error) throw new Error(error.message);
+        stored += rows.length;
+      }
+      await supabase.from("event_collection_summary").upsert(
+        { openid, event_key: ev.key, raw: ev.summary(env.data), fetched_at: nowIso() },
+        { onConflict: "openid,event_key" },
+      );
+    } catch (e) {
+      console.warn("event " + ev.key + ": " + String(e));
+    }
+  }
+  return stored;
 }
 
 /** Daily private-room passwords: unauthenticated, so whoever polls first refreshes them hourly. */

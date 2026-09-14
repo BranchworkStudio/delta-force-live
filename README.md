@@ -244,6 +244,7 @@ one page per minute, so the site has something to show right away.
 | `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it (`hq.ts` signs requests the way the HQ page itself does) |
 | `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute |
 | `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
+| `docs/events/` | One file per limited-time event, each registering its own tab (see **Tabs and event modules**) |
 | `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()`. Which board is shown lives in `state.group`, persisted as `df-group` |
 
 ## Backend
@@ -302,6 +303,48 @@ without it hands out everything, quietly. `public_groups` uses the sibling `in_g
 None of this is one-way; the head of `0021_anon_reads_nothing.sql` carries the grants that
 undo it.
 
+## Tabs and event modules
+
+The board is a set of tabs under the masthead. **Match data** is the board itself — both
+Operations and Warfare, which the mode buttons still pick between — and every other tab is
+a file in `docs/events/` that registers itself in `window.DF_TABS` before `app.js` runs.
+`app.js` builds the bar, makes each module a `<section class="pane">`, runs its queries
+alongside the board's own and hands it a small host object; it knows nothing about what any
+module contains. A module declares:
+
+| Key | What |
+|---|---|
+| `id`, `label` | identity; the pane becomes `pane-<id>` |
+| `filters` | true if the mode and range pickers apply (they dim when they do not) |
+| `queries()` | REST paths; answers arrive in the same order, already narrowed to this board's players |
+| `count(rows, host)` | short badge on the tab, or null |
+| `aside(rows, host, active)` | HTML for the slot beside the big number — the open tab has first claim on it |
+| `render(el, rows, host)` | paint the pane |
+
+This exists because a season's collection is temporary. Ending one is: delete the module
+file and its two script tags in `index.html`, and drop the event's entry from `EVENTS` in
+`supabase/functions/poll/index.ts`. No migration, no schema change, nothing to unpick from
+the board — which is also why the tables are keyed by an `event_key` column rather than
+named after the event (`event_collection`, `event_collection_summary`).
+
+The first module is the season 7 **Ahsarah cards** (`docs/events/asala-cards.js`), fed by
+`GetCardCollection`. Two things about that data are worth knowing:
+
+- The answer lists **every** card that exists, not only the owned ones — a card never found
+  comes back at `card_count: 0`. That zero is what makes "which am I missing" answerable at
+  all; without it the page could only say what you hold.
+- `card_count` is a **lifetime "ever unlocked" tally, not an inventory**. Selling a card in
+  game does not decrement it, so HQ will keep claiming a card that is no longer in the
+  stash — confirmed against an in-game count of 41 against HQ's 43. There is no inventory
+  endpoint anywhere on playdeltaforce.com to reconcile it with, so the deck lets you mark a
+  card sold yourself; the override is per player in that browser's `localStorage`
+  (`df-sold-asala_cards_s7`) and is what the headline count is honest about.
+
+Names, suits, ranks and the size of the deck all come from the official
+`basic_info/asala_pokers_en.js` manifest, the same way map and red names do — 55 entries,
+of which 54 are cards and one is the card box. If that manifest fails to load the module
+does not register at all: a tab that cannot name what is missing is worse than no tab.
+
 ## Notes on the data source
 
 Requests mirror what the HQ page itself does: POST JSON to
@@ -321,7 +364,9 @@ the one anything tile-sized should use.
 
 Per run the poller also fetches `GetMatchDetail` for new matches (plus a few older
 ones, so history fills in slowly), `GetRedDropRecordList` page 1 (plus one deeper
-page), and `GetPrivateRoomKey` (daily room passwords, hourly). `match_time` is the
+page), `GetPrivateRoomKey` (daily room passwords, hourly), and one call per entry in
+`EVENTS` for the running limited-time collections. `GetCardCollection` takes no
+parameters at all — there is only ever one collection to ask about. `match_time` is the
 match *start*; a member's `finish_time` is when that player extracted or died, and is
 what the latency stat measures against. Operations details always report `death = 0`,
 so the site counts a failed, non-quit raid as a death for K/D. A flawless stretch has
