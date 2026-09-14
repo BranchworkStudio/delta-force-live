@@ -120,8 +120,11 @@
       return {
         eyebrow: h.playerName(who) + " · Ahsarah collection",
         big: me.toFind ? String(me.toFind) : "&#10003;",
+        sub: me.toFind ? (me.toFind === 1 ? "card still to find" : "cards still to find") : "the deck is complete",
         cells: [
-          ["In hand", `${me.inHand}<span style="color:var(--muted)">/${TOTAL}</span>`, me.pct + "% of the deck"],
+          // No percentage here: the bar beside the headline is the percentage, and twice in one hero
+          // is once too many.
+          ["In hand", `${me.inHand}<span style="color:var(--muted)">/${TOTAL}</span>`, null],
           ["Suits done", `${me.suitsDone}<span style="color:var(--muted)">/${me.suits.length}</span>`,
             near ? `closest ${near.suit.toLowerCase()} ${near.held} of ${near.of}` : "every suit complete"],
           ["Jokers", `${me.jokers}<span style="color:var(--muted)">/${me.jokersOf}</span>`, null],
@@ -150,7 +153,7 @@
       if (!me.any) return null;
       if (active) {
         return `<div class="cardprog">
-          <div class="cshead">${me.toFind ? "Cards still to find" : "The deck is complete"}</div>
+          <div class="cshead">${me.toFind ? `Collection · <b>${me.pct}%</b> complete` : "Collection complete"}</div>
           <i class="tk big"><u style="width:${me.pct}%"></u></i>
           ${me.toFind ? `<button class="cpgo" data-scroll="#cpToFind">See what is missing &rarr;</button>` : ""}
         </div>`;

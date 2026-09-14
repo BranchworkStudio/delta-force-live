@@ -122,6 +122,10 @@
   .eyebrow { font: 600 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--green); display: flex; align-items: center; gap: 8px; }
   .eyebrow i { width: 7px; height: 7px; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
   .big { font: 700 96px/1 var(--hud); letter-spacing: -1px; font-variant-numeric: tabular-nums; margin-top: 14px; white-space: nowrap; }
+  /* What the big number is, when the number alone does not say it. The board's own headline names
+     itself in the eyebrow and leaves this empty, which collapses it to nothing. */
+  .bigsub { font: 600 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--text-2); margin-top: 12px; }
+  .bigsub:empty { display: none; }
   /* auto-fit rather than a hard column per cell: a cell can never be squeezed narrower than the
      numeral inside it, so cells wrap to a second row instead of a value spilling across the
      hairline that separates them. */
@@ -382,7 +386,7 @@
     <div class="panebar" id="panebar"><div class="modes"><button class="on" data-mode="1">Operations</button><button data-mode="2">Warfare</button></div></div>
     <div class="statrow">
       <div class="headline">
-        <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div></div>
+        <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div><div class="bigsub" id="bigsub"></div></div>
         <div class="aside" id="heroAside"></div>
       </div>
       <div class="cells" id="cells"></div>
@@ -429,7 +433,7 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=28"></script>
+<script src="config.js?v=29"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
@@ -438,7 +442,7 @@
      the board: when the season ends, delete the two lines below and docs/events/asala-cards.js,
      drop the entry from EVENTS in supabase/functions/poll/index.ts, and nothing else changes. -->
 <script src="https://www.playdeltaforce.com/basic_info/asala_pokers_en.js" onerror="window.__cardsFailed=1"></script>
-<script src="events/asala-cards.js?v=28"></script>
-<script src="app.js?v=28"></script>
+<script src="events/asala-cards.js?v=29"></script>
+<script src="app.js?v=29"></script>
 </body>
 </html>
