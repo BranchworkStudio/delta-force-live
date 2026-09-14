@@ -157,6 +157,20 @@ def avatar_url(txt):
 
 
 PRICE = re.compile(r'^\s*(~?)\s*(\d+(?:[.,]\d+)?)\s*([kKmM])\s*$')
+# The price is the one fact most of these pages carry, and no two write it the same way: "580K",
+# "~1500k", "$250k", "1.2M", or nothing but the build's name ("300k beam"). collect() puts every
+# one of them through this, so a card carries the number once, in one shape: under a million in K,
+# above it in M, and the creator's "~" kept, because the hedge is theirs.
+MONEY = re.compile(r'(?i)(~)?\s*\$?\s*(\d+(?:[.,]\d+)?)\s*(k|m|mil|million)\b\.?')
+
+
+def price(text):
+    """'~1500k' -> '~1.5M', '$250k' -> '250K'. None when there is no price in it."""
+    m = MONEY.search(text or '')
+    if not m: return None
+    k = float(m.group(2).replace(',', '.')) * (1000 if m.group(3).lower().startswith('m') else 1)
+    return (m.group(1) or '') + (('%.1f' % (k / 1000)).rstrip('0').rstrip('.') + 'M' if k >= 1000
+                                 else '%g' % k + 'K')
 
 
 def parse_sheet(txt, guns, cfg):
@@ -267,9 +281,19 @@ def collect(guns):
                 skipped[cfg['id'] + ' more than %d per gun' % PER_GUN] += 1
                 continue
             seen.add(r['code']); per[(r['weapon'], r['mode'])] += 1; kept += 1
+            # One price, in one shape, in one place. A page that keeps it in a column of its own
+            # has it as a tag already; Leissik's is the whole name of the build ("300k beam") and
+            # moves there, and where a name repeats a price the column also gives, the name loses
+            # it — SammyMedows calls one build "$500k" in a row whose price column says ~350k, and
+            # a card printing both is worse than a card printing the field he maintains.
+            tags = [price(t) or t for t in r['tags']]
+            note, p = r['note'] or '', price(r['note'])
+            if p:
+                if not any(price(t) for t in tags): tags = [p] + tags
+                note = re.sub(r'\s+', ' ', MONEY.sub('', note).replace('$', '')).strip(' -–—/,·')
             builds.append(dict(weapon=r['weapon'], mode=r['mode'], creator=cfg['id'],
                                source=cfg['id'], code=r['code'], url=cfg['page'], added=r['added'],
-                               note=r['note'], tags=r['tags']))
+                               note=note, tags=tags))
         if not kept: continue
         sources[cfg['id']] = dict(name=cfg['source'], url=cfg['page'], kind='creator')
         creators[cfg['id']] = dict(name=cfg['name'], url=cfg['page'], links=links, kind='creator')
