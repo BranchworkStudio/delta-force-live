@@ -280,8 +280,7 @@
     const meta = [
       note ? `<b>${e(note)}</b>` : "",
       ...(b.tags || []).map(t => e(t)),
-      a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>`
-        : `<i class="lage none" data-tip="This page carries no date for the build. The season it was posted under, when the creator gave one, is the tag beside this.">undated</i>`,
+      a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>` : "",
       b.popularity ? Number(b.popularity).toLocaleString("en-US") + " imports" : "",
     ].filter(Boolean);
     return `<article class="lbuild">
@@ -382,8 +381,10 @@
            border-bottom: 1px solid var(--hair); padding-bottom: 18px; }
   .lgun { width: 190px; max-width: 34vw; height: auto; }
   .lwmeta { min-width: 0; }
-  .lname { font: 700 28px var(--hud); letter-spacing: 1px; text-transform: uppercase; overflow-wrap: anywhere; }
-  .lsub { font: 600 12px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  /* The weapon is what the whole panel is about — it reads as the headline of everything
+     under it, not as a caption on the picture. */
+  .lname { font: 700 44px/1 var(--hud); letter-spacing: 1.5px; text-transform: uppercase; overflow-wrap: anywhere; }
+  .lsub { font: 600 12px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin-top: 9px; }
   .lstaph { font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted);
             margin-bottom: 8px; border-bottom: 1px solid var(--hair); padding-bottom: 6px; }
   .lstats { display: grid; grid-template-columns: repeat(2, 128px); gap: 10px 18px; }
@@ -418,7 +419,6 @@
   .ldot { margin: 0 5px; color: var(--tick); }
   .lage { font-style: normal; }
   .lage.old { color: var(--amber); }
-  .lage.none { color: var(--tick); }
   .lcode { display: flex; align-items: stretch; gap: 8px; margin-top: 10px; min-width: 0; }
   /* One line, always. The code is long enough to wrap on any card width, and a code that wraps
      turns the row of cards into a staircase — so it is clipped here and copied whole by the
@@ -448,6 +448,7 @@
     .lo-main { padding: 20px; }
     .lhead { grid-template-columns: 1fr; gap: 14px; }
     .lgun { width: 150px; max-width: 60vw; }
+    .lname { font-size: 34px; }
     .lstats { grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); }
     .lbuilds { grid-template-columns: 1fr; }
   }
