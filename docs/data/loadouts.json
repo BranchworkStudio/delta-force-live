@@ -20,6 +20,21 @@
    "name": "SammyMedows' build page",
    "url": "https://medowmafia.com/pages/gun-builds",
    "kind": "creator"
+  },
+  "equalplays": {
+   "name": "EqualPlays' build sheet",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "kind": "creator"
+  },
+  "muomuo": {
+   "name": "MuoMuo's build sheet",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "kind": "creator"
+  },
+  "siingsong": {
+   "name": "siingsong's build sheet",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "kind": "creator"
   }
  },
  "creators": {
@@ -65,6 +80,34 @@
    ],
    "kind": "creator",
    "avatar": "img/creators/medow.png"
+  },
+  "equalplays": {
+   "name": "EqualPlays",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "links": [
+    "https://www.twitch.tv/equalplays"
+   ],
+   "kind": "creator"
+  },
+  "muomuo": {
+   "name": "MuoMuo",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "links": [
+    "https://www.twitch.tv/muomuo",
+    "https://www.youtube.com/@MuoMuoTV"
+   ],
+   "kind": "creator",
+   "avatar": "img/creators/muomuo.png"
+  },
+  "siingsong": {
+   "name": "siingsong",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "links": [
+    "https://www.twitch.tv/siingsong",
+    "https://www.youtube.com/@siingsong"
+   ],
+   "kind": "creator",
+   "avatar": "img/creators/siingsong.jpg"
   }
  },
  "builds": [
@@ -159,10 +202,24 @@
    "popularity": 0,
    "level": null,
    "att": [],
-   "note": "Sniper",
+   "note": "",
    "tags": [
     "~250K"
    ]
+  },
+  {
+   "weapon": "93R",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8ST9800G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "93R",
@@ -245,6 +302,20 @@
   {
    "weapon": "AK-12",
    "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQKO00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
    "creator": "leissik",
    "source": "leissik",
    "code": "AK-12 Assault Rifle-Operations-6IK0QLK0FV996DITL6AIU",
@@ -277,6 +348,38 @@
   {
    "weapon": "AK-12",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AK-12 Assault Rifle-Operations-6KSV0HG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "430K"
+   ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AK-12 Assault Rifle-Operations-6KT0ALK04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "230K"
+   ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOTPC06F3769TRGAG41",
@@ -289,6 +392,20 @@
    "tags": [
     "550K"
    ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AK-12 Assault Rifle-Operations-6KR2DF8014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "AKM",
@@ -330,6 +447,20 @@
    "level": null,
    "att": [],
    "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SR8K00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -431,6 +562,38 @@
   {
    "weapon": "AKM",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AKM Assault Rifle-Operations-6L0TLIO04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "2-4",
+   "tags": [
+    "470K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AKM Assault Rifle-Operations-6L1FJKO04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Speed",
+   "tags": [
+    "530K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JLL6L806F3769TRGAG41",
@@ -477,6 +640,34 @@
    ]
   },
   {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AKM Assault Rifle-Operations-6GV963C01OANMAF97OV6I",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "CS AK",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AKM Assault Rifle-Operations-6KO0EIK014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "AKS-74",
    "mode": "operations",
    "creator": "medow",
@@ -491,6 +682,34 @@
    "tags": [
     "~350K"
    ]
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AKS-74 Assault Rifle-Operations-6EV8048096H0J29AJAHPA",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SOOC00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "AR-57",
@@ -559,6 +778,54 @@
   {
    "weapon": "AR-57",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AR-57 Assault Rifle-Operations-6KSUO0G04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "580K"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AR-57 Assault Rifle-Operations-6KSUO7G04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "560K"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AR-57 Assault Rifle-Operations-6KT07I004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "340K"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JPVAM406F3769TRGAG41",
@@ -605,6 +872,20 @@
    ]
   },
   {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AR-57 Assault Rifle-Operations-6KGTNS8014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "AS Val",
    "mode": "operations",
    "creator": "deathlapse",
@@ -616,6 +897,20 @@
    "level": null,
    "att": [],
    "note": "Budget/Mid",
+   "tags": []
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQA800G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -685,6 +980,54 @@
   {
    "weapon": "AS Val",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AS Val Assault Rifle-Operations-6L38AJ004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "480K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AS Val Assault Rifle-Operations-6L3PF1404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "800K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AS Val Assault Rifle-Operations-6L56PJC04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Burst",
+   "tags": [
+    "530K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOVO406F3769TRGAG41",
@@ -731,6 +1074,20 @@
    ]
   },
   {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AS Val Assault Rifle-Operations-6KCHIUK014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "ASh-12",
    "mode": "operations",
    "creator": "deathlapse",
@@ -742,6 +1099,20 @@
    "level": null,
    "att": [],
    "note": "High Tier",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SR7800G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -787,7 +1158,7 @@
    "popularity": 0,
    "level": null,
    "att": [],
-   "note": "Shotgun",
+   "note": "",
    "tags": [
     "~400K"
    ]
@@ -841,6 +1212,20 @@
    ]
   },
   {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "ASh-12 Battle Rifle-Operations-6KNE8S8014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "AUG",
    "mode": "operations",
    "creator": "deathlapse",
@@ -852,6 +1237,20 @@
    "level": null,
    "att": [],
    "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQU400G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -937,6 +1336,38 @@
   {
    "weapon": "AUG",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AUG Assault Rifle-Operations-6K9PA6804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "530K"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AUG Assault Rifle-Operations-6KT09U404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "260K"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6GTC61G06F3769TRGAG41",
@@ -967,12 +1398,40 @@
    ]
   },
   {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AUG Assault Rifle-Operations-6KR2DIO014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "AWM",
    "mode": "operations",
    "creator": "deathlapse",
    "source": "deathlapse",
    "code": "AWM Sniper Rifle-Operations-6H4JIL4098FA55KQ1KHBU",
    "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8ST0K00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "popularity": 0,
    "level": null,
@@ -1031,6 +1490,22 @@
   {
    "weapon": "AWM",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AWM Sniper Rifle-Operations-6K4968C04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOTL406F3769TRGAG41",
@@ -1043,6 +1518,34 @@
    "tags": [
     "1M"
    ]
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "AWM Sniper Rifle-Operations-6G57H7K0E0H5HH0IS5EKC",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "Bizon Submachine Gun-Operations-6G57FKO0E0H5HH0IS5EKC",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "CAR-15",
@@ -1077,6 +1580,20 @@
    ]
   },
   {
+   "weapon": "CAR-15",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "CAR-15 Assault Rifle-Operations-6GV8MK404L27S72T7O8IH",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "CI-19",
    "mode": "operations",
    "creator": "deathlapse",
@@ -1102,6 +1619,20 @@
    "level": null,
    "att": [],
    "note": "High End - SHORT RANGE",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQ8000G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -1203,6 +1734,38 @@
   {
    "weapon": "CI-19",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "CI-19 Assault Rifle-Operations-6KSUQE404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "470K"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "CI-19 Assault Rifle-Operations-6KT08T804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "300K"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KIBSS806F3769TRGAG41",
@@ -1233,7 +1796,35 @@
    ]
   },
   {
-   "weapon": "Compound",
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "CI-19 Assault Rifle-Operations-6KGUHHC014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Compound Bow",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8STB400G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Compound Bow",
    "mode": "operations",
    "creator": "medow",
    "source": "medow",
@@ -1249,7 +1840,7 @@
    ]
   },
   {
-   "weapon": "Compound",
+   "weapon": "Compound Bow",
    "mode": "operations",
    "creator": "medow",
    "source": "medow",
@@ -1279,6 +1870,34 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "Compound Bow",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "Compound Bow-Operations-6K6M1K0014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Desert Eagle",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8ST7S00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "FS-12",
@@ -1339,7 +1958,7 @@
    "popularity": 0,
    "level": null,
    "att": [],
-   "note": "Pistol",
+   "note": "",
    "tags": [
     "~150K"
    ]
@@ -1407,6 +2026,20 @@
   {
    "weapon": "G3",
    "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQFG00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQ985C06F3769TRGAG41",
@@ -1437,6 +2070,20 @@
    ]
   },
   {
+   "weapon": "G3",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "G3 Battle Rifle-Operations-6GU95UG014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "K416",
    "mode": "operations",
    "creator": "deathlapse",
@@ -1462,6 +2109,20 @@
    "level": null,
    "att": [],
    "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SR5G00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -1547,6 +2208,38 @@
   {
    "weapon": "K416",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "K416 Assault Rifle-Operations-6KFMD2004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "700K"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "K416 Assault Rifle-Operations-6KT0A4O04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KA8B7406F3769TRGAG41",
@@ -1577,6 +2270,20 @@
    ]
   },
   {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "K416 Assault Rifle-Operations-6KOA44S014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "K437",
    "mode": "operations",
    "creator": "deathlapse",
@@ -1588,6 +2295,20 @@
    "level": null,
    "att": [],
    "note": "High End",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L86TKO00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -1689,6 +2410,38 @@
   {
    "weapon": "K437",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "K437 Assault Rifle-Operations-6KSUQ4C04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "630K"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "K437 Assault Rifle-Operations-6KT08HS04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "340K"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQP10C06F3769TRGAG41",
@@ -1717,6 +2470,48 @@
    "tags": [
     "900K"
    ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "K437 Assault Rifle-Operations-6KJP6JK014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SPDO00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Scoped KC",
+   "tags": []
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SPOK00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": []
   },
   {
    "weapon": "KC-17",
@@ -1801,6 +2596,38 @@
   {
    "weapon": "KC-17",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "KC-17 Assault Rifle-Operations-6KT087S04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "350K"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "KC-17 Assault Rifle-Operations-6L56QB004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "620K"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JRJBCK06F3769TRGAG41",
@@ -1845,6 +2672,20 @@
    "tags": [
     "650K"
    ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "KC-17 Assault Rifle-Operations-6KKOO34014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "Lever-action Rifle",
@@ -1921,7 +2762,7 @@
    "popularity": 0,
    "level": null,
    "att": [],
-   "note": "Sniper",
+   "note": "",
    "tags": [
     "185K"
    ]
@@ -1998,6 +2839,20 @@
    "level": null,
    "att": [],
    "note": "China Meta Laser",
+   "tags": []
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SSPO00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -2083,6 +2938,22 @@
   {
    "weapon": "M14",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M14 Marksman Rifle-Operations-6KUI7UK04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "830K"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L8PSVC06F3769TRGAG41",
@@ -2095,6 +2966,34 @@
    "tags": [
     "800K"
    ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "M14 Marksman Rifle-Operations-6KR2E6C014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SR2G00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "M16A4",
@@ -2127,6 +3026,20 @@
    "tags": [
     "~150K"
    ]
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "M16A4 Assault Rifle-Operations-6KR2DJO014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "M249",
@@ -2175,6 +3088,22 @@
   {
    "weapon": "M249",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M249 Light Machine Gun-Operations-6KSUSSC04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JPUJ3K06F3769TRGAG41",
@@ -2203,6 +3132,20 @@
    "tags": [
     "426K"
    ]
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "M249 Light Machine Gun-Operations-6EV840S096H0J29AJAHPA",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "M250",
@@ -2301,6 +3244,22 @@
   {
    "weapon": "M250",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M250 General Machine Gun-Operations-6KSUSO004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "900K"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JUSSLC06F3769TRGAG41",
@@ -2313,6 +3272,48 @@
    "tags": [
     "700K"
    ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "M250 General Machine Gun-Operations-6GCFL9O01OANMAF97OV6I",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SR9O00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SRB400G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Full Build",
+   "tags": []
   },
   {
    "weapon": "M4A1",
@@ -2413,6 +3414,22 @@
   {
    "weapon": "M4A1",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M4A1 Assault Rifle-Operations-6KSUUH804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "340K"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOUVC06F3769TRGAG41",
@@ -2441,6 +3458,20 @@
    "tags": [
     "440K"
    ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "M4A1 Assault Rifle-Operations-6KR2DOC014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "M7",
@@ -2482,6 +3513,20 @@
    "level": null,
    "att": [],
    "note": "Long Range",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQQK00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -2583,6 +3628,22 @@
   {
    "weapon": "M7",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M7 Battle Rifle-Operations-6KSUTLG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "830K"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JFOAR006F3769TRGAG41",
@@ -2629,12 +3690,40 @@
    ]
   },
   {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "M7 Battle Rifle-Operations-6KO1QD0014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "M700",
    "mode": "operations",
    "creator": "deathlapse",
    "source": "deathlapse",
    "code": "M700 Sniper Rifle-Operations-6F4AMT4098FA55KQ1KHBU",
    "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8ST1O00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "popularity": 0,
    "level": null,
@@ -2741,6 +3830,22 @@
   {
    "weapon": "M700",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M700 Sniper Rifle-Operations-6KNJ34404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "470K"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L3E8VG06F3769TRGAG41",
@@ -2753,6 +3858,20 @@
    "tags": [
     "400K"
    ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "M700 Sniper Rifle-Operations-6KR2EB8014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "M82",
@@ -2789,6 +3908,22 @@
   {
    "weapon": "M82",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M82 Sniper Rifle-Operations-6KQUMU404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1.2M"
+   ]
+  },
+  {
+   "weapon": "M82",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQ9ADK06F3769TRGAG41",
@@ -2801,6 +3936,20 @@
    "tags": [
     "1M"
    ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SOSG00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
   },
   {
    "weapon": "MCX LT",
@@ -2853,6 +4002,54 @@
   {
    "weapon": "MCX LT",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MCX LT Assault Rifle-Operations-6KSUOMO04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "290K"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MCX LT Assault Rifle-Operations-6KSUOVG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "320K"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MCX LT Assault Rifle-Operations-6KSUP7S04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "420K"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JTIH6K06F3769TRGAG41",
@@ -2881,6 +4078,20 @@
    "tags": [
     "450K"
    ]
+  },
+  {
+   "weapon": "MDR",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SO6S00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "MDR",
@@ -2917,6 +4128,22 @@
   {
    "weapon": "MDR",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6L8I44004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "1M"
+   ]
+  },
+  {
+   "weapon": "MDR",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L7S1BS06F3769TRGAG41",
@@ -2929,6 +4156,34 @@
    "tags": [
     "1M"
    ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SRGG00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SRHC00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": []
   },
   {
    "weapon": "MK4",
@@ -3013,6 +4268,54 @@
   {
    "weapon": "MK4",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6L8S7T004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Full Auto",
+   "tags": [
+    "650K"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6L8S83004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "430K"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK4 Submachine Gun-Operations-6KT0B1S04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "270K"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6J9Q2O4073PH40I6AFVCE",
@@ -3041,6 +4344,48 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "MK4 Submachine Gun-Operations-6KN4OQS014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SP3G00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Short Barrel",
+   "tags": []
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SP8400G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Long Barrel",
+   "tags": []
   },
   {
    "weapon": "MK47",
@@ -3141,6 +4486,38 @@
   {
    "weapon": "MK47",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK47 Assault Rifle-Operations-6L23H1004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Short Barrel",
+   "tags": [
+    "600K"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK47 Assault Rifle-Operations-6L23H3K04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Long Barrel",
+   "tags": [
+    "740K"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L3PCCS04R96VUC6OKBOP",
@@ -3171,6 +4548,20 @@
    ]
   },
   {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "MK47 Assault Rifle-Operations-6KR2D64014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "MP5",
    "mode": "operations",
    "creator": "deathlapse",
@@ -3182,6 +4573,20 @@
    "level": null,
    "att": [],
    "note": "Speed ( Budget )",
+   "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SS1O00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget Ripfire",
    "tags": []
   },
   {
@@ -3215,6 +4620,34 @@
    "tags": [
     "260K"
    ]
+  },
+  {
+   "weapon": "MP5",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "MP5 Submachine Gun-Operations-6F12U5G0A343VCRUF2MBP",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SRP800G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "MP7",
@@ -3299,6 +4732,54 @@
   {
    "weapon": "MP7",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MP7 Submachine Gun-Operations-6KSURRO04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "660K"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MP7 Submachine Gun-Operations-6KSUS0004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "660K"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MP7 Submachine Gun-Operations-6KT0C0804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JVSGH806F3769TRGAG41",
@@ -3329,6 +4810,34 @@
    ]
   },
   {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "MP7 Submachine Gun-Operations-6KIIBHC014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Mini-14",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "Mini-14 Marksman Rifle-Operations-6GV90EO01OANMAF97OV6I",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "P90",
    "mode": "operations",
    "creator": "deathlapse",
@@ -3340,6 +4849,20 @@
    "level": null,
    "att": [],
    "note": "High Tier",
+   "tags": []
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SS0G00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -3425,6 +4948,38 @@
   {
    "weapon": "P90",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "P90 Submachine Gun-Operations-6KSUS9G04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "360K"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "P90 Submachine Gun-Operations-6KSUSEG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "300K"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JGP0MC06F3769TRGAG41",
@@ -3455,6 +5010,20 @@
    ]
   },
   {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "P90 Submachine Gun-Operations-6IU9F3G014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "PKM",
    "mode": "operations",
    "creator": "deathlapse",
@@ -3466,6 +5035,20 @@
    "level": null,
    "att": [],
    "note": "High Tier",
+   "tags": []
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SSEG00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
    "tags": []
   },
   {
@@ -3567,6 +5150,22 @@
   {
    "weapon": "PKM",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "PKM General Machine Gun-Operations-6KSUT1G04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "370K"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JTIBF806F3769TRGAG41",
@@ -3597,6 +5196,34 @@
    ]
   },
   {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "PKM General Machine Gun-Operations-6KR2E1S014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "PSG-1",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SSKC00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "PSG-1",
    "mode": "operations",
    "creator": "poach",
@@ -3613,6 +5240,34 @@
    ]
   },
   {
+   "weapon": "PSG-1",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "PSG-1 Marksman Rifle-Operations-6FUN7KK0E0H5HH0IS5EKC",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQDO00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "PTR-32",
    "mode": "operations",
    "creator": "medow",
@@ -3627,6 +5282,20 @@
    "tags": [
     "~250K"
    ]
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "PTR-32 Assault Rifle-Operations-6GV8MMC04L27S72T7O8IH",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "QBZ95-1",
@@ -3675,6 +5344,20 @@
    ]
   },
   {
+   "weapon": "QBZ95-1",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "QBZ95-1 Assault Rifle-Operations-6HUF3DG014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "QCQ171",
    "mode": "operations",
    "creator": "deathlapse",
@@ -3686,6 +5369,20 @@
    "level": null,
    "att": [],
    "note": "High End",
+   "tags": []
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SRNS00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -3719,6 +5416,66 @@
    "tags": [
     "~500K"
    ]
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "QCQ171 Submachine Gun-Operations-6KSURJ004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "550K"
+   ]
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "QCQ171 Submachine Gun-Operations-6KSURO804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "260K"
+   ]
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "QCQ171 Submachine Gun-Operations-6KKPKGS014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SS9800G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "QJB201",
@@ -3787,6 +5544,38 @@
   {
    "weapon": "QJB201",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "QJB201 Light Machine Gun-Operations-6KQ91FG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "QJB201 Light Machine Gun-Operations-6KQA0FS04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "360K"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6K4SVT406F3769TRGAG41",
@@ -3831,6 +5620,34 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "QJB201 Light Machine Gun-Operations-6KR2E40014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8ST2O00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "R93",
@@ -3899,6 +5716,22 @@
   {
    "weapon": "R93",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "R93 Sniper Rifle-Operations-6L1FL4O04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "320K"
+   ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6FDPM8807EP326IQSRQ4N",
@@ -3911,6 +5744,48 @@
    "tags": [
     "88K"
    ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "R93 Sniper Rifle-Operations-6JRECAS014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SOCC00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Full Build",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SODG00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
   },
   {
    "weapon": "RM277",
@@ -3995,6 +5870,38 @@
   {
    "weapon": "RM277",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "RM277-Operations-6KSUNCG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "420K"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "RM277-Operations-6KSUNNC04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "240K"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KIB39K06F3769TRGAG41",
@@ -4016,6 +5923,20 @@
    "code": "6KLVH1806F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-07-15",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "RM277-Operations-6KIFB4C014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
    "popularity": 0,
    "level": null,
    "att": [],
@@ -4064,6 +5985,20 @@
    "level": null,
    "att": [],
    "note": "High Tier Build",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQJC00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -4149,6 +6084,38 @@
   {
    "weapon": "SCAR-H",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SCAR-H Battle Rifle-Operations-6KBOTP404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "2X",
+   "tags": [
+    "560K"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SCAR-H Battle Rifle-Operations-6KSHSNK04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KRU96K06F3769TRGAG41",
@@ -4161,6 +6128,34 @@
    "tags": [
     "530K"
    ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SCAR-H Battle Rifle-Operations-6KR2DDS014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SQN400G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": []
   },
   {
    "weapon": "SG552",
@@ -4195,6 +6190,50 @@
    ]
   },
   {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SG552 Assault Rifle-Operations-6GV8SBG01OANMAF97OV6I",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SKS",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SSOK00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SKS",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SKS Marksman Rifle-Operations-6KUI8H404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
    "weapon": "SKS",
    "mode": "operations",
    "creator": "poach",
@@ -4211,6 +6250,20 @@
    ]
   },
   {
+   "weapon": "SKS",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SKS Marksman Rifle-Operations-6KR2E8O014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "SMG-45",
    "mode": "operations",
    "creator": "deathlapse",
@@ -4222,6 +6275,20 @@
    "level": null,
    "att": [],
    "note": "Budget",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SRTG00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -4275,6 +6342,22 @@
   {
    "weapon": "SMG-45",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SMG-45 Submachine Gun-Operations-6KSV02404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "350K"
+   ]
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOUMK06F3769TRGAG41",
@@ -4289,12 +6372,40 @@
    ]
   },
   {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SMG-45 Submachine Gun-Operations-6F1N22S0A343VCRUF2MBP",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "SR-25",
    "mode": "operations",
    "creator": "deathlapse",
    "source": "deathlapse",
    "code": "SR-25 Marksman Rifle-Operations-6F3SCMO098FA55KQ1KHBU",
    "url": "https://www.deltaforce.build/deathlapse",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SSNG00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "popularity": 0,
    "level": null,
@@ -4353,6 +6464,22 @@
   {
    "weapon": "SR-25",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SR-25 Marksman Rifle-Operations-6KJ0AHK04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "650K"
+   ]
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQBGS806F3769TRGAG41",
@@ -4367,6 +6494,20 @@
    ]
   },
   {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SR-25 Marksman Rifle-Operations-6G57HA40E0H5HH0IS5EKC",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "SR-3M",
    "mode": "operations",
    "creator": "deathlapse",
@@ -4378,6 +6519,20 @@
    "level": null,
    "att": [],
    "note": "High Tier",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SRRK00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -4447,6 +6602,38 @@
   {
    "weapon": "SR-3M",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SR-3M Compact Assault Rifle-Operations-6K6G31004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "400K"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SR-3M Compact Assault Rifle-Operations-6L63PLC04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "460K"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQ98BO06F3769TRGAG41",
@@ -4475,6 +6662,20 @@
    "tags": [
     "220K"
    ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SR-3M Compact Assault Rifle-Operations-6KR2E08014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "SR9",
@@ -4509,6 +6710,34 @@
    ]
   },
   {
+   "weapon": "SR9",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SR9 Marksman Rifle-Operations-6G57I7O0E0H5HH0IS5EKC",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8ST4800G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "SV-98",
    "mode": "operations",
    "creator": "medow",
@@ -4539,6 +6768,50 @@
    "tags": [
     "~350K"
    ]
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SV-98 Sniper Rifle-Operations-6L1FL1804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "300K"
+   ]
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SV-98 Sniper Rifle-Operations-6F03AD00A343VCRUF2MBP",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SSH800G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "SVCH",
@@ -4591,11 +6864,41 @@
   {
    "weapon": "SVCH",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SVCH Marksman Rifle-Operations-6KUI88K04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "500K"
+   ]
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KI3TL006F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-07-04",
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SVCH Marksman Rifle-Operations-6KPLRSC014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
    "popularity": 0,
    "level": null,
    "att": [],
@@ -4628,6 +6931,20 @@
    "level": null,
    "att": [],
    "note": "High Tier",
+   "tags": []
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8SSR000G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
    "tags": []
   },
   {
@@ -4697,6 +7014,22 @@
   {
    "weapon": "SVD",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SVD Sniper Rifle-Operations-6KUI8L004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "450K"
+   ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KRK3SC06F3769TRGAG41",
@@ -4709,6 +7042,34 @@
    "tags": [
     "300K"
    ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "SVD Sniper Rifle-Operations-6KR2E78014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6L8KD5K00G02164FCEV6J",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "Thompson SMG",
@@ -4740,6 +7101,38 @@
    "note": "Budget",
    "tags": [
     "~300K"
+   ]
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6L857U004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "930K"
+   ]
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6L8DKHG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "ADS",
+   "tags": [
+    "900K"
    ]
   },
   {
@@ -4805,6 +7198,20 @@
    ]
   },
   {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "UZI Submachine Gun-Operations-6G57G4G0E0H5HH0IS5EKC",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
+  },
+  {
    "weapon": "VSS",
    "mode": "operations",
    "creator": "leissik",
@@ -4867,6 +7274,20 @@
    "tags": [
     "~150K"
    ]
+  },
+  {
+   "weapon": "VSS",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "VSS Marksman Rifle-Operations-6F1MTM40A343VCRUF2MBP",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "Vector",
@@ -4949,6 +7370,38 @@
   {
    "weapon": "Vector",
    "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6L8I3C804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": [
+    "670K"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6L8I3HS04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "580K"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JB5Q7S06F3769TRGAG41",
@@ -4961,6 +7414,20 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "Vector Submachine Gun-Operations-6IU9F2C014H9D6PDMV79E",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "Vityaz",
@@ -4977,6 +7444,20 @@
    "tags": [
     "120K"
    ]
+  },
+  {
+   "weapon": "Vityaz",
+   "mode": "operations",
+   "creator": "siingsong",
+   "source": "siingsong",
+   "code": "Vityaz Submachine Gun-Operations-6F1B3P40A343VCRUF2MBP",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "",
+   "tags": []
   }
  ]
 }

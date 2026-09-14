@@ -41,11 +41,21 @@ One entry per page:
 |---|---|
 | `id` | the creator slug, used for the source and creator ids in the built file |
 | `name` / `source` | the person, and the name of the page they publish — `source` is the card's link text, so keep it in the creator's own terms ("Leissik's build doc") |
-| `parser` | `lines` for a text dump (a Google Doc exported as text), `dfbuild` for a `deltaforce.build/<name>` page, `medow` for medowmafia.com's builds page |
+| `parser` | `lines` for a text dump (a Google Doc exported as text), `dfbuild` for a `deltaforce.build/<name>` page, `sheet` for a Google Sheet read as CSV, `medow` for medowmafia.com's builds page |
 | `fetch` / `page` | what `fetch.sh` downloads, and the human URL every card links to |
 | `ext` | the extension the download is saved with, under `raw/own/` |
 | `links` | their channels, when the page itself does not carry them (a `dfbuild` page does) |
 | `mode` | only for a page that does not say: `poach` publishes bare codes with a Hazard Operations price on every row, so those are recorded as Operations |
+
+`sheet` is the one to reach for when a creator keeps their builds in a Google Sheet, and it is
+worth knowing what it does *not* assume. No sheet agrees with another on columns — code beside
+the name, or a price or a "Meta" marker in between; one long list, or four class columns side by
+side — so it reads no columns at all. Any cell that is a code is a build; the cells immediately
+left of it, up to the first blank or the previous build's code, are what its maker wrote about it,
+the leftmost being their name for it and anything between a tag. A row whose only cell says
+`Operations` or `Warfare` sets the mode below it, which is how a sheet of bare codes says which
+game its builds are for. A qualifier every build on a page carries is dropped rather than shown:
+"Meta" on all 52 of them tells nobody anything.
 
 A creator who publishes on a page nobody else uses needs a parser of their own, which is the only
 part of adding one that is ever real work: `parse_medow` is thirty lines because that page keeps
