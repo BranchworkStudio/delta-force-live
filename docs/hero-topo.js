@@ -57,9 +57,13 @@
           + noise(x * WIDE * 4.9 + 7.1, y * WIDE * 4.9 + 53.9) * .11) * RELIEF;
   }
 
+  // The box to fill is whatever CSS gives the canvas, never what the header happens to be. On the
+  // board the canvas is inset in the header and this is the header; on the gate it is fixed to the
+  // viewport and this is the window. That one line is the whole difference between a band of map
+  // and a page of it, and it keeps the decision in the stylesheet where it belongs.
   let W = 0, H = 0, cols = 0, rows = 0, grid = new Float32Array(0);
   function measure() {
-    const r = host.getBoundingClientRect();
+    const r = cv.getBoundingClientRect();
     const w = Math.max(1, Math.round(r.width)), h = Math.max(1, Math.round(r.height));
     if (w === W && h === H) return false;
     W = w; H = h;
@@ -166,11 +170,13 @@
   measure(); run();
   document.addEventListener("visibilitychange", () => (document.hidden ? stop() : run()));
   if (calm && calm.addEventListener) calm.addEventListener("change", () => { stop(); run(); });
-  // The header is the top of the page, so this is mostly "the visitor scrolled down to the feed".
+  // Watching the canvas and not the header, for the same reason measure() does. In the header this
+  // is "the visitor scrolled down to the feed"; fixed to the viewport it never leaves, which is
+  // right — there the map is the page, and a page does not scroll away from itself.
   if (window.IntersectionObserver) {
-    new IntersectionObserver((es) => { onScreen = es[0].isIntersecting; onScreen ? run() : stop(); }).observe(host);
+    new IntersectionObserver((es) => { onScreen = es[0].isIntersecting; onScreen ? run() : stop(); }).observe(cv);
   }
   // The header grows and shrinks as the board fills in, and again on every rotate or resize.
-  if (window.ResizeObserver) new ResizeObserver(() => { if (measure() && !raf) draw(0); }).observe(host);
+  if (window.ResizeObserver) new ResizeObserver(() => { if (measure() && !raf) draw(0); }).observe(cv);
   else window.addEventListener("resize", () => { if (measure() && !raf) draw(0); });
 })();

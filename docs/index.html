@@ -35,7 +35,12 @@
   .hero { position: relative; background: linear-gradient(180deg, var(--hero-top) 0%, var(--ground) 100%); border-bottom: 1px solid rgba(29, 224, 140, .2); }
   .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-radial-gradient(circle at 85% 30%, transparent 0 22px, rgba(255, 255, 255, .035) 22px 23px); }
   /* hero-topo.js draws the contour map over the same box, and only then are the rings stood down */
-  .topo { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  /* Faded out at the foot, because the header is too short for its own gradient to do it: at full
+     strength the contours run into the green rule and stop dead, which reads as a cut rather than
+     as ground going out of frame. */
+  .topo { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+          -webkit-mask-image: linear-gradient(180deg, #000 0 70%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0 70%, transparent 100%); }
   .hero.topo-on::before { display: none; }
   .hin { position: relative; max-width: 1400px; margin: 0 auto; padding: 22px 32px 26px; }
   .top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
@@ -233,6 +238,15 @@
   body.gated .tabs, body.gated .pane { display: none; }
   /* the gate IS the connect flow now, so the header's way in would only be a second door to it */
   body.gated .acct a.signin { display: none; }
+  /* With the board hidden there is no dense column of numbers for the map to sit behind and nothing
+     to read but one narrow strip of instructions, so here the map is the page rather than a band at
+     the top of it: pinned to the window, at full strength all the way down, with the gate and the
+     footnote lifted over it. (The canvas measures its own box, so this is the only instruction it
+     needs.) The header keeps its gradient and its green rule, which now read as a horizon line
+     across ground that carries on below. */
+  body.gated .topo { position: fixed; z-index: 0; -webkit-mask-image: none; mask-image: none; }
+  body.gated .gate, body.gated footer { position: relative; z-index: 1; }
+  body.gated .gate { border-bottom: 0; }
 
   /* ---- tabs ----
      One tab per page of the board. "Match data" is the board itself and is always there; the rest
@@ -469,7 +483,7 @@
 
 <script src="config.js?v=30"></script>
 <script src="connect-flow.js?v=31"></script>
-<script src="hero-topo.js?v=1" defer></script>
+<script src="hero-topo.js?v=2" defer></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
