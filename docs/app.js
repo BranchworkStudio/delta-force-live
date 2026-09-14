@@ -427,15 +427,15 @@
     const cards = state.players.map(p => {
       const pm = ms.filter(m => m.openid === p.openid), w = pm.filter(isWin).length, net = sum(pm, m => m.net_income), score = sum(pm, m => m.score);
       const [stc, stt] = liveState(p);
-      // Two pictures, two jobs: the HQ profile picture says who this is and does not move, and the
-      // operator badge says what they have been playing in the range. An account with no picture
-      // set (the avatar id comes back empty) wears the operator alone rather than a blank square.
+      // The HQ profile picture, and only that: this tile answers "who", and the operator they have
+      // been playing is a "what" the operators band already answers at a size worth looking at.
+      // An account with no picture set (the avatar id comes back empty) falls back to the operator
+      // they have played most, rather than standing as a blank square.
       const opId = mostUsedOp(pm.length ? pm : state.matches.filter(m => m.openid === p.openid));
-      const op = opIcon(opId), face = faceIcon(p.avatar), icon = face || op;
-      const badge = face && op ? `<img class="op" src="${esc(op)}" alt="" loading="lazy" title="${esc(opName(opId))}, most played ${rangeWord()}" onerror="this.remove()">` : "";
+      const icon = faceIcon(p.avatar) || opIcon(opId);
       return `<div class="pl${state.focus === p.openid ? " on" : ""}" data-focus="${esc(p.openid)}" title="Show only ${esc(p.nickname || "this player")}">
         <div class="bar" style="background:${colorFor(p.openid)}"></div>
-        <div class="pic">${icon ? `<img class="ava" src="${esc(icon)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ava"></div>`}${badge}</div>
+        ${icon ? `<img class="ava" src="${esc(icon)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ava"></div>`}
         <div class="body">
           <div class="nm"><span>${esc(p.nickname || p.openid.slice(0, 8))}</span><span class="st" style="color:${stc}">${stt}</span></div>
           <div class="ln">

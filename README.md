@@ -6,8 +6,9 @@ shows your own matches seconds after you leave the raid and refreshes every 30
 seconds.
 
 The board is **personal-first**: every module is scoped to one player, and the
-roster strip doubles as the picker. Each tile wears that player's HQ profile picture
-with the operator they have played most in the chosen range badged on the corner.
+roster strip doubles as the picker. Each tile wears that player's HQ profile
+picture — or, for an account that has never set one, the operator they have
+played most in the chosen range.
 Operators get a picture in the two places one is worth drawing: the operators
 band, where the tile is the operator and the art leads it, and the Operator
 column of an expanded raid, where the names beside it are mostly strangers.
