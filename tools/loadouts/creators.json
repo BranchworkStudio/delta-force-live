@@ -1,0 +1,32 @@
+[
+ {
+  "id": "leissik",
+  "name": "Leissik",
+  "source": "Leissik's build doc",
+  "parser": "lines",
+  "ext": "txt",
+  "fetch": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/export?format=txt",
+  "page": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+  "links": ["https://www.twitch.tv/leissik"]
+ },
+ {
+  "id": "poach",
+  "name": "POACH",
+  "source": "deltaforce.build/poach",
+  "parser": "dfbuild",
+  "ext": "html",
+  "fetch": "https://www.deltaforce.build/poach",
+  "page": "https://www.deltaforce.build/poach",
+  "mode": "operations"
+ },
+ {
+  "id": "deathlapse",
+  "name": "Deathlapse",
+  "source": "deltaforce.build/deathlapse",
+  "parser": "dfbuild",
+  "ext": "html",
+  "fetch": "https://www.deltaforce.build/deathlapse",
+  "page": "https://www.deltaforce.build/deathlapse",
+  "mode": "operations"
+ }
+]

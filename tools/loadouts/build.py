@@ -1,6 +1,11 @@
 """Turn the pages fetch.sh downloaded into docs/data/loadouts.json. See ../../README.md,
-"Loadouts", for the three rules this applies and why."""
+"Loadouts", for the three rules this applies and why.
+
+Two kinds of page feed this file. The aggregators (rnkd.gg, deltaforcetools.gg) are read here;
+the pages the creators run themselves are read by own.py, and merged in below — those are the
+ones the tab puts first, because a build on its maker's own page is the build they stand behind."""
 import re, json, glob, html as H, datetime, collections, os
+import own
 HERE=os.path.dirname(os.path.abspath(__file__))
 D=os.path.join(HERE,'raw','')                                   # what fetch.sh downloaded
 OUT=os.path.join(HERE,'..','..','docs','data','loadouts.json')  # what the tab reads
@@ -122,22 +127,30 @@ for r in sc:
       code=r['code'],url=r.get('url'),added=r.get('created'),popularity=int(r.get('copies') or 0),
       level=None,att=[],note='',tags=r.get('tags') or []))
 
-# one build per (weapon, mode, creator): keep the most copied
+# ---- the creators' own pages ----
+own_sources,own_creators,own_builds,own_skipped=own.collect(GUNS)
+creators.update(own_creators); skipped.update(own_skipped)
+
+# one build per (weapon, mode, creator): keep the most copied. This is an aggregator problem —
+# the same build reposted by the same person — and own.py does its own thinning, so the builds
+# from a creator's own page skip it: a budget MP7 and a 350k MP7 are two different answers.
 best={}
 for b in builds:
     k=(b['weapon'],b['mode'],b['creator'])
     if k not in best or b['popularity']>best[k]['popularity']: best[k]=b
-builds=sorted(best.values(),key=lambda b:(b['weapon'],-b['popularity']))
+builds=sorted(list(best.values())+own_builds,key=lambda b:(b['weapon'],-b['popularity']))
 creators={k:v for k,v in creators.items() if any(b['creator']==k for b in builds)}
 
 doc=dict(updated=datetime.date.today().isoformat(),
-  sources={'rnkd':dict(name='rnkd.gg',url='https://rnkd.gg/deltaforce/builds/'),
-           'dft':dict(name='deltaforcetools.gg',url='https://deltaforcetools.gg/weapon-builds')},
+  sources=dict({'rnkd':dict(name='rnkd.gg',url='https://rnkd.gg/deltaforce/builds/',kind='aggregator'),
+                'dft':dict(name='deltaforcetools.gg',url='https://deltaforcetools.gg/weapon-builds',kind='aggregator')},
+               **own_sources),
   creators=creators,builds=builds)
 os.makedirs(os.path.dirname(OUT),exist_ok=True)
 json.dump(doc,open(OUT,'w'),indent=1,ensure_ascii=False)
 print('builds',len(builds),'creators',len(creators),'weapons',len({b['weapon'] for b in builds}),'/',len(GUNS))
 print('by source',collections.Counter(b['source'] for b in builds))
+print("from creators' own pages",sum(1 for b in builds if doc['sources'][b['source']].get('kind')=='creator'))
 print('by mode',collections.Counter(b['mode'] for b in builds))
 print('named-creator builds',sum(1 for b in builds if b['creator'] not in ('deltaforcetools',)))
 print('with attachments',sum(1 for b in builds if b['att']))
