@@ -21,7 +21,7 @@ s = open('raw/guns_en.js', encoding='utf8').read()
 d = json.loads(s[s.index('{'):].rstrip().rstrip(';'))
 tail = re.compile(r'\s+(Assault Rifle|Compact Assault Rifle|Submachine Gun|Sniper Rifle|Marksman Rifle|'
                   r'Battle Rifle|General Machine Gun|Light Machine Gun|Machine Gun|Shotgun|Pistol|'
-                  r'Revolver|Carbine|Crossbow|Bow)\s*$', re.I)
+                  r'Revolver|Carbine)\s*$', re.I)   # not Bow: \"Compound Bow\" is a whole name
 names = sorted({tail.sub('', g['language']['en']).strip() for g in d['guns']})
 json.dump(names, open('guns.json', 'w'), indent=1)
 print('guns', len(names))

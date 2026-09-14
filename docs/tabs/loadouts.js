@@ -30,7 +30,7 @@
   // The manifest's own category names are the in-game abbreviations ("SR", "MR"); spelled out here
   // because these are filter buttons, not a stat sheet.
   const CLASS = { "1": "Rifle", "2": "SMG", "3": "Sniper", "4": "LMG", "5": "Marksman", "6": "Pistol", "7": "Shotgun", "8": "Special" };
-  const TAIL = /\s+(Assault Rifle|Compact Assault Rifle|Submachine Gun|Sniper Rifle|Marksman Rifle|Battle Rifle|General Machine Gun|Light Machine Gun|Machine Gun|Shotgun|Pistol|Revolver|Carbine|Crossbow|Bow)\s*$/i;
+  const TAIL = /\s+(Assault Rifle|Compact Assault Rifle|Submachine Gun|Sniper Rifle|Marksman Rifle|Battle Rifle|General Machine Gun|Light Machine Gun|Machine Gun|Shotgun|Pistol|Revolver|Carbine)\s*$/i;  // not Bow — "Compound Bow" is the whole name
   const norm = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
 
   const GUNS = (() => {

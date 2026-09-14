@@ -2,12 +2,14 @@
 
 creators.json is the hand-kept list: one entry per page a creator publishes themselves, with the
 parser that page needs. Adding a creator is adding an entry there — nothing else in here is
-per-person. Three parsers cover what exists today:
+per-person. Four parsers cover what exists today:
 
   lines    a plain-text dump (a Google Doc exported as text) where a code sits on its own line,
            usually under the creator's own heading for it
   dfbuild  a deltaforce.build/<name> page, a Next.js app that ships the creator's sheet as JSON
            inside the server payload
+  sheet    a Google Sheet the creator published, read as CSV, with no assumption about which
+           column is which
   medow    medowmafia.com's builds page, whose table is a JS literal carrying the global and the
            CN client's code for the same build side by side
 
@@ -15,7 +17,7 @@ Weapon and mode come from the code itself when the creator published the whole s
 the row's label when they published only the tail — see weapon_of(). A row whose weapon cannot
 be identified is dropped rather than guessed at.
 """
-import re, json, os, html as H, datetime, collections
+import re, csv, io, json, os, html as H, datetime, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RAW = os.path.join(HERE, 'raw', 'own', '')
@@ -25,7 +27,8 @@ BARE = re.compile(r'^[A-Z0-9]{18,24}$')
 # The same class words build.py strips, but also without the space in front: a creator typing the
 # code by hand drops it often enough ("VSSMarksmanRifle-Operations-…") to be worth handling.
 CLASS = (r'(Assault Rifle|Compact Assault Rifle|Submachine Gun|Sniper Rifle|Marksman Rifle|Battle Rifle|'
-         r'General Machine Gun|Light Machine Gun|Machine Gun|Shotgun|Pistol|Revolver|Carbine|Crossbow|Bow)')
+         r'General Machine Gun|Light Machine Gun|Machine Gun|Shotgun|Pistol|Revolver|Carbine)')
+# Not "Bow": the manifest's only bow is called "Compound Bow", so the word is the name, not a class.
 TAIL = re.compile(r'\s*' + CLASS + r'\s*$', re.I)
 NTAIL = re.compile(re.sub(r'[ |]', lambda m: '' if m.group() == ' ' else '|', CLASS).lower() + '$')
 
@@ -58,6 +61,13 @@ def weapon_of(guns, prefix, label):
     return ALIAS[max(hit, key=len)] if hit else None
 
 
+# What a gun is, rather than what this build of it is. Creators write these beside the name
+# ("MDR Assault Rifle", "AS Val AR") and the tab already groups by gun, so as a note they are empty.
+CLASSES = set("ar smg lmg br dmr smr pistol shotgun sniper bow crossbow assaultrifle "
+              "compactassaultrifle submachinegun lightmachinegun generalmachinegun machinegun "
+              "battlerifle marksmanrifle sniperrifle".split())
+
+
 def clean_label(t, gun):
     """The creator's own name for the build, with the gun's name taken out of it — the card already
     says which gun this is, and what is left is the part worth reading: "( High Tier )", "budget",
@@ -71,7 +81,8 @@ def clean_label(t, gun):
     t = re.sub(r'\s+', ' ', t).strip(' -–—/,')
     if re.fullmatch(r'\(([^()]*)\)', t): t = t[1:-1].strip()     # the whole label was parenthesised
     if t.count('(') != t.count(')'): t = t.replace('(', '').replace(')', '').strip()
-    if norm(t) in ('', 'build', 'newbuild', 'new'): return ''
+    if norm(t) in ('', 'build', 'newbuild', 'new') or norm(t) in CLASSES: return ''
+    if norm(t) and norm(t) in norm(gun): return ''      # "Bow" under Compound Bow says nothing new
     return t[:60]
 
 
@@ -145,6 +156,51 @@ def avatar_url(txt):
     return m.group(1) if m else None
 
 
+PRICE = re.compile(r'^\s*(~?)\s*(\d+(?:[.,]\d+)?)\s*([kKmM])\s*$')
+
+
+def parse_sheet(txt, guns, cfg):
+    """A Google Sheet the creator published, read as CSV. These have nothing in common with each
+    other — code beside the name, or a price or a "Meta" marker in between; one long list, or four
+    class columns side by side — so this assumes no columns at all. A cell that is a code is a
+    build, and the cells immediately left of it, up to the first blank or the previous build's
+    code, are what its maker wrote about it: the leftmost is their name for it, anything between
+    is a tag. A row whose only cell is "Operations" or "Warfare" sets the mode for everything
+    below it, which is how a sheet of bare codes says which game they are for."""
+    mode = cfg.get('mode', 'operations')
+    out = []
+    for row in csv.reader(io.StringIO(txt)):
+        cells = [c.strip() for c in row]
+        filled = [c for c in cells if c]
+        if len(filled) == 1 and filled[0].lower() in ('operations', 'warfare'):
+            mode = filled[0].lower()
+            continue
+        for i, c in enumerate(cells):
+            m = CODE.match(c)
+            if not m and not BARE.match(c): continue
+            run = []
+            for j in range(i - 1, -1, -1):
+                if not cells[j] or CODE.match(cells[j]) or BARE.match(cells[j]): break
+                run.append(cells[j])
+            label = run[-1] if run else ''
+            tags = []
+            for t in reversed(run[:-1]):
+                p = PRICE.match(t)
+                if p: tags.append(p.group(1) + p.group(2) + p.group(3).upper())
+                elif len(t) <= 12: tags.append(t)
+            g = weapon_of(guns, m.group(1) if m else '', label)
+            if not g:
+                out.append(dict(skip=label or c)); continue
+            out.append(dict(weapon=g,
+                            mode='warfare' if (m and m.group(2) == 'Warfare') else ('operations' if m else mode),
+                            code=c, note=clean_label(label, g), added=None, tags=tags))
+    kept = [b for b in out if 'skip' not in b]
+    for t in {t for b in kept for t in b['tags'] if not PRICE.match(t)}:
+        if all(t in b['tags'] for b in kept):       # "Meta" on all 52 of them tells nobody anything
+            for b in kept: b['tags'].remove(t)
+    return out
+
+
 def parse_medow(txt, guns, cfg):
     """medowmafia.com ships its whole table as one JS literal — [class, weapon, label, code, rough
     price, the same build's code for the CN client] — with a toolbar above it that switches
@@ -168,7 +224,7 @@ def parse_medow(txt, guns, cfg):
     return out
 
 
-PARSER = {'lines': parse_lines, 'dfbuild': parse_dfbuild, 'medow': parse_medow}
+PARSER = {'lines': parse_lines, 'dfbuild': parse_dfbuild, 'sheet': parse_sheet, 'medow': parse_medow}
 SOCIAL = ('twitch', 'youtube', 'twitter', 'tiktok', 'kick', 'discord')
 
 
