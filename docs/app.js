@@ -262,6 +262,11 @@
     return inv ? "?i=" + encodeURIComponent(inv) : "";
   })();
   const connectHref = () => "connect.html" + inviteQS;
+  // Where the bookmark sends the HQ tab when the flow was started from the gate rather than from
+  // connect.html. `w=1` tells that page a board tab is waiting behind it, so it closes itself once
+  // the hand-over is through instead of becoming the page in front of you. Absolute, because the
+  // bookmark runs on HQ's origin and a relative URL would resolve against theirs.
+  const handoverHref = () => new URL("connect.html?w=1" + (inviteQS ? "&" + inviteQS.slice(1) : ""), location.href).href;
   // The footer link is static HTML, so give it the invite too.
   if (inviteQS) { const a = document.getElementById("connectLink"); if (a) a.href = connectHref(); }
   const GROUP_KEY = "df-group";
@@ -360,16 +365,32 @@
   // A visitor with no session reads nothing at all now (every policy asks shares_group()), so an
   // empty board is a locked door rather than a broken page, and it should say so instead of
   // drawing a hero full of dashes.
+  // The flow itself, not a link to it: an account that is not linked yet is the only thing this
+  // visitor can do anything about, so it is the page. connect.html is still there, unchanged, for
+  // the invite links that point straight at it.
+  let gateDrawn = null;
   function renderGate() {
     const shut = !state.players.length && !live(session);
     document.body.classList.toggle("gated", shut);
     const el = $("#gate");
     el.hidden = !shut;
-    if (!shut) return;
-    el.innerHTML = `<h2>This board is private</h2>
-      <p>Its matches are visible to the players who share it. If you were sent here with a board's link, connect your own Delta Force HQ account and you land on it.</p>
-      <p class="fine">Three steps, nothing to type, and your Level Infinite password never comes near this site.</p>
-      <a class="go" href="${connectHref()}">Connect account</a>`;
+    if (!shut) { gateDrawn = null; return; }
+    const F = window.DF_CONNECT;
+    if (!F) {                                        // connect-flow.js missing: say so, do not pretend
+      el.innerHTML = `<h2>This board is private</h2>
+        <p>Connect your own Delta Force HQ account and you land on it.</p>
+        <a class="go" href="${connectHref()}">Connect account</a>`;
+      return;
+    }
+    let bm = false; try { bm = localStorage.getItem("df-bm") === "1"; } catch (e) { /* private window */ }
+    // Every load repaints the board; repainting the stepper under someone mid-drag would not do.
+    if (gateDrawn === String(bm)) return;
+    gateDrawn = String(bm);
+    el.innerHTML = `<h2>Connect your HQ account</h2>
+      <p>This board is private: its matches are visible to the players who share it. Connect your own Delta Force account and you land on it — the server then reads your matches every minute, with your PC off and nothing installed.</p>
+      <p class="fine">Nothing to type, and your Level Infinite password never comes near this site.</p>
+      <div class="cflow">${F.stepsHtml({ bm, back: handoverHref(), closes: true })}</div>`;
+    F.wire(el, { bm: () => renderGate() });
   }
 
   // ---------- tabs ----------
@@ -1256,6 +1277,11 @@
   }
   document.querySelectorAll("[data-range]").forEach(b => b.onclick = () => setRange(b.dataset.range));
   document.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { document.querySelectorAll("[data-mode]").forEach(x => x.classList.toggle("on", x === b)); state.mode = Number(b.dataset.mode); state.showAll = false; load(); });
+
+  // The HQ tab hands over in a tab of its own and writes it down as it goes; this board is the tab
+  // that was waiting. Reloading is the whole of it — the session it left behind is in localStorage,
+  // which is where the boot below reads it from anyway.
+  if (window.DF_CONNECT) window.DF_CONNECT.watch(() => location.reload());
 
   // ---------- boot ----------
   // HTML and JS are deployed together but cached separately (Pages CDN, max-age 600). If they mismatch, reload once.
