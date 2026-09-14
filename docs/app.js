@@ -551,7 +551,7 @@
       const gate = live(session)
         ? "Nobody on this board yet. Invite a mate with the board's code."
         : `This board is private. <a class="gatelink" href="${connectHref()}">Connect your HQ account</a> to see it.`;
-      el.innerHTML = `<div class="pl on"><div class="body"><div class="empty">${gate}</div></div></div>`;
+      el.innerHTML = `<div class="rgrid"><div class="pl on"><div class="body"><div class="empty">${gate}</div></div></div></div>`;
       return;
     }
     const cards = state.players.map(p => {
@@ -575,15 +575,17 @@
           </div>
         </div></div>`;
     });
-    if (state.players.length > 1) cards.push(`<div class="pl squad${state.focus === "all" ? " on" : ""}" data-focus="all" title="Add every tracked player together">
-        <div class="bar" style="background:var(--div)"></div>
-        <div class="ava sig"></div>
-        <div class="body">
-          <div class="nm"><span>All squad</span></div>
-          <div class="ln"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> ${raid(ms.length)}</span><span><b>${opKills(ms)}</b> op kills</span></div>
-        </div></div>`);
+    // The whole squad is the strip's heading, not a card at the end of it. It was a card once, and
+    // it took a player's worth of width to say something none of the others say — who they add up
+    // to. As a line above them it still says it, and still switches the board to the sum when it is
+    // clicked; the four names below it get the room back.
+    const head = state.players.length < 2 ? "" : `<div class="rhead">
+      <button class="allsq${state.focus === "all" ? " on" : ""}" data-focus="all" title="Add every tracked player together">
+        <span class="lbl">All squad</span>
+        <span class="sum"><span><b>${state.players.length}</b> players</span><span><b>${ms.length}</b> ${raid(ms.length)}</span><span><b>${opKills(ms)}</b> op kills</span></span>
+      </button></div>`;
     el.style.setProperty("--n", cards.length);
-    el.innerHTML = cards.join("");
+    el.innerHTML = head + `<div class="rgrid">${cards.join("")}</div>`;
     el.querySelectorAll("[data-focus]").forEach(n => n.onclick = () => setFocus(n.dataset.focus));
   }
 
