@@ -84,6 +84,16 @@
   .menu .grp .gact { display: flex; gap: 8px; margin-top: 9px; }
   .menu .grp .gact button { flex: 1; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2); font: 400 11px 'Barlow', sans-serif; padding: 6px 4px; cursor: pointer; }
   .menu .grp .gact button:hover { color: var(--text); border-color: var(--div); }
+  .menu .grp .gown { margin: 9px 0 0; padding: 8px 9px; background: var(--hair-2); border-left: 2px solid var(--tick); }
+  .menu .grp .gcode { font: 400 11px 'Barlow', sans-serif; color: var(--muted); }
+  .menu .grp .gcode b { margin-left: 7px; font: 600 14px var(--hud); letter-spacing: 3px; color: var(--text); }
+  .menu .grp .gbtn { display: flex; gap: 6px; margin-top: 7px; }
+  .menu .grp .gbtn button { flex: 1; background: none; border: 1px solid var(--hair); color: var(--text-2); font: 400 11px 'Barlow', sans-serif; padding: 5px 4px; cursor: pointer; }
+  .menu .grp .gbtn button:hover { color: var(--text); border-color: var(--div); }
+  .menu .grp .gmem { display: flex; flex-direction: column; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--hair); }
+  .menu .grp .gmem span { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font: 400 12px 'Barlow', sans-serif; color: var(--text-2); }
+  .menu .grp .gmem button { background: none; border: 0; color: var(--muted); font: 400 11px 'Barlow', sans-serif; padding: 0; cursor: pointer; }
+  .menu .grp .gmem button:hover { color: var(--red); }
   .menu .grp .gleave { display: block; width: 100%; margin-top: 9px; background: none; border: 0; color: var(--muted); font: 400 11px 'Barlow', sans-serif; text-align: left; padding: 2px 0 0 9px; cursor: pointer; }
   .menu .grp .gleave:hover { color: var(--red); }
   .menu .grp .gf { display: flex; gap: 6px; margin-top: 9px; }
@@ -360,10 +370,10 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=19"></script>
+<script src="config.js?v=20"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/collections_en.js" onerror="window.__colFailed=1"></script>
-<script src="app.js?v=19"></script>
+<script src="app.js?v=20"></script>
 </body>
 </html>

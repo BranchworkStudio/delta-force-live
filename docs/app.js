@@ -546,8 +546,26 @@
   // No openids, no cookies, no poll intervals — those live in the README.
   let menuOpen = false;
   let madeLink = null;                                        // the invite link just made, shown until the menu closes
+  // Three links, and the difference between them is exactly who can make one. Only the first two
+  // enrol, and only the tracker's admin can make those.
+  const LINK_TITLE = { new: "Invite link", solo: "Tracker link", squad: "Board code" };
+  const LINK_NOTE = {
+    new: "They connect their own HQ account and land straight on this board.",
+    solo: "They get the tracker for their own stats, and stay off every board.",
+    squad: "For somebody already on the tracker: this admits them to the board, it does not sign anybody up.",
+  };
   let grpMode = null;                                         // "new" | "join", while the field for it is open
   let grpErr = null;                                          // what the database said, if it said no
+
+  // Whether this player owns the board they are looking at. The database is the authority — only an
+  // owner can read a code or remove anybody (0022) — so this only decides whether to draw controls
+  // that would be refused anyway.
+  const ownsHere = () => {
+    const mine = ls(CTL_KEY) || (session && session.openid) || null;
+    if (!mine || state.group === "solo") return false;
+    const m = state.memberships.find(x => x.group_id === state.group && x.openid === mine);
+    return !!m && m.role === "owner";
+  };
 
   // The boards this player is on, and the two ways to end up on another one. "Just me" is not a
   // group and never needs to be: it is this player's own rows, which is what a board of one is.
@@ -558,10 +576,25 @@
     const item = (id, label, sub) =>
       `<button class="g${state.group === id ? " on" : ""}" data-g="${esc(id)}">${esc(label)}<span>${esc(sub)}</span></button>`;
 
+    // Keeping a board: its code, a fresh one if the old has gone further than it was meant to, and
+    // the people on it. The code admits somebody who is already on the tracker and enrols nobody,
+    // which is why an owner may hand it out without asking anyone.
+    const here = state.myGroups.find(g => g.id === state.group) || null;
+    const mates = ownsHere()
+      ? state.memberships.filter(m => m.group_id === state.group && m.openid !== mine)
+      : [];
+    const keep = !ownsHere() ? "" : `<div class="gown">
+        <div class="gcode">Code <b>${esc(here ? here.code : "······")}</b></div>
+        <div class="gbtn"><button id="grpCopy">Copy link</button><button id="grpRoll">New code</button></div>
+        ${mates.length ? `<div class="gmem">${mates.map(m =>
+          `<span>${esc(playerName(m.openid))}<button data-rm="${esc(m.openid)}">Remove</button></span>`).join("")}</div>` : ""}
+      </div>`;
+
     return `<div class="grp">
       <b>Boards</b>
       ${rows.map(g => item(g.id, g.name, (g.members === 1 ? "1 player" : g.members + " players"))).join("")}
       ${item("solo", "Just me", "on my own")}
+      ${keep}
       ${state.group !== "solo" && rows.some(g => g.id === state.group)
         ? `<button class="gleave" id="grpLeave">Leave ${esc(groupName(state.group) || "this board")}</button>` : ""}
       ${grpMode ? `<div class="gf">
@@ -607,14 +640,17 @@
       meta = srv.last_ok_at ? `Last checked ${ago(srv.last_ok_at)}` : "First check due any moment";
     }
 
-    // Two kinds of link, because "come and play with us" and "here, use this for your own stats"
-    // are two different invitations. A group link is the group's own code, which this browser is
-    // holding already — only a member can read it — so that one needs no request at all.
-    const here = state.myGroups.find(g => g.id === state.group) || null;
+    // Bringing somebody new in is the one thing that costs whoever pays for the backend, so it has
+    // exactly one authority: the tracker's admin. Everything about a board a player already has an
+    // account on — its code, who is on it — belongs to that board's owner and lives above, in the
+    // boards section. The server asks the same two questions again; this only saves a refusal.
+    const myRow = mine ? state.players.find(p => p.openid === mine) : null;
+    const admin = own && !!(myRow && myRow.is_admin);
+    const board = admin && ownsHere() ? groupName(state.group) : null;
     const acts = [];
     if (srv.has_error) acts.push(`<a class="go" href="${connectHref()}">Reconnect</a>`);
-    if (own && here) acts.push(`<button id="invSquad">Invite to ${esc(here.name)}</button>`);
-    if (own) acts.push(`<button id="invSolo">Invite to the tracker only</button>`);
+    if (board) acts.push(`<button id="invNew">Invite somebody new to ${esc(board)}</button>`);
+    if (admin) acts.push(`<button id="invSolo">Invite somebody new, tracker only</button>`);
     acts.push(`<a href="https://www.playdeltaforce.com/events/hq/en/" target="_blank" rel="noopener">Open Delta Force HQ ›</a>`);
     if (!srv.has_error) acts.push(`<a href="${connectHref()}">Reconnect</a>`);
     if (own) acts.push(`<button class="bad" id="disc">Stop collecting</button>`);
@@ -630,12 +666,10 @@
         ${meta ? `<div class="meta">${meta}</div>` : ""}
         ${own ? groupSection() : ""}
         <div class="mi">${acts.join("")}</div>
-        ${madeLink ? `<div class="lk"><b>${madeLink.kind === "solo" ? "Tracker link" : "Group link"}</b>
+        ${madeLink ? `<div class="lk"><b>${LINK_TITLE[madeLink.kind]}</b>
           <input readonly value="${esc(madeLink.url)}">
           ${madeLink.code ? `<div class="code">or the code: <b>${esc(madeLink.code)}</b></div>` : ""}
-          <span>${madeLink.kind === "solo"
-            ? "They get the tracker for their own stats, and stay off this board."
-            : "They land on this board and show up in the roster with everyone else."}</span></div>` : ""}
+          <span>${LINK_NOTE[madeLink.kind]}</span></div>` : ""}
       </div>`;
 
     $("#acctBtn").onclick = (e) => { e.stopPropagation(); menuOpen = !menuOpen; if (!menuOpen) { madeLink = null; grpMode = null; grpErr = null; renderAccount(); } else $("#acctMenu").hidden = false; };
@@ -697,41 +731,75 @@
       inp.onkeydown = (e) => { e.stopPropagation(); if (e.key === "Enter") go.click(); };
     }
 
-    // The group link is the group's code, which this browser has already read — so it appears the
-    // moment it is asked for. The tracker link is a row the server has to make first.
-    const inv = $("#invSquad");
-    if (inv && here) inv.onclick = async (e) => {
+    // The board's code is already in this browser — only its owner can read it — so the link for it
+    // appears the moment it is asked for, with no request at all.
+    const mineHere = state.myGroups.find(g => g.id === state.group) || null;
+    const cp = $("#grpCopy");
+    if (cp && mineHere) cp.onclick = async (e) => {
       e.stopPropagation();
-      const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?g=" + encodeURIComponent(here.code);
-      madeLink = { kind: "squad", url, code: here.code };
+      const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?g=" + encodeURIComponent(mineHere.code);
+      madeLink = { kind: "squad", url, code: mineHere.code };
       try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
       renderAccount();
       const f = $("#acctMenu .lk input"); if (f) f.select();
     };
 
+    // A new code retires the old one, so every link already sent stops working. Worth two clicks.
+    const roll = $("#grpRoll");
+    if (roll) roll.onclick = async (e) => {
+      e.stopPropagation();
+      if (roll.dataset.armed !== "1") { roll.dataset.armed = "1"; roll.textContent = "Old links die. Sure?"; return; }
+      roll.disabled = true; roll.textContent = "…";
+      const r = await rpc("rotate_group_code", { p_group: state.group });
+      if (r.error) { grpErr = r.error; renderAccount(); return; }
+      madeLink = null;
+      await load().catch(() => { });
+    };
+
+    // Putting somebody off the board. They keep their account and their own stats; what they lose
+    // is this board, and with it the right to read anybody else's matches on it.
+    $("#acctMenu").querySelectorAll("[data-rm]").forEach(b => b.onclick = async (e) => {
+      e.stopPropagation();
+      if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Sure?"; return; }
+      b.disabled = true; b.textContent = "…";
+      const r = await rpc("remove_group_member", { p_group: state.group, p_openid: b.dataset.rm });
+      if (r.error) { grpErr = r.error; renderAccount(); return; }
+      state.focus = null;
+      await load().catch(() => { });
+    });
+
+    // The two that enrol are rows the server has to make first, and it checks the same thing again.
+    const invNew = $("#invNew");
+    if (invNew) invNew.onclick = (e) => mintInvite(e, invNew, "new", "Invite somebody new to " + (groupName(state.group) || "this board"));
+
+    const solo = $("#invSolo");
+    if (solo) solo.onclick = (e) => mintInvite(e, solo, "solo", "Invite somebody new, tracker only");
+
     // A fresh row every time, so one can be withdrawn later without cutting off everyone else.
     // It is shown as well as copied: the clipboard is invisible, and a link you can read is a link
     // you can check before you send it.
-    const solo = $("#invSolo");
-    if (solo) solo.onclick = async (e) => {
+    async function mintInvite(e, btn, kind, label) {
       e.stopPropagation();
-      solo.disabled = true; solo.textContent = "Making a link…";
+      btn.disabled = true; btn.textContent = "Making a link…";
       const r = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
         method: "POST",
         headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
-        body: JSON.stringify({ action: "invite", openid: mine, control_key: ls(CTL_KEY + "-key") || "", kind: "solo" }),
+        body: JSON.stringify({
+          action: "invite", openid: mine, control_key: ls(CTL_KEY + "-key") || "",
+          kind, group_id: kind === "new" ? state.group : undefined,
+        }),
       }).then(x => x.json()).catch(() => null);
       if (!r || !r.ok || !r.code) {
-        solo.disabled = false; solo.textContent = "Could not make a link";
-        setTimeout(() => { if (solo.isConnected) solo.textContent = "Invite to the tracker only"; }, 2200);
+        btn.disabled = false; btn.textContent = (r && r.error) || "Could not make a link";
+        setTimeout(() => { if (btn.isConnected) btn.textContent = label; }, 2600);
         return;
       }
       const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?i=" + encodeURIComponent(r.code);
-      madeLink = { kind: "solo", url };
+      madeLink = { kind, url };
       try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
       renderAccount();
       const f = $("#acctMenu .lk input"); if (f) f.select();
-    };
+    }
     const fld = $("#acctMenu .lk input");
     if (fld) fld.onclick = (e) => { e.stopPropagation(); fld.select(); };
 
