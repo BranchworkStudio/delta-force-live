@@ -1,4 +1,4 @@
-/* Ahsarah playing cards — a season 7 limited-time event, and the first tab module.
+/* Ahsarah playing cards — a limited-time collection event, and the first tab module.
  *
  * Everything the event needs is in this one file: its styles, its reading of the official card
  * manifest, its pane, and the chip strip it shows beside the big number while you are on another
@@ -12,6 +12,8 @@
  * override is this browser's own note, and it is what makes the headline count honest.
  */
 (function () {
+  // The event key is only a key: it names these rows in event_collection and matches the entry in
+  // the poller. It is not the game's season number and is never shown.
   const EVENT = "asala_cards_s7";
   const SOLD_KEY = "df-sold-" + EVENT;
   const CAP = 14;                       // chips the header strip will print before it says "+N"
@@ -68,10 +70,18 @@
     for (const c of DECK) st[c.id] = !(count[c.id] > 0) ? "need" : sold.has(c.id) ? "sold" : "have";
     const list = DECK.filter(c => st[c.id] !== "have");
     const inHand = TOTAL - list.length;
+    // A suit is done when every rank in it is actually in hand — a card marked sold is not, which
+    // is the whole point of the override: HQ would call the suit finished.
+    const ofSuit = (su) => DECK.filter(c => c.suit === su);
+    const held = (cards) => cards.filter(c => st[c.id] === "have").length;
+    const suits = SUITS.map(su => ({ suit: su, held: held(ofSuit(su)), of: ofSuit(su).length }));
     return {
       openid, any: Object.keys(count).length > 0, state: st, missing: list,
       inHand, toFind: list.length,
       hq: DECK.filter(c => count[c.id] > 0).length,
+      sold: DECK.filter(c => st[c.id] === "sold").length,
+      suits, suitsDone: suits.filter(x => x.held === x.of).length,
+      jokers: held(SPECIALS), jokersOf: SPECIALS.length,
       box: BOX ? count[BOX.id] > 0 : false,
       pct: TOTAL ? Math.round(100 * inHand / TOTAL) : 0,
     };
@@ -98,6 +108,35 @@
     // picker applies: the range dims in the masthead and the mode picker is not shown at all.
     filters: false,
     queries: () => ["event_collection?select=openid,item_id,owned_count&event_key=eq." + EVENT + "&limit=2000"],
+    // The board's headline is match data, which this page is not: on the cards tab the hero states
+    // the collection instead. The big number is what is still missing, because that is the only
+    // question the page exists to answer and it has to be readable from a second screen.
+    hero(data, h) {
+      const rows = data[0] || [], who = subject(rows, h);
+      if (!who) return null;
+      const me = readPlayer(rows, who), e = h.esc;
+      if (!me.any) return null;
+      const near = me.suits.filter(x => x.held < x.of).sort((a, b) => (b.held / b.of) - (a.held / a.of))[0];
+      return {
+        eyebrow: h.playerName(who) + " · Ahsarah collection",
+        big: me.toFind ? String(me.toFind) : "&#10003;",
+        cells: [
+          ["In hand", `${me.inHand}<span style="color:var(--muted)">/${TOTAL}</span>`, me.pct + "% of the deck"],
+          ["Suits done", `${me.suitsDone}<span style="color:var(--muted)">/${me.suits.length}</span>`,
+            near ? `closest ${near.suit.toLowerCase()} ${near.held} of ${near.of}` : "every suit complete"],
+          ["Jokers", `${me.jokers}<span style="color:var(--muted)">/${me.jokersOf}</span>`, null],
+          ["Marked sold", String(me.sold), me.sold ? "HQ still counts them" : "none marked"],
+          ["HQ claims", `${me.hq}<span style="color:var(--muted)">/${TOTAL}</span>`, "lifetime tally"],
+          // Every other value in this row is a count in the board's green. "No" is not an
+          // achievement, so it says so in the colour the board uses for a blank.
+          ["Card box", me.box ? "Yes" : `<span style="color:var(--text-2)">No</span>`,
+            me.box ? "the set can be carried" : "needed to carry the set"],
+        ].map(c => [c[0], c[1], c[2], c[0] === "HQ claims"
+          ? "HQ counts every card you have ever unlocked. Selling one in game does not take it back off this number, which is why it can be higher than what is in your stash."
+          : null]),
+      };
+    },
+
     // The slot beside the big number: a strip of the cards still missing while you are reading
     // match data, and the collection's own progress once you are on its page. The tab's own reads
     // arrive as one array per query, in the order they were asked for.
@@ -111,10 +150,9 @@
       if (!me.any) return null;
       if (active) {
         return `<div class="cardprog">
-          <div class="cshead">Collection · <span class="go">season 7 — Ahsarah</span></div>
-          <div class="cpbig">${me.inHand}<span>/${TOTAL}</span></div>
+          <div class="cshead">${me.toFind ? "Cards still to find" : "The deck is complete"}</div>
           <i class="tk big"><u style="width:${me.pct}%"></u></i>
-          <div class="cpsub">${me.toFind ? me.toFind + " to find" : "complete"}${me.hq !== me.inHand ? " · HQ claims " + me.hq : ""}</div>
+          ${me.toFind ? `<button class="cpgo" data-scroll="#cpToFind">See what is missing &rarr;</button>` : ""}
         </div>`;
       }
       // Past the cap the strip states the overflow instead of printing a wall of chips: early in a
@@ -170,7 +208,7 @@
           </div>
           ${BOX ? `<div class="boxnote">${me.box ? "Card box found — the full set can be carried." : "No card box yet. The set needs one to be carried into a match."}</div>` : ""}
         </div>
-        <div class="cp-r">
+        <div class="cp-r" id="cpToFind">
           <div class="mod-label">To find <span class="tot">${me.toFind}</span>
             <span class="rest">${me.hq === me.inHand ? "HQ agrees" : "HQ claims " + me.hq + "/" + TOTAL}</span></div>
           ${me.missing.length
@@ -255,9 +293,9 @@
   .cardstrip:hover .cschip { background: rgba(29, 224, 140, .2); }
   .cardstrip:hover .cschip.sold { background: rgba(230, 179, 74, .2); }
   .cardprog { text-align: right; min-width: 300px; }
-  .cpbig { font: 700 52px/1 var(--hud); font-variant-numeric: tabular-nums; margin: 6px 0 12px; }
-  .cpbig span { color: var(--muted); font-size: 26px; }
-  .cpsub { font: 600 12px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+  .cpgo { border: 0; background: none; padding: 0; margin-top: 12px; cursor: pointer;
+          font: 600 12px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--green); }
+  .cpgo:hover { text-decoration: underline; }
 
   /* The deck is 990px of fixed grid. Below that it scrolls sideways inside its own column rather
      than pushing the page wider, and the list beside it goes underneath. */
