@@ -208,13 +208,22 @@
      are registered by the module files loaded before app.js, so a season ending is a deleted script
      tag and a deleted file rather than an edit to this page. The bar hides itself while only one
      tab exists: a single tab is not a choice. */
-  .tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--hair); background: var(--ground); }
-  .tabs button { border: 0; background: none; padding: 15px 32px; font: 700 13px var(--hud); letter-spacing: 2px;
-                 text-transform: uppercase; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
-  .tabs button:hover { color: var(--text-2); }
-  .tabs button.on { color: var(--green); border-bottom-color: var(--green); }
-  .tabs .cnt { display: inline-block; margin-left: 10px; background: rgba(29, 224, 140, .14); color: var(--green); padding: 2px 8px; font-size: 11px; letter-spacing: 1px; }
-  .tabs button.on .cnt { background: var(--green); color: var(--on-green); }
+  /* Full-bleed across the hero rather than inset in it: the rule under the tabs has to reach both
+     edges, or the bar reads as one more filter in the masthead instead of as the page you are on. */
+  /* The page switch sits in the masthead beside the logo, in the slot the mode filter used to hold:
+     which board you are looking at is the first choice, not one more filter on the data below. Same
+     segmented shape as the filters it now outranks, one size up, so the family is still obvious. */
+  .tabs { display: flex; gap: 2px; flex-wrap: wrap; font: 700 13px var(--hud); text-transform: uppercase; letter-spacing: 1.4px; }
+  .tabs button { border: 0; background: #1a2a30; color: var(--text-2); padding: 8px 16px; font: inherit;
+                 text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
+  .tabs button:hover { color: var(--text); }
+  .tabs button.on { background: var(--green); color: var(--on-green); }
+  .tabs .cnt { margin-left: 9px; font-size: 11px; letter-spacing: 1px; color: var(--green); }
+  .tabs button.on .cnt { color: var(--on-green); opacity: .72; }
+  /* A filter that only means something on one tab lives on that tab. Operations and Warfare are two
+     shapes of the same match data, and the card collection has neither, so the switch travels with
+     the pane it belongs to instead of sitting greyed out in the masthead above every tab. */
+  .panebar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 14px 32px; border-bottom: 1px solid var(--hair); }
   .pane { display: none; } .pane.on { display: block; }
   /* The range buttons pick a time window, and the mode buttons pick Operations or Warfare. Both
      belong to the match data; a tab that is not range-scoped says so by dimming them rather than
@@ -330,7 +339,9 @@
     .hero { padding: 18px 20px 22px; }
     .big { font-size: 64px; }
     .headline { grid-template-columns: 1fr; gap: 22px; }
-    .tabs button { padding: 13px 20px; font-size: 12px; letter-spacing: 1.4px; }
+    .tabs { font-size: 12px; letter-spacing: 1.2px; }
+    .tabs button { padding: 7px 12px; }
+    .panebar { padding: 12px 20px; }
     .cells { grid-template-columns: 1fr 1fr; } .cell { padding: 8px 16px; }
     .roster { grid-template-columns: 1fr 1fr; }
     .cols { grid-template-columns: 1fr; } .left { border-right: 0; border-bottom: 1px solid var(--hair); }
@@ -360,7 +371,7 @@
     <div class="top">
       <div class="mark"><span class="tri"></span>Delta Force Live</div>
       <span class="vdiv"></span>
-      <div class="modes"><button class="on" data-mode="1">Operations</button><button data-mode="2">Warfare</button></div>
+      <nav class="tabs" id="tabs" hidden></nav>
       <span class="spacer"></span>
       <span class="status" id="status">connecting</span>
       <div class="ranges"><button class="on" data-range="today">Today</button><button data-range="24h">24 h</button><button data-range="7d">7 days</button><button data-range="all">All</button></div>
@@ -376,9 +387,9 @@
     </div>
   </header>
   <div id="banner" class="banner" hidden></div>
-  <nav class="tabs" id="tabs" hidden></nav>
   <section class="gate" id="gate" hidden></section>
   <section class="pane on" id="pane-match">
+  <div class="panebar"><div class="modes"><button class="on" data-mode="1">Operations</button><button data-mode="2">Warfare</button></div></div>
   <section class="nudge" id="nudge" hidden></section>
   <section class="roster" id="roster"></section>
   <section class="band" id="mapsBand"></section>

@@ -419,7 +419,8 @@
     }).join("");
     bar.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => setTab(b.dataset.tab));
     TABS.forEach(t => { const el = paneOf(t.id); if (el) el.classList.toggle("on", t.id === active.id); });
-    document.querySelectorAll(".top .modes, .top .ranges").forEach(el => el.classList.toggle("quiet", !active.filters));
+    // Only the range filter is still in the masthead, and only the match tab uses it.
+    document.querySelectorAll(".top .ranges").forEach(el => el.classList.toggle("quiet", !active.filters));
 
     // The slot beside the big number. The open tab has first claim on it; otherwise the first
     // module with something to say there takes it, which is how a tab advertises itself from a
