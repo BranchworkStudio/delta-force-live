@@ -463,15 +463,21 @@
   function band(el, label, items) {
     if (!items.length) { el.innerHTML = `<div class="mod-label">${label}</div><div class="empty">No ${raid(2)} in this range.</div>`; return; }
     const legend = `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span></div>`;
-    el.innerHTML = `<div class="mod-label">${label}</div>${legend}<div class="items">${items.map(it => `<div class="it" data-tip="${esc(it.tip)}">
-        <div class="v">${it.v}</div><div class="k">${it.k}</div>${it.bar}<div class="sub">${it.sub}</div></div>`).join("")}</div>`;
+    // A band whose rows have a picture lays each tile out sideways — art on the left, the whole
+    // stack of numbers beside it — so the two claim the same height. Bands without art are
+    // untouched, and one row missing its picture keeps the column so it still lines up.
+    const art = items.some(it => it.art);
+    el.innerHTML = `<div class="mod-label">${label}</div>${legend}<div class="items${art ? " has-art" : ""}">${items.map(it => `<div class="it" data-tip="${esc(it.tip)}">
+        ${art ? (it.art || `<div class="art"></div>`) : ""}<div class="bd">
+        <div class="v">${it.v}</div><div class="k">${it.k}</div>${it.bar}<div class="sub">${it.sub}</div></div></div>`).join("")}</div>`;
     attachTips(el);
   }
   function bandItems(by, sol, extra) {
     const rows = Object.values(by).sort((a, b) => b.n - a.n).slice(0, 8);
     return rows.map(v => ({
       v: pct(v.w, v.n),
-      k: `${v.icon ? `<img class="ophead lg" src="${esc(v.icon)}" alt="" loading="lazy" onerror="this.remove()">` : ""}<b>${esc(v.name)}</b>${v.diff ? ` <span class="diff">${esc(v.diff)}</span>` : ""}`,
+      art: v.icon ? `<img class="art" src="${esc(v.icon)}" alt="" loading="lazy" onerror="this.replaceWith(document.createElement('div'))">` : "",
+      k: `<b>${esc(v.name)}</b>${v.diff ? ` <span class="diff">${esc(v.diff)}</span>` : ""}`,
       bar: barCell(v.w, v.n, GREEN),
       sub: `${v.n} ${raid(v.n)}` + extra(v),
       tip: `<b>${esc(v.name + (v.diff ? " · " + v.diff : ""))}</b>: ${v.w} of ${v.n} ${rateWord()}<br>
@@ -522,13 +528,16 @@
       // The date used to sit at the front of the meta line, where it pushed the map name around.
       // It belongs with the time it qualifies, so it goes under the clock instead.
       const day = dayLabel(when);
-      const meta = [esc(mapFull(m.map_id)), g.map(x => opChip(x.operator_id)).join(" / "), m.match_duration_min != null ? esc(m.match_duration_min + " min") : null, latS != null ? esc("seen " + dur(latS) + (m.finished_at ? "" : "*")) : "history"].filter(Boolean).join(" · ");
+      // No operator head here, deliberately. The name was already in this line, so a picture
+      // beside it adds recognition and no fact, and the feed is the one place the site is read
+      // by scanning. The band tile and the expanded row are where a face earns its place.
+      const meta = [mapFull(m.map_id), g.map(x => opName(x.operator_id)).join(" / "), m.match_duration_min != null ? m.match_duration_min + " min" : null, latS != null ? "seen " + dur(latS) + (m.finished_at ? "" : "*") : "history"].filter(Boolean).join(" · ");
       const net = sum(g, x => x.net_income), score = sum(g, x => x.score);
       const names = g.map((x, i) => `<b>${esc(playerName(x.openid))}</b><span class="tag ${outs[i][0]}">${outs[i][1]}</span>`).join(" ");
       return `<div class="row" data-key="${esc(key)}" title="Started ${new Date(m.match_time).toLocaleString()}">
         <span class="t">${hhmm(when)}${day ? `<span class="d">${esc(day)}</span>` : ""}</span>
         <span class="rail">${g.map(x => `<i style="background:${colorFor(x.openid)}"></i>`).join("")}</span>
-        <div><div class="l1">${names}</div><div class="l2">${meta}</div></div>
+        <div><div class="l1">${names}</div><div class="l2">${esc(meta)}</div></div>
         <span class="kl">${splitKnown(g)
           ? `<span>${opKills(g)} <em>op</em></span><span class="ai">${aiKills(g)} <em>ai</em></span>`
           : `<span>${sum(g, x => x.kill_count)} <em>kills</em></span>`}</span>
