@@ -449,6 +449,7 @@
   //   queries() REST paths to read; the answers come back in the same order, already narrowed to
   //             the players on this board
   //   visible(host)              false to leave the tab off the bar entirely; absent means always
+  //   last      true to sit at the right-hand end of the bar whatever the load order
   //   scope     "all" to receive queries() rows unnarrowed — the board filters every module's rows
   //             to the players on this board, which is exactly wrong for a page about everybody
   //   count(rows, host)          a short badge for the tab bar, or null
@@ -456,7 +457,11 @@
   //                              means the tab wants that slot left empty while it is open
   //   render(el, rows, host)     paint the pane
   const MATCH_TAB = { id: "match", label: "Match data", filters: true };
-  const TABS = [MATCH_TAB].concat(Array.isArray(window.DF_TABS) ? window.DF_TABS : []);
+  // Load order decides the bar, except for a tab that says `last`: it sits at the right-hand end
+  // however its file happened to be loaded. The admin tab is not part of the board's reading order
+  // and should not push a real tab sideways. (Array#sort is stable, so nothing else moves.)
+  const TABS = [MATCH_TAB].concat(Array.isArray(window.DF_TABS) ? window.DF_TABS : [])
+    .sort((a, b) => (a.last ? 1 : 0) - (b.last ? 1 : 0));
   let adminHint = ls(ADMIN_KEY) === "1", firstAdminPass = false;
   const shownTabs = () => TABS.filter(t => typeof t.visible !== "function" || t.visible(host));
   const tabOf = (id) => TABS.find(t => t.id === id) || MATCH_TAB;

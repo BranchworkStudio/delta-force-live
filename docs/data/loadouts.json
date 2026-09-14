@@ -153,7 +153,8 @@
    "note": "Budget",
    "tags": [
     "~50K"
-   ]
+   ],
+   "pos": 76
   },
   {
    "weapon": ".357",
@@ -166,7 +167,8 @@
    "note": "Snagnum",
    "tags": [
     "~300K"
-   ]
+   ],
+   "pos": 75
   },
   {
    "weapon": ".357",
@@ -179,7 +181,8 @@
    "note": "Snakeshot",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 77
   },
   {
    "weapon": ".357",
@@ -192,7 +195,8 @@
    "note": "Extra Storage",
    "tags": [
     "20K"
-   ]
+   ],
+   "pos": 64
   },
   {
    "weapon": ".357",
@@ -203,7 +207,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Pocket Sniper Build",
-   "tags": []
+   "tags": [],
+   "pos": 0
   },
   {
    "weapon": "725 Double-Barrel",
@@ -216,7 +221,8 @@
    "note": "Sawed-Off",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 78
   },
   {
    "weapon": "725 Double-Barrel",
@@ -229,7 +235,8 @@
    "note": "",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 79
   },
   {
    "weapon": "725 Double-Barrel",
@@ -240,7 +247,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 1
   },
   {
    "weapon": "725 Double-Barrel",
@@ -251,7 +259,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "The Double Tap",
-   "tags": []
+   "tags": [],
+   "pos": 66
   },
   {
    "weapon": "93R",
@@ -262,7 +271,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 40
   },
   {
    "weapon": "93R",
@@ -275,7 +285,8 @@
    "note": "Auto",
    "tags": [
     "~200K"
-   ]
+   ],
+   "pos": 72
   },
   {
    "weapon": "93R",
@@ -288,7 +299,8 @@
    "note": "Budget",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 70
   },
   {
    "weapon": "93R",
@@ -301,7 +313,8 @@
    "note": "Expensive",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 71
   },
   {
    "weapon": "93R",
@@ -314,7 +327,8 @@
    "note": "Bot blaster",
    "tags": [
     "54K"
-   ]
+   ],
+   "pos": 56
   },
   {
    "weapon": "AK-12",
@@ -325,7 +339,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High End",
-   "tags": []
+   "tags": [],
+   "pos": 16
   },
   {
    "weapon": "AK-12",
@@ -336,7 +351,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 37
   },
   {
    "weapon": "AK-12",
@@ -349,7 +365,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 97
   },
   {
    "weapon": "AK-12",
@@ -362,7 +379,8 @@
    "note": "Red Dot",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 0
   },
   {
    "weapon": "AK-12",
@@ -373,7 +391,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "100%Acc",
-   "tags": []
+   "tags": [],
+   "pos": 0
   },
   {
    "weapon": "AK-12",
@@ -386,7 +405,8 @@
    "note": "",
    "tags": [
     "430K"
-   ]
+   ],
+   "pos": 56
   },
   {
    "weapon": "AK-12",
@@ -399,7 +419,8 @@
    "note": "Budget",
    "tags": [
     "230K"
-   ]
+   ],
+   "pos": 57
   },
   {
    "weapon": "AK-12",
@@ -412,7 +433,8 @@
    "note": "",
    "tags": [
     "550K"
-   ]
+   ],
+   "pos": 14
   },
   {
    "weapon": "AK-12",
@@ -423,7 +445,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 67
   },
   {
    "weapon": "AK-12",
@@ -434,7 +457,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "v2.0",
-   "tags": []
+   "tags": [],
+   "pos": 62
   },
   {
    "weapon": "AK-12",
@@ -445,7 +469,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 21
   },
   {
    "weapon": "AK-12",
@@ -456,7 +481,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 13
   },
   {
    "weapon": "AKM",
@@ -467,7 +493,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 12
   },
   {
    "weapon": "AKM",
@@ -478,7 +505,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Mid Tier",
-   "tags": []
+   "tags": [],
+   "pos": 11
   },
   {
    "weapon": "AKM",
@@ -489,7 +517,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 10
   },
   {
    "weapon": "AKM",
@@ -500,7 +529,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 46
   },
   {
    "weapon": "AKM",
@@ -513,7 +543,8 @@
    "note": "SUPPRESSED",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 44
   },
   {
    "weapon": "AKM",
@@ -526,7 +557,8 @@
    "note": "LOUD BIPOD",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 45
   },
   {
    "weapon": "AKM",
@@ -539,7 +571,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 40
   },
   {
    "weapon": "AKM",
@@ -552,7 +585,8 @@
    "note": "Somalian Pirate",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 3
   },
   {
    "weapon": "AKM",
@@ -565,7 +599,8 @@
    "note": "Budget",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 1
   },
   {
    "weapon": "AKM",
@@ -578,7 +613,8 @@
    "note": "Expensive",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 2
   },
   {
    "weapon": "AKM",
@@ -589,7 +625,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "DONG",
-   "tags": []
+   "tags": [],
+   "pos": 2
   },
   {
    "weapon": "AKM",
@@ -602,7 +639,8 @@
    "note": "2-4",
    "tags": [
     "470K"
-   ]
+   ],
+   "pos": 54
   },
   {
    "weapon": "AKM",
@@ -615,7 +653,8 @@
    "note": "Speed",
    "tags": [
     "530K"
-   ]
+   ],
+   "pos": 53
   },
   {
    "weapon": "AKM",
@@ -628,7 +667,8 @@
    "note": "Red Dot",
    "tags": [
     "320K"
-   ]
+   ],
+   "pos": 25
   },
   {
    "weapon": "AKM",
@@ -641,7 +681,22 @@
    "note": "CS/hipfire",
    "tags": [
     "230K"
-   ]
+   ],
+   "pos": 69
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JQOVG406F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-24",
+   "note": "Budget",
+   "tags": [
+    "260K"
+   ],
+   "pos": 71
   },
   {
    "weapon": "AKM",
@@ -654,7 +709,20 @@
    "note": "",
    "tags": [
     "455K"
-   ]
+   ],
+   "pos": 9
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AKM Assault Rifle-Warfare-6EP39T803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 70
   },
   {
    "weapon": "AKM",
@@ -665,7 +733,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Hipfire-centric",
-   "tags": []
+   "tags": [],
+   "pos": 69
   },
   {
    "weapon": "AKM",
@@ -676,7 +745,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "v2.0",
-   "tags": []
+   "tags": [],
+   "pos": 68
   },
   {
    "weapon": "AKM",
@@ -687,7 +757,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 31
   },
   {
    "weapon": "AKM",
@@ -698,7 +769,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "CS AK",
-   "tags": []
+   "tags": [],
+   "pos": 28
   },
   {
    "weapon": "AKM",
@@ -709,7 +781,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 27
   },
   {
    "weapon": "AKS-74",
@@ -722,7 +795,8 @@
    "note": "100% Accuracy",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 4
   },
   {
    "weapon": "AKS-74",
@@ -733,7 +807,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 71
   },
   {
    "weapon": "AKS-74",
@@ -744,7 +819,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 41
   },
   {
    "weapon": "AKS-74",
@@ -755,7 +831,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 25
   },
   {
    "weapon": "AR-57",
@@ -766,7 +843,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 9
   },
   {
    "weapon": "AR-57",
@@ -779,7 +857,8 @@
    "note": "",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 69
   },
   {
    "weapon": "AR-57",
@@ -792,7 +871,8 @@
    "note": "AR-56 SCOPED",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 70
   },
   {
    "weapon": "AR-57",
@@ -805,7 +885,8 @@
    "note": "Expensive",
    "tags": [
     "~600K"
-   ]
+   ],
+   "pos": 42
   },
   {
    "weapon": "AR-57",
@@ -818,7 +899,8 @@
    "note": "Budget",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 43
   },
   {
    "weapon": "AR-57",
@@ -829,7 +911,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 18
   },
   {
    "weapon": "AR-57",
@@ -842,7 +925,8 @@
    "note": "Hipfire",
    "tags": [
     "580K"
-   ]
+   ],
+   "pos": 8
   },
   {
    "weapon": "AR-57",
@@ -855,7 +939,8 @@
    "note": "",
    "tags": [
     "560K"
-   ]
+   ],
+   "pos": 12
   },
   {
    "weapon": "AR-57",
@@ -868,7 +953,8 @@
    "note": "Budget",
    "tags": [
     "340K"
-   ]
+   ],
+   "pos": 16
   },
   {
    "weapon": "AR-57",
@@ -881,7 +967,22 @@
    "note": "99 ACC",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 27
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6JR9HT806F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-04-25",
+   "note": "Budget",
+   "tags": [
+    "300K"
+   ],
+   "pos": 60
   },
   {
    "weapon": "AR-57",
@@ -894,7 +995,8 @@
    "note": "Scoped",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 28
   },
   {
    "weapon": "AR-57",
@@ -907,7 +1009,8 @@
    "note": "Red-dot",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 26
   },
   {
    "weapon": "AR-57",
@@ -918,7 +1021,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S9 Build",
-   "tags": []
+   "tags": [],
+   "pos": 18
   },
   {
    "weapon": "AR-57",
@@ -929,7 +1033,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9 - Hipfire",
-   "tags": []
+   "tags": [],
+   "pos": 5
   },
   {
    "weapon": "AR-57",
@@ -940,7 +1045,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 0
   },
   {
    "weapon": "AS Val",
@@ -951,7 +1057,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Budget/Mid",
-   "tags": []
+   "tags": [],
+   "pos": 13
   },
   {
    "weapon": "AS Val",
@@ -962,7 +1069,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 31
   },
   {
    "weapon": "AS Val",
@@ -975,7 +1083,8 @@
    "note": "BEAM",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 112
   },
   {
    "weapon": "AS Val",
@@ -988,7 +1097,8 @@
    "note": "",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 53
   },
   {
    "weapon": "AS Val",
@@ -1001,7 +1111,8 @@
    "note": "Expensive",
    "tags": [
     "~800K"
-   ]
+   ],
+   "pos": 5
   },
   {
    "weapon": "AS Val",
@@ -1014,7 +1125,8 @@
    "note": "\"Budget\"",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 6
   },
   {
    "weapon": "AS Val",
@@ -1025,7 +1137,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 14
   },
   {
    "weapon": "AS Val",
@@ -1038,7 +1151,8 @@
    "note": "Hipfire",
    "tags": [
     "480K"
-   ]
+   ],
+   "pos": 43
   },
   {
    "weapon": "AS Val",
@@ -1051,7 +1165,8 @@
    "note": "",
    "tags": [
     "800K"
-   ]
+   ],
+   "pos": 42
   },
   {
    "weapon": "AS Val",
@@ -1064,7 +1179,22 @@
    "note": "Burst",
    "tags": [
     "530K"
-   ]
+   ],
+   "pos": 44
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AS Val Assault Rifle-Operations-6L56Q6804JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Budget",
+   "tags": [
+    "360K"
+   ],
+   "pos": 45
   },
   {
    "weapon": "AS Val",
@@ -1077,7 +1207,8 @@
    "note": "Burst Budget",
    "tags": [
     "320K"
-   ]
+   ],
+   "pos": 61
   },
   {
    "weapon": "AS Val",
@@ -1090,7 +1221,8 @@
    "note": "",
    "tags": [
     "750K"
-   ]
+   ],
+   "pos": 4
   },
   {
    "weapon": "AS Val",
@@ -1103,7 +1235,8 @@
    "note": "Burst",
    "tags": [
     "650K"
-   ]
+   ],
+   "pos": 19
   },
   {
    "weapon": "AS Val",
@@ -1114,7 +1247,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 72
   },
   {
    "weapon": "AS Val",
@@ -1125,7 +1259,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Burst Fire",
-   "tags": []
+   "tags": [],
+   "pos": 59
   },
   {
    "weapon": "AS Val",
@@ -1136,7 +1271,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 3
   },
   {
    "weapon": "ASh-12",
@@ -1147,7 +1283,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 6
   },
   {
    "weapon": "ASh-12",
@@ -1158,7 +1295,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 45
   },
   {
    "weapon": "ASh-12",
@@ -1171,7 +1309,8 @@
    "note": "TOMAHAWK",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 89
   },
   {
    "weapon": "ASh-12",
@@ -1184,7 +1323,22 @@
    "note": "SEASONAL BARREL",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 42
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "ASh-12 Battle Rifle-Operations-6JK1G1O03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "note": "Newest",
+   "tags": [
+    "~450K"
+   ],
+   "pos": 38
   },
   {
    "weapon": "ASh-12",
@@ -1197,7 +1351,8 @@
    "note": "",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 37
   },
   {
    "weapon": "ASh-12",
@@ -1210,7 +1365,8 @@
    "note": "Budget",
    "tags": [
     "~300K"
-   ]
+   ],
+   "pos": 35
   },
   {
    "weapon": "ASh-12",
@@ -1223,7 +1379,8 @@
    "note": "Hipfire",
    "tags": [
     "~450K"
-   ]
+   ],
+   "pos": 36
   },
   {
    "weapon": "ASh-12",
@@ -1234,7 +1391,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "LONG ASH",
-   "tags": []
+   "tags": [],
+   "pos": 25
   },
   {
    "weapon": "ASh-12",
@@ -1245,7 +1403,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "doubletap",
-   "tags": []
+   "tags": [],
+   "pos": 34
   },
   {
    "weapon": "ASh-12",
@@ -1258,7 +1417,8 @@
    "note": "",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 13
   },
   {
    "weapon": "ASh-12",
@@ -1269,7 +1429,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 73
   },
   {
    "weapon": "ASh-12",
@@ -1280,7 +1441,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Tomahawk Big Boi",
-   "tags": []
+   "tags": [],
+   "pos": 50
   },
   {
    "weapon": "ASh-12",
@@ -1291,7 +1453,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Double Shot",
-   "tags": []
+   "tags": [],
+   "pos": 1
   },
   {
    "weapon": "ASh-12",
@@ -1302,7 +1465,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 24
   },
   {
    "weapon": "AUG",
@@ -1313,7 +1477,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 5
   },
   {
    "weapon": "AUG",
@@ -1324,7 +1489,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 42
   },
   {
    "weapon": "AUG",
@@ -1337,7 +1503,23 @@
    "note": "FULL BUILD 60MAG",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 105
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "AUG Assault Rifle-Operations-6J6DREO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "BUDGET",
+   "tags": [
+    "180K",
+    "Season 8"
+   ],
+   "pos": 106
   },
   {
    "weapon": "AUG",
@@ -1350,7 +1532,8 @@
    "note": "BUDGET",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 34
   },
   {
    "weapon": "AUG",
@@ -1363,7 +1546,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 35
   },
   {
    "weapon": "AUG",
@@ -1376,7 +1560,8 @@
    "note": "Mid-Tier",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 8
   },
   {
    "weapon": "AUG",
@@ -1389,7 +1574,8 @@
    "note": "Budget",
    "tags": [
     "~200K"
-   ]
+   ],
+   "pos": 7
   },
   {
    "weapon": "AUG",
@@ -1402,7 +1588,8 @@
    "note": "",
    "tags": [
     "530K"
-   ]
+   ],
+   "pos": 49
   },
   {
    "weapon": "AUG",
@@ -1415,7 +1602,8 @@
    "note": "Budget",
    "tags": [
     "260K"
-   ]
+   ],
+   "pos": 50
   },
   {
    "weapon": "AUG",
@@ -1428,7 +1616,8 @@
    "note": "",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 11
   },
   {
    "weapon": "AUG",
@@ -1441,7 +1630,8 @@
    "note": "Budget",
    "tags": [
     "160K"
-   ]
+   ],
+   "pos": 67
   },
   {
    "weapon": "AUG",
@@ -1452,7 +1642,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "\"No recoil\" build",
-   "tags": []
+   "tags": [],
+   "pos": 74
   },
   {
    "weapon": "AUG",
@@ -1463,7 +1654,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 26
   },
   {
    "weapon": "AUG",
@@ -1474,7 +1666,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 19
   },
   {
    "weapon": "AWM",
@@ -1485,7 +1678,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 37
   },
   {
    "weapon": "AWM",
@@ -1496,7 +1690,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 22
   },
   {
    "weapon": "AWM",
@@ -1509,7 +1704,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 96
   },
   {
    "weapon": "AWM",
@@ -1522,7 +1718,8 @@
    "note": "Budget",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 86
   },
   {
    "weapon": "AWM",
@@ -1535,7 +1732,8 @@
    "note": "Expensive",
    "tags": [
     "~800K"
-   ]
+   ],
+   "pos": 87
   },
   {
    "weapon": "AWM",
@@ -1546,7 +1744,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 27
   },
   {
    "weapon": "AWM",
@@ -1559,7 +1758,8 @@
    "note": "",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 7
   },
   {
    "weapon": "AWM",
@@ -1572,7 +1772,8 @@
    "note": "",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 53
   },
   {
    "weapon": "AWM",
@@ -1583,7 +1784,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 45
   },
   {
    "weapon": "Bizon",
@@ -1594,7 +1796,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Squad killer",
-   "tags": []
+   "tags": [],
+   "pos": 107
   },
   {
    "weapon": "Bizon",
@@ -1605,7 +1808,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 10
   },
   {
    "weapon": "CAR-15",
@@ -1618,7 +1822,8 @@
    "note": "Budget",
    "tags": [
     "~50K"
-   ]
+   ],
+   "pos": 9
   },
   {
    "weapon": "CAR-15",
@@ -1629,7 +1834,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 36
   },
   {
    "weapon": "CAR-15",
@@ -1642,7 +1848,8 @@
    "note": "PhD's",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 2
   },
   {
    "weapon": "CAR-15",
@@ -1653,7 +1860,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Uggo Build",
-   "tags": []
+   "tags": [],
+   "pos": 75
   },
   {
    "weapon": "CAR-15",
@@ -1664,7 +1872,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 5
   },
   {
    "weapon": "CI-19",
@@ -1675,7 +1884,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High End - LONG RANGE",
-   "tags": []
+   "tags": [],
+   "pos": 15
   },
   {
    "weapon": "CI-19",
@@ -1686,7 +1896,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High End - SHORT RANGE",
-   "tags": []
+   "tags": [],
+   "pos": 14
   },
   {
    "weapon": "CI-19",
@@ -1697,7 +1908,36 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 28
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "CI-19 Assault Rifle-Operations-6JAB9R80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "RED DOT",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 85
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "CI-19 Assault Rifle-Operations-6JGK6000FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 84
   },
   {
    "weapon": "CI-19",
@@ -1710,7 +1950,22 @@
    "note": "red dot",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 73
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "CI-19 Assault Rifle-Operations-6JT81300FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "SCOPED",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 74
   },
   {
    "weapon": "CI-19",
@@ -1723,7 +1978,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 41
   },
   {
    "weapon": "CI-19",
@@ -1736,7 +1992,22 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 26
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "CI-19 Assault Rifle-Operations-6JQ9S1C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "note": "100% Accuracy",
+   "tags": [
+    "~400K"
+   ],
+   "pos": 13
   },
   {
    "weapon": "CI-19",
@@ -1749,7 +2020,8 @@
    "note": "Red Dot",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 10
   },
   {
    "weapon": "CI-19",
@@ -1762,7 +2034,8 @@
    "note": "Expensive",
    "tags": [
     "~450K"
-   ]
+   ],
+   "pos": 12
   },
   {
    "weapon": "CI-19",
@@ -1775,7 +2048,8 @@
    "note": "Budget",
    "tags": [
     "~300K"
-   ]
+   ],
+   "pos": 11
   },
   {
    "weapon": "CI-19",
@@ -1786,7 +2060,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "cl-19",
-   "tags": []
+   "tags": [],
+   "pos": 22
   },
   {
    "weapon": "CI-19",
@@ -1799,7 +2074,8 @@
    "note": "",
    "tags": [
     "470K"
-   ]
+   ],
+   "pos": 38
   },
   {
    "weapon": "CI-19",
@@ -1812,7 +2088,8 @@
    "note": "Budget",
    "tags": [
     "300K"
-   ]
+   ],
+   "pos": 40
   },
   {
    "weapon": "CI-19",
@@ -1825,7 +2102,8 @@
    "note": "",
    "tags": [
     "600K"
-   ]
+   ],
+   "pos": 10
   },
   {
    "weapon": "CI-19",
@@ -1838,7 +2116,8 @@
    "note": "BUDGET",
    "tags": [
     "290K"
-   ]
+   ],
+   "pos": 70
   },
   {
    "weapon": "CI-19",
@@ -1849,7 +2128,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Long Range",
-   "tags": []
+   "tags": [],
+   "pos": 77
   },
   {
    "weapon": "CI-19",
@@ -1860,7 +2140,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "SMG Build",
-   "tags": []
+   "tags": [],
+   "pos": 76
   },
   {
    "weapon": "CI-19",
@@ -1871,7 +2152,20 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "No Gas Block - Viewer Requested",
-   "tags": []
+   "tags": [],
+   "pos": 27
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "CI-19-Warfare-6EVABO803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 78
   },
   {
    "weapon": "CI-19",
@@ -1882,7 +2176,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 1
   },
   {
    "weapon": "Compound Bow",
@@ -1893,7 +2188,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 35
   },
   {
    "weapon": "Compound Bow",
@@ -1906,7 +2202,8 @@
    "note": "Hipfire",
    "tags": [
     "~550K"
-   ]
+   ],
+   "pos": 50
   },
   {
    "weapon": "Compound Bow",
@@ -1919,7 +2216,8 @@
    "note": "Range",
    "tags": [
     "~600K"
-   ]
+   ],
+   "pos": 51
   },
   {
    "weapon": "Compound Bow",
@@ -1930,7 +2228,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 4
   },
   {
    "weapon": "Compound Bow",
@@ -1941,7 +2240,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "MAG",
-   "tags": []
+   "tags": [],
+   "pos": 32
   },
   {
    "weapon": "Compound Bow",
@@ -1954,7 +2254,8 @@
    "note": "GAMING",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 77
   },
   {
    "weapon": "Compound Bow",
@@ -1965,7 +2266,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "One Tap",
-   "tags": []
+   "tags": [],
+   "pos": 79
   },
   {
    "weapon": "Compound Bow",
@@ -1976,7 +2278,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 49
   },
   {
    "weapon": "Desert Eagle",
@@ -1987,7 +2290,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 38
   },
   {
    "weapon": "Desert Eagle",
@@ -1998,7 +2302,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "DONG",
-   "tags": []
+   "tags": [],
+   "pos": 21
   },
   {
    "weapon": "FS-12",
@@ -2011,7 +2316,8 @@
    "note": "Full",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 83
   },
   {
    "weapon": "FS-12",
@@ -2024,7 +2330,8 @@
    "note": "Budget Pistol",
    "tags": [
     "~50K"
-   ]
+   ],
+   "pos": 81
   },
   {
    "weapon": "FS-12",
@@ -2037,7 +2344,22 @@
    "note": "Slug Build",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 80
+  },
+  {
+   "weapon": "FS-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "FS-12 Shotgun-Operations-6KNURNG03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "note": "Full Built",
+   "tags": [
+    "~450K"
+   ],
+   "pos": 83
   },
   {
    "weapon": "FS-12",
@@ -2050,7 +2372,8 @@
    "note": "",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 82
   },
   {
    "weapon": "FS-12",
@@ -2061,7 +2384,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Primary Build",
-   "tags": []
+   "tags": [],
+   "pos": 34
   },
   {
    "weapon": "G17",
@@ -2072,7 +2396,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "All-purpose",
-   "tags": []
+   "tags": [],
+   "pos": 80
   },
   {
    "weapon": "G18",
@@ -2085,7 +2410,8 @@
    "note": "Budget",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 73
   },
   {
    "weapon": "G18",
@@ -2096,7 +2422,8 @@
    "url": "https://medowmafia.com/pages/gun-builds",
    "added": null,
    "note": "Expensive",
-   "tags": []
+   "tags": [],
+   "pos": 74
   },
   {
    "weapon": "G18",
@@ -2109,7 +2436,8 @@
    "note": "",
    "tags": [
     "100K"
-   ]
+   ],
+   "pos": 57
   },
   {
    "weapon": "G3",
@@ -2120,7 +2448,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Mid Tier Build",
-   "tags": []
+   "tags": [],
+   "pos": 0
   },
   {
    "weapon": "G3",
@@ -2131,7 +2460,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 34
   },
   {
    "weapon": "G3",
@@ -2142,7 +2472,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 8
   },
   {
    "weapon": "G3",
@@ -2155,7 +2486,8 @@
    "note": "",
    "tags": [
     "304K"
-   ]
+   ],
+   "pos": 16
   },
   {
    "weapon": "G3",
@@ -2168,7 +2500,8 @@
    "note": "Budget",
    "tags": [
     "270K"
-   ]
+   ],
+   "pos": 63
   },
   {
    "weapon": "G3",
@@ -2179,7 +2512,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 81
   },
   {
    "weapon": "G3",
@@ -2190,7 +2524,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 48
   },
   {
    "weapon": "G3",
@@ -2201,7 +2536,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9 - Hybrid Marksman",
-   "tags": []
+   "tags": [],
+   "pos": 6
   },
   {
    "weapon": "G3",
@@ -2212,7 +2548,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 9
   },
   {
    "weapon": "K416",
@@ -2223,7 +2560,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 8
   },
   {
    "weapon": "K416",
@@ -2234,7 +2572,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 7
   },
   {
    "weapon": "K416",
@@ -2245,7 +2584,50 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 44
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K416 Assault Rifle-Operations-6IRIFEC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "60 mag",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 107
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K416 Assault Rifle-Operations-6J10AR40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "full",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 86
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K416 Assault Rifle-Operations-6J9NLN40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "eco",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 87
   },
   {
    "weapon": "K416",
@@ -2258,7 +2640,8 @@
    "note": "",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 58
   },
   {
    "weapon": "K416",
@@ -2271,7 +2654,8 @@
    "note": "",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 50
   },
   {
    "weapon": "K416",
@@ -2285,7 +2669,8 @@
    "tags": [
     "350K",
     "Season 10"
-   ]
+   ],
+   "pos": 20
   },
   {
    "weapon": "K416",
@@ -2298,7 +2683,8 @@
    "note": "Beam",
    "tags": [
     "~450K"
-   ]
+   ],
+   "pos": 14
   },
   {
    "weapon": "K416",
@@ -2311,7 +2697,8 @@
    "note": "\"Budget\" Red Dot",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 15
   },
   {
    "weapon": "K416",
@@ -2322,7 +2709,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 26
   },
   {
    "weapon": "K416",
@@ -2335,7 +2723,8 @@
    "note": "",
    "tags": [
     "700K"
-   ]
+   ],
+   "pos": 51
   },
   {
    "weapon": "K416",
@@ -2348,7 +2737,8 @@
    "note": "Budget",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 52
   },
   {
    "weapon": "K416",
@@ -2361,7 +2751,8 @@
    "note": "",
    "tags": [
     "650K"
-   ]
+   ],
+   "pos": 1
   },
   {
    "weapon": "K416",
@@ -2374,7 +2765,8 @@
    "note": "Budget",
    "tags": [
     "320K"
-   ]
+   ],
+   "pos": 72
   },
   {
    "weapon": "K416",
@@ -2385,7 +2777,20 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 83
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K416 Assault Rifle-Warfare-6GNG7T803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Sandstorm",
+   "tags": [],
+   "pos": 84
   },
   {
    "weapon": "K416",
@@ -2396,7 +2801,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Whisper",
-   "tags": []
+   "tags": [],
+   "pos": 82
   },
   {
    "weapon": "K416",
@@ -2407,7 +2813,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 43
   },
   {
    "weapon": "K416",
@@ -2418,7 +2825,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 23
   },
   {
    "weapon": "K437",
@@ -2429,7 +2837,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High End",
-   "tags": []
+   "tags": [],
+   "pos": 17
   },
   {
    "weapon": "K437",
@@ -2440,7 +2849,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 26
   },
   {
    "weapon": "K437",
@@ -2453,7 +2863,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 93
   },
   {
    "weapon": "K437",
@@ -2466,7 +2877,8 @@
    "note": "SCOPED NEW",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 46
   },
   {
    "weapon": "K437",
@@ -2479,7 +2891,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 21
   },
   {
    "weapon": "K437",
@@ -2492,7 +2905,8 @@
    "note": "Beam",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 16
   },
   {
    "weapon": "K437",
@@ -2505,7 +2919,8 @@
    "note": "Budget",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 17
   },
   {
    "weapon": "K437",
@@ -2518,7 +2933,22 @@
    "note": "Red Dot",
    "tags": [
     "~550K"
-   ]
+   ],
+   "pos": 18
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "K437 Assault Rifle-Operations-6KQV20S03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "note": "Strafe",
+   "tags": [
+    "~500K"
+   ],
+   "pos": 19
   },
   {
    "weapon": "K437",
@@ -2531,7 +2961,8 @@
    "note": "",
    "tags": [
     "630K"
-   ]
+   ],
+   "pos": 34
   },
   {
    "weapon": "K437",
@@ -2544,7 +2975,8 @@
    "note": "Budget",
    "tags": [
     "340K"
-   ]
+   ],
+   "pos": 36
   },
   {
    "weapon": "K437",
@@ -2557,7 +2989,8 @@
    "note": "Budget",
    "tags": [
     "250K"
-   ]
+   ],
+   "pos": 66
   },
   {
    "weapon": "K437",
@@ -2570,7 +3003,32 @@
    "note": "",
    "tags": [
     "900K"
-   ]
+   ],
+   "pos": 17
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K437 Assault Rifle-Warfare-6G2O93G03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Handling +",
+   "tags": [],
+   "pos": 86
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K437 Assault Rifle-Warfare-6G2O95C03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Stability +",
+   "tags": [],
+   "pos": 87
   },
   {
    "weapon": "K437",
@@ -2581,7 +3039,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Viewer-Requested Suppressed",
-   "tags": []
+   "tags": [],
+   "pos": 85
   },
   {
    "weapon": "K437",
@@ -2592,7 +3051,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Viewer Request 60-rounder",
-   "tags": []
+   "tags": [],
+   "pos": 55
   },
   {
    "weapon": "K437",
@@ -2603,7 +3063,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 44
   },
   {
    "weapon": "K437",
@@ -2614,7 +3075,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 31
   },
   {
    "weapon": "KC-17",
@@ -2625,7 +3087,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Scoped KC",
-   "tags": []
+   "tags": [],
+   "pos": 20
   },
   {
    "weapon": "KC-17",
@@ -2636,7 +3099,50 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Red Dot",
-   "tags": []
+   "tags": [],
+   "pos": 23
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "KC-17 Assault Rifle-Operations-6J6DVMO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "budget",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 104
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "KC-17 Assault Rifle-Operations-6J6PF580FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 102
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "KC-17 Assault Rifle-Operations-6JB0N2S0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "SCOPED",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 103
   },
   {
    "weapon": "KC-17",
@@ -2650,7 +3156,8 @@
    "tags": [
     "300K",
     "Season 9"
-   ]
+   ],
+   "pos": 72
   },
   {
    "weapon": "KC-17",
@@ -2663,7 +3170,8 @@
    "note": "cheater scope",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 67
   },
   {
    "weapon": "KC-17",
@@ -2676,7 +3184,8 @@
    "note": "Red dot suppressor",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 68
   },
   {
    "weapon": "KC-17",
@@ -2689,7 +3198,8 @@
    "note": "Range",
    "tags": [
     "~550K"
-   ]
+   ],
+   "pos": 20
   },
   {
    "weapon": "KC-17",
@@ -2702,7 +3212,8 @@
    "note": "Red Dot",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 21
   },
   {
    "weapon": "KC-17",
@@ -2715,7 +3226,8 @@
    "note": "Budget",
    "tags": [
     "350K"
-   ]
+   ],
+   "pos": 32
   },
   {
    "weapon": "KC-17",
@@ -2728,7 +3240,8 @@
    "note": "",
    "tags": [
     "620K"
-   ]
+   ],
+   "pos": 30
   },
   {
    "weapon": "KC-17",
@@ -2741,7 +3254,8 @@
    "note": "",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 5
   },
   {
    "weapon": "KC-17",
@@ -2754,7 +3268,22 @@
    "note": "Budget",
    "tags": [
     "350K"
-   ]
+   ],
+   "pos": 75
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6KQ75QO06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-07-28",
+   "note": "ultra budget",
+   "tags": [
+    "300K"
+   ],
+   "pos": 76
   },
   {
    "weapon": "KC-17",
@@ -2767,7 +3296,8 @@
    "note": "Scoped",
    "tags": [
     "650K"
-   ]
+   ],
+   "pos": 8
   },
   {
    "weapon": "KC-17",
@@ -2778,7 +3308,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 9
   },
   {
    "weapon": "KC-17",
@@ -2789,7 +3320,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 88
   },
   {
    "weapon": "KC-17",
@@ -2800,7 +3332,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Hipfire CQB",
-   "tags": []
+   "tags": [],
+   "pos": 45
   },
   {
    "weapon": "KC-17",
@@ -2811,7 +3344,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 33
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2824,7 +3358,8 @@
    "note": "HIPFIRE BUDGET",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 111
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2837,7 +3372,8 @@
    "note": "D",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 68
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2850,7 +3386,8 @@
    "note": "Budget",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 67
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2863,7 +3400,8 @@
    "note": "Hipfire God",
    "tags": [
     "~200K"
-   ]
+   ],
+   "pos": 69
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2874,7 +3412,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 11
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2887,7 +3426,8 @@
    "note": "",
    "tags": [
     "185K"
-   ]
+   ],
+   "pos": 55
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2898,7 +3438,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Double-Tap",
-   "tags": []
+   "tags": [],
+   "pos": 39
   },
   {
    "weapon": "Lever-action Rifle",
@@ -2909,7 +3450,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "One-Shot Machine",
-   "tags": []
+   "tags": [],
+   "pos": 61
   },
   {
    "weapon": "M1014",
@@ -2922,7 +3464,8 @@
    "note": "Budget",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 84
   },
   {
    "weapon": "M1014",
@@ -2935,7 +3478,8 @@
    "note": "",
    "tags": [
     "162K"
-   ]
+   ],
+   "pos": 44
   },
   {
    "weapon": "M14",
@@ -2946,7 +3490,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "DeathLapse edition",
-   "tags": []
+   "tags": [],
+   "pos": 21
   },
   {
    "weapon": "M14",
@@ -2957,7 +3502,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "LASER, no handling",
-   "tags": []
+   "tags": [],
+   "pos": 20
   },
   {
    "weapon": "M14",
@@ -2968,7 +3514,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "China Meta Laser",
-   "tags": []
+   "tags": [],
+   "pos": 22
   },
   {
    "weapon": "M14",
@@ -2979,7 +3526,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 14
   },
   {
    "weapon": "M14",
@@ -2992,7 +3540,36 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 16
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M14 Marksman Rifle-Operations-6JF9J4O0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "SNUB",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 78
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M14 Marksman Rifle-Operations-6JSH3K00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "more stabile",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 71
   },
   {
    "weapon": "M14",
@@ -3005,7 +3582,8 @@
    "note": "from Zap",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 65
   },
   {
    "weapon": "M14",
@@ -3018,7 +3596,8 @@
    "note": "FAST",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 66
   },
   {
    "weapon": "M14",
@@ -3031,7 +3610,8 @@
    "note": "Budget",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 60
   },
   {
    "weapon": "M14",
@@ -3044,7 +3624,8 @@
    "note": "Expensive",
    "tags": [
     "~650K"
-   ]
+   ],
+   "pos": 61
   },
   {
    "weapon": "M14",
@@ -3057,7 +3638,8 @@
    "note": "",
    "tags": [
     "830K"
-   ]
+   ],
+   "pos": 58
   },
   {
    "weapon": "M14",
@@ -3070,7 +3652,8 @@
    "note": "",
    "tags": [
     "800K"
-   ]
+   ],
+   "pos": 32
   },
   {
    "weapon": "M14",
@@ -3081,7 +3664,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Full auto build",
-   "tags": []
+   "tags": [],
+   "pos": 90
   },
   {
    "weapon": "M14",
@@ -3092,7 +3676,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "SMG Build",
-   "tags": []
+   "tags": [],
+   "pos": 89
   },
   {
    "weapon": "M14",
@@ -3103,7 +3688,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Full-Auto Build",
-   "tags": []
+   "tags": [],
+   "pos": 37
   },
   {
    "weapon": "M14",
@@ -3114,7 +3700,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 46
   },
   {
    "weapon": "M16A4",
@@ -3125,7 +3712,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 43
   },
   {
    "weapon": "M16A4",
@@ -3138,7 +3726,8 @@
    "note": "M16 hip",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 115
   },
   {
    "weapon": "M16A4",
@@ -3151,7 +3740,8 @@
    "note": "Budget Hipfire Sun",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 22
   },
   {
    "weapon": "M16A4",
@@ -3162,7 +3752,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Rounded Build",
-   "tags": []
+   "tags": [],
+   "pos": 91
   },
   {
    "weapon": "M16A4",
@@ -3173,7 +3764,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 14
   },
   {
    "weapon": "M16A4",
@@ -3184,7 +3776,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 21
   },
   {
    "weapon": "M249",
@@ -3195,7 +3788,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 33
   },
   {
    "weapon": "M249",
@@ -3206,7 +3800,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High End",
-   "tags": []
+   "tags": [],
+   "pos": 34
   },
   {
    "weapon": "M249",
@@ -3219,7 +3814,8 @@
    "note": "",
    "tags": [
     "~100K"
-   ]
+   ],
+   "pos": 58
   },
   {
    "weapon": "M249",
@@ -3230,7 +3826,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "SPECIAL",
-   "tags": []
+   "tags": [],
+   "pos": 19
   },
   {
    "weapon": "M249",
@@ -3243,7 +3840,8 @@
    "note": "",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 14
   },
   {
    "weapon": "M249",
@@ -3256,7 +3854,8 @@
    "note": "NEW SAW",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 50
   },
   {
    "weapon": "M249",
@@ -3269,7 +3868,8 @@
    "note": "",
    "tags": [
     "426K"
-   ]
+   ],
+   "pos": 49
   },
   {
    "weapon": "M249",
@@ -3280,7 +3880,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 92
   },
   {
    "weapon": "M249",
@@ -3291,7 +3892,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 30
   },
   {
    "weapon": "M249",
@@ -3302,7 +3904,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "HVK Chainsaw",
-   "tags": []
+   "tags": [],
+   "pos": 16
   },
   {
    "weapon": "M249",
@@ -3313,7 +3916,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 30
   },
   {
    "weapon": "M250",
@@ -3324,7 +3928,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High End",
-   "tags": []
+   "tags": [],
+   "pos": 32
   },
   {
    "weapon": "M250",
@@ -3337,7 +3942,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 15
   },
   {
    "weapon": "M250",
@@ -3350,7 +3956,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 88
   },
   {
    "weapon": "M250",
@@ -3363,7 +3970,8 @@
    "note": "Expensive",
    "tags": [
     "~50K"
-   ]
+   ],
+   "pos": 53
   },
   {
    "weapon": "M250",
@@ -3376,7 +3984,8 @@
    "note": "",
    "tags": [
     "~1.5M"
-   ]
+   ],
+   "pos": 54
   },
   {
    "weapon": "M250",
@@ -3389,7 +3998,8 @@
    "note": "Budget",
    "tags": [
     "~600K"
-   ]
+   ],
+   "pos": 52
   },
   {
    "weapon": "M250",
@@ -3400,7 +4010,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 10
   },
   {
    "weapon": "M250",
@@ -3413,7 +4024,8 @@
    "note": "",
    "tags": [
     "900K"
-   ]
+   ],
+   "pos": 10
   },
   {
    "weapon": "M250",
@@ -3426,7 +4038,8 @@
    "note": "",
    "tags": [
     "700K"
-   ]
+   ],
+   "pos": 47
   },
   {
    "weapon": "M250",
@@ -3437,7 +4050,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "CQBeast",
-   "tags": []
+   "tags": [],
+   "pos": 93
   },
   {
    "weapon": "M250",
@@ -3448,7 +4062,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Big chungus build",
-   "tags": []
+   "tags": [],
+   "pos": 94
   },
   {
    "weapon": "M250",
@@ -3459,7 +4074,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 42
   },
   {
    "weapon": "M250",
@@ -3470,7 +4086,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 36
   },
   {
    "weapon": "M4A1",
@@ -3481,7 +4098,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 47
   },
   {
    "weapon": "M4A1",
@@ -3492,7 +4110,22 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Full Build",
-   "tags": []
+   "tags": [],
+   "pos": 48
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M4A1 Assault Rifle-Operations-6I853AC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "M4 HIPFIRE FULL",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 114
   },
   {
    "weapon": "M4A1",
@@ -3505,7 +4138,8 @@
    "note": "M4 HIPFIRE ECO",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 113
   },
   {
    "weapon": "M4A1",
@@ -3518,7 +4152,8 @@
    "note": "budget",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 33
   },
   {
    "weapon": "M4A1",
@@ -3531,7 +4166,8 @@
    "note": "budget",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 49
   },
   {
    "weapon": "M4A1",
@@ -3544,7 +4180,8 @@
    "note": "Red Dot",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 24
   },
   {
    "weapon": "M4A1",
@@ -3557,7 +4194,8 @@
    "note": "Beam",
    "tags": [
     "~450K"
-   ]
+   ],
+   "pos": 23
   },
   {
    "weapon": "M4A1",
@@ -3570,7 +4208,8 @@
    "note": "Dong",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 25
   },
   {
    "weapon": "M4A1",
@@ -3581,7 +4220,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 24
   },
   {
    "weapon": "M4A1",
@@ -3594,7 +4234,8 @@
    "note": "",
    "tags": [
     "340K"
-   ]
+   ],
+   "pos": 55
   },
   {
    "weapon": "M4A1",
@@ -3607,7 +4248,8 @@
    "note": "Budget",
    "tags": [
     "270K"
-   ]
+   ],
+   "pos": 68
   },
   {
    "weapon": "M4A1",
@@ -3620,7 +4262,32 @@
    "note": "",
    "tags": [
     "440K"
-   ]
+   ],
+   "pos": 18
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M4A1 Assault Rifle-Warfare-6FQAEE003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Rounded Build",
+   "tags": [],
+   "pos": 96
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M4A1 Assault Rifle-Warfare-6FQAG7K03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "CQB Build",
+   "tags": [],
+   "pos": 95
   },
   {
    "weapon": "M4A1",
@@ -3631,7 +4298,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Mid-Long Range",
-   "tags": []
+   "tags": [],
+   "pos": 58
   },
   {
    "weapon": "M4A1",
@@ -3642,7 +4310,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S6 Updated",
-   "tags": []
+   "tags": [],
+   "pos": 54
   },
   {
    "weapon": "M4A1",
@@ -3653,7 +4322,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 47
   },
   {
    "weapon": "M4A1",
@@ -3664,7 +4334,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 29
   },
   {
    "weapon": "M7",
@@ -3675,7 +4346,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "red dot/cqc",
-   "tags": []
+   "tags": [],
+   "pos": 3
   },
   {
    "weapon": "M7",
@@ -3686,7 +4358,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "laser just have faith",
-   "tags": []
+   "tags": [],
+   "pos": 4
   },
   {
    "weapon": "M7",
@@ -3697,7 +4370,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Long Range",
-   "tags": []
+   "tags": [],
+   "pos": 2
   },
   {
    "weapon": "M7",
@@ -3708,7 +4382,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 41
   },
   {
    "weapon": "M7",
@@ -3721,7 +4396,92 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 0
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6J8NR1S0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 100
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6JHK82S0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "red dot",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 101
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6K1O0H00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "BUDGET",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 59
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6K3D3QK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "red dot 2",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 56
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6K3D3VO0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "red dot 1",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 55
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "M7 Battle Rifle-Operations-6K3D4FK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "scoped",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 54
   },
   {
    "weapon": "M7",
@@ -3734,7 +4494,8 @@
    "note": "40Handling",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 25
   },
   {
    "weapon": "M7",
@@ -3747,7 +4508,8 @@
    "note": "Most recent",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 19
   },
   {
    "weapon": "M7",
@@ -3760,7 +4522,8 @@
    "note": "Expensive",
    "tags": [
     "~550K"
-   ]
+   ],
+   "pos": 40
   },
   {
    "weapon": "M7",
@@ -3773,7 +4536,8 @@
    "note": "Hacker Build",
    "tags": [
     "~300K"
-   ]
+   ],
+   "pos": 41
   },
   {
    "weapon": "M7",
@@ -3786,7 +4550,8 @@
    "note": "Budget",
    "tags": [
     "~450K"
-   ]
+   ],
+   "pos": 39
   },
   {
    "weapon": "M7",
@@ -3797,7 +4562,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 17
   },
   {
    "weapon": "M7",
@@ -3810,7 +4576,8 @@
    "note": "",
    "tags": [
     "830K"
-   ]
+   ],
+   "pos": 48
   },
   {
    "weapon": "M7",
@@ -3823,7 +4590,8 @@
    "note": "China",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 24
   },
   {
    "weapon": "M7",
@@ -3836,7 +4604,8 @@
    "note": "",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 7
   },
   {
    "weapon": "M7",
@@ -3849,7 +4618,20 @@
    "note": "Suppressed",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 15
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M7 Battle Rifle-Warfare-6GFT1US03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 97
   },
   {
    "weapon": "M7",
@@ -3860,7 +4642,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "CQB Build",
-   "tags": []
+   "tags": [],
+   "pos": 65
   },
   {
    "weapon": "M7",
@@ -3871,7 +4654,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 46
   },
   {
    "weapon": "M7",
@@ -3882,7 +4666,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 23
   },
   {
    "weapon": "M7",
@@ -3893,7 +4678,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 17
   },
   {
    "weapon": "M700",
@@ -3904,7 +4690,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 36
   },
   {
    "weapon": "M700",
@@ -3915,7 +4702,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 25
   },
   {
    "weapon": "M700",
@@ -3928,7 +4716,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 10
   },
   {
    "weapon": "M700",
@@ -3941,7 +4730,8 @@
    "note": "FULL BUILD",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 98
   },
   {
    "weapon": "M700",
@@ -3954,7 +4744,8 @@
    "note": "cheaper",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 99
   },
   {
    "weapon": "M700",
@@ -3967,7 +4758,8 @@
    "note": "Light",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 89
   },
   {
    "weapon": "M700",
@@ -3980,7 +4772,8 @@
    "note": "Range",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 90
   },
   {
    "weapon": "M700",
@@ -3993,7 +4786,8 @@
    "note": "Iron Sight",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 88
   },
   {
    "weapon": "M700",
@@ -4004,7 +4798,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 5
   },
   {
    "weapon": "M700",
@@ -4017,7 +4812,8 @@
    "note": "",
    "tags": [
     "470K"
-   ]
+   ],
+   "pos": 11
   },
   {
    "weapon": "M700",
@@ -4030,7 +4826,8 @@
    "note": "",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 52
   },
   {
    "weapon": "M700",
@@ -4041,7 +4838,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 39
   },
   {
    "weapon": "M82",
@@ -4054,7 +4852,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 8
   },
   {
    "weapon": "M82",
@@ -4067,7 +4866,8 @@
    "note": "Heavy",
    "tags": [
     "~1.1M"
-   ]
+   ],
+   "pos": 95
   },
   {
    "weapon": "M82",
@@ -4080,7 +4880,8 @@
    "note": "",
    "tags": [
     "1.2M"
-   ]
+   ],
+   "pos": 3
   },
   {
    "weapon": "M82",
@@ -4093,7 +4894,8 @@
    "note": "",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 54
   },
   {
    "weapon": "M82",
@@ -4104,7 +4906,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "One Shot, Maker of Misery",
-   "tags": []
+   "tags": [],
+   "pos": 17
   },
   {
    "weapon": "M870",
@@ -4115,7 +4918,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Boomstick",
-   "tags": []
+   "tags": [],
+   "pos": 98
   },
   {
    "weapon": "MCX LT",
@@ -4126,7 +4930,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 12
   },
   {
    "weapon": "MCX LT",
@@ -4139,7 +4944,8 @@
    "note": "Control",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 82
   },
   {
    "weapon": "MCX LT",
@@ -4152,7 +4958,8 @@
    "note": "Fast ADS + Budget",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 26
   },
   {
    "weapon": "MCX LT",
@@ -4165,7 +4972,8 @@
    "note": "Budget",
    "tags": [
     "~300K"
-   ]
+   ],
+   "pos": 27
   },
   {
    "weapon": "MCX LT",
@@ -4176,7 +4984,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 20
   },
   {
    "weapon": "MCX LT",
@@ -4189,7 +4998,8 @@
    "note": "Budget",
    "tags": [
     "290K"
-   ]
+   ],
+   "pos": 20
   },
   {
    "weapon": "MCX LT",
@@ -4202,7 +5012,8 @@
    "note": "",
    "tags": [
     "320K"
-   ]
+   ],
+   "pos": 22
   },
   {
    "weapon": "MCX LT",
@@ -4215,7 +5026,8 @@
    "note": "Hipfire",
    "tags": [
     "420K"
-   ]
+   ],
+   "pos": 24
   },
   {
    "weapon": "MCX LT",
@@ -4228,7 +5040,8 @@
    "note": "Budget",
    "tags": [
     "240K"
-   ]
+   ],
+   "pos": 74
   },
   {
    "weapon": "MCX LT",
@@ -4241,7 +5054,8 @@
    "note": "",
    "tags": [
     "450K"
-   ]
+   ],
+   "pos": 23
   },
   {
    "weapon": "MCX LT",
@@ -4252,7 +5066,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Fierce Barrel",
-   "tags": []
+   "tags": [],
+   "pos": 32
   },
   {
    "weapon": "MCX LT",
@@ -4263,7 +5078,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Hunter Barrel",
-   "tags": []
+   "tags": [],
+   "pos": 33
   },
   {
    "weapon": "MCX LT",
@@ -4274,7 +5090,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 8
   },
   {
    "weapon": "MDR",
@@ -4285,7 +5102,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 0
   },
   {
    "weapon": "MDR",
@@ -4298,7 +5116,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 3
   },
   {
    "weapon": "MDR",
@@ -4311,7 +5130,8 @@
    "note": "Red dot loud",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 4
   },
   {
    "weapon": "MDR",
@@ -4322,7 +5142,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 38
   },
   {
    "weapon": "MDR",
@@ -4335,7 +5156,8 @@
    "note": "",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 63
   },
   {
    "weapon": "MDR",
@@ -4348,7 +5170,8 @@
    "note": "",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 22
   },
   {
    "weapon": "MK4",
@@ -4359,7 +5182,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 4
   },
   {
    "weapon": "MK4",
@@ -4370,7 +5194,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Hipfire",
-   "tags": []
+   "tags": [],
+   "pos": 7
   },
   {
    "weapon": "MK4",
@@ -4383,7 +5208,22 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 1
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK4 Submachine Gun-Operations-6KR3DKC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "HIPFIRE",
+   "tags": [
+    "Season 10"
+   ],
+   "pos": 28
   },
   {
    "weapon": "MK4",
@@ -4396,7 +5236,8 @@
    "note": "BUDGET",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 27
   },
   {
    "weapon": "MK4",
@@ -4409,7 +5250,8 @@
    "note": "FULL AUTO",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 23
   },
   {
    "weapon": "MK4",
@@ -4422,7 +5264,8 @@
    "note": "Mid",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 97
   },
   {
    "weapon": "MK4",
@@ -4435,7 +5278,8 @@
    "note": "Full-Auto",
    "tags": [
     "~550K"
-   ]
+   ],
+   "pos": 96
   },
   {
    "weapon": "MK4",
@@ -4446,7 +5290,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 15
   },
   {
    "weapon": "MK4",
@@ -4457,7 +5302,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "100%ACC",
-   "tags": []
+   "tags": [],
+   "pos": 35
   },
   {
    "weapon": "MK4",
@@ -4468,7 +5314,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "AUTO",
-   "tags": []
+   "tags": [],
+   "pos": 37
   },
   {
    "weapon": "MK4",
@@ -4481,7 +5328,8 @@
    "note": "Full Auto",
    "tags": [
     "650K"
-   ]
+   ],
+   "pos": 5
   },
   {
    "weapon": "MK4",
@@ -4494,7 +5342,22 @@
    "note": "Hipfire",
    "tags": [
     "430K"
-   ]
+   ],
+   "pos": 1
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6L9CHCS04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "3X",
+   "tags": [
+    "600K"
+   ],
+   "pos": 13
   },
   {
    "weapon": "MK4",
@@ -4507,7 +5370,8 @@
    "note": "Budget",
    "tags": [
     "270K"
-   ]
+   ],
+   "pos": 9
   },
   {
    "weapon": "MK4",
@@ -4520,7 +5384,8 @@
    "note": "budget",
    "tags": [
     "200K"
-   ]
+   ],
+   "pos": 73
   },
   {
    "weapon": "MK4",
@@ -4533,7 +5398,8 @@
    "note": "",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 42
   },
   {
    "weapon": "MK4",
@@ -4544,7 +5410,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Full Auto",
-   "tags": []
+   "tags": [],
+   "pos": 51
   },
   {
    "weapon": "MK4",
@@ -4555,7 +5422,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Burst Fire",
-   "tags": []
+   "tags": [],
+   "pos": 35
   },
   {
    "weapon": "MK4",
@@ -4566,7 +5434,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 13
   },
   {
    "weapon": "MK4",
@@ -4577,7 +5446,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 22
   },
   {
    "weapon": "MK47",
@@ -4588,7 +5458,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Short Barrel",
-   "tags": []
+   "tags": [],
+   "pos": 15
   },
   {
    "weapon": "MK47",
@@ -4599,7 +5470,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Long Barrel",
-   "tags": []
+   "tags": [],
+   "pos": 18
   },
   {
    "weapon": "MK47",
@@ -4612,7 +5484,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 14
   },
   {
    "weapon": "MK47",
@@ -4625,7 +5498,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 81
   },
   {
    "weapon": "MK47",
@@ -4638,7 +5512,8 @@
    "note": "",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 48
   },
   {
    "weapon": "MK47",
@@ -4651,7 +5526,8 @@
    "note": "Budget",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 28
   },
   {
    "weapon": "MK47",
@@ -4664,7 +5540,8 @@
    "note": "Expensive",
    "tags": [
     "~850K"
-   ]
+   ],
+   "pos": 29
   },
   {
    "weapon": "MK47",
@@ -4677,7 +5554,8 @@
    "note": "Mid",
    "tags": [
     "~550K"
-   ]
+   ],
+   "pos": 30
   },
   {
    "weapon": "MK47",
@@ -4690,7 +5568,8 @@
    "note": "Short Barrel",
    "tags": [
     "600K"
-   ]
+   ],
+   "pos": 28
   },
   {
    "weapon": "MK47",
@@ -4703,7 +5582,8 @@
    "note": "Long Barrel",
    "tags": [
     "740K"
-   ]
+   ],
+   "pos": 26
   },
   {
    "weapon": "MK47",
@@ -4716,7 +5596,8 @@
    "note": "",
    "tags": [
     "800K"
-   ]
+   ],
+   "pos": 20
   },
   {
    "weapon": "MK47",
@@ -4729,7 +5610,8 @@
    "note": "Short Barrel",
    "tags": [
     "800K"
-   ]
+   ],
+   "pos": 12
   },
   {
    "weapon": "MK47",
@@ -4740,7 +5622,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 60
   },
   {
    "weapon": "MK47",
@@ -4751,7 +5634,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 29
   },
   {
    "weapon": "MK47",
@@ -4762,7 +5646,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 35
   },
   {
    "weapon": "MP5",
@@ -4773,7 +5658,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Speed ( Budget )",
-   "tags": []
+   "tags": [],
+   "pos": 28
   },
   {
    "weapon": "MP5",
@@ -4784,7 +5670,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Budget Ripfire",
-   "tags": []
+   "tags": [],
+   "pos": 24
   },
   {
    "weapon": "MP5",
@@ -4797,7 +5684,8 @@
    "note": "Budget",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 98
   },
   {
    "weapon": "MP5",
@@ -4810,7 +5698,8 @@
    "note": "",
    "tags": [
     "260K"
-   ]
+   ],
+   "pos": 41
   },
   {
    "weapon": "MP5",
@@ -4821,7 +5710,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 101
   },
   {
    "weapon": "MP5",
@@ -4832,7 +5722,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "100 Accuracy Monster",
-   "tags": []
+   "tags": [],
+   "pos": 52
   },
   {
    "weapon": "MP5",
@@ -4843,7 +5734,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 18
   },
   {
    "weapon": "MP7",
@@ -4854,7 +5746,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 13
   },
   {
    "weapon": "MP7",
@@ -4867,7 +5760,64 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 5
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MP7 Submachine Gun-Operations-6ITS2E00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "ACCURACY ECO",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 109
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MP7 Submachine Gun-Operations-6IUFRJC0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "Bit cheaper",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 110
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MP7 Submachine Gun-Operations-6J1900K0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "expensive hip fire",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 108
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MP7 Submachine Gun-Operations-6JUROPS0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "100% ACCURACY + BEAM",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 62
   },
   {
    "weapon": "MP7",
@@ -4880,7 +5830,8 @@
    "note": "cheap - new barrel kit",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 60
   },
   {
    "weapon": "MP7",
@@ -4893,7 +5844,8 @@
    "note": "Cheap hipfire",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 61
   },
   {
    "weapon": "MP7",
@@ -4906,7 +5858,8 @@
    "note": "Iron Sight",
    "tags": [
     "~450K"
-   ]
+   ],
+   "pos": 99
   },
   {
    "weapon": "MP7",
@@ -4919,7 +5872,8 @@
    "note": "Spec Ops",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 100
   },
   {
    "weapon": "MP7",
@@ -4930,7 +5884,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "SPECIAL",
-   "tags": []
+   "tags": [],
+   "pos": 23
   },
   {
    "weapon": "MP7",
@@ -4943,7 +5898,8 @@
    "note": "Hipfire",
    "tags": [
     "660K"
-   ]
+   ],
+   "pos": 23
   },
   {
    "weapon": "MP7",
@@ -4956,7 +5912,8 @@
    "note": "",
    "tags": [
     "660K"
-   ]
+   ],
+   "pos": 25
   },
   {
    "weapon": "MP7",
@@ -4969,7 +5926,8 @@
    "note": "Budget",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 27
   },
   {
    "weapon": "MP7",
@@ -4982,7 +5940,8 @@
    "note": "",
    "tags": [
     "350K"
-   ]
+   ],
+   "pos": 35
   },
   {
    "weapon": "MP7",
@@ -4995,7 +5954,20 @@
    "note": "Budget",
    "tags": [
     "120K"
-   ]
+   ],
+   "pos": 36
+  },
+  {
+   "weapon": "MP7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MP7 Submachine Gun-Warfare-6F5TFFO03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 103
   },
   {
    "weapon": "MP7",
@@ -5006,7 +5978,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Hipfire Build",
-   "tags": []
+   "tags": [],
+   "pos": 102
   },
   {
    "weapon": "MP7",
@@ -5017,7 +5990,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "HVK Combat Kit",
-   "tags": []
+   "tags": [],
+   "pos": 15
   },
   {
    "weapon": "MP7",
@@ -5028,7 +6002,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 7
   },
   {
    "weapon": "MP7",
@@ -5039,7 +6014,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 2
   },
   {
    "weapon": "Mini-14",
@@ -5050,7 +6026,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Sandstorm comp",
-   "tags": []
+   "tags": [],
+   "pos": 99
   },
   {
    "weapon": "Mini-14",
@@ -5061,7 +6038,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Silent suppressor",
-   "tags": []
+   "tags": [],
+   "pos": 100
   },
   {
    "weapon": "Mini-14",
@@ -5072,7 +6050,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 50
   },
   {
    "weapon": "P90",
@@ -5083,7 +6062,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 27
   },
   {
    "weapon": "P90",
@@ -5094,7 +6074,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 21
   },
   {
    "weapon": "P90",
@@ -5107,7 +6088,22 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 7
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "P90 Submachine Gun-Operations-6JCLMI40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "long barrel",
+   "tags": [
+    "Season 8"
+   ],
+   "pos": 80
   },
   {
    "weapon": "P90",
@@ -5120,7 +6116,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 43
   },
   {
    "weapon": "P90",
@@ -5133,7 +6130,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 32
   },
   {
    "weapon": "P90",
@@ -5146,7 +6144,8 @@
    "note": "Expensive",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 101
   },
   {
    "weapon": "P90",
@@ -5159,7 +6158,8 @@
    "note": "Budget",
    "tags": [
     "~200K"
-   ]
+   ],
+   "pos": 102
   },
   {
    "weapon": "P90",
@@ -5172,7 +6172,8 @@
    "note": "",
    "tags": [
     "360K"
-   ]
+   ],
+   "pos": 33
   },
   {
    "weapon": "P90",
@@ -5185,7 +6186,8 @@
    "note": "Hipfire",
    "tags": [
     "300K"
-   ]
+   ],
+   "pos": 35
   },
   {
    "weapon": "P90",
@@ -5198,7 +6200,8 @@
    "note": "BUDGET",
    "tags": [
     "120K"
-   ]
+   ],
+   "pos": 58
   },
   {
    "weapon": "P90",
@@ -5211,7 +6214,8 @@
    "note": "",
    "tags": [
     "344K"
-   ]
+   ],
+   "pos": 38
   },
   {
    "weapon": "P90",
@@ -5222,7 +6226,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Hipfire build",
-   "tags": []
+   "tags": [],
+   "pos": 104
   },
   {
    "weapon": "P90",
@@ -5233,7 +6238,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Well-rounded build",
-   "tags": []
+   "tags": [],
+   "pos": 105
   },
   {
    "weapon": "P90",
@@ -5244,7 +6250,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 38
   },
   {
    "weapon": "P90",
@@ -5255,7 +6262,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 16
   },
   {
    "weapon": "PKM",
@@ -5266,7 +6274,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 35
   },
   {
    "weapon": "PKM",
@@ -5277,7 +6286,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 32
   },
   {
    "weapon": "PKM",
@@ -5291,7 +6301,8 @@
    "tags": [
     "260K",
     "Season 8"
-   ]
+   ],
+   "pos": 94
   },
   {
    "weapon": "PKM",
@@ -5305,7 +6316,8 @@
    "tags": [
     "300K",
     "Season 8"
-   ]
+   ],
+   "pos": 95
   },
   {
    "weapon": "PKM",
@@ -5318,7 +6330,8 @@
    "note": "BUDGET",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 24
   },
   {
    "weapon": "PKM",
@@ -5331,7 +6344,8 @@
    "note": "Heavy",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 57
   },
   {
    "weapon": "PKM",
@@ -5344,7 +6358,8 @@
    "note": "",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 56
   },
   {
    "weapon": "PKM",
@@ -5357,7 +6372,8 @@
    "note": "Budget",
    "tags": [
     "~200K"
-   ]
+   ],
+   "pos": 55
   },
   {
    "weapon": "PKM",
@@ -5370,7 +6386,8 @@
    "note": "",
    "tags": [
     "370K"
-   ]
+   ],
+   "pos": 18
   },
   {
    "weapon": "PKM",
@@ -5383,7 +6400,8 @@
    "note": "longbarrel",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 48
   },
   {
    "weapon": "PKM",
@@ -5396,7 +6414,8 @@
    "note": "Reflex",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 46
   },
   {
    "weapon": "PKM",
@@ -5407,7 +6426,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Close-quarter",
-   "tags": []
+   "tags": [],
+   "pos": 106
   },
   {
    "weapon": "PKM",
@@ -5418,7 +6438,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 25
   },
   {
    "weapon": "PKM",
@@ -5429,7 +6450,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 32
   },
   {
    "weapon": "PSG-1",
@@ -5440,7 +6462,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 5
   },
   {
    "weapon": "PSG-1",
@@ -5453,7 +6476,8 @@
    "note": "",
    "tags": [
     "411K"
-   ]
+   ],
+   "pos": 29
   },
   {
    "weapon": "PSG-1",
@@ -5464,7 +6488,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 108
   },
   {
    "weapon": "PSG-1",
@@ -5475,7 +6500,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 40
   },
   {
    "weapon": "PTR-32",
@@ -5486,7 +6512,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 33
   },
   {
    "weapon": "PTR-32",
@@ -5499,7 +6526,8 @@
    "note": "Red Dot",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 31
   },
   {
    "weapon": "PTR-32",
@@ -5510,7 +6538,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 30
   },
   {
    "weapon": "PTR-32",
@@ -5521,7 +6550,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 109
   },
   {
    "weapon": "PTR-32",
@@ -5532,7 +6562,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Suppressed",
-   "tags": []
+   "tags": [],
+   "pos": 63
   },
   {
    "weapon": "PTR-32",
@@ -5543,7 +6574,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 7
   },
   {
    "weapon": "QBZ95-1",
@@ -5554,7 +6586,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 9
   },
   {
    "weapon": "QBZ95-1",
@@ -5567,7 +6600,8 @@
    "note": "eco",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 90
   },
   {
    "weapon": "QBZ95-1",
@@ -5580,7 +6614,8 @@
    "note": "Mid",
    "tags": [
     "~50K"
-   ]
+   ],
+   "pos": 32
   },
   {
    "weapon": "QBZ95-1",
@@ -5591,7 +6626,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 111
   },
   {
    "weapon": "QBZ95-1",
@@ -5602,7 +6638,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 110
   },
   {
    "weapon": "QBZ95-1",
@@ -5613,7 +6650,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 10
   },
   {
    "weapon": "QBZ95-1",
@@ -5624,7 +6662,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 26
   },
   {
    "weapon": "QCQ171",
@@ -5635,7 +6674,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High End",
-   "tags": []
+   "tags": [],
+   "pos": 30
   },
   {
    "weapon": "QCQ171",
@@ -5646,7 +6686,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 10
   },
   {
    "weapon": "QCQ171",
@@ -5659,7 +6700,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 75
   },
   {
    "weapon": "QCQ171",
@@ -5672,7 +6714,8 @@
    "note": "Built",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 103
   },
   {
    "weapon": "QCQ171",
@@ -5683,7 +6726,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "RIP",
-   "tags": []
+   "tags": [],
+   "pos": 33
   },
   {
    "weapon": "QCQ171",
@@ -5696,7 +6740,8 @@
    "note": "",
    "tags": [
     "550K"
-   ]
+   ],
+   "pos": 17
   },
   {
    "weapon": "QCQ171",
@@ -5709,7 +6754,8 @@
    "note": "Budget",
    "tags": [
     "260K"
-   ]
+   ],
+   "pos": 21
   },
   {
    "weapon": "QCQ171",
@@ -5720,7 +6766,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 112
   },
   {
    "weapon": "QCQ171",
@@ -5731,7 +6778,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 20
   },
   {
    "weapon": "QCQ171",
@@ -5742,7 +6790,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 20
   },
   {
    "weapon": "QJB201",
@@ -5753,7 +6802,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 29
   },
   {
    "weapon": "QJB201",
@@ -5766,7 +6816,36 @@
    "note": "BUDGET",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 17
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "QJB201 Light Machine Gun-Operations-6K1FJR80FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 63
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "QJB201 Light Machine Gun-Operations-6K6MTVG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 9"
+   ],
+   "pos": 52
   },
   {
    "weapon": "QJB201",
@@ -5780,7 +6859,8 @@
    "tags": [
     "250K",
     "Season 9"
-   ]
+   ],
+   "pos": 47
   },
   {
    "weapon": "QJB201",
@@ -5793,7 +6873,8 @@
    "note": "BUDGET",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 29
   },
   {
    "weapon": "QJB201",
@@ -5806,7 +6887,8 @@
    "note": "",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 59
   },
   {
    "weapon": "QJB201",
@@ -5817,7 +6899,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "Hipfire",
-   "tags": []
+   "tags": [],
+   "pos": 16
   },
   {
    "weapon": "QJB201",
@@ -5830,7 +6913,8 @@
    "note": "Hipfire",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 6
   },
   {
    "weapon": "QJB201",
@@ -5843,7 +6927,8 @@
    "note": "",
    "tags": [
     "360K"
-   ]
+   ],
+   "pos": 2
   },
   {
    "weapon": "QJB201",
@@ -5856,7 +6941,8 @@
    "note": "Basic's",
    "tags": [
     "450K"
-   ]
+   ],
+   "pos": 45
   },
   {
    "weapon": "QJB201",
@@ -5869,7 +6955,8 @@
    "note": "BUDGET",
    "tags": [
     "280K"
-   ]
+   ],
+   "pos": 78
   },
   {
    "weapon": "QJB201",
@@ -5882,7 +6969,8 @@
    "note": "Accuracy",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 21
   },
   {
    "weapon": "QJB201",
@@ -5893,7 +6981,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "AR build",
-   "tags": []
+   "tags": [],
+   "pos": 114
   },
   {
    "weapon": "QJB201",
@@ -5904,7 +6993,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "CQB build",
-   "tags": []
+   "tags": [],
+   "pos": 113
   },
   {
    "weapon": "QJB201",
@@ -5915,7 +7005,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Laser",
-   "tags": []
+   "tags": [],
+   "pos": 22
   },
   {
    "weapon": "QJB201",
@@ -5926,7 +7017,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 34
   },
   {
    "weapon": "R93",
@@ -5937,7 +7029,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 27
   },
   {
    "weapon": "R93",
@@ -5950,7 +7043,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 9
   },
   {
    "weapon": "R93",
@@ -5963,7 +7057,8 @@
    "note": "",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 57
   },
   {
    "weapon": "R93",
@@ -5976,7 +7071,8 @@
    "note": "New Budget",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 92
   },
   {
    "weapon": "R93",
@@ -5989,7 +7085,8 @@
    "note": "Old Budget",
    "tags": [
     "~200K"
-   ]
+   ],
+   "pos": 91
   },
   {
    "weapon": "R93",
@@ -6000,7 +7097,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 9
   },
   {
    "weapon": "R93",
@@ -6013,7 +7111,8 @@
    "note": "",
    "tags": [
     "320K"
-   ]
+   ],
+   "pos": 15
   },
   {
    "weapon": "R93",
@@ -6026,7 +7125,8 @@
    "note": "Budget",
    "tags": [
     "88K"
-   ]
+   ],
+   "pos": 51
   },
   {
    "weapon": "R93",
@@ -6037,7 +7137,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Aggressive One Shot",
-   "tags": []
+   "tags": [],
+   "pos": 57
   },
   {
    "weapon": "R93",
@@ -6048,7 +7149,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 41
   },
   {
    "weapon": "RM277",
@@ -6059,7 +7161,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Full Build",
-   "tags": []
+   "tags": [],
+   "pos": 3
   },
   {
    "weapon": "RM277",
@@ -6070,7 +7173,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 6
   },
   {
    "weapon": "RM277",
@@ -6083,7 +7187,8 @@
    "note": "3/7 scope",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 36
   },
   {
    "weapon": "RM277",
@@ -6096,7 +7201,8 @@
    "note": "2/4 scope",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 37
   },
   {
    "weapon": "RM277",
@@ -6109,7 +7215,8 @@
    "note": "Red Dot",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 46
   },
   {
    "weapon": "RM277",
@@ -6122,7 +7229,8 @@
    "note": "Budget",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 45
   },
   {
    "weapon": "RM277",
@@ -6135,7 +7243,8 @@
    "note": "Range",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 44
   },
   {
    "weapon": "RM277",
@@ -6146,7 +7255,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "2X",
-   "tags": []
+   "tags": [],
+   "pos": 28
   },
   {
    "weapon": "RM277",
@@ -6157,7 +7267,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "1X",
-   "tags": []
+   "tags": [],
+   "pos": 29
   },
   {
    "weapon": "RM277",
@@ -6170,7 +7281,8 @@
    "note": "",
    "tags": [
     "420K"
-   ]
+   ],
+   "pos": 0
   },
   {
    "weapon": "RM277",
@@ -6183,7 +7295,8 @@
    "note": "Budget",
    "tags": [
     "240K"
-   ]
+   ],
+   "pos": 4
   },
   {
    "weapon": "RM277",
@@ -6196,7 +7309,8 @@
    "note": "Budget",
    "tags": [
     "300K"
-   ]
+   ],
+   "pos": 65
   },
   {
    "weapon": "RM277",
@@ -6207,7 +7321,8 @@
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-07-15",
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 0
   },
   {
    "weapon": "RM277",
@@ -6218,7 +7333,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Heavy - Unsuppressed",
-   "tags": []
+   "tags": [],
+   "pos": 3
   },
   {
    "weapon": "RM277",
@@ -6229,7 +7345,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Whale Shark - Suppressed",
-   "tags": []
+   "tags": [],
+   "pos": 4
   },
   {
    "weapon": "RM277",
@@ -6240,7 +7357,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 37
   },
   {
    "weapon": "S12K",
@@ -6251,7 +7369,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 31
   },
   {
    "weapon": "S12K",
@@ -6264,7 +7383,8 @@
    "note": "Full Built",
    "tags": [
     "~600K"
-   ]
+   ],
+   "pos": 85
   },
   {
    "weapon": "S12K",
@@ -6275,7 +7395,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 115
   },
   {
    "weapon": "SCAR-H",
@@ -6286,7 +7407,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier Build",
-   "tags": []
+   "tags": [],
+   "pos": 1
   },
   {
    "weapon": "SCAR-H",
@@ -6297,7 +7419,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 36
   },
   {
    "weapon": "SCAR-H",
@@ -6310,7 +7433,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 91
   },
   {
    "weapon": "SCAR-H",
@@ -6323,7 +7447,8 @@
    "note": "ELITE TICKET",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 92
   },
   {
    "weapon": "SCAR-H",
@@ -6336,7 +7461,8 @@
    "note": "Newest",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 49
   },
   {
    "weapon": "SCAR-H",
@@ -6349,7 +7475,8 @@
    "note": "Red Dot",
    "tags": [
     "~550K"
-   ]
+   ],
+   "pos": 48
   },
   {
    "weapon": "SCAR-H",
@@ -6362,7 +7489,8 @@
    "note": "Budget",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 47
   },
   {
    "weapon": "SCAR-H",
@@ -6375,7 +7503,8 @@
    "note": "2X",
    "tags": [
     "560K"
-   ]
+   ],
+   "pos": 47
   },
   {
    "weapon": "SCAR-H",
@@ -6388,7 +7517,8 @@
    "note": "",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 46
   },
   {
    "weapon": "SCAR-H",
@@ -6401,7 +7531,8 @@
    "note": "",
    "tags": [
     "530K"
-   ]
+   ],
+   "pos": 6
   },
   {
    "weapon": "SCAR-H",
@@ -6412,7 +7543,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "\"No recoil\" build",
-   "tags": []
+   "tags": [],
+   "pos": 117
   },
   {
    "weapon": "SCAR-H",
@@ -6423,7 +7555,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Jack-of-all-Trades",
-   "tags": []
+   "tags": [],
+   "pos": 116
   },
   {
    "weapon": "SCAR-H",
@@ -6434,7 +7567,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 Build",
-   "tags": []
+   "tags": [],
+   "pos": 40
   },
   {
    "weapon": "SCAR-H",
@@ -6445,7 +7579,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 11
   },
   {
    "weapon": "SG552",
@@ -6456,7 +7591,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 39
   },
   {
    "weapon": "SG552",
@@ -6469,7 +7605,8 @@
    "note": "Light",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 34
   },
   {
    "weapon": "SG552",
@@ -6482,7 +7619,8 @@
    "note": "Budget",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 33
   },
   {
    "weapon": "SG552",
@@ -6493,7 +7631,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 118
   },
   {
    "weapon": "SG552",
@@ -6504,7 +7643,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Build",
-   "tags": []
+   "tags": [],
+   "pos": 24
   },
   {
    "weapon": "SG552",
@@ -6515,7 +7655,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 15
   },
   {
    "weapon": "SKS",
@@ -6526,7 +7667,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 11
   },
   {
    "weapon": "SKS",
@@ -6537,7 +7679,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 13
   },
   {
    "weapon": "SKS",
@@ -6550,7 +7693,8 @@
    "note": "",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 61
   },
   {
    "weapon": "SKS",
@@ -6563,7 +7707,8 @@
    "note": "",
    "tags": [
     "450K"
-   ]
+   ],
+   "pos": 30
   },
   {
    "weapon": "SKS",
@@ -6574,7 +7719,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 119
   },
   {
    "weapon": "SKS",
@@ -6585,7 +7731,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 11
   },
   {
    "weapon": "SKS",
@@ -6596,7 +7743,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 44
   },
   {
    "weapon": "SMG-45",
@@ -6607,7 +7755,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Budget",
-   "tags": []
+   "tags": [],
+   "pos": 26
   },
   {
    "weapon": "SMG-45",
@@ -6618,7 +7767,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 19
   },
   {
    "weapon": "SMG-45",
@@ -6631,7 +7781,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 116
   },
   {
    "weapon": "SMG-45",
@@ -6644,7 +7795,8 @@
    "note": "Budget Hipfire",
    "tags": [
     "~200K"
-   ]
+   ],
+   "pos": 104
   },
   {
    "weapon": "SMG-45",
@@ -6657,7 +7809,8 @@
    "note": "Budget The Sun",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 105
   },
   {
    "weapon": "SMG-45",
@@ -6670,7 +7823,8 @@
    "note": "",
    "tags": [
     "350K"
-   ]
+   ],
+   "pos": 41
   },
   {
    "weapon": "SMG-45",
@@ -6683,7 +7837,8 @@
    "note": "",
    "tags": [
     "250K"
-   ]
+   ],
+   "pos": 37
   },
   {
    "weapon": "SMG-45",
@@ -6694,7 +7849,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "AR Build",
-   "tags": []
+   "tags": [],
+   "pos": 120
   },
   {
    "weapon": "SMG-45",
@@ -6705,7 +7861,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Hipfire",
-   "tags": []
+   "tags": [],
+   "pos": 19
   },
   {
    "weapon": "SMG-45",
@@ -6716,7 +7873,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 8
   },
   {
    "weapon": "SR-25",
@@ -6727,7 +7885,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 23
   },
   {
    "weapon": "SR-25",
@@ -6738,7 +7897,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 8
   },
   {
    "weapon": "SR-25",
@@ -6751,7 +7911,8 @@
    "note": "SHORT BARREL SCOPED",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 79
   },
   {
    "weapon": "SR-25",
@@ -6764,7 +7925,8 @@
    "note": "Budget",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 62
   },
   {
    "weapon": "SR-25",
@@ -6777,7 +7939,8 @@
    "note": "Red Dot",
    "tags": [
     "~700K"
-   ]
+   ],
+   "pos": 63
   },
   {
    "weapon": "SR-25",
@@ -6790,7 +7953,8 @@
    "note": "",
    "tags": [
     "650K"
-   ]
+   ],
+   "pos": 60
   },
   {
    "weapon": "SR-25",
@@ -6803,7 +7967,8 @@
    "note": "",
    "tags": [
     "700K"
-   ]
+   ],
+   "pos": 31
   },
   {
    "weapon": "SR-25",
@@ -6814,7 +7979,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Velocity build",
-   "tags": []
+   "tags": [],
+   "pos": 121
   },
   {
    "weapon": "SR-25",
@@ -6825,7 +7991,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Close-Range",
-   "tags": []
+   "tags": [],
+   "pos": 56
   },
   {
    "weapon": "SR-25",
@@ -6836,7 +8003,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S8 Mid-Range Build",
-   "tags": []
+   "tags": [],
+   "pos": 28
   },
   {
    "weapon": "SR-25",
@@ -6847,7 +8015,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 42
   },
   {
    "weapon": "SR-3M",
@@ -6858,7 +8027,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 25
   },
   {
    "weapon": "SR-3M",
@@ -6869,7 +8039,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 16
   },
   {
    "weapon": "SR-3M",
@@ -6882,7 +8053,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 6
   },
   {
    "weapon": "SR-3M",
@@ -6895,7 +8067,8 @@
    "note": "full",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 77
   },
   {
    "weapon": "SR-3M",
@@ -6908,7 +8081,8 @@
    "note": "",
    "tags": [
     "Season 9"
-   ]
+   ],
+   "pos": 64
   },
   {
    "weapon": "SR-3M",
@@ -6921,7 +8095,8 @@
    "note": "Newest",
    "tags": [
     "~50K"
-   ]
+   ],
+   "pos": 106
   },
   {
    "weapon": "SR-3M",
@@ -6934,7 +8109,8 @@
    "note": "",
    "tags": [
     "400K"
-   ]
+   ],
+   "pos": 29
   },
   {
    "weapon": "SR-3M",
@@ -6947,7 +8123,8 @@
    "note": "Hipfire",
    "tags": [
     "460K"
-   ]
+   ],
+   "pos": 31
   },
   {
    "weapon": "SR-3M",
@@ -6960,7 +8137,8 @@
    "note": "",
    "tags": [
     "520K"
-   ]
+   ],
+   "pos": 40
   },
   {
    "weapon": "SR-3M",
@@ -6973,7 +8151,8 @@
    "note": "Budget",
    "tags": [
     "220K"
-   ]
+   ],
+   "pos": 39
   },
   {
    "weapon": "SR-3M",
@@ -6984,7 +8163,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Hipfire build",
-   "tags": []
+   "tags": [],
+   "pos": 122
   },
   {
    "weapon": "SR-3M",
@@ -6995,7 +8175,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "S7 100 Accuracy Build",
-   "tags": []
+   "tags": [],
+   "pos": 36
   },
   {
    "weapon": "SR-3M",
@@ -7006,7 +8187,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 6
   },
   {
    "weapon": "SR9",
@@ -7020,7 +8202,8 @@
    "tags": [
     "120K",
     "Season 9"
-   ]
+   ],
+   "pos": 51
   },
   {
    "weapon": "SR9",
@@ -7033,7 +8216,8 @@
    "note": "The g18 only has 33 mag in it",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 22
   },
   {
    "weapon": "SR9",
@@ -7044,7 +8228,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 123
   },
   {
    "weapon": "SR9",
@@ -7055,7 +8240,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 51
   },
   {
    "weapon": "SV-98",
@@ -7066,7 +8252,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 30
   },
   {
    "weapon": "SV-98",
@@ -7079,7 +8266,8 @@
    "note": "Budget",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 93
   },
   {
    "weapon": "SV-98",
@@ -7092,7 +8280,8 @@
    "note": "Dumb Range",
    "tags": [
     "~350K"
-   ]
+   ],
+   "pos": 94
   },
   {
    "weapon": "SV-98",
@@ -7105,7 +8294,8 @@
    "note": "",
    "tags": [
     "300K"
-   ]
+   ],
+   "pos": 19
   },
   {
    "weapon": "SV-98",
@@ -7116,7 +8306,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 43
   },
   {
    "weapon": "SVCH",
@@ -7127,7 +8318,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 2
   },
   {
    "weapon": "SVCH",
@@ -7140,7 +8332,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 12
   },
   {
    "weapon": "SVCH",
@@ -7153,7 +8346,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 39
   },
   {
    "weapon": "SVCH",
@@ -7166,7 +8360,8 @@
    "note": "NEW Raspy",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 38
   },
   {
    "weapon": "SVCH",
@@ -7177,7 +8372,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 31
   },
   {
    "weapon": "SVCH",
@@ -7190,7 +8386,8 @@
    "note": "",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 59
   },
   {
    "weapon": "SVCH",
@@ -7201,7 +8398,8 @@
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-07-04",
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 3
   },
   {
    "weapon": "SVCH",
@@ -7212,7 +8410,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 10",
-   "tags": []
+   "tags": [],
+   "pos": 2
   },
   {
    "weapon": "SVCH",
@@ -7223,7 +8422,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 38
   },
   {
    "weapon": "SVD",
@@ -7234,7 +8434,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Mid Tier",
-   "tags": []
+   "tags": [],
+   "pos": 18
   },
   {
    "weapon": "SVD",
@@ -7245,7 +8446,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 19
   },
   {
    "weapon": "SVD",
@@ -7256,7 +8458,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 17
   },
   {
    "weapon": "SVD",
@@ -7269,7 +8472,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 13
   },
   {
    "weapon": "SVD",
@@ -7282,7 +8486,8 @@
    "note": "",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 31
   },
   {
    "weapon": "SVD",
@@ -7295,7 +8500,8 @@
    "note": "BUDGET",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 30
   },
   {
    "weapon": "SVD",
@@ -7308,7 +8514,8 @@
    "note": "Default",
    "tags": [
     "~400K"
-   ]
+   ],
+   "pos": 64
   },
   {
    "weapon": "SVD",
@@ -7319,7 +8526,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 12
   },
   {
    "weapon": "SVD",
@@ -7332,7 +8540,8 @@
    "note": "",
    "tags": [
     "450K"
-   ]
+   ],
+   "pos": 62
   },
   {
    "weapon": "SVD",
@@ -7345,7 +8554,8 @@
    "note": "",
    "tags": [
     "300K"
-   ]
+   ],
+   "pos": 33
   },
   {
    "weapon": "SVD",
@@ -7356,7 +8566,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 124
   },
   {
    "weapon": "SVD",
@@ -7367,7 +8578,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 47
   },
   {
    "weapon": "Thompson SMG",
@@ -7378,7 +8590,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 1
   },
   {
    "weapon": "Thompson SMG",
@@ -7391,7 +8604,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 2
   },
   {
    "weapon": "Thompson SMG",
@@ -7404,7 +8618,8 @@
    "note": "Budget",
    "tags": [
     "~300K"
-   ]
+   ],
+   "pos": 107
   },
   {
    "weapon": "Thompson SMG",
@@ -7415,7 +8630,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 39
   },
   {
    "weapon": "Thompson SMG",
@@ -7428,7 +8644,8 @@
    "note": "Hipfire",
    "tags": [
     "930K"
-   ]
+   ],
+   "pos": 64
   },
   {
    "weapon": "Thompson SMG",
@@ -7441,7 +8658,8 @@
    "note": "ADS",
    "tags": [
     "900K"
-   ]
+   ],
+   "pos": 65
   },
   {
    "weapon": "Thompson SMG",
@@ -7454,7 +8672,8 @@
    "note": "",
    "tags": [
     "1M"
-   ]
+   ],
+   "pos": 43
   },
   {
    "weapon": "UZI",
@@ -7465,7 +8684,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "Sniper ( Budget )",
-   "tags": []
+   "tags": [],
+   "pos": 24
   },
   {
    "weapon": "UZI",
@@ -7478,7 +8698,8 @@
    "note": "Snuzi",
    "tags": [
     "~250K"
-   ]
+   ],
+   "pos": 108
   },
   {
    "weapon": "UZI",
@@ -7491,7 +8712,8 @@
    "note": "Fun Thermal",
    "tags": [
     "229K"
-   ]
+   ],
+   "pos": 62
   },
   {
    "weapon": "UZI",
@@ -7502,7 +8724,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 125
   },
   {
    "weapon": "UZI",
@@ -7513,7 +8736,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 12
   },
   {
    "weapon": "VSS",
@@ -7526,7 +8750,8 @@
    "note": "",
    "tags": [
     "Season 11"
-   ]
+   ],
+   "pos": 11
   },
   {
    "weapon": "VSS",
@@ -7539,7 +8764,8 @@
    "note": "LARP",
    "tags": [
     "Season 10"
-   ]
+   ],
+   "pos": 18
   },
   {
    "weapon": "VSS",
@@ -7552,7 +8778,8 @@
    "note": "Expensive",
    "tags": [
     "~450K"
-   ]
+   ],
+   "pos": 65
   },
   {
    "weapon": "VSS",
@@ -7565,7 +8792,8 @@
    "note": "Budget",
    "tags": [
     "~150K"
-   ]
+   ],
+   "pos": 66
   },
   {
    "weapon": "VSS",
@@ -7576,7 +8804,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 3
   },
   {
    "weapon": "VSS",
@@ -7587,7 +8816,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 128
   },
   {
    "weapon": "VSS",
@@ -7598,7 +8828,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Season 9",
-   "tags": []
+   "tags": [],
+   "pos": 12
   },
   {
    "weapon": "VSS",
@@ -7609,7 +8840,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 48
   },
   {
    "weapon": "Vector",
@@ -7620,7 +8852,8 @@
    "url": "https://www.deltaforce.build/deathlapse",
    "added": null,
    "note": "High Tier",
-   "tags": []
+   "tags": [],
+   "pos": 29
   },
   {
    "weapon": "Vector",
@@ -7633,7 +8866,8 @@
    "note": "",
    "tags": [
     "Season 8"
-   ]
+   ],
+   "pos": 76
   },
   {
    "weapon": "Vector",
@@ -7646,7 +8880,8 @@
    "note": "Budget",
    "tags": [
     "~500K"
-   ]
+   ],
+   "pos": 109
   },
   {
    "weapon": "Vector",
@@ -7659,7 +8894,8 @@
    "note": "Expensive",
    "tags": [
     "~700K"
-   ]
+   ],
+   "pos": 110
   },
   {
    "weapon": "Vector",
@@ -7672,7 +8908,8 @@
    "note": "The Sun",
    "tags": [
     "~600K"
-   ]
+   ],
+   "pos": 111
   },
   {
    "weapon": "Vector",
@@ -7683,7 +8920,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "HIPFIRE",
-   "tags": []
+   "tags": [],
+   "pos": 7
   },
   {
    "weapon": "Vector",
@@ -7694,7 +8932,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 6
   },
   {
    "weapon": "Vector",
@@ -7707,7 +8946,8 @@
    "note": "",
    "tags": [
     "670K"
-   ]
+   ],
+   "pos": 37
   },
   {
    "weapon": "Vector",
@@ -7720,7 +8960,8 @@
    "note": "Hipfire",
    "tags": [
     "580K"
-   ]
+   ],
+   "pos": 39
   },
   {
    "weapon": "Vector",
@@ -7733,7 +8974,8 @@
    "note": "",
    "tags": [
     "500K"
-   ]
+   ],
+   "pos": 34
   },
   {
    "weapon": "Vector",
@@ -7744,7 +8986,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Bullet hose",
-   "tags": []
+   "tags": [],
+   "pos": 126
   },
   {
    "weapon": "Vector",
@@ -7755,7 +8998,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 64
   },
   {
    "weapon": "Vector",
@@ -7766,7 +9010,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "New Hipfire",
-   "tags": []
+   "tags": [],
+   "pos": 49
   },
   {
    "weapon": "Vector",
@@ -7777,7 +9022,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 14
   },
   {
    "weapon": "Vityaz",
@@ -7790,7 +9036,8 @@
    "note": "RIP",
    "tags": [
     "120K"
-   ]
+   ],
+   "pos": 59
   },
   {
    "weapon": "Vityaz",
@@ -7801,7 +9048,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Laserbeam Build",
-   "tags": []
+   "tags": [],
+   "pos": 127
   },
   {
    "weapon": "Vityaz",
@@ -7812,7 +9060,8 @@
    "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
    "added": null,
    "note": "Hipfire Build",
-   "tags": []
+   "tags": [],
+   "pos": 53
   },
   {
    "weapon": "Vityaz",
@@ -7823,7 +9072,8 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
-   "tags": []
+   "tags": [],
+   "pos": 4
   }
  ]
 }
