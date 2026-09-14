@@ -399,6 +399,7 @@
     get focus() { return state.focus; },
     get me() { return state.me; },
     get players() { return state.players; },
+    get mode() { return state.mode; },   // 1 operations, 2 warfare — a tab may have nothing to say in one of them
     goTab: (id) => setTab(id),
     setFocus: (openid) => setFocus(openid),
     repaint: () => render(),
@@ -413,14 +414,15 @@
     // One tab is not a choice: with no event running the bar would be a single word under the hero.
     bar.hidden = TABS.length < 2;
     const active = tabOf(state.tab);
-    bar.innerHTML = TABS.map(t => {
-      const c = t.count ? t.count(rowsOf(t), host) : null;
-      return `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}${c ? `<span class="cnt">${esc(c)}</span>` : ""}</button>`;
-    }).join("");
+    // Names only. A tab is where you are, not a notification: the number a module wants to shout
+    // is already in the slot beside the big number, and twice is once too many.
+    bar.innerHTML = TABS.map(t => `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}</button>`).join("");
     bar.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => setTab(b.dataset.tab));
     TABS.forEach(t => { const el = paneOf(t.id); if (el) el.classList.toggle("on", t.id === active.id); });
-    // Only the range filter is still in the masthead, and only the match tab uses it.
+    // The range picker stays in the masthead and dims on a tab that cannot use it; the mode picker
+    // sits above the headline and is simply not there when the open tab has no modes.
     document.querySelectorAll(".top .ranges").forEach(el => el.classList.toggle("quiet", !active.filters));
+    $("#panebar").hidden = !active.filters;
 
     // The slot beside the big number. The open tab has first claim on it; otherwise the first
     // module with something to say there takes it, which is how a tab advertises itself from a
