@@ -441,6 +441,7 @@
     if (hero) {
       $("#eyebrow").textContent = hero.eyebrow;
       $("#big").innerHTML = hero.big;
+      $("#bigsub").textContent = hero.sub || "";
       paintCells(hero.cells || []);
     }
     // A figure in the hero may be the page's own index: one click takes you to the part of the
@@ -485,6 +486,7 @@
     const best = ms.length ? Math.max(...ms.map(m => Number(sol ? m.net_income : m.score) || 0)) : null;
     $("#eyebrow").textContent = focusName() + (sol ? " · net income · " : " · score · ") + rangeWord();
     $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "0";
+    $("#bigsub").textContent = "";   // the board's own headline is named by its eyebrow
     const cells = [
       // The split only exists once the match detail has landed, which is within the minute. Until
       // then say the total rather than a confidently wrong zero.
