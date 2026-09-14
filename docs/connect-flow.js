@@ -29,6 +29,10 @@
     return "javascript:" + encodeURIComponent(src);
   }
 
+  // The chip's triangle is the character ▲ and not the site's clip-path one, because the name is the
+  // only thing that survives the drag: a browser gives a `javascript:` bookmark its own generic icon
+  // and there is no way to replace it, so the mark has to live in the text next to it.
+  //
   // o.bm      the bookmark is already on their bar (remembered across visits)
   // o.back    where the bookmark sends the HQ tab
   // o.closes  true on the board, where that tab hands over and shuts itself rather than becoming
@@ -39,7 +43,7 @@
       body: `<p>Drag this onto your bookmarks bar. It only reads the HQ page's own login and sends you back here — nothing else.</p>
         <div class="bar">
           <div class="chrome"><i></i><i></i><i></i><span>Bookmarks bar</span></div>
-          <div class="shelf"><a class="chip" href="${bookmarkletHref(o.back)}" draggable="true" onclick="return false"><span class="tri"></span>Connect HQ</a><span class="arrow">← drag me up there</span></div>
+          <div class="shelf"><a class="chip" href="${bookmarkletHref(o.back)}" draggable="true" onclick="return false"><span class="mk">▲</span> Connect HQ</a><span class="arrow">← drag me up there</span></div>
         </div>
         <p class="hint">Bookmarks bar hidden? <b>⌘⇧B</b> on Mac, <b>Ctrl⇧B</b> on Windows.</p>
         <div class="acts"><button class="go" id="bmdone">I've added it</button></div>`,
