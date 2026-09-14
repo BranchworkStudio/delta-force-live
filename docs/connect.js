@@ -10,7 +10,7 @@
 (function () {
   const C = window.DF_CONFIG;
   const $ = (s) => document.querySelector(s);
-  const HQ = "https://www.playdeltaforce.com/events/hq/en/";
+  const F = window.DF_CONNECT;
   const K = { bm: "df-bm", conn: "df-connected", ctl: "df-control", inv: "df-invite", focus: "df-focus", sess: "df-session" };
   const ls = {
     get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -35,20 +35,6 @@
     since: Date.now(),
   };
 
-  // ---------- the bookmarklet ----------
-  function bookmarkletHref() {
-    const url = location.href.split("#")[0];
-    const src = "(function(){" +
-      "var h=location.hostname,u=" + JSON.stringify(url) + ";" +
-      'if(h.indexOf("playdeltaforce.com")<0){location.href=u+"#e=wrongsite&h="+encodeURIComponent(h);return}' +
-      'var n="openid token game_id channel encodeparam role_id zone_id area_id plat_id".split(" "),c={},p=(document.cookie||"").split(";"),i,q,e,k;' +
-      'for(i=0;i<p.length;i++){q=p[i].trim();e=q.indexOf("=");if(e<1)continue;k=q.slice(0,e);if(k.slice(0,8)!="Wand_DF_")continue;k=k.slice(8);' +
-      "if(n.indexOf(k)<0)continue;try{c[k]=decodeURIComponent(q.slice(e+1))}catch(x){c[k]=q.slice(e+1)}}" +
-      'if(!c.openid||!c.token){location.href=u+"#e=login&f="+encodeURIComponent(Object.keys(c).join(","));return}' +
-      'location.href=u+"#s="+encodeURIComponent(JSON.stringify(c))})()';
-    return "javascript:" + encodeURIComponent(src);
-  }
-
   // ---------- backend ----------
   async function post(body) {
     const res = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
@@ -59,40 +45,10 @@
     let j = {}; try { j = await res.json(); } catch (e) { /* empty body */ }
     return { httpOk: res.ok, status: res.status, ...j };
   }
-  // ---------- steps ----------
-  function stepList() {
-    return [{
-      id: "bm", title: "Add the bookmark", done: S.bm,
-      body: `<p>Drag this onto your bookmarks bar. It only reads the HQ page's own login and sends you back here — nothing else.</p>
-        <div class="bar">
-          <div class="chrome"><i></i><i></i><i></i><span>Bookmarks bar</span></div>
-          <div class="shelf"><a class="chip" href="${bookmarkletHref()}" draggable="true" onclick="return false"><span class="tri"></span>Connect HQ</a><span class="arrow">← drag me up there</span></div>
-        </div>
-        <p class="hint">Bookmarks bar hidden? <b>⌘⇧B</b> on Mac, <b>Ctrl⇧B</b> on Windows.</p>
-        <div class="acts"><button class="go" id="bmdone">I've added it</button></div>`,
-    }, {
-      id: "hq", title: "Log in on HQ", done: false,
-      body: `<p>Opens the official Delta Force HQ site in a new tab. Log in there if it asks — your password only ever goes to them.</p>
-        <div class="acts"><button class="go" id="openhq">Open HQ ›</button></div>`,
-    }, {
-      id: "click", title: "Click the bookmark on that tab", done: false,
-      body: `<p>On the HQ tab, click <b>Connect HQ</b> in your bookmarks bar. That tab comes back here connected, and this page finishes on its own.</p>
-        <div class="waiting"><i></i>Waiting for the hand-over</div>
-        <div class="box">Your HQ session gets stored on the server, which then reads your matches every minute — with your PC off and nothing installed. You can disconnect any time, and it never includes your password.</div>`,
-    }];
-  }
-
   function renderSteps() {
-    const steps = stepList();
-    const cur = steps.findIndex((s) => !s.done);
-    $("#flow").innerHTML = steps.map((s, i) => {
-      const cls = s.done ? "done" : i === cur ? "on" : "off";
-      return `<div class="step ${cls}" data-id="${s.id}">
-        <div class="no">${s.done ? "✓" : i + 1}</div>
-        <div><h2>${s.title}</h2>${i === cur || s.done ? s.body : ""}</div>
-      </div>`;
-    }).join("") + (S.err ? errBox() : "") + foot();
-    wireSteps();
+    $("#flow").innerHTML = F.stepsHtml({ bm: S.bm, back: location.href.split("#")[0], closes: false })
+      + (S.err ? errBox() : "") + foot();
+    F.wire($("#flow"), { bm: () => { S.bm = true; render(); } });
   }
 
   function errBox() {
@@ -103,17 +59,23 @@
       <a href="https://github.com/BranchworkStudio/delta-force-live#readme" target="_blank" rel="noopener">How this works</a></div>`;
   }
 
-  function wireSteps() {
-    const bmd = $("#bmdone");
-    if (bmd) bmd.onclick = () => { S.bm = true; ls.set(K.bm, "1"); render(); };
-    const hq = $("#openhq");
-    if (hq) hq.onclick = () => window.open(HQ, "_blank", "noopener");
-  }
-
   // ---------- success ----------
-  // Connected is a beat, not a destination: it confirms who was connected and then hands over to the
-  // board on its own. Everything you might want to *do* afterwards (invite, disconnect) lives there.
+  // Connected is a beat, not a destination: it confirms who was connected and then hands over on its
+  // own. Everything you might want to *do* afterwards (invite, disconnect) lives on the board.
+  //
+  // Where it hands over to depends on how this page was reached. `?w=1` means a board tab opened the
+  // HQ window and is still sitting there waiting: it has already heard the hand-over land on the
+  // storage event, so the useful thing for this window to do is get out of the way. Only a window a
+  // script opened may close itself, so a browser that refuses — or a `?w=1` somebody typed by hand —
+  // falls through to the redirect, which is what this page did before there was anything to close.
   const HOLD = 3200;
+  const CLOSING = qs.get("w") === "1";
+
+  function handOverEnds() {
+    if (!CLOSING) return location.replace("./");
+    window.close();
+    setTimeout(() => { if (!window.closed) location.replace("./"); }, 700);
+  }
 
   function finish(r) {
     ls.set(K.bm, "1"); S.bm = true;
@@ -144,10 +106,10 @@
         <div>${r.fresh ? "New HQ login, clock started now." : `Same login as before · running for <b>${span((Date.now() - new Date(r.connected_at)) / 1000)}</b>`}</div>
         <div>First matches land within a minute.</div>
       </div>
-      <a class="hand" href="./">Opening the board<span class="dots"><i></i><i></i><i></i></span></a>
+      <a class="hand" href="./">${CLOSING ? "Closing this tab" : "Opening the board"}<span class="dots"><i></i><i></i><i></i></span></a>
       <div class="bead"><span></span></div>
     </div>`;
-    setTimeout(() => { if (S.phase === "done") location.replace("./"); }, HOLD);
+    setTimeout(() => { if (S.phase === "done") handOverEnds(); }, HOLD);
   }
 
   function renderSending() {
@@ -177,18 +139,8 @@
   }
 
   // ---------- the other tab finished ----------
-  let watching = false;
   function watchForHandover() {
-    if (watching) return;
-    watching = true;
-    window.addEventListener("storage", (e) => {
-      if (e.key !== K.conn || !e.newValue) return;
-      try {
-        const v = JSON.parse(e.newValue);
-        if (Date.now() - v.at > 120000) return;
-        finish({ openid: v.openid, nickname: v.nickname, fresh: true, connected_at: new Date(v.at).toISOString() });
-      } catch (x) { /* ignore */ }
-    });
+    F.watch((v) => finish({ openid: v.openid, nickname: v.nickname, fresh: true, connected_at: new Date(v.at).toISOString() }));
     // There used to be a fallback here that polled `public_sessions` for any session that had
     // appeared since this page opened, for browsers that hand the bookmark to a different tab
     // group. Boards are private now: the publishable key reads nothing, and a visitor who has not

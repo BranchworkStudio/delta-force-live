@@ -7,6 +7,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230c1416'/><polygon points='8,2 14,14 2,14' fill='%231de08c'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="connect.css?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -204,9 +205,14 @@
   .gate .go { display: inline-block; margin-top: 22px; padding: 11px 22px; background: var(--green); color: var(--on-green);
               font: 700 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; text-decoration: none; }
   .gate .go:hover { filter: brightness(1.08); }
+  /* the connect flow lives in here now, so the gate stops being a signpost and starts being the thing */
+  .gate .cflow { max-width: 600px; margin: 28px auto 0; text-align: left; }
+  .gate .cflow .step:last-child { border-bottom: 0; }
   body.gated .statrow, body.gated .roster, body.gated .band, body.gated .cols, body.gated .nudge,
   body.gated .modes, body.gated .ranges, body.gated .acct-div, body.gated .status,
   body.gated .tabs, body.gated .pane { display: none; }
+  /* the gate IS the connect flow now, so the header's way in would only be a second door to it */
+  body.gated .acct a.signin { display: none; }
 
   /* ---- tabs ----
      One tab per page of the board. "Match data" is the board itself and is always there; the rest
@@ -433,7 +439,8 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=29"></script>
+<script src="config.js?v=30"></script>
+<script src="connect-flow.js?v=30"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
@@ -441,12 +448,12 @@
 <!-- Permanent tabs. A tab module registers itself and is otherwise unknown to the board; the
      weapon manifest below is the spine the Loadouts tab hangs community builds on. -->
 <script src="https://www.playdeltaforce.com/basic_info/guns_en.js" onerror="window.__gunsFailed=1"></script>
-<script src="tabs/loadouts.js?v=1"></script>
+<script src="tabs/loadouts.js?v=2"></script>
 <!-- Limited-time event modules. Each one registers a tab with itself and is otherwise unknown to
      the board: when the season ends, delete the two lines below and docs/events/asala-cards.js,
      drop the entry from EVENTS in supabase/functions/poll/index.ts, and nothing else changes. -->
 <script src="https://www.playdeltaforce.com/basic_info/asala_pokers_en.js" onerror="window.__cardsFailed=1"></script>
-<script src="events/asala-cards.js?v=29"></script>
-<script src="app.js?v=29"></script>
+<script src="events/asala-cards.js?v=30"></script>
+<script src="app.js?v=30"></script>
 </body>
 </html>
