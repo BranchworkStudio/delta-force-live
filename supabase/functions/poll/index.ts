@@ -175,6 +175,22 @@ async function storeReds(s: Session, openid: string, bf: Record<string, unknown>
   return stored;
 }
 
+/** Nickname, avatar id and level, as HQ has them now. The avatar id is decoded on the site. */
+async function refreshProfile(openid: string, p: any) {
+  if (!p || typeof p !== "object") return;
+  const next = {
+    nickname: typeof p.nickname === "string" ? p.nickname.slice(0, 64) : null,
+    avatar: typeof p.avatar === "string" ? p.avatar.slice(0, 64) : null,
+    level: Number.isFinite(Number(p.level)) ? Math.trunc(Number(p.level)) : null,
+  };
+  const { data: have } = await supabase.from("players").select("nickname, avatar, level").eq("openid", openid).maybeSingle();
+  if (!have) return;
+  // HQ omitting a field is not the same as HQ clearing it, so a null never overwrites what we hold.
+  const patch: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(next)) if (v !== null && v !== (have as any)[k]) patch[k] = v;
+  if (Object.keys(patch).length) await supabase.from("players").update(patch).eq("openid", openid);
+}
+
 /** The career/season summary HQ shows above the match list, and the rank score inside it. */
 async function storeStats(s: Session, openid: string) {
   let done = 0;
@@ -182,6 +198,10 @@ async function storeStats(s: Session, openid: string) {
     const env = await getMyData(s, rt).catch(() => null);
     if (!env || Number(env.code) !== 0 || !env.data) continue;
     await supabase.from("player_stats").upsert({ openid, report_type: rt, raw: env.data, fetched_at: nowIso() }, { onConflict: "openid,report_type" });
+    // The same answer carries the profile HQ shows beside the nickname, and it was only ever read
+    // at hand-over — so a mate who changed their picture or ranked up kept the old one on the board
+    // until they reconnected. Written only when it actually moved: this runs every minute.
+    if (rt === MODES[0]) await refreshProfile(openid, env.data?.player_info);
     // HQ only ever states the standing, never what a match was worth, so the history is made here:
     // one row each time the number moves. Sampling an unchanged score every minute would bury the
     // movements in duplicates, so the previous sample is the one thing worth reading first.

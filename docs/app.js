@@ -10,7 +10,7 @@
 
   // ---------- lookups (official basic_info tables, with a fallback) ----------
   const MAP_FALLBACK = { 22: "Zero Dam", 19: "Layali Grove", 39: "Space City", 81: "Brakkesh", 88: "Tide Prison", 10: "Trench Lines", 24: "Cracked", 11: "Trainwreck", 54: "Ascension", 12: "Knife Edge", 15: "Fault", 30: "Cyclone", 14: "Aftershock", 55: "Island Warfare", 31: "Akh Canal", 21: "Shafted", 75: "Threshold", 89: "AZ3", 17: "Coliseum", 26: "The Mog" };
-  const mapIndex = {}, opIndex = {}, itemIndex = {};
+  const mapIndex = {}, opIndex = {}, itemIndex = {}, faceIndex = {};
   const absUrl = (u) => !u ? null : /^https?:/.test(u) ? u : "https://www.playdeltaforce.com" + (u.startsWith("/") ? "" : "/") + u;
   try {
     const bi = window.basic_info_maps;
@@ -19,10 +19,16 @@
       if (name) mapIndex[String(m.map_id)] = String(name);
     }
   } catch (e) { /* fallback below */ }
-  try { for (const o of window.basic_info_operators || []) opIndex[String(o.operator_id)] = { name: (o.language && o.language.en) || o.operator_id, icon: absUrl(o.image_url) }; } catch (e) { /* ignore */ }
+  // `image_url` is the full splash art — 3072px and ~4.4 MB, for a picture drawn at 52. The daily
+  // report's avatar is the same operator as a 200px head, 82 KB, which is the size actually wanted.
+  try { for (const o of window.basic_info_operators || []) opIndex[String(o.operator_id)] = { name: (o.language && o.language.en) || o.operator_id, icon: absUrl(o.daily_report_avatar_url || o.image_url) }; } catch (e) { /* ignore */ }
   // `value` and `is_collectible` come from the same official table: the collection endpoints send
   // an item id and a count and nothing else, so a red's worth and whether it belongs on the wall
   // at all are only knowable here. The wall's denominator is the count of collectible grade 6.
+  // The profile picture HQ shows beside a nickname. It arrives as a bare id (42010030067) and is
+  // useless on its own; `avatars.js` is the table that turns it into a picture, the same way
+  // operators_en.js does for an operator. w200 because the tile is 52px and the source is 512.
+  try { for (const a of window.basic_info_avatar || []) faceIndex[String(a.avatar_id)] = absUrl(a.image_w200_url || a.image_url); } catch (e) { /* ignore */ }
   try { for (const c of window.basic_info_collection || []) itemIndex[String(c.prop_id)] = { name: (c.language && c.language.en) || c.prop_id, img: absUrl(c.image_url), grade: Number(c.grade) || 0, value: Number(c.value) || 0, collectible: !!c.is_collectible, maps: [c.source_map_1_i18n, c.source_map_2_i18n].map(m => m && m.en).filter(Boolean) }; } catch (e) { /* ignore */ }
   const mapName = (id) => mapIndex[String(id)] || MAP_FALLBACK[String(id).slice(0, 2)] || ("Map " + id);
   // HQ gives every map *and difficulty* its own id, named "Zero Dam - Easy" or "Space City_Normal"
@@ -37,6 +43,7 @@
   const mapFull = (id) => { const m = mapParts(id); return m.diff ? m.base + " · " + m.diff : m.base; };
   const opName = (id) => (opIndex[String(id)] && opIndex[String(id)].name) || (id ? "Op " + id : "–");
   const opIcon = (id) => (opIndex[String(id)] && opIndex[String(id)].icon) || null;
+  const faceIcon = (id) => (id && faceIndex[String(id)]) || null;
   const item = (id) => itemIndex[String(id)] || { name: "Item " + id, img: null, grade: 0, value: 0, collectible: false, maps: [] };
   // How many reds exist to be found. Counted from the official table rather than hard-coded, so a
   // season that adds reds moves the denominator on its own.
@@ -414,10 +421,15 @@
     const cards = state.players.map(p => {
       const pm = ms.filter(m => m.openid === p.openid), w = pm.filter(isWin).length, net = sum(pm, m => m.net_income), score = sum(pm, m => m.score);
       const [stc, stt] = liveState(p);
-      const icon = opIcon(mostUsedOp(pm.length ? pm : state.matches.filter(m => m.openid === p.openid)));
+      // Two pictures, two jobs: the HQ profile picture says who this is and does not move, and the
+      // operator badge says what they have been playing in the range. An account with no picture
+      // set (the avatar id comes back empty) wears the operator alone rather than a blank square.
+      const opId = mostUsedOp(pm.length ? pm : state.matches.filter(m => m.openid === p.openid));
+      const op = opIcon(opId), face = faceIcon(p.avatar), icon = face || op;
+      const badge = face && op ? `<img class="op" src="${esc(op)}" alt="" loading="lazy" title="${esc(opName(opId))}, most played ${rangeWord()}" onerror="this.remove()">` : "";
       return `<div class="pl${state.focus === p.openid ? " on" : ""}" data-focus="${esc(p.openid)}" title="Show only ${esc(p.nickname || "this player")}">
         <div class="bar" style="background:${colorFor(p.openid)}"></div>
-        ${icon ? `<img class="ava" src="${esc(icon)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ava"></div>`}
+        <div class="pic">${icon ? `<img class="ava" src="${esc(icon)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ava"></div>`}${badge}</div>
         <div class="body">
           <div class="nm"><span>${esc(p.nickname || p.openid.slice(0, 8))}</span><span class="st" style="color:${stc}">${stt}</span></div>
           <div class="ln">

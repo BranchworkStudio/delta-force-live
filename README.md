@@ -6,7 +6,8 @@ shows your own matches seconds after you leave the raid and refreshes every 30
 seconds.
 
 The board is **personal-first**: every module is scoped to one player, and the
-roster strip doubles as the picker. "All squad" is an opt-in tile that appears once
+roster strip doubles as the picker. Each tile wears that player's HQ profile picture
+with the operator they have played most in the chosen range badged on the corner. "All squad" is an opt-in tile that appears once
 more than one player is tracked, and the choice is remembered per browser.
 
 Live site: **https://branchworkstudio.github.io/delta-force-live/**
@@ -304,6 +305,14 @@ own scheme. `report_type` 1 = Operations, 2 = Warfare. `result` 1 = extracted /
 victory, 2 = failed / defeat, 3 = draw, `is_leave` = quit. Map and operator
 names come from the public `basic_info/*_en.js` tables; red-drop item names from
 `collections_en.js` (`collection_id` = `prop_id`).
+
+A player's profile picture arrives the same way: `GetMyData` gives `player_info.avatar`
+as a bare id (`42010030067`), and `basic_info/avatars.js` — note the name, no `_en` —
+turns it into an image. That table is not listed in the `*_en.js` set and is easy to
+miss, which is why the board went without profile pictures for a while. Operator art
+comes in several sizes in `operators_en.js`: `image_url` is the 3072px splash at about
+4.4 MB, `daily_report_avatar_url` the same operator as a 200px head at 82 KB, which is
+the one anything tile-sized should use.
 
 Per run the poller also fetches `GetMatchDetail` for new matches (plus a few older
 ones, so history fills in slowly), `GetRedDropRecordList` page 1 (plus one deeper
