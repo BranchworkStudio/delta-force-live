@@ -2,6 +2,8 @@
 // The bookmarklet reads the HQ page's own cookies and navigates to /connect.html#..., which POSTs here.
 //   { cookies: { openid, token, ... } } -> { ok, openid, nickname, avatar, level, fresh, connected_at, control_key }
 //   { action: "invite", openid, control_key, kind, group_id } -> { ok, kind, code, group }
+//       kind "squad" — that board's own code, from its owner. Admits a player who is already here.
+//       kind "solo" | "new" — a row in `invites`, which enrols a new one. The tracker's admin only.
 //   { action: "session", openid, control_key } -> { ok, session }
 //   { action: "disconnect", openid, control_key } -> { ok }
 //   { action: "probe" } -> signature self-test
@@ -12,10 +14,15 @@
 // travels in the link instead of the player's fingers — `connect.html?i=<code>`. An openid the
 // board already knows needs no invite; an empty board is claimed by its first hand-over.
 //
-// Two shapes of code open the door, and both are looked up by equality against the column that
-// holds them. A group's own six-character code (`?g=7559SW`) puts the mate on that group's board —
-// one code per group, short enough to read down the phone, rotatable if it ever gets out. A long
-// hex row in `invites` (`?i=...`) is the tracker on its own: no group, their stats, their board.
+// Two shapes of code open the door, both looked up by equality against the column that holds them,
+// and they do two different jobs. A long hex row in `invites` (`?i=...`) ENROLS: it is the only way
+// an openid that has never been here gets an account, and only the tracker's admin can mint one,
+// because every account costs the person paying for this backend. A group's six-character code
+// (`?g=7559SW`) ADMITS: it puts a player who is already here onto that board, it is handed out by
+// the board's owner, and it creates nobody — forwarded to a stranger it is six useless characters.
+//
+// That split is the whole of the authority model. Mates squad up among themselves without asking;
+// the guest list of the tracker itself has one name on it.
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { cleanSession, fingerprint, getMyData, getPrivateRoomKey, isAuthError, md5, REPORT_TYPE } from "./hq.ts";
 
@@ -64,28 +71,37 @@ Deno.serve(async (req) => {
     return session ? json({ ok: true, openid, session }) : json({ error: "could not mint a session" }, 500);
   }
 
-  // Making an invite link, from the account panel instead of by hand in SQL. Only the browser that
+  // Making a way in, from the account panel instead of by hand in SQL. Only the browser that
   // connected an account can mint one — the same control key that is allowed to stop collection —
-  // and a solo player can only pass on what they were given: another solo link, never a seat on
-  // the board they are not on themselves.
+  // and then two different authorities decide, depending on what is being handed out: an owner
+  // hands out their board, an admin hands out an account on the tracker.
   if (body.action === "invite") {
     const openid = typeof body.openid === "string" ? body.openid.slice(0, 128) : "";
     const key = typeof body.control_key === "string" ? body.control_key.slice(0, 128) : "";
-    const kind = body.kind === "solo" ? "solo" : "squad";
+    const kind = body.kind === "solo" ? "solo" : body.kind === "new" ? "new" : "squad";
     if (!openid || !key) return json({ error: "openid and control_key required" }, 400);
     const { data: row } = await supabase.from("player_sessions").select("openid").eq("openid", openid).eq("control_key", key).maybeSingle();
     if (!row) return json({ error: "not the browser that connected this session" }, 403);
-    const { data: who } = await supabase.from("players").select("nickname, on_squad").eq("openid", openid).maybeSingle();
+    const { data: who } = await supabase.from("players").select("nickname, on_squad, is_admin").eq("openid", openid).maybeSingle();
 
-    // A link into a group is that group's code: there is one, everybody in the group hands out the
-    // same one, and it can be read aloud. Only somebody already in the group can pass it on.
-    if (kind === "squad") {
+    // Which board, for the two kinds that name one. No group_id means the oldest board they are on,
+    // which is what the account panel asks for when it has only one to offer.
+    let mem: any = null;
+    if (kind !== "solo") {
       const gid = typeof body.group_id === "string" ? body.group_id.slice(0, 64) : "";
-      const q = supabase.from("group_members").select("group_id").eq("openid", openid);
-      const { data: mem } = gid
+      const q = supabase.from("group_members").select("group_id, role").eq("openid", openid);
+      const r = gid
         ? await q.eq("group_id", gid).maybeSingle()
         : await q.order("joined_at", { ascending: true }).limit(1).maybeSingle();
-      if (!mem) return json({ error: "you are not in that group" }, 403);
+      mem = r.data;
+      if (!mem) return json({ error: "you are not on that board" }, 403);
+      if (mem.role !== "owner") return json({ error: "only the owner of a board hands out its code" }, 403);
+    }
+
+    // A link into a board is that board's code: one code, everybody hands out the same one, and it
+    // can be read down the phone. It admits somebody who is already here and creates nobody, so
+    // owning the board is the whole of the authority needed.
+    if (kind === "squad") {
       const { data: g } = await supabase.from("groups").select("id, name, code").eq("id", mem.group_id).maybeSingle();
       if (!g) return json({ error: "no such group" }, 404);
       // `code` as well as `group`, so a page still running yesterday's script builds a link that
@@ -93,9 +109,16 @@ Deno.serve(async (req) => {
       return json({ ok: true, kind, code: g.code, group: { id: g.id, name: g.name, code: g.code } });
     }
 
+    // Everything past here makes an account on somebody else's backend, so it is the admin's alone.
+    if (!who?.is_admin) return json({ error: "only the owner of this tracker can invite somebody new to it" }, 403);
+
     const code = randomCode();
     const { error } = await supabase.from("invites").insert({
-      code, kind, created_by: openid, label: `${kind} link from ${who?.nickname ?? openid.slice(0, 6)}`,
+      code,
+      kind: kind === "new" ? "squad" : "solo",                          // 'new' is a squad invite that also enrols
+      group_id: kind === "new" ? mem.group_id : null,
+      created_by: openid,
+      label: `${kind === "new" ? "board" : "tracker"} link from ${who?.nickname ?? openid.slice(0, 6)}`,
     });
     if (error) return json({ error: error.message }, 500);
     return json({ ok: true, code, kind });
@@ -125,12 +148,17 @@ Deno.serve(async (req) => {
     const { count } = await supabase.from("players").select("openid", { count: "exact", head: true });
     if ((count ?? 0) === 0) {
       via = "first";                                                   // empty board: the first hand-over claims it
-    } else if (join) {
+    } else if (join?.kind === "invite") {
       via = join.via;                                                  // what the join traces back to
       onSquad = !join.solo;
     } else {
+      // A board code admits, it does not enrol: arriving on one without an account is somebody who
+      // was forwarded six characters by a mate, not somebody the tracker's owner asked for.
       const had = typeof body.group === "string" ? body.group : typeof body.invite === "string" ? body.invite : "";
-      return json({ error: "this board needs an invite link", reason: had ? "bad-invite" : "not-enrolled" }, 403);
+      return json({
+        error: "this tracker is invite-only",
+        reason: join ? "code-not-invite" : had ? "bad-invite" : "not-enrolled",
+      }, 403);
     }
   }
 
@@ -154,6 +182,7 @@ Deno.serve(async (req) => {
     const { error } = await supabase.from("players").insert({
       openid, nickname, avatar, level, token_ok: true, on_squad: onSquad,
       enrolled_via: via, enrolled_at: new Date().toISOString(),
+      is_admin: via === "first",                                       // whoever claims an empty deployment owns it
     });
     if (error) return json({ error: error.message }, 500);
   }
@@ -209,14 +238,14 @@ async function resolveCode(raw: string) {
   if (!code) return null;
 
   const { data: g } = await supabase.from("groups").select("id, code").eq("code", code.toUpperCase()).maybeSingle();
-  if (g) return { group: g.id as string, via: "group:" + g.code, solo: false };
+  if (g) return { group: g.id as string, via: "group:" + g.code, solo: false, kind: "group" as const };
 
   const { data: l } = await supabase.from("invites").select("code, kind, group_id, revoked_at, uses").eq("code", code.toLowerCase()).maybeSingle();
   if (!l || l.revoked_at) return null;
   await supabase.from("invites")
     .update({ uses: (l.uses ?? 0) + 1, last_used_at: new Date().toISOString() })
     .eq("code", l.code);
-  return { group: (l.group_id as string | null) ?? null, via: l.code as string, solo: l.kind === "solo" };
+  return { group: (l.group_id as string | null) ?? null, via: l.code as string, solo: l.kind === "solo", kind: "invite" as const };
 }
 
 /**

@@ -27,6 +27,9 @@ Your HQ login on playdeltaforce.com
   cookie — the same thing the HQ page itself uses.
 * A board is private: you see your own matches, and the matches of the people you
   share a board with. The site link alone shows a locked page.
+* Joining the tracker is by invitation from whoever runs it, and only from them.
+  Boards themselves are everyone's: make one, name it, hand its code to a mate who
+  is already here.
 * Every row records `first_seen_at`, so the site can show how far behind the
   official API actually is ("API latency" tile).
 
@@ -47,52 +50,75 @@ itself before anything is stored, and only the account owner can produce cookies
 accepts. That is stronger than a secret the page would have to hold.
 
 **Boards, and inviting mates.** The only thing a secret was really needed for is enrolment,
-so that travels in the link instead of anyone's fingers. Share the board's URL:
+so that travels in the link instead of anyone's fingers. Send the invite link:
 
 ```
-https://branchworkstudio.github.io/delta-force-live/connect.html?g=<code>
+https://branchworkstudio.github.io/delta-force-live/connect.html?i=<code>
 ```
 
 They click it, do the same three steps, and they are collected — their own player, their
-own session, polled by the same job — and they land in the board the code belongs to. The
+own session, polled by the same job — and they land on whatever board the link named. The
 code survives the hand-over for free: the bookmarklet returns to `location.href` minus the
-fragment, so the `?g=` rides along. The connect page also remembers it (`df-invite`), so a
-later reconnect works from a bare URL. An openid the board already knows never needs a
-code; a stranger without one is refused (`reason: "not-enrolled"`, or `"bad-invite"` if the
-code is unknown or withdrawn); and an empty board is claimed by its first hand-over.
+fragment, so the `?i=` rides along. The connect page also remembers it (`df-invite`), so a
+later reconnect works from a bare URL. An openid the tracker already knows never needs a
+code; and an empty deployment is claimed by its first hand-over, which is how there comes to
+be an admin at all.
 
-A **board** is a group, and the group's code *is* the invitation — six characters from an
-alphabet with no O/0 and no I/1, because these get read down a phone. One account can be on
-several: the account control lists them under **BOARDS**, switching is one click, and
-**Just me** is always there. New boards are made from the same menu (*New board*), joined
-with *Join with a code*, and left with *Leave this board*; the last member out takes the
-group with them. Nothing here goes through SQL.
+**Two codes, two authorities** (migration 0022), because they answer different questions:
 
-Codes are not fished for. `groups` is unreadable to the public key, and a member reads only
-their own row:
+| | what it does | who hands it out |
+|---|---|---|
+| `?i=<18 hex>` | **enrols** — makes an account, starts the polling | the tracker's admin |
+| `?g=<6 chars>` | **admits** — puts an existing account on a board | that board's owner |
+
+That split is the whole model. Anybody here may make a board, own it, and hand its code
+around; that costs nothing but a row in `group_members`. Nobody but the admin can put a new
+*person* on the backend, because that is what costs money and attention. A board code
+forwarded to a stranger is six useless characters — they are refused with
+`reason: "code-not-invite"` and told which kind of link they actually need.
+
+The admin is `players.is_admin`, set for the account that claimed the empty deployment; the
+`connect` function checks it before writing any row to `invites`. Board ownership is
+`group_members.role`, which existed from the start and was decoration until now.
+
+A **board** is a group, and its code is six characters from an alphabet with no O/0 and no
+I/1, because these get read down a phone. One account can be on several: the account control
+lists them under **BOARDS**, switching is one click, and **Just me** is always there. New
+boards are made from the same menu (*New board*), joined with *Join with a code*, and left
+with *Leave this board*. The last member out takes the group with them — and an owner who
+leaves a board others are still on hands it to whoever has been there longest, so a board is
+never left with nobody who can keep it.
+
+Codes are not fished for. `groups` is unreadable to the public key, and since 0022 only an
+owner reads the row at all:
 
 ```sql
-create policy groups_readable_by_members on public.groups for select to authenticated
-  using (exists (select 1 from public.group_members m
-                 where m.group_id = groups.id and m.openid = public.my_openid()));
+create policy groups_readable_by_owners on public.groups for select to authenticated
+  using (public.owns_group(groups.id));
 ```
 
-so the site can print the code next to the link without a round trip, and a stranger
-querying the API directly gets nothing. `public_groups` publishes names and member counts
-and never a code. A code is matched with `=`, never `like` — a pattern would match every
-row at once.
+so the site can print the code next to the link without a round trip, a member of the board
+cannot pass it on behind the owner's back, and a stranger querying the API directly gets
+nothing. `public_groups` publishes names and member counts and never a code. A code is
+matched with `=`, never `like` — a pattern would match every row at once.
 
-The old per-link `invites` rows still work and are still what *Invite to the tracker only*
-mints: `solo` is a link that collects a mate's matches without putting them on anybody's
-board. Until boards became a database boundary that was a presentational promise only — the
-read API answered the publishable key, so a solo player's rows stayed readable by anyone who
-queried it directly. That hole is closed: a player on no board matches nobody but themselves,
-so *solo* now means what it looked like it meant.
+Owning a board also means being able to correct it: *New code* (`rotate_group_code`) retires
+the code and every link already carrying it, and *Remove* (`remove_group_member`) puts
+somebody off. Removal is not a punishment so much as the other half of joining: they keep
+their account and their own stats, and lose the right to read anybody else's matches.
+
+`invites` rows are what both enrolling buttons mint — *Invite somebody new to <board>*
+carries a `group_id`, *Invite somebody new, tracker only* does not: `solo` collects a mate's
+matches without putting them on anybody's board. Until boards became a database boundary
+that was a presentational promise only — the read API answered the publishable key, so a solo
+player's rows stayed readable by anyone who queried it directly. That hole is closed: a
+player on no board matches nobody but themselves, so *solo* now means what it looked like it
+meant.
 
 Only the browser holding an account's `control_key` can mint a link — the same key that may
-stop collection — and a solo player can only pass on another solo link. Every row records
-who made it, what it was for, and how often it has been used, so one link can be withdrawn
-without touching the rest:
+stop collection — and then only if that account is the admin. Every row records who made it,
+what it was for, and how often it has been used, so one link can be withdrawn without
+touching the rest:
 
 ```sql
 select code, kind, uses, last_used_at from invites where revoked_at is null;
@@ -184,13 +210,22 @@ put "logged in" — is where all of this surfaces, in plain language rather than
 plumbing: your nickname, a status dot, and "Your matches are collected for you
 automatically — nothing needs to be running, not even this tab." Its menu holds the
 **BOARDS** list (every group you are on, plus *Just me*, plus *New board* / *Join with a
-code* / *Leave this board*), *Invite a mate*, *Open Delta Force HQ*, *Reconnect*, and —
-only in the browser that handed the session over — a two-click *Stop collecting*. With
-nothing connected the chip is replaced by a green **Connect** button.
+code* / *Leave this board*), *Open Delta Force HQ*, *Reconnect*, and — only in the browser
+that handed the session over — a two-click *Stop collecting*. With nothing connected the
+chip is replaced by a green **Connect** button.
 
-An invite made while a board is selected is that board's own link and code, printed
-together so either can be passed on; it needs no request, because the code came down with
-the page.
+What else is in that menu depends on what you may actually do, and it is drawn from the same
+two facts the server checks rather than from a flag of its own:
+
+* **own the board you are looking at** and it shows its code, *Copy link*, a two-click
+  *New code*, and every other member with *Remove*. The code needs no request — it came
+  down with the page, because only an owner is allowed to read it.
+* **be the tracker's admin** and you also get *Invite somebody new to <board>* and *Invite
+  somebody new, tracker only*. These are the only two buttons in the site that can create
+  an account, and the only two that ask the server for a fresh row.
+
+A mate who is neither sees boards, *New board*, *Join with a code* and *Leave* — enough to
+squad up with anybody already here, and no way to enlarge the tracker itself.
 
 The first hour also imports your recent history (about 300 matches per mode),
 one page per minute, so the site has something to show right away.
@@ -218,13 +253,16 @@ update app_settings set value = encode(extensions.gen_random_bytes(24),'hex') wh
 `invites` is service-role only for the same reason — a code is a secret, so there is no
 grant to `anon` and only the `connect` function ever reads it. An invite is a capability
 and not a password: it lets someone add *their own* proven HQ session and nothing else.
-The code that used to live in `app_settings.invite_code` is now a `squad` row in `invites`
-so no link already in circulation broke; see **Boards, and inviting mates** above.
+The code that used to live in `app_settings.invite_code` became a `squad` row in `invites`
+so no link already in circulation broke — and was revoked by 0022, having let four accounts
+in by then, because a code with no author is exactly what that migration is about; see
+**Boards, and inviting mates** above.
 
-`groups` holds the boards and their codes and is unreadable to the public key; a member
-reads their own row through `groups_readable_by_members`. `group_members` is world-readable
+`groups` holds the boards and their codes and is unreadable to the public key; its owner
+reads the row through `groups_readable_by_owners`. `group_members` is world-readable
 — the board it describes is already public — but nothing writes to either table directly:
-`create_group`, `join_group_by_code` and `leave_group` are `security definer`, granted to
+`create_group`, `join_group_by_code`, `leave_group`, `rotate_group_code` and
+`remove_group_member` are `security definer`, granted to
 `authenticated` only, and each of them decides who you are from `my_openid()` rather than
 from anything the caller passes. `public_groups` is the anonymous view: names and member
 counts, no codes.

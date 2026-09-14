@@ -166,7 +166,9 @@
     const r = await post({ action: "connect", cookies }).catch((e) => ({ httpOk: false, status: 0, error: String(e) }));
     if (r.httpOk && r.ok) return finish(r);
     S.phase = "steps";
-    if (r.reason === "not-enrolled") S.err = { title: "You need the squad's invite link", body: "This board is already tracking players, so a new account joins through an invite link. Ask whoever sent you here to send the <code>?i=…</code> version of it." };
+    if (r.reason === "not-enrolled") S.err = { title: "You need an invite link", body: "This tracker is invite-only: a new account joins through a link the person running it made for you. Ask whoever sent you here for the <code>?i=…</code> version of it." };
+    // A board code and an invite are no longer the same thing, so the refusal says which you have.
+    else if (r.reason === "code-not-invite") S.err = { title: "That is a board code, not an invite", body: "A board's six characters put somebody who is <em>already</em> on the tracker onto that board. Opening a new account is the tracker owner's to give — ask them for the <code>?i=…</code> link instead." };
     else if (r.reason === "bad-invite") S.err = { title: "That invite link does not work", body: "Either the link was mistyped, or it has been withdrawn since it was shared. Ask whoever sent it for a fresh one." };
     else if (r.reason === "not-logged-in") S.err = { title: "HQ says that login is not valid", body: `Open HQ, log in properly, then click the bookmark again. <span class="hint">(${esc(r.error || "")})</span>` };
     else if (r.reason === "no-cookies") S.err = { title: "No HQ login in that browser", body: "Log in on HQ first, then click the bookmark on the HQ tab." };
