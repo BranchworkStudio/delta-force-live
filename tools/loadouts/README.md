@@ -41,11 +41,16 @@ One entry per page:
 |---|---|
 | `id` | the creator slug, used for the source and creator ids in the built file |
 | `name` / `source` | the person, and the name of the page they publish — `source` is the card's link text, so keep it in the creator's own terms ("Leissik's build doc") |
-| `parser` | `lines` for a text dump (a Google Doc exported as text), `dfbuild` for a `deltaforce.build/<name>` page |
+| `parser` | `lines` for a text dump (a Google Doc exported as text), `dfbuild` for a `deltaforce.build/<name>` page, `medow` for medowmafia.com's builds page |
 | `fetch` / `page` | what `fetch.sh` downloads, and the human URL every card links to |
 | `ext` | the extension the download is saved with, under `raw/own/` |
 | `links` | their channels, when the page itself does not carry them (a `dfbuild` page does) |
 | `mode` | only for a page that does not say: `poach` publishes bare codes with a Hazard Operations price on every row, so those are recorded as Operations |
+
+A creator who publishes on a page nobody else uses needs a parser of their own, which is the only
+part of adding one that is ever real work: `parse_medow` is thirty lines because that page keeps
+its table in a JS literal with the CN client's codes in the same rows — and those are dropped,
+since a CN code does not import into the global game.
 
 Adding a creator is adding an entry. A row whose weapon cannot be identified from the code or
 the label is dropped and counted in the skip list rather than guessed at, and no more than

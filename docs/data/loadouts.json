@@ -15,6 +15,11 @@
    "name": "Deathlapse's build page",
    "url": "https://www.deltaforce.build/deathlapse",
    "kind": "creator"
+  },
+  "medow": {
+   "name": "SammyMedows' build page",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "kind": "creator"
   }
  },
  "creators": {
@@ -49,9 +54,68 @@
    ],
    "kind": "creator",
    "avatar": "img/creators/deathlapse.png"
+  },
+  "medow": {
+   "name": "SammyMedows",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "links": [
+    "https://www.twitch.tv/sammymedows",
+    "https://www.youtube.com/c/SammyMedowsShorts",
+    "https://www.tiktok.com/@sammymedows"
+   ],
+   "kind": "creator",
+   "avatar": "img/creators/medow.png"
   }
  },
  "builds": [
+  {
+   "weapon": ".357",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": ".357 Revolver-Operations-6KCPTB803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~50K"
+   ]
+  },
+  {
+   "weapon": ".357",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": ".357 Revolver-Operations-6KQUU4G03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Snagnum",
+   "tags": [
+    "~300K"
+   ]
+  },
+  {
+   "weapon": ".357",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": ".357 Revolver-Operations-6KUHUD403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Snakeshot",
+   "tags": [
+    "~150K"
+   ]
+  },
   {
    "weapon": ".357",
    "mode": "operations",
@@ -66,6 +130,86 @@
    "note": "Extra Storage",
    "tags": [
     "20K"
+   ]
+  },
+  {
+   "weapon": "725 Double-Barrel",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "725 Double-Barrel Shotgun-Operations-6KH02OC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Sawed-Off",
+   "tags": [
+    "~100K"
+   ]
+  },
+  {
+   "weapon": "725 Double-Barrel",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "725 Double-Barrel Shotgun-Operations-6KNURF803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Sniper",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "93R",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "93R-Operations (Extraction Mode)-6L82AES03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Auto",
+   "tags": [
+    "~200K"
+   ]
+  },
+  {
+   "weapon": "93R",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "93R-Operations-6KQUUGO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~100K"
+   ]
+  },
+  {
+   "weapon": "93R",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "93R-Operations-6KQUULS03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~100K"
    ]
   },
   {
@@ -112,6 +256,22 @@
    "note": "",
    "tags": [
     "Season 8"
+   ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AK-12 Assault Rifle-Operations-6KQUV0403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~400K"
    ]
   },
   {
@@ -223,6 +383,54 @@
   {
    "weapon": "AKM",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AKM Assault Rifle-Operations-6JSAO3G03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Somalian Pirate",
+   "tags": [
+    "~150K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AKM Assault Rifle-Operations-6KQUV6S03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~150K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AKM Assault Rifle-Operations-6L74H5O03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JLL6L806F3769TRGAG41",
@@ -269,6 +477,22 @@
    ]
   },
   {
+   "weapon": "AKS-74",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AKS-74 Assault Rifle-Operations-6KQUVK003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "100% Accuracy",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
    "weapon": "AR-57",
    "mode": "operations",
    "creator": "leissik",
@@ -298,6 +522,38 @@
    "note": "AR-56 SCOPED",
    "tags": [
     "Season 9"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AR-57 Assault Rifle-Operations-6JPU5UC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~600K"
+   ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AR-57 Assault Rifle-Operations-6JPU6DK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~350K"
    ]
   },
   {
@@ -397,6 +653,38 @@
   {
    "weapon": "AS Val",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6L924AC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~800K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6L924BS03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "\"Budget\"",
+   "tags": [
+    "~500K"
+   ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOVO406F3769TRGAG41",
@@ -491,6 +779,54 @@
   {
    "weapon": "ASh-12",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "ASh-12 Battle Rifle-Operations-6KLJREO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Shotgun",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "ASh-12 Battle Rifle-Operations-6KQV04403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~300K"
+   ]
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "ASh-12 Battle Rifle-Operations-6KQV06K03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "~450K"
+   ]
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KPT0NC06F3769TRGAG41",
@@ -569,6 +905,38 @@
   {
    "weapon": "AUG",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AUG Assault Rifle-Operations-6K2ITPG03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Mid-Tier",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AUG Assault Rifle-Operations-6KQV0E003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~200K"
+   ]
+  },
+  {
+   "weapon": "AUG",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6GTC61G06F3769TRGAG41",
@@ -631,6 +999,38 @@
   {
    "weapon": "AWM",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AWM Sniper Rifle-Operations-6K37JLK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~100K"
+   ]
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "AWM Sniper Rifle-Operations-6KDNM1C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~800K"
+   ]
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOTL406F3769TRGAG41",
@@ -642,6 +1042,22 @@
    "note": "",
    "tags": [
     "1M"
+   ]
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "CAR-15 Assault Rifle-Operations-6KQV0PK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~50K"
    ]
   },
   {
@@ -739,6 +1155,54 @@
   {
    "weapon": "CI-19",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "CI-19 Assault Rifle-Operations-6KIARD403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~100K"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "CI-19 Assault Rifle-Operations-6KQV10C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~450K"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "CI-19 Assault Rifle-Operations-6L4QEU003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~300K"
+   ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KIBSS806F3769TRGAG41",
@@ -766,6 +1230,38 @@
    "note": "BUDGET",
    "tags": [
     "290K"
+   ]
+  },
+  {
+   "weapon": "Compound",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Compound Bow-Operations-6K37N2803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire",
+   "tags": [
+    "~550K"
+   ]
+  },
+  {
+   "weapon": "Compound",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Compound Bow-Operations-6KQAARC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Range",
+   "tags": [
+    "~600K"
    ]
   },
   {
@@ -799,6 +1295,84 @@
    "tags": [
     "Season 8"
    ]
+  },
+  {
+   "weapon": "FS-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "FS-12 Shotgun-Operations (Extraction Mode)-6L925JC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget Pistol",
+   "tags": [
+    "~50K"
+   ]
+  },
+  {
+   "weapon": "FS-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "FS-12 Shotgun-Operations-6K4SRR403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Slug Build",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "FS-12",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "FS-12 Shotgun-Operations-6KNURO003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Pistol",
+   "tags": [
+    "~150K"
+   ]
+  },
+  {
+   "weapon": "G18",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "G18-Operations-6KQV15C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~100K"
+   ]
+  },
+  {
+   "weapon": "G18",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "G18-Operations-6KR848C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": []
   },
   {
    "weapon": "G18",
@@ -941,6 +1515,38 @@
   {
    "weapon": "K416",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "K416 Assault Rifle-Operations-6K3TKDO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Beam",
+   "tags": [
+    "~450K"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "K416 Assault Rifle-Operations-6K47TG003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "\"Budget\" Red Dot",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KA8B7406F3769TRGAG41",
@@ -1035,6 +1641,54 @@
   {
    "weapon": "K437",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "K437 Assault Rifle-Operations (Extraction Mode)-6L924I003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Beam",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "K437 Assault Rifle-Operations-6JVHN7O03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "K437 Assault Rifle-Operations-6K3R1NC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~550K"
+   ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQP10C06F3769TRGAG41",
@@ -1115,6 +1769,38 @@
   {
    "weapon": "KC-17",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6L924MC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Range",
+   "tags": [
+    "~550K"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6L924PO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~500K"
+   ]
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JRJBCK06F3769TRGAG41",
@@ -1179,6 +1865,54 @@
   {
    "weapon": "Lever-action Rifle",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Lever-Action Rifle-Operations-6K8G8F403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "D",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Lever-Action Rifle-Operations-6KQV3AK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Lever-Action Rifle-Operations-6KQV3HS03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hipfire God",
+   "tags": [
+    "~200K"
+   ]
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6K8OPK006F3769TRGAG41",
@@ -1190,6 +1924,22 @@
    "note": "Sniper",
    "tags": [
     "185K"
+   ]
+  },
+  {
+   "weapon": "M1014",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M1014 Shotgun-Operations-6KNURS403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~100K"
    ]
   },
   {
@@ -1301,6 +2051,38 @@
   {
    "weapon": "M14",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M14 Marksman Rifle-Operations-6KQV2AC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M14 Marksman Rifle-Operations-6KQV2G003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~650K"
+   ]
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L8PSVC06F3769TRGAG41",
@@ -1331,6 +2113,22 @@
    ]
   },
   {
+   "weapon": "M16A4",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M16A4 Assault Rifle-Operations-6KQV2MO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget Hipfire Sun",
+   "tags": [
+    "~150K"
+   ]
+  },
+  {
    "weapon": "M249",
    "mode": "operations",
    "creator": "deathlapse",
@@ -1357,6 +2155,22 @@
    "att": [],
    "note": "High End",
    "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M249 Light Machine Gun-Operations-6JT82CS03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "$100k",
+   "tags": [
+    "~100K"
+   ]
   },
   {
    "weapon": "M249",
@@ -1439,6 +2253,54 @@
   {
    "weapon": "M250",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M250 General Machine Gun-Operations-6JKDL9C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~50K"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M250 General Machine Gun-Operations-6JT83OK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "$1 Million",
+   "tags": [
+    "~1500K"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M250 General Machine Gun-Operations-6KHEAU003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~600K"
+   ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JUSSLC06F3769TRGAG41",
@@ -1498,6 +2360,54 @@
    "note": "budget",
    "tags": [
     "Season 9"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M4A1 Assault Rifle-Operations (Extraction Mode)-6L924VC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M4A1 Assault Rifle-Operations (Extraction Mode)-6L9253C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Beam",
+   "tags": [
+    "~450K"
+   ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M4A1 Assault Rifle-Operations-6KQV2S003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Dong",
+   "tags": [
+    "~400K"
    ]
   },
   {
@@ -1625,6 +2535,54 @@
   {
    "weapon": "M7",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M7 Battle Rifle-Operations-6KQV31K03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~550K"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M7 Battle Rifle-Operations-6KQV34803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Hacker Build",
+   "tags": [
+    "~300K"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M7BattleRifle-Operations-6KDP9LS00AAJ942OGKFIO",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~450K"
+   ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JFOAR006F3769TRGAG41",
@@ -1735,6 +2693,54 @@
   {
    "weapon": "M700",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M700 Sniper Rifle-Operations (Extraction Mode)-6L9PJ3G03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Light",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M700 Sniper Rifle-Operations-6JP1BVS03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Range",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M700 Sniper Rifle-Operations-6K1T0J803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Iron Sight",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L3E8VG06F3769TRGAG41",
@@ -1767,6 +2773,22 @@
   {
    "weapon": "M82",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "M82 Sniper Rifle-Operations (Extraction Mode)-6L94T2O03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Heavy",
+   "tags": [
+    "~1.1M"
+   ]
+  },
+  {
+   "weapon": "M82",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQ9ADK06F3769TRGAG41",
@@ -1794,6 +2816,38 @@
    "note": "Control",
    "tags": [
     "Season 8"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MCX LT Assault Rifle-Operations-6K1GT6003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Fast ADS + Budget",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MCX LT Assault Rifle-Operations-6KQV3S003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~300K"
    ]
   },
   {
@@ -1927,6 +2981,38 @@
   {
    "weapon": "MK4",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MK4 Submachine Gun-Operations-6KQV45G03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Mid",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MK4 Submachine Gun-Operations-6KR9G2403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Full-Auto",
+   "tags": [
+    "~550K"
+   ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6J9Q2O4073PH40I6AFVCE",
@@ -2007,6 +3093,54 @@
   {
    "weapon": "MK47",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MK47 Assault Rifle-Operations-6KQV4BK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MK47 Assault Rifle-Operations-6KQV4EO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~850K"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MK47 Assault Rifle-Operations-6KQV4I403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Mid",
+   "tags": [
+    "~550K"
+   ]
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L3PCCS04R96VUC6OKBOP",
@@ -2049,6 +3183,22 @@
    "att": [],
    "note": "Speed ( Budget )",
    "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MP5 Submachine Gun-Operations-6K36KGG03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~150K"
+   ]
   },
   {
    "weapon": "MP5",
@@ -2112,6 +3262,38 @@
    "note": "Cheap hipfire",
    "tags": [
     "Season 9"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MP7 Submachine Gun-Operations (Extraction Mode)-6L9261S03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Iron Sight",
+   "tags": [
+    "~450K"
+   ]
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "MP7 Submachine Gun-Operations-6JS8GV003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Spec Ops",
+   "tags": [
+    "~500K"
    ]
   },
   {
@@ -2211,6 +3393,38 @@
   {
    "weapon": "P90",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "P90 Submachine Gun-Operations-6KQV4N003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "P90 Submachine Gun-Operations-6KQV4RK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~200K"
+   ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JGP0MC06F3769TRGAG41",
@@ -2305,6 +3519,54 @@
   {
    "weapon": "PKM",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "PKM General Machine Gun-Operations (Extraction Mode)-6L94SUK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Heavy",
+   "tags": [
+    "~500K"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "PKM General Machine Gun-Operations-6JT84U403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "$250k",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "PKM General Machine Gun-Operations-6KQV60C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~200K"
+   ]
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JTIBF806F3769TRGAG41",
@@ -2351,6 +3613,22 @@
    ]
   },
   {
+   "weapon": "PTR-32",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "PTR-32 Assault Rifle-Operations (Extraction Mode)-6L925AC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
    "weapon": "QBZ95-1",
    "mode": "operations",
    "creator": "deathlapse",
@@ -2381,6 +3659,22 @@
    ]
   },
   {
+   "weapon": "QBZ95-1",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "QBZ95-1 Assault Rifle-Operations-6KQV64S03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Mid",
+   "tags": [
+    "~50K"
+   ]
+  },
+  {
    "weapon": "QCQ171",
    "mode": "operations",
    "creator": "deathlapse",
@@ -2408,6 +3702,22 @@
    "note": "",
    "tags": [
     "Season 8"
+   ]
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6L9266403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Built",
+   "tags": [
+    "~500K"
    ]
   },
   {
@@ -2456,6 +3766,22 @@
    "note": "BUDGET",
    "tags": [
     "Season 10"
+   ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "QJB201 Light Machine Gun-Operations-6JT83RS03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "$500k",
+   "tags": [
+    "~350K"
    ]
   },
   {
@@ -2541,6 +3867,38 @@
   {
    "weapon": "R93",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "R93 Sniper Rifle-Operations (Extraction Mode)-6L925RO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "New Budget",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "R93 Sniper Rifle-Operations (Extraction Mode)-6L925TK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Old Budget",
+   "tags": [
+    "~200K"
+   ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6FDPM8807EP326IQSRQ4N",
@@ -2589,6 +3947,54 @@
   {
    "weapon": "RM277",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "RM277-Operations-6KGPFK803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~350K"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "RM277-Operations-6KIAR4K03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "RM277-Operations-6KIARG403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Range",
+   "tags": [
+    "~500K"
+   ]
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KIB39K06F3769TRGAG41",
@@ -2629,6 +4035,22 @@
    "att": [],
    "note": "",
    "tags": []
+  },
+  {
+   "weapon": "S12K",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "S12K Shotgun-Operations-6KNUS0003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Full Built",
+   "tags": [
+    "~600K"
+   ]
   },
   {
    "weapon": "SCAR-H",
@@ -2679,6 +4101,54 @@
   {
    "weapon": "SCAR-H",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SCAR-H Battle Rifle-Operations (Extraction Mode)-6L925H003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Newest",
+   "tags": [
+    "~500K"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SCAR-H Battle Rifle-Operations-6K6R33K03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~550K"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SCAR-H Battle Rifle-Operations-6KSJE3C03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KRU96K06F3769TRGAG41",
@@ -2690,6 +4160,38 @@
    "note": "",
    "tags": [
     "530K"
+   ]
+  },
+  {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SG552 Assault Rifle-Operations (Extraction Mode)-6L9PIG003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Light",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "SG552",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SG552 Assault Rifle-Operations-6KQV6IO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~400K"
    ]
   },
   {
@@ -2741,6 +4243,38 @@
   {
    "weapon": "SMG-45",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SMG-45 Submachine Gun-Operations-6KQV7A003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget Hipfire",
+   "tags": [
+    "~200K"
+   ]
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SMG-45 Submachine Gun-Operations-6KQV7EK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget The Sun",
+   "tags": [
+    "~250K"
+   ]
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOUMK06F3769TRGAG41",
@@ -2782,6 +4316,38 @@
    "note": "SHORT BARREL SCOPED",
    "tags": [
     "Season 8"
+   ]
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SR-25 Marksman Rifle-Operations-6KQV7SK03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SR-25 Marksman Rifle-Operations-6KQV82G03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Red Dot",
+   "tags": [
+    "~700K"
    ]
   },
   {
@@ -2865,6 +4431,22 @@
   {
    "weapon": "SR-3M",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SR-3M Compact Assault Rifle-Operations-6K5FUB803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Newest",
+   "tags": [
+    "~50K"
+   ]
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQ98BO06F3769TRGAG41",
@@ -2924,6 +4506,38 @@
    "note": "The g18 only has 33 mag in it",
    "tags": [
     "Season 10"
+   ]
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SV-98 Sniper Rifle-Operations-6KQV89803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~150K"
+   ]
+  },
+  {
+   "weapon": "SV-98",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SV-98 Sniper Rifle-Operations-6KQV8BO03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Dumb Range",
+   "tags": [
+    "~350K"
    ]
   },
   {
@@ -3067,6 +4681,22 @@
   {
    "weapon": "SVD",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "SVD Sniper Rifle-Operations-6KQV91803BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Default",
+   "tags": [
+    "~400K"
+   ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KRK3SC06F3769TRGAG41",
@@ -3099,6 +4729,22 @@
   {
    "weapon": "Thompson SMG",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6L82BAG03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~300K"
+   ]
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6L7ROF406F3769TRGAG41",
@@ -3125,6 +4771,22 @@
    "att": [],
    "note": "Sniper ( Budget )",
    "tags": []
+  },
+  {
+   "weapon": "UZI",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "UZI Submachine Gun-Operations-6KQV95403BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Snuzi",
+   "tags": [
+    "~250K"
+   ]
   },
   {
    "weapon": "UZI",
@@ -3175,6 +4837,38 @@
    ]
   },
   {
+   "weapon": "VSS",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "VSS Marksman Rifle-Operations-6KQVA6K03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~450K"
+   ]
+  },
+  {
+   "weapon": "VSS",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "VSS Marksman Rifle-Operations-6L65TSC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~150K"
+   ]
+  },
+  {
    "weapon": "Vector",
    "mode": "operations",
    "creator": "deathlapse",
@@ -3202,6 +4896,54 @@
    "note": "",
    "tags": [
     "Season 8"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Vector Submachine Gun-Operations-6KQV9EC03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Budget",
+   "tags": [
+    "~500K"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Vector Submachine Gun-Operations-6KQV9LG03BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "Expensive",
+   "tags": [
+    "~700K"
+   ]
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "Vector Submachine Gun-Operations-6KQV9Q003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "popularity": 0,
+   "level": null,
+   "att": [],
+   "note": "The Sun",
+   "tags": [
+    "~600K"
    ]
   },
   {

@@ -2,12 +2,14 @@
 
 creators.json is the hand-kept list: one entry per page a creator publishes themselves, with the
 parser that page needs. Adding a creator is adding an entry there — nothing else in here is
-per-person. Two parsers cover what exists today:
+per-person. Three parsers cover what exists today:
 
   lines    a plain-text dump (a Google Doc exported as text) where a code sits on its own line,
            usually under the creator's own heading for it
   dfbuild  a deltaforce.build/<name> page, a Next.js app that ships the creator's sheet as JSON
            inside the server payload
+  medow    medowmafia.com's builds page, whose table is a JS literal carrying the global and the
+           CN client's code for the same build side by side
 
 Weapon and mode come from the code itself when the creator published the whole string, and from
 the row's label when they published only the tail — see weapon_of(). A row whose weapon cannot
@@ -143,7 +145,30 @@ def avatar_url(txt):
     return m.group(1) if m else None
 
 
-PARSER = {'lines': parse_lines, 'dfbuild': parse_dfbuild}
+def parse_medow(txt, guns, cfg):
+    """medowmafia.com ships its whole table as one JS literal — [class, weapon, label, code, rough
+    price, the same build's code for the CN client] — with a toolbar above it that switches
+    clients. Only the global code is read: a CN code does not import into the game this board is
+    about, and the two sit in the same row precisely because they are not interchangeable."""
+    i = txt.find('const RAW = [')
+    if i < 0: return []
+    rows = json.loads(txt[i + len('const RAW = '):txt.index('\n', i)].rstrip().rstrip(';'))
+    out = []
+    for r in rows:
+        code = (r[3] or '').strip()
+        m = CODE.match(code)
+        if not m: continue
+        g = weapon_of(guns, m.group(1), r[1] or '')
+        if not g:
+            out.append(dict(skip=r[1])); continue
+        price = re.match(r'^\s*(~?)\s*(\d+(?:\.\d+)?)\s*([kKmM])\s*$', r[4] or '')
+        out.append(dict(weapon=g, mode='warfare' if m.group(2) == 'Warfare' else 'operations',
+                        code=code, note=clean_label(r[2], g), added=None,
+                        tags=[price.group(1) + price.group(2) + price.group(3).upper()] if price else []))
+    return out
+
+
+PARSER = {'lines': parse_lines, 'dfbuild': parse_dfbuild, 'medow': parse_medow}
 SOCIAL = ('twitch', 'youtube', 'twitter', 'tiktok', 'kick', 'discord')
 
 

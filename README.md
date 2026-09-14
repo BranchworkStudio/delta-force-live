@@ -376,7 +376,7 @@ grid into a staircase.
 **Only the pages the creators run themselves.** The file was built from aggregators as well
 at first — sites that collect other people's builds — and they were dropped: four times the
 volume, a fraction of the value, most of it undated, reposted or uncredited, and a list you
-cannot trust is worse than a shorter one you can. What is left is 204 builds across 56 of the
+cannot trust is worse than a shorter one you can. What is left is 312 builds across 62 of the
 68 weapons, every one of them read off a page its maker publishes and keeps up to date.
 `tools/loadouts/creators.json` is the list of those pages; adding a creator is adding an
 entry there.
