@@ -80,6 +80,18 @@
   // file actually holds more than one mode.
   const modes = () => [...new Set(DB.builds.map(b => b.mode))];
 
+  // Which of a creator's builds for one gun is the current one? Three answers, in that order: the
+  // date, where the page carries one; the season, which only Leissik labels but which is the right
+  // answer where it is there, since a rebalance is what makes an old build stop being advice; and
+  // failing both, `pos` — where it stands on their page, because people put what they still run at
+  // the top. None of this used to matter: a cap of three per gun meant you rarely saw a stale one.
+  // Now that everything a creator publishes is kept, the order is what does that job.
+  const SEASON = /^season\s*(\d+)$/i;
+  const season = (b) => {
+    for (const t of b.tags || []) { const m = SEASON.exec(String(t).trim()); if (m) return +m[1]; }
+    return 0;
+  };
+
   // Everything the rail and the pane read goes through one filter, so the counts on the weapon
   // list are the counts of what clicking it would actually show.
   function visible() {
@@ -217,7 +229,7 @@
     const builds = w.builds.slice().sort((a, b) =>
       String(b.added || "").localeCompare(String(a.added || "")) ||
       creatorOf(a).name.localeCompare(creatorOf(b).name) ||
-      String(a.note || "").localeCompare(String(b.note || "")));
+      season(b) - season(a) || (a.pos || 0) - (b.pos || 0));
     // The stat block is the gun as the game ships it, with nothing bolted on. A bar on its own is
     // unreadable — 0 to 100 of what? — so the number is the figure and the bar is the shape of it,
     // and the caption says out loud that these are stock values, not this build's.

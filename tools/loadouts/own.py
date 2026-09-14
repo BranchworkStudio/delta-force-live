@@ -317,9 +317,12 @@ def socials(txt):
     return out
 
 
-# Several codes for the same gun from the same person is the point (a budget one and a full one),
-# a page-load of near-identical variants is not.
-PER_GUN = 3
+# There was a cap of three builds per gun per creator here. It read as a rule about near-identical
+# variants, but rows arrive in page order, so what it actually cut was whatever sat lowest on the
+# page — old seasons on Leissik's doc, but also RogueMonkey's CQB and Rounded M4A1 builds, which
+# are different roles rather than variants of the one above them. The creator decided what was
+# worth publishing; this file has no business second-guessing that by position. Everything they
+# publish is kept, and the card sorts by date so the newest is still what you see first.
 
 
 def collect(guns):
@@ -334,7 +337,7 @@ def collect(guns):
         rows = PARSER[cfg['parser']](txt, guns, cfg)
         links = list(cfg.get('links') or [])
         if cfg['parser'] == 'dfbuild': links += [u for u in socials(txt) if u not in links]
-        seen, per = set(), collections.Counter()
+        seen = set()
         kept = 0
         for r in rows:
             if r.get('drop'):
@@ -344,10 +347,7 @@ def collect(guns):
                 skipped[cfg['id'] + ' unknown weapon: ' + str(r['skip'])] += 1
                 continue
             if r['code'] in seen: skipped[cfg['id'] + ' duplicate code'] += 1; continue
-            if per[(r['weapon'], r['mode'])] >= PER_GUN:
-                skipped[cfg['id'] + ' more than %d per gun' % PER_GUN] += 1
-                continue
-            seen.add(r['code']); per[(r['weapon'], r['mode'])] += 1; kept += 1
+            seen.add(r['code']); kept += 1
             # One price, in one shape, in one place. A page that keeps it in a column of its own
             # has it as a tag already; Leissik's is the whole name of the build ("300k beam") and
             # moves there, and where a name repeats a price the column also gives, the name loses
@@ -358,9 +358,13 @@ def collect(guns):
             if p:
                 if not any(price(t) for t in tags): tags = [p] + tags
                 note = re.sub(r'\s+', ' ', MONEY.sub('', note).replace('$', '')).strip(' -–—/,·')
+            # Where it stands on their page. Most of these builds carry no date and no season, and
+            # the order the creator put them in is the only thing that says which one they still
+            # run — so it is written down here, because build.py sorts the file by import code to
+            # keep a quiet morning byte-identical, and that throws page order away.
             builds.append(dict(weapon=r['weapon'], mode=r['mode'], creator=cfg['id'],
                                source=cfg['id'], code=r['code'], url=cfg['page'], added=r['added'],
-                               note=note, tags=tags))
+                               note=note, tags=tags, pos=kept - 1))
         if not kept: continue
         sources[cfg['id']] = dict(name=cfg['source'], url=cfg['page'], kind='creator')
         creators[cfg['id']] = dict(name=cfg['name'], url=cfg['page'], links=links, kind='creator')

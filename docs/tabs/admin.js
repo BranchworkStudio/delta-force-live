@@ -201,6 +201,7 @@
     id: "admin",
     label: "Admin",
     visible: (h) => h.isAdmin,
+    last: true,
     scope: "all",                 // everybody, not the board you happen to be looking at
     aside: false,
     filters: false,               // nothing here is a match, so neither picker means anything

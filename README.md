@@ -341,6 +341,7 @@ module contains. A module declares:
 | `aside(rows, host, active)` | HTML for the slot beside the big number — the open tab has first claim on it, and a module painting it from another tab should check `host.mode` before it does |
 | `render(el, rows, host)` | paint the pane |
 | `visible(host)` | optional — return false to leave the tab off the bar entirely (and its `queries()` unsent). Absent means always shown |
+| `last` | optional — true to sit at the right-hand end of the bar whatever order the files loaded in |
 | `scope` | optional — `"all"` to receive `queries()` rows exactly as the server sent them, instead of narrowed to this board's roster |
 
 This exists because a season's collection is temporary. Ending one is: delete the module
@@ -391,12 +392,12 @@ grid into a staircase.
 | `updated` | the day the builds last actually changed — shown in the hero. A morning that re-reads the same pages and finds the same thing does not move it |
 | `sources` | the page each code was copied from, named the way the card says it — "Leissik's build doc" — and linked on every card |
 | `creators` | `name`, `url` (their page), `links` (their own Twitch/YouTube/X/Discord/TikTok) and `avatar`, a path under `docs/img/creators/` |
-| `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `note`, `tags` |
+| `builds` | `weapon` (must match the manifest), `mode`, `creator`, `source`, `code`, `url`, `added`, `note`, `tags`, `pos` (where the build stands on the creator's page) |
 
 **Only the pages the creators run themselves.** The file was built from aggregators as well
 at first — sites that collect other people's builds — and they were dropped: four times the
 volume, a fraction of the value, most of it undated, reposted or uncredited, and a list you
-cannot trust is worse than a shorter one you can. What is left is 637 builds across 66 of the
+cannot trust is worse than a shorter one you can. What is left is 682 builds across 66 of the
 68 weapons, every one of them read off a page its maker publishes and keeps up to date.
 `tools/loadouts/creators.json` is the list of those pages; adding a creator is adding an
 entry there.
@@ -424,6 +425,21 @@ Three rules the file is built on, and the reason for each:
 - **A weapon the manifest does not have is dropped.** It means the name was mistyped or the
   build is for another client (the same sites carry mobile and CN builds, whose codes do not
   import into the global PC game) — either way it cannot be trusted.
+- **Everything a creator publishes is kept.** There was a cap of three builds per gun per
+  creator here once. It read as a rule about near-identical variants, but rows arrive in page
+  order, so what it actually cut was whatever sat lowest on the page: old seasons on Leissik's
+  doc, which was fine, but also RogueMonkeyJr.'s CQB and Rounded M4A1 builds, which are
+  different roles rather than variants of the one above them. The creator decided what was
+  worth publishing; this file has no business second-guessing that by position.
+
+**Which of a person's builds for one gun is the current one** is then a question the card has
+to answer itself, and it has three signals, in this order: the **date**, where the page carries
+one (79 builds); the **season**, which only Leissik labels but which is the right answer where
+it is there, since a rebalance is what makes an old build stop being advice (117 builds); and
+failing both, **`pos`** — where the build stands on the creator's own page, because people put
+what they still run at the top. `pos` is written into the file by `own.py` because `build.py`
+sorts the file by import code to keep a quiet morning byte-identical, and that throws page
+order away.
 
 **The price is normalised; nothing else is.** It is the one fact most of these pages carry, and
 no two write it the same way — `580K`, `~1500k`, `$250k`, or nothing but the build's own name
