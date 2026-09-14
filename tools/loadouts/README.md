@@ -65,6 +65,12 @@ part of adding one that is ever real work: `parse_medow` is thirty lines because
 its table in a JS literal with the CN client's codes in the same rows — and those are dropped,
 since a CN code does not import into the global game.
 
+One thing `collect()` does to every row, whatever parsed it: the price goes through `price()`,
+so a card carries it once and in one shape (`~1500k` → `~1.5M`, `$250k` → `250K`). A creator who
+keeps the price in the build's name rather than a column of its own has it moved to the tag, and
+a name that repeats a price the row already gives loses it. Nothing else about a row's wording is
+changed.
+
 Adding a creator is adding an entry. A row whose weapon cannot be identified from the code or
 the label is dropped and counted in the skip list rather than guessed at, and no more than
 three builds per gun per mode are kept from any one page — a budget build and a full build are

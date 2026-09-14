@@ -396,6 +396,17 @@ Three rules the file is built on, and the reason for each:
   build is for another client (the same sites carry mobile and CN builds, whose codes do not
   import into the global PC game) — either way it cannot be trusted.
 
+**The price is normalised; nothing else is.** It is the one fact most of these pages carry, and
+no two write it the same way — `580K`, `~1500k`, `$250k`, or nothing but the build's own name
+("300k beam") — so it is pulled out to one place in one shape: under a million in K, above it in
+M, the creator's own `~` kept. Where a name repeats a price the page already gives in a column of
+its own, the name loses it: SammyMedows calls one build `$500k` on a row whose price column says
+`~350k`, and a card printing both is worse than a card printing the field he maintains. What is
+*not* touched is everything they actually wrote — `Hipfire`, `High End - LONG RANGE`, `Bot
+blaster` are seven people's vocabularies, and flattening those into a house style would be us
+writing the page instead of them. A build whose maker published nothing but a name and a code
+(92 of them) shows nothing but a name and a code.
+
 Two things the page cannot do, said out loud rather than worked around: **codes published
 without the `Weapon Name-Mode-` prefix are shown exactly as their maker published them** (some
 creators post only the tail), and **builds that live in a Discord server are not in here** —
