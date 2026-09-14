@@ -8,14 +8,15 @@ per-person. Four parsers cover what exists today:
            usually under the creator's own heading for it
   dfbuild  a deltaforce.build/<name> page, a Next.js app that ships the creator's sheet as JSON
            inside the server payload
-  sheet    a Google Sheet the creator published, read as CSV, with no assumption about which
-           column is which
+  sheet    a Google Sheet the creator published, read as CSV — by the names in its header row
+           when the entry gives `cols`, and otherwise with no assumption about columns at all
   medow    medowmafia.com's builds page, whose table is a JS literal carrying the global and the
            CN client's code for the same build side by side
 
 Weapon and mode come from the code itself when the creator published the whole string, and from
 the row's label when they published only the tail — see weapon_of(). A row whose weapon cannot
-be identified is dropped rather than guessed at.
+be identified is dropped rather than guessed at, and so is a code a creator credits to somebody
+else — see CREDITED.
 """
 import re, csv, io, json, os, html as H, datetime, collections
 
@@ -24,6 +25,23 @@ RAW = os.path.join(HERE, 'raw', 'own', '')
 
 CODE = re.compile(r'^(.*?)-(Operations \(Extraction Mode\)|Operations|Warfare)-([A-Z0-9]{15,})\s*$')
 BARE = re.compile(r'^[A-Z0-9]{18,24}$')
+# A code with somebody else's name after it: "…C0LGG (Larry)", "…C0LGG(SomeKindaDog)". A creator
+# who keeps a few of other people's builds on their page is crediting them in the only place a
+# spreadsheet has to do it in, and that credit is a name with nothing behind it — which is the one
+# build this file does not publish. So these are dropped rather than re-attributed: the rule is a
+# creator *and* a link back, and a name in brackets is half of one. The mode is parenthesised too
+# on some sheets, which is why CODE is always tried first: "Operations (Extraction Mode)" is the
+# game's own name for a mode, not a person.
+CREDITED = re.compile(r'^(.*?)\s*\(([^()]{1,40})\)\s*$')
+
+
+def credited_to(cell):
+    """Who a cell hands the build to, when it is a code with a name after it. None otherwise."""
+    m = CREDITED.match(cell)
+    if not m: return None
+    return m.group(2).strip() if (CODE.match(m.group(1)) or BARE.match(m.group(1))) else None
+
+
 # The same class words build.py strips, but also without the space in front: a creator typing the
 # code by hand drops it often enough ("VSSMarksmanRifle-Operations-…") to be worth handling.
 CLASS = (r'(Assault Rifle|Compact Assault Rifle|Submachine Gun|Sniper Rifle|Marksman Rifle|Battle Rifle|'
@@ -39,7 +57,8 @@ def norm(s): return re.sub(r'[^a-z0-9]', '', (s or '').lower())
 # A few names the community uses that the game does not. Everything else matches on the name
 # itself, so this list only ever grows by one when a creator calls a gun something new.
 ALIAS = {'tommy': 'Thompson SMG', 'thompson': 'Thompson SMG', 'marlin': 'Lever-action Rifle',
-         'leveraction': 'Lever-action Rifle', 'barrett': 'M82', 'barret': 'M82', 'scar': 'SCAR-H',
+         'leveraction': 'Lever-action Rifle', 'marlinleveractionrifle': 'Lever-action Rifle',
+         'barrett': 'M82', 'barret': 'M82', 'scar': 'SCAR-H',
          'mcx': 'MCX LT', 'qjb': 'QJB201', 'qcq': 'QCQ171', 'qbz': 'QBZ95-1', 'val': 'AS Val',
          'revolver': '.357', 'bow': 'Compound Bow', 'deagle': 'Desert Eagle'}
 
@@ -173,6 +192,43 @@ def price(text):
                                  else '%g' % k + 'K')
 
 
+def parse_headed(rows, guns, cfg, cols):
+    """A sheet that has a real header row, read by the names in it rather than by position.
+
+    Worth doing whenever there is one. The columnless read below has to guess that the cell
+    furthest left is what the creator called the build, and on a sheet that leads with a weapon
+    class it guesses wrong — nobody named their build "AR". A header says which column is which,
+    so it is read instead of guessed at. `cols` maps our field to the creator's own column name."""
+    want = {k: v.strip().lower() for k, v in cols.items()}
+    at, head = None, None
+    for i, row in enumerate(rows):
+        low = [c.strip().lower() for c in row]
+        if all(v in low for v in want.values()):
+            at, head = i, {k: low.index(v) for k, v in want.items()}
+            break
+    if head is None:
+        return [dict(drop='header row not found (%s)' % ', '.join(sorted(want.values())))]
+    out = []
+    for row in rows[at + 1:]:
+        cell = lambda k: row[head[k]].strip() if k in head and head[k] < len(row) else ''
+        code = cell('code')
+        if not code: continue
+        m = CODE.match(code)
+        if not m and not BARE.match(code):
+            who = credited_to(code)
+            out.append(dict(drop='credited to ' + who) if who else dict(skip=code[:40]))
+            continue
+        label = cell('note')
+        g = weapon_of(guns, m.group(1) if m else '', label)
+        if not g:
+            out.append(dict(skip=label or code)); continue
+        out.append(dict(weapon=g,
+                        mode='warfare' if (m and m.group(2) == 'Warfare') else
+                             ('operations' if m else cfg.get('mode', 'operations')),
+                        code=code, note=clean_label(label, g), added=None, tags=[]))
+    return out
+
+
 def parse_sheet(txt, guns, cfg):
     """A Google Sheet the creator published, read as CSV. These have nothing in common with each
     other — code beside the name, or a price or a "Meta" marker in between; one long list, or four
@@ -181,9 +237,11 @@ def parse_sheet(txt, guns, cfg):
     code, are what its maker wrote about it: the leftmost is their name for it, anything between
     is a tag. A row whose only cell is "Operations" or "Warfare" sets the mode for everything
     below it, which is how a sheet of bare codes says which game they are for."""
+    rows = list(csv.reader(io.StringIO(txt)))
+    if cfg.get('cols'): return parse_headed(rows, guns, cfg, cfg['cols'])
     mode = cfg.get('mode', 'operations')
     out = []
-    for row in csv.reader(io.StringIO(txt)):
+    for row in rows:
         cells = [c.strip() for c in row]
         filled = [c for c in cells if c]
         if len(filled) == 1 and filled[0].lower() in ('operations', 'warfare'):
@@ -191,10 +249,16 @@ def parse_sheet(txt, guns, cfg):
             continue
         for i, c in enumerate(cells):
             m = CODE.match(c)
-            if not m and not BARE.match(c): continue
+            if not m and not BARE.match(c):
+                who = credited_to(c)
+                if who: out.append(dict(drop='credited to ' + who))
+                continue
             run = []
             for j in range(i - 1, -1, -1):
-                if not cells[j] or CODE.match(cells[j]) or BARE.match(cells[j]): break
+                # A credited code still ends the previous build, even though it is not kept as one.
+                # Without this the walk runs straight through it into the column before, and a build
+                # ends up wearing the name of somebody else's.
+                if not cells[j] or CODE.match(cells[j]) or BARE.match(cells[j]) or credited_to(cells[j]): break
                 run.append(cells[j])
             label = run[-1] if run else ''
             tags = []
@@ -208,7 +272,7 @@ def parse_sheet(txt, guns, cfg):
             out.append(dict(weapon=g,
                             mode='warfare' if (m and m.group(2) == 'Warfare') else ('operations' if m else mode),
                             code=c, note=clean_label(label, g), added=None, tags=tags))
-    kept = [b for b in out if 'skip' not in b]
+    kept = [b for b in out if 'skip' not in b and 'drop' not in b]
     for t in {t for b in kept for t in b['tags'] if not PRICE.match(t)}:
         if all(t in b['tags'] for b in kept):       # "Meta" on all 52 of them tells nobody anything
             for b in kept: b['tags'].remove(t)
@@ -273,6 +337,9 @@ def collect(guns):
         seen, per = set(), collections.Counter()
         kept = 0
         for r in rows:
+            if r.get('drop'):
+                skipped[cfg['id'] + ' ' + r['drop']] += 1
+                continue
             if r.get('skip') is not None:
                 skipped[cfg['id'] + ' unknown weapon: ' + str(r['skip'])] += 1
                 continue

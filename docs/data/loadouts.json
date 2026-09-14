@@ -35,6 +35,16 @@
    "name": "siingsong's build sheet",
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "kind": "creator"
+  },
+  "roguemonkey": {
+   "name": "RogueMonkeyJr's build sheet",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "kind": "creator"
+  },
+  "minda": {
+   "name": "Minda999's build sheet",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "kind": "creator"
   }
  },
  "creators": {
@@ -109,6 +119,26 @@
    ],
    "kind": "creator",
    "avatar": "img/creators/siingsong.jpg"
+  },
+  "roguemonkey": {
+   "name": "RogueMonkeyJr.",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "links": [
+    "https://www.youtube.com/@RogueMonkeyJr",
+    "https://www.twitch.tv/roguemonkeyjr"
+   ],
+   "kind": "creator",
+   "avatar": "img/creators/roguemonkey.jpg"
+  },
+  "minda": {
+   "name": "Minda999",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "links": [
+    "https://www.youtube.com/@Minda999",
+    "https://www.twitch.tv/minda999"
+   ],
+   "kind": "creator",
+   "avatar": "img/creators/minda.jpg"
   }
  },
  "builds": [
@@ -165,6 +195,17 @@
    ]
   },
   {
+   "weapon": ".357",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": ".357 Revolver-Warfare-6GGSJ5C03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Pocket Sniper Build",
+   "tags": []
+  },
+  {
    "weapon": "725 Double-Barrel",
    "mode": "operations",
    "creator": "medow",
@@ -189,6 +230,28 @@
    "tags": [
     "~250K"
    ]
+  },
+  {
+   "weapon": "725 Double-Barrel",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "725 Double-Barrel Shotgun-Operations-6KHKF7K088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "725 Double-Barrel",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "725 Double-Barrel Shotgun-Warfare-6G9V50G03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "The Double Tap",
+   "tags": []
   },
   {
    "weapon": "93R",
@@ -304,6 +367,17 @@
   {
    "weapon": "AK-12",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "AK-12 Assault Rifle-Operations-6JT7ANG088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "100%Acc",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "AK-12 Assault Rifle-Operations-6KSV0HG04JR8MA4B021SH",
@@ -339,6 +413,39 @@
    "tags": [
     "550K"
    ]
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AK-12 Assault Rifle-Warfare-6FVUC5803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AK-12 Assault Rifle-Warfare-6HEIHDC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "v2.0",
+   "tags": []
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AK-12 Assault Rifle-Warfare-6JHLTF803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
   },
   {
    "weapon": "AK-12",
@@ -476,6 +583,17 @@
   {
    "weapon": "AKM",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "AKM Assault Rifle-Operations-6KHKGNS088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "DONG",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "AKM Assault Rifle-Operations-6L0TLIO04JR8MA4B021SH",
@@ -540,6 +658,39 @@
   },
   {
    "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AKM Assault Rifle-Warfare-6GP4J8O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Hipfire-centric",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AKM Assault Rifle-Warfare-6GVDCNO03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "v2.0",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AKM Assault Rifle-Warfare-6J29C2O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
+  },
+  {
+   "weapon": "AKM",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -572,6 +723,28 @@
    "tags": [
     "~350K"
    ]
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AKS-74 Assault Rifle-Warfare-6FOBE7S03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AKS-74",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AKS-74 Assault Rifle-Warfare-6IMMNT803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
   },
   {
    "weapon": "AKS-74",
@@ -650,6 +823,17 @@
   {
    "weapon": "AR-57",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "AR-57 Assault Rifle-Operations-6JQU2RO088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "AR-57 Assault Rifle-Operations-6KSUO0G04JR8MA4B021SH",
@@ -724,6 +908,28 @@
    "tags": [
     "400K"
    ]
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AR-57 Assault Rifle-Warfare-6JQ1HVC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S9 Build",
+   "tags": []
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AR-57 Assault Rifle-Warfare-6KEDFQ403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9 - Hipfire",
+   "tags": []
   },
   {
    "weapon": "AR-57",
@@ -813,6 +1019,17 @@
   {
    "weapon": "AS Val",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "AS Val Assault Rifle-Operations-6KB1TDO088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "AS Val Assault Rifle-Operations-6L38AJ004JR8MA4B021SH",
@@ -887,6 +1104,28 @@
    "tags": [
     "650K"
    ]
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AS Val Assault Rifle-Warfare-6GJO6T803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AS Val Assault Rifle-Warfare-6HN43P003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Burst Fire",
+   "tags": []
   },
   {
    "weapon": "AS Val",
@@ -989,6 +1228,28 @@
   {
    "weapon": "ASh-12",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "ASh-12 Battle Rifle-Operations-6K2F9DS088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "LONG ASH",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "ASh-12 Battle Rifle-Operations-6KJ9KJG088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "doubletap",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KPT0NC06F3769TRGAG41",
@@ -998,6 +1259,39 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "ASh-12 Battle Rifle-Warfare-6GJO6GC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "ASh-12 Battle Rifle-Warfare-6I8U8JG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Tomahawk Big Boi",
+   "tags": []
+  },
+  {
+   "weapon": "ASh-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "ASh-12 Battle Rifle-Warfare-6KJ1PMC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Double Shot",
+   "tags": []
   },
   {
    "weapon": "ASh-12",
@@ -1151,6 +1445,28 @@
   },
   {
    "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AUG Assault Rifle-Warfare-6GJO63C03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "\"No recoil\" build",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AUG Assault Rifle-Warfare-6J97TL403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
+  },
+  {
+   "weapon": "AUG",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -1224,6 +1540,17 @@
   {
    "weapon": "AWM",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "AWM Sniper Rifle-Operations-6KHKGD8088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "AWM",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "AWM Sniper Rifle-Operations-6K4968C04JR8MA4B021SH",
@@ -1260,6 +1587,17 @@
   },
   {
    "weapon": "Bizon",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Bizon Submachine Gun-Warfare-6GCOUH803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Squad killer",
+   "tags": []
+  },
+  {
+   "weapon": "Bizon",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -1285,6 +1623,17 @@
   {
    "weapon": "CAR-15",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "CAR-15 Assault Rifle-Operations-6KOKIVC088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQ9DTC02N2NQGF6IHVGC",
@@ -1294,6 +1643,17 @@
    "tags": [
     "1M"
    ]
+  },
+  {
+   "weapon": "CAR-15",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "CAR-15 Assault Rifle-Warfare-6HF6GJK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Uggo Build",
+   "tags": []
   },
   {
    "weapon": "CAR-15",
@@ -1420,6 +1780,17 @@
   {
    "weapon": "CI-19",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "CI-19 Assault Rifle-Operations-6K3E480088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "cl-19",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "CI-19 Assault Rifle-Operations-6KSUQE404JR8MA4B021SH",
@@ -1468,6 +1839,39 @@
    "tags": [
     "290K"
    ]
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "CI-19 Assault Rifle-Warfare-6GTNDHG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Long Range",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "CI-19 Assault Rifle-Warfare-6H6C32S03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "SMG Build",
+   "tags": []
+  },
+  {
+   "weapon": "CI-19",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "CI-19 Assault Rifle-Warfare-6J77G5803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "No Gas Block - Viewer Requested",
+   "tags": []
   },
   {
    "weapon": "CI-19",
@@ -1520,6 +1924,28 @@
   {
    "weapon": "Compound Bow",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "Compound Bow-Operations-6KHKGQS088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Compound Bow",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "Compound Bow-Operations-6KNG6AK088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "MAG",
+   "tags": []
+  },
+  {
+   "weapon": "Compound Bow",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6KMK3T006F3769TRGAG41",
@@ -1529,6 +1955,17 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "Compound Bow",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Compound Bow-Warfare-6GRO0QG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "One Tap",
+   "tags": []
   },
   {
    "weapon": "Compound Bow",
@@ -1550,6 +1987,17 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
    "added": null,
    "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Desert Eagle",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "Desert Eagle-Operations-6JRIBD8088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "DONG",
    "tags": []
   },
   {
@@ -1603,6 +2051,28 @@
    "tags": [
     "~150K"
    ]
+  },
+  {
+   "weapon": "FS-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "FS-12 Shotgun-Warfare-6J0KFH003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Primary Build",
+   "tags": []
+  },
+  {
+   "weapon": "G17",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "G17-Warfare-6FT0F9803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "All-purpose",
+   "tags": []
   },
   {
    "weapon": "G18",
@@ -1666,6 +2136,17 @@
   {
    "weapon": "G3",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "G3 Battle Rifle-Operations-6KHKHV0088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQ985C06F3769TRGAG41",
@@ -1688,6 +2169,39 @@
    "tags": [
     "270K"
    ]
+  },
+  {
+   "weapon": "G3",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "G3 Battle Rifle-Warfare-6G7QDN403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "G3 Battle Rifle-Warfare-6IDEU3403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
+  },
+  {
+   "weapon": "G3",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "G3 Battle Rifle-Warfare-6KC40CG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9 - Hybrid Marksman",
+   "tags": []
   },
   {
    "weapon": "G3",
@@ -1802,6 +2316,17 @@
   {
    "weapon": "K416",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "K416 Assault Rifle-Operations-6KHKGBG088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "K416 Assault Rifle-Operations-6KFMD2004JR8MA4B021SH",
@@ -1850,6 +2375,39 @@
    "tags": [
     "320K"
    ]
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K416 Assault Rifle-Warfare-6GLFO3803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K416 Assault Rifle-Warfare-6GNG7VC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Whisper",
+   "tags": []
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K416 Assault Rifle-Warfare-6IKNC8O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
   },
   {
    "weapon": "K416",
@@ -2013,6 +2571,39 @@
    "tags": [
     "900K"
    ]
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K437 Assault Rifle-Warfare-6H1137C03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Viewer-Requested Suppressed",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K437 Assault Rifle-Warfare-6HR9ULG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Viewer Request 60-rounder",
+   "tags": []
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K437 Assault Rifle-Warfare-6II5CG403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
   },
   {
    "weapon": "K437",
@@ -2180,6 +2771,39 @@
   },
   {
    "weapon": "KC-17",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "KC-17 Assault Rifle-Warfare-6K7FU3O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "KC17 Assault Rifle-Warfare-6H4MS4S03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "KC17 Assault Rifle-Warfare-6HVJ4VG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Hipfire CQB",
+   "tags": []
+  },
+  {
+   "weapon": "KC-17",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -2244,6 +2868,17 @@
   {
    "weapon": "Lever-action Rifle",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "Lever-Action Rifle-Operations-6JUT4S4088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6K8OPK006F3769TRGAG41",
@@ -2253,6 +2888,28 @@
    "tags": [
     "185K"
    ]
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Lever-action Rifle-Warfare-6IP12V803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Double-Tap",
+   "tags": []
+  },
+  {
+   "weapon": "Lever-action Rifle",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Marlin Lever-action Rifle-Warfare-6HKR8FG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "One-Shot Machine",
+   "tags": []
   },
   {
    "weapon": "M1014",
@@ -2417,6 +3074,39 @@
   },
   {
    "weapon": "M14",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M14 Marksman Rifle-Warfare-6EPOU9S03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Full auto build",
+   "tags": []
+  },
+  {
+   "weapon": "M14",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M14 Marksman Rifle-Warfare-6GH7R2O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "SMG Build",
+   "tags": []
+  },
+  {
+   "weapon": "M14",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M14 Marksman Rifle-Warfare-6IRBBAC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Full-Auto Build",
+   "tags": []
+  },
+  {
+   "weapon": "M14",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -2462,6 +3152,28 @@
    "tags": [
     "~150K"
    ]
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M16A4 Assault Rifle-Warfare-6FNCGMG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Rounded Build",
+   "tags": []
+  },
+  {
+   "weapon": "M16A4",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M16A4 Assault Rifle-Warfare-6JUU1GC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
   },
   {
    "weapon": "M16A4",
@@ -2512,6 +3224,17 @@
   {
    "weapon": "M249",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "M249 Light Machine Gun-Operations-6JQJAF0088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "SPECIAL",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "M249 Light Machine Gun-Operations-6KSUSSC04JR8MA4B021SH",
@@ -2547,6 +3270,39 @@
    "tags": [
     "426K"
    ]
+  },
+  {
+   "weapon": "M249",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M249 Light Machine Gun-Warfare-6H85NLC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M249 Light Machine Gun-Warfare-6J3RPGS03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
+  },
+  {
+   "weapon": "M249",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M249 Light Machine Gun-Warfare-6JTB2RK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "HVK Chainsaw",
+   "tags": []
   },
   {
    "weapon": "M249",
@@ -2638,6 +3394,17 @@
   {
    "weapon": "M250",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "M250 General Machine Gun-Operations-6J4UOQ0088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "M250 General Machine Gun-Operations-6KSUSO004JR8MA4B021SH",
@@ -2660,6 +3427,39 @@
    "tags": [
     "700K"
    ]
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M250 General Machine Gun-Warfare-6GQ1F9O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "CQBeast",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M250 General Machine Gun-Warfare-6GQ1FBS03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Big chungus build",
+   "tags": []
+  },
+  {
+   "weapon": "M250",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M250 General Machine Gun-Warfare-6ILVIFG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
   },
   {
    "weapon": "M250",
@@ -2775,6 +3575,17 @@
   {
    "weapon": "M4A1",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "M4A1 Assault Rifle-Operations-6KHKGA0088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "M4A1 Assault Rifle-Operations-6KSUUH804JR8MA4B021SH",
@@ -2810,6 +3621,39 @@
    "tags": [
     "440K"
    ]
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M4A1 Assault Rifle-Warfare-6HG6GQK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Mid-Long Range",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M4A1 Assault Rifle-Warfare-6HTCBH803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S6 Updated",
+   "tags": []
+  },
+  {
+   "weapon": "M4A1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M4A1 Assault Rifle-Warfare-6IEQ76C03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
   },
   {
    "weapon": "M4A1",
@@ -2947,6 +3791,17 @@
   {
    "weapon": "M7",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "M7 Battle Rifle-Operations-6KHKFU4088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "M7 Battle Rifle-Operations-6KSUTLG04JR8MA4B021SH",
@@ -2995,6 +3850,39 @@
    "tags": [
     "1M"
    ]
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M7 Battle Rifle-Warfare-6HAGVD003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "CQB Build",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M7 Battle Rifle-Warfare-6IGGIO403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
+  },
+  {
+   "weapon": "M7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M7 Battle Rifle-Warfare-6JEPHK803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
   },
   {
    "weapon": "M7",
@@ -3110,6 +3998,17 @@
   {
    "weapon": "M700",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "M700 Sniper Rifle-Operations-6JNUAK0088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "M700 Sniper Rifle-Operations-6KNJ34404JR8MA4B021SH",
@@ -3197,6 +4096,28 @@
    ]
   },
   {
+   "weapon": "M82",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M82 Sniper Rifle-Warfare-6JRM3JG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "One Shot, Maker of Misery",
+   "tags": []
+  },
+  {
+   "weapon": "M870",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "M870 Shotgun-Warfare-6GCP4K403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Boomstick",
+   "tags": []
+  },
+  {
    "weapon": "MCX LT",
    "mode": "operations",
    "creator": "equalplays",
@@ -3245,6 +4166,17 @@
    "tags": [
     "~300K"
    ]
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "MCX LT Assault Rifle-Operations-6JCBJ7C088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "MCX LT",
@@ -3312,6 +4244,39 @@
    ]
   },
   {
+   "weapon": "MCX LT",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MCX LT Assault Rifle-Warfare-6J196FK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Fierce Barrel",
+   "tags": []
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MCX LT Assault Rifle-Warfare-6J196IK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Hunter Barrel",
+   "tags": []
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MCX LT Assault Rifle-Warfare-6K8HLMS03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
+  },
+  {
    "weapon": "MDR",
    "mode": "operations",
    "creator": "equalplays",
@@ -3347,6 +4312,17 @@
    "tags": [
     "Season 11"
    ]
+  },
+  {
+   "weapon": "MDR",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6L8CTV8088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "MDR",
@@ -3464,6 +4440,39 @@
   {
    "weapon": "MK4",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "MK4 Submachine Gun-Operations-6KOSO5G088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "MK4 Submachine Gun-Operations-6L46D94088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "100%ACC",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "MK4 Submachine Gun-Operations-6L46F1G088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "AUTO",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6L8S7T004JR8MA4B021SH",
@@ -3525,6 +4534,39 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "MK4",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MK4 Submachine Gun-Warfare-6I7KLI403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Full Auto",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MK4 Submachine Gun-Warfare-6IUNBB803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Burst Fire",
+   "tags": []
+  },
+  {
+   "weapon": "MK4",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MK4 Submachine Gun-Warfare-6K0JP6O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
   },
   {
    "weapon": "MK4",
@@ -3691,6 +4733,28 @@
   },
   {
    "weapon": "MK47",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MK47 Assault Rifle-Warfare-6HLG30G03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MK47",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MK47 Assault Rifle-Warfare-6J4TA2003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
+  },
+  {
+   "weapon": "MK47",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -3747,6 +4811,28 @@
    "tags": [
     "260K"
    ]
+  },
+  {
+   "weapon": "MP5",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MP5 Submachine Gun-Warfare-6G8VV8K03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "MP5",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MP5 Submachine Gun-Warfare-6I48OT003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "100 Accuracy Monster",
+   "tags": []
   },
   {
    "weapon": "MP5",
@@ -3838,6 +4924,17 @@
   {
    "weapon": "MP7",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "MP7 Submachine Gun-Operations-6K73P98088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "SPECIAL",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "MP7 Submachine Gun-Operations-6KSURRO04JR8MA4B021SH",
@@ -3902,6 +4999,39 @@
   },
   {
    "weapon": "MP7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MP7 Submachine Gun-Warfare-6H2CB0403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Hipfire Build",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MP7 Submachine Gun-Warfare-6JU9FT003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "HVK Combat Kit",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MP7 Submachine Gun-Warfare-6KAFF1O03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
+  },
+  {
+   "weapon": "MP7",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -3909,6 +5039,28 @@
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRZrCec0C_dVGT_5oqOXy8fJn__4wbEIuYSNoktqspJ5CJpVCAgzMii00Y2fMjjZPbhGJBCYo10IP1/pubhtml?gid=0&single=true",
    "added": null,
    "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Mini-14",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Mini-14 Marksman Rifle-Warfare-6H218J803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Sandstorm comp",
+   "tags": []
+  },
+  {
+   "weapon": "Mini-14",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Mini-14 Marksman Rifle-Warfare-6H218L803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Silent suppressor",
    "tags": []
   },
   {
@@ -4060,6 +5212,39 @@
    "tags": [
     "344K"
    ]
+  },
+  {
+   "weapon": "P90",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "P90 Submachine Gun-Warfare-6F9AJJK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Hipfire build",
+   "tags": []
+  },
+  {
+   "weapon": "P90",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "P90 Submachine Gun-Warfare-6F9AJO003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Well-rounded build",
+   "tags": []
+  },
+  {
+   "weapon": "P90",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "P90 Submachine Gun-Warfare-6IQONT403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
   },
   {
    "weapon": "P90",
@@ -4215,6 +5400,28 @@
   },
   {
    "weapon": "PKM",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "PKM General Machine Gun-Warfare-6FGHHS003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Close-quarter",
+   "tags": []
+  },
+  {
+   "weapon": "PKM",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "PKM General Machine Gun-Warfare-6JBG7I403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
+  },
+  {
+   "weapon": "PKM",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -4250,6 +5457,17 @@
   },
   {
    "weapon": "PSG-1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "PSG-1 Marksman Rifle-Warfare-6GH7R4K03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "PSG-1",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -4282,6 +5500,39 @@
    "tags": [
     "~250K"
    ]
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "PTR-32 Assault Rifle-Operations-6JAEJB8088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "PTR-32 Assault Rifle-Warfare-6EUCMR803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "PTR-32 Assault Rifle-Warfare-6HCK0EO03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Suppressed",
+   "tags": []
   },
   {
    "weapon": "PTR-32",
@@ -4330,6 +5581,39 @@
    "tags": [
     "~50K"
    ]
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QBZ95-1 Assault Rifle-Warfare-6GMQ03803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QBZ95-1 Assault Rifle-Warfare-6H9K7OS03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "QBZ95-1",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QBZ95-1 Assault Rifle-Warfare-6K56PFC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
   },
   {
    "weapon": "QBZ95-1",
@@ -4393,6 +5677,17 @@
   {
    "weapon": "QCQ171",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "QCQ171 Submachine Gun-Operations-6KNIS80088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "RIP",
+   "tags": []
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "QCQ171 Submachine Gun-Operations-6KSURJ004JR8MA4B021SH",
@@ -4415,6 +5710,28 @@
    "tags": [
     "260K"
    ]
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QCQ171 Submachine Gun-Warfare-6HHFJI803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "QCQ171",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QCQ171 Submachine Gun-Warfare-6JJ2H3K03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
   },
   {
    "weapon": "QCQ171",
@@ -4494,6 +5811,17 @@
   {
    "weapon": "QJB201",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "QJB201 Light Machine Gun-Operations-6JVPB88088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "Hipfire",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "QJB201 Light Machine Gun-Operations-6KQ91FG04JR8MA4B021SH",
@@ -4555,6 +5883,39 @@
    "tags": [
     "500K"
    ]
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QJB201 Light Machine Gun-Warfare-6H28NUC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "AR build",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QJB201 Light Machine Gun-Warfare-6H28NVK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "CQB build",
+   "tags": []
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QJB201 Light Machine Gun-Warfare-6JG0K2S03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Laser",
+   "tags": []
   },
   {
    "weapon": "QJB201",
@@ -4633,6 +5994,17 @@
   {
    "weapon": "R93",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "R93 Sniper Rifle-Operations-6KHKH5G088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "R93",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "R93 Sniper Rifle-Operations-6L1FL4O04JR8MA4B021SH",
@@ -4655,6 +6027,17 @@
    "tags": [
     "88K"
    ]
+  },
+  {
+   "weapon": "R93",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "R93 Sniper Rifle-Warfare-6HO45AG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Aggressive One Shot",
+   "tags": []
   },
   {
    "weapon": "R93",
@@ -4757,6 +6140,28 @@
   {
    "weapon": "RM277",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "RM277-Operations-6KHAANS088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "2X",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "RM277-Operations-6KHKJLS088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "1X",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "RM277-Operations-6KSUNCG04JR8MA4B021SH",
@@ -4806,6 +6211,28 @@
   },
   {
    "weapon": "RM277",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "RM277-Warfare-6KH1V8S03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Heavy - Unsuppressed",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "RM277-Warfare-6KH1VB803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Whale Shark - Suppressed",
+   "tags": []
+  },
+  {
+   "weapon": "RM277",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -4838,6 +6265,17 @@
    "tags": [
     "~600K"
    ]
+  },
+  {
+   "weapon": "S12K",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "S12K Shotgun-Warfare-6G6M6TS03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "SCAR-H",
@@ -4967,6 +6405,39 @@
   },
   {
    "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SCAR-H Battle Rifle-Warfare-6F7TBP003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "\"No recoil\" build",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SCAR-H Battle Rifle-Warfare-6H8L26403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Jack-of-all-Trades",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SCAR-H Battle Rifle-Warfare-6IOEA4003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 Build",
+   "tags": []
+  },
+  {
+   "weapon": "SCAR-H",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -5015,6 +6486,28 @@
   },
   {
    "weapon": "SG552",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SG552 Assault Rifle-Warfare-6F2AQS403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SG552 Assault Rifle-Warfare-6JDPSSG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Build",
+   "tags": []
+  },
+  {
+   "weapon": "SG552",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -5031,6 +6524,17 @@
    "source": "equalplays",
    "code": "6L8SSOK00G02164FCEV6J",
    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SKS",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "SKS Marksman Rifle-Operations-6KHKH9S088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
    "tags": []
@@ -5060,6 +6564,28 @@
    "tags": [
     "450K"
    ]
+  },
+  {
+   "weapon": "SKS",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SKS Marksman Rifle-Warfare-6G5CAAS03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SKS",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SKS Marksman Rifle-Warfare-6K388TK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
   },
   {
    "weapon": "SKS",
@@ -5161,6 +6687,28 @@
   },
   {
    "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SMG-45 Submachine Gun-Warfare-6HHFIKK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "AR Build",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SMG-45 Submachine Gun-Warfare-6JLC22C03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Hipfire",
+   "tags": []
+  },
+  {
+   "weapon": "SMG-45",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -5256,6 +6804,39 @@
    "tags": [
     "700K"
    ]
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SR-25 Marksman Rifle-Warfare-6HP2C5K03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Velocity build",
+   "tags": []
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SR-25 Marksman Rifle-Warfare-6HPDJGC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Close-Range",
+   "tags": []
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SR-25 Marksman Rifle-Warfare-6J6F3N803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S8 Mid-Range Build",
+   "tags": []
   },
   {
    "weapon": "SR-25",
@@ -5396,6 +6977,28 @@
   },
   {
    "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6GVHSQK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Hipfire build",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SR-3M Compact Assault Rifle-Warfare-6ITL6JK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S7 100 Accuracy Build",
+   "tags": []
+  },
+  {
+   "weapon": "SR-3M",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -5431,6 +7034,17 @@
    "tags": [
     "Season 10"
    ]
+  },
+  {
+   "weapon": "SR9",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SR9 Marksman Rifle-Warfare-6GL6JM403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "SR9",
@@ -5557,6 +7171,17 @@
   {
    "weapon": "SVCH",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "SVCH Marksman Rifle-Operations-6KMUOLG088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "SVCH Marksman Rifle-Operations-6KUI88K04JR8MA4B021SH",
@@ -5576,6 +7201,17 @@
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-07-04",
    "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SVCH",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SVCH Marksman Rifle-Warfare-6KHMG6K03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 10",
    "tags": []
   },
   {
@@ -5677,6 +7313,17 @@
   {
    "weapon": "SVD",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "SVD Sniper Rifle-Operations-6JT91VO088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "SVD",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "SVD Sniper Rifle-Operations-6KUI8L004JR8MA4B021SH",
@@ -5699,6 +7346,17 @@
    "tags": [
     "300K"
    ]
+  },
+  {
+   "weapon": "SVD",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SVD Sniper Rifle-Warfare-6GC9GE003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "SVD",
@@ -5747,6 +7405,17 @@
    "tags": [
     "~300K"
    ]
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6L9DDG0088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
   },
   {
    "weapon": "Thompson SMG",
@@ -5826,6 +7495,17 @@
   },
   {
    "weapon": "UZI",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "UZI Submachine Gun-Warfare-6H4SOD403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "UZI",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -5886,6 +7566,39 @@
    "tags": [
     "~150K"
    ]
+  },
+  {
+   "weapon": "VSS",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "VSS Marksman Rifle-Operations-6JHO1CC088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "VSS",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "VSS Marksman Rifle-Warfare-6EQDO1003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "VSS",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "VSS Marksman Rifle-Warfare-6K1HMS003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 9",
+   "tags": []
   },
   {
    "weapon": "VSS",
@@ -5964,6 +7677,28 @@
   {
    "weapon": "Vector",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "Vector Submachine Gun-Operations-6J2A5LG088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "HIPFIRE",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "Vector Submachine Gun-Operations-6KHKGTG088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "Vector Submachine Gun-Operations (Extraction Mode)-6L8I3C804JR8MA4B021SH",
@@ -6002,6 +7737,39 @@
   },
   {
    "weapon": "Vector",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Vector Submachine Gun-Warfare-6H889PO03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Bullet hose",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Vector Submachine Gun-Warfare-6HBJFCK03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Vector Submachine Gun-Warfare-6IB5P1G03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "New Hipfire",
+   "tags": []
+  },
+  {
+   "weapon": "Vector",
    "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
@@ -6023,6 +7791,28 @@
    "tags": [
     "120K"
    ]
+  },
+  {
+   "weapon": "Vityaz",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Vityaz Submachine Gun-Warfare-6FSVRJ803QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Laserbeam Build",
+   "tags": []
+  },
+  {
+   "weapon": "Vityaz",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Vityaz Submachine Gun-Warfare-6I2AU3G03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Hipfire Build",
+   "tags": []
   },
   {
    "weapon": "Vityaz",
