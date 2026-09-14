@@ -29,9 +29,12 @@
   /* Not overflow: hidden. Nothing inside this header sticks out of it — the dot pattern below is
      inset: 0 — and hiding the overflow clipped the one thing that is meant to hang past the bottom
      edge, the account menu, which lands on the board beneath it. */
-  .hero { position: relative; padding: 22px 32px 26px; background: linear-gradient(180deg, var(--hero-top) 0%, var(--ground) 100%); border-bottom: 1px solid rgba(29, 224, 140, .2); }
+  /* The header is the width of the window; only what it holds is the width of the board. A page
+     capped at 1400px otherwise ends the gradient and the radar at the cap, and on a wide screen
+     that reads as two black bars with the theme painted between them. */
+  .hero { position: relative; background: linear-gradient(180deg, var(--hero-top) 0%, var(--ground) 100%); border-bottom: 1px solid rgba(29, 224, 140, .2); }
   .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-radial-gradient(circle at 85% 30%, transparent 0 22px, rgba(255, 255, 255, .035) 22px 23px); }
-  .hero > * { position: relative; }
+  .hin { position: relative; max-width: 1400px; margin: 0 auto; padding: 22px 32px 26px; }
   .top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
   .mark { font: 700 15px var(--hud); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
   .tri { width: 12px; height: 12px; background: var(--green); clip-path: polygon(50% 0, 100% 100%, 0 100%); display: inline-block; flex: none; }
@@ -361,7 +364,7 @@
   .nudge button:hover { color: #6ff0b8; }
 
   @media (max-width: 900px) {
-    .hero { padding: 18px 20px 22px; }
+    .hin { padding: 18px 20px 22px; }
     .big { font-size: 64px; }
     .headline { grid-template-columns: 1fr; gap: 22px; }
     .tabs { font-size: 12px; letter-spacing: 1.2px; }
@@ -397,8 +400,8 @@
 </style>
 </head>
 <body>
-<div class="board">
-  <header class="hero">
+<header class="hero">
+  <div class="hin">
     <div class="top">
       <div class="mark"><span class="tri"></span>Delta Force Live</div>
       <span class="vdiv"></span>
@@ -417,7 +420,9 @@
       </div>
       <div class="cells" id="cells"></div>
     </div>
-  </header>
+  </div>
+</header>
+<div class="board">
   <div id="banner" class="banner" hidden></div>
   <section class="gate" id="gate" hidden></section>
   <section class="pane on" id="pane-match">
