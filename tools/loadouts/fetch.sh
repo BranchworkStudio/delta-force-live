@@ -58,6 +58,18 @@ for cfg in json.load(open('creators.json')):
         m = re.search(r'<meta property="og:image" content="([^"]+)"', html)
         if m: url = m.group(1)
         time.sleep(.7)
+    # Twitch serves that og:image to a browser and not to us, often enough that EqualPlays had no
+    # face for a day. decapi.me answers a channel name with the CDN URL of the same picture, so it
+    # is asked last, and only believed when what comes back is a Twitch CDN URL and nothing else —
+    # a third party in this path may pick the size of an image, never the host it comes from.
+    for link in ([] if url else (cfg.get('links') or [])):
+        m = re.match(r'https?://(?:www\.)?twitch\.tv/([A-Za-z0-9_]{2,25})/?$', link)
+        if not m: continue
+        try: ans = read('https://decapi.me/twitch/avatar/' + m.group(1), UA).decode('utf8', 'replace').strip()
+        except Exception as e: print('  ', cfg['id'], 'decapi', e); continue
+        if re.fullmatch(r'https://static-cdn\.jtvnw\.net/jtv_user_pictures/[\w./-]+', ans): url = ans
+        time.sleep(.7)
+        break
     if not url: print('  no avatar for', cfg['id']); continue
     # Both CDNs size on request, and the card shows the face at 30px: ask for 150, not 600.
     url = re.sub(r'-profile_image-\d+x\d+', '-profile_image-150x150', url)

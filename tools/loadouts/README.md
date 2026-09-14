@@ -14,9 +14,12 @@ Everything fetched is a page a creator publishes themselves — one entry per pa
 deltaforcetools.gg) were dropped: see the root README under **Loadouts** for why.
 
 `fetch.sh` also writes `guns.json` (the weapon names from the official manifest) and downloads
-each creator's avatar into `docs/img/creators/<id>.png` — from the build page's own payload
-where it has one, otherwise the `og:image` of the first channel they list, asked for at 150px.
-An avatar already on disk is never re-fetched; delete the file to refresh it.
+each creator's avatar into `docs/img/creators/<id>.png` — from the build page's own payload where
+it has one, otherwise the `og:image` of the first channel they list, and failing that decapi.me's
+Twitch lookup, since Twitch serves that `og:image` to a browser and not always to us. The answer
+from that last one is used only if it is a `static-cdn.jtvnw.net` URL and nothing else: a third
+party in this path may pick the size of a picture, never the host it comes from. All three are
+asked for 150px. An avatar already on disk is never re-fetched; delete the file to refresh it.
 
 `build.py` applies the three rules in the root README under **Loadouts**: a build needs a
 creator and a link back, codes are copied as published and never verified here, and a weapon
