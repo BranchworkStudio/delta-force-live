@@ -318,6 +318,7 @@ module contains. A module declares:
 | `id`, `label` | identity; the pane becomes `pane-<id>` |
 | `filters` | true if the mode and range pickers apply — the range dims when they do not, the mode picker is hidden |
 | `queries()` | REST paths; answers arrive in the same order, already narrowed to this board's players |
+| `hero(rows, host)` | `{eyebrow, big, cells}` to replace the board's headline while the tab is open, or null to leave it |
 | `aside(rows, host, active)` | HTML for the slot beside the big number — the open tab has first claim on it, and a module painting it from another tab should check `host.mode` before it does |
 | `render(el, rows, host)` | paint the pane |
 
@@ -327,8 +328,9 @@ file and its two script tags in `index.html`, and drop the event's entry from `E
 the board — which is also why the tables are keyed by an `event_key` column rather than
 named after the event (`event_collection`, `event_collection_summary`).
 
-The first module is the season 7 **Ahsarah cards** (`docs/events/asala-cards.js`), fed by
-`GetCardCollection`. Two things about that data are worth knowing:
+The first module is the **Ahsarah cards** (`docs/events/asala-cards.js`), fed by
+`GetCardCollection`. Its `event_key` (`asala_cards_s7`) is a key and nothing more — it is not
+the game's season number and never reaches the page. Two things about that data are worth knowing:
 
 - The answer lists **every** card that exists, not only the owned ones — a card never found
   comes back at `card_count: 0`. That zero is what makes "which am I missing" answerable at

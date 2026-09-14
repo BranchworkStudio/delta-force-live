@@ -434,6 +434,24 @@
     aside.querySelectorAll("[data-goto]").forEach(b => b.onclick = () => setTab(b.dataset.goto));
     attachTips(aside);
 
+    // The headline belongs to whichever tab is open. A tab with its own answer to "how is it going"
+    // says it where the board says its own, rather than leaving match figures standing over a page
+    // they have nothing to do with; a tab without one leaves the board's headline exactly as it is.
+    const hero = active.hero ? active.hero(rowsOf(active), host) : null;
+    if (hero) {
+      $("#eyebrow").textContent = hero.eyebrow;
+      $("#big").innerHTML = hero.big;
+      paintCells(hero.cells || []);
+    }
+    // A figure in the hero may be the page's own index: one click takes you to the part of the
+    // pane it counts, which on a phone is a long way past the fold.
+    // A plain jump, not a smooth one: some embedded views ignore behavior: "smooth" entirely and
+    // the button then does nothing at all, which is a worse answer than arriving instantly.
+    document.querySelectorAll("#heroAside [data-scroll], #cells [data-scroll]").forEach(n => n.onclick = () => {
+      const t = document.querySelector(n.dataset.scroll);
+      if (t) t.scrollIntoView({ block: "start" });
+    });
+
     // Only the open pane is painted. The others keep the markup they last had, so coming back to
     // one is instant and a board refresh does not redraw four pages of it.
     const pane = paneOf(active.id);
@@ -487,8 +505,15 @@
            r.now.toLocaleString("en-US") + " now" + (r.partial ? " · since " + rankSince(r.since) : "")]
         : ["Rank score", r.now.toLocaleString("en-US"), "tracking since " + rankSince(r.since || new Date().toISOString())]);
     }
-    const el = $("#cells");
-    el.innerHTML = cells.map(([k, v, s]) => `<div class="cell"><div class="v">${v}</div><div class="k">${k}</div>${s ? `<div class="s">${esc(s)}</div>` : ""}</div>`).join("");
+    paintCells(cells);
+  }
+
+  // [key, value, sub, tip]. Value is HTML because the board's own cells colour and sign their
+  // numbers; everything a module hands in here it has escaped itself.
+  function paintCells(cells) {
+    $("#cells").innerHTML = cells.map(([k, v, s, tip]) =>
+      `<div class="cell"${tip ? ` data-tip="${esc(tip)}"` : ""}><div class="v">${v}</div><div class="k">${esc(k)}</div>${s ? `<div class="s">${esc(s)}</div>` : ""}</div>`).join("");
+    attachTips($("#cells"));
   }
 
   // The roster doubles as the scope picker: click a player to make the whole board theirs.

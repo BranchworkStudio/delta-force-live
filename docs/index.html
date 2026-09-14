@@ -130,6 +130,7 @@
   .cell .v { font: 700 30px var(--hud); color: var(--green); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .cell .k { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-2); margin-top: 2px; }
   /* The sample a headline came from: AI kills beside operator kills, deaths beside a K/D. */
+  .cell[data-scroll] { cursor: pointer; }
   .cell .s { font: 600 11px var(--hud); letter-spacing: .5px; color: var(--muted); margin-top: 5px; }
 
   /* ---- roster ---- */
@@ -428,7 +429,7 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=27"></script>
+<script src="config.js?v=28"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
@@ -437,7 +438,7 @@
      the board: when the season ends, delete the two lines below and docs/events/asala-cards.js,
      drop the entry from EVENTS in supabase/functions/poll/index.ts, and nothing else changes. -->
 <script src="https://www.playdeltaforce.com/basic_info/asala_pokers_en.js" onerror="window.__cardsFailed=1"></script>
-<script src="events/asala-cards.js?v=27"></script>
-<script src="app.js?v=27"></script>
+<script src="events/asala-cards.js?v=28"></script>
+<script src="app.js?v=28"></script>
 </body>
 </html>
