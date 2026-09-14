@@ -11,6 +11,7 @@ import own
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', '..', 'docs', 'data', 'loadouts.json')
+META = os.path.join(HERE, '..', '..', 'docs', 'data', 'loadouts-meta.json')
 IMG = os.path.join(HERE, '..', '..', 'docs', 'img', 'creators')
 GUNS = json.load(open(os.path.join(HERE, 'guns.json')))
 
@@ -27,25 +28,57 @@ for cid, c in creators.items():
 builds.sort(key=lambda b: (b['weapon'], b['creator'], b['code']))
 body = dict(sources=sources, creators=creators, builds=builds)
 
+
+def write_meta(status, note=None):
+    """What this run did, in a file of its own.
+
+    Deliberately not part of loadouts.json. That file's `updated` is the day the builds last
+    changed, which only works because the file is compared byte for byte against the last one —
+    a run timestamp inside it would differ every morning and move the date every morning, saying
+    the pages had changed when they had not. So the run writes itself down separately, every
+    time, including the mornings it changed nothing and the mornings it refused. That is the
+    whole value of it: a job that has silently stopped looks exactly like a job with nothing to
+    do, unless something records the difference.
+    """
+    meta = dict(
+        built=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(),
+        status=status, note=note,
+        builds=len(builds), creators=len(creators),
+        weapons=len({b['weapon'] for b in builds}), guns=len(GUNS),
+        avatars=sum(1 for c in creators.values() if c.get('avatar')),
+        by_creator=dict(collections.Counter(b['creator'] for b in builds).most_common()),
+        by_mode=dict(collections.Counter(b['mode'] for b in builds).most_common()),
+        dated=sum(1 for b in builds if b['added']), noted=sum(1 for b in builds if b['note']),
+        skipped=dict(skipped.most_common()),
+    )
+    os.makedirs(os.path.dirname(META), exist_ok=True)
+    json.dump(meta, open(META, 'w'), indent=1, ensure_ascii=False)
+
 # This runs unattended every morning, so it has to be able to refuse its own output. A creator's
 # page that answers with a login wall, an error page or an empty sheet parses to nothing at all,
 # and a green run that quietly empties the tab is the one failure mode worth spending code on.
 old = json.load(open(OUT)) if os.path.exists(OUT) else None
 if not builds:
-    raise SystemExit('refusing to write: no builds parsed at all — a page is down or has changed shape')
+    msg = 'refusing to write: no builds parsed at all — a page is down or has changed shape'
+    write_meta('refused', msg)
+    raise SystemExit(msg)
 if old and len(builds) < 0.6 * len(old['builds']):
-    raise SystemExit('refusing to write: %d builds, down from %d. Check the pages by hand.'
-                     % (len(builds), len(old['builds'])))
+    msg = ('refusing to write: %d builds, down from %d. Check the pages by hand.'
+           % (len(builds), len(old['builds'])))
+    write_meta('refused', msg)
+    raise SystemExit(msg)
 
 # `updated` is the day the builds last actually changed, not the day this last ran. Re-reading the
 # same pages and finding the same thing is not an update, and a date that moves every morning
 # would say the opposite on a page that had not changed in a month.
 if old and all(old.get(k) == v for k, v in body.items()):
+    write_meta('unchanged')
     print('no change —', len(builds), 'builds, still as of', old.get('updated'))
     raise SystemExit(0)
 doc = dict(updated=datetime.date.today().isoformat(), **body)
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 json.dump(doc, open(OUT, 'w'), indent=1, ensure_ascii=False)
+write_meta('written')
 print('builds', len(builds), 'creators', len(creators), 'weapons', len({b['weapon'] for b in builds}), '/', len(GUNS))
 print('by creator', collections.Counter(b['creator'] for b in builds))
 print('by mode', collections.Counter(b['mode'] for b in builds))

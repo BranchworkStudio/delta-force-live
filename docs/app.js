@@ -63,6 +63,13 @@
   // thing a boundary needs before it can exist at all.
   const CTL_KEY = "df-control";
   const TAB_KEY = "df-tab";
+  // Whether this browser belongs to the tracker's admin, as of the last load. A hint and nothing
+  // more: it decides whether a tab is drawn, never what may be read. Every admin view carries
+  // `where public.is_admin()` in the database, so a browser that sets this by hand gets the tab
+  // and three empty tables. It is remembered because the answer arrives with the roster, and a
+  // tab that appears a second late — or a remembered tab that resets to Match data on every
+  // reload — would be worse than a hint that is occasionally stale for one refresh.
+  const ADMIN_KEY = "df-admin";
   const ls = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const SESS_KEY = "df-session";
   let session = (() => { try { return JSON.parse(ls(SESS_KEY) || "null"); } catch (e) { return null; } })();
@@ -132,6 +139,28 @@
     return res.ok ? { data: j } : { error: (j && j.message) || ("HTTP " + res.status) };
   }
 
+  // Asking the backend for a way in. One function, because two pages want it now: the account
+  // panel's buttons and the admin tab's mint row. The authority is the control key this browser
+  // was given when it handed an account over — the same key that may stop collection — and the
+  // server asks the harder question (is this account the admin) again on its own side.
+  const inviteUrl = (code) => location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?i=" + encodeURIComponent(code);
+  async function askForInvite(kind, maxUses, groupId) {
+    const body = {
+      action: "invite", openid: ls(CTL_KEY) || "", control_key: ls(CTL_KEY + "-key") || "",
+      kind, group_id: kind === "new" ? groupId : undefined,
+    };
+    // Sent only when it is being asked for: the server's own default is 1, and an undefined here
+    // must not read as "no limit". Null is how "no limit" is said out loud.
+    if (maxUses !== undefined) body.max_uses = maxUses;
+    const r = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
+      body: JSON.stringify(body),
+    }).then(x => x.json()).catch(() => null);
+    if (!r || !r.ok || !r.code) return { error: (r && r.error) || "Could not make a link" };
+    return { code: r.code, kind: r.kind || kind, max_uses: r.max_uses === undefined ? 1 : r.max_uses, url: inviteUrl(r.code) };
+  }
+
   // ---------- data ----------
   async function rest(path) {
     // `apikey` only routes the request; the bearer is what says who is asking.
@@ -168,7 +197,10 @@
     const since = encodeURIComponent(rangeStart().toISOString());
     // A tab module's reads go out with the board's own rather than after them, and softly: a tab
     // that cannot load costs its own page and nothing else.
-    const extra = Promise.all(TABS.map(t => t.queries ? Promise.all(t.queries().map(restSoft)) : Promise.resolve([])));
+    // A tab the visitor cannot see does not send its reads: the admin views answer 401 to everybody
+    // else, and three refused requests on every page load is noise in the log for nothing.
+    const extra = Promise.all(TABS.map(t => t.queries && (typeof t.visible !== "function" || t.visible(host))
+      ? Promise.all(t.queries(host).map(restSoft)) : Promise.resolve([])));
     const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum, groups, memberships, myGroups] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
@@ -208,6 +240,16 @@
     const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
     state.group = pickGroup(groups, myIds, mine);
 
+    // Read off the roster rather than asked for separately: `public_players` already carries it,
+    // because the account panel has always needed to know whether to draw the invite buttons.
+    const meRow = mine ? players.find(p => p.openid === mine) : null;
+    const wasAdmin = adminHint;
+    adminHint = !!(meRow && meRow.is_admin);
+    try { localStorage.setItem(ADMIN_KEY, adminHint ? "1" : "0"); } catch (e) { /* private window */ }
+    // The hint decides which reads went out, and on a first visit it was still false when they did.
+    // One more pass, once, so the tab that just appeared has its rows rather than empty tables.
+    if (adminHint && !wasAdmin) { firstAdminPass = true; }
+
     const inGroup = new Set(memberships.filter(m => m.group_id === state.group).map(m => m.openid));
     let roster = state.group === "solo"
       ? players.filter(p => p.openid === mine)
@@ -226,10 +268,11 @@
     });
     const extraRows = await extra;
     state.tabData = {};
-    TABS.forEach((t, i) => { state.tabData[t.id] = (extraRows[i] || []).map(ours); });
+    TABS.forEach((t, i) => { state.tabData[t.id] = t.scope === "all" ? (extraRows[i] || []) : (extraRows[i] || []).map(ours); });
     resolveFocus();
     render();
     $("#status").textContent = "updated " + hhmm(new Date());
+    if (firstAdminPass) { firstAdminPass = false; await load(); }
   }
 
   // ---------- helpers ----------
@@ -405,12 +448,17 @@
   //   filters   true if the mode and range pickers apply to it (they dim when they do not)
   //   queries() REST paths to read; the answers come back in the same order, already narrowed to
   //             the players on this board
+  //   visible(host)              false to leave the tab off the bar entirely; absent means always
+  //   scope     "all" to receive queries() rows unnarrowed — the board filters every module's rows
+  //             to the players on this board, which is exactly wrong for a page about everybody
   //   count(rows, host)          a short badge for the tab bar, or null
   //   aside(rows, host, active)  HTML for the slot beside the big number, or null; `aside: false`
   //                              means the tab wants that slot left empty while it is open
   //   render(el, rows, host)     paint the pane
   const MATCH_TAB = { id: "match", label: "Match data", filters: true };
   const TABS = [MATCH_TAB].concat(Array.isArray(window.DF_TABS) ? window.DF_TABS : []);
+  let adminHint = ls(ADMIN_KEY) === "1", firstAdminPass = false;
+  const shownTabs = () => TABS.filter(t => typeof t.visible !== "function" || t.visible(host));
   const tabOf = (id) => TABS.find(t => t.id === id) || MATCH_TAB;
   const paneOf = (id) => document.getElementById("pane-" + id);
   const rowsOf = (t) => state.tabData[t.id] || [];
@@ -422,6 +470,10 @@
     get me() { return state.me; },
     get players() { return state.players; },
     get mode() { return state.mode; },   // 1 operations, 2 warfare — a tab may have nothing to say in one of them
+    get group() { return state.group; },
+    get isAdmin() { return adminHint; },
+    rpc, askForInvite, inviteUrl,
+    reload: () => load().catch(() => { }),
     goTab: (id) => setTab(id),
     setFocus: (openid) => setFocus(openid),
     repaint: () => render(),
@@ -433,12 +485,17 @@
   }
   function renderTabs() {
     const bar = $("#tabs");
+    const shown = shownTabs();
     // One tab is not a choice: with no event running the bar would be a single word under the hero.
-    bar.hidden = TABS.length < 2;
-    const active = tabOf(state.tab);
+    bar.hidden = shown.length < 2;
+    // A tab that is not on the bar is not a place you can be standing. The fallback is not written
+    // back to localStorage: the hint can be false for one refresh, and losing the remembered tab
+    // over that would be a bug you only notice a day later.
+    let active = tabOf(state.tab);
+    if (!shown.includes(active)) active = MATCH_TAB;
     // Names only. A tab is where you are, not a notification: the number a module wants to shout
     // is already in the slot beside the big number, and twice is once too many.
-    bar.innerHTML = TABS.map(t => `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}</button>`).join("");
+    bar.innerHTML = shown.map(t => `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}</button>`).join("");
     bar.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => setTab(b.dataset.tab));
     TABS.forEach(t => { const el = paneOf(t.id); if (el) el.classList.toggle("on", t.id === active.id); });
     // The range picker stays in the masthead and dims on a tab that cannot use it; the mode picker
@@ -451,7 +508,7 @@
     // page you are not on — unless the open tab has said `aside: false`, which means its headline
     // is about something else entirely and another tab's badge beside it would just be confusing.
     let html = typeof active.aside === "function" ? active.aside(rowsOf(active), host, true) : null;
-    if (!html && active.aside !== false) for (const t of TABS) { if (t !== active && typeof t.aside === "function") { html = t.aside(rowsOf(t), host, false); if (html) break; } }
+    if (!html && active.aside !== false) for (const t of shown) { if (t !== active && typeof t.aside === "function") { html = t.aside(rowsOf(t), host, false); if (html) break; } }
     const aside = $("#heroAside");
     aside.innerHTML = html || "";
     aside.querySelectorAll("[data-goto]").forEach(b => b.onclick = () => setTab(b.dataset.goto));
@@ -945,21 +1002,14 @@
     async function mintInvite(e, btn, kind, label) {
       e.stopPropagation();
       btn.disabled = true; btn.textContent = "Making a link…";
-      const r = await fetch(C.SUPABASE_URL + "/functions/v1/connect", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + C.SUPABASE_ANON_KEY },
-        body: JSON.stringify({
-          action: "invite", openid: mine, control_key: ls(CTL_KEY + "-key") || "",
-          kind, group_id: kind === "new" ? state.group : undefined,
-        }),
-      }).then(x => x.json()).catch(() => null);
-      if (!r || !r.ok || !r.code) {
-        btn.disabled = false; btn.textContent = (r && r.error) || "Could not make a link";
+      const r = await askForInvite(kind, undefined, state.group);
+      if (r.error) {
+        btn.disabled = false; btn.textContent = r.error;
         setTimeout(() => { if (btn.isConnected) btn.textContent = label; }, 2600);
         return;
       }
-      const url = location.origin + location.pathname.replace(/[^/]*$/, "") + "connect.html?i=" + encodeURIComponent(r.code);
-      madeLink = { kind, url, cap: r.max_uses === undefined ? 1 : r.max_uses };
+      const url = r.url;
+      madeLink = { kind, url, cap: r.max_uses };
       try { await navigator.clipboard.writeText(url); } catch (err) { /* the field below is the fallback */ }
       renderAccount();
       const f = $("#acctMenu .lk input"); if (f) f.select();
