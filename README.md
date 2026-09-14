@@ -8,9 +8,10 @@ seconds.
 The board is **personal-first**: every module is scoped to one player, and the
 roster strip doubles as the picker. Each tile wears that player's HQ profile picture
 with the operator they have played most in the chosen range badged on the corner.
-Operators are drawn wherever they are named — the operators band, the feed's meta
-line, and the Operator column of an expanded raid — always beside the name, never
-instead of it. "All squad" is an opt-in tile that appears once
+Operators get a picture in the two places one is worth drawing: the operators
+band, where the tile is the operator and the art leads it, and the Operator
+column of an expanded raid, where the names beside it are mostly strangers.
+Never instead of the name — an operator nobody here plays still reads as a word. "All squad" is an opt-in tile that appears once
 more than one player is tracked, and the choice is remembered per browser.
 
 Live site: **https://branchworkstudio.github.io/delta-force-live/**
