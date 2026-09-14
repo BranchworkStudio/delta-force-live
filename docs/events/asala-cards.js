@@ -94,21 +94,17 @@
   window.DF_TABS.push({
     id: "asala-cards",
     label: "Ahsarah cards",
-    // A lifetime tally has no time window and is the same in Operations and Warfare, so the range
-    // and mode pickers do not apply: they dim rather than disappear.
+    // A lifetime tally has no time window and exists in neither Operations nor Warfare, so neither
+    // picker applies: the range dims in the masthead and the mode picker is not shown at all.
     filters: false,
     queries: () => ["event_collection?select=openid,item_id,owned_count&event_key=eq." + EVENT + "&limit=2000"],
-    // The tab's own reads arrive as one array per query, in the order they were asked for.
-    count(data, h) {
-      const rows = data[0] || [], who = subject(rows, h);
-      if (!who) return null;
-      const me = readPlayer(rows, who);
-      return me.any ? (me.toFind ? me.toFind + " to find" : "complete") : null;
-    },
-
     // The slot beside the big number: a strip of the cards still missing while you are reading
-    // match data, and the collection's own progress once you are on its page.
+    // match data, and the collection's own progress once you are on its page. The tab's own reads
+    // arrive as one array per query, in the order they were asked for.
     aside(data, h, active) {
+      // There are no cards in Warfare. Advertising the collection beside a Warfare headline would
+      // put it next to the one set of numbers it can never come from.
+      if (!active && h.mode !== 1) return null;
       const rows = data[0] || [], who = subject(rows, h);
       if (!who) return null;
       const me = readPlayer(rows, who), e = h.esc;

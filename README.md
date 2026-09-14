@@ -305,8 +305,9 @@ undo it.
 
 ## Tabs and event modules
 
-The board is a set of tabs under the masthead. **Match data** is the board itself — both
-Operations and Warfare, which the mode buttons still pick between — and every other tab is
+The board is a set of tabs in the masthead, in the slot the mode picker used to hold. **Match
+data** is the board itself — both Operations and Warfare, which the mode buttons above the
+headline still pick between — and every other tab is
 a file in `docs/events/` that registers itself in `window.DF_TABS` before `app.js` runs.
 `app.js` builds the bar, makes each module a `<section class="pane">`, runs its queries
 alongside the board's own and hands it a small host object; it knows nothing about what any
@@ -315,10 +316,9 @@ module contains. A module declares:
 | Key | What |
 |---|---|
 | `id`, `label` | identity; the pane becomes `pane-<id>` |
-| `filters` | true if the mode and range pickers apply (they dim when they do not) |
+| `filters` | true if the mode and range pickers apply — the range dims when they do not, the mode picker is hidden |
 | `queries()` | REST paths; answers arrive in the same order, already narrowed to this board's players |
-| `count(rows, host)` | short badge on the tab, or null |
-| `aside(rows, host, active)` | HTML for the slot beside the big number — the open tab has first claim on it |
+| `aside(rows, host, active)` | HTML for the slot beside the big number — the open tab has first claim on it, and a module painting it from another tab should check `host.mode` before it does |
 | `render(el, rows, host)` | paint the pane |
 
 This exists because a season's collection is temporary. Ending one is: delete the module

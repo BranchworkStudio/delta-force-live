@@ -218,12 +218,12 @@
                  text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
   .tabs button:hover { color: var(--text); }
   .tabs button.on { background: var(--green); color: var(--on-green); }
-  .tabs .cnt { margin-left: 9px; font-size: 11px; letter-spacing: 1px; color: var(--green); }
-  .tabs button.on .cnt { color: var(--on-green); opacity: .72; }
-  /* A filter that only means something on one tab lives on that tab. Operations and Warfare are two
-     shapes of the same match data, and the card collection has neither, so the switch travels with
-     the pane it belongs to instead of sitting greyed out in the masthead above every tab. */
-  .panebar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 14px 32px; border-bottom: 1px solid var(--hair); }
+  /* A filter that only means something on one tab belongs to that tab. Operations and Warfare are
+     two shapes of the same match data and the card collection has neither, so the switch sits with
+     the figures it changes — directly above the headline — and is absent on tabs it cannot move.
+     The explicit display: flex would otherwise beat the hidden attribute, hence the [hidden] rule. */
+  .panebar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 22px; }
+  .panebar[hidden] { display: none; }
   .pane { display: none; } .pane.on { display: block; }
   /* The range buttons pick a time window, and the mode buttons pick Operations or Warfare. Both
      belong to the match data; a tab that is not range-scoped says so by dimming them rather than
@@ -341,7 +341,7 @@
     .headline { grid-template-columns: 1fr; gap: 22px; }
     .tabs { font-size: 12px; letter-spacing: 1.2px; }
     .tabs button { padding: 7px 12px; }
-    .panebar { padding: 12px 20px; }
+    .panebar { margin-top: 18px; }
     .cells { grid-template-columns: 1fr 1fr; } .cell { padding: 8px 16px; }
     .roster { grid-template-columns: 1fr 1fr; }
     .cols { grid-template-columns: 1fr; } .left { border-right: 0; border-bottom: 1px solid var(--hair); }
@@ -378,6 +378,7 @@
       <span class="vdiv acct-div"></span>
       <div class="acct" id="acct"></div>
     </div>
+    <div class="panebar" id="panebar"><div class="modes"><button class="on" data-mode="1">Operations</button><button data-mode="2">Warfare</button></div></div>
     <div class="statrow">
       <div class="headline">
         <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div></div>
@@ -389,7 +390,6 @@
   <div id="banner" class="banner" hidden></div>
   <section class="gate" id="gate" hidden></section>
   <section class="pane on" id="pane-match">
-  <div class="panebar"><div class="modes"><button class="on" data-mode="1">Operations</button><button data-mode="2">Warfare</button></div></div>
   <section class="nudge" id="nudge" hidden></section>
   <section class="roster" id="roster"></section>
   <section class="band" id="mapsBand"></section>
@@ -428,7 +428,7 @@
 </div>
 <div class="tip" id="tip"></div>
 
-<script src="config.js?v=26"></script>
+<script src="config.js?v=27"></script>
 <script src="https://www.playdeltaforce.com/basic_info/maps_en.js" onerror="window.__mapsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/operators_en.js" onerror="window.__opsFailed=1"></script>
 <script src="https://www.playdeltaforce.com/basic_info/avatars.js" onerror="window.__avaFailed=1"></script>
@@ -437,7 +437,7 @@
      the board: when the season ends, delete the two lines below and docs/events/asala-cards.js,
      drop the entry from EVENTS in supabase/functions/poll/index.ts, and nothing else changes. -->
 <script src="https://www.playdeltaforce.com/basic_info/asala_pokers_en.js" onerror="window.__cardsFailed=1"></script>
-<script src="events/asala-cards.js?v=26"></script>
-<script src="app.js?v=26"></script>
+<script src="events/asala-cards.js?v=27"></script>
+<script src="app.js?v=27"></script>
 </body>
 </html>
