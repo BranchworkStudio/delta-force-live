@@ -1,8 +1,8 @@
 {
- "built": "2026-09-14T19:04:59+00:00",
+ "built": "2026-09-15T09:58:45+00:00",
  "status": "written",
  "note": null,
- "builds": 682,
+ "builds": 686,
  "creators": 9,
  "weapons": 66,
  "guns": 68,
@@ -12,18 +12,18 @@
   "leissik": 117,
   "medow": 112,
   "poach": 79,
-  "muomuo": 66,
+  "muomuo": 70,
   "siingsong": 52,
   "equalplays": 49,
   "minda": 40,
   "deathlapse": 38
  },
  "by_mode": {
-  "operations": 553,
+  "operations": 557,
   "warfare": 129
  },
  "dated": 79,
- "noted": 410,
+ "noted": 415,
  "skipped": {
   "minda credited to Ideologist": 3,
   "minda credited to Larry": 2,
