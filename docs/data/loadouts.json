@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-15",
+ "updated": "2026-09-16",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -196,7 +196,7 @@
    "tags": [
     "20K"
    ],
-   "pos": 64
+   "pos": 65
   },
   {
    "weapon": ".357",
@@ -328,7 +328,7 @@
    "tags": [
     "54K"
    ],
-   "pos": 56
+   "pos": 57
   },
   {
    "weapon": "AK-12",
@@ -682,7 +682,7 @@
    "tags": [
     "230K"
    ],
-   "pos": 69
+   "pos": 70
   },
   {
    "weapon": "AKM",
@@ -696,7 +696,7 @@
    "tags": [
     "260K"
    ],
-   "pos": 71
+   "pos": 72
   },
   {
    "weapon": "AKM",
@@ -982,7 +982,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 60
+   "pos": 61
   },
   {
    "weapon": "AR-57",
@@ -1208,7 +1208,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 61
+   "pos": 62
   },
   {
    "weapon": "AS Val",
@@ -1631,7 +1631,7 @@
    "tags": [
     "160K"
    ],
-   "pos": 67
+   "pos": 68
   },
   {
    "weapon": "AUG",
@@ -1773,7 +1773,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 53
+   "pos": 54
   },
   {
    "weapon": "AWM",
@@ -2117,7 +2117,7 @@
    "tags": [
     "290K"
    ],
-   "pos": 70
+   "pos": 71
   },
   {
    "weapon": "CI-19",
@@ -2255,7 +2255,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 77
+   "pos": 78
   },
   {
    "weapon": "Compound Bow",
@@ -2437,7 +2437,7 @@
    "tags": [
     "100K"
    ],
-   "pos": 57
+   "pos": 58
   },
   {
    "weapon": "G3",
@@ -2501,7 +2501,7 @@
    "tags": [
     "270K"
    ],
-   "pos": 63
+   "pos": 64
   },
   {
    "weapon": "G3",
@@ -2766,7 +2766,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 72
+   "pos": 73
   },
   {
    "weapon": "K416",
@@ -2851,6 +2851,20 @@
    "note": "",
    "tags": [],
    "pos": 26
+  },
+  {
+   "weapon": "K437",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "K437 Assault Rifle-Operations (Extraction Mode)-6LAA96O0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 11"
+   ],
+   "pos": 0
   },
   {
    "weapon": "K437",
@@ -2990,7 +3004,7 @@
    "tags": [
     "250K"
    ],
-   "pos": 66
+   "pos": 67
   },
   {
    "weapon": "K437",
@@ -3269,7 +3283,7 @@
    "tags": [
     "350K"
    ],
-   "pos": 75
+   "pos": 76
   },
   {
    "weapon": "KC-17",
@@ -3283,7 +3297,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 76
+   "pos": 77
   },
   {
    "weapon": "KC-17",
@@ -3427,7 +3441,7 @@
    "tags": [
     "185K"
    ],
-   "pos": 55
+   "pos": 56
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3479,7 +3493,7 @@
    "tags": [
     "162K"
    ],
-   "pos": 44
+   "pos": 45
   },
   {
    "weapon": "M14",
@@ -3855,7 +3869,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 50
+   "pos": 51
   },
   {
    "weapon": "M249",
@@ -3869,7 +3883,7 @@
    "tags": [
     "426K"
    ],
-   "pos": 49
+   "pos": 50
   },
   {
    "weapon": "M249",
@@ -4039,7 +4053,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 47
+   "pos": 48
   },
   {
    "weapon": "M250",
@@ -4249,7 +4263,7 @@
    "tags": [
     "270K"
    ],
-   "pos": 68
+   "pos": 69
   },
   {
    "weapon": "M4A1",
@@ -4384,20 +4398,6 @@
    "note": "",
    "tags": [],
    "pos": 41
-  },
-  {
-   "weapon": "M7",
-   "mode": "operations",
-   "creator": "leissik",
-   "source": "leissik",
-   "code": "M7 Battle Rifle-Operations (Extraction Mode)-6L82LJ00FV996DITL6AIU",
-   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
-   "added": null,
-   "note": "",
-   "tags": [
-    "Season 11"
-   ],
-   "pos": 0
   },
   {
    "weapon": "M7",
@@ -4827,7 +4827,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 52
+   "pos": 53
   },
   {
    "weapon": "M700",
@@ -4895,7 +4895,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 54
+   "pos": 55
   },
   {
    "weapon": "M82",
@@ -5041,7 +5041,7 @@
    "tags": [
     "240K"
    ],
-   "pos": 74
+   "pos": 75
   },
   {
    "weapon": "MCX LT",
@@ -5427,7 +5427,7 @@
    "tags": [
     "200K"
    ],
-   "pos": 73
+   "pos": 74
   },
   {
    "weapon": "MK4",
@@ -6257,7 +6257,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 58
+   "pos": 59
   },
   {
    "weapon": "P90",
@@ -6457,7 +6457,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 48
+   "pos": 49
   },
   {
    "weapon": "PKM",
@@ -6471,7 +6471,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 46
+   "pos": 47
   },
   {
    "weapon": "PKM",
@@ -6998,7 +6998,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 45
+   "pos": 46
   },
   {
    "weapon": "QJB201",
@@ -7012,7 +7012,7 @@
    "tags": [
     "280K"
    ],
-   "pos": 78
+   "pos": 79
   },
   {
    "weapon": "QJB201",
@@ -7182,7 +7182,7 @@
    "tags": [
     "88K"
    ],
-   "pos": 51
+   "pos": 52
   },
   {
    "weapon": "R93",
@@ -7366,7 +7366,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 65
+   "pos": 66
   },
   {
    "weapon": "RM277",
@@ -8727,9 +8727,23 @@
    "added": "2026-09-07",
    "note": "",
    "tags": [
-    "1M"
+    "600K"
    ],
    "pos": 43
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6LAH6LS06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-09-16",
+   "note": "Suppressed",
+   "tags": [
+    "600K"
+   ],
+   "pos": 44
   },
   {
    "weapon": "UZI",
@@ -8769,7 +8783,7 @@
    "tags": [
     "229K"
    ],
-   "pos": 62
+   "pos": 63
   },
   {
    "weapon": "UZI",
@@ -9093,7 +9107,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 59
+   "pos": 60
   },
   {
    "weapon": "Vityaz",
