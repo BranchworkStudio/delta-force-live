@@ -70,7 +70,16 @@
   .ranges { display: flex; gap: var(--gap); font: 600 12px var(--hud); text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
   .ranges button, .link { border: 0; background: none; padding: 0 0 3px; color: inherit; font: inherit; cursor: pointer; text-transform: inherit; letter-spacing: inherit; border-bottom: 2px solid transparent; }
   .ranges button.on { color: var(--green); border-bottom-color: var(--green); }
-  .status { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  /* The board's heartbeat, at the end of the line it dates rather than in the corner of the
+     masthead: "LëgällyBlind · net income · today · updated 14:32" is one sentence, and the time is
+     the end of it. It takes the eyebrow's size, tracking and case and only its own colour, so it
+     joins that line instead of sitting beside it — and the corner it left is ~100px the masthead
+     now keeps for the tab bar. */
+  .status { color: var(--muted); white-space: nowrap; }
+  /* The dot that joins the two belongs to the line it ends, not to the clock. Carried by the clock
+     it led the wrapped line on a narrow window, where it read as a bullet rather than as a join;
+     and a module's eyebrow, which the clock stands down from, would have to remember to drop it. */
+  .eyebrow:has(.status:not([hidden])) #eyebrow::after { content: "·"; margin-left: 6px; }
 
   /* account control, top right — the "you are logged in" corner */
   .acct { position: relative; }
@@ -147,7 +156,7 @@
      :empty then collapses the column so the layout is exactly what it was before. */
   .headline { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
   .headline .aside:empty { display: none; }
-  .eyebrow { font: 600 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--green); display: flex; align-items: center; gap: 8px; }
+  .eyebrow { font: 600 12px var(--hud); letter-spacing: 2px; text-transform: uppercase; color: var(--green); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .eyebrow i { width: 7px; height: 7px; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
   .big { font: 700 96px/1 var(--hud); letter-spacing: -1px; font-variant-numeric: tabular-nums; margin-top: 14px; white-space: nowrap; }
   /* What the big number is, when the number alone does not say it. The board's own headline names
@@ -458,9 +467,9 @@
            at a time, and the account chip — last in line and the widest of them — was the one that
            dropped, landing alone under the logo. As a group they either sit at the end of the
            masthead or take a line of their own, right-aligned, which is a layout rather than a
-           break. -->
+           break. (What is left in here is the range picker and the account: the clock that used to
+           stand between them now runs at the end of the eyebrow, below.) -->
       <div class="ctl">
-        <span class="status" id="status">connecting</span>
         <div class="ranges"><button class="on" data-range="today">Today</button><button data-range="24h">24 h</button><button data-range="7d">7 days</button><button data-range="all">All</button></div>
         <span class="vdiv acct-div"></span>
         <div class="acct" id="acct"></div>
@@ -469,7 +478,7 @@
     <div class="panebar" id="panebar"><div class="modes"><button class="on" data-mode="1">Operations</button><button data-mode="2">Warfare</button></div></div>
     <div class="statrow">
       <div class="headline">
-        <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span></div><div class="big" id="big">–</div><div class="bigsub" id="bigsub"></div></div>
+        <div><div class="eyebrow"><i></i><span id="eyebrow">Net income · today</span><span class="status" id="status">connecting</span></div><div class="big" id="big">–</div><div class="bigsub" id="bigsub"></div></div>
         <div class="aside" id="heroAside"></div>
       </div>
       <div class="cells" id="cells"></div>
@@ -535,6 +544,6 @@
      drop the entry from EVENTS in supabase/functions/poll/index.ts, and nothing else changes. -->
 <script src="https://www.playdeltaforce.com/basic_info/asala_pokers_en.js" onerror="window.__cardsFailed=1"></script>
 <script src="events/asala-cards.js?v=30"></script>
-<script src="app.js?v=35"></script>
+<script src="app.js?v=36"></script>
 </body>
 </html>

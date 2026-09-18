@@ -271,7 +271,7 @@
     TABS.forEach((t, i) => { state.tabData[t.id] = t.scope === "all" ? (extraRows[i] || []) : (extraRows[i] || []).map(ours); });
     resolveFocus();
     render();
-    $("#status").textContent = "updated " + hhmm(new Date());
+    setStatus("updated " + hhmm(new Date()), true);
     if (firstAdminPass) { firstAdminPass = false; await load(); }
   }
 
@@ -440,6 +440,22 @@
     F.wire(el, { bm: () => renderGate() });
   }
 
+  // The board's heartbeat. It lives at the end of the eyebrow now — "· today · updated 14:32" —
+  // which is the line it dates, and that is the whole reason it needs a rule of its own: a module
+  // that paints its own headline dates its own figures, and the Loadouts card already says when
+  // the builds last changed. "Updated 14:32" appended to that would read as a claim about the
+  // builds rather than about the board's last read, so the clock stands down while a module's hero
+  // is up. A refusal is not a heartbeat: "refresh failed" is true wherever you are standing and
+  // stays up on every tab.
+  let statusText = "connecting", statusIsClock = false, moduleHero = false;
+  function paintStatus() {
+    const el = $("#status");
+    if (!el) return;
+    el.textContent = statusText;
+    el.hidden = statusIsClock && moduleHero;
+  }
+  function setStatus(text, clock) { statusText = text; statusIsClock = !!clock; paintStatus(); }
+
   // ---------- tabs ----------
   // The board is one page per tab. "Match data" is this page's own modules, Operations and Warfare
   // alike — the mode buttons still pick between those. Every other tab is a module that registered
@@ -533,6 +549,9 @@
       $("#bigsub").textContent = hero.sub || "";
       paintCells(hero.cells || []);
     }
+    // Whose eyebrow this is decides whether the board's clock may stand at the end of it.
+    moduleHero = !!hero;
+    paintStatus();
     // A figure in the hero may be the page's own index: one click takes you to the part of the
     // pane it counts, which on a phone is a long way past the fold.
     // A plain jump, not a smooth one: some embedded views ignore behavior: "smooth" entirely and
@@ -1389,6 +1408,6 @@
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
   // The session comes first, so the very first read already carries it — and again before each
   // refresh, where it costs nothing while the token is still good and renews it when it is not.
-  ensureSession().then(load).catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; $("#status").textContent = "error"; });
-  setInterval(() => ensureSession().then(load).catch(() => { $("#status").textContent = "refresh failed"; }), (C.REFRESH_SECONDS || 30) * 1000);
+  ensureSession().then(load).catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; setStatus("error", false); });
+  setInterval(() => ensureSession().then(load).catch(() => { setStatus("refresh failed", false); }), (C.REFRESH_SECONDS || 30) * 1000);
 })();
