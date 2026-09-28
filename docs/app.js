@@ -40,6 +40,31 @@
     return { base: s.slice(0, i).trim(), diff: s.slice(i).replace(/^( - |_)/, "").trim() || null };
   };
   const mapBase = (id) => mapParts(id).base;
+  // Which tier a raid was run at, read off the map's own name because HQ has nowhere else to put it:
+  // the match list sends a map_id and eleven other fields, none of them a difficulty, and the
+  // official table's one category field separates Operations from Warfare and stops there.
+  // A vocabulary rather than a guess. A map whose name carries a difficulty word is that difficulty
+  // — "Layali Grove - Solo Easy" is Easy, "Operations, Dam (Normal) - Solo" is Normal, and Tide
+  // Prison's "Adaptation" is its entry tier and so is Normal. A map whose name does not is not a
+  // tier at all: 14 of the 30 Operations maps are named after a place (Zero Dam - Underground,
+  // Brakkesh - Tower Top), and those are Hot Zones, a mode rather than a rung on the ladder.
+  // Filing them under Hard would be an invention, so they are left out, and so is a season that
+  // adds a name nobody here has taught this list yet.
+  const DIFFS = ["Easy", "Normal", "Hard"];
+  const difficultyOf = (id) => {
+    // Underscore first: HQ writes the separator both ways ("Zero Dam - Easy", "Layali Grove_Easy"),
+    // and an underscore is a word character, so \b would never find the word behind one.
+    const n = mapName(id).replace(/_/g, " ");
+    if (/\bhard\b/i.test(n)) return "Hard";
+    if (/\beasy\b/i.test(n)) return "Easy";
+    if (/\bnormal\b|\badaptation\b/i.test(n)) return "Normal";
+    return null;
+  };
+  // The tiers actually played in this range, hardest last. A tier nobody entered is not a column of
+  // dashes, it is absent — which is how a board with no Hard raids in it reads as two figures rather
+  // than as three with one missing.
+  const tiersOf = (ms) => DIFFS.map(d => ({ name: d, ms: ms.filter(m => difficultyOf(m.map_id) === d) })).filter(t => t.ms.length);
+
   const mapFull = (id) => { const m = mapParts(id); return m.diff ? m.base + " · " + m.diff : m.base; };
   const opName = (id) => (opIndex[String(id)] && opIndex[String(id)].name) || (id ? "Op " + id : "–");
   const opIcon = (id) => (opIndex[String(id)] && opIndex[String(id)].icon) || null;
@@ -407,6 +432,14 @@
   const barCell = (w, n, color) =>
     `<div class="tr"><i class="f" style="width:${(n ? 100 * w / n : 0).toFixed(1)}%;background:${color}"></i></div>`;
   const sq = (color) => `<span style="display:inline-block;width:8px;height:8px;background:${color};margin-right:6px;vertical-align:0"></span>`;
+  // Two raids reported as two raids. A K/D of 5.0 is what a player who goes 8.9 on Easy and 1.9 on
+  // Normal adds up to, and it describes neither of them, so the tile shows the tiers it is made of
+  // and the total stands down to the line underneath. It goes in the value slot, which is why the
+  // figures are a shade smaller than a tile's single number — two or three of them have to fit the
+  // width one had, and n3 tightens them again for the range that reaches Hard as well. One tier
+  // played is one number: there is nothing to compare it with, so it stays exactly as it was.
+  const twin = (parts) => `<span class="twin${parts.length > 2 ? " n3" : ""}">${parts.map(p =>
+    `<span><span class="tv">${p.v}</span><span class="tl">${esc(p.k)}</span></span>`).join("")}</span>`;
 
   // ---------- render ----------
   // A visitor with no session reads nothing at all now (every policy asks shares_group()), so an
@@ -599,13 +632,23 @@
     $("#eyebrow").textContent = focusName() + (sol ? " · net income · " : " · score · ") + rangeWord();
     $("#big").textContent = ms.length ? (sol ? full(sum(ms, m => m.net_income)) : plain(sum(ms, m => m.score))) : "0";
     $("#bigsub").textContent = "";   // the board's own headline is named by its eyebrow
+    // Difficulty is an Operations idea. Warfare has one tier, so there is nothing to split there and
+    // the two kill tiles are left exactly as they were. Two tiers are needed before the split says
+    // anything: a range spent entirely on Easy has no comparison in it, only a relabelled total.
+    const tiers = sol && known ? tiersOf(ms) : [];
+    const split = tiers.length > 1;
     const cells = [
       // The split only exists once the match detail has landed, which is within the minute. Until
       // then say the total rather than a confidently wrong zero.
       !hasAI() ? ["Kills", known ? kOp : sum(ms, m => m.kill_count), null]
-        : known ? ["Operator kills", kOp, kAi + (kAi === 1 ? " AI kill" : " AI kills")]
-          : ["Kills", sum(ms, m => m.kill_count), ms.length ? "operators vs AI in a moment" : null],
-      ["K/D", ms.length && known ? kdOf(kOp, deaths) : "–", !ms.length ? null : deaths ? deaths + (sol ? " " + lostWord() : " deaths") : "no deaths yet"],
+        : !known ? ["Kills", sum(ms, m => m.kill_count), ms.length ? "operators vs AI in a moment" : null]
+          : split ? ["Operator kills", twin(tiers.map(t => ({ v: opKills(t.ms), k: t.name }))),
+                     `${kOp} total · ${kAi} AI`]
+            : ["Operator kills", kOp, kAi + (kAi === 1 ? " AI kill" : " AI kills")],
+      !(ms.length && known) ? ["K/D", "–", !ms.length ? null : deaths ? deaths + (sol ? " " + lostWord() : " deaths") : "no deaths yet"]
+        : split ? ["K/D", twin(tiers.map(t => ({ v: kdOf(opKills(t.ms), deathsOf(t.ms)), k: t.name }))),
+                   `${kdOf(kOp, deaths)} overall · ${deaths ? deaths + " " + lostWord() : "no deaths yet"}`]
+          : ["K/D", kdOf(kOp, deaths), deaths ? deaths + (sol ? " " + lostWord() : " deaths") : "no deaths yet"],
       [sol ? "Extraction" : "Win rate", pct(wins, ms.length), ms.length ? `${wins} of ${ms.length} ${raid(ms.length)}` : null],
       ["Best " + raid(1), best == null ? "–" : sol ? signed(best) : plain(best), null],
       [sol ? "Avg alive · min" : "Avg in combat · min", alive.length ? (sum(alive, s => timeOf(s)) / alive.length).toFixed(1) : "–", null]

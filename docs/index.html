@@ -173,6 +173,24 @@
   /* The sample a headline came from: AI kills beside operator kills, deaths beside a K/D. */
   .cell[data-scroll] { cursor: pointer; }
   .cell .s { font: 600 11px var(--hud); letter-spacing: .5px; color: var(--muted); margin-top: 5px; }
+  /* Two figures in the slot one used to have. The tile is a left-aligned stack and stays one: the
+     pair sits on the value's own line, split by the same hairline that divides the cells themselves,
+     so the second tier reads as the next column rather than as a second thing in this one. Baseline
+     alignment, not centres — the numbers are what the eye runs along, and they are different widths. */
+  .cell .twin { display: flex; align-items: baseline; }
+  .cell .twin > span { display: block; padding-right: 15px; }
+  .cell .twin > span + span { padding-left: 15px; border-left: 1px solid var(--hair); }
+  .cell .twin .tv { display: block; font: 700 26px var(--hud); color: var(--green); font-variant-numeric: tabular-nums; line-height: 1.12; }
+  .cell .twin .tl { display: block; font: 600 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+  /* Three tiers is the tight case everywhere, not only on a phone: the hero is six cells across a
+     1400px cap, so a cell is under 200px on any laptop, and three figures with a word under each
+     want more than that at full size. The figures step down and the labels give up most of their
+     letter-spacing — the alternative is abbreviating Normal to N, and a tier you have to decode is
+     worse than a tier set two points smaller. */
+  .cell .twin.n3 .tv { font-size: 20px; }
+  .cell .twin.n3 .tl { font-size: 9px; letter-spacing: .4px; }
+  .cell .twin.n3 > span { padding-right: 8px; }
+  .cell .twin.n3 > span + span { padding-left: 8px; }
 
   /* ---- roster ---- */
   .roster { border-bottom: 1px solid var(--hair); }
@@ -433,6 +451,14 @@
     .tabs button { padding: 7px 12px; }
     .panebar { margin-top: 18px; }
     .cells { grid-template-columns: 1fr 1fr; } .cell { padding: 8px 16px; }
+    /* Half a phone wide, two or three figures and a hairline between each: the number gives up the
+       four pixels rather than the tile giving up the tier. */
+    .cell .twin .tv { font-size: 21px; }
+    .cell .twin > span { padding-right: 11px; } .cell .twin > span + span { padding-left: 11px; }
+    /* Half a phone is narrower still. Dropping the third tier is not an option: a range with Hard
+       in it is exactly the range worth splitting. */
+    .cell .twin.n3 .tv { font-size: 18px; }
+    .cell .twin.n3 > span { padding-right: 6px; } .cell .twin.n3 > span + span { padding-left: 6px; }
     .rgrid { grid-template-columns: 1fr 1fr; }
     .rhead { padding: 12px 16px 0; }
     .pl { padding: 14px 16px; }
@@ -544,6 +570,6 @@
      drop the entry from EVENTS in supabase/functions/poll/index.ts, and nothing else changes. -->
 <script src="https://www.playdeltaforce.com/basic_info/asala_pokers_en.js" onerror="window.__cardsFailed=1"></script>
 <script src="events/asala-cards.js?v=30"></script>
-<script src="app.js?v=36"></script>
+<script src="app.js?v=37"></script>
 </body>
 </html>

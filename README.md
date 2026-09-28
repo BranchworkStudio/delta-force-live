@@ -558,6 +558,27 @@ under a match changes with it: Kills / Deaths / Assists / Revives / K/D / Combat
 in Warfare, against Kills / Players / AI / Assists / Rescues / Revives / Alive / Carried
 out in Operations.
 
+**Difficulty is only knowable from the map's name.** `GetMatchList` sends twelve fields
+per row and none of them is a tier; `GetMatchDetail` sends five; and the official map
+table's one `category` field separates Operations (`SOL`) from Warfare (`MP`) and stops
+there. So `difficultyOf()` reads the name, with a vocabulary rather than a guess: a name
+carrying a difficulty word *is* that difficulty — "Layali Grove\_Easy" is Easy, "AZ3 -
+Normal" is Normal, and Tide Prison's "Adaptation" is its entry tier and counts as Normal
+— and a name that carries none is not a tier at all. Underscores are normalised to spaces
+first, because HQ writes the separator both ways ("Zero Dam - Easy", "Brakkesh\_Hard") and
+an underscore is a word character, so `\b` would never find the word behind one. Of the 30
+Operations maps, 15 name a tier, 14 name a place ("Brakkesh - Tower Top") and one is an
+event ("Zero Dam - Eternal Night"); the 14 are **Hot Zones**, a mode rather than a rung on
+the ladder, so they are left out instead of being invented into Hard — and so is any
+season that adds a name this list has not been taught. HQ has never reported one anyway:
+across every Operations row on the board only the ten parent ids have ever appeared.
+
+The two kill tiles in the hero use this. When an Operations range covers more than one
+tier, **Operator kills** and **K/D** show a figure per tier side by side and move the
+total down to the subline, because an overall K/D of 5.0 made of 8.9 on Easy and 1.9 on
+Normal describes neither raid. One tier played is one number, unchanged — there is
+nothing to compare it against — and Warfare has a single tier, so it is untouched.
+
 ### How long an HQ login lasts
 
 Measured, not guessed: the `Wand_DF_token` cookie is a **session cookie**. It
