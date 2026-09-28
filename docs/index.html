@@ -429,6 +429,10 @@
   .tip { position: fixed; pointer-events: none; display: none; z-index: 10; background: #0a1012; border: 1px solid var(--div); color: var(--text); font: 12px var(--body); padding: 6px 9px; white-space: nowrap; }
   .tip b { font-family: var(--hud); }
   footer { color: var(--muted); font-size: 12px; text-align: center; padding: 20px; }
+  /* The line that says whose game this is. It keeps the footer's own colour rather than stepping
+     down to --fail, which lands around 2.8:1 on this ground: a disclaimer set too faint to read is
+     both a dark pattern and a weaker disclaimer. Position and a point of size separate it instead. */
+  footer .legal { margin-top: 10px; font-size: 11px; }
   .banner { margin: 22px var(--gut) 0; border-left: 3px solid var(--red); background: #1a1416; padding: 8px 10px; color: #f0d0d0; }
   .nudge { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding: 14px var(--gut); border-bottom: 1px solid var(--hair); color: var(--text-2); font-size: 14px; }
   .nudge b { color: var(--text); font-weight: 600; }
@@ -549,7 +553,7 @@
     <div id="wall"></div>
   </section>
   </section><!-- /pane-match -->
-  <footer>Matches come from each player's own Delta Force account, connected once from the <a href="connect.html" id="connectLink">connect page</a> and then read for you every minute. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.</footer>
+  <footer>Matches come from each player's own Delta Force account, connected once from the <a href="connect.html" id="connectLink">connect page</a> and then read for you every minute. Latency = time from your extraction (or death) until the official API first showed the match; * = measured from match start.<div class="legal">Fan-made and unofficial. Not affiliated with, endorsed by or sponsored by Delta Force or its publishers. Game names, images and data belong to their respective owners.</div></footer>
 </div>
 <div class="tip" id="tip"></div>
 

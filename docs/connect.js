@@ -55,8 +55,12 @@
     return `<div class="box ${S.err.kind === undefined ? "bad" : S.err.kind}"><b>${esc(S.err.title)}</b><br>${S.err.body}</div>`;
   }
   function foot() {
+    // The connect page is where an invited stranger lands first, so the unofficial line belongs
+    // here as much as on the board — it is the page that asks them to hand an account over.
     return `<div class="foot"><a href="./">Back to the board</a>
-      <a href="https://github.com/BranchworkStudio/delta-force-live#readme" target="_blank" rel="noopener">How this works</a></div>`;
+      <a href="https://github.com/BranchworkStudio/delta-force-live#readme" target="_blank" rel="noopener">How this works</a></div>
+      <div class="legal">Fan-made and unofficial. Not affiliated with, endorsed by or sponsored by Delta Force
+      or its publishers. Game names, images and data belong to their respective owners.</div>`;
   }
 
   // ---------- success ----------
