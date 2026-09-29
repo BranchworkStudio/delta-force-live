@@ -22,12 +22,20 @@
  *   loadouts/?q=budget                   the search box
  * A link with any of those shows exactly that and nothing remembered; a bare loadouts/ picks up
  * where this browser left off, and the address follows every change either way.
+ *
+ * Every creator also has an address of their own, thesitrep.gg/leissik — the same page with the
+ * creator pinned (window.DF_LOADOUTS_CREATOR, written by tools/loadouts/pages.py). That is the link
+ * a creator's name on a card goes to. Pinned, the creator is not a filter any more: it is not in
+ * the address, the creator picker gives way to a link back to everyone, and nothing this browser
+ * remembers from loadouts/ carries over, so /leissik/ always opens on all of Leissik's builds. The
+ * other filters still go in the address: /leissik/?weapon=m7.
  */
 (function () {
   const DATA_URL = "data/loadouts.json?v=1";
   const KEY = "df-loadouts";          // the rail's own state, per browser
 
-  const FRESH = () => ({ sel: null, mode: "all", cls: "all", creator: "all", q: "" });
+  const PIN = window.DF_LOADOUTS_CREATOR || null;
+  const FRESH = () => ({ sel: null, mode: "all", cls: "all", creator: PIN || "all", q: "" });
   let DB = null, state = FRESH(), phase = "idle";
 
   // The address's name for each filter. Values are plain lower-case words — a creator's key, a
@@ -40,13 +48,13 @@
     for (const [k, name] of Object.entries(PARAM)) if (p.get(name)) got[k] = p.get(name).trim();
     return Object.keys(got).length ? got : null;
   })();
-  if (fromUrl) Object.assign(state, fromUrl);
-  else try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* private window */ }
+  if (fromUrl) Object.assign(state, fromUrl, PIN ? { creator: PIN } : {});
+  else if (!PIN) try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* private window */ }
 
   const toQuery = () => {
     const p = new URLSearchParams();
     for (const [k, name] of Object.entries(PARAM)) {
-      if (state[k] == null || state[k] === DEFAULT[k] || state[k] === "") continue;
+      if (state[k] == null || state[k] === DEFAULT[k] || state[k] === "" || (PIN && k === "creator")) continue;
       p.set(name, k === "cls" ? String(state[k]).toLowerCase() : state[k]);
     }
     return p.toString();
@@ -54,7 +62,7 @@
   // Every change is written to this browser and to the address. replaceState rather than
   // pushState: a filter is not somewhere you went, and Back should leave the page, not undo a click.
   const save = () => {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    if (!PIN) try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
     const q = toQuery();
     try { history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); } catch (e) {}
     document.title = titleOf();
@@ -139,6 +147,9 @@
   }
 
   const creatorOf = (b) => (DB.creators && DB.creators[b.creator]) || { name: b.creator || "Unknown" };
+  // Where a creator's name goes: their own page on this site (thesitrep.gg/leissik), or, for one
+  // whose name could not have an address, the same view as a filter.
+  const homeOf = (k) => { const c = (DB.creators || {})[k]; return c && c.page ? c.page : "loadouts/?creator=" + encodeURIComponent(k); };
   const sourceOf = (b) => (DB.sources && DB.sources[b.source]) || { name: b.source || "" };
   const MODES = { operations: "Operations", warfare: "Warfare", both: "Both modes" };
   // Everything in the file is Operations today. A mode chip on every card, and a row of mode
@@ -199,9 +210,28 @@
     // next to a button that filters to Operations builds is not a statistic.
     hero(data, h) {
       if (phase !== "ready" || !DB) return null;
-      const all = DB.builds, list = visible(), e = h.esc;
+      // The class is applied per weapon (weapons()), so the count is taken from there too.
+      const all = DB.builds, list = [].concat(...weapons(visible()).map(w => w.builds)), e = h.esc;
       const cover = new Set(all.filter(b => b.gun).map(b => b.gun.key));
       const shown = list.length !== all.length;
+      if (PIN && DB.creators && DB.creators[PIN]) {
+        const c = DB.creators[PIN], theirs = all.filter(b => b.creator === PIN);
+        const guns = new Set(theirs.filter(b => b.gun).map(b => b.gun.key));
+        const newest = theirs.map(b => b.added || "").sort().pop();
+        return {
+          eyebrow: "Loadouts · " + c.name,
+          big: String(shown && list.length !== theirs.length ? list.length : theirs.length),
+          sub: shown && list.length !== theirs.length ? "of their builds match the filter" : (theirs.length === 1 ? "build by " : "builds by ") + c.name,
+          cells: [
+            ["Weapons covered", `${guns.size}<span style="color:var(--muted)">/${GUNS.length || "?"}</span>`,
+              GUNS.length ? "of every gun in the game" : null],
+            ["Newest build", newest ? e(shortDate(newest)) : "–", newest ? "the latest one they dated" : "their page carries no dates",
+              "Only some creators put a date on a build. Where there is none, their builds are in the order they list them."],
+            ["Last updated", DB.updated ? e(shortDate(DB.updated)) : "–", "the day these builds last changed",
+              "Their page is re-read every morning. This is the day something on it last actually changed. The link on each card is always the live original."],
+          ],
+        };
+      }
       return {
         eyebrow: "Loadouts · community builds",
         big: String(shown ? list.length : all.length),
@@ -258,10 +288,11 @@
             ${pill(state.cls === "all", "all", "All", "cls")}
             ${classes.map(c => pill(state.cls === c, c, e(c), "cls")).join("")}
           </div>
-          <div class="lsearch lpick"><select id="loCreator" aria-label="Creator">
+          ${PIN ? `<a class="lall" href="loadouts/${allQuery()}">&larr; Every creator (${creators.length})</a>`
+            : `<div class="lsearch lpick"><select id="loCreator" aria-label="Creator">
             <option value="all">Every creator (${creators.length})</option>
             ${creators.map(x => `<option value="${e(x.k)}"${state.creator === x.k ? " selected" : ""}>${e(x.c.name)} (${x.n})</option>`).join("")}
-          </select></div>
+          </select></div>`}
           <div class="lwlist">
             ${state.creator !== "all" && ws.length ? `<button type="button" class="lw lwall ${whole ? "on" : ""}" data-w="">
                 <span class="ln">All ${ws.length === 1 ? "their weapon" : ws.length + " weapons"}</span><span class="lc">${e(creatorOf({ creator: state.creator }).name)}</span><span class="lb">${list.length}</span>
@@ -302,6 +333,13 @@
     },
   });
 
+  // Leaving a creator's page for everyone keeps the rest of what was picked (the class, the mode,
+  // the search) but not the weapon, which was one of theirs.
+  const allQuery = () => {
+    const p = new URLSearchParams(toQuery()); p.delete(PARAM.sel);
+    const q = p.toString(); return q ? "?" + q : "";
+  };
+
   const ordered = (bs) => bs.slice().sort((a, b) =>
     String(b.added || "").localeCompare(String(a.added || "")) ||
     creatorOf(a).name.localeCompare(creatorOf(b).name) ||
@@ -319,7 +357,7 @@
         ${c.avatar ? `<img class="lcav" src="${e(c.avatar)}" alt="" width="84" height="84">`
           : `<span class="lcav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
         <div class="lwmeta">
-          <div class="lname">${e(c.name)}</div>
+          <div class="lname">${PIN || !c.page ? e(c.name) : `<a href="${e(c.page)}">${e(c.name)}</a>`}</div>
           <div class="lsub">${list.length} ${list.length === 1 ? "build" : "builds"} · ${ws.length} ${ws.length === 1 ? "weapon" : "weapons"}</div>
           ${c.url || links.length ? `<div class="lclinks">
             ${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">Their builds page &rarr;</a>` : ""}
@@ -412,7 +450,7 @@
       <div class="lbh">
         ${c.avatar ? `<img class="lav" src="${e(c.avatar)}" alt="" loading="lazy" width="30" height="30">`
           : `<span class="lav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
-        <div class="lby">${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(c.name)}</a>` : e(c.name)}</div>
+        <div class="lby">${PIN === b.creator ? e(c.name) : `<a href="${e(homeOf(b.creator))}">${e(c.name)}</a>`}</div>
         ${multimode ? `<span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>` : ""}
       </div>
       <div class="lmeta">${meta.join('<span class="ldot">·</span>')}</div>
@@ -552,6 +590,11 @@
   .lby { font: 600 14px var(--body); color: var(--text); min-width: 0; overflow-wrap: anywhere; }
   .lby a { color: var(--text); border-bottom: 1px solid var(--tick); }
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
+  .lname a { color: var(--text); text-decoration: none; }
+  .lname a:hover { color: var(--green); }
+  .lall { display: block; margin-top: 12px; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2);
+         font: 600 13px var(--body); text-decoration: none; padding: 8px 10px; }
+  .lall:hover { color: var(--green); border-color: var(--tick); }
   .lmode { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 3px 7px;
            white-space: nowrap; background: rgba(29, 224, 140, .14); color: var(--green); }
   .lmode.warfare { background: rgba(230, 179, 74, .14); color: var(--amber); }

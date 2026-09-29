@@ -409,6 +409,25 @@ leaving an empty page. A link with any filter shows exactly that; a bare `loadou
 where the browser left off. Every change rewrites the address with `replaceState`, and
 **Copy link** in the rail copies it.
 
+Every creator also has an address of their own: **thesitrep.gg/leissik**,
+**thesitrep.gg/sammymedows**. It is the creator's display name squeezed to letters and digits,
+because that is what people type; where the key in `creators.json` differs (`medow`,
+`roguemonkey`, `minda`) the key is a page too, which forwards with its query intact. A
+creator's name on a card goes to their page (the card's footer still links to where the build
+was published). On their page the creator is pinned rather than filtered: it is not in the
+address, the creator picker becomes a link back to everyone, nothing remembered from
+`loadouts/` carries over, and the other filters still work (`/leissik/?weapon=m7`). On
+`loadouts/` the picker filters in place as before.
+
+The pages are generated: `tools/loadouts/pages.py` copies `docs/loadouts/index.html` into
+`docs/<name>/index.html` with the creator pinned (`window.DF_LOADOUTS_CREATOR`) and their own
+title and description, so a link unfurls as that person's builds. `build.py` runs it every
+morning, so a new creator has a page the same day and a removed one loses it. It only ever
+writes or deletes directories carrying its own marker comment, and a name that collides with
+part of the site (`loadouts`, `data`, `connect`, … see `RESERVED`) gets no page; their name then
+links to `loadouts/?creator=`. **After editing `docs/loadouts/index.html`, run
+`python3 tools/loadouts/pages.py`** so the creator pages pick up the change.
+
 `docs/tabs/loadouts.js` asks for nothing at all: it has no
 `queries()`, reads `docs/data/loadouts.json` itself on first paint, and hangs it on the
 68-weapon spine in the official `basic_info/guns_en.js` manifest (names, class, image and

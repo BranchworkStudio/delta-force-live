@@ -55,7 +55,8 @@
     "https://www.twitch.tv/leissik"
    ],
    "kind": "creator",
-   "avatar": "img/creators/leissik.png"
+   "avatar": "img/creators/leissik.png",
+   "page": "leissik/"
   },
   "poach": {
    "name": "POACH",
@@ -67,7 +68,8 @@
     "https://discord.gg/2bU4Pxb"
    ],
    "kind": "creator",
-   "avatar": "img/creators/poach.png"
+   "avatar": "img/creators/poach.png",
+   "page": "poach/"
   },
   "deathlapse": {
    "name": "Deathlapse",
@@ -78,7 +80,8 @@
     "https://discord.gg/Y6Qrv6SSvR"
    ],
    "kind": "creator",
-   "avatar": "img/creators/deathlapse.png"
+   "avatar": "img/creators/deathlapse.png",
+   "page": "deathlapse/"
   },
   "medow": {
    "name": "SammyMedows",
@@ -89,7 +92,8 @@
     "https://www.tiktok.com/@sammymedows"
    ],
    "kind": "creator",
-   "avatar": "img/creators/medow.png"
+   "avatar": "img/creators/medow.png",
+   "page": "sammymedows/"
   },
   "equalplays": {
    "name": "EqualPlays",
@@ -98,7 +102,8 @@
     "https://www.twitch.tv/equalplays"
    ],
    "kind": "creator",
-   "avatar": "img/creators/equalplays.png"
+   "avatar": "img/creators/equalplays.png",
+   "page": "equalplays/"
   },
   "muomuo": {
    "name": "MuoMuo",
@@ -108,7 +113,8 @@
     "https://www.youtube.com/@MuoMuoTV"
    ],
    "kind": "creator",
-   "avatar": "img/creators/muomuo.png"
+   "avatar": "img/creators/muomuo.png",
+   "page": "muomuo/"
   },
   "siingsong": {
    "name": "siingsong",
@@ -118,7 +124,8 @@
     "https://www.youtube.com/@siingsong"
    ],
    "kind": "creator",
-   "avatar": "img/creators/siingsong.jpg"
+   "avatar": "img/creators/siingsong.jpg",
+   "page": "siingsong/"
   },
   "roguemonkey": {
    "name": "RogueMonkeyJr.",
@@ -128,7 +135,8 @@
     "https://www.twitch.tv/roguemonkeyjr"
    ],
    "kind": "creator",
-   "avatar": "img/creators/roguemonkey.jpg"
+   "avatar": "img/creators/roguemonkey.jpg",
+   "page": "roguemonkeyjr/"
   },
   "minda": {
    "name": "Minda999",
@@ -138,7 +146,8 @@
     "https://www.twitch.tv/minda999"
    ],
    "kind": "creator",
-   "avatar": "img/creators/minda.jpg"
+   "avatar": "img/creators/minda.jpg",
+   "page": "minda999/"
   }
  },
  "builds": [

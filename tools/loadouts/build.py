@@ -7,7 +7,7 @@ or reposted, and a list you cannot trust is worse than a shorter one you can. ow
 reading, creators.json is the list of pages, and this file is only the assembly.
 """
 import json, os, datetime, collections
-import own
+import own, pages
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', '..', 'docs', 'data', 'loadouts.json')
@@ -24,6 +24,10 @@ for cid, c in creators.items():
         if os.path.exists(os.path.join(IMG, cid + '.' + ext)):
             c['avatar'] = 'img/creators/%s.%s' % (cid, ext)
             break
+
+# Every creator's own address on the site (thesitrep.gg/leissik), stored with them so the page links
+# to exactly the pages that exist. pages.write() below makes them.
+pages.assign(creators)
 
 builds.sort(key=lambda b: (b['weapon'], b['creator'], b['code']))
 body = dict(sources=sources, creators=creators, builds=builds)
@@ -73,12 +77,14 @@ if old and len(builds) < 0.6 * len(old['builds']):
 # would say the opposite on a page that had not changed in a month.
 if old and all(old.get(k) == v for k, v in body.items()):
     write_meta('unchanged')
+    pages.write(creators, builds)
     print('no change —', len(builds), 'builds, still as of', old.get('updated'))
     raise SystemExit(0)
 doc = dict(updated=datetime.date.today().isoformat(), **body)
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 json.dump(doc, open(OUT, 'w'), indent=1, ensure_ascii=False)
 write_meta('written')
+print('pages', pages.write(creators, builds))
 print('builds', len(builds), 'creators', len(creators), 'weapons', len({b['weapon'] for b in builds}), '/', len(GUNS))
 print('by creator', collections.Counter(b['creator'] for b in builds))
 print('by mode', collections.Counter(b['mode'] for b in builds))
