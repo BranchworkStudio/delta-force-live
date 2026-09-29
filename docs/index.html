@@ -59,6 +59,12 @@
   .top { display: flex; align-items: center; gap: var(--gap); flex-wrap: wrap; }
   .mark { font: 700 15px var(--hud); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
   .tri { width: 12px; height: 12px; background: var(--green); clip-path: polygon(50% 0, 100% 100%, 0 100%); display: inline-block; flex: none; }
+  /* The name with what it is underneath: "Sitrep" alone says nothing to somebody arriving from an
+     invite link, and the game's name is the word they would search for. */
+  .mark .nm { display: flex; flex-direction: column; gap: 3px; }
+  .mark:has(.nm) { align-items: flex-start; }
+  .mark .tri { margin-top: 3px; }
+  .mark .sub { font: 500 11px var(--body); letter-spacing: .2px; text-transform: none; color: var(--muted); white-space: nowrap; }
   .vdiv { width: 1px; height: 18px; background: var(--div); flex: none; }
   /* The right-hand half of the masthead: what is being shown, over what window, for whom. It is
      pushed to the end by its own auto margin rather than by a spacer element, so that when the row
@@ -490,7 +496,7 @@
 <header class="hero">
   <div class="hin">
     <div class="top">
-      <div class="mark"><span class="tri"></span>Sitrep</div>
+      <div class="mark"><span class="tri"></span><span class="nm">Sitrep<span class="sub">A Delta Force live tracker</span></span></div>
       <span class="vdiv"></span>
       <nav class="tabs" id="tabs" hidden></nav>
       <!-- Everything to the right of the tab bar travels together. Loose in the row they wrapped one

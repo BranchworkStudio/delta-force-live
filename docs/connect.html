@@ -25,6 +25,12 @@
   .top { display: flex; align-items: center; gap: 16px; }
   .mark { font: 700 15px var(--hud); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
   .tri { width: 12px; height: 12px; background: var(--green); clip-path: polygon(50% 0, 100% 100%, 0 100%); flex: none; }
+  /* The name with what it is underneath: "Sitrep" alone says nothing to somebody arriving from an
+     invite link, and the game's name is the word they would search for. */
+  .mark .nm { display: flex; flex-direction: column; gap: 3px; }
+  .mark:has(.nm) { align-items: flex-start; }
+  .mark .tri { margin-top: 3px; }
+  .mark .sub { font: 500 11px var(--body); letter-spacing: .2px; text-transform: none; color: var(--muted); white-space: nowrap; }
   .vdiv { width: 1px; height: 18px; background: var(--div); }
   .crumb { font: 600 12px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); }
   .spacer { flex: 1; }
@@ -47,7 +53,7 @@
 <body>
   <div class="hero">
     <div class="top">
-      <div class="mark"><span class="tri"></span>Delta&nbsp;Force&nbsp;Live</div>
+      <div class="mark"><span class="tri"></span><span class="nm">Sitrep<span class="sub">A Delta Force live tracker</span></span></div>
       <div class="vdiv"></div>
       <div class="crumb">Connect HQ</div>
       <div class="spacer"></div>
