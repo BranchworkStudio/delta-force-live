@@ -1,4 +1,4 @@
-/* Delta Force Live: squad "Ops Board". Plain JS, reads Supabase REST with the public anon key.
+/* Sitrep: squad "Ops Board". Plain JS, reads Supabase REST with the public anon key.
    The page is a vertical stack of modules; each render* function writes one slot. */
 (function () {
   const C = window.DF_CONFIG;

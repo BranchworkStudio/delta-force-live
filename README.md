@@ -1,4 +1,4 @@
-# Delta Force Live
+# Sitrep
 
 A live match tracker for **Delta Force (global client)**. The official HQ page
 (https://www.playdeltaforce.com/events/hq/en/) is a day or two behind; this site

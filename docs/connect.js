@@ -1,4 +1,4 @@
-/* Delta Force Live: the connect flow.
+/* Sitrep: the connect flow.
    The site cannot read HQ's cookies (their API only answers their own origin), so the hand-over is
    a one-time bookmark the player clicks while on the HQ page. It reads the HQ page's own login
    cookies and navigates back here with them in the URL fragment, which never reaches a server log.
