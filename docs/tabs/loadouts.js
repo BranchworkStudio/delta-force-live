@@ -231,10 +231,14 @@
       }
 
       const list = visible(), ws = weapons(list);
-      const sel = ws.find(w => w.key === state.sel) || ws[0] || null;
+      // One creator and no weapon picked is a page about that person: every build they publish,
+      // grouped by gun, rather than their first gun standing in for the rest. That is what a link
+      // like ?creator=leissik is for. Picking a gun narrows it to that gun's panel, as before.
+      const whole = state.creator !== "all" && !state.sel && ws.length > 0;
+      const sel = whole ? null : ws.find(w => w.key === state.sel) || ws[0] || null;
       // A weapon the other filters have since ruled out is not what this page shows, so it leaves
       // the address too — otherwise the link would name a gun its reader never sees.
-      if (state.sel && (!sel || sel.key !== state.sel)) { state.sel = null; save(); }
+      if (state.sel && (!sel || sel.key !== state.sel)) { state.sel = null; save(); if (state.creator !== "all") return h.repaint(); }
       const classes = [...new Set(DB.builds.map(b => (b.gun ? b.gun.cls : "Other")))]
         .sort((a, b) => a.localeCompare(b));
       const creators = Object.keys(DB.creators || {})
@@ -259,13 +263,16 @@
             ${creators.map(x => `<option value="${e(x.k)}"${state.creator === x.k ? " selected" : ""}>${e(x.c.name)} (${x.n})</option>`).join("")}
           </select></div>
           <div class="lwlist">
+            ${state.creator !== "all" && ws.length ? `<button type="button" class="lw lwall ${whole ? "on" : ""}" data-w="">
+                <span class="ln">All ${ws.length === 1 ? "their weapon" : ws.length + " weapons"}</span><span class="lc">${e(creatorOf({ creator: state.creator }).name)}</span><span class="lb">${list.length}</span>
+              </button>` : ""}
             ${ws.length ? ws.map(w => `<button type="button" class="lw ${sel && w.key === sel.key ? "on" : ""}" data-w="${e(w.key)}">
                 <span class="ln">${e(w.name)}</span><span class="lc">${e(w.cls)}</span><span class="lb">${w.builds.length}</span>
               </button>`).join("")
               : `<div class="note">Nothing matches that. <button type="button" class="link" style="color:var(--green)" data-f="reset" data-v="1">Clear the filters</button></div>`}
           </div>
         </div>
-        <div class="lo-main">${sel ? weaponHtml(sel, h) : ""}</div>
+        <div class="lo-main">${whole ? creatorHtml(ws, list, h) : sel ? weaponHtml(sel, h) : ""}</div>
       </div>`;
 
       const q = el.querySelector("#loQ");
@@ -275,7 +282,12 @@
       }
       const who = el.querySelector("#loCreator");
       if (who) who.onchange = () => { state.creator = who.value; save(); h.repaint(); };
-      el.querySelectorAll("[data-w]").forEach(n => n.onclick = () => { state.sel = n.dataset.w; save(); h.repaint(); });
+      el.querySelectorAll("[data-w]").forEach(n => n.onclick = () => {
+        state.sel = n.dataset.w || null; save(); h.repaint();
+        // From the grouped page the weapon's own panel opens at the top, not wherever the
+        // heading that was clicked happened to be scrolled to.
+        if (n.classList.contains("lgh")) { const m = el.querySelector(".lo-main"); if (m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ block: "start" }); }
+      });
       el.querySelectorAll("[data-f]").forEach(n => n.onclick = () => {
         const f = n.dataset.f;
         if (f === "reset") { state = FRESH(); }
@@ -290,6 +302,41 @@
     },
   });
 
+  const ordered = (bs) => bs.slice().sort((a, b) =>
+    String(b.added || "").localeCompare(String(a.added || "")) ||
+    creatorOf(a).name.localeCompare(creatorOf(b).name) ||
+    season(b) - season(a) || (a.pos || 0) - (b.pos || 0));
+
+  // ---------- one creator, every gun ----------
+  // The person heads the page — face, name, their channels, how much they publish — and under them
+  // every weapon they have builds for, in the rail's order, each with its cards. A weapon's heading
+  // opens that weapon's own panel, which is where the stock stats are; repeated forty times down
+  // one page they would be noise.
+  function creatorHtml(ws, list, h) {
+    const e = h.esc, c = creatorOf({ creator: state.creator });
+    const links = c.links || [];
+    return `<div class="lhead lchead">
+        ${c.avatar ? `<img class="lcav" src="${e(c.avatar)}" alt="" width="84" height="84">`
+          : `<span class="lcav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
+        <div class="lwmeta">
+          <div class="lname">${e(c.name)}</div>
+          <div class="lsub">${list.length} ${list.length === 1 ? "build" : "builds"} · ${ws.length} ${ws.length === 1 ? "weapon" : "weapons"}</div>
+          ${c.url || links.length ? `<div class="lclinks">
+            ${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">Their builds page &rarr;</a>` : ""}
+            ${links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}
+          </div>` : ""}
+        </div>
+      </div>
+      ${ws.map(w => `<section class="lgroup">
+        <button type="button" class="lgh" data-w="${e(w.key)}">
+          ${w.gun && w.gun.img ? `<img src="${e(w.gun.img)}" alt="" loading="lazy">` : `<span class="lghimg"></span>`}
+          <span class="lghn">${e(w.name)}</span><span class="lc">${e(w.cls)}</span>
+          <span class="lghc">${w.builds.length} ${w.builds.length === 1 ? "build" : "builds"} &rarr;</span>
+        </button>
+        <div class="lbuilds">${ordered(w.builds).map(b => buildHtml(b, h)).join("")}</div>
+      </section>`).join("")}`;
+  }
+
   // ---------- the weapon panel ----------
   function weaponHtml(w, h) {
     const e = h.esc, g = w.gun;
@@ -298,10 +345,7 @@
     // back to their name and their own label for the build — an order, rather than an opinion.
     // (There was a "most imported" sort next to this once. That count came off the aggregator
     // sites, and those are gone, so it was sorting 477 builds by zero.)
-    const builds = w.builds.slice().sort((a, b) =>
-      String(b.added || "").localeCompare(String(a.added || "")) ||
-      creatorOf(a).name.localeCompare(creatorOf(b).name) ||
-      season(b) - season(a) || (a.pos || 0) - (b.pos || 0));
+    const builds = ordered(w.builds);
     // The stat block is the gun as the game ships it, with nothing bolted on. A bar on its own is
     // unreadable — 0 to 100 of what? — so the number is the figure and the bar is the shape of it,
     // and the caption says out loud that these are stock values, not this build's.
@@ -461,6 +505,23 @@
   .lw.on .ln { color: var(--green); }
 
   .lo-main { padding: 22px 32px 28px; min-width: 0; }
+  .lw.lwall { border-bottom-color: var(--hair); }
+  .lw.lwall .ln { font-weight: 700; }
+  .lchead { grid-template-columns: auto minmax(0, 1fr); }
+  .lcav { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; background: var(--hair-2); border: 1px solid var(--hair); display: block; }
+  .lcav.none { display: grid; place-items: center; font: 700 34px var(--hud); color: var(--text-2); }
+  .lclinks { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 10px; }
+  .lclinks > a:first-child:not(.lnet) { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--green); }
+  .lclinks .lnet { margin-right: 0; }
+  .lgroup { margin-top: 26px; }
+  .lgh { display: grid; grid-template-columns: 92px auto auto 1fr; align-items: center; gap: 14px; width: 100%; background: none; border: 0;
+         border-bottom: 1px solid var(--hair); padding: 0 0 8px; cursor: pointer; text-align: left; color: var(--text); }
+  .lgh img, .lgh .lghimg { width: 92px; height: 34px; object-fit: contain; }
+  .lghn { font: 700 22px/1 var(--hud); letter-spacing: 1px; text-transform: uppercase; }
+  .lgh .lc { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .lghc { justify-self: end; font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--text-2); white-space: nowrap; }
+  .lgh:hover .lghn, .lgh:hover .lghc { color: var(--green); }
+  .lgroup .lbuilds { margin-top: 12px; }
   .lhead { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center;
            border-bottom: 1px solid var(--hair); padding-bottom: 18px; }
   .lgun { width: 190px; max-width: 34vw; height: auto; }
@@ -531,6 +592,12 @@
     .lwlist { max-height: 260px; }
     .lo-main { padding: 20px; }
     .lhead { grid-template-columns: 1fr; gap: 14px; }
+    .lchead { grid-template-columns: auto minmax(0, 1fr); }
+    .lcav { width: 64px; height: 64px; }
+    .lgh { grid-template-columns: 64px minmax(0, 1fr) auto; gap: 10px; }
+    .lgh img, .lgh .lghimg { width: 64px; height: 26px; }
+    .lgh .lc { display: none; }
+    .lghn { font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .lgun { width: 150px; max-width: 60vw; }
     .lname { font-size: 34px; }
     .lstats { grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); }

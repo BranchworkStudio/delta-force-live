@@ -397,7 +397,7 @@ Its filters live in the address, so a view can be passed around:
 
 | Link | Shows |
 |---|---|
-| `loadouts/?creator=leissik` | everything Leissik publishes |
+| `loadouts/?creator=leissik` | everything Leissik publishes, on one page, grouped by weapon |
 | `loadouts/?creator=leissik&weapon=m7` | Leissik's M7 builds |
 | `loadouts/?class=smg&mode=warfare` | Warfare SMG builds |
 | `loadouts/?q=budget` | the search box |
