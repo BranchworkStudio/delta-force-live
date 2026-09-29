@@ -3,6 +3,7 @@
 // into Postgres, so nothing has to run on the player's machine.
 //   { secret } -> poll every connected player
 //   { secret, openid } -> poll one (used by the connect page right after a hand-over)
+//   { secret, shard, of } -> poll one slice (the function calls itself this way past SHARD_SIZE)
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { getCardCollection, getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedCollection, getRedDrops, getWeekCalendar, isAuthError, type Session } from "./hq.ts";
 
@@ -12,6 +13,10 @@ const PAGE_SIZE = 20;
 const BACKFILL_PAGES = 15;        // ~300 matches of history per mode, one page per run
 const DETAILS_PER_RUN = 5;
 const MODES = [1, 2];             // 1 = Operations, 2 = Warfare
+// A player takes ~2.5 s, nearly all of it waiting on HQ, so waiting on several at once is almost
+// free. One after another, 8 players took ~20 s and ~20 would have filled the minute.
+const CONCURRENCY = 6;
+const SHARD_SIZE = 40;            // ~7 rounds of 6 ≈ 20 s per shard
 
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type", "Access-Control-Allow-Methods": "POST, OPTIONS" };
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
@@ -65,15 +70,43 @@ Deno.serve(async (req) => {
   const { data: sec } = await supabase.from("app_settings").select("value").eq("key", "poll_secret").maybeSingle();
   if (!sec?.value || body?.secret !== sec.value) return json({ error: "forbidden" }, 403);
 
-  let q = supabase.from("player_sessions").select("openid, cookies, backfill");
+  let q = supabase.from("player_sessions").select("openid, cookies, backfill").order("openid");
   if (typeof body.openid === "string") q = q.eq("openid", body.openid);
-  const { data: rows, error } = await q;
+  const { data, error } = await q;
   if (error) return json({ error: error.message }, 500);
+  let rows = (data ?? []) as Row[];
 
-  const players = [];
-  for (const row of (rows ?? []) as Row[]) players.push(await pollOne(row));
+  // A shard call polls its own slice. Slicing by position in an openid-ordered list keeps every
+  // player in exactly one shard for as long as the list does not change mid-minute.
+  const shard = toInt(body.shard), of = toInt(body.of);
+  if (shard !== null && of) rows = rows.filter((_, i) => i % of === shard);
+
+  // Too many for one invocation: hand each slice to its own. Each gets its own 150 s wall clock
+  // and 2 s of CPU, which one invocation polling everybody would run out of first. Costs 1 + n
+  // invocations a minute against the plan's 500k a month (~11 a minute), so a few hundred players.
+  else if (typeof body.openid !== "string" && rows.length > SHARD_SIZE) {
+    const n = Math.ceil(rows.length / SHARD_SIZE);
+    const url = Deno.env.get("SUPABASE_URL") + "/functions/v1/poll";
+    const parts = await Promise.all(Array.from({ length: n }, (_, i) =>
+      fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ secret: body.secret, shard: i, of: n }) })
+        .then((r) => r.json()).catch((e) => ({ error: String(e), shard: i }))));
+    return json({ ok: true, at: nowIso(), shards: n, players: parts.flatMap((p: any) => p.players ?? [{ shard: p.shard, error: p.error }]) });
+  }
+
+  // Polled first, stamped after: `at` has always meant "this run finished", and the run log reads
+  // it that way to tell how long a minute's poll took.
+  const players = await pool(rows, CONCURRENCY, pollOne);
   return json({ ok: true, at: nowIso(), players });
 });
+
+/** Run `fn` over `items`, at most `n` at a time, keeping the results in the items' order. */
+async function pool<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>): Promise<R[]> {
+  const out: R[] = new Array(items.length);
+  let next = 0;
+  const worker = async () => { while (next < items.length) { const i = next++; out[i] = await fn(items[i]); } };
+  await Promise.all(Array.from({ length: Math.min(n, items.length) }, worker));
+  return out;
+}
 
 async function pollOne(row: Row) {
   const s = row.cookies, openid = row.openid;

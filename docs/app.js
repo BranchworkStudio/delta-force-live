@@ -1452,5 +1452,14 @@
   // The session comes first, so the very first read already carries it — and again before each
   // refresh, where it costs nothing while the token is still good and renews it when it is not.
   ensureSession().then(load).catch(e => { $("#banner").hidden = false; $("#banner").textContent = "Could not load data: " + e.message; setStatus("error", false); });
-  setInterval(() => ensureSession().then(load).catch(() => { setStatus("refresh failed", false); }), (C.REFRESH_SECONDS || 30) * 1000);
+  // Only a board somebody is looking at refreshes. The matches are collected on the server either
+  // way — this page never gathers anything, it only shows what is already stored — so a tab left
+  // open behind others was re-downloading the whole board every thirty seconds for nobody, and that
+  // download is what the free plan's monthly traffic runs out on. Coming back to the tab refreshes
+  // at once if the last read is older than one interval, so it never shows stale numbers.
+  const every = (C.REFRESH_SECONDS || 30) * 1000;
+  let lastRead = Date.now();
+  const refresh = () => { lastRead = Date.now(); ensureSession().then(load).catch(() => { setStatus("refresh failed", false); }); };
+  setInterval(() => { if (!document.hidden) refresh(); }, every);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && Date.now() - lastRead > every) refresh(); });
 })();

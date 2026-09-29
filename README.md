@@ -215,6 +215,18 @@ red drops, and refreshes the daily private-room passwords hourly. When HQ answer
 login param" the row is *kept* and marked `last_error`, so the board can say
 **reconnect** instead of going blank.
 
+Players are polled six at a time (`CONCURRENCY`): a player takes ~2.5 s and nearly all of
+it is waiting on HQ, so 8 players went from ~20 s one after another to ~7 s. Past 40 players
+(`SHARD_SIZE`) the function splits the list and calls itself once per slice with
+`{secret, shard, of}`, so each slice gets its own 150 s wall clock and 2 s of CPU — that is
+1 + n invocations a minute, and the free plan's 500k a month allows about 11.
+
+Nothing is collected by the site itself. The board only reads what the poller stored, and it
+stops refreshing while its tab is hidden (catching up the moment it is shown again), because a
+background tab re-downloading the board every 30 s was the free plan's traffic quota running
+out for nobody. A match played with every tab closed is in the history all the same: each run
+re-reads the latest 20 per mode and duplicates are ignored, so a late run fills its own gap.
+
 The job body reads the shared secret out of `app_settings` at run time rather than
 embedding it, and `poll` refuses any request that does not present it (`403`). To
 poll one player right now:
