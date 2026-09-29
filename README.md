@@ -496,10 +496,14 @@ The four sections:
 - **Ways in** — every invite link ever minted, with uses against its limit, who made it, and
   whether it is open, used up or withdrawn. Each row can be copied as a full URL, capped, or
   withdrawn (two clicks, since a withdrawal is not undoable from here). Below the table, the
-  mint row: pick one person / three / no limit, then **Tracker link** or **Board link**.
+  mint row: say where the link is going (*Sent to*, optional, 80 characters), pick one person /
+  three / no limit, then **Tracker link** or **Board link**. The note is `invites.note`, set
+  through `admin_note_invite` (0028) right after the link exists, and can be written or changed
+  on any row later by clicking it — old links included.
 - **People** — every account, when it enrolled, which link let it in, and which boards it is
-  on. The "let in by" cell is the invite code, so a person and the door they came through are
-  one glance apart.
+  on. The "let in by" cell is that link's note with its code beside it, so a person and the
+  door they came through are one glance apart; above the table, *Came from* tallies signups
+  per note. That tally is the answer to "where do people find this".
 - **Collection** — per account: when it was last polled, how long the current HQ login has
   lasted, when it was handed over, and the last error the poller saw. This is the page that
   answers "why has this player stopped updating".
