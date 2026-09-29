@@ -15,7 +15,7 @@ column of an expanded raid, where the names beside it are mostly strangers.
 Never instead of the name — an operator nobody here plays still reads as a word. "All squad" is an opt-in tile that appears once
 more than one player is tracked, and the choice is remembered per browser.
 
-Live site: **https://branchworkstudio.github.io/delta-force-live/**
+Live site: **https://thesitrep.gg/**
 
 ## How it works
 
@@ -59,7 +59,7 @@ accepts. That is stronger than a secret the page would have to hold.
 so that travels in the link instead of anyone's fingers. Send the invite link:
 
 ```
-https://branchworkstudio.github.io/delta-force-live/connect.html?i=<code>
+https://thesitrep.gg/connect.html?i=<code>
 ```
 
 They click it, do the same three steps, and they are collected — their own player, their
