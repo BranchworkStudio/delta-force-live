@@ -88,6 +88,11 @@
   // thing a boundary needs before it can exist at all.
   const CTL_KEY = "df-control";
   const TAB_KEY = "df-tab";
+  // The bar as this browser last drew it, for the Loadouts page (loadouts/page.js). That page is
+  // open to anybody and reads nothing, so it cannot work out whether you are on a board, whether an
+  // event is running or whether you are the admin; it draws what the board drew instead. Names and
+  // ids only, and gone again the moment this board is a locked door.
+  const BAR_KEY = "df-bar";
   // Whether this browser belongs to the tracker's admin, as of the last load. A hint and nothing
   // more: it decides whether a tab is drawn, never what may be read. Every admin view carries
   // `where public.is_admin()` in the database, so a browser that sets this by hand gets the tab
@@ -477,6 +482,7 @@
   function renderGate() {
     const shut = !state.players.length && !live(session);
     document.body.classList.toggle("gated", shut);
+    if (shut) try { localStorage.removeItem(BAR_KEY); } catch (e) { /* private window */ }
     const el = $("#gate");
     el.hidden = !shut;
     if (!shut) { gateDrawn = null; return; }
@@ -586,6 +592,9 @@
     bar.innerHTML = shown.map(t => t.href ? `<a href="${esc(t.href)}">${esc(t.label)}</a>`
       : `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}</button>`).join("");
     bar.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => setTab(b.dataset.tab));
+    if (!document.body.classList.contains("gated")) try {
+      localStorage.setItem(BAR_KEY, JSON.stringify(shown.map(t => t.href ? { id: t.id, label: t.label, href: t.href } : { id: t.id, label: t.label })));
+    } catch (e) { /* private window */ }
     TABS.forEach(t => { const el = paneOf(t.id); if (el) el.classList.toggle("on", t.id === active.id); });
     // The range picker stays in the masthead and dims on a tab that cannot use it; the mode picker
     // sits above the headline and is simply not there when the open tab has no modes.
@@ -1478,7 +1487,15 @@
     anchor = el;
   }
   // The tab you were last on, unless it was an event that has since ended and taken its file away.
-  state.tab = tabOf(ls(TAB_KEY)).id;
+  // …or the one a link asked for: the Loadouts page's bar sends you back to a tab as ./?tab=<id>.
+  // Taken, remembered, and then cleared from the address, which is the board's and not a view.
+  const askedTab = new URLSearchParams(location.search).get("tab");
+  state.tab = tabOf(askedTab || ls(TAB_KEY)).id;
+  if (askedTab) {
+    try { localStorage.setItem(TAB_KEY, state.tab); } catch (e) { /* private window */ }
+    const q = new URLSearchParams(location.search); q.delete("tab");
+    try { history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q : "") + location.hash); } catch (e) { /* ignore */ }
+  }
   if (!C || !C.SUPABASE_URL || C.SUPABASE_URL.startsWith("__")) { $("#banner").hidden = false; $("#banner").textContent = "config.js is not filled in."; return; }
   if (window.__mapsFailed) console.warn("maps_en.js failed to load; using fallback names");
   // The session comes first, so the very first read already carries it — and again before each

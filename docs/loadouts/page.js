@@ -27,6 +27,21 @@
   }
   document.addEventListener("touchstart", (e) => { if (tip.style.display === "block" && !e.target.closest("[data-tip]")) hideTip(); }, { passive: true });
 
+  // The site's bar. Somebody on a board has more tabs than the two this page knows about (an event,
+  // the admin's), and a page that dropped them would read as having signed you out. The board
+  // leaves its bar in this browser (df-bar, see app.js); drawn here, each of its tabs is a link
+  // back to that tab. With nothing left there — never signed in, or signed out since — the two
+  // links in the page's own markup stand.
+  (function bar() {
+    let tabs = null;
+    try { tabs = JSON.parse(localStorage.getItem("df-bar") || "null"); } catch (e) { /* private window */ }
+    const nav = $("nav.tabs");
+    if (!nav || !Array.isArray(tabs) || tabs.length < 2 || !tabs.some(t => t && t.id === "loadouts")) return;
+    nav.innerHTML = tabs.map(t => t.id === "loadouts"
+      ? `<a class="on" href="loadouts/" aria-current="page">${esc(t.label)}</a>`
+      : `<a href="./?tab=${encodeURIComponent(t.id)}">${esc(t.label)}</a>`).join("");
+  })();
+
   const host = { esc, attachTips, repaint: () => paint() };
   const pane = $("#pane-loadouts");
 
