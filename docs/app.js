@@ -218,6 +218,32 @@
     return new Date(0);
   }
   const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
+
+  // The week's carry-outs and the career red wall are two-thirds of every refresh by weight, and
+  // they only ever move because somebody finished a raid. So they are read on the first load, when
+  // a new match turns up on the board, and otherwise every ten minutes as a backstop — not every
+  // thirty seconds. A new match reads them twice, this refresh and the next, because the poller
+  // writes the match a few seconds before the carry-outs from the same raid: the first read can
+  // land in between, and the second is what catches them.
+  const SLOW_MS = 10 * 60e3;
+  let slow = null, slowAt = 0, slowMark = null, slowAgain = false;
+  async function slowRows(mark) {
+    const changed = mark !== slowMark;
+    if (slow && !changed && !slowAgain && Date.now() - slowAt < SLOW_MS) return slow;
+    slowAgain = changed && slowMark !== null;
+    slowMark = mark; slowAt = Date.now();
+    slow = await Promise.all([
+      // HQ only ever reports the current week, so the newest week_start present is the live one;
+      // the rest is whatever weeks the poller happened to be running for.
+      restSoft("carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&order=week_start.desc,item_value.desc&limit=600"),
+      // The career wall is not range-scoped: it is everything the account has ever found, which is
+      // the whole point of it — the dated drop feed above is capped at HQ's latest 50 rows.
+      restSoft("red_collection?select=openid,item_id,owned_count,is_new&limit=1000"),
+      restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count"),
+    ]);
+    return slow;
+  }
+
   async function load() {
     const since = encodeURIComponent(rangeStart().toISOString());
     // A tab module's reads go out with the board's own rather than after them, and softly: a tab
@@ -226,7 +252,7 @@
     // else, and three refused requests on every page load is noise in the log for nothing.
     const extra = Promise.all(TABS.map(t => t.queries && (typeof t.visible !== "function" || t.visible(host))
       ? Promise.all(t.queries(host).map(restSoft)) : Promise.resolve([])));
-    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, carried, wall, wallSum, groups, memberships, myGroups] = await Promise.all([
+    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, groups, memberships, myGroups] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
       rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
       rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
@@ -240,13 +266,6 @@
       // Every sample, not just the range: the movement inside a range is measured against the
       // standing that came before it, which is a sample from outside it.
       rest(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc&limit=5000`),
-      // HQ only ever reports the current week, so the newest week_start present is the live one;
-      // the rest is whatever weeks the poller happened to be running for.
-      restSoft("carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&order=week_start.desc,item_value.desc&limit=600"),
-      // The career wall is not range-scoped: it is everything the account has ever found, which is
-      // the whole point of it — the dated drop feed above is capped at HQ's latest 50 rows.
-      restSoft("red_collection?select=openid,item_id,owned_count,is_new&limit=1000"),
-      restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count"),
       // Names and sizes, which anyone may read, and memberships, which say whose rows belong on
       // which board.
       restSoft("public_groups?select=id,name,members,created_by,created_at&order=created_at"),
@@ -262,6 +281,12 @@
     // session may see. A tracker-only player is still filtered out of the shared board here.
     const mine = ls(CTL_KEY) || (session && session.openid) || null;
     state.me = mine;
+    // What "something turned up" is measured by: the newest raid in the mode on show, the newest
+    // red find, and who is asking — signing in changes which rows the database lets this browser
+    // see, so it has to read them again.
+    const [carried, wall, wallSum] = await slowRows([session && session.openid,
+      recent[0] && recent[0].openid + "@" + recent[0].match_time,
+      reds[0] && reds[0].openid + "@" + reds[0].unlock_time].join("|"));
     const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
     state.group = pickGroup(groups, myIds, mine);
 

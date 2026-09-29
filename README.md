@@ -226,6 +226,9 @@ stops refreshing while its tab is hidden (catching up the moment it is shown aga
 background tab re-downloading the board every 30 s was the free plan's traffic quota running
 out for nobody. A match played with every tab closed is in the history all the same: each run
 re-reads the latest 20 per mode and duplicates are ignored, so a late run fills its own gap.
+The week's carry-outs and the career red wall, two-thirds of each refresh by weight, are read
+only when a new raid or red find shows up on the board (twice, since the poller writes the
+carry-outs a few seconds after the match), on sign-in, and otherwise every ten minutes.
 
 The job body reads the shared secret out of `app_settings` at run time rather than
 embedding it, and `poll` refuses any request that does not present it (`403`). To
