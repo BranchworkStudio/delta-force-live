@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-24",
+ "updated": "2026-09-29",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -378,7 +378,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 97
+   "pos": 100
   },
   {
    "weapon": "AK-12",
@@ -556,7 +556,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 44
+   "pos": 48
   },
   {
    "weapon": "AKM",
@@ -570,7 +570,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 45
+   "pos": 49
   },
   {
    "weapon": "AKM",
@@ -584,7 +584,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 40
+   "pos": 44
   },
   {
    "weapon": "AKM",
@@ -870,7 +870,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 69
+   "pos": 72
   },
   {
    "weapon": "AR-57",
@@ -884,7 +884,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 70
+   "pos": 73
   },
   {
    "weapon": "AR-57",
@@ -1096,7 +1096,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 112
+   "pos": 115
   },
   {
    "weapon": "AS Val",
@@ -1110,7 +1110,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 53
+   "pos": 57
   },
   {
    "weapon": "AS Val",
@@ -1322,7 +1322,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 89
+   "pos": 92
   },
   {
    "weapon": "ASh-12",
@@ -1336,7 +1336,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 42
+   "pos": 46
   },
   {
    "weapon": "ASh-12",
@@ -1516,7 +1516,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 105
+   "pos": 108
   },
   {
    "weapon": "AUG",
@@ -1531,7 +1531,7 @@
     "180K",
     "Season 8"
    ],
-   "pos": 106
+   "pos": 109
   },
   {
    "weapon": "AUG",
@@ -1545,7 +1545,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 34
+   "pos": 38
   },
   {
    "weapon": "AUG",
@@ -1559,7 +1559,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 35
+   "pos": 39
   },
   {
    "weapon": "AUG",
@@ -1717,7 +1717,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 96
+   "pos": 99
   },
   {
    "weapon": "AWM",
@@ -1935,7 +1935,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 85
+   "pos": 88
   },
   {
    "weapon": "CI-19",
@@ -1949,7 +1949,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 84
+   "pos": 87
   },
   {
    "weapon": "CI-19",
@@ -1963,7 +1963,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 73
+   "pos": 76
   },
   {
    "weapon": "CI-19",
@@ -1977,7 +1977,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 74
+   "pos": 77
   },
   {
    "weapon": "CI-19",
@@ -1991,7 +1991,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 41
+   "pos": 45
   },
   {
    "weapon": "CI-19",
@@ -2005,7 +2005,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 26
+   "pos": 30
   },
   {
    "weapon": "CI-19",
@@ -2329,7 +2329,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 83
+   "pos": 86
   },
   {
    "weapon": "FS-12",
@@ -2478,6 +2478,20 @@
   {
    "weapon": "G3",
    "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "G3 Battle Rifle-Operations (Extraction Mode)-6LEHIKG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 11"
+   ],
+   "pos": 1
+  },
+  {
+   "weapon": "G3",
+   "mode": "operations",
    "creator": "minda",
    "source": "minda",
    "code": "G3 Battle Rifle-Operations-6KHKHV0088K38R05C0LGG",
@@ -2611,7 +2625,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 107
+   "pos": 110
   },
   {
    "weapon": "K416",
@@ -2625,7 +2639,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 86
+   "pos": 89
   },
   {
    "weapon": "K416",
@@ -2639,7 +2653,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 87
+   "pos": 90
   },
   {
    "weapon": "K416",
@@ -2653,7 +2667,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 58
+   "pos": 61
   },
   {
    "weapon": "K416",
@@ -2667,7 +2681,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 50
+   "pos": 54
   },
   {
    "weapon": "K416",
@@ -2682,7 +2696,7 @@
     "350K",
     "Season 10"
    ],
-   "pos": 20
+   "pos": 24
   },
   {
    "weapon": "K416",
@@ -2876,7 +2890,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 0
+   "pos": 2
   },
   {
    "weapon": "K437",
@@ -2890,7 +2904,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 93
+   "pos": 96
   },
   {
    "weapon": "K437",
@@ -2904,7 +2918,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 46
+   "pos": 50
   },
   {
    "weapon": "K437",
@@ -2918,7 +2932,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 21
+   "pos": 25
   },
   {
    "weapon": "K437",
@@ -3140,7 +3154,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 104
+   "pos": 107
   },
   {
    "weapon": "KC-17",
@@ -3154,7 +3168,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 102
+   "pos": 105
   },
   {
    "weapon": "KC-17",
@@ -3168,7 +3182,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 103
+   "pos": 106
   },
   {
    "weapon": "KC-17",
@@ -3183,7 +3197,7 @@
     "300K",
     "Season 9"
    ],
-   "pos": 72
+   "pos": 75
   },
   {
    "weapon": "KC-17",
@@ -3197,7 +3211,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 67
+   "pos": 70
   },
   {
    "weapon": "KC-17",
@@ -3211,7 +3225,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 68
+   "pos": 71
   },
   {
    "weapon": "KC-17",
@@ -3385,7 +3399,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 111
+   "pos": 114
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3567,7 +3581,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 16
+   "pos": 20
   },
   {
    "weapon": "M14",
@@ -3581,7 +3595,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 78
+   "pos": 81
   },
   {
    "weapon": "M14",
@@ -3595,7 +3609,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 71
+   "pos": 74
   },
   {
    "weapon": "M14",
@@ -3609,7 +3623,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 65
+   "pos": 68
   },
   {
    "weapon": "M14",
@@ -3623,7 +3637,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 66
+   "pos": 69
   },
   {
    "weapon": "M14",
@@ -3753,7 +3767,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 115
+   "pos": 118
   },
   {
    "weapon": "M16A4",
@@ -3969,7 +3983,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 15
+   "pos": 19
   },
   {
    "weapon": "M250",
@@ -3983,7 +3997,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 88
+   "pos": 91
   },
   {
    "weapon": "M250",
@@ -4151,7 +4165,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 114
+   "pos": 117
   },
   {
    "weapon": "M4A1",
@@ -4165,7 +4179,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 113
+   "pos": 116
   },
   {
    "weapon": "M4A1",
@@ -4179,7 +4193,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 33
+   "pos": 37
   },
   {
    "weapon": "M4A1",
@@ -4193,7 +4207,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 49
+   "pos": 53
   },
   {
    "weapon": "M4A1",
@@ -4423,7 +4437,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 100
+   "pos": 103
   },
   {
    "weapon": "M7",
@@ -4437,7 +4451,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 101
+   "pos": 104
   },
   {
    "weapon": "M7",
@@ -4451,7 +4465,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 59
+   "pos": 62
   },
   {
    "weapon": "M7",
@@ -4465,21 +4479,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 56
-  },
-  {
-   "weapon": "M7",
-   "mode": "operations",
-   "creator": "leissik",
-   "source": "leissik",
-   "code": "M7 Battle Rifle-Operations-6K3D3VO0FV996DITL6AIU",
-   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
-   "added": null,
-   "note": "red dot 1",
-   "tags": [
-    "Season 9"
-   ],
-   "pos": 55
+   "pos": 59
   },
   {
    "weapon": "M7",
@@ -4493,7 +4493,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 54
+   "pos": 58
   },
   {
    "weapon": "M7",
@@ -4507,7 +4507,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 25
+   "pos": 29
   },
   {
    "weapon": "M7",
@@ -4521,7 +4521,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 19
+   "pos": 23
   },
   {
    "weapon": "M7",
@@ -4729,7 +4729,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 10
+   "pos": 14
   },
   {
    "weapon": "M700",
@@ -4743,7 +4743,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 98
+   "pos": 101
   },
   {
    "weapon": "M700",
@@ -4757,7 +4757,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 99
+   "pos": 102
   },
   {
    "weapon": "M700",
@@ -4865,7 +4865,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 8
+   "pos": 12
   },
   {
    "weapon": "M82",
@@ -4957,7 +4957,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 82
+   "pos": 85
   },
   {
    "weapon": "MCX LT",
@@ -5129,7 +5129,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 3
+   "pos": 7
   },
   {
    "weapon": "MDR",
@@ -5143,7 +5143,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 4
+   "pos": 8
   },
   {
    "weapon": "MDR",
@@ -5249,7 +5249,35 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 1
+   "pos": 5
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LA9EA40FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "Hipfire burst",
+   "tags": [
+    "Season 11"
+   ],
+   "pos": 3
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LEHGDK0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "control",
+   "tags": [
+    "Season 11"
+   ],
+   "pos": 4
   },
   {
    "weapon": "MK4",
@@ -5263,7 +5291,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 28
+   "pos": 32
   },
   {
    "weapon": "MK4",
@@ -5277,7 +5305,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 27
+   "pos": 31
   },
   {
    "weapon": "MK4",
@@ -5291,7 +5319,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 23
+   "pos": 27
   },
   {
    "weapon": "MK4",
@@ -5539,7 +5567,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 14
+   "pos": 18
   },
   {
    "weapon": "MK47",
@@ -5553,7 +5581,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 81
+   "pos": 84
   },
   {
    "weapon": "MK47",
@@ -5567,7 +5595,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 48
+   "pos": 52
   },
   {
    "weapon": "MK47",
@@ -5829,7 +5857,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 5
+   "pos": 9
   },
   {
    "weapon": "MP7",
@@ -5843,7 +5871,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 109
+   "pos": 112
   },
   {
    "weapon": "MP7",
@@ -5857,7 +5885,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 110
+   "pos": 113
   },
   {
    "weapon": "MP7",
@@ -5871,7 +5899,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 108
+   "pos": 111
   },
   {
    "weapon": "MP7",
@@ -5885,7 +5913,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 62
+   "pos": 65
   },
   {
    "weapon": "MP7",
@@ -5899,7 +5927,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 60
+   "pos": 63
   },
   {
    "weapon": "MP7",
@@ -5913,7 +5941,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 61
+   "pos": 64
   },
   {
    "weapon": "MP7",
@@ -6157,7 +6185,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 7
+   "pos": 11
   },
   {
    "weapon": "P90",
@@ -6171,7 +6199,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 80
+   "pos": 83
   },
   {
    "weapon": "P90",
@@ -6185,7 +6213,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 43
+   "pos": 47
   },
   {
    "weapon": "P90",
@@ -6199,7 +6227,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 32
+   "pos": 36
   },
   {
    "weapon": "P90",
@@ -6370,7 +6398,7 @@
     "260K",
     "Season 8"
    ],
-   "pos": 94
+   "pos": 97
   },
   {
    "weapon": "PKM",
@@ -6385,7 +6413,7 @@
     "300K",
     "Season 8"
    ],
-   "pos": 95
+   "pos": 98
   },
   {
    "weapon": "PKM",
@@ -6399,7 +6427,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 24
+   "pos": 28
   },
   {
    "weapon": "PKM",
@@ -6669,7 +6697,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 90
+   "pos": 93
   },
   {
    "weapon": "QBZ95-1",
@@ -6769,7 +6797,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 75
+   "pos": 78
   },
   {
    "weapon": "QCQ171",
@@ -6885,7 +6913,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 17
+   "pos": 21
   },
   {
    "weapon": "QJB201",
@@ -6899,7 +6927,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 63
+   "pos": 66
   },
   {
    "weapon": "QJB201",
@@ -6913,7 +6941,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 52
+   "pos": 56
   },
   {
    "weapon": "QJB201",
@@ -6928,7 +6956,7 @@
     "250K",
     "Season 9"
    ],
-   "pos": 47
+   "pos": 51
   },
   {
    "weapon": "QJB201",
@@ -6942,7 +6970,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 29
+   "pos": 33
   },
   {
    "weapon": "QJB201",
@@ -7112,7 +7140,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 9
+   "pos": 13
   },
   {
    "weapon": "R93",
@@ -7126,7 +7154,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 57
+   "pos": 60
   },
   {
    "weapon": "R93",
@@ -7256,7 +7284,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 36
+   "pos": 40
   },
   {
    "weapon": "RM277",
@@ -7270,7 +7298,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 37
+   "pos": 41
   },
   {
    "weapon": "RM277",
@@ -7502,7 +7530,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 91
+   "pos": 94
   },
   {
    "weapon": "SCAR-H",
@@ -7516,7 +7544,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 92
+   "pos": 95
   },
   {
    "weapon": "SCAR-H",
@@ -7741,6 +7769,20 @@
   {
    "weapon": "SKS",
    "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
+   "code": "SKS Marksman Rifle-Operations (Extraction Mode)-6LEHIHG0FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 11"
+   ],
+   "pos": 0
+  },
+  {
+   "weapon": "SKS",
+   "mode": "operations",
    "creator": "minda",
    "source": "minda",
    "code": "SKS Marksman Rifle-Operations-6KHKH9S088K38R05C0LGG",
@@ -7850,7 +7892,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 116
+   "pos": 119
   },
   {
    "weapon": "SMG-45",
@@ -7980,7 +8022,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 79
+   "pos": 82
   },
   {
    "weapon": "SR-25",
@@ -8122,7 +8164,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 6
+   "pos": 10
   },
   {
    "weapon": "SR-3M",
@@ -8136,7 +8178,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 77
+   "pos": 80
   },
   {
    "weapon": "SR-3M",
@@ -8150,7 +8192,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 64
+   "pos": 67
   },
   {
    "weapon": "SR-3M",
@@ -8271,7 +8313,7 @@
     "120K",
     "Season 9"
    ],
-   "pos": 51
+   "pos": 55
   },
   {
    "weapon": "SR9",
@@ -8285,7 +8327,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 22
+   "pos": 26
   },
   {
    "weapon": "SR9",
@@ -8401,7 +8443,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 12
+   "pos": 16
   },
   {
    "weapon": "SVCH",
@@ -8415,7 +8457,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 39
+   "pos": 43
   },
   {
    "weapon": "SVCH",
@@ -8429,7 +8471,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 38
+   "pos": 42
   },
   {
    "weapon": "SVCH",
@@ -8541,7 +8583,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 13
+   "pos": 17
   },
   {
    "weapon": "SVD",
@@ -8555,7 +8597,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 31
+   "pos": 35
   },
   {
    "weapon": "SVD",
@@ -8569,7 +8611,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 30
+   "pos": 34
   },
   {
    "weapon": "SVD",
@@ -8673,7 +8715,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 2
+   "pos": 6
   },
   {
    "weapon": "Thompson SMG",
@@ -8833,7 +8875,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 11
+   "pos": 15
   },
   {
    "weapon": "VSS",
@@ -8847,7 +8889,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 18
+   "pos": 22
   },
   {
    "weapon": "VSS",
@@ -8949,7 +8991,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 76
+   "pos": 79
   },
   {
    "weapon": "Vector",
