@@ -277,7 +277,7 @@ one page per minute, so the site has something to show right away.
 | `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute |
 | `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
 | `docs/events/` | One file per limited-time event, each registering its own tab (see **Tabs and event modules**) |
-| `docs/tabs/` | The tabs that are meant to stay — `loadouts.js`, `admin.js` — registered the same way |
+| `docs/tabs/` | The tabs that are meant to stay — `loadouts.js` (hosted by `docs/loadouts/`), `admin.js` — registered the same way |
 | `docs/` | The static site served by GitHub Pages ("Ops Board" design: dark blue-grey ground, green accent, Chakra Petch numerals; new panels follow the module rules in the design handoff). Scope lives in `state.focus` (an openid or `"all"`), persisted as `df-focus` in localStorage; anything player-specific goes through `scoped()`. Which board is shown lives in `state.group`, persisted as `df-group`. Width is two custom properties rather than a set of breakpoints: `--gut` (the page's left and right margin, shared by the header, the bands and the two columns so the hero's figures line up with the table under them) and `--gap` (the masthead's own spacing) both `clamp()` down with the window, so a half-screen browser gets a page that has tightened rather than one that has broken. The masthead's right-hand group — range picker and account chip — is one element, `.ctl`, so that when the row runs out of width the two of them take a line together, right-aligned, instead of the account chip dropping alone; the board's clock runs at the end of the eyebrow instead ("LëgällyBlind · net income · today · updated 14:32"), which is the line it dates, and stands down while a module is painting its own headline, since "updated 14:32" under **Loadouts** would read as a claim about the builds; and a squad card reflows off its own width with a container query, because how much room it has depends on how many people are on the board as much as on the screen. What is left in the two media queries is what changes *shape* at a narrow width |
 
 ## Backend
@@ -386,7 +386,30 @@ does not register at all: a tab that cannot name what is missing is worse than n
 
 ## Loadouts
 
-`docs/tabs/loadouts.js` is the one tab that asks the board for nothing at all: it has no
+Loadouts is a page of its own, **https://thesitrep.gg/loadouts/**, open to anybody with no
+account: it reads nothing from the database, so there is nothing to gate. The board's tab bar
+only links to it (`LOADOUTS_TAB` in `app.js`, a tab with an `href` and no pane). The page is
+`docs/loadouts/index.html` with `<base href="../">`, so it uses the site-root paths the board
+uses, the board's own stylesheet (`docs/board.css`, shared by both pages), and
+`docs/loadouts/page.js` as the module's host: escaping, the tooltip, and painting the headline.
+
+Its filters live in the address, so a view can be passed around:
+
+| Link | Shows |
+|---|---|
+| `loadouts/?creator=leissik` | everything Leissik publishes |
+| `loadouts/?creator=leissik&weapon=m7` | Leissik's M7 builds |
+| `loadouts/?class=smg&mode=warfare` | Warfare SMG builds |
+| `loadouts/?q=budget` | the search box |
+
+Creator is the key in `creators.json` (a display name works too), weapon is the short name
+squeezed to letters and digits, and matching is loose: `?creator=Leissik&weapon=M7` is
+rewritten to the canonical spelling, and a value that matches nothing is dropped rather than
+leaving an empty page. A link with any filter shows exactly that; a bare `loadouts/` picks up
+where the browser left off. Every change rewrites the address with `replaceState`, and
+**Copy link** in the rail copies it.
+
+`docs/tabs/loadouts.js` asks for nothing at all: it has no
 `queries()`, reads `docs/data/loadouts.json` itself on first paint, and hangs it on the
 68-weapon spine in the official `basic_info/guns_en.js` manifest (names, class, image and
 the stat bars, the same way maps and cards are named). HQ knows what you own and what you

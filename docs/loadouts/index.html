@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Everything on this page is addressed from the site's root, so the stylesheet, the module, the
+     build file and the creators' pictures are the same paths the board uses. -->
+<base href="../">
+<title>Loadouts · Sitrep</title>
+<meta name="description" content="Community Delta Force weapon builds with their import codes, credited to the creators who publish them. Filter by weapon, class or creator and share the link.">
+<meta property="og:site_name" content="Sitrep">
+<meta property="og:title" content="Loadouts · Sitrep">
+<meta property="og:description" content="Community Delta Force weapon builds with import codes, credited to the creators who publish them.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230c1416'/><polygon points='8,2 14,14 2,14' fill='%231de08c'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="board.css?v=1">
+<style>
+  /* The name goes home. On the board it is just a name; here it is the way to the rest of the site. */
+  a.mark { color: var(--text); text-decoration: none; }
+  a.mark:hover .nm { color: var(--green); }
+  a.mark:hover .sub { color: var(--text-2); }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hin">
+    <div class="top">
+      <a class="mark" href="./"><span class="tri"></span><span class="nm">Sitrep<span class="sub">A Delta Force live tracker</span></span></a>
+      <span class="vdiv"></span>
+      <nav class="tabs" aria-label="Site"><a href="./">Match data</a><a class="on" href="loadouts/" aria-current="page">Loadouts</a></nav>
+    </div>
+    <div class="statrow">
+      <div class="headline">
+        <div><div class="eyebrow"><i></i><span id="eyebrow">Loadouts · community builds</span></div><div class="big" id="big">–</div><div class="bigsub" id="bigsub"></div></div>
+        <div class="aside" id="heroAside"></div>
+      </div>
+      <div class="cells" id="cells"></div>
+    </div>
+  </div>
+</header>
+<div class="board">
+  <section class="pane on" id="pane-loadouts"></section>
+  <footer>Every build here was read off a page its creator publishes, and every card links to that page. Nothing on this page needs an account.<div class="legal">Fan-made and unofficial. Not affiliated with, endorsed by or sponsored by Delta Force or its publishers. Game names, images and data belong to their respective owners.</div></footer>
+</div>
+<div class="tip" id="tip"></div>
+
+<script src="hero-topo.js?v=2" defer></script>
+<!-- The weapon manifest is the spine the builds hang on: names, classes, pictures, stock stats. -->
+<script src="https://www.playdeltaforce.com/basic_info/guns_en.js" onerror="window.__gunsFailed=1"></script>
+<script src="tabs/loadouts.js?v=4"></script>
+<script src="loadouts/page.js?v=1"></script>
+</body>
+</html>

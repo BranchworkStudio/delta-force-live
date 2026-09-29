@@ -10,18 +10,55 @@
  * Import > paste. So the code is the object here — big, monospaced, one click to copy — and
  * everything else on the card exists to tell you whether you want to paste it.
  *
- * A tab module like any other (see README, "Tabs and event modules"): it registers itself in
- * window.DF_TABS and the board knows nothing about it. It asks the board for no data at all —
- * its queries() is absent — and loads its own file the first time it is painted.
+ * It has the shape of a tab module (see README, "Tabs and event modules") but it lives on a page of
+ * its own, loadouts/index.html, because it is the one part of the site anybody may open: no
+ * account, no board, nothing read from the database. That page is its whole host (loadouts/page.js);
+ * the board only has a link to it on its tab bar. It loads its own file the first time it is painted.
+ *
+ * The filters live in the address, so a link says exactly what it shows:
+ *   loadouts/?creator=leissik            everything Leissik publishes
+ *   loadouts/?creator=leissik&weapon=m7  Leissik's M7 builds
+ *   loadouts/?class=smg&mode=warfare     Warfare SMG builds
+ *   loadouts/?q=budget                   the search box
+ * A link with any of those shows exactly that and nothing remembered; a bare loadouts/ picks up
+ * where this browser left off, and the address follows every change either way.
  */
 (function () {
   const DATA_URL = "data/loadouts.json?v=1";
   const KEY = "df-loadouts";          // the rail's own state, per browser
 
-  let DB = null, state = { sel: null, mode: "all", cls: "all", creator: "all", q: "" }, phase = "idle";
+  const FRESH = () => ({ sel: null, mode: "all", cls: "all", creator: "all", q: "" });
+  let DB = null, state = FRESH(), phase = "idle";
 
-  try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* private window */ }
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+  // The address's name for each filter. Values are plain lower-case words — a creator's key, a
+  // weapon's short name squeezed to letters and digits, a class — so a link is readable before it
+  // is clicked and can be typed by hand.
+  const PARAM = { creator: "creator", sel: "weapon", cls: "class", mode: "mode", q: "q" };
+  const DEFAULT = FRESH();
+  const fromUrl = (() => {
+    const p = new URLSearchParams(location.search), got = {};
+    for (const [k, name] of Object.entries(PARAM)) if (p.get(name)) got[k] = p.get(name).trim();
+    return Object.keys(got).length ? got : null;
+  })();
+  if (fromUrl) Object.assign(state, fromUrl);
+  else try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* private window */ }
+
+  const toQuery = () => {
+    const p = new URLSearchParams();
+    for (const [k, name] of Object.entries(PARAM)) {
+      if (state[k] == null || state[k] === DEFAULT[k] || state[k] === "") continue;
+      p.set(name, k === "cls" ? String(state[k]).toLowerCase() : state[k]);
+    }
+    return p.toString();
+  };
+  // Every change is written to this browser and to the address. replaceState rather than
+  // pushState: a filter is not somewhere you went, and Back should leave the page, not undo a click.
+  const save = () => {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    const q = toQuery();
+    try { history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); } catch (e) {}
+    document.title = titleOf();
+  };
 
   // ---------- the official weapon table ----------
   // Names, classes, images and the stat bars come from playdeltaforce.com's own manifest, exactly
@@ -66,10 +103,39 @@
       .then(d => {
         DB = d;
         DB.builds = (d.builds || []).map(b => Object.assign({}, b, { gun: gunOf(b.weapon) }));
+        settle();
         phase = "ready";
+        save();
         h.repaint();
       })
       .catch(() => { phase = "failed"; h.repaint(); });
+  }
+
+  // A link is typed, pasted and truncated by people, so what it says is matched loosely — "Leissik",
+  // "leissik" and a creator's display name all find the same person, "smg" and "SMG" the same class
+  // — and written back in the one spelling this page uses. Whatever still matches nothing is
+  // dropped rather than kept: a filter that cannot match leaves an empty page and no way to see why.
+  function settle() {
+    if (state.creator !== "all" && !(DB.creators || {})[state.creator]) {
+      const n = norm(state.creator);
+      const k = Object.keys(DB.creators || {}).find(k => norm(k) === n || norm(DB.creators[k].name) === n);
+      state.creator = k || "all";
+    }
+    if (state.cls !== "all") {
+      const hit = [...new Set(DB.builds.map(b => (b.gun ? b.gun.cls : "Other")))].find(c => norm(c) === norm(state.cls));
+      state.cls = hit || "all";
+    }
+    if (!["all", "operations", "warfare"].includes(state.mode)) state.mode = "all";
+    if (state.sel) {
+      const n = norm(state.sel), b = DB.builds.find(b => (b.gun ? b.gun.key : norm(b.weapon)) === n || norm(b.weapon) === n);
+      state.sel = b ? (b.gun ? b.gun.key : norm(b.weapon)) : null;
+    }
+  }
+  function titleOf() {
+    const bits = [];
+    if (DB && state.sel) { const b = DB.builds.find(b => (b.gun ? b.gun.key : norm(b.weapon)) === state.sel); if (b) bits.push(b.gun ? b.gun.short : b.weapon); }
+    if (DB && state.creator !== "all") bits.push(creatorOf({ creator: state.creator }).name);
+    return (bits.length ? bits.join(" · ") + " · " : "") + "Loadouts · Sitrep";
   }
 
   const creatorOf = (b) => (DB.creators && DB.creators[b.creator]) || { name: b.creator || "Unknown" };
@@ -166,6 +232,9 @@
 
       const list = visible(), ws = weapons(list);
       const sel = ws.find(w => w.key === state.sel) || ws[0] || null;
+      // A weapon the other filters have since ruled out is not what this page shows, so it leaves
+      // the address too — otherwise the link would name a gun its reader never sees.
+      if (state.sel && (!sel || sel.key !== state.sel)) { state.sel = null; save(); }
       const classes = [...new Set(DB.builds.map(b => (b.gun ? b.gun.cls : "Other")))]
         .sort((a, b) => a.localeCompare(b));
       const creators = Object.keys(DB.creators || {})
@@ -175,6 +244,7 @@
       el.innerHTML = `<div class="lo">
         <div class="lo-rail">
           <div class="lsearch"><input id="loQ" type="search" placeholder="Search weapon, creator or tag" value="${e(state.q)}" autocomplete="off"></div>
+          <div class="lshare"><span>${toQuery() ? "This view has its own link" : "Filters go in the link"}</span><button type="button" class="lpill" id="loShare">Copy link</button></div>
           ${modes().length > 1 ? `<div class="lfilters">
             ${pill(state.mode === "all", "all", "All modes", "mode")}
             ${pill(state.mode === "operations", "operations", "Operations", "mode")}
@@ -208,12 +278,14 @@
       el.querySelectorAll("[data-w]").forEach(n => n.onclick = () => { state.sel = n.dataset.w; save(); h.repaint(); });
       el.querySelectorAll("[data-f]").forEach(n => n.onclick = () => {
         const f = n.dataset.f;
-        if (f === "reset") { state = { sel: null, mode: "all", cls: "all", creator: "all", q: "" }; }
+        if (f === "reset") { state = FRESH(); }
         else if (f === "creator") { state.creator = state.creator === n.dataset.v ? "all" : n.dataset.v; }
         else { state[f] = n.dataset.v; }
         save(); h.repaint();
       });
       el.querySelectorAll("[data-code]").forEach(n => n.onclick = () => copy(n));
+      const share = el.querySelector("#loShare");
+      if (share) share.onclick = () => { save(); copyText(share, location.href); };
       h.attachTips(el);
     },
   });
@@ -316,8 +388,8 @@
   // Clipboard, and a fallback for the browsers and contexts that refuse it: the whole point of the
   // card is that the code ends up in the game, so a copy button that silently fails is the one
   // failure this page cannot have.
-  function copy(btn) {
-    const code = btn.dataset.code;
+  const copy = (btn) => copyText(btn, btn.dataset.code);
+  function copyText(btn, code) {
     const done = () => flash(btn, "Copied", "ok");
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(code).then(done, () => legacy(btn, code, done));
@@ -333,7 +405,9 @@
     // Both routes refused — some browsers only allow the clipboard on a trusted gesture, and an
     // embedded view may refuse it outright. Select the code instead, so the keyboard still works.
     const el = btn.parentNode.querySelector("code");
-    if (el && window.getSelection) {
+    // The page link has no code element beside it; the address bar is the same text.
+    if (!el) { flash(btn, "Copy the address"); return; }
+    if (window.getSelection) {
       const r = document.createRange(); r.selectNodeContents(el);
       const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
     }
@@ -358,6 +432,9 @@
                   text-overflow: ellipsis; }
   .lpick::after { content: "▾"; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
                   color: var(--muted); pointer-events: none; font-size: 12px; }
+  .lshare { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px;
+            font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .lshare .lpill.ok { background: var(--tick); color: var(--text); }
   .lfilters { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; }
   .lpill { border: 0; background: var(--hair-2); color: var(--text-2); cursor: pointer;
            font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; }

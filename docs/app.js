@@ -534,15 +534,20 @@
   //   aside(rows, host, active)  HTML for the slot beside the big number, or null; `aside: false`
   //                              means the tab wants that slot left empty while it is open
   //   render(el, rows, host)     paint the pane
+  //   href      a tab that is a page of its own: it sits on the bar as a link and has no pane here
   const MATCH_TAB = { id: "match", label: "Match data", filters: true };
+  // Loadouts is open to anybody, connected or not, and its filters live in its address so a link
+  // to one creator's builds can be passed around. That makes it a page rather than a pane of a
+  // board that a stranger cannot open — so here it is only its place on the bar.
+  const LOADOUTS_TAB = { id: "loadouts", label: "Loadouts", href: "loadouts/" };
   // Load order decides the bar, except for a tab that says `last`: it sits at the right-hand end
   // however its file happened to be loaded. The admin tab is not part of the board's reading order
   // and should not push a real tab sideways. (Array#sort is stable, so nothing else moves.)
-  const TABS = [MATCH_TAB].concat(Array.isArray(window.DF_TABS) ? window.DF_TABS : [])
+  const TABS = [MATCH_TAB, LOADOUTS_TAB].concat(Array.isArray(window.DF_TABS) ? window.DF_TABS : [])
     .sort((a, b) => (a.last ? 1 : 0) - (b.last ? 1 : 0));
   let adminHint = ls(ADMIN_KEY) === "1", firstAdminPass = false;
   const shownTabs = () => TABS.filter(t => typeof t.visible !== "function" || t.visible(host));
-  const tabOf = (id) => TABS.find(t => t.id === id) || MATCH_TAB;
+  const tabOf = (id) => TABS.find(t => t.id === id && !t.href) || MATCH_TAB;
   const paneOf = (id) => document.getElementById("pane-" + id);
   const rowsOf = (t) => state.tabData[t.id] || [];
   // What a module is handed. It paints its own pane and reads the board; it does not reach into
@@ -578,7 +583,8 @@
     if (!shown.includes(active)) active = MATCH_TAB;
     // Names only. A tab is where you are, not a notification: the number a module wants to shout
     // is already in the slot beside the big number, and twice is once too many.
-    bar.innerHTML = shown.map(t => `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}</button>`).join("");
+    bar.innerHTML = shown.map(t => t.href ? `<a href="${esc(t.href)}">${esc(t.label)}</a>`
+      : `<button data-tab="${esc(t.id)}" class="${t.id === active.id ? "on" : ""}">${esc(t.label)}</button>`).join("");
     bar.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => setTab(b.dataset.tab));
     TABS.forEach(t => { const el = paneOf(t.id); if (el) el.classList.toggle("on", t.id === active.id); });
     // The range picker stays in the masthead and dims on a tab that cannot use it; the mode picker
@@ -1464,6 +1470,7 @@
   // one script tag and no markup. The match pane is the page itself and is already there.
   let anchor = $("#pane-match");
   for (const t of TABS) {
+    if (t.href) continue;
     if (paneOf(t.id)) { anchor = paneOf(t.id); continue; }
     const el = document.createElement("section");
     el.className = "pane"; el.id = "pane-" + t.id;
