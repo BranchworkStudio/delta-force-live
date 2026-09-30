@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29",
+ "updated": "2026-09-30",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -8222,21 +8222,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "SR-3M Compact Assault Rifle-Operations-6K6G31004JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "400K"
-   ],
-   "pos": 31
-  },
-  {
-   "weapon": "SR-3M",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "SR-3M Compact Assault Rifle-Operations-6L63PLC04JR8MA4B021SH",
+   "code": "SR-3M Compact Assault Rifle-Operations (Extraction Mode)-6LEVPPO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
@@ -8244,6 +8230,20 @@
     "460K"
    ],
    "pos": 33
+  },
+  {
+   "weapon": "SR-3M",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SR-3M Compact Assault Rifle-Operations (Extraction Mode)-6LEVPS004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "400K"
+   ],
+   "pos": 31
   },
   {
    "weapon": "SR-3M",
