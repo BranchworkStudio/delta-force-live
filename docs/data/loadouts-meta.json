@@ -1,15 +1,15 @@
 {
- "built": "2026-10-01T11:30:43+00:00",
- "status": "unchanged",
+ "built": "2026-10-02T11:00:00+00:00",
+ "status": "written",
  "note": null,
- "builds": 691,
+ "builds": 701,
  "creators": 9,
  "weapons": 66,
  "guns": 68,
  "avatars": 9,
  "by_creator": {
-  "roguemonkey": 129,
-  "leissik": 120,
+  "roguemonkey": 138,
+  "leissik": 121,
   "medow": 112,
   "poach": 80,
   "muomuo": 70,
@@ -19,11 +19,11 @@
   "deathlapse": 38
  },
  "by_mode": {
-  "operations": 562,
-  "warfare": 129
+  "operations": 563,
+  "warfare": 138
  },
  "dated": 80,
- "noted": 418,
+ "noted": 427,
  "skipped": {
   "minda credited to Ideologist": 3,
   "minda credited to Larry": 2,

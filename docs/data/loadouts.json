@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-30",
+ "updated": "2026-10-02",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -269,7 +269,7 @@
    "added": null,
    "note": "The Double Tap",
    "tags": [],
-   "pos": 66
+   "pos": 75
   },
   {
    "weapon": "93R",
@@ -387,7 +387,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 100
+   "pos": 101
   },
   {
    "weapon": "AK-12",
@@ -467,7 +467,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 67
+   "pos": 76
   },
   {
    "weapon": "AK-12",
@@ -479,7 +479,7 @@
    "added": null,
    "note": "v2.0",
    "tags": [],
-   "pos": 62
+   "pos": 71
   },
   {
    "weapon": "AK-12",
@@ -491,7 +491,19 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 21
+   "pos": 30
+  },
+  {
+   "weapon": "AK-12",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AK-12 Assault Rifle-Warfare-6KNKT3403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Viewer Request",
+   "tags": [],
+   "pos": 8
   },
   {
    "weapon": "AK-12",
@@ -565,7 +577,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 48
+   "pos": 49
   },
   {
    "weapon": "AKM",
@@ -579,7 +591,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 49
+   "pos": 50
   },
   {
    "weapon": "AKM",
@@ -593,7 +605,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 44
+   "pos": 45
   },
   {
    "weapon": "AKM",
@@ -743,7 +755,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 70
+   "pos": 79
   },
   {
    "weapon": "AKM",
@@ -755,7 +767,7 @@
    "added": null,
    "note": "Hipfire-centric",
    "tags": [],
-   "pos": 69
+   "pos": 78
   },
   {
    "weapon": "AKM",
@@ -767,7 +779,7 @@
    "added": null,
    "note": "v2.0",
    "tags": [],
-   "pos": 68
+   "pos": 77
   },
   {
    "weapon": "AKM",
@@ -779,7 +791,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 31
+   "pos": 40
   },
   {
    "weapon": "AKM",
@@ -829,7 +841,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 71
+   "pos": 80
   },
   {
    "weapon": "AKS-74",
@@ -841,7 +853,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 41
+   "pos": 50
   },
   {
    "weapon": "AKS-74",
@@ -879,7 +891,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 72
+   "pos": 73
   },
   {
    "weapon": "AR-57",
@@ -893,7 +905,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 73
+   "pos": 74
   },
   {
    "weapon": "AR-57",
@@ -940,12 +952,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LA6VA804JR8MA4B021SH",
+   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LFPKO804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "560K"
+    "700K"
    ],
    "pos": 12
   },
@@ -954,7 +966,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AR-57 Assault Rifle-Operations-6KSUO0G04JR8MA4B021SH",
+   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LFPLIK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
@@ -968,12 +980,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AR-57 Assault Rifle-Operations-6KT07I004JR8MA4B021SH",
+   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LFPLMO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
    "tags": [
-    "340K"
+    "522K"
    ],
    "pos": 16
   },
@@ -1043,7 +1055,7 @@
    "added": null,
    "note": "S9 Build",
    "tags": [],
-   "pos": 18
+   "pos": 27
   },
   {
    "weapon": "AR-57",
@@ -1055,7 +1067,7 @@
    "added": null,
    "note": "Season 9 - Hipfire",
    "tags": [],
-   "pos": 5
+   "pos": 14
   },
   {
    "weapon": "AR-57",
@@ -1105,7 +1117,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 115
+   "pos": 116
   },
   {
    "weapon": "AS Val",
@@ -1119,7 +1131,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 57
+   "pos": 58
   },
   {
    "weapon": "AS Val",
@@ -1269,7 +1281,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 72
+   "pos": 81
   },
   {
    "weapon": "AS Val",
@@ -1281,7 +1293,7 @@
    "added": null,
    "note": "Burst Fire",
    "tags": [],
-   "pos": 59
+   "pos": 68
   },
   {
    "weapon": "AS Val",
@@ -1331,7 +1343,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 92
+   "pos": 93
   },
   {
    "weapon": "ASh-12",
@@ -1345,7 +1357,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 46
+   "pos": 47
   },
   {
    "weapon": "ASh-12",
@@ -1451,7 +1463,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 73
+   "pos": 82
   },
   {
    "weapon": "ASh-12",
@@ -1463,7 +1475,7 @@
    "added": null,
    "note": "Tomahawk Big Boi",
    "tags": [],
-   "pos": 50
+   "pos": 59
   },
   {
    "weapon": "ASh-12",
@@ -1475,7 +1487,7 @@
    "added": null,
    "note": "Double Shot",
    "tags": [],
-   "pos": 1
+   "pos": 10
   },
   {
    "weapon": "ASh-12",
@@ -1525,7 +1537,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 108
+   "pos": 109
   },
   {
    "weapon": "AUG",
@@ -1540,7 +1552,7 @@
     "180K",
     "Season 8"
    ],
-   "pos": 109
+   "pos": 110
   },
   {
    "weapon": "AUG",
@@ -1554,7 +1566,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 38
+   "pos": 39
   },
   {
    "weapon": "AUG",
@@ -1568,7 +1580,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 39
+   "pos": 40
   },
   {
    "weapon": "AUG",
@@ -1664,7 +1676,7 @@
    "added": null,
    "note": "\"No recoil\" build",
    "tags": [],
-   "pos": 74
+   "pos": 83
   },
   {
    "weapon": "AUG",
@@ -1676,7 +1688,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 26
+   "pos": 35
   },
   {
    "weapon": "AUG",
@@ -1726,7 +1738,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 99
+   "pos": 100
   },
   {
    "weapon": "AWM",
@@ -1773,7 +1785,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AWM Sniper Rifle-Operations-6K4968C04JR8MA4B021SH",
+   "code": "AWM Sniper Rifle-Operations (Extraction Mode)-6LFPKGS04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -1818,7 +1830,7 @@
    "added": null,
    "note": "Squad killer",
    "tags": [],
-   "pos": 107
+   "pos": 116
   },
   {
    "weapon": "Bizon",
@@ -1882,7 +1894,7 @@
    "added": null,
    "note": "Uggo Build",
    "tags": [],
-   "pos": 75
+   "pos": 84
   },
   {
    "weapon": "CAR-15",
@@ -1944,7 +1956,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 88
+   "pos": 89
   },
   {
    "weapon": "CI-19",
@@ -1958,7 +1970,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 87
+   "pos": 88
   },
   {
    "weapon": "CI-19",
@@ -1972,7 +1984,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 76
+   "pos": 77
   },
   {
    "weapon": "CI-19",
@@ -1986,7 +1998,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 77
+   "pos": 78
   },
   {
    "weapon": "CI-19",
@@ -2000,7 +2012,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 45
+   "pos": 46
   },
   {
    "weapon": "CI-19",
@@ -2014,7 +2026,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 30
+   "pos": 31
   },
   {
    "weapon": "CI-19",
@@ -2089,12 +2101,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "CI-19 Assault Rifle-Operations (Extraction Mode)-6LD2SBG04JR8MA4B021SH",
+   "code": "CI-19 Assault Rifle-Operations (Extraction Mode)-6LFPN4O04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "500K"
+    "560K"
    ],
    "pos": 40
   },
@@ -2150,7 +2162,7 @@
    "added": null,
    "note": "Long Range",
    "tags": [],
-   "pos": 77
+   "pos": 86
   },
   {
    "weapon": "CI-19",
@@ -2162,7 +2174,7 @@
    "added": null,
    "note": "SMG Build",
    "tags": [],
-   "pos": 76
+   "pos": 85
   },
   {
    "weapon": "CI-19",
@@ -2174,7 +2186,7 @@
    "added": null,
    "note": "No Gas Block - Viewer Requested",
    "tags": [],
-   "pos": 27
+   "pos": 36
   },
   {
    "weapon": "CI-19",
@@ -2186,7 +2198,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 78
+   "pos": 87
   },
   {
    "weapon": "CI-19",
@@ -2288,7 +2300,19 @@
    "added": null,
    "note": "One Tap",
    "tags": [],
-   "pos": 79
+   "pos": 88
+  },
+  {
+   "weapon": "Compound Bow",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Compound Bow-Warfare-6KKIUVC03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Fast shot",
+   "tags": [],
+   "pos": 9
   },
   {
    "weapon": "Compound Bow",
@@ -2338,7 +2362,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 86
+   "pos": 87
   },
   {
    "weapon": "FS-12",
@@ -2406,7 +2430,7 @@
    "added": null,
    "note": "Primary Build",
    "tags": [],
-   "pos": 34
+   "pos": 43
   },
   {
    "weapon": "G17",
@@ -2418,7 +2442,7 @@
    "added": null,
    "note": "All-purpose",
    "tags": [],
-   "pos": 80
+   "pos": 89
   },
   {
    "weapon": "G18",
@@ -2548,7 +2572,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 81
+   "pos": 90
   },
   {
    "weapon": "G3",
@@ -2560,7 +2584,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 48
+   "pos": 57
   },
   {
    "weapon": "G3",
@@ -2572,7 +2596,7 @@
    "added": null,
    "note": "Season 9 - Hybrid Marksman",
    "tags": [],
-   "pos": 6
+   "pos": 15
   },
   {
    "weapon": "G3",
@@ -2634,7 +2658,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 110
+   "pos": 111
   },
   {
    "weapon": "K416",
@@ -2648,7 +2672,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 89
+   "pos": 90
   },
   {
    "weapon": "K416",
@@ -2662,7 +2686,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 90
+   "pos": 91
   },
   {
    "weapon": "K416",
@@ -2676,7 +2700,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 61
+   "pos": 62
   },
   {
    "weapon": "K416",
@@ -2690,7 +2714,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 54
+   "pos": 55
   },
   {
    "weapon": "K416",
@@ -2705,7 +2729,7 @@
     "350K",
     "Season 10"
    ],
-   "pos": 24
+   "pos": 25
   },
   {
    "weapon": "K416",
@@ -2752,7 +2776,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "K416 Assault Rifle-Operations-6KFMD2004JR8MA4B021SH",
+   "code": "K416 Assault Rifle-Operations (Extraction Mode)-6LFPKL004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -2766,7 +2790,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "K416 Assault Rifle-Operations-6KT0A4O04JR8MA4B021SH",
+   "code": "K416 Assault Rifle-Operations (Extraction Mode)-6LFPKMK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -2813,7 +2837,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 83
+   "pos": 92
   },
   {
    "weapon": "K416",
@@ -2825,7 +2849,7 @@
    "added": null,
    "note": "Sandstorm",
    "tags": [],
-   "pos": 84
+   "pos": 93
   },
   {
    "weapon": "K416",
@@ -2837,7 +2861,7 @@
    "added": null,
    "note": "Whisper",
    "tags": [],
-   "pos": 82
+   "pos": 91
   },
   {
    "weapon": "K416",
@@ -2849,7 +2873,19 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 43
+   "pos": 52
+  },
+  {
+   "weapon": "K416",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K416 Assault Rifle-Warfare-6KT805003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 10",
+   "tags": [],
+   "pos": 6
   },
   {
    "weapon": "K416",
@@ -2899,7 +2935,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 2
+   "pos": 3
   },
   {
    "weapon": "K437",
@@ -2913,7 +2949,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 96
+   "pos": 97
   },
   {
    "weapon": "K437",
@@ -2927,7 +2963,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 50
+   "pos": 51
   },
   {
    "weapon": "K437",
@@ -2941,7 +2977,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 25
+   "pos": 26
   },
   {
    "weapon": "K437",
@@ -3065,7 +3101,7 @@
    "added": null,
    "note": "Handling +",
    "tags": [],
-   "pos": 86
+   "pos": 95
   },
   {
    "weapon": "K437",
@@ -3077,7 +3113,7 @@
    "added": null,
    "note": "Stability +",
    "tags": [],
-   "pos": 87
+   "pos": 96
   },
   {
    "weapon": "K437",
@@ -3089,7 +3125,7 @@
    "added": null,
    "note": "Viewer-Requested Suppressed",
    "tags": [],
-   "pos": 85
+   "pos": 94
   },
   {
    "weapon": "K437",
@@ -3101,7 +3137,7 @@
    "added": null,
    "note": "Viewer Request 60-rounder",
    "tags": [],
-   "pos": 55
+   "pos": 64
   },
   {
    "weapon": "K437",
@@ -3113,7 +3149,19 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 44
+   "pos": 53
+  },
+  {
+   "weapon": "K437",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "K437 Assault Rifle-Warfare-6KQ87VG03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 10",
+   "tags": [],
+   "pos": 7
   },
   {
    "weapon": "K437",
@@ -3163,7 +3211,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 107
+   "pos": 108
   },
   {
    "weapon": "KC-17",
@@ -3177,7 +3225,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 105
+   "pos": 106
   },
   {
    "weapon": "KC-17",
@@ -3191,7 +3239,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 106
+   "pos": 107
   },
   {
    "weapon": "KC-17",
@@ -3206,7 +3254,7 @@
     "300K",
     "Season 9"
    ],
-   "pos": 75
+   "pos": 76
   },
   {
    "weapon": "KC-17",
@@ -3220,7 +3268,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 70
+   "pos": 71
   },
   {
    "weapon": "KC-17",
@@ -3234,7 +3282,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 71
+   "pos": 72
   },
   {
    "weapon": "KC-17",
@@ -3283,7 +3331,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LD2TAC04JR8MA4B021SH",
+   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LFPMRG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -3358,7 +3406,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 9
+   "pos": 18
   },
   {
    "weapon": "KC-17",
@@ -3370,7 +3418,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 88
+   "pos": 97
   },
   {
    "weapon": "KC-17",
@@ -3382,7 +3430,7 @@
    "added": null,
    "note": "Hipfire CQB",
    "tags": [],
-   "pos": 45
+   "pos": 54
   },
   {
    "weapon": "KC-17",
@@ -3408,7 +3456,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 114
+   "pos": 115
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3488,7 +3536,7 @@
    "added": null,
    "note": "S7 Double-Tap",
    "tags": [],
-   "pos": 39
+   "pos": 48
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3500,7 +3548,7 @@
    "added": null,
    "note": "One-Shot Machine",
    "tags": [],
-   "pos": 61
+   "pos": 70
   },
   {
    "weapon": "M1014",
@@ -3590,7 +3638,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 20
+   "pos": 21
   },
   {
    "weapon": "M14",
@@ -3604,7 +3652,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 81
+   "pos": 82
   },
   {
    "weapon": "M14",
@@ -3618,7 +3666,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 74
+   "pos": 75
   },
   {
    "weapon": "M14",
@@ -3632,7 +3680,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 68
+   "pos": 69
   },
   {
    "weapon": "M14",
@@ -3646,7 +3694,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 69
+   "pos": 70
   },
   {
    "weapon": "M14",
@@ -3714,7 +3762,7 @@
    "added": null,
    "note": "Full auto build",
    "tags": [],
-   "pos": 90
+   "pos": 99
   },
   {
    "weapon": "M14",
@@ -3726,7 +3774,7 @@
    "added": null,
    "note": "SMG Build",
    "tags": [],
-   "pos": 89
+   "pos": 98
   },
   {
    "weapon": "M14",
@@ -3738,7 +3786,7 @@
    "added": null,
    "note": "S7 Full-Auto Build",
    "tags": [],
-   "pos": 37
+   "pos": 46
   },
   {
    "weapon": "M14",
@@ -3776,7 +3824,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 118
+   "pos": 119
   },
   {
    "weapon": "M16A4",
@@ -3802,7 +3850,7 @@
    "added": null,
    "note": "Rounded Build",
    "tags": [],
-   "pos": 91
+   "pos": 100
   },
   {
    "weapon": "M16A4",
@@ -3814,7 +3862,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 14
+   "pos": 23
   },
   {
    "weapon": "M16A4",
@@ -3930,7 +3978,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 92
+   "pos": 101
   },
   {
    "weapon": "M249",
@@ -3942,7 +3990,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 30
+   "pos": 39
   },
   {
    "weapon": "M249",
@@ -3954,7 +4002,7 @@
    "added": null,
    "note": "HVK Chainsaw",
    "tags": [],
-   "pos": 16
+   "pos": 25
   },
   {
    "weapon": "M249",
@@ -3992,7 +4040,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 19
+   "pos": 20
   },
   {
    "weapon": "M250",
@@ -4006,7 +4054,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 91
+   "pos": 92
   },
   {
    "weapon": "M250",
@@ -4100,7 +4148,7 @@
    "added": null,
    "note": "CQBeast",
    "tags": [],
-   "pos": 93
+   "pos": 102
   },
   {
    "weapon": "M250",
@@ -4112,7 +4160,7 @@
    "added": null,
    "note": "Big chungus build",
    "tags": [],
-   "pos": 94
+   "pos": 103
   },
   {
    "weapon": "M250",
@@ -4124,7 +4172,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 42
+   "pos": 51
   },
   {
    "weapon": "M250",
@@ -4174,7 +4222,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 117
+   "pos": 118
   },
   {
    "weapon": "M4A1",
@@ -4188,7 +4236,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 116
+   "pos": 117
   },
   {
    "weapon": "M4A1",
@@ -4202,7 +4250,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 37
+   "pos": 38
   },
   {
    "weapon": "M4A1",
@@ -4216,7 +4264,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 53
+   "pos": 54
   },
   {
    "weapon": "M4A1",
@@ -4324,7 +4372,7 @@
    "added": null,
    "note": "Rounded Build",
    "tags": [],
-   "pos": 96
+   "pos": 105
   },
   {
    "weapon": "M4A1",
@@ -4336,7 +4384,7 @@
    "added": null,
    "note": "CQB Build",
    "tags": [],
-   "pos": 95
+   "pos": 104
   },
   {
    "weapon": "M4A1",
@@ -4348,7 +4396,7 @@
    "added": null,
    "note": "Mid-Long Range",
    "tags": [],
-   "pos": 58
+   "pos": 67
   },
   {
    "weapon": "M4A1",
@@ -4360,7 +4408,7 @@
    "added": null,
    "note": "S6 Updated",
    "tags": [],
-   "pos": 54
+   "pos": 63
   },
   {
    "weapon": "M4A1",
@@ -4372,7 +4420,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 47
+   "pos": 56
   },
   {
    "weapon": "M4A1",
@@ -4439,6 +4487,20 @@
    "mode": "operations",
    "creator": "leissik",
    "source": "leissik",
+   "code": "M7 Battle Rifle-Operations (Extraction Mode)-6L82LJ00FV996DITL6AIU",
+   "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
+   "added": null,
+   "note": "",
+   "tags": [
+    "Season 11"
+   ],
+   "pos": 2
+  },
+  {
+   "weapon": "M7",
+   "mode": "operations",
+   "creator": "leissik",
+   "source": "leissik",
    "code": "M7 Battle Rifle-Operations-6J8NR1S0FV996DITL6AIU",
    "url": "https://docs.google.com/document/d/1_2x7pr10o6rbJHh3pfsknjyORzgeT246TV30ya5l_Yw/edit",
    "added": null,
@@ -4446,7 +4508,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 103
+   "pos": 104
   },
   {
    "weapon": "M7",
@@ -4460,7 +4522,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 104
+   "pos": 105
   },
   {
    "weapon": "M7",
@@ -4474,7 +4536,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 62
+   "pos": 63
   },
   {
    "weapon": "M7",
@@ -4488,7 +4550,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 59
+   "pos": 60
   },
   {
    "weapon": "M7",
@@ -4502,7 +4564,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 58
+   "pos": 59
   },
   {
    "weapon": "M7",
@@ -4516,7 +4578,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 29
+   "pos": 30
   },
   {
    "weapon": "M7",
@@ -4530,7 +4592,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 23
+   "pos": 24
   },
   {
    "weapon": "M7",
@@ -4652,7 +4714,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 97
+   "pos": 106
   },
   {
    "weapon": "M7",
@@ -4664,7 +4726,7 @@
    "added": null,
    "note": "CQB Build",
    "tags": [],
-   "pos": 65
+   "pos": 74
   },
   {
    "weapon": "M7",
@@ -4676,7 +4738,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 46
+   "pos": 55
   },
   {
    "weapon": "M7",
@@ -4688,7 +4750,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 23
+   "pos": 32
   },
   {
    "weapon": "M7",
@@ -4738,7 +4800,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 14
+   "pos": 15
   },
   {
    "weapon": "M700",
@@ -4752,7 +4814,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 101
+   "pos": 102
   },
   {
    "weapon": "M700",
@@ -4766,7 +4828,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 102
+   "pos": 103
   },
   {
    "weapon": "M700",
@@ -4874,7 +4936,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 12
+   "pos": 13
   },
   {
    "weapon": "M82",
@@ -4928,7 +4990,7 @@
    "added": null,
    "note": "One Shot, Maker of Misery",
    "tags": [],
-   "pos": 17
+   "pos": 26
   },
   {
    "weapon": "M870",
@@ -4940,7 +5002,7 @@
    "added": null,
    "note": "Boomstick",
    "tags": [],
-   "pos": 98
+   "pos": 107
   },
   {
    "weapon": "MCX LT",
@@ -4966,7 +5028,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 85
+   "pos": 86
   },
   {
    "weapon": "MCX LT",
@@ -5013,6 +5075,20 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
+   "code": "MCX LT Assault Rifle-Operations (Extraction Mode)-6LFPMC004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "474K"
+   ],
+   "pos": 22
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
    "code": "MCX LT Assault Rifle-Operations-6KSUOMO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -5021,20 +5097,6 @@
     "290K"
    ],
    "pos": 20
-  },
-  {
-   "weapon": "MCX LT",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "MCX LT Assault Rifle-Operations-6KSUOVG04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "320K"
-   ],
-   "pos": 22
   },
   {
    "weapon": "MCX LT",
@@ -5088,7 +5150,7 @@
    "added": null,
    "note": "Fierce Barrel",
    "tags": [],
-   "pos": 32
+   "pos": 41
   },
   {
    "weapon": "MCX LT",
@@ -5100,7 +5162,7 @@
    "added": null,
    "note": "Hunter Barrel",
    "tags": [],
-   "pos": 33
+   "pos": 42
   },
   {
    "weapon": "MCX LT",
@@ -5112,7 +5174,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 8
+   "pos": 17
   },
   {
    "weapon": "MDR",
@@ -5138,7 +5200,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 7
+   "pos": 8
   },
   {
    "weapon": "MDR",
@@ -5152,7 +5214,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 8
+   "pos": 9
   },
   {
    "weapon": "MDR",
@@ -5223,6 +5285,18 @@
    "pos": 22
   },
   {
+   "weapon": "MDR",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "MDR Assault Rifle-Warfare-6LCEEMO03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "CQB",
+   "tags": [],
+   "pos": 2
+  },
+  {
    "weapon": "MK4",
    "mode": "operations",
    "creator": "equalplays",
@@ -5258,7 +5332,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 5
+   "pos": 6
   },
   {
    "weapon": "MK4",
@@ -5272,7 +5346,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 3
+   "pos": 4
   },
   {
    "weapon": "MK4",
@@ -5286,7 +5360,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 4
+   "pos": 5
   },
   {
    "weapon": "MK4",
@@ -5300,7 +5374,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 32
+   "pos": 33
   },
   {
    "weapon": "MK4",
@@ -5314,7 +5388,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 31
+   "pos": 32
   },
   {
    "weapon": "MK4",
@@ -5328,7 +5402,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 27
+   "pos": 28
   },
   {
    "weapon": "MK4",
@@ -5427,20 +5501,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LD2RK404JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "ADS",
-   "tags": [
-    "600K"
-   ],
-   "pos": 17
-  },
-  {
-   "weapon": "MK4",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LD2RMG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -5463,6 +5523,20 @@
     "650K"
    ],
    "pos": 5
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LFPKC404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "ADS",
+   "tags": [
+    "600K"
+   ],
+   "pos": 17
   },
   {
    "weapon": "MK4",
@@ -5502,7 +5576,7 @@
    "added": null,
    "note": "Full Auto",
    "tags": [],
-   "pos": 51
+   "pos": 60
   },
   {
    "weapon": "MK4",
@@ -5514,7 +5588,7 @@
    "added": null,
    "note": "Burst Fire",
    "tags": [],
-   "pos": 35
+   "pos": 44
   },
   {
    "weapon": "MK4",
@@ -5526,7 +5600,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 13
+   "pos": 22
   },
   {
    "weapon": "MK4",
@@ -5576,7 +5650,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 18
+   "pos": 19
   },
   {
    "weapon": "MK47",
@@ -5590,7 +5664,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 84
+   "pos": 85
   },
   {
    "weapon": "MK47",
@@ -5604,7 +5678,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 52
+   "pos": 53
   },
   {
    "weapon": "MK47",
@@ -5653,21 +5727,21 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LA701404JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LFPML804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "No Recoil",
+   "note": "Long Barrel",
    "tags": [
-    "730K"
+    "740K"
    ],
-   "pos": 30
+   "pos": 26
   },
   {
    "weapon": "MK47",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations-6L23H1004JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LFPMN004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Short Barrel",
@@ -5681,14 +5755,14 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations-6L23H3K04JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LFPMOK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "Long Barrel",
+   "note": "No Recoil",
    "tags": [
-    "740K"
+    "730K"
    ],
-   "pos": 26
+   "pos": 30
   },
   {
    "weapon": "MK47",
@@ -5728,7 +5802,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 60
+   "pos": 69
   },
   {
    "weapon": "MK47",
@@ -5740,7 +5814,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 29
+   "pos": 38
   },
   {
    "weapon": "MK47",
@@ -5816,7 +5890,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 101
+   "pos": 110
   },
   {
    "weapon": "MP5",
@@ -5828,7 +5902,7 @@
    "added": null,
    "note": "100 Accuracy Monster",
    "tags": [],
-   "pos": 52
+   "pos": 61
   },
   {
    "weapon": "MP5",
@@ -5866,7 +5940,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 9
+   "pos": 10
   },
   {
    "weapon": "MP7",
@@ -5880,7 +5954,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 112
+   "pos": 113
   },
   {
    "weapon": "MP7",
@@ -5894,7 +5968,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 113
+   "pos": 114
   },
   {
    "weapon": "MP7",
@@ -5908,7 +5982,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 111
+   "pos": 112
   },
   {
    "weapon": "MP7",
@@ -5922,7 +5996,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 65
+   "pos": 66
   },
   {
    "weapon": "MP7",
@@ -5936,7 +6010,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 63
+   "pos": 64
   },
   {
    "weapon": "MP7",
@@ -5950,7 +6024,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 64
+   "pos": 65
   },
   {
    "weapon": "MP7",
@@ -6072,7 +6146,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 103
+   "pos": 112
   },
   {
    "weapon": "MP7",
@@ -6084,7 +6158,7 @@
    "added": null,
    "note": "Hipfire Build",
    "tags": [],
-   "pos": 102
+   "pos": 111
   },
   {
    "weapon": "MP7",
@@ -6096,7 +6170,7 @@
    "added": null,
    "note": "HVK Combat Kit",
    "tags": [],
-   "pos": 15
+   "pos": 24
   },
   {
    "weapon": "MP7",
@@ -6108,7 +6182,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 7
+   "pos": 16
   },
   {
    "weapon": "MP7",
@@ -6132,7 +6206,7 @@
    "added": null,
    "note": "Sandstorm comp",
    "tags": [],
-   "pos": 99
+   "pos": 108
   },
   {
    "weapon": "Mini-14",
@@ -6144,7 +6218,7 @@
    "added": null,
    "note": "Silent suppressor",
    "tags": [],
-   "pos": 100
+   "pos": 109
   },
   {
    "weapon": "Mini-14",
@@ -6194,7 +6268,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 11
+   "pos": 12
   },
   {
    "weapon": "P90",
@@ -6208,7 +6282,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 83
+   "pos": 84
   },
   {
    "weapon": "P90",
@@ -6222,7 +6296,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 47
+   "pos": 48
   },
   {
    "weapon": "P90",
@@ -6236,7 +6310,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 36
+   "pos": 37
   },
   {
    "weapon": "P90",
@@ -6332,7 +6406,7 @@
    "added": null,
    "note": "Hipfire build",
    "tags": [],
-   "pos": 104
+   "pos": 113
   },
   {
    "weapon": "P90",
@@ -6344,7 +6418,7 @@
    "added": null,
    "note": "Well-rounded build",
    "tags": [],
-   "pos": 105
+   "pos": 114
   },
   {
    "weapon": "P90",
@@ -6356,7 +6430,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 38
+   "pos": 47
   },
   {
    "weapon": "P90",
@@ -6407,7 +6481,7 @@
     "260K",
     "Season 8"
    ],
-   "pos": 97
+   "pos": 98
   },
   {
    "weapon": "PKM",
@@ -6422,7 +6496,7 @@
     "300K",
     "Season 8"
    ],
-   "pos": 98
+   "pos": 99
   },
   {
    "weapon": "PKM",
@@ -6436,7 +6510,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 28
+   "pos": 29
   },
   {
    "weapon": "PKM",
@@ -6532,7 +6606,7 @@
    "added": null,
    "note": "Close-quarter",
    "tags": [],
-   "pos": 106
+   "pos": 115
   },
   {
    "weapon": "PKM",
@@ -6544,7 +6618,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 25
+   "pos": 34
   },
   {
    "weapon": "PKM",
@@ -6594,7 +6668,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 108
+   "pos": 117
   },
   {
    "weapon": "PSG-1",
@@ -6656,7 +6730,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 109
+   "pos": 118
   },
   {
    "weapon": "PTR-32",
@@ -6668,7 +6742,19 @@
    "added": null,
    "note": "Suppressed",
    "tags": [],
-   "pos": 63
+   "pos": 72
+  },
+  {
+   "weapon": "PTR-32",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "PTR-32 Assault Rifle-Warfare-6KVHKL403QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 10",
+   "tags": [],
+   "pos": 5
   },
   {
    "weapon": "PTR-32",
@@ -6706,7 +6792,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 93
+   "pos": 94
   },
   {
    "weapon": "QBZ95-1",
@@ -6732,7 +6818,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 111
+   "pos": 120
   },
   {
    "weapon": "QBZ95-1",
@@ -6744,7 +6830,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 110
+   "pos": 119
   },
   {
    "weapon": "QBZ95-1",
@@ -6756,7 +6842,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 10
+   "pos": 19
   },
   {
    "weapon": "QBZ95-1",
@@ -6806,7 +6892,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 78
+   "pos": 79
   },
   {
    "weapon": "QCQ171",
@@ -6872,7 +6958,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 112
+   "pos": 121
   },
   {
    "weapon": "QCQ171",
@@ -6884,7 +6970,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 20
+   "pos": 29
   },
   {
    "weapon": "QCQ171",
@@ -6922,7 +7008,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 21
+   "pos": 22
   },
   {
    "weapon": "QJB201",
@@ -6936,7 +7022,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 66
+   "pos": 67
   },
   {
    "weapon": "QJB201",
@@ -6950,7 +7036,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 56
+   "pos": 57
   },
   {
    "weapon": "QJB201",
@@ -6965,7 +7051,7 @@
     "250K",
     "Season 9"
    ],
-   "pos": 51
+   "pos": 52
   },
   {
    "weapon": "QJB201",
@@ -6979,7 +7065,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 33
+   "pos": 34
   },
   {
    "weapon": "QJB201",
@@ -7087,7 +7173,7 @@
    "added": null,
    "note": "AR build",
    "tags": [],
-   "pos": 114
+   "pos": 123
   },
   {
    "weapon": "QJB201",
@@ -7099,7 +7185,7 @@
    "added": null,
    "note": "CQB build",
    "tags": [],
-   "pos": 113
+   "pos": 122
   },
   {
    "weapon": "QJB201",
@@ -7111,7 +7197,19 @@
    "added": null,
    "note": "S8 Laser",
    "tags": [],
-   "pos": 22
+   "pos": 31
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "QJB201 Light Machine Gun-Warfare-6LF3I4C03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Budget Minigun",
+   "tags": [],
+   "pos": 1
   },
   {
    "weapon": "QJB201",
@@ -7149,7 +7247,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 13
+   "pos": 14
   },
   {
    "weapon": "R93",
@@ -7163,7 +7261,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 60
+   "pos": 61
   },
   {
    "weapon": "R93",
@@ -7243,7 +7341,7 @@
    "added": null,
    "note": "Aggressive One Shot",
    "tags": [],
-   "pos": 57
+   "pos": 66
   },
   {
    "weapon": "R93",
@@ -7293,7 +7391,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 40
+   "pos": 41
   },
   {
    "weapon": "RM277",
@@ -7307,7 +7405,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 41
+   "pos": 42
   },
   {
    "weapon": "RM277",
@@ -7380,28 +7478,28 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "RM277-Operations-6KSUNCG04JR8MA4B021SH",
+   "code": "RM277-Operations (Extraction Mode)-6LFPLB804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "",
+   "note": "Budget",
    "tags": [
-    "420K"
+    "300K"
    ],
-   "pos": 0
+   "pos": 4
   },
   {
    "weapon": "RM277",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "RM277-Operations-6KSUNNC04JR8MA4B021SH",
+   "code": "RM277-Operations (Extraction Mode)-6LFPLG004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "Budget",
+   "note": "",
    "tags": [
-    "240K"
+    "450K"
    ],
-   "pos": 4
+   "pos": 0
   },
   {
    "weapon": "RM277",
@@ -7439,7 +7537,7 @@
    "added": null,
    "note": "Heavy - Unsuppressed",
    "tags": [],
-   "pos": 3
+   "pos": 12
   },
   {
    "weapon": "RM277",
@@ -7451,7 +7549,7 @@
    "added": null,
    "note": "Whale Shark - Suppressed",
    "tags": [],
-   "pos": 4
+   "pos": 13
   },
   {
    "weapon": "RM277",
@@ -7501,7 +7599,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 115
+   "pos": 124
   },
   {
    "weapon": "SCAR-H",
@@ -7539,7 +7637,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 94
+   "pos": 95
   },
   {
    "weapon": "SCAR-H",
@@ -7553,7 +7651,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 95
+   "pos": 96
   },
   {
    "weapon": "SCAR-H",
@@ -7649,7 +7747,7 @@
    "added": null,
    "note": "\"No recoil\" build",
    "tags": [],
-   "pos": 117
+   "pos": 126
   },
   {
    "weapon": "SCAR-H",
@@ -7661,7 +7759,7 @@
    "added": null,
    "note": "Jack-of-all-Trades",
    "tags": [],
-   "pos": 116
+   "pos": 125
   },
   {
    "weapon": "SCAR-H",
@@ -7673,7 +7771,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 40
+   "pos": 49
   },
   {
    "weapon": "SCAR-H",
@@ -7737,7 +7835,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 118
+   "pos": 127
   },
   {
    "weapon": "SG552",
@@ -7749,7 +7847,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 24
+   "pos": 33
   },
   {
    "weapon": "SG552",
@@ -7839,7 +7937,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 119
+   "pos": 128
   },
   {
    "weapon": "SKS",
@@ -7851,7 +7949,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 11
+   "pos": 20
   },
   {
    "weapon": "SKS",
@@ -7901,7 +7999,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 119
+   "pos": 120
   },
   {
    "weapon": "SMG-45",
@@ -7969,7 +8067,7 @@
    "added": null,
    "note": "AR Build",
    "tags": [],
-   "pos": 120
+   "pos": 129
   },
   {
    "weapon": "SMG-45",
@@ -7981,7 +8079,19 @@
    "added": null,
    "note": "S8 Hipfire",
    "tags": [],
-   "pos": 19
+   "pos": 28
+  },
+  {
+   "weapon": "SMG-45",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "SMG-45 Submachine Gun-Warfare-6L2488S03QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Season 10",
+   "tags": [],
+   "pos": 4
   },
   {
    "weapon": "SMG-45",
@@ -8031,7 +8141,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 82
+   "pos": 83
   },
   {
    "weapon": "SR-25",
@@ -8099,7 +8209,7 @@
    "added": null,
    "note": "Velocity build",
    "tags": [],
-   "pos": 121
+   "pos": 130
   },
   {
    "weapon": "SR-25",
@@ -8111,7 +8221,7 @@
    "added": null,
    "note": "Close-Range",
    "tags": [],
-   "pos": 56
+   "pos": 65
   },
   {
    "weapon": "SR-25",
@@ -8123,7 +8233,7 @@
    "added": null,
    "note": "S8 Mid-Range Build",
    "tags": [],
-   "pos": 28
+   "pos": 37
   },
   {
    "weapon": "SR-25",
@@ -8173,7 +8283,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 10
+   "pos": 11
   },
   {
    "weapon": "SR-3M",
@@ -8187,7 +8297,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 80
+   "pos": 81
   },
   {
    "weapon": "SR-3M",
@@ -8201,7 +8311,7 @@
    "tags": [
     "Season 9"
    ],
-   "pos": 67
+   "pos": 68
   },
   {
    "weapon": "SR-3M",
@@ -8283,7 +8393,7 @@
    "added": null,
    "note": "Hipfire build",
    "tags": [],
-   "pos": 122
+   "pos": 131
   },
   {
    "weapon": "SR-3M",
@@ -8295,7 +8405,7 @@
    "added": null,
    "note": "S7 100 Accuracy Build",
    "tags": [],
-   "pos": 36
+   "pos": 45
   },
   {
    "weapon": "SR-3M",
@@ -8322,7 +8432,7 @@
     "120K",
     "Season 9"
    ],
-   "pos": 55
+   "pos": 56
   },
   {
    "weapon": "SR9",
@@ -8336,7 +8446,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 26
+   "pos": 27
   },
   {
    "weapon": "SR9",
@@ -8348,7 +8458,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 123
+   "pos": 132
   },
   {
    "weapon": "SR9",
@@ -8452,7 +8562,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 16
+   "pos": 17
   },
   {
    "weapon": "SVCH",
@@ -8466,7 +8576,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 43
+   "pos": 44
   },
   {
    "weapon": "SVCH",
@@ -8480,7 +8590,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 42
+   "pos": 43
   },
   {
    "weapon": "SVCH",
@@ -8530,7 +8640,7 @@
    "added": null,
    "note": "Season 10",
    "tags": [],
-   "pos": 2
+   "pos": 11
   },
   {
    "weapon": "SVCH",
@@ -8592,7 +8702,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 17
+   "pos": 18
   },
   {
    "weapon": "SVD",
@@ -8606,7 +8716,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 35
+   "pos": 36
   },
   {
    "weapon": "SVD",
@@ -8620,7 +8730,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 34
+   "pos": 35
   },
   {
    "weapon": "SVD",
@@ -8686,7 +8796,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 124
+   "pos": 133
   },
   {
    "weapon": "SVD",
@@ -8724,7 +8834,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 6
+   "pos": 7
   },
   {
    "weapon": "Thompson SMG",
@@ -8809,6 +8919,18 @@
    "pos": 44
   },
   {
+   "weapon": "Thompson SMG",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "Thompson SMG-Warfare-6LB2U2003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "Meta build",
+   "tags": [],
+   "pos": 3
+  },
+  {
    "weapon": "UZI",
    "mode": "operations",
    "creator": "deathlapse",
@@ -8858,7 +8980,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 125
+   "pos": 134
   },
   {
    "weapon": "UZI",
@@ -8884,7 +9006,7 @@
    "tags": [
     "Season 11"
    ],
-   "pos": 15
+   "pos": 16
   },
   {
    "weapon": "VSS",
@@ -8898,7 +9020,7 @@
    "tags": [
     "Season 10"
    ],
-   "pos": 22
+   "pos": 23
   },
   {
    "weapon": "VSS",
@@ -8950,7 +9072,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 128
+   "pos": 137
   },
   {
    "weapon": "VSS",
@@ -8962,7 +9084,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 12
+   "pos": 21
   },
   {
    "weapon": "VSS",
@@ -9000,7 +9122,7 @@
    "tags": [
     "Season 8"
    ],
-   "pos": 79
+   "pos": 80
   },
   {
    "weapon": "Vector",
@@ -9120,7 +9242,7 @@
    "added": null,
    "note": "Bullet hose",
    "tags": [],
-   "pos": 126
+   "pos": 135
   },
   {
    "weapon": "Vector",
@@ -9132,7 +9254,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 64
+   "pos": 73
   },
   {
    "weapon": "Vector",
@@ -9144,7 +9266,7 @@
    "added": null,
    "note": "New Hipfire",
    "tags": [],
-   "pos": 49
+   "pos": 58
   },
   {
    "weapon": "Vector",
@@ -9182,7 +9304,7 @@
    "added": null,
    "note": "Laserbeam Build",
    "tags": [],
-   "pos": 127
+   "pos": 136
   },
   {
    "weapon": "Vityaz",
@@ -9194,7 +9316,7 @@
    "added": null,
    "note": "Hipfire Build",
    "tags": [],
-   "pos": 53
+   "pos": 62
   },
   {
    "weapon": "Vityaz",
