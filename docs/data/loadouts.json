@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-02",
+ "updated": "2026-10-03",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -163,7 +163,7 @@
    "tags": [
     "~50K"
    ],
-   "pos": 76
+   "pos": 77
   },
   {
    "weapon": ".357",
@@ -177,7 +177,7 @@
    "tags": [
     "~300K"
    ],
-   "pos": 75
+   "pos": 76
   },
   {
    "weapon": ".357",
@@ -191,7 +191,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 77
+   "pos": 78
   },
   {
    "weapon": ".357",
@@ -231,7 +231,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 78
+   "pos": 79
   },
   {
    "weapon": "725 Double-Barrel",
@@ -245,7 +245,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 79
+   "pos": 80
   },
   {
    "weapon": "725 Double-Barrel",
@@ -295,7 +295,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 72
+   "pos": 73
   },
   {
    "weapon": "93R",
@@ -309,7 +309,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 70
+   "pos": 71
   },
   {
    "weapon": "93R",
@@ -323,7 +323,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 71
+   "pos": 72
   },
   {
    "weapon": "93R",
@@ -1752,7 +1752,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 86
+   "pos": 87
   },
   {
    "weapon": "AWM",
@@ -1766,7 +1766,7 @@
    "tags": [
     "~800K"
    ],
-   "pos": 87
+   "pos": 88
   },
   {
    "weapon": "AWM",
@@ -2376,7 +2376,7 @@
    "tags": [
     "~50K"
    ],
-   "pos": 81
+   "pos": 82
   },
   {
    "weapon": "FS-12",
@@ -2390,7 +2390,7 @@
    "tags": [
     "~400K"
    ],
-   "pos": 80
+   "pos": 81
   },
   {
    "weapon": "FS-12",
@@ -2404,7 +2404,7 @@
    "tags": [
     "~450K"
    ],
-   "pos": 83
+   "pos": 84
   },
   {
    "weapon": "FS-12",
@@ -2418,7 +2418,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 82
+   "pos": 83
   },
   {
    "weapon": "FS-12",
@@ -2456,7 +2456,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 73
+   "pos": 74
   },
   {
    "weapon": "G18",
@@ -2468,7 +2468,7 @@
    "added": null,
    "note": "Expensive",
    "tags": [],
-   "pos": 74
+   "pos": 75
   },
   {
    "weapon": "G18",
@@ -3470,7 +3470,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 68
+   "pos": 69
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3484,7 +3484,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 67
+   "pos": 68
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3498,7 +3498,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 69
+   "pos": 70
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3562,7 +3562,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 84
+   "pos": 85
   },
   {
    "weapon": "M1014",
@@ -4842,7 +4842,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 89
+   "pos": 90
   },
   {
    "weapon": "M700",
@@ -4856,7 +4856,7 @@
    "tags": [
     "~400K"
    ],
-   "pos": 90
+   "pos": 91
   },
   {
    "weapon": "M700",
@@ -4870,7 +4870,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 88
+   "pos": 89
   },
   {
    "weapon": "M700",
@@ -4889,7 +4889,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "M700 Sniper Rifle-Operations-6KNJ34404JR8MA4B021SH",
+   "code": "M700 Sniper Rifle-Operations (Extraction Mode)-6LFVGD804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -4950,7 +4950,7 @@
    "tags": [
     "~1.1M"
    ],
-   "pos": 95
+   "pos": 96
   },
   {
    "weapon": "M82",
@@ -5416,7 +5416,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 97
+   "pos": 98
   },
   {
    "weapon": "MK4",
@@ -5430,7 +5430,7 @@
    "tags": [
     "~550K"
    ],
-   "pos": 96
+   "pos": 97
   },
   {
    "weapon": "MK4",
@@ -5864,7 +5864,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 98
+   "pos": 99
   },
   {
    "weapon": "MP5",
@@ -6038,7 +6038,7 @@
    "tags": [
     "~450K"
    ],
-   "pos": 99
+   "pos": 100
   },
   {
    "weapon": "MP7",
@@ -6052,7 +6052,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 100
+   "pos": 101
   },
   {
    "weapon": "MP7",
@@ -6324,7 +6324,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 101
+   "pos": 102
   },
   {
    "weapon": "P90",
@@ -6338,7 +6338,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 102
+   "pos": 103
   },
   {
    "weapon": "P90",
@@ -6647,6 +6647,20 @@
   {
    "weapon": "PSG-1",
    "mode": "operations",
+   "creator": "medow",
+   "source": "medow",
+   "code": "PSG-1 Marksman Rifle-Operations (Extraction Mode)-6LG13V003BCACMSNL14PK",
+   "url": "https://medowmafia.com/pages/gun-builds",
+   "added": null,
+   "note": "Budget",
+   "tags": [
+    "~300K"
+   ],
+   "pos": 65
+  },
+  {
+   "weapon": "PSG-1",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
    "code": "6JQOURO06F3769TRGAG41",
@@ -6906,7 +6920,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 103
+   "pos": 104
   },
   {
    "weapon": "QCQ171",
@@ -7275,7 +7289,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 92
+   "pos": 93
   },
   {
    "weapon": "R93",
@@ -7289,7 +7303,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 91
+   "pos": 92
   },
   {
    "weapon": "R93",
@@ -7587,7 +7601,7 @@
    "tags": [
     "~600K"
    ],
-   "pos": 85
+   "pos": 86
   },
   {
    "weapon": "S12K",
@@ -8013,7 +8027,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 104
+   "pos": 105
   },
   {
    "weapon": "SMG-45",
@@ -8027,7 +8041,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 105
+   "pos": 106
   },
   {
    "weapon": "SMG-45",
@@ -8325,7 +8339,7 @@
    "tags": [
     "~50K"
    ],
-   "pos": 106
+   "pos": 107
   },
   {
    "weapon": "SR-3M",
@@ -8496,7 +8510,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 93
+   "pos": 94
   },
   {
    "weapon": "SV-98",
@@ -8510,7 +8524,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 94
+   "pos": 95
   },
   {
    "weapon": "SV-98",
@@ -8848,7 +8862,7 @@
    "tags": [
     "~300K"
    ],
-   "pos": 107
+   "pos": 108
   },
   {
    "weapon": "Thompson SMG",
@@ -8954,7 +8968,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 108
+   "pos": 109
   },
   {
    "weapon": "UZI",
@@ -9034,7 +9048,7 @@
    "tags": [
     "~450K"
    ],
-   "pos": 65
+   "pos": 66
   },
   {
    "weapon": "VSS",
@@ -9048,7 +9062,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 66
+   "pos": 67
   },
   {
    "weapon": "VSS",
@@ -9136,7 +9150,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 109
+   "pos": 110
   },
   {
    "weapon": "Vector",
@@ -9150,7 +9164,7 @@
    "tags": [
     "~700K"
    ],
-   "pos": 110
+   "pos": 111
   },
   {
    "weapon": "Vector",
@@ -9164,7 +9178,7 @@
    "tags": [
     "~600K"
    ],
-   "pos": 111
+   "pos": 112
   },
   {
    "weapon": "Vector",
