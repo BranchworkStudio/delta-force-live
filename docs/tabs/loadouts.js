@@ -73,9 +73,12 @@
       return v;
     } catch (e) { return null; }
   }
+  // A flag on the code row, beside Copy: it is the code that is being reported, not the page it
+  // came from, so it sits with the code and not in the footer next to the creator's link.
+  const FLAG = `<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3.5 14.5V2M3.5 2.5h8.2l-1.8 3 1.8 3H3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
   const flagHtml = (code, e) => reported.has(code)
-    ? `<span class="lflag done" data-tip="You reported this one. Thanks.">Reported</span>`
-    : `<button type="button" class="lflag" data-report="${e(code)}" data-tip="Code not working? Tell us.">Report</button>`;
+    ? `<span class="lflag done" data-tip="You reported this code. Thanks." aria-label="Reported">${FLAG}</span>`
+    : `<button type="button" class="lflag${rep && rep.code === code && !rep.done ? " on" : ""}" data-report="${e(code)}" data-tip="Code not working? Report it." aria-label="Report this code">${FLAG}</button>`;
   function repHtml(code, e) {
     if (!rep || rep.code !== code) return "";
     if (rep.done) return `<div class="lrep done">Thanks. We'll take a look at it.</div>`;
@@ -96,7 +99,11 @@
     if (!w) return;
     w.innerHTML = repHtml(code, h.esc);
     const f = w.parentNode.querySelector(".lflag");
-    if (f && reported.has(code) && f.tagName === "BUTTON") f.outerHTML = flagHtml(code, h.esc);
+    if (f) {
+      f.outerHTML = flagHtml(code, h.esc);
+      const nf = w.parentNode.querySelector("[data-report]");
+      if (nf) nf.onclick = () => toggleRep(code, h);
+    }
     w.querySelectorAll("[data-rr]").forEach(b => b.onclick = () => { rep.reason = b.dataset.rr; rep.err = null; drawRep(code, h, true); });
     const n = w.querySelector(".lrepn");
     if (n) {
@@ -109,13 +116,14 @@
     const s = w.querySelector("[data-rs]");
     if (s) s.onclick = () => sendRep(h);
   }
+  function toggleRep(code, h) {
+    const was = rep && rep.code;
+    rep = was === code ? null : { code, reason: null, note: "" };
+    if (was && was !== code) drawRep(was, h);
+    drawRep(code, h);
+  }
   function bindReports(root, h) {
-    root.querySelectorAll("[data-report]").forEach(n => n.onclick = () => {
-      const code = n.dataset.report, was = rep && rep.code;
-      rep = was === code ? null : { code, reason: null, note: "" };
-      if (was && was !== code) drawRep(was, h);
-      drawRep(code, h);
-    });
+    root.querySelectorAll("[data-report]").forEach(n => n.onclick = () => toggleRep(n.dataset.report, h));
     if (rep) drawRep(rep.code, h);
   }
   async function sendRep(h) {
@@ -597,15 +605,15 @@
       <div class="lcode">
         <code data-tip="${e(b.code)}">${e(b.code)}</code>
         <button type="button" class="lcopy" data-code="${e(b.code)}">Copy</button>
+        ${flagHtml(b.code, e)}
       </div>
+      <div class="lrepw" data-for="${e(b.code)}">${repHtml(b.code, e)}</div>
       <div class="lfoot">
         <span class="lnets">${links.length
           ? links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")
           : `<span class="lnone">no channels listed</span>`}</span>
         <a class="lsrclink" href="${e(b.url || s.url)}" target="_blank" rel="noopener noreferrer">${e(s.name)} &rarr;</a>
-        ${flagHtml(b.code, e)}
       </div>
-      <div class="lrepw" data-for="${e(b.code)}">${repHtml(b.code, e)}</div>
     </article>`;
   }
 
@@ -775,7 +783,7 @@
            font: 700 11px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap; align-self: stretch; }
   .lcopy:hover { background: #6ff0b8; }
   .lcopy.ok { background: var(--tick); color: var(--text); }
-  .lfoot { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: baseline; gap: 10px; margin-top: 9px; }
+  .lfoot { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; margin-top: 9px; }
   .lnets { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .lnet { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
           margin-right: 9px; border-bottom: 1px solid var(--tick); white-space: nowrap; }
@@ -785,11 +793,11 @@
   .lsrclink { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--text-2);
               white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
   .lsrclink:hover { color: var(--green); }
-  /* Reporting a build: a quiet word in the footer, and a small form under it only when asked for. */
-  .lflag { background: none; border: 0; padding: 0; cursor: pointer; font: 600 10px var(--hud); letter-spacing: 1px;
-           text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-  .lflag:hover { color: var(--amber); }
-  .lflag.done { cursor: default; color: var(--tick); }
+  /* Reporting a code: a small flag after Copy, and a form under the code row only when asked for. */
+  .lflag { flex: none; width: 34px; display: grid; place-items: center; padding: 0; cursor: pointer;
+           background: none; border: 1px solid var(--hair); color: var(--muted); }
+  .lflag:hover, .lflag.on { border-color: var(--amber); color: var(--amber); }
+  .lflag.done { cursor: default; color: var(--tick); border-color: var(--hair-2); }
   .lrep { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--hair); display: grid; gap: 8px; }
   .lrep.done { font-size: 12px; color: var(--text-2); }
   .lreph { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }

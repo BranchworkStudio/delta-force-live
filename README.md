@@ -463,8 +463,9 @@ If a platform changes its page and badges stop appearing, POST
 `{ "secret": <poll_secret>, "probe": "<channel link>" }` to the function: it checks that one
 link, stores nothing, and returns what it parsed and what the fetched page looked like.
 
-**Reporting a build.** Every card has a quiet **Report** in its footer. It opens a small form under
-the card: won't import, outdated or something else, plus an optional note. The `report` edge
+**Reporting a build.** Every card has a small flag beside **Copy**, on the code row, because it is
+the code being reported and not the creator's page in the footer. It opens a small form under the
+code: won't import, outdated or something else, plus an optional note. The `report` edge
 function (`supabase/functions/report`, migration `0032`) is the only way in, because the
 publishable key still writes nothing. It accepts a code only if it is on `data/loadouts.json`,
 takes creator, weapon and mode from that list rather than from the request, and counts one
