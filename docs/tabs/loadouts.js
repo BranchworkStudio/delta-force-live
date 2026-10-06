@@ -58,7 +58,13 @@
     const m = since ? Math.floor((Date.now() - Date.parse(since)) / 60000) : NaN;
     return !(m >= 0) ? "" : m < 60 ? `${m}m` : `${Math.floor(m / 60)}h ${String(m % 60).padStart(2, "0")}m`;
   };
-  const liveTip = (s, name) => `${name} is live on ${PLATFORM[s.platform] || s.platform}${onFor(s.since) ? " · " + onFor(s.since) : ""}${s.title ? "<br>" + s.title : ""}`;
+  // A creator's channel link. The one they are live on right now opens the stream instead of the
+  // channel and carries a small red dot; that and the ring on their face are the whole signal.
+  const chanHtml = (u, on, name, cls, e) => {
+    const live = on && on.platform === (/twitch\.tv\//i.test(u) ? "twitch" : /youtube\.com\//i.test(u) ? "youtube" : "");
+    return `<a class="${cls}${live ? " lchon" : ""}" href="${e(live ? on.url : u)}" target="_blank" rel="noopener noreferrer"${live
+      ? ` title="${e(name)} is live${onFor(on.since) ? " · " + e(onFor(on.since)) : ""}${on.title ? " — " + e(on.title) : ""}"` : ""}>${e(netName(u))}</a>`;
+  };
 
   // The address's name for each filter. Values are plain lower-case words — a creator's key, a
   // weapon's short name squeezed to letters and digits, a class — so a link is readable before it
@@ -371,12 +377,9 @@
         <div class="eyebrow"><i></i><span>Creator · Delta Force builds</span></div>
         <h1 class="lp-name" style="--len:${String(c.name).length}">${e(c.name)}</h1>
         <div class="lp-facts"><span><b>${theirs.length}</b> ${theirs.length === 1 ? "build" : "builds"}</span><s>/</s><span><b>${guns.size}</b> of ${GUNS.length || "?"} weapons</span><s>/</s><span>updated <b>${DB.updated ? e(shortDate(DB.updated)) : "–"}</b></span></div>
-        ${on ? `<a class="lp-live" href="${e(on.url)}" target="_blank" rel="noopener noreferrer">
-          <span class="llive">Live</span><span class="lp-lon">on ${e(PLATFORM[on.platform] || on.platform)}${onFor(on.since) ? ` · ${e(onFor(on.since))}` : ""}</span>${on.title ? `<span class="lp-lt">${e(on.title)}</span>` : ""}<span class="lp-lgo">Watch &nearr;</span>
-        </a>` : ""}
         <div class="lp-acts">
           ${c.url ? `<a class="pri" href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(src)} &rarr;</a>` : ""}
-          ${(c.links || []).map(u => `<a href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}
+          ${(c.links || []).map(u => chanHtml(u, on, c.name, "", e)).join("")}
         </div>
       </div>
       ${classes.length > 1 ? `<div class="lp-spread">
@@ -421,12 +424,11 @@
         ${c.page ? `<a class="lcava" href="${e(c.page)}" aria-hidden="true" tabindex="-1">${face}</a>` : face}
         <div class="lwmeta">
           <div class="lname">${c.page ? `<a href="${e(c.page)}">${e(c.name)}</a>` : e(c.name)}</div>
-          ${on ? `<a class="lclive" href="${e(on.url)}" target="_blank" rel="noopener noreferrer"><span class="llive">Live</span> on ${e(PLATFORM[on.platform] || on.platform)}${on.title ? ` · <i>${e(on.title)}</i>` : ""} &nearr;</a>` : ""}
           <div class="lsub">${list.length} ${list.length === 1 ? "build" : "builds"} · ${ws.length} ${ws.length === 1 ? "weapon" : "weapons"}</div>
           ${c.page || c.url || links.length ? `<div class="lclinks">
             ${c.page ? `<a class="lpage" href="${e(c.page)}">Creator page &rarr;</a>` : ""}
             ${c.url ? `<a class="lsrc" href="${e(c.url)}" target="_blank" rel="noopener noreferrer">Their builds page &nearr;</a>` : ""}
-            ${links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}
+            ${links.map(u => chanHtml(u, on, c.name, "lnet", e)).join("")}
           </div>` : ""}
         </div>
       </div>
@@ -516,12 +518,11 @@
       ...(b.tags || []).map(t => e(t)),
       a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>` : "",
     ].filter(Boolean);
-    const on = liveOf(b.creator);
     return `<article class="lbuild">
-      <div class="lbh${on ? " onair" : ""}">
+      <div class="lbh">
         ${c.avatar ? `<img class="lav" src="${e(c.avatar)}" alt="" loading="lazy" width="30" height="30">`
           : `<span class="lav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
-        <div class="lby">${PIN === b.creator ? e(c.name) : `<a href="${e(homeOf(b.creator))}">${e(c.name)}</a>`}${on ? ` <a class="llive" href="${e(on.url)}" target="_blank" rel="noopener noreferrer" data-tip="${e(liveTip(on, c.name))}">Live</a>` : ""}</div>
+        <div class="lby">${PIN === b.creator ? e(c.name) : `<a href="${e(homeOf(b.creator))}">${e(c.name)}</a>`}</div>
         ${multimode ? `<span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>` : ""}
       </div>
       <div class="lmeta">${meta.join('<span class="ldot">·</span>')}</div>
@@ -666,19 +667,14 @@
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
   .lname a { color: var(--text); text-decoration: none; }
   .lname a:hover { color: var(--green); }
-  /* live: the one red on the page, kept to a chip and a ring */
+  /* live: a red ring on the face, a dot on the channel that is on air, and one strip on loadouts/ */
   .llive { display: inline-flex; align-items: center; gap: 5px; font: 700 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase;
-           color: #fff; background: var(--red, #e0463f); padding: 2px 6px 2px 5px; vertical-align: 2px; white-space: nowrap; }
-  .llive::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: llive 1.6s ease-in-out infinite; }
-  @keyframes llive { 50% { opacity: .35; } }
-  @media (prefers-reduced-motion: reduce) { .llive::before { animation: none; } }
-  a.llive, a.llive:hover { color: #fff; border: 0; }
-  .lby a.llive { margin-left: 6px; }
-  .onair .lav, .onair .lcav { box-shadow: 0 0 0 2px var(--red, #e0463f); }
-  .lclive { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px; margin-top: 6px; font: 600 12px var(--hud);
-            letter-spacing: .6px; color: var(--text-2); max-width: 100%; }
-  .lclive i { font-style: normal; color: var(--text); overflow-wrap: anywhere; }
-  .lclive:hover, .lclive:hover i { color: var(--red, #e0463f); }
+           color: #fff; background: var(--red, #e0463f); padding: 2px 6px 2px 5px; white-space: nowrap; }
+  .llive::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+  a.lchon::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--red, #e0463f);
+                    margin-right: 6px; vertical-align: 1px; }
+  .lchead .lclinks a.lchon { color: var(--text); }
+  .onair .lcav { box-shadow: 0 0 0 2px var(--red, #e0463f); }
   .lonair { display: grid; gap: 1px; margin: 0 0 22px; background: var(--div); border: 1px solid var(--div); }
   .lonrow { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 12px; padding: 10px 14px; background: var(--panel, #0f1518); }
   .lonwho { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font: 700 14px var(--body); }

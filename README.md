@@ -436,11 +436,12 @@ part of the site (`loadouts`, `data`, `connect`, … see `RESERVED`) gets no pag
 links to `loadouts/?creator=`. **After editing `docs/loadouts/index.html`, run
 `python3 tools/loadouts/pages.py`** so the creator pages pick up the change.
 
-**Live now.** When a creator is streaming, the site says so: a red ring and a LIVE tag on their
-face, a "Live on Twitch · 2h 14m" line with the stream title on their page and in the filtered
-header, a LIVE chip beside their name on every card, "· LIVE" in the creator picker, and on
-`loadouts/` with every creator showing, a strip at the top listing who is on. Everything red
-opens the stream; the name still goes to their page here.
+**Live now.** When a creator is streaming, the site says so quietly: a red ring and a LIVE tag
+on their face on their page (the face opens the stream), a red ring in the filtered header, a red
+dot on the channel button they are live on (which then opens the stream, with the title on
+hover), "· LIVE" in the creator picker, and on `loadouts/` with every creator showing, one strip
+at the top listing who is on. Cards carry nothing: on a creator's own page it would repeat on
+every one of them.
 
 The `live` edge function (`supabase/functions/live`, migrations `0029`–`0030`) does the
 checking, and only when a page asks: the page calls its GET once on load, and nothing runs on a

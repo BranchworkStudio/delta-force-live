@@ -33,18 +33,12 @@
   .lp-av { width: 148px; height: 148px; border-radius: 50%; object-fit: cover; display: block; background: var(--hair-2);
            box-shadow: 0 0 0 1px var(--div), 0 0 0 6px var(--ground), 0 0 0 7px var(--green); }
   .lp-av.none { display: grid; place-items: center; font: 700 56px var(--hud); color: var(--text-2); }
-  /* On air: the ring goes red, a LIVE tag sits on it like the stream sites do, and the face and a
-     line under the name both open the stream. */
+  /* On air: the ring goes red and a LIVE tag sits on it, like the stream sites do; the face opens
+     the stream. */
   .lp-face { position: relative; display: block; border-radius: 50%; }
   .lp-face.onair .lp-av { box-shadow: 0 0 0 1px var(--div), 0 0 0 6px var(--ground), 0 0 0 8px var(--red); }
   .lp-face .llive { position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); font-size: 11px; padding: 3px 8px 3px 7px;
                     box-shadow: 0 0 0 3px var(--ground); }
-  .lp-live { display: flex; align-items: center; gap: 10px; margin-top: 16px; max-width: 640px; padding: 8px 12px 8px 8px;
-             border: 1px solid color-mix(in srgb, var(--red) 45%, var(--div)); background: color-mix(in srgb, var(--red) 8%, transparent); }
-  .lp-lon { font: 700 12px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-2); white-space: nowrap; }
-  .lp-lt { font: 500 14px var(--body); color: var(--text); min-width: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .lp-lgo { margin-left: auto; font: 700 11px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; color: var(--red); white-space: nowrap; }
-  .lp-live:hover .lp-lt { color: var(--red); }
   .lp-id { container-type: inline-size; min-width: 0; }
   .lp-name { font: 700 112px/.92 var(--hud); font-size: min(112px, calc(100cqi / (var(--len, 8) * .64))); letter-spacing: -1px;
              text-transform: uppercase; white-space: nowrap; margin: 12px 0 0; }
@@ -68,7 +62,7 @@
     .lp-spread { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--div); padding-top: 16px; }
   }
   @media (max-width: 560px) { .lp { grid-template-columns: 1fr; gap: 18px; margin-top: 24px; } .lp-av { width: 96px; height: 96px; } }
-  @media (max-width: 560px) { .lp-face { justify-self: start; } .lp-live { flex-wrap: wrap; } .lp-lt { flex-basis: 100%; order: 3; white-space: normal; } }
+  @media (max-width: 560px) { .lp-face { justify-self: start; } }
 
   /* ---- hero ---- */
   /* Not overflow: hidden. Nothing inside this header sticks out of it — the dot pattern below is
