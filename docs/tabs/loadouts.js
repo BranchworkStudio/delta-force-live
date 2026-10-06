@@ -38,26 +38,19 @@
   const FRESH = () => ({ sel: null, mode: "all", cls: "all", creator: PIN || "all", q: "" });
   let DB = null, state = FRESH(), phase = "idle";
 
-  // Who is streaming right now. The `live` function (supabase/functions/live) checks every creator's
-  // Twitch and YouTube every three minutes; this asks it again as often, while the page is in view,
-  // and repaints only when the answer changed. Nothing here is remembered: live is only ever now.
+  // Who is streaming right now, asked once when the page loads. The `live` function
+  // (supabase/functions/live) checks every creator's Twitch and YouTube when asked; nothing runs on
+  // a timer and nothing here is remembered, so a reload is how the badges catch up.
   const LIVE_URL = ((window.DF_CONFIG && window.DF_CONFIG.SUPABASE_URL) || "https://faaskhwycywnwpdjcvgp.supabase.co") + "/functions/v1/live";
   const PLATFORM = { twitch: "Twitch", youtube: "YouTube" };
-  let LIVE = {}, liveSeen = "{}", liveTimer = null;
+  let LIVE = {}, liveAsked = false;
   function watchLive(h) {
-    if (liveTimer) return;
-    const ask = (always) => {
-      if (document.hidden && !always) return;
-      fetch(LIVE_URL).then(r => r.ok ? r.json() : null).then(d => {
-        const next = JSON.stringify((d && d.live) || {});
-        if (next === liveSeen) return;
-        liveSeen = next; LIVE = JSON.parse(next);
-        if (DB) h.repaint();
-      }).catch(() => { /* no badge is the honest fallback */ });
-    };
-    liveTimer = setInterval(ask, 180000);
-    document.addEventListener("visibilitychange", () => { if (!document.hidden) ask(); });
-    ask(true);
+    if (liveAsked) return;
+    liveAsked = true;
+    fetch(LIVE_URL).then(r => r.ok ? r.json() : null).then(d => {
+      LIVE = (d && d.live) || {};
+      if (DB && Object.keys(LIVE).length) h.repaint();
+    }).catch(() => { /* no badge is the honest fallback */ });
   }
   const liveOf = (k) => (LIVE[k] && LIVE[k][0]) || null;
   // "for 2h 14m", from when the stream started; YouTube's Streams tab does not say, so nothing.

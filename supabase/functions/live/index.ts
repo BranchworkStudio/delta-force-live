@@ -1,7 +1,7 @@
 // Delta Force Live: which loadout creators are streaming right now.
-//   POST { secret } -> pg_cron, every 3 minutes: check every creator's Twitch and YouTube, store it
+//   GET                    -> the site, once per page load: who is live. Checked there and then,
+//                             unless the last check is under two minutes old (then that is the answer)
 //   POST { secret, probe } -> check one channel link and store nothing
-//   GET             -> the site: the last check, cached for a minute
 // The creator list is the site's own loadouts.json, so a creator added there is checked here with
 // nothing to change. No Twitch or YouTube keys: both put a live marker in the channel page itself
 // (Twitch's JSON-LD says isLiveBroadcast, YouTube's Streams tab badges the stream that is LIVE), which is all this
@@ -10,8 +10,9 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 const CREATORS_URL = "https://thesitrep.gg/data/loadouts.json";
-// A check older than this is not shown at all: a cron that stopped must not leave someone "live".
-const STALE_MS = 15 * 60 * 1000;
+// Nothing runs on a timer: a page load asks, and the check happens then. The one stored row is only a
+// cache, so a burst of visitors costs Twitch and YouTube one round of page fetches, not one each.
+const FRESH_MS = 2 * 60 * 1000;
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128 Safari/537.36";
 
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type", "Access-Control-Allow-Methods": "GET, POST, OPTIONS" };
@@ -95,8 +96,17 @@ Deno.serve(async (req) => {
 
   if (req.method === "GET") {
     const { data } = await supabase.from("creator_live").select("live, checked_at").eq("id", 1).maybeSingle();
-    const fresh = data?.checked_at && Date.now() - new Date(data.checked_at).getTime() < STALE_MS;
-    return json({ checked_at: data?.checked_at || null, live: fresh ? data!.live : {} }, 200, { "Cache-Control": "public, max-age=60" });
+    const age = data?.checked_at ? Date.now() - new Date(data.checked_at).getTime() : Infinity;
+    if (age < FRESH_MS) return json({ checked_at: data!.checked_at, live: data!.live }, 200, { "Cache-Control": "public, max-age=60" });
+    try {
+      const { live } = await check();
+      const checked_at = new Date().toISOString();
+      await supabase.from("creator_live").upsert({ id: 1, live, checked_at });
+      return json({ checked_at, live }, 200, { "Cache-Control": "public, max-age=60" });
+    } catch {
+      // A failed check shows nobody live rather than an old answer.
+      return json({ checked_at: null, live: {} });
+    }
   }
 
   let body: any = null;
@@ -112,13 +122,5 @@ Deno.serve(async (req) => {
     const result = /twitch\.tv\//i.test(u) ? await twitch(u) : /youtube\.com\//i.test(u) ? await youtube(u) : null;
     return json({ probe: u, result, fetched: last });
   }
-
-  try {
-    const { live, checked } = await check();
-    const { error } = await supabase.from("creator_live").upsert({ id: 1, live, checked_at: new Date().toISOString() });
-    if (error) throw error;
-    return json({ checked, live: Object.keys(live) });
-  } catch (e) {
-    return json({ error: String((e as Error)?.message || e) }, 500);
-  }
+  return json({ error: "nothing to do" }, 400);
 });

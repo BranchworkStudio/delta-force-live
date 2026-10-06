@@ -442,18 +442,18 @@ header, a LIVE chip beside their name on every card, "· LIVE" in the creator pi
 `loadouts/` with every creator showing, a strip at the top listing who is on. Everything red
 opens the stream; the name still goes to their page here.
 
-The `live` edge function (`supabase/functions/live`, migration `0029`) does the checking. pg_cron
-POSTs to it every three minutes with the poller's secret; it reads the creator list from the
-site's own `data/loadouts.json` and checks each creator's first Twitch and first YouTube link
+The `live` edge function (`supabase/functions/live`, migrations `0029`–`0030`) does the
+checking, and only when a page asks: the page calls its GET once on load, and nothing runs on a
+timer. It reads the creator list from the site's own `data/loadouts.json` and checks each creator's first Twitch and first YouTube link
 from `links`, so a new creator is covered with nothing to add. No Twitch or YouTube keys: a
 Twitch channel page carries `isLiveBroadcast` in its JSON-LD (with the title and start time),
 and a YouTube channel's **Streams** tab badges the stream that is on air
 `THUMBNAIL_OVERLAY_BADGE_STYLE_LIVE`, with the title from oEmbed. (The channel's `/live` page
 says `isLiveNow` too, but YouTube strips it for a datacenter address; the Streams tab is not
-gated.) The result is one row in `creator_live`, which has no grant — the publishable key still
-reads nothing — and the site gets it from the function's GET, cached a minute and empty once
-the last check is over 15 minutes old, so a stopped cron never leaves anyone "live". The page
-asks once on load and again every three minutes while it is in view.
+gated.) The answer is kept in one row of `creator_live` (no history, and no grant — the publishable key
+still reads nothing) for two minutes, so a burst of visitors costs Twitch and YouTube one round
+of page fetches rather than one each; past that, the next page load checks again. A check that
+fails shows nobody live. A page that stays open keeps the badges it loaded with until reloaded.
 
 If a platform changes its page and badges stop appearing, POST
 `{ "secret": <poll_secret>, "probe": "<channel link>" }` to the function: it checks that one
