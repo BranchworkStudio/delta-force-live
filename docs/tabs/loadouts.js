@@ -370,14 +370,18 @@
     const links = c.links || [];
     // On their own page the profile above has already said all of this.
     if (PIN) return groupsHtml(ws, h);
+    // Filtered to one creator on loadouts/, this header is the way to their own page: the face,
+    // the name and a button all go there. Their builds page, off this site, keeps its own link.
+    const face = c.avatar ? `<img class="lcav" src="${e(c.avatar)}" alt="" width="84" height="84">`
+      : `<span class="lcav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`;
     return `<div class="lhead lchead">
-        ${c.avatar ? `<img class="lcav" src="${e(c.avatar)}" alt="" width="84" height="84">`
-          : `<span class="lcav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
+        ${c.page ? `<a class="lcava" href="${e(c.page)}" aria-hidden="true" tabindex="-1">${face}</a>` : face}
         <div class="lwmeta">
-          <div class="lname">${PIN || !c.page ? e(c.name) : `<a href="${e(c.page)}">${e(c.name)}</a>`}</div>
+          <div class="lname">${c.page ? `<a href="${e(c.page)}">${e(c.name)}</a>` : e(c.name)}</div>
           <div class="lsub">${list.length} ${list.length === 1 ? "build" : "builds"} · ${ws.length} ${ws.length === 1 ? "weapon" : "weapons"}</div>
-          ${c.url || links.length ? `<div class="lclinks">
-            ${c.url ? `<a href="${e(c.url)}" target="_blank" rel="noopener noreferrer">Their builds page &rarr;</a>` : ""}
+          ${c.page || c.url || links.length ? `<div class="lclinks">
+            ${c.page ? `<a class="lpage" href="${e(c.page)}">Creator page &rarr;</a>` : ""}
+            ${c.url ? `<a class="lsrc" href="${e(c.url)}" target="_blank" rel="noopener noreferrer">Their builds page &nearr;</a>` : ""}
             ${links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}
           </div>` : ""}
         </div>
@@ -571,7 +575,12 @@
   .lcav { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; background: var(--hair-2); border: 1px solid var(--hair); display: block; }
   .lcav.none { display: grid; place-items: center; font: 700 34px var(--hud); color: var(--text-2); }
   .lclinks { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 10px; }
-  .lclinks > a:first-child:not(.lnet) { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--green); }
+  .lclinks .lsrc { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--green); }
+  .lclinks .lpage { font: 700 11px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 11px;
+                    background: var(--green); color: var(--on-green); }
+  .lclinks .lpage:hover { color: var(--on-green); filter: brightness(1.1); }
+  .lcava { display: block; border-radius: 50%; }
+  .lcava:hover .lcav { box-shadow: 0 0 0 2px var(--green); }
   .lclinks .lnet { margin-right: 0; }
   .lgroup { margin-top: 26px; }
   .lo-main > .lgroup:first-child { margin-top: 0; }
@@ -615,6 +624,8 @@
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
   .lname a { color: var(--text); text-decoration: none; }
   .lname a:hover { color: var(--green); }
+  .lchead .lname a::after { content: " →"; font-size: .55em; color: var(--muted); vertical-align: middle; }
+  .lchead .lname a:hover::after { color: var(--green); }
   .lall { display: block; margin-top: 12px; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2);
          font: 600 13px var(--body); text-decoration: none; padding: 8px 10px; }
   .lall:hover { color: var(--green); border-color: var(--tick); }
