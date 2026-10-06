@@ -36,6 +36,10 @@
       pipe = {
         meta, updated: file && file.updated, builds: file && (file.builds || []).length,
         names: Object.fromEntries(Object.entries((file && file.creators) || {}).map(([k, c]) => [k, c.name || k])),
+        // Reported builds are matched back to the list: where the creator published it, and
+        // whether it is still on the list at all (a build the morning run dropped needs nothing).
+        byCode: new Map(((file && file.builds) || []).map(b => [b.code, b])),
+        sources: (file && file.sources) || {},
       };
       pipePhase = "ready";
       h.repaint();
@@ -222,6 +226,39 @@
     </section>`;
   }
 
+  /* Reported builds. A visitor on loadouts/ said a code did not work (supabase/functions/report).
+     One row per build, the reasons counted, the latest few notes; "Dealt with" closes what is
+     open against it, and a later report opens it again. */
+  function reportedBuilds(reports, h) {
+    const e = h.esc;
+    const why = (r) => [[r.wont_import, "won't import"], [r.outdated, "outdated"], [r.other, "something else"]]
+      .filter(x => x[0]).map(x => `${x[0]} ${x[1]}`).join(" · ");
+    const row = (r) => {
+      const b = pipePhase === "ready" ? pipe.byCode.get(r.code) : null;
+      const gone = pipePhase === "ready" && !b;
+      const src = b && (b.url || (pipe.sources[b.source] || {}).url);
+      const who = (pipe && pipe.names && pipe.names[r.creator]) || r.creator || "?";
+      return `<tr class="${gone ? "addead" : ""}">
+        <td><b>${e(r.weapon || "?")}</b> <span class="admu">· ${e(who)}${r.mode ? " · " + e(r.mode) : ""}</span>
+          <div><button type="button" class="adcode adsmc" data-copy="${e(r.code)}" title="Copy the code">${e(r.code)}</button></div>
+          ${gone ? `<div class="admu">no longer on the list — the morning run dropped it</div>` : ""}</td>
+        <td class="num">${e(r.reports)}</td>
+        <td>${e(why(r))}${(r.notes || []).map(n => `<div class="adrn">“${e(n)}”</div>`).join("")}</td>
+        <td>${e(h.ago(r.last_at))}${r.reports > 1 ? ` <span class="admu">· first ${e(h.ago(r.first_at))}</span>` : ""}</td>
+        <td class="adact">${src ? `<a class="adlink" href="${e(src)}" target="_blank" rel="noopener noreferrer">Their page ↗</a>` : ""}
+          <button type="button" data-resolve="${e(r.code)}">Dealt with</button></td>
+      </tr>`;
+    };
+    const n = reports.reduce((a, r) => a + r.reports, 0);
+    return `<section class="band">
+      <div class="mod-label">Reported builds <span class="note">${reports.length ? `${reports.length} ${reports.length === 1 ? "build" : "builds"}, ${n} ${n === 1 ? "report" : "reports"}` : "nothing open"}</span></div>
+      ${reports.length ? `<div class="adscroll"><table class="adt">
+        <thead><tr><th>Build</th><th>Reports</th><th>Why</th><th>Last</th><th></th></tr></thead>
+        <tbody>${reports.map(row).join("")}</tbody></table></div>`
+        : `<div class="note">Nobody has said a code is broken. The Report button is on every card on loadouts/.</div>`}
+    </section>`;
+  }
+
   // ---------- registration ----------
   window.DF_TABS = window.DF_TABS || [];
   window.DF_TABS.push({
@@ -237,6 +274,7 @@
       "admin_invites?select=*&order=created_at.desc",
       "admin_players?select=*&order=enrolled_at.asc.nullsfirst",
       "admin_sessions?select=*",
+      "admin_build_reports?select=*&order=last_at.desc",
     ],
 
     hero(data, h) {
@@ -269,7 +307,10 @@
       // it was afterwards — the text itself is already safe in `note`/`draft`.
       const act = document.activeElement, keep = act && el.contains(act) && act.dataset.keep;
       const sel = keep ? [act.selectionStart, act.selectionEnd] : null;
-      el.innerHTML = waysIn(invites, h) + people(players, invites, h) + collection(players, sessions, h) + pipeline(h);
+      // Open reports go to the top: they are the one thing on this page somebody else asked for.
+      const reports = data[3] || [], rb = reportedBuilds(reports, h);
+      el.innerHTML = (reports.length ? rb : "") + waysIn(invites, h) + people(players, invites, h) + collection(players, sessions, h)
+        + (reports.length ? "" : rb) + pipeline(h);
 
       if (keep) {
         const f = el.querySelector(`[data-keep="${keep}"]`);
@@ -292,6 +333,13 @@
         armed = null; b.disabled = true; b.textContent = "…";
         const r = await h.rpc("admin_revoke_invite", { p_code: code });
         if (r.error) { made = { error: r.error }; h.repaint(); return; }
+        h.reload();
+      });
+
+      el.querySelectorAll("[data-resolve]").forEach(b => b.onclick = async () => {
+        b.disabled = true; b.textContent = "…";
+        const r = await h.rpc("admin_resolve_build_reports", { p_code: b.dataset.resolve });
+        if (r.error) { b.disabled = false; b.textContent = "Did not work"; return; }
         h.reload();
       });
 
@@ -397,6 +445,10 @@
                   font: 400 11px 'Barlow', sans-serif; padding: 4px 9px; margin-left: 6px; cursor: pointer; }
   .adact button:hover { border-color: var(--div); color: var(--text); }
   .adact .adbad:hover { border-color: var(--red); color: var(--red); }
+  .adact .adlink { font: 400 11px 'Barlow', sans-serif; color: var(--text-2); margin-left: 6px; }
+  .adact .adlink:hover { color: var(--green); }
+  .adsmc { font-size: 10px; letter-spacing: .3px; color: var(--muted); text-align: left; overflow-wrap: anywhere; margin-top: 3px; }
+  .adrn { margin-top: 4px; color: var(--text); font-style: italic; max-width: 40ch; }
 
   /* Making one. The cap sits to the left of the button that uses it, so the sentence reads in the
      order it is decided: good for one person — tracker link. */

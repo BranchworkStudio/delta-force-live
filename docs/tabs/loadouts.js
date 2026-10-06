@@ -53,6 +53,90 @@
     }).catch(() => { /* no badge is the honest fallback */ });
   }
   const liveOf = (k) => (LIVE[k] && LIVE[k][0]) || null;
+
+  // "This code doesn't work": the one thing a visitor can tell us about a build. Reports go to the
+  // `report` function (supabase/functions/report), which checks the code is on the list and keeps
+  // one per browser per build a day; they show up on the Admin tab. Which builds this browser has
+  // already reported is remembered here, so the button says so instead of asking again.
+  const REPORT_URL = LIVE_URL.replace(/\/live$/, "/report");
+  const REASONS = [["import", "Won't import"], ["outdated", "Outdated"], ["other", "Something else"]];
+  const RKEY = "df-loadouts-reported";
+  let reported = new Set();
+  try { reported = new Set(JSON.parse(localStorage.getItem(RKEY) || "[]")); } catch (e) { /* private window */ }
+  // The open form, if any. It lives out here because a repaint (a filter, the live badges arriving)
+  // rebuilds every card, and whatever was picked or typed has to survive that.
+  let rep = null;   // { code, reason, note, busy, err, done }
+  function visitor() {
+    try {
+      let v = localStorage.getItem("df-visitor");
+      if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36)); localStorage.setItem("df-visitor", v); }
+      return v;
+    } catch (e) { return null; }
+  }
+  const flagHtml = (code, e) => reported.has(code)
+    ? `<span class="lflag done" data-tip="You reported this one. Thanks.">Reported</span>`
+    : `<button type="button" class="lflag" data-report="${e(code)}" data-tip="Code not working? Tell us.">Report</button>`;
+  function repHtml(code, e) {
+    if (!rep || rep.code !== code) return "";
+    if (rep.done) return `<div class="lrep done">Thanks. We'll take a look at it.</div>`;
+    return `<div class="lrep">
+      <div class="lreph">What's wrong with it?</div>
+      <div class="lrepr">${REASONS.map(([k, l]) => `<button type="button" class="${rep.reason === k ? "on" : ""}" data-rr="${k}">${l}</button>`).join("")}</div>
+      <input class="lrepn" maxlength="300" placeholder="Anything else? (optional)" value="${e(rep.note || "")}">
+      ${rep.err ? `<div class="lreperr">${e(rep.err)}</div>` : ""}
+      <div class="lrepa">
+        <button type="button" class="lrepx" data-rx>Cancel</button>
+        <button type="button" class="lreps" data-rs${!rep.reason || rep.busy ? " disabled" : ""}>${rep.busy ? "Sending…" : "Send"}</button>
+      </div>
+    </div>`;
+  }
+  const wrapOf = (code) => [...document.querySelectorAll(".lrepw")].find(w => w.dataset.for === code) || null;
+  function drawRep(code, h, focus) {
+    const w = wrapOf(code);
+    if (!w) return;
+    w.innerHTML = repHtml(code, h.esc);
+    const f = w.parentNode.querySelector(".lflag");
+    if (f && reported.has(code) && f.tagName === "BUTTON") f.outerHTML = flagHtml(code, h.esc);
+    w.querySelectorAll("[data-rr]").forEach(b => b.onclick = () => { rep.reason = b.dataset.rr; rep.err = null; drawRep(code, h, true); });
+    const n = w.querySelector(".lrepn");
+    if (n) {
+      n.oninput = () => { rep.note = n.value; };
+      n.onkeydown = (ev) => { if (ev.key === "Enter") sendRep(h); else if (ev.key === "Escape") { rep = null; drawRep(code, h); } };
+      if (focus) n.focus();
+    }
+    const x = w.querySelector("[data-rx]");
+    if (x) x.onclick = () => { rep = null; drawRep(code, h); };
+    const s = w.querySelector("[data-rs]");
+    if (s) s.onclick = () => sendRep(h);
+  }
+  function bindReports(root, h) {
+    root.querySelectorAll("[data-report]").forEach(n => n.onclick = () => {
+      const code = n.dataset.report, was = rep && rep.code;
+      rep = was === code ? null : { code, reason: null, note: "" };
+      if (was && was !== code) drawRep(was, h);
+      drawRep(code, h);
+    });
+    if (rep) drawRep(rep.code, h);
+  }
+  async function sendRep(h) {
+    const r0 = rep;
+    if (!r0 || !r0.reason || r0.busy || r0.done) return;
+    r0.busy = true; r0.err = null; drawRep(r0.code, h);
+    try {
+      const r = await fetch(REPORT_URL, { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: r0.code, reason: r0.reason, note: (r0.note || "").trim() || null, visitor: visitor() }) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || !d.ok) throw new Error(d.error || "it did not go through");
+      reported.add(r0.code);
+      try { localStorage.setItem(RKEY, JSON.stringify([...reported].slice(-500))); } catch (e) { /* private window */ }
+      r0.done = true;
+      setTimeout(() => { if (rep === r0) { rep = null; drawRep(r0.code, h); } }, 3500);
+    } catch (err) {
+      r0.err = "Couldn't send it (" + err.message + "). Try again?";
+    }
+    r0.busy = false;
+    if (rep === r0) drawRep(r0.code, h);
+  }
   // "for 2h 14m", from when the stream started; YouTube's Streams tab does not say, so nothing.
   const onFor = (since) => {
     const m = since ? Math.floor((Date.now() - Date.parse(since)) / 60000) : NaN;
@@ -343,6 +427,7 @@
         save(); h.repaint();
       });
       el.querySelectorAll("[data-code]").forEach(n => n.onclick = () => copy(n));
+      bindReports(el, h);
       h.attachTips(el);
     },
   });
@@ -518,7 +603,9 @@
           ? links.map(u => `<a class="lnet" href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")
           : `<span class="lnone">no channels listed</span>`}</span>
         <a class="lsrclink" href="${e(b.url || s.url)}" target="_blank" rel="noopener noreferrer">${e(s.name)} &rarr;</a>
+        ${flagHtml(b.code, e)}
       </div>
+      <div class="lrepw" data-for="${e(b.code)}">${repHtml(b.code, e)}</div>
     </article>`;
   }
 
@@ -688,7 +775,7 @@
            font: 700 11px var(--hud); letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap; align-self: stretch; }
   .lcopy:hover { background: #6ff0b8; }
   .lcopy.ok { background: var(--tick); color: var(--text); }
-  .lfoot { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; margin-top: 9px; }
+  .lfoot { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: baseline; gap: 10px; margin-top: 9px; }
   .lnets { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .lnet { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
           margin-right: 9px; border-bottom: 1px solid var(--tick); white-space: nowrap; }
@@ -698,6 +785,30 @@
   .lsrclink { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--text-2);
               white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
   .lsrclink:hover { color: var(--green); }
+  /* Reporting a build: a quiet word in the footer, and a small form under it only when asked for. */
+  .lflag { background: none; border: 0; padding: 0; cursor: pointer; font: 600 10px var(--hud); letter-spacing: 1px;
+           text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .lflag:hover { color: var(--amber); }
+  .lflag.done { cursor: default; color: var(--tick); }
+  .lrep { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--hair); display: grid; gap: 8px; }
+  .lrep.done { font-size: 12px; color: var(--text-2); }
+  .lreph { font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .lrepr { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lrepr button { background: none; border: 1px solid var(--hair); color: var(--text-2); cursor: pointer;
+                  font: 500 12px var(--body); padding: 4px 10px; }
+  .lrepr button:hover { border-color: var(--tick); color: var(--text); }
+  .lrepr button.on { border-color: var(--amber); color: var(--amber); }
+  .lrepn { width: 100%; min-width: 0; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text);
+           font: 400 12.5px var(--body); padding: 6px 9px; }
+  .lrepn:focus { outline: none; border-color: var(--tick); }
+  .lreperr { font-size: 12px; color: var(--red, #e0463f); }
+  .lrepa { display: flex; justify-content: flex-end; gap: 8px; }
+  .lrepx, .lreps { border: 0; cursor: pointer; font: 700 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 12px; }
+  .lrepx { background: none; color: var(--muted); }
+  .lrepx:hover { color: var(--text); }
+  .lreps { background: var(--hair-2); color: var(--text); border: 1px solid var(--hair); }
+  .lreps:hover:not([disabled]) { border-color: var(--amber); color: var(--amber); }
+  .lreps[disabled] { opacity: .45; cursor: default; }
 
   @media (max-width: 1100px) {
     .lo { grid-template-columns: 1fr; }

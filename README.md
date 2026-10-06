@@ -279,6 +279,7 @@ one page per minute, so the site has something to show right away.
 | `supabase/migrations/` | Postgres schema, RLS, views |
 | `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it (`hq.ts` signs requests the way the HQ page itself does) |
 | `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute |
+| `supabase/functions/report/` | Takes a visitor's "this build doesn't work" from a loadouts card and stores it for the Admin tab |
 | `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
 | `docs/events/` | One file per limited-time event, each registering its own tab (see **Tabs and event modules**) |
 | `docs/tabs/` | The tabs that are meant to stay — `loadouts.js` (hosted by `docs/loadouts/`), `admin.js` — registered the same way |
@@ -461,6 +462,19 @@ fails shows nobody live. A page that stays open keeps the badges it loaded with 
 If a platform changes its page and badges stop appearing, POST
 `{ "secret": <poll_secret>, "probe": "<channel link>" }` to the function: it checks that one
 link, stores nothing, and returns what it parsed and what the fetched page looked like.
+
+**Reporting a build.** Every card has a quiet **Report** in its footer. It opens a small form under
+the card: won't import, outdated or something else, plus an optional note. The `report` edge
+function (`supabase/functions/report`, migration `0032`) is the only way in, because the
+publishable key still writes nothing. It accepts a code only if it is on `data/loadouts.json`,
+takes creator, weapon and mode from that list rather than from the request, and counts one
+report per browser (a random id kept in localStorage) or address per build a day. The address is
+kept only as a salted hash and only for rate limiting; past 30 an hour from one address it says no.
+Reports sit in `build_reports` with no grant. The Admin tab reads `admin_build_reports`, one row per
+build with the reasons counted and the latest notes, gated on `is_admin()` like the other admin views.
+Open reports go to the top of that tab. **Dealt with** (`admin_resolve_build_reports`) closes them,
+and a later report opens the build again. A reported build that the morning run has since dropped
+is shown greyed out.
 
 `docs/tabs/loadouts.js` asks for nothing at all: it has no
 `queries()`, reads `docs/data/loadouts.json` itself on first paint, and hangs it on the
