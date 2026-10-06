@@ -502,7 +502,7 @@
       a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>` : "",
     ].filter(Boolean);
     return `<article class="lbuild">
-      <div class="lbh">
+      <div class="lbh${liveOf(b.creator) ? " onair" : ""}">
         ${c.avatar ? `<img class="lav" src="${e(c.avatar)}" alt="" loading="lazy" width="30" height="30">`
           : `<span class="lav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
         <div class="lby">${PIN === b.creator ? e(c.name) : `<a href="${e(homeOf(b.creator))}">${e(c.name)}</a>`}</div>
@@ -650,7 +650,7 @@
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
   .lname a { color: var(--text); text-decoration: none; }
   .lname a:hover { color: var(--green); }
-  /* live: a red ring on the face and a dot on the channel that is on air */
+  /* live: a red ring on the face (thin on cards) and a dot on the channel that is on air */
   .llive { display: inline-flex; align-items: center; gap: 5px; font: 700 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase;
            color: #fff; background: var(--red, #e0463f); padding: 2px 6px 2px 5px; white-space: nowrap; }
   .llive::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
@@ -658,6 +658,8 @@
                     margin-right: 6px; vertical-align: 1px; }
   .lchead .lclinks a.lchon { color: var(--text); }
   .onair .lcav { box-shadow: 0 0 0 2px var(--red, #e0463f); }
+  /* on a card, only a thin ring in place of the avatar's own hairline */
+  .lbh.onair .lav { border-color: var(--red, #e0463f); }
   .lchead .lname a::after { content: " →"; font-size: .55em; color: var(--muted); vertical-align: middle; }
   .lchead .lname a:hover::after { color: var(--green); }
   .lall { display: block; margin-top: 12px; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2);

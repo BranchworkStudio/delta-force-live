@@ -439,7 +439,7 @@ links to `loadouts/?creator=`. **After editing `docs/loadouts/index.html`, run
 **Live now.** When a creator is streaming, the site says so quietly: a red ring and a LIVE tag
 on their face on their page (the face opens the stream), a red ring in the filtered header, a red
 dot on the channel button they are live on (which then opens the stream, with the title on
-hover), and "· LIVE" in the creator picker. Nothing else: no strip, and cards carry nothing: on a creator's own page it would repeat on
+hover), and "· LIVE" in the creator picker. On cards the avatar's hairline turns red, nothing more: on a creator's own page it would repeat on
 every one of them.
 
 The `live` edge function (`supabase/functions/live`, migrations `0029`–`0030`) does the
