@@ -38,6 +38,35 @@
   const FRESH = () => ({ sel: null, mode: "all", cls: "all", creator: PIN || "all", q: "" });
   let DB = null, state = FRESH(), phase = "idle";
 
+  // Who is streaming right now. The `live` function (supabase/functions/live) checks every creator's
+  // Twitch and YouTube every three minutes; this asks it again as often, while the page is in view,
+  // and repaints only when the answer changed. Nothing here is remembered: live is only ever now.
+  const LIVE_URL = ((window.DF_CONFIG && window.DF_CONFIG.SUPABASE_URL) || "https://faaskhwycywnwpdjcvgp.supabase.co") + "/functions/v1/live";
+  const PLATFORM = { twitch: "Twitch", youtube: "YouTube" };
+  let LIVE = {}, liveSeen = "{}", liveTimer = null;
+  function watchLive(h) {
+    if (liveTimer) return;
+    const ask = (always) => {
+      if (document.hidden && !always) return;
+      fetch(LIVE_URL).then(r => r.ok ? r.json() : null).then(d => {
+        const next = JSON.stringify((d && d.live) || {});
+        if (next === liveSeen) return;
+        liveSeen = next; LIVE = JSON.parse(next);
+        if (DB) h.repaint();
+      }).catch(() => { /* no badge is the honest fallback */ });
+    };
+    liveTimer = setInterval(ask, 180000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) ask(); });
+    ask(true);
+  }
+  const liveOf = (k) => (LIVE[k] && LIVE[k][0]) || null;
+  // "for 2h 14m", from when the stream started; YouTube's Streams tab does not say, so nothing.
+  const onFor = (since) => {
+    const m = since ? Math.floor((Date.now() - Date.parse(since)) / 60000) : NaN;
+    return !(m >= 0) ? "" : m < 60 ? `${m}m` : `${Math.floor(m / 60)}h ${String(m % 60).padStart(2, "0")}m`;
+  };
+  const liveTip = (s, name) => `${name} is live on ${PLATFORM[s.platform] || s.platform}${onFor(s.since) ? " · " + onFor(s.since) : ""}${s.title ? "<br>" + s.title : ""}`;
+
   // The address's name for each filter. Values are plain lower-case words — a creator's key, a
   // weapon's short name squeezed to letters and digits, a class — so a link is readable before it
   // is clicked and can be typed by hand.
@@ -104,6 +133,7 @@
 
   // ---------- reading the file ----------
   function ensure(h) {
+    watchLive(h);
     if (phase !== "idle") return;
     phase = "loading";
     fetch(DATA_URL, { cache: "no-cache" })
@@ -278,7 +308,7 @@
           ${PIN ? `<a class="lall" href="loadouts/${allQuery()}">&larr; Every creator (${creators.length})</a>`
             : `<div class="lsearch lpick"><select id="loCreator" aria-label="Creator">
             <option value="all">Every creator (${creators.length})</option>
-            ${creators.map(x => `<option value="${e(x.k)}"${state.creator === x.k ? " selected" : ""}>${e(x.c.name)} (${x.n})</option>`).join("")}
+            ${creators.map(x => `<option value="${e(x.k)}"${state.creator === x.k ? " selected" : ""}>${e(x.c.name)} (${x.n})${liveOf(x.k) ? " · LIVE" : ""}</option>`).join("")}
           </select></div>`}
           <div class="lwlist">
             ${state.creator !== "all" && ws.length ? `<button type="button" class="lw lwall ${whole ? "on" : ""}" data-w="">
@@ -290,7 +320,7 @@
               : `<div class="note">Nothing matches that. <button type="button" class="link" style="color:var(--green)" data-f="reset" data-v="1">Clear the filters</button></div>`}
           </div>
         </div>
-        <div class="lo-main">${whole ? creatorHtml(ws, list, h) : sel ? weaponHtml(sel, h) : ""}</div>
+        <div class="lo-main">${!PIN && state.creator === "all" ? onAirHtml(h) : ""}${whole ? creatorHtml(ws, list, h) : sel ? weaponHtml(sel, h) : ""}</div>
       </div>`;
 
       const q = el.querySelector("#loQ");
@@ -340,12 +370,17 @@
     const classes = Object.entries(by).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
     const max = classes.length ? classes[0][1] : 1;
     const src = (DB.sources && DB.sources[PIN] && DB.sources[PIN].name) || "Their builds page";
-    return `${c.avatar ? `<img class="lp-av" src="${e(c.avatar)}" alt="" width="148" height="148">`
-        : `<span class="lp-av none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
+    const on = liveOf(PIN);
+    const face = c.avatar ? `<img class="lp-av" src="${e(c.avatar)}" alt="" width="148" height="148">`
+      : `<span class="lp-av none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`;
+    return `${on ? `<a class="lp-face onair" href="${e(on.url)}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${e(c.name)} live">${face}<span class="llive">Live</span></a>` : face}
       <div class="lp-id">
         <div class="eyebrow"><i></i><span>Creator · Delta Force builds</span></div>
         <h1 class="lp-name" style="--len:${String(c.name).length}">${e(c.name)}</h1>
         <div class="lp-facts"><span><b>${theirs.length}</b> ${theirs.length === 1 ? "build" : "builds"}</span><s>/</s><span><b>${guns.size}</b> of ${GUNS.length || "?"} weapons</span><s>/</s><span>updated <b>${DB.updated ? e(shortDate(DB.updated)) : "–"}</b></span></div>
+        ${on ? `<a class="lp-live" href="${e(on.url)}" target="_blank" rel="noopener noreferrer">
+          <span class="llive">Live</span><span class="lp-lon">on ${e(PLATFORM[on.platform] || on.platform)}${onFor(on.since) ? ` · ${e(onFor(on.since))}` : ""}</span>${on.title ? `<span class="lp-lt">${e(on.title)}</span>` : ""}<span class="lp-lgo">Watch &nearr;</span>
+        </a>` : ""}
         <div class="lp-acts">
           ${c.url ? `<a class="pri" href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(src)} &rarr;</a>` : ""}
           ${(c.links || []).map(u => `<a href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}
@@ -355,6 +390,23 @@
         <h3>Loadout spread · builds per class</h3>
         ${classes.map(([k, n]) => `<div class="lp-row"><span>${e(k)}</span><i><u style="width:${(n / max * 100).toFixed(1)}%"></u></i><b>${n}</b></div>`).join("")}
       </div>` : ""}`;
+  }
+
+  // ---------- live now ----------
+  // On loadouts/ with every creator showing, whoever is streaming gets a line at the top: their
+  // face and name go to their page here, the rest of the line to the stream.
+  function onAirHtml(h) {
+    const e = h.esc;
+    const on = Object.keys(LIVE).filter(k => DB.creators && DB.creators[k] && liveOf(k));
+    if (!on.length) return "";
+    return `<div class="lonair">${on.map(k => {
+      const c = DB.creators[k], s = liveOf(k);
+      return `<div class="lonrow">
+        <span class="llive">Live</span>
+        <a class="lonwho" href="${e(homeOf(k))}">${c.avatar ? `<img class="lav" src="${e(c.avatar)}" alt="" width="30" height="30">` : ""}<b>${e(c.name)}</b></a>
+        <a class="lonwhat" href="${e(s.url)}" target="_blank" rel="noopener noreferrer">on ${e(PLATFORM[s.platform] || s.platform)}${onFor(s.since) ? ` · ${e(onFor(s.since))}` : ""}${s.title ? `<i>${e(s.title)}</i>` : ""}<span>Watch &nearr;</span></a>
+      </div>`;
+    }).join("")}</div>`;
   }
 
   // ---------- one creator, every gun ----------
@@ -371,10 +423,12 @@
     // the name and a button all go there. Their builds page, off this site, keeps its own link.
     const face = c.avatar ? `<img class="lcav" src="${e(c.avatar)}" alt="" width="84" height="84">`
       : `<span class="lcav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`;
-    return `<div class="lhead lchead">
+    const on = liveOf(state.creator);
+    return `<div class="lhead lchead${on ? " onair" : ""}">
         ${c.page ? `<a class="lcava" href="${e(c.page)}" aria-hidden="true" tabindex="-1">${face}</a>` : face}
         <div class="lwmeta">
           <div class="lname">${c.page ? `<a href="${e(c.page)}">${e(c.name)}</a>` : e(c.name)}</div>
+          ${on ? `<a class="lclive" href="${e(on.url)}" target="_blank" rel="noopener noreferrer"><span class="llive">Live</span> on ${e(PLATFORM[on.platform] || on.platform)}${on.title ? ` · <i>${e(on.title)}</i>` : ""} &nearr;</a>` : ""}
           <div class="lsub">${list.length} ${list.length === 1 ? "build" : "builds"} · ${ws.length} ${ws.length === 1 ? "weapon" : "weapons"}</div>
           ${c.page || c.url || links.length ? `<div class="lclinks">
             ${c.page ? `<a class="lpage" href="${e(c.page)}">Creator page &rarr;</a>` : ""}
@@ -469,11 +523,12 @@
       ...(b.tags || []).map(t => e(t)),
       a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>` : "",
     ].filter(Boolean);
+    const on = liveOf(b.creator);
     return `<article class="lbuild">
-      <div class="lbh">
+      <div class="lbh${on ? " onair" : ""}">
         ${c.avatar ? `<img class="lav" src="${e(c.avatar)}" alt="" loading="lazy" width="30" height="30">`
           : `<span class="lav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
-        <div class="lby">${PIN === b.creator ? e(c.name) : `<a href="${e(homeOf(b.creator))}">${e(c.name)}</a>`}</div>
+        <div class="lby">${PIN === b.creator ? e(c.name) : `<a href="${e(homeOf(b.creator))}">${e(c.name)}</a>`}${on ? ` <a class="llive" href="${e(on.url)}" target="_blank" rel="noopener noreferrer" data-tip="${e(liveTip(on, c.name))}">Live</a>` : ""}</div>
         ${multimode ? `<span class="lmode ${e(b.mode)}">${e(MODES[b.mode] || b.mode)}</span>` : ""}
       </div>
       <div class="lmeta">${meta.join('<span class="ldot">·</span>')}</div>
@@ -618,6 +673,33 @@
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
   .lname a { color: var(--text); text-decoration: none; }
   .lname a:hover { color: var(--green); }
+  /* live: the one red on the page, kept to a chip and a ring */
+  .llive { display: inline-flex; align-items: center; gap: 5px; font: 700 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase;
+           color: #fff; background: var(--red, #e0463f); padding: 2px 6px 2px 5px; vertical-align: 2px; white-space: nowrap; }
+  .llive::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: llive 1.6s ease-in-out infinite; }
+  @keyframes llive { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .llive::before { animation: none; } }
+  a.llive, a.llive:hover { color: #fff; border: 0; }
+  .lby a.llive { margin-left: 6px; }
+  .onair .lav, .onair .lcav { box-shadow: 0 0 0 2px var(--red, #e0463f); }
+  .lclive { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px; margin-top: 6px; font: 600 12px var(--hud);
+            letter-spacing: .6px; color: var(--text-2); max-width: 100%; }
+  .lclive i { font-style: normal; color: var(--text); overflow-wrap: anywhere; }
+  .lclive:hover, .lclive:hover i { color: var(--red, #e0463f); }
+  .lonair { display: grid; gap: 1px; margin: 0 0 22px; background: var(--div); border: 1px solid var(--div); }
+  .lonrow { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 12px; padding: 10px 14px; background: var(--panel, #0f1518); }
+  .lonwho { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font: 700 14px var(--body); }
+  .lonwho .lav { box-shadow: 0 0 0 2px var(--red, #e0463f); }
+  .lonwho:hover b { color: var(--green); }
+  .lonwhat { display: flex; align-items: baseline; gap: 8px; min-width: 0; font: 600 12px var(--hud); letter-spacing: .6px; color: var(--text-2); }
+  .lonwhat i { font-style: normal; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 1; }
+  .lonwhat span { margin-left: auto; white-space: nowrap; color: var(--red, #e0463f); text-transform: uppercase; letter-spacing: 1.2px; }
+  .lonwhat:hover i { color: var(--red, #e0463f); }
+  @media (max-width: 560px) {
+    .lonrow { grid-template-columns: auto minmax(0, 1fr); }
+    .lonwhat { grid-column: 1 / -1; flex-wrap: wrap; }
+    .lonwhat i { white-space: normal; flex-basis: 100%; order: 2; }
+  }
   .lchead .lname a::after { content: " →"; font-size: .55em; color: var(--muted); vertical-align: middle; }
   .lchead .lname a:hover::after { color: var(--green); }
   .lall { display: block; margin-top: 12px; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2);

@@ -436,6 +436,29 @@ part of the site (`loadouts`, `data`, `connect`, … see `RESERVED`) gets no pag
 links to `loadouts/?creator=`. **After editing `docs/loadouts/index.html`, run
 `python3 tools/loadouts/pages.py`** so the creator pages pick up the change.
 
+**Live now.** When a creator is streaming, the site says so: a red ring and a LIVE tag on their
+face, a "Live on Twitch · 2h 14m" line with the stream title on their page and in the filtered
+header, a LIVE chip beside their name on every card, "· LIVE" in the creator picker, and on
+`loadouts/` with every creator showing, a strip at the top listing who is on. Everything red
+opens the stream; the name still goes to their page here.
+
+The `live` edge function (`supabase/functions/live`, migration `0029`) does the checking. pg_cron
+POSTs to it every three minutes with the poller's secret; it reads the creator list from the
+site's own `data/loadouts.json` and checks each creator's first Twitch and first YouTube link
+from `links`, so a new creator is covered with nothing to add. No Twitch or YouTube keys: a
+Twitch channel page carries `isLiveBroadcast` in its JSON-LD (with the title and start time),
+and a YouTube channel's **Streams** tab badges the stream that is on air
+`THUMBNAIL_OVERLAY_BADGE_STYLE_LIVE`, with the title from oEmbed. (The channel's `/live` page
+says `isLiveNow` too, but YouTube strips it for a datacenter address; the Streams tab is not
+gated.) The result is one row in `creator_live`, which has no grant — the publishable key still
+reads nothing — and the site gets it from the function's GET, cached a minute and empty once
+the last check is over 15 minutes old, so a stopped cron never leaves anyone "live". The page
+asks once on load and again every three minutes while it is in view.
+
+If a platform changes its page and badges stop appearing, POST
+`{ "secret": <poll_secret>, "probe": "<channel link>" }` to the function: it checks that one
+link, stores nothing, and returns what it parsed and what the fetched page looked like.
+
 `docs/tabs/loadouts.js` asks for nothing at all: it has no
 `queries()`, reads `docs/data/loadouts.json` itself on first paint, and hangs it on the
 68-weapon spine in the official `basic_info/guns_en.js` manifest (names, class, image and
