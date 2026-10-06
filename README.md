@@ -406,8 +406,8 @@ Creator is the key in `creators.json` (a display name works too), weapon is the 
 squeezed to letters and digits, and matching is loose: `?creator=Leissik&weapon=M7` is
 rewritten to the canonical spelling, and a value that matches nothing is dropped rather than
 leaving an empty page. A link with any filter shows exactly that; a bare `loadouts/` picks up
-where the browser left off. Every change rewrites the address with `replaceState`, and
-**Copy link** in the rail copies it.
+where the browser left off. Every change rewrites the address with `replaceState`, so the
+address bar is always a link to the current view.
 
 Every creator also has an address of their own: **thesitrep.gg/leissik**,
 **thesitrep.gg/sammymedows**. It is the creator's display name squeezed to letters and digits,

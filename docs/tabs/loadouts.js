@@ -266,7 +266,6 @@
       el.innerHTML = `<div class="lo">
         <div class="lo-rail">
           <div class="lsearch"><input id="loQ" type="search" placeholder="Search weapon, creator or tag" value="${e(state.q)}" autocomplete="off"></div>
-          <div class="lshare"><span>${toQuery() ? "This view has its own link" : "Filters go in the link"}</span><button type="button" class="lpill" id="loShare">Copy link</button></div>
           ${modes().length > 1 ? `<div class="lfilters">
             ${pill(state.mode === "all", "all", "All modes", "mode")}
             ${pill(state.mode === "operations", "operations", "Operations", "mode")}
@@ -315,8 +314,6 @@
         save(); h.repaint();
       });
       el.querySelectorAll("[data-code]").forEach(n => n.onclick = () => copy(n));
-      const share = el.querySelector("#loShare");
-      if (share) share.onclick = () => { save(); copyText(share, location.href); };
       h.attachTips(el);
     },
   });
@@ -540,9 +537,6 @@
                   text-overflow: ellipsis; }
   .lpick::after { content: "▾"; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
                   color: var(--muted); pointer-events: none; font-size: 12px; }
-  .lshare { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px;
-            font: 600 10px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-  .lshare .lpill.ok { background: var(--tick); color: var(--text); }
   .lfilters { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; }
   .lpill { border: 0; background: var(--hair-2); color: var(--text-2); cursor: pointer;
            font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; }
