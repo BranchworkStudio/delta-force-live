@@ -221,6 +221,10 @@ it is waiting on HQ, so 8 players went from ~20 s one after another to ~7 s. Pas
 `{secret, shard, of}`, so each slice gets its own 150 s wall clock and 2 s of CPU — that is
 1 + n invocations a minute, and the free plan's 500k a month allows about 11.
 
+`pg_cron` writes a row per run to `cron.job_run_details` and never clears it, which at one run
+a minute is ~1,440 rows a day. A second job, `df-cron-history-cleanup` (migration `0031`), deletes
+rows older than seven days at 03:17 UTC every night.
+
 Nothing is collected by the site itself. The board only reads what the poller stored, and it
 stops refreshing while its tab is hidden (catching up the moment it is shown again), because a
 background tab re-downloading the board every 30 s was the free plan's traffic quota running
