@@ -214,24 +214,12 @@
       const all = DB.builds, list = [].concat(...weapons(visible()).map(w => w.builds)), e = h.esc;
       const cover = new Set(all.filter(b => b.gun).map(b => b.gun.key));
       const shown = list.length !== all.length;
-      if (PIN && DB.creators && DB.creators[PIN]) {
-        const c = DB.creators[PIN], theirs = all.filter(b => b.creator === PIN);
-        const guns = new Set(theirs.filter(b => b.gun).map(b => b.gun.key));
-        const newest = theirs.map(b => b.added || "").sort().pop();
-        return {
-          eyebrow: "Loadouts · " + c.name,
-          big: String(shown && list.length !== theirs.length ? list.length : theirs.length),
-          sub: shown && list.length !== theirs.length ? "of their builds match the filter" : (theirs.length === 1 ? "build by " : "builds by ") + c.name,
-          cells: [
-            ["Weapons covered", `${guns.size}<span style="color:var(--muted)">/${GUNS.length || "?"}</span>`,
-              GUNS.length ? "of every gun in the game" : null],
-            ["Newest build", newest ? e(shortDate(newest)) : "–", newest ? "the latest one they dated" : "their page carries no dates",
-              "Only some creators put a date on a build. Where there is none, their builds are in the order they list them."],
-            ["Last updated", DB.updated ? e(shortDate(DB.updated)) : "–", "the day these builds last changed",
-              "Their page is re-read every morning. This is the day something on it last actually changed. The link on each card is always the live original."],
-          ],
-        };
-      }
+      // On a creator's own page the person is the headline, not a number: their face, their name,
+      // what they publish and where, and which classes they build for. That last one is the thing
+      // a stranger wants to know first — is this somebody who builds rifles or somebody who builds
+      // everything — and nothing else on the page says it at a glance. It describes them, not the
+      // filter, so it does not move when the rail does.
+      if (PIN && DB.creators && DB.creators[PIN]) return { profile: profileHtml(DB.creators[PIN], all.filter(b => b.creator === PIN), e) };
       return {
         eyebrow: "Loadouts · community builds",
         big: String(shown ? list.length : all.length),
@@ -345,6 +333,33 @@
     creatorOf(a).name.localeCompare(creatorOf(b).name) ||
     season(b) - season(a) || (a.pos || 0) - (b.pos || 0));
 
+  // ---------- a creator's own page: the profile at the top ----------
+  // Its shape is in board.css (.lp), because tools/loadouts/pages.py writes the face and the name
+  // into the page itself and they have to look right before this file has run.
+  function profileHtml(c, theirs, e) {
+    const guns = new Set(theirs.map(b => (b.gun ? b.gun.key : norm(b.weapon))));
+    const by = {};
+    for (const b of theirs) { const k = b.gun ? b.gun.cls : "Other"; by[k] = (by[k] || 0) + 1; }
+    const classes = Object.entries(by).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const max = classes.length ? classes[0][1] : 1;
+    const src = (DB.sources && DB.sources[PIN] && DB.sources[PIN].name) || "Their builds page";
+    return `${c.avatar ? `<img class="lp-av" src="${e(c.avatar)}" alt="" width="148" height="148">`
+        : `<span class="lp-av none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
+      <div class="lp-id">
+        <div class="eyebrow"><i></i><span>Creator · Delta Force builds</span></div>
+        <h1 class="lp-name" style="--len:${String(c.name).length}">${e(c.name)}</h1>
+        <div class="lp-facts"><span><b>${theirs.length}</b> ${theirs.length === 1 ? "build" : "builds"}</span><s>/</s><span><b>${guns.size}</b> of ${GUNS.length || "?"} weapons</span><s>/</s><span>updated <b>${DB.updated ? e(shortDate(DB.updated)) : "–"}</b></span></div>
+        <div class="lp-acts">
+          ${c.url ? `<a class="pri" href="${e(c.url)}" target="_blank" rel="noopener noreferrer">${e(src)} &rarr;</a>` : ""}
+          ${(c.links || []).map(u => `<a href="${e(u)}" target="_blank" rel="noopener noreferrer">${e(netName(u))}</a>`).join("")}
+        </div>
+      </div>
+      ${classes.length > 1 ? `<div class="lp-spread">
+        <h3>Loadout spread · builds per class</h3>
+        ${classes.map(([k, n]) => `<div class="lp-row"><span>${e(k)}</span><i><u style="width:${(n / max * 100).toFixed(1)}%"></u></i><b>${n}</b></div>`).join("")}
+      </div>` : ""}`;
+  }
+
   // ---------- one creator, every gun ----------
   // The person heads the page — face, name, their channels, how much they publish — and under them
   // every weapon they have builds for, in the rail's order, each with its cards. A weapon's heading
@@ -353,6 +368,8 @@
   function creatorHtml(ws, list, h) {
     const e = h.esc, c = creatorOf({ creator: state.creator });
     const links = c.links || [];
+    // On their own page the profile above has already said all of this.
+    if (PIN) return groupsHtml(ws, h);
     return `<div class="lhead lchead">
         ${c.avatar ? `<img class="lcav" src="${e(c.avatar)}" alt="" width="84" height="84">`
           : `<span class="lcav none" aria-hidden="true">${e((c.name || "?").trim().charAt(0).toUpperCase())}</span>`}
@@ -365,14 +382,19 @@
           </div>` : ""}
         </div>
       </div>
-      ${ws.map(w => `<section class="lgroup">
+      ${groupsHtml(ws, h)}`;
+  }
+
+  function groupsHtml(ws, h) {
+    const e = h.esc;
+    return ws.map(w => `<section class="lgroup">
         <button type="button" class="lgh" data-w="${e(w.key)}">
           ${w.gun && w.gun.img ? `<img src="${e(w.gun.img)}" alt="" loading="lazy">` : `<span class="lghimg"></span>`}
           <span class="lghn">${e(w.name)}</span><span class="lc">${e(w.cls)}</span>
           <span class="lghc">${w.builds.length} ${w.builds.length === 1 ? "build" : "builds"} &rarr;</span>
         </button>
         <div class="lbuilds">${ordered(w.builds).map(b => buildHtml(b, h)).join("")}</div>
-      </section>`).join("")}`;
+      </section>`).join("");
   }
 
   // ---------- the weapon panel ----------
@@ -552,6 +574,7 @@
   .lclinks > a:first-child:not(.lnet) { font: 600 11px var(--hud); letter-spacing: 1px; text-transform: uppercase; color: var(--green); }
   .lclinks .lnet { margin-right: 0; }
   .lgroup { margin-top: 26px; }
+  .lo-main > .lgroup:first-child { margin-top: 0; }
   .lgh { display: grid; grid-template-columns: 92px auto auto 1fr; align-items: center; gap: 14px; width: 100%; background: none; border: 0;
          border-bottom: 1px solid var(--hair); padding: 0 0 8px; cursor: pointer; text-align: left; color: var(--text); }
   .lgh img, .lgh .lghimg { width: 92px; height: 34px; object-fit: contain; }

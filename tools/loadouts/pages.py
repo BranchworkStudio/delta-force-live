@@ -80,6 +80,14 @@ def page(tpl, cid, c, n, m):
     t = re.sub(r'(<meta property="og:title" content=")[^"]*', r'\g<1>' + title, t, count=1)
     t = re.sub(r'(<meta name="description" content=")[^"]*', lambda x: x.group(1) + desc, t, count=1)
     t = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda x: x.group(1) + desc, t, count=1)
+    # The person, not "Loadouts", heads the page — and is there before any script has run, so the
+    # name is what a reader sees first and what a link preview or a search engine reads.
+    face = ('<img class="lp-av" src="%s" alt="" width="148" height="148">' % html.escape(c['avatar'])
+            if c.get('avatar') else '<span class="lp-av none" aria-hidden="true">%s</span>' % html.escape(c['name'][:1].upper()))
+    prof = ('<section class="lp" id="profile">%s<div class="lp-id"><div class="eyebrow"><i></i><span>Creator · Delta Force builds</span></div>'
+            '<h1 class="lp-name" style="--len:%d">%s</h1></div></section>') % (face, len(c['name']), name)
+    t, k = re.subn(r'<!-- hero:.*?<!-- /hero -->', lambda _: prof, t, count=1, flags=re.S)
+    assert k == 1, 'no hero marker in ' + TEMPLATE
     pin = '<script>window.DF_LOADOUTS_CREATOR = %s;</script>\n' % json.dumps(cid)
     t = t.replace('<script src="tabs/loadouts.js', pin + '<script src="tabs/loadouts.js', 1)
     assert pin in t and MARK in t, 'template changed shape: ' + TEMPLATE

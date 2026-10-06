@@ -419,9 +419,17 @@ address, the creator picker becomes a link back to everyone, nothing remembered 
 `loadouts/` carries over, and the other filters still work (`/leissik/?weapon=m7`). On
 `loadouts/` the picker filters in place as before.
 
+A creator's page opens on the person rather than on a number: their face, their name as the
+headline (sized to fit its column from its length, never broken mid-word), builds · weapons ·
+updated, their build page and channels, and a "loadout spread" of builds per class. It is
+`profileHtml()` in `loadouts.js`, painted into `#profile` by `page.js`; its styles are `.lp` in
+`board.css` because the face and the name are written into the page itself and must already be
+right before any script runs.
+
 The pages are generated: `tools/loadouts/pages.py` copies `docs/loadouts/index.html` into
-`docs/<name>/index.html` with the creator pinned (`window.DF_LOADOUTS_CREATOR`) and their own
-title and description, so a link unfurls as that person's builds. `build.py` runs it every
+`docs/<name>/index.html` with the creator pinned (`window.DF_LOADOUTS_CREATOR`), their own
+title and description, and the headline (between the `<!-- hero -->` markers) swapped for the
+profile's face and name, so a link unfurls as that person's builds. `build.py` runs it every
 morning, so a new creator has a page the same day and a removed one loses it. It only ever
 writes or deletes directories carrying its own marker comment, and a name that collides with
 part of the site (`loadouts`, `data`, `connect`, … see `RESERVED`) gets no page; their name then

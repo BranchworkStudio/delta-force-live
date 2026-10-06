@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="board.css?v=1">
+<link rel="stylesheet" href="board.css?v=2">
 <style>
   /* The name goes home. On the board it is just a name; here it is the way to the rest of the site. */
   a.mark { color: var(--text); text-decoration: none; }
@@ -33,13 +33,7 @@
       <span class="vdiv"></span>
       <nav class="tabs" aria-label="Site"><a href="./">Match data</a><a class="on" href="loadouts/" aria-current="page">Loadouts</a></nav>
     </div>
-    <div class="statrow">
-      <div class="headline">
-        <div><div class="eyebrow"><i></i><span id="eyebrow">Loadouts · community builds</span></div><div class="big" id="big">–</div><div class="bigsub" id="bigsub"></div></div>
-        <div class="aside" id="heroAside"></div>
-      </div>
-      <div class="cells" id="cells"></div>
-    </div>
+    <section class="lp" id="profile"><img class="lp-av" src="img/creators/medow.png" alt="" width="148" height="148"><div class="lp-id"><div class="eyebrow"><i></i><span>Creator · Delta Force builds</span></div><h1 class="lp-name" style="--len:11">SammyMedows</h1></div></section>
   </div>
 </header>
 <div class="board">
@@ -52,7 +46,7 @@
 <!-- The weapon manifest is the spine the builds hang on: names, classes, pictures, stock stats. -->
 <script src="https://www.playdeltaforce.com/basic_info/guns_en.js" onerror="window.__gunsFailed=1"></script>
 <script>window.DF_LOADOUTS_CREATOR = "medow";</script>
-<script src="tabs/loadouts.js?v=7"></script>
-<script src="loadouts/page.js?v=2"></script>
+<script src="tabs/loadouts.js?v=8"></script>
+<script src="loadouts/page.js?v=3"></script>
 </body>
 </html>

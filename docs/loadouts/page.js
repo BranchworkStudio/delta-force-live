@@ -50,6 +50,10 @@
     tab.render(pane, [], host);
     const hero = tab.hero ? tab.hero([], host) : null;
     if (!hero) return;
+    // A creator's own page (thesitrep.gg/leissik) has a profile where the headline would be.
+    const prof = $("#profile");
+    if (hero.profile != null) { if (prof) prof.innerHTML = hero.profile; return; }
+    if (!$("#big")) return;
     $("#eyebrow").textContent = hero.eyebrow;
     $("#big").innerHTML = hero.big;
     $("#bigsub").textContent = hero.sub || "";
