@@ -319,7 +319,7 @@
               : `<div class="note">Nothing matches that. <button type="button" class="link" style="color:var(--green)" data-f="reset" data-v="1">Clear the filters</button></div>`}
           </div>
         </div>
-        <div class="lo-main">${!PIN && state.creator === "all" ? onAirHtml(h) : ""}${whole ? creatorHtml(ws, list, h) : sel ? weaponHtml(sel, h) : ""}</div>
+        <div class="lo-main">${whole ? creatorHtml(ws, list, h) : sel ? weaponHtml(sel, h) : ""}</div>
       </div>`;
 
       const q = el.querySelector("#loQ");
@@ -386,23 +386,6 @@
         <h3>Loadout spread · builds per class</h3>
         ${classes.map(([k, n]) => `<div class="lp-row"><span>${e(k)}</span><i><u style="width:${(n / max * 100).toFixed(1)}%"></u></i><b>${n}</b></div>`).join("")}
       </div>` : ""}`;
-  }
-
-  // ---------- live now ----------
-  // On loadouts/ with every creator showing, whoever is streaming gets a line at the top: their
-  // face and name go to their page here, the rest of the line to the stream.
-  function onAirHtml(h) {
-    const e = h.esc;
-    const on = Object.keys(LIVE).filter(k => DB.creators && DB.creators[k] && liveOf(k));
-    if (!on.length) return "";
-    return `<div class="lonair">${on.map(k => {
-      const c = DB.creators[k], s = liveOf(k);
-      return `<div class="lonrow">
-        <span class="llive">Live</span>
-        <a class="lonwho" href="${e(homeOf(k))}">${c.avatar ? `<img class="lav" src="${e(c.avatar)}" alt="" width="30" height="30">` : ""}<b>${e(c.name)}</b></a>
-        <a class="lonwhat" href="${e(s.url)}" target="_blank" rel="noopener noreferrer">on ${e(PLATFORM[s.platform] || s.platform)}${onFor(s.since) ? ` · ${e(onFor(s.since))}` : ""}${s.title ? `<i>${e(s.title)}</i>` : ""}<span>Watch &nearr;</span></a>
-      </div>`;
-    }).join("")}</div>`;
   }
 
   // ---------- one creator, every gun ----------
@@ -667,7 +650,7 @@
   .lby a:hover { color: var(--green); border-bottom-color: var(--green); }
   .lname a { color: var(--text); text-decoration: none; }
   .lname a:hover { color: var(--green); }
-  /* live: a red ring on the face, a dot on the channel that is on air, and one strip on loadouts/ */
+  /* live: a red ring on the face and a dot on the channel that is on air */
   .llive { display: inline-flex; align-items: center; gap: 5px; font: 700 10px var(--hud); letter-spacing: 1.2px; text-transform: uppercase;
            color: #fff; background: var(--red, #e0463f); padding: 2px 6px 2px 5px; white-space: nowrap; }
   .llive::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
@@ -675,20 +658,6 @@
                     margin-right: 6px; vertical-align: 1px; }
   .lchead .lclinks a.lchon { color: var(--text); }
   .onair .lcav { box-shadow: 0 0 0 2px var(--red, #e0463f); }
-  .lonair { display: grid; gap: 1px; margin: 0 0 22px; background: var(--div); border: 1px solid var(--div); }
-  .lonrow { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 12px; padding: 10px 14px; background: var(--panel, #0f1518); }
-  .lonwho { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font: 700 14px var(--body); }
-  .lonwho .lav { box-shadow: 0 0 0 2px var(--red, #e0463f); }
-  .lonwho:hover b { color: var(--green); }
-  .lonwhat { display: flex; align-items: baseline; gap: 8px; min-width: 0; font: 600 12px var(--hud); letter-spacing: .6px; color: var(--text-2); }
-  .lonwhat i { font-style: normal; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 1; }
-  .lonwhat span { margin-left: auto; white-space: nowrap; color: var(--red, #e0463f); text-transform: uppercase; letter-spacing: 1.2px; }
-  .lonwhat:hover i { color: var(--red, #e0463f); }
-  @media (max-width: 560px) {
-    .lonrow { grid-template-columns: auto minmax(0, 1fr); }
-    .lonwhat { grid-column: 1 / -1; flex-wrap: wrap; }
-    .lonwhat i { white-space: normal; flex-basis: 100%; order: 2; }
-  }
   .lchead .lname a::after { content: " →"; font-size: .55em; color: var(--muted); vertical-align: middle; }
   .lchead .lname a:hover::after { color: var(--green); }
   .lall { display: block; margin-top: 12px; background: var(--hair-2); border: 1px solid var(--hair); color: var(--text-2);
