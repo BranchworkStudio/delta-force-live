@@ -1,8 +1,8 @@
 {
- "built": "2026-10-06T11:55:40+00:00",
+ "built": "2026-10-07T11:40:15+00:00",
  "status": "written",
  "note": null,
- "builds": 703,
+ "builds": 704,
  "creators": 9,
  "weapons": 66,
  "guns": 68,
@@ -15,18 +15,18 @@
   "muomuo": 70,
   "siingsong": 52,
   "equalplays": 49,
-  "minda": 41,
+  "minda": 42,
   "deathlapse": 38
  },
  "by_mode": {
-  "operations": 565,
+  "operations": 566,
   "warfare": 138
  },
  "dated": 80,
  "noted": 429,
  "skipped": {
-  "minda credited to Ideologist": 3,
   "minda credited to Larry": 2,
+  "minda credited to Ideologist": 2,
   "leissik duplicate code": 1,
   "poach unknown weapon: Dragons Breath": 1,
   "poach unknown weapon: GOLDEN GUNNER 1": 1,

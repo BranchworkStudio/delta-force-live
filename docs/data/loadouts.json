@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-06",
+ "updated": "2026-10-07",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -288,12 +288,12 @@
    "mode": "operations",
    "creator": "medow",
    "source": "medow",
-   "code": "93R-Operations (Extraction Mode)-6L82AES03BCACMSNL14PK",
+   "code": "93R-Operations (Extraction Mode)-6LHATPO03BCACMSNL14PK",
    "url": "https://medowmafia.com/pages/gun-builds",
    "added": null,
    "note": "Auto",
    "tags": [
-    "~200K"
+    "~150K"
    ],
    "pos": 73
   },
@@ -1778,7 +1778,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 34
+   "pos": 35
   },
   {
    "weapon": "AWM",
@@ -2274,7 +2274,7 @@
    "added": null,
    "note": "MAG",
    "tags": [],
-   "pos": 39
+   "pos": 40
   },
   {
    "weapon": "Compound Bow",
@@ -5739,6 +5739,18 @@
   {
    "weapon": "MK47",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LHB87O088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 34
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
    "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LFPML804JR8MA4B021SH",
@@ -6746,7 +6758,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 37
+   "pos": 38
   },
   {
    "weapon": "PTR-32",
@@ -6946,7 +6958,7 @@
    "added": null,
    "note": "RIP",
    "tags": [],
-   "pos": 40
+   "pos": 41
   },
   {
    "weapon": "QCQ171",
@@ -7487,7 +7499,7 @@
    "added": null,
    "note": "2X",
    "tags": [],
-   "pos": 35
+   "pos": 36
   },
   {
    "weapon": "RM277",
@@ -7499,7 +7511,7 @@
    "added": null,
    "note": "1X",
    "tags": [],
-   "pos": 36
+   "pos": 37
   },
   {
    "weapon": "RM277",
@@ -8630,7 +8642,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 38
+   "pos": 39
   },
   {
    "weapon": "SVCH",
