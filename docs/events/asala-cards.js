@@ -177,7 +177,7 @@
       const me = readPlayer(rows, who), mine = String(who) === String(h.me);
       const cell = (c) => {
         const st = me.state[c.id];
-        const tip = c.name + " — " + (st === "have" ? "collected" : st === "sold" ? "HQ counts it, you sold it" : "never collected");
+        const tip = e(c.name) + " — " + (st === "have" ? "collected" : st === "sold" ? "HQ counts it, you sold it" : "never collected");
         const inner = `<span class="rk">${e(c.rank)}</span><span class="pp">${c.glyph}</span>`;
         return mine
           ? `<button type="button" class="c ${st}" data-tip="${e(tip)}" data-card="${c.id}">${inner}</button>`

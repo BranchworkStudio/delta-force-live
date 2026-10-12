@@ -209,6 +209,17 @@
     if (!res.ok) throw new Error("REST " + res.status + " on " + path);
     return res.json();
   }
+  // PostgREST answers at most max-rows (1000) however large `limit` is, and says nothing about it, so
+  // a read that needs every row in range pages through. `path` must carry an order that is total.
+  // shortcut: "All" downloads a board's whole history every refresh; past ~10k raids, sum it server-side.
+  async function restAll(path) {
+    const out = [];
+    for (let off = 0; ; off += 1000) {
+      const page = await rest(`${path}&limit=1000&offset=${off}`);
+      out.push(...page);
+      if (page.length < 1000) return out;
+    }
+  }
   // The panels that hang off the end of the board — the week's tally, the career wall — are extras:
   // if one of them fails, the board should lose that panel and nothing else. Everything above them
   // shares a Promise.all, where a single rejection would blank the page.
@@ -249,7 +260,11 @@
     return slow;
   }
 
+  // Bumped by every load(): one that finishes after a newer one started (a mode click mid-refresh)
+  // must not paint its older answer over the newer one.
+  let loadSeq = 0;
   async function load() {
+    const seq = ++loadSeq;
     const since = encodeURIComponent(rangeStart().toISOString());
     // A tab module's reads go out with the board's own rather than after them, and softly: a tab
     // that cannot load costs its own page and nothing else.
@@ -259,8 +274,8 @@
       ? Promise.all(t.queries(host).map(restSoft)) : Promise.resolve([])));
     const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, groups, memberships, myGroups] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
-      rest(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc&limit=1000`),
-      rest(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&limit=5000`),
+      restAll(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid`),
+      restAll(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid,nickname`),
       rest("red_drops?select=openid,collection_id,map_id,unlock_time,value,collection_count,first_seen_at&order=unlock_time.desc&limit=60"),
       rest("site_data?select=value,updated_at&key=eq.daily_passwords"),
       rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50"),
@@ -270,7 +285,7 @@
       rest(`player_rank?select=openid,report_type,rank_score,highest_rank,fetched_at&report_type=eq.${state.mode}`),
       // Every sample, not just the range: the movement inside a range is measured against the
       // standing that came before it, which is a sample from outside it.
-      rest(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc&limit=5000`),
+      restAll(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc,openid`),
       // Names and sizes, which anyone may read, and memberships, which say whose rows belong on
       // which board.
       restSoft("public_groups?select=id,name,members,created_by,created_at&order=created_at"),
@@ -292,6 +307,7 @@
     const [carried, wall, wallSum] = await slowRows([session && session.openid,
       recent[0] && recent[0].openid + "@" + recent[0].match_time,
       reds[0] && reds[0].openid + "@" + reds[0].unlock_time].join("|"));
+    if (seq !== loadSeq) return;
     const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
     state.group = pickGroup(groups, myIds, mine);
 
@@ -322,6 +338,7 @@
       groups, memberships, myGroups: Array.isArray(myGroups) ? myGroups : [],
     });
     const extraRows = await extra;
+    if (seq !== loadSeq) return;
     state.tabData = {};
     TABS.forEach((t, i) => { state.tabData[t.id] = t.scope === "all" ? (extraRows[i] || []) : (extraRows[i] || []).map(ours); });
     resolveFocus();
@@ -903,6 +920,7 @@
     : "No limit: everybody it reaches can open an account, until you withdraw it.";
   let grpMode = null;                                         // "new" | "join", while the field for it is open
   let grpErr = null;                                          // what the database said, if it said no
+  let grpText = "";                                           // what is typed there, which the 30 s redraw must not eat
 
   // Whether this player owns the board they are looking at. The database is the authority — only an
   // owner can read a code or remove anybody (0022) — so this only decides whether to draw controls
@@ -946,7 +964,7 @@
         ? `<button class="gleave" id="grpLeave">Leave ${esc(groupName(state.group) || "this board")}</button>` : ""}
       ${grpMode ? `<div class="gf">
           <input id="grpIn" placeholder="${grpMode === "new" ? "What are you calling it?" : "The six-character code"}"
-                 maxlength="${grpMode === "new" ? 48 : 6}" ${grpMode === "join" ? 'style="text-transform:uppercase"' : ""}>
+                 value="${esc(grpText)}" maxlength="${grpMode === "new" ? 48 : 6}" ${grpMode === "join" ? 'style="text-transform:uppercase"' : ""}>
           <button id="grpGo">${grpMode === "new" ? "Make it" : "Join"}</button>
         </div>${grpErr ? `<div class="ge">${esc(grpErr)}</div>` : ""}`
         : `<div class="gact"><button id="grpNew">New board</button><button id="grpJoin">Join with a code</button></div>`}
@@ -956,6 +974,7 @@
   function renderAccount() {
     const el = $("#acct");
     if (!el) return;
+    const typing = document.activeElement && document.activeElement.id === "grpIn";
     const mine = ls(CTL_KEY) || (session && session.openid) || null;   // the account this browser connected itself
     // On the squad there is no focused player to speak for, so the chip speaks for this browser's
     // own account. It carries the boards list and the invite, which must not disappear on a tab click.
@@ -1032,9 +1051,14 @@
 
     const openField = (mode) => (e) => {
       e.stopPropagation();
-      grpMode = mode; grpErr = null; renderAccount();
+      grpMode = mode; grpErr = null; grpText = ""; renderAccount();
       const f = $("#grpIn"); if (f) f.focus();
     };
+    const gi = $("#grpIn");
+    if (gi) {
+      gi.oninput = () => { grpText = gi.value; };
+      if (typing) { gi.focus(); gi.setSelectionRange(gi.value.length, gi.value.length); }
+    }
     const nb = $("#grpNew"); if (nb) nb.onclick = openField("new");
     const jb = $("#grpJoin"); if (jb) jb.onclick = openField("join");
 
@@ -1272,7 +1296,8 @@
       const by = new Map();
       for (const m of ms) {
         const d = new Date(m.match_time); d.setHours(d.getHours() - 4);  // the gaming day starts at 04:00
-        const k = d.toISOString().slice(0, 10), e = by.get(k) || { n: 0, w: 0, d };
+        // Local date, as rangeStart() uses: the UTC one files a 05:30 Copenhagen raid under yesterday.
+        const k = d.getFullYear() * 1e4 + (d.getMonth() + 1) * 100 + d.getDate(), e = by.get(k) || { n: 0, w: 0, d };
         e.n++; e.w += isWin(m) ? 1 : 0; by.set(k, e);
       }
       rows = [...by.entries()].sort((a, b) => a[0] < b[0] ? 1 : -1).slice(0, 12)
@@ -1286,7 +1311,7 @@
     const legend = one
       ? `<div class="legend"><span><i style="background:${GREEN}"></i>${rateWord()}</span><span><i style="background:var(--fail)"></i>${lostWord()}</span></div>`
       : `<div class="legend"><span><i style="background:var(--fail)"></i>${lostWord()}</span><span>filled = ${rateWord()}, in each player's colour</span></div>`;
-    el.innerHTML = legend + `<div class="gauge">${rows.map(r => `<div class="g" data-tip="<b>${esc(r.label)}</b>: ${r.w} of ${r.n} ${raid(r.n)} ${rateWord()}">
+    el.innerHTML = legend + `<div class="gauge">${rows.map(r => `<div class="g" data-tip="${esc(`<b>${esc(r.label)}</b>: ${r.w} of ${r.n} ${raid(r.n)} ${rateWord()}`)}">
         <span class="nm">${esc(r.label)}</span>${barCell(r.w, r.n, r.color)}<span class="v">${pct(r.w, r.n)}</span></div>`).join("")}</div>`;
     attachTips(el);
   }
@@ -1313,7 +1338,7 @@
     if (foot) foot.textContent = `${reds.length} since ${new Date(reds[reds.length - 1].unlock_time).toLocaleDateString([], { day: "numeric", month: "short" })}`;
     el.innerHTML = `<div class="reds">${reds.map(r => {
       const it = item(r.collection_id);
-      return `<div class="red" data-tip="<b>${esc(it.name)}</b><br>${esc(playerName(r.openid))} · ${esc(mapFull(r.map_id))}<br>${esc(new Date(r.unlock_time).toLocaleString())}${r.value ? `<br>Worth ${plain(r.value)}` : ""}">
+      return `<div class="red" data-tip="${esc(`<b>${esc(it.name)}</b><br>${esc(playerName(r.openid))} · ${esc(mapFull(r.map_id))}<br>${esc(new Date(r.unlock_time).toLocaleString())}${r.value ? `<br>Worth ${plain(r.value)}` : ""}`)}">
         ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ph"></div>`}
         <div class="n">${esc(it.name)}</div>
         <div class="v">${r.value ? fmt(r.value) : "–"}</div>
@@ -1347,7 +1372,7 @@
       // text as well as in the colour of its edge: two identical-looking cards is exactly what a
       // colourblind reader would be left with otherwise.
       const g = it.grade === 5 ? "Gold" : it.grade === 6 ? "Red" : "";
-      return `<div class="red" data-grade="${it.grade}" data-tip="<b>${esc(it.name)}</b>${g ? " · " + g : ""}<br>${esc(playerName(r.openid))}<br>${n}\u00d7 at ${plain(r.item_value)} = ${plain((r.item_value || 0) * n)}">
+      return `<div class="red" data-grade="${it.grade}" data-tip="${esc(`<b>${esc(it.name)}</b>${g ? " · " + g : ""}<br>${esc(playerName(r.openid))}<br>${n}\u00d7 at ${plain(r.item_value)} = ${plain((r.item_value || 0) * n)}`)}">
         ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ph"></div>`}
         <div class="n">${esc(it.name)}</div>
         <div class="v">${fmt(r.item_value)}</div>
@@ -1387,7 +1412,7 @@
         <span class="nm">Types found</span>${barCell(types.length, denom, GREEN)}<span class="v">${types.length} of ${denom}</span></div>
       <div class="reds">${types.map(t => {
         const it = item(t.item_id);
-        return `<div class="red" data-tip="<b>${esc(it.name)}</b>${it.maps.length ? " · " + esc(it.maps.join(", ")) : ""}<br>${t.n}\u00d7 at ${plain(it.value)} = ${plain(t.n * it.value)}${many ? "<br>" + esc([...new Set(t.who)].map(playerName).join(", ")) : ""}">
+        return `<div class="red" data-tip="${esc(`<b>${esc(it.name)}</b>${it.maps.length ? " · " + esc(it.maps.join(", ")) : ""}<br>${t.n}\u00d7 at ${plain(it.value)} = ${plain(t.n * it.value)}${many ? "<br>" + esc([...new Set(t.who)].map(playerName).join(", ")) : ""}`)}">
           ${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy" onerror="this.removeAttribute('src')">` : `<div class="ph"></div>`}
           <div class="n">${esc(it.name)}</div>
           <div class="v">${fmt(it.value)}</div>

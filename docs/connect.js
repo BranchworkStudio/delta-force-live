@@ -15,13 +15,15 @@
   const ls = {
     get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private window */ } },
+    del: (k) => { try { localStorage.removeItem(k); } catch (e) { /* private window */ } },
   };
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const span = (s) => s < 90 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : s < 172800 ? (s / 3600).toFixed(1) + " h" : (s / 86400).toFixed(1) + " d";
 
-  // The code comes from the link a mate was sent; remembered so a later reconnect works from a bare
-  // URL. Two shapes arrive here — `?g=` is a group's own code, `?i=` a one-off tracker link — and
-  // the server takes either from either parameter, so this page does not have to tell them apart.
+  // The code comes from the link a mate was sent; remembered until the hand-over goes through, so the
+  // trip to HQ and back can land on a bare URL. Two shapes arrive here — `?g=` is a group's own code,
+  // `?i=` a one-off tracker link — and the server takes either from either parameter, so this page
+  // does not have to tell them apart.
   const qs = new URLSearchParams(location.search);
   const invite = qs.get("g") || qs.get("i") || ls.get(K.inv) || "";
   if (invite) ls.set(K.inv, invite);
@@ -93,6 +95,9 @@
       }));
     }
     if (r.openid) ls.set(K.focus, r.openid);                   // the board opens on the player who just connected
+    // The link has done its job. Kept, it would put somebody back on a board they left or were
+    // removed from the next time they reconnect, since every connect re-joins the board it names.
+    ls.del(K.inv);
     ls.set(K.conn, JSON.stringify({ openid: r.openid, nickname: r.nickname || null, at: Date.now() }));  // tells the other tab
     S.phase = "done"; S.res = r; S.err = null;
     render();

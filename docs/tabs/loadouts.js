@@ -384,6 +384,7 @@
         .map(k => ({ k, c: DB.creators[k], n: DB.builds.filter(b => b.creator === k).length }))
         .filter(x => x.n).sort((a, b) => b.n - a.n || a.c.name.localeCompare(b.c.name));
 
+      const typing = document.activeElement && document.activeElement.id === "loQ";
       el.innerHTML = `<div class="lo">
         <div class="lo-rail">
           <div class="lsearch"><input id="loQ" type="search" placeholder="Search weapon, creator or tag" value="${e(state.q)}" autocomplete="off"></div>
@@ -417,7 +418,8 @@
       const q = el.querySelector("#loQ");
       if (q) {
         q.oninput = () => { state.q = q.value; save(); h.repaint(); };
-        if (state.q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
+        // Only give focus back to a field that had it: grabbing it on every redraw pops the phone keyboard.
+        if (typing) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
       }
       const who = el.querySelector("#loCreator");
       if (who) who.onchange = () => { state.creator = who.value; save(); h.repaint(); };
@@ -592,7 +594,7 @@
     const meta = [
       note ? `<b>${e(note)}</b>` : "",
       ...(b.tags || []).map(t => e(t)),
-      a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(b.added)}">${e(a.text)}</i>` : "",
+      a ? `<i class="lage ${a.stale ? "old" : ""}" data-tip="Published ${e(e(b.added))}">${e(a.text)}</i>` : "",
     ].filter(Boolean);
     return `<article class="lbuild">
       <div class="lbh${liveOf(b.creator) ? " onair" : ""}">
@@ -603,7 +605,7 @@
       </div>
       <div class="lmeta">${meta.join('<span class="ldot">·</span>')}</div>
       <div class="lcode">
-        <code data-tip="${e(b.code)}">${e(b.code)}</code>
+        <code data-tip="${e(e(b.code))}">${e(b.code)}</code>
         <button type="button" class="lcopy" data-code="${e(b.code)}">Copy</button>
         ${flagHtml(b.code, e)}
       </div>
