@@ -15,7 +15,8 @@ META = os.path.join(HERE, '..', '..', 'docs', 'data', 'loadouts-meta.json')
 IMG = os.path.join(HERE, '..', '..', 'docs', 'img', 'creators')
 GUNS = json.load(open(os.path.join(HERE, 'guns.json')))
 
-sources, creators, builds, skipped = own.collect(GUNS)
+old = json.load(open(OUT)) if os.path.exists(OUT) else None
+sources, creators, builds, skipped = own.collect(GUNS, old)
 
 # The avatars fetch.sh downloaded. A face beside the name is the whole point of crediting someone,
 # but a missing file must not break the card, so the field is only set when the file is there.
@@ -61,7 +62,6 @@ def write_meta(status, note=None):
 # This runs unattended every morning, so it has to be able to refuse its own output. A creator's
 # page that answers with a login wall, an error page or an empty sheet parses to nothing at all,
 # and a green run that quietly empties the tab is the one failure mode worth spending code on.
-old = json.load(open(OUT)) if os.path.exists(OUT) else None
 if not builds:
     msg = 'refusing to write: no builds parsed at all — a page is down or has changed shape'
     write_meta('refused', msg)

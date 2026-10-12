@@ -325,16 +325,22 @@ def socials(txt):
 # publish is kept, and the card sorts by date so the newest is still what you see first.
 
 
-def collect(guns):
-    """-> (sources, creators, builds, skipped), in the shape docs/data/loadouts.json wants."""
+def collect(guns, old=None):
+    """-> (sources, creators, builds, skipped), in the shape docs/data/loadouts.json wants.
+
+    `old` is the loadouts.json this run replaces: a creator whose page gives nothing this time keeps
+    the builds it gave then."""
     sources, creators, builds, skipped = {}, {}, [], collections.Counter()
+    old = old or {}
     for cfg in json.load(open(os.path.join(HERE, 'creators.json'))):
         f = RAW + cfg['id'] + '.' + cfg['ext']
+        txt, rows = '', []
         if not os.path.exists(f):
             skipped['not fetched: ' + cfg['id']] += 1
-            continue
-        txt = open(f, encoding='utf8', errors='replace').read()
-        rows = PARSER[cfg['parser']](txt, guns, cfg)
+        else:
+            txt = open(f, encoding='utf8', errors='replace').read()
+            try: rows = PARSER[cfg['parser']](txt, guns, cfg)
+            except Exception as e: skipped['parser failed: %s (%s)' % (cfg['id'], e)] += 1   # one odd page must not stop the rest
         links = list(cfg.get('links') or [])
         if cfg['parser'] == 'dfbuild': links += [u for u in socials(txt) if u not in links]
         seen = set()
@@ -365,7 +371,15 @@ def collect(guns):
             builds.append(dict(weapon=r['weapon'], mode=r['mode'], creator=cfg['id'],
                                source=cfg['id'], code=r['code'], url=cfg['page'], added=r['added'],
                                note=note, tags=tags, pos=kept - 1))
-        if not kept: continue
+        if not kept:
+            # A page that is down, behind a login wall or in a new layout parses to nothing, and one
+            # creator alone is far inside the 40% build.py refuses at — so they would quietly drop off.
+            # shortcut: a creator who really empties their page keeps the old builds; take them out of creators.json.
+            prev = [b for b in old.get('builds', []) if b['creator'] == cfg['id']]
+            if not prev: continue
+            builds += prev
+            skipped['kept from the last run: ' + cfg['id']] += len(prev)
+            links = (old.get('creators', {}).get(cfg['id']) or {}).get('links') or links
         sources[cfg['id']] = dict(name=cfg['source'], url=cfg['page'], kind='creator')
         creators[cfg['id']] = dict(name=cfg['name'], url=cfg['page'], links=links, kind='creator')
     return sources, creators, builds, skipped

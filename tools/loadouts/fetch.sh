@@ -29,7 +29,8 @@ PY
 
 # The creators' own pages, one per entry in creators.json. A Google Doc needs the redirect
 # followed to its export host, which is the only reason this is not the same get() as above.
-python3 -c 'import json;print("\n".join(c["id"]+" "+c["ext"]+" "+c["fetch"] for c in json.load(open("creators.json"))))' | while read id ext url; do [ -s "raw/own/$id.$ext" ] || curl -sSL --fail --retry 2 -m 40 -A "$UA" "$url" -o "raw/own/$id.$ext"; python3 -c 'import time;time.sleep(.7)'; done
+# One page failing is noted and passed over: build.py keeps that creator's last builds, and the rest still refresh.
+python3 -c 'import json;print("\n".join(c["id"]+" "+c["ext"]+" "+c["fetch"] for c in json.load(open("creators.json"))))' | while read id ext url; do [ -s "raw/own/$id.$ext" ] || curl -sSL --fail --retry 2 -m 40 -A "$UA" "$url" -o "raw/own/$id.$ext" || { rm -f "raw/own/$id.$ext"; echo "FAIL $id" >&2; }; python3 -c 'import time;time.sleep(.7)'; done
 
 # Their faces. The build page itself carries one when the creator signed in with Twitch; otherwise
 # it is the og:image of the first channel they list, which is the same picture. Stored on our own

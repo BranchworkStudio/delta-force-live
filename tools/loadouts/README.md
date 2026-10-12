@@ -32,6 +32,13 @@ same pages is not an update — and it exits non-zero rather than writing a file
 it, or one that lost more than a third of them. Both are what a page answering with a login wall
 or a redesign looks like from here.
 
+One creator's page failing on its own (not fetched, a parser error, or nothing parsed) is too
+small for that guard to notice, so it is handled per creator instead: they keep the builds the last
+file had for them, and `loadouts-meta.json` lists them under `skipped` as "kept from the last run".
+A creator who really empties their page therefore stays at their old list until they are taken out
+of `creators.json`. On a refusal the workflow still commits `loadouts-meta.json`, then fails.
+`python3 -m unittest test_own` checks both paths without touching the network.
+
 `raw/` (the saved pages) is not committed; regenerating it is the point of `fetch.sh`. The
 avatars are committed, because they are part of what the page shows.
 

@@ -35,7 +35,11 @@ jobs:
         working-directory: tools/loadouts
         run: bash fetch.sh
 
+      # A refusal still writes loadouts-meta.json, and that is the one file worth committing that
+      # morning, so the job carries on to the commit and fails at the end instead.
       - name: Rebuild docs/data/loadouts.json
+        id: build
+        continue-on-error: true
         working-directory: tools/loadouts
         run: python3 build.py
 
@@ -48,4 +52,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "Loadouts: refresh from the creators' pages" -m "$SUMMARY"
+          git pull --rebase origin main   # somebody may have pushed while the pages were being read
           git push
+
+      - name: Fail, if the rebuild refused
+        if: steps.build.outcome == 'failure'
+        run: exit 1
