@@ -355,7 +355,6 @@
   const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "–";
   const ago = (iso) => { const s = (Date.now() - new Date(iso)) / 1000; return s < 60 ? "just now" : s < 3600 ? Math.round(s / 60) + " min ago" : s < 86400 ? (s / 3600).toFixed(1) + " h ago" : Math.round(s / 86400) + " d ago"; };
   const dur = (s) => s < 120 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : (s / 3600).toFixed(1) + " h";
-  const span = (s) => s < 90 ? Math.round(s) + " s" : s < 5400 ? Math.round(s / 60) + " min" : s < 172800 ? (s / 3600).toFixed(1) + " h" : (s / 86400).toFixed(1) + " d";
   const mins = (m) => m == null ? "–" : m < 1 ? Math.round(m * 60) + " s" : m.toFixed(1) + " min";
   const hhmm = (d) => new Date(d).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
   const dayLabel = (d) => { const x = new Date(d), now = new Date(); return x.toDateString() === now.toDateString() ? null : x.toLocaleDateString([], { day: "numeric", month: "short" }); };
