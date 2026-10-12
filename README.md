@@ -277,8 +277,9 @@ one page per minute, so the site has something to show right away.
 | Path | What |
 |---|---|
 | `supabase/migrations/` | Postgres schema, RLS, views |
-| `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it (`hq.ts` signs requests the way the HQ page itself does) |
-| `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute |
+| `supabase/functions/connect/` | Edge function behind the connect page: verifies a handed-over HQ session against HQ and stores it. The enrolment rule is `gate.ts`, tested by `node gate_test.ts` |
+| `supabase/functions/_shared/hq.ts` | The HQ client both functions use: signs requests the way the HQ page itself does |
+| `supabase/functions/poll/` | The scheduled collector: reads HQ for every stored session and writes matches, details and red drops. Called by `pg_cron` every minute. Each player is claimed first (`player_sessions.polling_until`), so two runs never poll one player at once; rank, reds and collections are read only after a recent raid and on the half hour, and an expired login is retried only on the half hour |
 | `supabase/functions/report/` | Takes a visitor's "this build doesn't work" from a loadouts card and stores it for the Admin tab |
 | `docs/connect.*` | The guided connect flow and the bookmarklet it generates |
 | `docs/events/` | One file per limited-time event, each registering its own tab (see **Tabs and event modules**) |
@@ -368,7 +369,7 @@ This exists because a season's collection is temporary. Ending one is: delete th
 file and its two script tags in `index.html`, and drop the event's entry from `EVENTS` in
 `supabase/functions/poll/index.ts`. No migration, no schema change, nothing to unpick from
 the board — which is also why the tables are keyed by an `event_key` column rather than
-named after the event (`event_collection`, `event_collection_summary`).
+named after the event (`event_collection`).
 
 The first module is the **Ahsarah cards** (`docs/events/asala-cards.js`), fed by
 `GetCardCollection`. Its `event_key` (`asala_cards_s7`) is a key and nothing more — it is not
@@ -692,7 +693,7 @@ nothing to compare it against — and Warfare has a single tier, so it is untouc
 ### How long an HQ login lasts
 
 Measured, not guessed: the `Wand_DF_token` cookie is a **session cookie**. It
-carries no expiry date, so `players.token_expires` stays null. There is no clock to
+carries no expiry date, so there is nothing to store about when it ends. There is no clock to
 read and no refresh anyone can perform. In practice the login survives until the
 server decides to invalidate the token.
 

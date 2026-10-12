@@ -27,7 +27,8 @@
 // That split is the whole of the authority model. Mates squad up among themselves without asking;
 // the guest list of the tracker itself has one name on it.
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { cleanSession, fingerprint, getMyData, getPrivateRoomKey, isAuthError, md5, REPORT_TYPE } from "./hq.ts";
+import { cleanSession, fingerprint, getMyData, getPrivateRoomKey, isAuthError, md5, REPORT_TYPE } from "../_shared/hq.ts";
+import { decide } from "./gate.ts";
 
 const SUPA_URL = Deno.env.get("SUPABASE_URL")!;
 // Sent as the `apikey` when redeeming a magic link: that header only routes the request, while the
@@ -153,31 +154,12 @@ Deno.serve(async (req) => {
 
   // Enrolment gate, checked before we spend an HQ call on an unknown player.
   const { data: existing } = await supabase.from("players").select("openid, on_squad").eq("openid", openid).maybeSingle();
-  const join = await resolveCode(typeof body.group === "string" ? body.group : typeof body.invite === "string" ? body.invite : "");
-  let via: string | null = null;
-  let onSquad = existing ? existing.on_squad !== false : true;
-  if (!existing) {
-    const { count } = await supabase.from("players").select("openid", { count: "exact", head: true });
-    if ((count ?? 0) === 0) {
-      via = "first";                                                   // empty board: the first hand-over claims it
-    } else if (join?.kind === "invite" && !join.spent) {
-      via = join.via;                                                  // what the join traces back to
-      onSquad = !join.solo;
-    } else if (join?.kind === "invite") {
-      // The link is real and it worked — for somebody else. That is a different answer from a wrong
-      // one and deserves different words: there is nothing here to retype or check, only somebody
-      // to ask. Refused before the HQ call, which is a second of somebody's time either way.
-      return json({ error: "that invite link has already been used", reason: "invite-used-up" }, 403);
-    } else {
-      // A board code admits, it does not enrol: arriving on one without an account is somebody who
-      // was forwarded six characters by a mate, not somebody the tracker's owner asked for.
-      const had = typeof body.group === "string" ? body.group : typeof body.invite === "string" ? body.invite : "";
-      return json({
-        error: "this tracker is invite-only",
-        reason: join ? "code-not-invite" : had ? "bad-invite" : "not-enrolled",
-      }, 403);
-    }
-  }
+  const typed = typeof body.group === "string" ? body.group : typeof body.invite === "string" ? body.invite : "";
+  const join = await resolveCode(typed);
+  const players = existing ? null : (await supabase.from("players").select("openid", { count: "exact", head: true })).count ?? 0;
+  const gate = decide(existing, players, join, typed);
+  if (!gate.ok) return json({ error: gate.error, reason: gate.reason }, 403);
+  const { via, onSquad } = gate;
 
   // Prove the handover works before storing it: one authenticated call, exactly as the poller makes.
   let env;

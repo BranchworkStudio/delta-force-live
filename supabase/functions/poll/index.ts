@@ -5,7 +5,7 @@
 //   { secret, openid } -> poll one (used by the connect page right after a hand-over)
 //   { secret, shard, of } -> poll one slice (the function calls itself this way past SHARD_SIZE)
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { getCardCollection, getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedCollection, getRedDrops, getWeekCalendar, isAuthError, type Session } from "./hq.ts";
+import { getCardCollection, getMatchDetail, getMatchList, getMyData, getPrivateRoomKey, getRedCollection, getRedDrops, getWeekCalendar, isAuthError, type Session } from "../_shared/hq.ts";
 
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
@@ -28,9 +28,8 @@ const firstSeen = (t: number | null) => (t && Date.now() / 1000 - t > 6 * 3600 ?
 
 /**
  * Limited-time collection events. Each entry says how to ask HQ for one and how to flatten the
- * answer into (item, count) rows plus whatever totals HQ states itself; `event_collection` keys
- * every row by `key`, so a season ending means deleting an entry here and a module on the site,
- * with no migration and no table to drop.
+ * answer into (item, count) rows; `event_collection` keys every row by `key`, so a season ending
+ * means deleting an entry here and a module on the site, with no migration and no table to drop.
  *
  * The Ahsarah cards arrive in six named groups rather than one list, and every group lists every
  * card that exists — a card never found comes back at count 0. That zero is the whole point: it is
@@ -41,24 +40,17 @@ const EVENTS: {
   key: string;
   fetch: (s: Session) => Promise<{ code: number; data?: any }>;
   items: (d: any) => { item_id: unknown; owned_count: unknown }[];
-  summary: (d: any) => Record<string, unknown>;
 }[] = [
   {
     key: "asala_cards_s7",
     fetch: getCardCollection,
     items: (d) => CARD_GROUPS.flatMap((g) =>
       (Array.isArray(d?.[g]?.card_list) ? d[g].card_list : []).map((c: any) => ({ item_id: c?.card_id, owned_count: c?.card_count }))),
-    // The six per-group progress figures sum to owned_count, so keeping both gives the page a free
-    // check on its own arithmetic rather than a number it has to trust.
-    summary: (d) => ({
-      owned_count: toInt(d?.owned_count), unowned_count: toInt(d?.unowned_count),
-      completed_suit_count: toInt(d?.completed_suit_count), high_grade_card_count: toInt(d?.high_grade_card_count),
-      groups: Object.fromEntries(CARD_GROUPS.map((g) => [g, toInt(d?.[g]?.unlock_progress)])),
-    }),
   },
 ];
 
-type Row = { openid: string; cookies: Session; backfill: Record<string, unknown> };
+type Row = { openid: string; cookies: Session; backfill: Record<string, unknown>; token_fp: string; last_error: string | null };
+const LEASE_MS = 150_000;         // the function's own wall clock: no run can still be polling after it
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -70,7 +62,7 @@ Deno.serve(async (req) => {
   const { data: sec } = await supabase.from("app_settings").select("value").eq("key", "poll_secret").maybeSingle();
   if (!sec?.value || body?.secret !== sec.value) return json({ error: "forbidden" }, 403);
 
-  let q = supabase.from("player_sessions").select("openid, cookies, backfill").order("openid");
+  let q = supabase.from("player_sessions").select("openid, cookies, backfill, token_fp, last_error").order("openid");
   if (typeof body.openid === "string") q = q.eq("openid", body.openid);
   const { data, error } = await q;
   if (error) return json({ error: error.message }, 500);
@@ -93,9 +85,27 @@ Deno.serve(async (req) => {
     return json({ ok: true, at: nowIso(), shards: n, players: parts.flatMap((p: any) => p.players ?? [{ shard: p.shard, error: p.error }]) });
   }
 
+  // A dead login stays dead until its player hands over a new one, which clears last_error, so it
+  // is retried twice an hour rather than spending an HQ call on it every minute.
+  const one = typeof body.openid === "string", halfHour = new Date().getUTCMinutes() % 30 === 0;
+  if (!one && !halfHour) rows = rows.filter((r) => !r.last_error?.startsWith("HQ session expired"));
+
+  // Claim before polling: the connect page's poke and the minute's cron run (or a run that overran
+  // its minute) must not poll one player twice at once. Whoever holds a live claim keeps the player.
+  if (rows.length) {
+    const { data: claimed, error: cerr } = await supabase.from("player_sessions")
+      .update({ polling_until: new Date(Date.now() + LEASE_MS).toISOString() })
+      .in("openid", rows.map((r) => r.openid))
+      .or(`polling_until.is.null,polling_until.lt."${nowIso()}"`)
+      .select("openid");
+    if (cerr) return json({ error: cerr.message }, 500);
+    const mine = new Set((claimed ?? []).map((c) => c.openid));
+    rows = rows.filter((r) => mine.has(r.openid));
+  }
+
   // Polled first, stamped after: `at` has always meant "this run finished", and the run log reads
   // it that way to tell how long a minute's poll took.
-  const players = await pool(rows, CONCURRENCY, pollOne);
+  const players = await pool(rows, CONCURRENCY, (r) => pollOne(r, one || halfHour));
   return json({ ok: true, at: nowIso(), players });
 });
 
@@ -108,7 +118,7 @@ async function pool<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>): Prom
   return out;
 }
 
-async function pollOne(row: Row) {
+async function pollOne(row: Row, full: boolean) {
   const s = row.cookies, openid = row.openid;
   const report: Record<string, unknown> = { openid, matches: 0, details: 0, reds: 0 };
   try {
@@ -116,7 +126,7 @@ async function pollOne(row: Row) {
     for (const rt of MODES) {
       const env = await getMatchList(s, rt, 1, PAGE_SIZE);
       if (Number(env.code) !== 0) {
-        if (isAuthError(env)) return await loggedOut(openid, env.msg || "HQ refused the session");
+        if (isAuthError(env)) return await loggedOut(row, env.msg || "HQ refused the session");
         report.warn = env.msg || ("code " + env.code);
         continue;
       }
@@ -140,26 +150,44 @@ async function pollOne(row: Row) {
 
     report.matches = await storeMatches(openid, fresh);
     report.details = await storeDetails(s, openid);
-    report.reds = await storeReds(s, openid, bf);
-    report.stats = await storeStats(s, openid);
-    report.carried = await storeCarryOut(s, openid);
-    report.wall = await storeCollection(s, openid);
-    report.events = await storeEvents(s, openid);
+    // Rank, reds, the week's gold and the collections only move with a raid, and HQ can lag the
+    // match list by a few minutes, so they are read while a raid is recent and twice an hour otherwise.
+    if (full || await raidedLately(openid)) {
+      report.reds = await storeReds(s, openid, bf);
+      report.stats = await storeStats(s, openid);
+      report.carried = await storeCarryOut(s, openid);
+      report.wall = await storeCollection(s, openid);
+      report.events = await storeEvents(s, openid);
+    }
     await maybePasswords(openid);
 
     await supabase.from("players").update({ token_ok: true, last_poll_at: nowIso() }).eq("openid", openid);
-    await supabase.from("player_sessions").update({ last_ok_at: nowIso(), last_error: null, backfill: bf }).eq("openid", openid);
+    await supabase.from("player_sessions").update({ last_ok_at: nowIso(), last_error: null, backfill: bf, polling_until: null }).eq("openid", openid);
   } catch (e) {
     report.error = String(e);
-    await supabase.from("player_sessions").update({ last_error: String(e) }).eq("openid", openid);
+    await supabase.from("player_sessions").update({ last_error: String(e), polling_until: null }).eq("openid", openid);
   }
   return report;
 }
 
-/** HQ says this session is dead. Keep the row so the board can say "reconnect" instead of going blank. */
-async function loggedOut(openid: string, msg: string) {
-  await supabase.from("players").update({ token_ok: false, last_poll_at: nowIso() }).eq("openid", openid);
-  await supabase.from("player_sessions").update({ last_error: "HQ session expired: " + msg }).eq("openid", openid);
+/** A match first seen in the last 15 minutes: history pulled in by the backfill is stamped with its own time, so it never counts. */
+async function raidedLately(openid: string) {
+  const { count } = await supabase.from("matches").select("room_id", { count: "exact", head: true })
+    .eq("openid", openid).gt("first_seen_at", new Date(Date.now() - 15 * 60e3).toISOString());
+  return !!count;
+}
+
+/**
+ * HQ says this session is dead. Keep the row so the board can say "reconnect" instead of going blank.
+ * Only if it is still the session this run read: a player who handed over a new login while the old
+ * one was being refused must not be marked dead, and then skipped for half an hour, over the old one.
+ */
+async function loggedOut(row: Row, msg: string) {
+  const openid = row.openid;
+  const { data } = await supabase.from("player_sessions").update({ last_error: "HQ session expired: " + msg, polling_until: null })
+    .eq("openid", openid).eq("token_fp", row.token_fp).select("openid");
+  if (data?.length) await supabase.from("players").update({ token_ok: false, last_poll_at: nowIso() }).eq("openid", openid);
+  else await supabase.from("player_sessions").update({ polling_until: null }).eq("openid", openid);
   return { openid, expired: true, error: msg };
 }
 
@@ -172,7 +200,7 @@ async function storeMatches(openid: string, list: any[]) {
       map_id: toInt(m.map_id), result: toInt(m.result), is_leave: toInt(m.is_leave),
       kill_count: toInt(m.kill_count), carry_out_value: toInt(m.carry_out_value), net_income: toInt(m.net_income),
       operator_id: clampStr(m.operator_id, 32), score: toInt(m.score),
-      first_seen_at: firstSeen(t), raw: m,
+      first_seen_at: firstSeen(t),
     };
   }).filter((r) => r.room_id && r.report_type && r.match_time);
   if (!rows.length) return 0;
@@ -247,7 +275,7 @@ async function storeReds(s: Session, openid: string, bf: Record<string, unknown>
         openid, collection_id: clampStr(r.collection_id, 32), map_id: toInt(r.map_id),
         unlock_time: t ? new Date(t * 1000).toISOString() : null,
         value: toInt(r.value), collection_count: toInt(r.collection_count),
-        first_seen_at: firstSeen(t), raw: r,
+        first_seen_at: firstSeen(t),
       };
     }).filter((r: any) => r.collection_id && r.unlock_time);
     if (rows.length) {
@@ -285,7 +313,7 @@ async function storeStats(s: Session, openid: string) {
     await supabase.from("player_stats").upsert({ openid, report_type: rt, raw: env.data, fetched_at: nowIso() }, { onConflict: "openid,report_type" });
     // The same answer carries the profile HQ shows beside the nickname, and it was only ever read
     // at hand-over — so a mate who changed their picture or ranked up kept the old one on the board
-    // until they reconnected. Written only when it actually moved: this runs every minute.
+    // until they reconnected. Written only when it actually moved: this runs often.
     if (rt === MODES[0]) await refreshProfile(openid, env.data?.player_info);
     // HQ only ever states the standing, never what a match was worth, so the history is made here:
     // one row each time the number moves. Sampling an unchanged score every minute would bury the
@@ -357,7 +385,7 @@ async function storeCollection(s: Session, openid: string) {
 
 /**
  * The season's collection events, whatever they currently are. Every entry in EVENTS is asked for
- * once a minute and flattened the same way, so a season ending is an edit to that array rather
+ * on the same schedule and flattened the same way, so a season ending is an edit to that array rather
  * than to this function.
  *
  * One event failing must not cost the others theirs, and none of them is worth failing a poll
@@ -377,10 +405,6 @@ async function storeEvents(s: Session, openid: string) {
         if (error) throw new Error(error.message);
         stored += rows.length;
       }
-      await supabase.from("event_collection_summary").upsert(
-        { openid, event_key: ev.key, raw: ev.summary(env.data), fetched_at: nowIso() },
-        { onConflict: "openid,event_key" },
-      );
     } catch (e) {
       console.warn("event " + ev.key + ": " + String(e));
     }
