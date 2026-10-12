@@ -42,6 +42,8 @@ export async function call(session: Session, endpoint: string, body: Record<stri
     method: "POST",
     headers: { "Content-Type": "application/json", "Referer": "https://www.playdeltaforce.com/" },
     body: JSON.stringify({ ...auth, needLogin: true, ...body }),
+    // A hung HQ would otherwise hold the run until the function's wall-clock limit kills every player in it.
+    signal: AbortSignal.timeout(10000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} from ${endpoint}`);
   return res.json();
@@ -68,7 +70,7 @@ export const getCardCollection = (s: Session) => call(s, "GetCardCollection", {}
 /** Daily private-room passwords: signed but unauthenticated, so also a signature self-test. */
 export async function getPrivateRoomKey(): Promise<Envelope> {
   const url = await signedUrl("/api/proxy_direct/logicial/DfTools/GetPrivateRoomKey", { lang_type: "en" });
-  const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ needLogin: false, lang_type: "en" }) });
+  const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ needLogin: false, lang_type: "en" }), signal: AbortSignal.timeout(10000) });
   if (!res.ok) throw new Error(`HTTP ${res.status} from GetPrivateRoomKey`);
   return res.json();
 }

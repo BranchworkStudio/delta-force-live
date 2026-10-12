@@ -53,7 +53,8 @@ Deno.serve(async (req) => {
   try { b = (await builds()).get(code); } catch { return json({ error: "could not read the build list" }, 503); }
   if (!b) return json({ error: "that code is not on the list" }, 404);
 
-  const ip = (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || req.headers.get("cf-connecting-ip") || "";
+  // Cloudflare sets cf-connecting-ip itself; the first x-forwarded-for entry is whatever the caller sent.
+  const ip = req.headers.get("cf-connecting-ip") || (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "";
   const ip_hash = ip ? await hashIp(ip) : null;
 
   // Already said: the same browser or address on the same build today counts once.

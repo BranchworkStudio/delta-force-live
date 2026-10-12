@@ -130,8 +130,9 @@ async function pollOne(row: Row) {
       if (cur === "done") continue;
       const next = (typeof cur === "number" ? cur : 1) + 1;
       if (next > BACKFILL_PAGES) { bf[rt] = "done"; continue; }
-      const env = await getMatchList(s, rt, next, PAGE_SIZE);
-      if (Number(env.code) !== 0) continue;
+      // Best-effort: a failed history page must not throw away the fresh matches read above.
+      const env = await getMatchList(s, rt, next, PAGE_SIZE).catch(() => null);
+      if (!env || Number(env.code) !== 0) continue;
       const list = env.data?.list ?? [];
       for (const m of list) fresh.push({ ...m, report_type: rt });
       bf[rt] = list.length < PAGE_SIZE ? "done" : next;
@@ -237,8 +238,8 @@ async function storeReds(s: Session, openid: string, bf: Record<string, unknown>
   if (typeof deep === "number" && deep > 1) pages.push(deep);
   let stored = 0;
   for (const page of pages) {
-    const env = await getRedDrops(s, page, PAGE_SIZE);
-    if (Number(env.code) !== 0) break;
+    const env = await getRedDrops(s, page, PAGE_SIZE).catch(() => null);
+    if (!env || Number(env.code) !== 0) break;
     const list = env.data?.list ?? [];
     const rows = list.map((r: any) => {
       const t = toInt(r.unlock_time);
