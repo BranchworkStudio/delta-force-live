@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-12",
+ "updated": "2026-10-13",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -205,7 +205,7 @@
    "tags": [
     "20K"
    ],
-   "pos": 65
+   "pos": 64
   },
   {
    "weapon": ".357",
@@ -269,7 +269,7 @@
    "added": null,
    "note": "The Double Tap",
    "tags": [],
-   "pos": 75
+   "pos": 76
   },
   {
    "weapon": "93R",
@@ -349,7 +349,7 @@
    "tags": [
     "54K"
    ],
-   "pos": 57
+   "pos": 56
   },
   {
    "weapon": "AK-12",
@@ -467,7 +467,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 76
+   "pos": 77
   },
   {
    "weapon": "AK-12",
@@ -479,7 +479,7 @@
    "added": null,
    "note": "v2.0",
    "tags": [],
-   "pos": 71
+   "pos": 72
   },
   {
    "weapon": "AK-12",
@@ -491,7 +491,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 30
+   "pos": 31
   },
   {
    "weapon": "AK-12",
@@ -503,7 +503,7 @@
    "added": null,
    "note": "Viewer Request",
    "tags": [],
-   "pos": 8
+   "pos": 9
   },
   {
    "weapon": "AK-12",
@@ -701,7 +701,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 25
+   "pos": 24
   },
   {
    "weapon": "AKM",
@@ -755,7 +755,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 79
+   "pos": 80
   },
   {
    "weapon": "AKM",
@@ -767,7 +767,7 @@
    "added": null,
    "note": "Hipfire-centric",
    "tags": [],
-   "pos": 78
+   "pos": 79
   },
   {
    "weapon": "AKM",
@@ -779,7 +779,7 @@
    "added": null,
    "note": "v2.0",
    "tags": [],
-   "pos": 77
+   "pos": 78
   },
   {
    "weapon": "AKM",
@@ -791,7 +791,19 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 40
+   "pos": 41
+  },
+  {
+   "weapon": "AKM",
+   "mode": "warfare",
+   "creator": "roguemonkey",
+   "source": "roguemonkey",
+   "code": "AKM Assault Rifle-Warfare-6LI17D003QRM2F73GFH4D",
+   "url": "https://docs.google.com/spreadsheets/d/1a2dZgaaGHQxSa1ECMpSLymV36Q7cJK5y7r3LHo6w2D4/edit",
+   "added": null,
+   "note": "S11 Build",
+   "tags": [],
+   "pos": 1
   },
   {
    "weapon": "AKM",
@@ -841,7 +853,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 80
+   "pos": 81
   },
   {
    "weapon": "AKS-74",
@@ -853,7 +865,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 50
+   "pos": 51
   },
   {
    "weapon": "AKS-74",
@@ -940,12 +952,24 @@
    "mode": "operations",
    "creator": "minda",
    "source": "minda",
+   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LJ878S088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "100% ACCU",
+   "tags": [],
+   "pos": 17
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
    "code": "AR-57 Assault Rifle-Operations-6JQU2RO088K38R05C0LGG",
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 25
+   "pos": 26
   },
   {
    "weapon": "AR-57",
@@ -1001,7 +1025,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 27
+   "pos": 26
   },
   {
    "weapon": "AR-57",
@@ -1015,7 +1039,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 61
+   "pos": 60
   },
   {
    "weapon": "AR-57",
@@ -1029,7 +1053,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 28
+   "pos": 27
   },
   {
    "weapon": "AR-57",
@@ -1043,7 +1067,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 26
+   "pos": 25
   },
   {
    "weapon": "AR-57",
@@ -1055,7 +1079,7 @@
    "added": null,
    "note": "S9 Build",
    "tags": [],
-   "pos": 27
+   "pos": 28
   },
   {
    "weapon": "AR-57",
@@ -1067,7 +1091,7 @@
    "added": null,
    "note": "Season 9 - Hipfire",
    "tags": [],
-   "pos": 14
+   "pos": 15
   },
   {
    "weapon": "AR-57",
@@ -1185,7 +1209,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 21
+   "pos": 22
   },
   {
    "weapon": "AS Val",
@@ -1255,7 +1279,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 62
+   "pos": 61
   },
   {
    "weapon": "AS Val",
@@ -1283,7 +1307,7 @@
    "tags": [
     "650K"
    ],
-   "pos": 19
+   "pos": 18
   },
   {
    "weapon": "AS Val",
@@ -1295,7 +1319,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 81
+   "pos": 82
   },
   {
    "weapon": "AS Val",
@@ -1307,7 +1331,7 @@
    "added": null,
    "note": "Burst Fire",
    "tags": [],
-   "pos": 68
+   "pos": 69
   },
   {
    "weapon": "AS Val",
@@ -1439,7 +1463,7 @@
    "added": null,
    "note": "LONG ASH",
    "tags": [],
-   "pos": 32
+   "pos": 33
   },
   {
    "weapon": "ASh-12",
@@ -1477,7 +1501,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 82
+   "pos": 83
   },
   {
    "weapon": "ASh-12",
@@ -1489,7 +1513,7 @@
    "added": null,
    "note": "Tomahawk Big Boi",
    "tags": [],
-   "pos": 59
+   "pos": 60
   },
   {
    "weapon": "ASh-12",
@@ -1501,7 +1525,7 @@
    "added": null,
    "note": "Double Shot",
    "tags": [],
-   "pos": 10
+   "pos": 11
   },
   {
    "weapon": "ASh-12",
@@ -1690,7 +1714,7 @@
    "added": null,
    "note": "\"No recoil\" build",
    "tags": [],
-   "pos": 83
+   "pos": 84
   },
   {
    "weapon": "AUG",
@@ -1702,7 +1726,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 35
+   "pos": 36
   },
   {
    "weapon": "AUG",
@@ -1792,7 +1816,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 35
+   "pos": 36
   },
   {
    "weapon": "AWM",
@@ -1820,7 +1844,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 54
+   "pos": 53
   },
   {
    "weapon": "AWM",
@@ -1844,7 +1868,7 @@
    "added": null,
    "note": "Squad killer",
    "tags": [],
-   "pos": 116
+   "pos": 117
   },
   {
    "weapon": "Bizon",
@@ -1908,7 +1932,7 @@
    "added": null,
    "note": "Uggo Build",
    "tags": [],
-   "pos": 84
+   "pos": 85
   },
   {
    "weapon": "CAR-15",
@@ -2108,7 +2132,7 @@
    "added": null,
    "note": "cl-19",
    "tags": [],
-   "pos": 29
+   "pos": 30
   },
   {
    "weapon": "CI-19",
@@ -2176,7 +2200,7 @@
    "added": null,
    "note": "Long Range",
    "tags": [],
-   "pos": 86
+   "pos": 87
   },
   {
    "weapon": "CI-19",
@@ -2188,7 +2212,7 @@
    "added": null,
    "note": "SMG Build",
    "tags": [],
-   "pos": 85
+   "pos": 86
   },
   {
    "weapon": "CI-19",
@@ -2200,7 +2224,7 @@
    "added": null,
    "note": "No Gas Block - Viewer Requested",
    "tags": [],
-   "pos": 36
+   "pos": 37
   },
   {
    "weapon": "CI-19",
@@ -2212,7 +2236,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 87
+   "pos": 88
   },
   {
    "weapon": "CI-19",
@@ -2288,7 +2312,7 @@
    "added": null,
    "note": "MAG",
    "tags": [],
-   "pos": 40
+   "pos": 41
   },
   {
    "weapon": "Compound Bow",
@@ -2314,7 +2338,7 @@
    "added": null,
    "note": "One Tap",
    "tags": [],
-   "pos": 88
+   "pos": 89
   },
   {
    "weapon": "Compound Bow",
@@ -2326,7 +2350,7 @@
    "added": null,
    "note": "Fast shot",
    "tags": [],
-   "pos": 9
+   "pos": 10
   },
   {
    "weapon": "Compound Bow",
@@ -2362,7 +2386,7 @@
    "added": null,
    "note": "DONG",
    "tags": [],
-   "pos": 28
+   "pos": 29
   },
   {
    "weapon": "FS-12",
@@ -2444,7 +2468,7 @@
    "added": null,
    "note": "Primary Build",
    "tags": [],
-   "pos": 43
+   "pos": 44
   },
   {
    "weapon": "G17",
@@ -2456,7 +2480,7 @@
    "added": null,
    "note": "All-purpose",
    "tags": [],
-   "pos": 89
+   "pos": 90
   },
   {
    "weapon": "G18",
@@ -2496,7 +2520,7 @@
    "tags": [
     "100K"
    ],
-   "pos": 58
+   "pos": 57
   },
   {
    "weapon": "G3",
@@ -2560,7 +2584,7 @@
    "tags": [
     "304K"
    ],
-   "pos": 16
+   "pos": 15
   },
   {
    "weapon": "G3",
@@ -2574,7 +2598,7 @@
    "tags": [
     "270K"
    ],
-   "pos": 64
+   "pos": 63
   },
   {
    "weapon": "G3",
@@ -2586,7 +2610,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 90
+   "pos": 91
   },
   {
    "weapon": "G3",
@@ -2598,7 +2622,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 57
+   "pos": 58
   },
   {
    "weapon": "G3",
@@ -2610,7 +2634,7 @@
    "added": null,
    "note": "Season 9 - Hybrid Marksman",
    "tags": [],
-   "pos": 15
+   "pos": 16
   },
   {
    "weapon": "G3",
@@ -2783,7 +2807,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 33
+   "pos": 34
   },
   {
    "weapon": "K416",
@@ -2851,7 +2875,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 92
+   "pos": 93
   },
   {
    "weapon": "K416",
@@ -2863,7 +2887,7 @@
    "added": null,
    "note": "Sandstorm",
    "tags": [],
-   "pos": 93
+   "pos": 94
   },
   {
    "weapon": "K416",
@@ -2875,7 +2899,7 @@
    "added": null,
    "note": "Whisper",
    "tags": [],
-   "pos": 91
+   "pos": 92
   },
   {
    "weapon": "K416",
@@ -2887,7 +2911,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 52
+   "pos": 53
   },
   {
    "weapon": "K416",
@@ -2899,7 +2923,7 @@
    "added": null,
    "note": "Season 10",
    "tags": [],
-   "pos": 6
+   "pos": 7
   },
   {
    "weapon": "K416",
@@ -3089,7 +3113,7 @@
    "tags": [
     "250K"
    ],
-   "pos": 67
+   "pos": 66
   },
   {
    "weapon": "K437",
@@ -3103,7 +3127,7 @@
    "tags": [
     "900K"
    ],
-   "pos": 17
+   "pos": 16
   },
   {
    "weapon": "K437",
@@ -3115,7 +3139,7 @@
    "added": null,
    "note": "Handling +",
    "tags": [],
-   "pos": 95
+   "pos": 96
   },
   {
    "weapon": "K437",
@@ -3127,7 +3151,7 @@
    "added": null,
    "note": "Stability +",
    "tags": [],
-   "pos": 96
+   "pos": 97
   },
   {
    "weapon": "K437",
@@ -3139,7 +3163,7 @@
    "added": null,
    "note": "Viewer-Requested Suppressed",
    "tags": [],
-   "pos": 94
+   "pos": 95
   },
   {
    "weapon": "K437",
@@ -3151,7 +3175,7 @@
    "added": null,
    "note": "Viewer Request 60-rounder",
    "tags": [],
-   "pos": 64
+   "pos": 65
   },
   {
    "weapon": "K437",
@@ -3163,7 +3187,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 53
+   "pos": 54
   },
   {
    "weapon": "K437",
@@ -3175,7 +3199,7 @@
    "added": null,
    "note": "Season 10",
    "tags": [],
-   "pos": 7
+   "pos": 8
   },
   {
    "weapon": "K437",
@@ -3420,7 +3444,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 18
+   "pos": 19
   },
   {
    "weapon": "KC-17",
@@ -3432,7 +3456,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 97
+   "pos": 98
   },
   {
    "weapon": "KC-17",
@@ -3444,7 +3468,7 @@
    "added": null,
    "note": "Hipfire CQB",
    "tags": [],
-   "pos": 54
+   "pos": 55
   },
   {
    "weapon": "KC-17",
@@ -3524,7 +3548,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 18
+   "pos": 19
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3538,7 +3562,7 @@
    "tags": [
     "185K"
    ],
-   "pos": 56
+   "pos": 55
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3550,7 +3574,7 @@
    "added": null,
    "note": "S7 Double-Tap",
    "tags": [],
-   "pos": 48
+   "pos": 49
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3562,7 +3586,7 @@
    "added": null,
    "note": "One-Shot Machine",
    "tags": [],
-   "pos": 70
+   "pos": 71
   },
   {
    "weapon": "M1014",
@@ -3590,7 +3614,7 @@
    "tags": [
     "162K"
    ],
-   "pos": 45
+   "pos": 44
   },
   {
    "weapon": "M14",
@@ -3778,7 +3802,7 @@
    "tags": [
     "800K"
    ],
-   "pos": 32
+   "pos": 31
   },
   {
    "weapon": "M14",
@@ -3790,7 +3814,7 @@
    "added": null,
    "note": "Full auto build",
    "tags": [],
-   "pos": 99
+   "pos": 100
   },
   {
    "weapon": "M14",
@@ -3802,7 +3826,7 @@
    "added": null,
    "note": "SMG Build",
    "tags": [],
-   "pos": 98
+   "pos": 99
   },
   {
    "weapon": "M14",
@@ -3814,7 +3838,7 @@
    "added": null,
    "note": "S7 Full-Auto Build",
    "tags": [],
-   "pos": 46
+   "pos": 47
   },
   {
    "weapon": "M14",
@@ -3878,7 +3902,7 @@
    "added": null,
    "note": "Rounded Build",
    "tags": [],
-   "pos": 100
+   "pos": 101
   },
   {
    "weapon": "M16A4",
@@ -3890,7 +3914,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 23
+   "pos": 24
   },
   {
    "weapon": "M16A4",
@@ -3952,7 +3976,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 26
+   "pos": 27
   },
   {
    "weapon": "M249",
@@ -3980,7 +4004,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 51
+   "pos": 50
   },
   {
    "weapon": "M249",
@@ -3994,7 +4018,7 @@
    "tags": [
     "426K"
    ],
-   "pos": 50
+   "pos": 49
   },
   {
    "weapon": "M249",
@@ -4006,7 +4030,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 101
+   "pos": 102
   },
   {
    "weapon": "M249",
@@ -4018,7 +4042,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 39
+   "pos": 40
   },
   {
    "weapon": "M249",
@@ -4030,7 +4054,7 @@
    "added": null,
    "note": "HVK Chainsaw",
    "tags": [],
-   "pos": 25
+   "pos": 26
   },
   {
    "weapon": "M249",
@@ -4136,7 +4160,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 17
+   "pos": 18
   },
   {
    "weapon": "M250",
@@ -4164,7 +4188,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 48
+   "pos": 47
   },
   {
    "weapon": "M250",
@@ -4176,7 +4200,7 @@
    "added": null,
    "note": "CQBeast",
    "tags": [],
-   "pos": 102
+   "pos": 103
   },
   {
    "weapon": "M250",
@@ -4188,7 +4212,7 @@
    "added": null,
    "note": "Big chungus build",
    "tags": [],
-   "pos": 103
+   "pos": 104
   },
   {
    "weapon": "M250",
@@ -4200,7 +4224,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 51
+   "pos": 52
   },
   {
    "weapon": "M250",
@@ -4346,7 +4370,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 31
+   "pos": 32
   },
   {
    "weapon": "M4A1",
@@ -4388,7 +4412,7 @@
    "tags": [
     "440K"
    ],
-   "pos": 18
+   "pos": 17
   },
   {
    "weapon": "M4A1",
@@ -4400,7 +4424,7 @@
    "added": null,
    "note": "Rounded Build",
    "tags": [],
-   "pos": 105
+   "pos": 106
   },
   {
    "weapon": "M4A1",
@@ -4412,7 +4436,7 @@
    "added": null,
    "note": "CQB Build",
    "tags": [],
-   "pos": 104
+   "pos": 105
   },
   {
    "weapon": "M4A1",
@@ -4424,7 +4448,7 @@
    "added": null,
    "note": "Mid-Long Range",
    "tags": [],
-   "pos": 67
+   "pos": 68
   },
   {
    "weapon": "M4A1",
@@ -4436,7 +4460,7 @@
    "added": null,
    "note": "S6 Updated",
    "tags": [],
-   "pos": 63
+   "pos": 64
   },
   {
    "weapon": "M4A1",
@@ -4448,7 +4472,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 56
+   "pos": 57
   },
   {
    "weapon": "M4A1",
@@ -4674,7 +4698,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 24
+   "pos": 25
   },
   {
    "weapon": "M7",
@@ -4702,35 +4726,21 @@
    "tags": [
     "1M"
    ],
-   "pos": 24
+   "pos": 23
   },
   {
    "weapon": "M7",
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6KJFM9O06F3769TRGAG41",
+   "code": "6LH0OA406F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-07-08",
+   "added": "2026-10-12",
    "note": "",
    "tags": [
     "1M"
    ],
    "pos": 7
-  },
-  {
-   "weapon": "M7",
-   "mode": "operations",
-   "creator": "poach",
-   "source": "poach",
-   "code": "6L75QRK06F3769TRGAG41",
-   "url": "https://www.deltaforce.build/poach",
-   "added": "2026-09-05",
-   "note": "Suppressed",
-   "tags": [
-    "1M"
-   ],
-   "pos": 15
   },
   {
    "weapon": "M7",
@@ -4742,7 +4752,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 106
+   "pos": 107
   },
   {
    "weapon": "M7",
@@ -4754,7 +4764,7 @@
    "added": null,
    "note": "CQB Build",
    "tags": [],
-   "pos": 74
+   "pos": 75
   },
   {
    "weapon": "M7",
@@ -4766,7 +4776,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 55
+   "pos": 56
   },
   {
    "weapon": "M7",
@@ -4778,7 +4788,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 32
+   "pos": 33
   },
   {
    "weapon": "M7",
@@ -4938,7 +4948,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 53
+   "pos": 52
   },
   {
    "weapon": "M700",
@@ -5006,7 +5016,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 55
+   "pos": 54
   },
   {
    "weapon": "M82",
@@ -5018,7 +5028,7 @@
    "added": null,
    "note": "One Shot, Maker of Misery",
    "tags": [],
-   "pos": 26
+   "pos": 27
   },
   {
    "weapon": "M870",
@@ -5030,7 +5040,7 @@
    "added": null,
    "note": "Boomstick",
    "tags": [],
-   "pos": 107
+   "pos": 108
   },
   {
    "weapon": "MCX LT",
@@ -5096,7 +5106,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 27
+   "pos": 28
   },
   {
    "weapon": "MCX LT",
@@ -5166,7 +5176,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 23
+   "pos": 22
   },
   {
    "weapon": "MCX LT",
@@ -5178,7 +5188,7 @@
    "added": null,
    "note": "Fierce Barrel",
    "tags": [],
-   "pos": 41
+   "pos": 42
   },
   {
    "weapon": "MCX LT",
@@ -5190,7 +5200,7 @@
    "added": null,
    "note": "Hunter Barrel",
    "tags": [],
-   "pos": 42
+   "pos": 43
   },
   {
    "weapon": "MCX LT",
@@ -5202,7 +5212,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 17
+   "pos": 18
   },
   {
    "weapon": "MDR",
@@ -5310,7 +5320,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 22
+   "pos": 21
   },
   {
    "weapon": "MDR",
@@ -5322,7 +5332,7 @@
    "added": null,
    "note": "CQB",
    "tags": [],
-   "pos": 2
+   "pos": 3
   },
   {
    "weapon": "MK4",
@@ -5484,7 +5494,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 22
+   "pos": 23
   },
   {
    "weapon": "MK4",
@@ -5606,7 +5616,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 42
+   "pos": 41
   },
   {
    "weapon": "MK4",
@@ -5618,7 +5628,7 @@
    "added": null,
    "note": "Full Auto",
    "tags": [],
-   "pos": 60
+   "pos": 61
   },
   {
    "weapon": "MK4",
@@ -5630,7 +5640,7 @@
    "added": null,
    "note": "Burst Fire",
    "tags": [],
-   "pos": 44
+   "pos": 45
   },
   {
    "weapon": "MK4",
@@ -5642,7 +5652,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 22
+   "pos": 23
   },
   {
    "weapon": "MK4",
@@ -5774,7 +5784,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 34
+   "pos": 35
   },
   {
    "weapon": "MK47",
@@ -5830,7 +5840,7 @@
    "tags": [
     "800K"
    ],
-   "pos": 20
+   "pos": 19
   },
   {
    "weapon": "MK47",
@@ -5856,7 +5866,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 69
+   "pos": 70
   },
   {
    "weapon": "MK47",
@@ -5868,7 +5878,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 38
+   "pos": 39
   },
   {
    "weapon": "MK47",
@@ -5932,7 +5942,7 @@
    "tags": [
     "260K"
    ],
-   "pos": 41
+   "pos": 40
   },
   {
    "weapon": "MP5",
@@ -5944,7 +5954,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 110
+   "pos": 111
   },
   {
    "weapon": "MP5",
@@ -5956,7 +5966,7 @@
    "added": null,
    "note": "100 Accuracy Monster",
    "tags": [],
-   "pos": 61
+   "pos": 62
   },
   {
    "weapon": "MP5",
@@ -6118,7 +6128,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 30
+   "pos": 31
   },
   {
    "weapon": "MP7",
@@ -6174,7 +6184,7 @@
    "tags": [
     "350K"
    ],
-   "pos": 35
+   "pos": 34
   },
   {
    "weapon": "MP7",
@@ -6188,7 +6198,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 36
+   "pos": 35
   },
   {
    "weapon": "MP7",
@@ -6200,7 +6210,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 112
+   "pos": 113
   },
   {
    "weapon": "MP7",
@@ -6212,7 +6222,7 @@
    "added": null,
    "note": "Hipfire Build",
    "tags": [],
-   "pos": 111
+   "pos": 112
   },
   {
    "weapon": "MP7",
@@ -6224,7 +6234,7 @@
    "added": null,
    "note": "HVK Combat Kit",
    "tags": [],
-   "pos": 24
+   "pos": 25
   },
   {
    "weapon": "MP7",
@@ -6236,7 +6246,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 16
+   "pos": 17
   },
   {
    "weapon": "MP7",
@@ -6260,7 +6270,7 @@
    "added": null,
    "note": "Sandstorm comp",
    "tags": [],
-   "pos": 108
+   "pos": 109
   },
   {
    "weapon": "Mini-14",
@@ -6272,7 +6282,7 @@
    "added": null,
    "note": "Silent suppressor",
    "tags": [],
-   "pos": 109
+   "pos": 110
   },
   {
    "weapon": "Mini-14",
@@ -6434,7 +6444,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 59
+   "pos": 58
   },
   {
    "weapon": "P90",
@@ -6448,7 +6458,7 @@
    "tags": [
     "344K"
    ],
-   "pos": 38
+   "pos": 37
   },
   {
    "weapon": "P90",
@@ -6460,7 +6470,7 @@
    "added": null,
    "note": "Hipfire build",
    "tags": [],
-   "pos": 113
+   "pos": 114
   },
   {
    "weapon": "P90",
@@ -6472,7 +6482,7 @@
    "added": null,
    "note": "Well-rounded build",
    "tags": [],
-   "pos": 114
+   "pos": 115
   },
   {
    "weapon": "P90",
@@ -6484,7 +6494,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 47
+   "pos": 48
   },
   {
    "weapon": "P90",
@@ -6634,7 +6644,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 49
+   "pos": 48
   },
   {
    "weapon": "PKM",
@@ -6648,7 +6658,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 47
+   "pos": 46
   },
   {
    "weapon": "PKM",
@@ -6660,7 +6670,7 @@
    "added": null,
    "note": "Close-quarter",
    "tags": [],
-   "pos": 115
+   "pos": 116
   },
   {
    "weapon": "PKM",
@@ -6672,7 +6682,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 34
+   "pos": 35
   },
   {
    "weapon": "PKM",
@@ -6724,7 +6734,7 @@
    "tags": [
     "411K"
    ],
-   "pos": 29
+   "pos": 28
   },
   {
    "weapon": "PSG-1",
@@ -6736,7 +6746,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 117
+   "pos": 118
   },
   {
    "weapon": "PSG-1",
@@ -6786,7 +6796,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 38
+   "pos": 39
   },
   {
    "weapon": "PTR-32",
@@ -6798,7 +6808,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 118
+   "pos": 119
   },
   {
    "weapon": "PTR-32",
@@ -6810,7 +6820,7 @@
    "added": null,
    "note": "Suppressed",
    "tags": [],
-   "pos": 72
+   "pos": 73
   },
   {
    "weapon": "PTR-32",
@@ -6822,7 +6832,7 @@
    "added": null,
    "note": "Season 10",
    "tags": [],
-   "pos": 5
+   "pos": 6
   },
   {
    "weapon": "PTR-32",
@@ -6886,7 +6896,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 120
+   "pos": 121
   },
   {
    "weapon": "QBZ95-1",
@@ -6898,7 +6908,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 119
+   "pos": 120
   },
   {
    "weapon": "QBZ95-1",
@@ -6910,7 +6920,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 19
+   "pos": 20
   },
   {
    "weapon": "QBZ95-1",
@@ -6986,7 +6996,7 @@
    "added": null,
    "note": "RIP",
    "tags": [],
-   "pos": 41
+   "pos": 42
   },
   {
    "weapon": "QCQ171",
@@ -7026,7 +7036,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 121
+   "pos": 122
   },
   {
    "weapon": "QCQ171",
@@ -7038,7 +7048,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 29
+   "pos": 30
   },
   {
    "weapon": "QCQ171",
@@ -7159,7 +7169,7 @@
    "added": null,
    "note": "Hipfire",
    "tags": [],
-   "pos": 23
+   "pos": 24
   },
   {
    "weapon": "QJB201",
@@ -7201,7 +7211,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 46
+   "pos": 45
   },
   {
    "weapon": "QJB201",
@@ -7229,7 +7239,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 21
+   "pos": 20
   },
   {
    "weapon": "QJB201",
@@ -7241,7 +7251,7 @@
    "added": null,
    "note": "AR build",
    "tags": [],
-   "pos": 123
+   "pos": 124
   },
   {
    "weapon": "QJB201",
@@ -7253,7 +7263,7 @@
    "added": null,
    "note": "CQB build",
    "tags": [],
-   "pos": 122
+   "pos": 123
   },
   {
    "weapon": "QJB201",
@@ -7265,7 +7275,7 @@
    "added": null,
    "note": "S8 Laser",
    "tags": [],
-   "pos": 31
+   "pos": 32
   },
   {
    "weapon": "QJB201",
@@ -7277,7 +7287,7 @@
    "added": null,
    "note": "Budget Minigun",
    "tags": [],
-   "pos": 1
+   "pos": 2
   },
   {
    "weapon": "QJB201",
@@ -7397,7 +7407,7 @@
    "tags": [
     "88K"
    ],
-   "pos": 52
+   "pos": 51
   },
   {
    "weapon": "R93",
@@ -7409,7 +7419,7 @@
    "added": null,
    "note": "Aggressive One Shot",
    "tags": [],
-   "pos": 66
+   "pos": 67
   },
   {
    "weapon": "R93",
@@ -7527,7 +7537,7 @@
    "added": null,
    "note": "2X",
    "tags": [],
-   "pos": 36
+   "pos": 37
   },
   {
    "weapon": "RM277",
@@ -7539,7 +7549,7 @@
    "added": null,
    "note": "1X",
    "tags": [],
-   "pos": 37
+   "pos": 38
   },
   {
    "weapon": "RM277",
@@ -7581,7 +7591,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 66
+   "pos": 65
   },
   {
    "weapon": "RM277",
@@ -7605,7 +7615,7 @@
    "added": null,
    "note": "Heavy - Unsuppressed",
    "tags": [],
-   "pos": 12
+   "pos": 13
   },
   {
    "weapon": "RM277",
@@ -7617,7 +7627,7 @@
    "added": null,
    "note": "Whale Shark - Suppressed",
    "tags": [],
-   "pos": 13
+   "pos": 14
   },
   {
    "weapon": "RM277",
@@ -7667,7 +7677,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 124
+   "pos": 125
   },
   {
    "weapon": "SCAR-H",
@@ -7815,7 +7825,7 @@
    "added": null,
    "note": "\"No recoil\" build",
    "tags": [],
-   "pos": 126
+   "pos": 127
   },
   {
    "weapon": "SCAR-H",
@@ -7827,7 +7837,7 @@
    "added": null,
    "note": "Jack-of-all-Trades",
    "tags": [],
-   "pos": 125
+   "pos": 126
   },
   {
    "weapon": "SCAR-H",
@@ -7839,7 +7849,7 @@
    "added": null,
    "note": "S7 Build",
    "tags": [],
-   "pos": 49
+   "pos": 50
   },
   {
    "weapon": "SCAR-H",
@@ -7903,7 +7913,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 127
+   "pos": 128
   },
   {
    "weapon": "SG552",
@@ -7915,7 +7925,7 @@
    "added": null,
    "note": "S8 Build",
    "tags": [],
-   "pos": 33
+   "pos": 34
   },
   {
    "weapon": "SG552",
@@ -7965,7 +7975,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 20
+   "pos": 21
   },
   {
    "weapon": "SKS",
@@ -7993,7 +8003,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 30
+   "pos": 29
   },
   {
    "weapon": "SKS",
@@ -8005,7 +8015,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 128
+   "pos": 129
   },
   {
    "weapon": "SKS",
@@ -8017,7 +8027,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 20
+   "pos": 21
   },
   {
    "weapon": "SKS",
@@ -8123,7 +8133,7 @@
    "tags": [
     "250K"
    ],
-   "pos": 37
+   "pos": 36
   },
   {
    "weapon": "SMG-45",
@@ -8135,7 +8145,7 @@
    "added": null,
    "note": "AR Build",
    "tags": [],
-   "pos": 129
+   "pos": 130
   },
   {
    "weapon": "SMG-45",
@@ -8147,7 +8157,7 @@
    "added": null,
    "note": "S8 Hipfire",
    "tags": [],
-   "pos": 28
+   "pos": 29
   },
   {
    "weapon": "SMG-45",
@@ -8159,7 +8169,7 @@
    "added": null,
    "note": "Season 10",
    "tags": [],
-   "pos": 4
+   "pos": 5
   },
   {
    "weapon": "SMG-45",
@@ -8265,7 +8275,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 31
+   "pos": 30
   },
   {
    "weapon": "SR-25",
@@ -8277,7 +8287,7 @@
    "added": null,
    "note": "Velocity build",
    "tags": [],
-   "pos": 130
+   "pos": 131
   },
   {
    "weapon": "SR-25",
@@ -8289,7 +8299,7 @@
    "added": null,
    "note": "Close-Range",
    "tags": [],
-   "pos": 65
+   "pos": 66
   },
   {
    "weapon": "SR-25",
@@ -8301,7 +8311,7 @@
    "added": null,
    "note": "S8 Mid-Range Build",
    "tags": [],
-   "pos": 37
+   "pos": 38
   },
   {
    "weapon": "SR-25",
@@ -8435,7 +8445,7 @@
    "tags": [
     "520K"
    ],
-   "pos": 40
+   "pos": 39
   },
   {
    "weapon": "SR-3M",
@@ -8449,7 +8459,7 @@
    "tags": [
     "220K"
    ],
-   "pos": 39
+   "pos": 38
   },
   {
    "weapon": "SR-3M",
@@ -8461,7 +8471,7 @@
    "added": null,
    "note": "Hipfire build",
    "tags": [],
-   "pos": 131
+   "pos": 132
   },
   {
    "weapon": "SR-3M",
@@ -8473,7 +8483,7 @@
    "added": null,
    "note": "S7 100 Accuracy Build",
    "tags": [],
-   "pos": 45
+   "pos": 46
   },
   {
    "weapon": "SR-3M",
@@ -8526,7 +8536,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 132
+   "pos": 133
   },
   {
    "weapon": "SR9",
@@ -8670,7 +8680,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 39
+   "pos": 40
   },
   {
    "weapon": "SVCH",
@@ -8708,7 +8718,7 @@
    "added": null,
    "note": "Season 10",
    "tags": [],
-   "pos": 11
+   "pos": 12
   },
   {
    "weapon": "SVCH",
@@ -8824,7 +8834,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 19
+   "pos": 20
   },
   {
    "weapon": "SVD",
@@ -8852,7 +8862,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 33
+   "pos": 32
   },
   {
    "weapon": "SVD",
@@ -8864,7 +8874,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 133
+   "pos": 134
   },
   {
    "weapon": "SVD",
@@ -8984,7 +8994,7 @@
    "tags": [
     "600K"
    ],
-   "pos": 43
+   "pos": 42
   },
   {
    "weapon": "Thompson SMG",
@@ -8998,7 +9008,21 @@
    "tags": [
     "600K"
    ],
-   "pos": 44
+   "pos": 43
+  },
+  {
+   "weapon": "Thompson SMG",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6LJ9CM006F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-10-12",
+   "note": "Budget",
+   "tags": [
+    "200K"
+   ],
+   "pos": 67
   },
   {
    "weapon": "Thompson SMG",
@@ -9010,7 +9034,7 @@
    "added": null,
    "note": "Meta build",
    "tags": [],
-   "pos": 3
+   "pos": 4
   },
   {
    "weapon": "UZI",
@@ -9050,7 +9074,7 @@
    "tags": [
     "229K"
    ],
-   "pos": 63
+   "pos": 62
   },
   {
    "weapon": "UZI",
@@ -9062,7 +9086,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 134
+   "pos": 135
   },
   {
    "weapon": "UZI",
@@ -9154,7 +9178,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 137
+   "pos": 138
   },
   {
    "weapon": "VSS",
@@ -9166,7 +9190,7 @@
    "added": null,
    "note": "Season 9",
    "tags": [],
-   "pos": 21
+   "pos": 22
   },
   {
    "weapon": "VSS",
@@ -9326,7 +9350,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 34
+   "pos": 33
   },
   {
    "weapon": "Vector",
@@ -9338,7 +9362,7 @@
    "added": null,
    "note": "Bullet hose",
    "tags": [],
-   "pos": 135
+   "pos": 136
   },
   {
    "weapon": "Vector",
@@ -9350,7 +9374,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 73
+   "pos": 74
   },
   {
    "weapon": "Vector",
@@ -9362,7 +9386,7 @@
    "added": null,
    "note": "New Hipfire",
    "tags": [],
-   "pos": 58
+   "pos": 59
   },
   {
    "weapon": "Vector",
@@ -9388,7 +9412,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 60
+   "pos": 59
   },
   {
    "weapon": "Vityaz",
@@ -9400,7 +9424,7 @@
    "added": null,
    "note": "Laserbeam Build",
    "tags": [],
-   "pos": 136
+   "pos": 137
   },
   {
    "weapon": "Vityaz",
@@ -9412,7 +9436,7 @@
    "added": null,
    "note": "Hipfire Build",
    "tags": [],
-   "pos": 62
+   "pos": 63
   },
   {
    "weapon": "Vityaz",
