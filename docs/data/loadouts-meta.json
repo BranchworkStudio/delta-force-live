@@ -1,15 +1,15 @@
 {
- "built": "2026-10-14T10:02:52+00:00",
+ "built": "2026-10-15T09:45:39+00:00",
  "status": "written",
  "note": null,
- "builds": 710,
+ "builds": 711,
  "creators": 9,
  "weapons": 66,
  "guns": 68,
  "avatars": 9,
  "by_creator": {
   "roguemonkey": 139,
-  "leissik": 126,
+  "leissik": 127,
   "medow": 113,
   "poach": 80,
   "muomuo": 70,
@@ -19,7 +19,7 @@
   "deathlapse": 38
  },
  "by_mode": {
-  "operations": 571,
+  "operations": 572,
   "warfare": 139
  },
  "dated": 80,
