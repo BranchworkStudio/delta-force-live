@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15",
+ "updated": "2026-10-16",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -205,7 +205,7 @@
    "tags": [
     "20K"
    ],
-   "pos": 64
+   "pos": 65
   },
   {
    "weapon": ".357",
@@ -349,7 +349,7 @@
    "tags": [
     "54K"
    ],
-   "pos": 56
+   "pos": 57
   },
   {
    "weapon": "AK-12",
@@ -420,7 +420,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AK-12 Assault Rifle-Operations-6KSV0HG04JR8MA4B021SH",
+   "code": "AK-12 Assault Rifle-Operations (Extraction Mode)-6LKABL804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -434,7 +434,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AK-12 Assault Rifle-Operations-6KT0ALK04JR8MA4B021SH",
+   "code": "AK-12 Assault Rifle-Operations (Extraction Mode)-6LKABSG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -715,7 +715,7 @@
    "tags": [
     "230K"
    ],
-   "pos": 70
+   "pos": 71
   },
   {
    "weapon": "AKM",
@@ -729,7 +729,7 @@
    "tags": [
     "260K"
    ],
-   "pos": 72
+   "pos": 73
   },
   {
    "weapon": "AKM",
@@ -976,21 +976,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LFPKO804JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "700K"
-   ],
-   "pos": 12
-  },
-  {
-   "weapon": "AR-57",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LFPLIK04JR8MA4B021SH",
+   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LKAACG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
@@ -1004,7 +990,21 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LFPLMO04JR8MA4B021SH",
+   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LKAAEK04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "700K"
+   ],
+   "pos": 12
+  },
+  {
+   "weapon": "AR-57",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AR-57 Assault Rifle-Operations (Extraction Mode)-6LKAAFO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -1039,7 +1039,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 60
+   "pos": 61
   },
   {
    "weapon": "AR-57",
@@ -1216,34 +1216,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6LD4M7G04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "800K"
-   ],
-   "pos": 44
-  },
-  {
-   "weapon": "AS Val",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6LD4MGO04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "Hipfire",
-   "tags": [
-    "550K"
-   ],
-   "pos": 45
-  },
-  {
-   "weapon": "AS Val",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6LD4MK804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -1258,7 +1230,35 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6LD4MMO04JR8MA4B021SH",
+   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6LKAAVC04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "800K"
+   ],
+   "pos": 44
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6LKAB0C04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Hipfire",
+   "tags": [
+    "550K"
+   ],
+   "pos": 45
+  },
+  {
+   "weapon": "AS Val",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "AS Val Assault Rifle-Operations (Extraction Mode)-6LKAB4804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -1279,7 +1279,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 61
+   "pos": 62
   },
   {
    "weapon": "AS Val",
@@ -1653,7 +1653,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AUG Assault Rifle-Operations (Extraction Mode)-6LD4MQO04JR8MA4B021SH",
+   "code": "AUG Assault Rifle-Operations (Extraction Mode)-6LKAB8K04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -1667,7 +1667,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "AUG Assault Rifle-Operations (Extraction Mode)-6LD4MTC04JR8MA4B021SH",
+   "code": "AUG Assault Rifle-Operations (Extraction Mode)-6LKAB9O04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -1702,7 +1702,7 @@
    "tags": [
     "160K"
    ],
-   "pos": 68
+   "pos": 69
   },
   {
    "weapon": "AUG",
@@ -2139,7 +2139,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "CI-19 Assault Rifle-Operations (Extraction Mode)-6LFPN4O04JR8MA4B021SH",
+   "code": "CI-19 Assault Rifle-Operations (Extraction Mode)-6LKAASO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -2153,7 +2153,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "CI-19 Assault Rifle-Operations-6KT08T804JR8MA4B021SH",
+   "code": "CI-19 Assault Rifle-Operations (Extraction Mode)-6LKAAU804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -2188,7 +2188,7 @@
    "tags": [
     "290K"
    ],
-   "pos": 71
+   "pos": 72
   },
   {
    "weapon": "CI-19",
@@ -2326,7 +2326,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 78
+   "pos": 79
   },
   {
    "weapon": "Compound Bow",
@@ -2520,7 +2520,7 @@
    "tags": [
     "100K"
    ],
-   "pos": 57
+   "pos": 58
   },
   {
    "weapon": "G3",
@@ -2598,7 +2598,7 @@
    "tags": [
     "270K"
    ],
-   "pos": 63
+   "pos": 64
   },
   {
    "weapon": "G3",
@@ -2814,21 +2814,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "K416 Assault Rifle-Operations (Extraction Mode)-6LFPKMK04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "Budget",
-   "tags": [
-    "400K"
-   ],
-   "pos": 54
-  },
-  {
-   "weapon": "K416",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "K416 Assault Rifle-Operations (Extraction Mode)-6LH2K2004JR8MA4B021SH",
+   "code": "K416 Assault Rifle-Operations (Extraction Mode)-6LKABD404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -2836,6 +2822,20 @@
     "700K"
    ],
    "pos": 53
+  },
+  {
+   "weapon": "K416",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "K416 Assault Rifle-Operations (Extraction Mode)-6LKABEG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Budget",
+   "tags": [
+    "400K"
+   ],
+   "pos": 54
   },
   {
    "weapon": "K416",
@@ -2863,7 +2863,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 73
+   "pos": 74
   },
   {
    "weapon": "K416",
@@ -3078,7 +3078,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "K437 Assault Rifle-Operations (Extraction Mode)-6LD2RTG04JR8MA4B021SH",
+   "code": "K437 Assault Rifle-Operations (Extraction Mode)-6LKAAPG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -3092,7 +3092,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "K437 Assault Rifle-Operations (Extraction Mode)-6LD2S4G04JR8MA4B021SH",
+   "code": "K437 Assault Rifle-Operations (Extraction Mode)-6LKAAQK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -3113,7 +3113,7 @@
    "tags": [
     "250K"
    ],
-   "pos": 66
+   "pos": 67
   },
   {
    "weapon": "K437",
@@ -3355,7 +3355,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LD2T3S04JR8MA4B021SH",
+   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LKAAN404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -3369,7 +3369,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LFPMRG04JR8MA4B021SH",
+   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LKAAOC04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -3404,7 +3404,7 @@
    "tags": [
     "350K"
    ],
-   "pos": 76
+   "pos": 77
   },
   {
    "weapon": "KC-17",
@@ -3418,7 +3418,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 77
+   "pos": 78
   },
   {
    "weapon": "KC-17",
@@ -3781,12 +3781,26 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "M14 Marksman Rifle-Operations-6KUI7UK04JR8MA4B021SH",
+   "code": "M14 Marksman Rifle-Operations (Extraction Mode)-6L8H5H804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "",
+   "note": "No Recoil",
    "tags": [
-    "830K"
+    "850K"
+   ],
+   "pos": 61
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M14 Marksman Rifle-Operations (Extraction Mode)-6LKAC8004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Drug Mag",
+   "tags": [
+    "1M"
    ],
    "pos": 60
   },
@@ -3983,7 +3997,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "M249 Light Machine Gun-Operations (Extraction Mode)-6LH1FUS04JR8MA4B021SH",
+   "code": "M249 Light Machine Gun-Operations (Extraction Mode)-6LKADSK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -4167,12 +4181,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "M250 General Machine Gun-Operations (Extraction Mode)-6LBP2JG04JR8MA4B021SH",
+   "code": "M250 General Machine Gun-Operations (Extraction Mode)-6LKADR404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "700K"
+    "850K"
    ],
    "pos": 10
   },
@@ -4377,12 +4391,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "M4A1 Assault Rifle-Operations-6KSUUH804JR8MA4B021SH",
+   "code": "M4A1 Assault Rifle-Operations (Extraction Mode)-6LKABJK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "340K"
+    "420K"
    ],
    "pos": 57
   },
@@ -4398,7 +4412,7 @@
    "tags": [
     "270K"
    ],
-   "pos": 69
+   "pos": 70
   },
   {
    "weapon": "M4A1",
@@ -4705,7 +4719,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "M7 Battle Rifle-Operations (Extraction Mode)-6LD2SQC04JR8MA4B021SH",
+   "code": "M7 Battle Rifle-Operations (Extraction Mode)-6LKAB7804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -4967,6 +4981,20 @@
   {
    "weapon": "M700",
    "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6LKBGNK06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-10-15",
+   "note": "FULL AUTO",
+   "tags": [
+    "1M"
+   ],
+   "pos": 56
+  },
+  {
+   "weapon": "M700",
+   "mode": "operations",
    "creator": "siingsong",
    "source": "siingsong",
    "code": "M700 Sniper Rifle-Operations-6KR2EB8014H9D6PDMV79E",
@@ -5127,21 +5155,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MCX LT Assault Rifle-Operations (Extraction Mode)-6LFPMC004JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "474K"
-   ],
-   "pos": 22
-  },
-  {
-   "weapon": "MCX LT",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "MCX LT Assault Rifle-Operations-6KSUOMO04JR8MA4B021SH",
+   "code": "MCX LT Assault Rifle-Operations (Extraction Mode)-6LKAAGO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -5155,7 +5169,21 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MCX LT Assault Rifle-Operations-6KSUP7S04JR8MA4B021SH",
+   "code": "MCX LT Assault Rifle-Operations (Extraction Mode)-6LKAAHK04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "474K"
+   ],
+   "pos": 22
+  },
+  {
+   "weapon": "MCX LT",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MCX LT Assault Rifle-Operations (Extraction Mode)-6LKAAJ004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
@@ -5176,7 +5204,7 @@
    "tags": [
     "240K"
    ],
-   "pos": 75
+   "pos": 76
   },
   {
    "weapon": "MCX LT",
@@ -5292,35 +5320,35 @@
    "tags": [
     "900K"
    ],
-   "pos": 65
+   "pos": 67
   },
   {
    "weapon": "MDR",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6LBPEOK04JR8MA4B021SH",
+   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6LKACO004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "CQB",
    "tags": [
     "930K"
    ],
-   "pos": 66
+   "pos": 68
   },
   {
    "weapon": "MDR",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6LBPFM404JR8MA4B021SH",
+   "code": "MDR Assault Rifle-Operations (Extraction Mode)-6LKACP404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
    "tags": [
     "900K"
    ],
-   "pos": 67
+   "pos": 69
   },
   {
    "weapon": "MDR",
@@ -5553,21 +5581,21 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LBPFSC04JR8MA4B021SH",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LJJMLG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "Budget",
+   "note": "ADS",
    "tags": [
-    "300K"
+    "600K"
    ],
-   "pos": 9
+   "pos": 17
   },
   {
    "weapon": "MK4",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LD2RMG04JR8MA4B021SH",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LKACS804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
@@ -5581,7 +5609,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LD2RPG04JR8MA4B021SH",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LKAD2G04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Full Auto",
@@ -5595,14 +5623,14 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LFPKC404JR8MA4B021SH",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LKAD3O04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "ADS",
+   "note": "Budget",
    "tags": [
-    "600K"
+    "300K"
    ],
-   "pos": 17
+   "pos": 9
   },
   {
    "weapon": "MK4",
@@ -5616,7 +5644,7 @@
    "tags": [
     "200K"
    ],
-   "pos": 74
+   "pos": 75
   },
   {
    "weapon": "MK4",
@@ -5805,7 +5833,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LFPML804JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAK004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Long Barrel",
@@ -5819,7 +5847,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LFPMN004JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAL004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Short Barrel",
@@ -5833,7 +5861,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LFPMOK04JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAM404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "No Recoil",
@@ -6149,20 +6177,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MP7 Submachine Gun-Operations (Extraction Mode)-6LD4NJ404JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "660K"
-   ],
-   "pos": 27
-  },
-  {
-   "weapon": "MP7",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "MP7 Submachine Gun-Operations (Extraction Mode)-6LD4NOG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -6177,7 +6191,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MP7 Submachine Gun-Operations (Extraction Mode)-6LD4O0O04JR8MA4B021SH",
+   "code": "MP7 Submachine Gun-Operations (Extraction Mode)-6LKAD9C04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
@@ -6185,6 +6199,20 @@
     "660K"
    ],
    "pos": 25
+  },
+  {
+   "weapon": "MP7",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MP7 Submachine Gun-Operations (Extraction Mode)-6LKADAG04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "660K"
+   ],
+   "pos": 27
   },
   {
    "weapon": "MP7",
@@ -6423,12 +6451,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "P90 Submachine Gun-Operations-6KSUS9G04JR8MA4B021SH",
+   "code": "P90 Submachine Gun-Operations (Extraction Mode)-6LKADH404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "360K"
+    "420K"
    ],
    "pos": 35
   },
@@ -6437,7 +6465,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "P90 Submachine Gun-Operations-6KSUSEG04JR8MA4B021SH",
+   "code": "P90 Submachine Gun-Operations (Extraction Mode)-6LKADIK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
@@ -6458,7 +6486,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 58
+   "pos": 59
   },
   {
    "weapon": "P90",
@@ -6637,12 +6665,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "PKM General Machine Gun-Operations (Extraction Mode)-6LA71JC04JR8MA4B021SH",
+   "code": "PKM General Machine Gun-Operations (Extraction Mode)-6LKADU804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "370K"
+    "560K"
    ],
    "pos": 18
   },
@@ -7017,7 +7045,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6LD4O3O04JR8MA4B021SH",
+   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6LKAD5004JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -7031,7 +7059,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "QCQ171 Submachine Gun-Operations-6KSURO804JR8MA4B021SH",
+   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6LKAD8804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
@@ -7190,21 +7218,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "QJB201 Light Machine Gun-Operations (Extraction Mode)-6LA712K04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "Hipfire",
-   "tags": [
-    "450K"
-   ],
-   "pos": 6
-  },
-  {
-   "weapon": "QJB201",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "QJB201 Light Machine Gun-Operations (Extraction Mode)-6LH1GD404JR8MA4B021SH",
+   "code": "QJB201 Light Machine Gun-Operations (Extraction Mode)-6LKADOS04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -7212,6 +7226,20 @@
     "360K"
    ],
    "pos": 2
+  },
+  {
+   "weapon": "QJB201",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "QJB201 Light Machine Gun-Operations (Extraction Mode)-6LKADPS04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Hipfire",
+   "tags": [
+    "450K"
+   ],
+   "pos": 6
   },
   {
    "weapon": "QJB201",
@@ -7239,7 +7267,7 @@
    "tags": [
     "280K"
    ],
-   "pos": 79
+   "pos": 80
   },
   {
    "weapon": "QJB201",
@@ -7605,7 +7633,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 65
+   "pos": 66
   },
   {
    "weapon": "RM277",
@@ -7792,20 +7820,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "SCAR-H Battle Rifle-Operations (Extraction Mode)-6LA70FG04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "500K"
-   ],
-   "pos": 48
-  },
-  {
-   "weapon": "SCAR-H",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "SCAR-H Battle Rifle-Operations (Extraction Mode)-6LA70QG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -7814,6 +7828,20 @@
     "560K"
    ],
    "pos": 49
+  },
+  {
+   "weapon": "SCAR-H",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SCAR-H Battle Rifle-Operations (Extraction Mode)-6LKAB5O04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "500K"
+   ],
+   "pos": 48
   },
   {
    "weapon": "SCAR-H",
@@ -8003,7 +8031,7 @@
    "tags": [
     "460K"
    ],
-   "pos": 63
+   "pos": 65
   },
   {
    "weapon": "SKS",
@@ -8126,12 +8154,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "SMG-45 Submachine Gun-Operations-6KSV02404JR8MA4B021SH",
+   "code": "SMG-45 Submachine Gun-Operations (Extraction Mode)-6LKADN804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "350K"
+    "410K"
    ],
    "pos": 43
   },
@@ -8268,14 +8296,28 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "SR-25 Marksman Rifle-Operations-6KJ0AHK04JR8MA4B021SH",
+   "code": "SR-25 Marksman Rifle-Operations (Extraction Mode)-6LKACIO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "650K"
+    "700K"
    ],
-   "pos": 62
+   "pos": 63
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "SR-25 Marksman Rifle-Operations (Extraction Mode)-6LKACL004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "CQB",
+   "tags": [
+    "820K"
+   ],
+   "pos": 64
   },
   {
    "weapon": "SR-25",
@@ -8424,28 +8466,28 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "SR-3M Compact Assault Rifle-Operations (Extraction Mode)-6LEVPPO04JR8MA4B021SH",
+   "code": "SR-3M Compact Assault Rifle-Operations (Extraction Mode)-6LKADBS04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "Hipfire",
+   "note": "ADS/Hipfire",
    "tags": [
-    "460K"
+    "400K"
    ],
-   "pos": 33
+   "pos": 31
   },
   {
    "weapon": "SR-3M",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "SR-3M Compact Assault Rifle-Operations (Extraction Mode)-6LEVPS004JR8MA4B021SH",
+   "code": "SR-3M Compact Assault Rifle-Operations (Extraction Mode)-6LKADEG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "",
+   "note": "Hipfire",
    "tags": [
-    "400K"
+    "560K"
    ],
-   "pos": 31
+   "pos": 33
   },
   {
    "weapon": "SR-3M",
@@ -8708,7 +8750,7 @@
    "tags": [
     "644K"
    ],
-   "pos": 61
+   "pos": 62
   },
   {
    "weapon": "SVCH",
@@ -8862,7 +8904,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 64
+   "pos": 66
   },
   {
    "weapon": "SVD",
@@ -8973,28 +9015,28 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "Thompson SMG-Operations (Extraction Mode)-6L857U004JR8MA4B021SH",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6LKACQ804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Hipfire",
    "tags": [
     "550K"
    ],
-   "pos": 68
+   "pos": 70
   },
   {
    "weapon": "Thompson SMG",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "Thompson SMG-Operations (Extraction Mode)-6LA6UQ404JR8MA4B021SH",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6LKACR404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "ADS",
    "tags": [
     "650K"
    ],
-   "pos": 69
+   "pos": 71
   },
   {
    "weapon": "Thompson SMG",
@@ -9036,7 +9078,7 @@
    "tags": [
     "200K"
    ],
-   "pos": 67
+   "pos": 68
   },
   {
    "weapon": "Thompson SMG",
@@ -9088,7 +9130,7 @@
    "tags": [
     "229K"
    ],
-   "pos": 62
+   "pos": 63
   },
   {
    "weapon": "UZI",
@@ -9329,21 +9371,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6L8I3HS04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "Hipfire",
-   "tags": [
-    "580K"
-   ],
-   "pos": 41
-  },
-  {
-   "weapon": "Vector",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6LD4NA004JR8MA4B021SH",
+   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6LKADJS04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -9351,6 +9379,20 @@
     "670K"
    ],
    "pos": 39
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6LKADLC04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Hipfire",
+   "tags": [
+    "580K"
+   ],
+   "pos": 41
   },
   {
    "weapon": "Vector",
@@ -9426,7 +9468,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 59
+   "pos": 60
   },
   {
    "weapon": "Vityaz",
