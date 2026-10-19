@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-18",
+ "updated": "2026-10-19",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -969,7 +969,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 27
+   "pos": 26
   },
   {
    "weapon": "AR-57",
@@ -1209,7 +1209,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 23
+   "pos": 22
   },
   {
    "weapon": "AS Val",
@@ -1463,7 +1463,7 @@
    "added": null,
    "note": "LONG ASH",
    "tags": [],
-   "pos": 34
+   "pos": 33
   },
   {
    "weapon": "ASh-12",
@@ -1816,7 +1816,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 37
+   "pos": 36
   },
   {
    "weapon": "AWM",
@@ -2132,7 +2132,7 @@
    "added": null,
    "note": "cl-19",
    "tags": [],
-   "pos": 31
+   "pos": 30
   },
   {
    "weapon": "CI-19",
@@ -2312,7 +2312,7 @@
    "added": null,
    "note": "MAG",
    "tags": [],
-   "pos": 42
+   "pos": 41
   },
   {
    "weapon": "Compound Bow",
@@ -2386,7 +2386,7 @@
    "added": null,
    "note": "DONG",
    "tags": [],
-   "pos": 30
+   "pos": 29
   },
   {
    "weapon": "FS-12",
@@ -2807,7 +2807,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 35
+   "pos": 34
   },
   {
    "weapon": "K416",
@@ -3990,7 +3990,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 28
+   "pos": 27
   },
   {
    "weapon": "M249",
@@ -4384,7 +4384,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 33
+   "pos": 32
   },
   {
    "weapon": "M4A1",
@@ -4712,7 +4712,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 26
+   "pos": 25
   },
   {
    "weapon": "M7",
@@ -4985,18 +4985,6 @@
    "mode": "operations",
    "creator": "minda",
    "source": "minda",
-   "code": "M700 Sniper Rifle-Operations (Extraction Mode)-6LKTI7K088K38R05C0LGG",
-   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
-   "added": null,
-   "note": "AUTO",
-   "tags": [],
-   "pos": 20
-  },
-  {
-   "weapon": "M700",
-   "mode": "operations",
-   "creator": "minda",
-   "source": "minda",
    "code": "M700 Sniper Rifle-Operations-6JNUAK0088K38R05C0LGG",
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
@@ -5230,7 +5218,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 29
+   "pos": 28
   },
   {
    "weapon": "MCX LT",
@@ -5618,7 +5606,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 24
+   "pos": 23
   },
   {
    "weapon": "MK4",
@@ -5908,7 +5896,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 36
+   "pos": 35
   },
   {
    "weapon": "MK47",
@@ -6252,7 +6240,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 32
+   "pos": 31
   },
   {
    "weapon": "MP7",
@@ -6920,7 +6908,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 40
+   "pos": 39
   },
   {
    "weapon": "PTR-32",
@@ -7120,7 +7108,7 @@
    "added": null,
    "note": "RIP",
    "tags": [],
-   "pos": 43
+   "pos": 42
   },
   {
    "weapon": "QCQ171",
@@ -7293,7 +7281,7 @@
    "added": null,
    "note": "Hipfire",
    "tags": [],
-   "pos": 25
+   "pos": 24
   },
   {
    "weapon": "QJB201",
@@ -7661,7 +7649,7 @@
    "added": null,
    "note": "2X",
    "tags": [],
-   "pos": 38
+   "pos": 37
   },
   {
    "weapon": "RM277",
@@ -7673,7 +7661,7 @@
    "added": null,
    "note": "1X",
    "tags": [],
-   "pos": 39
+   "pos": 38
   },
   {
    "weapon": "RM277",
@@ -8099,7 +8087,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 22
+   "pos": 21
   },
   {
    "weapon": "SKS",
@@ -8818,7 +8806,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 41
+   "pos": 40
   },
   {
    "weapon": "SVCH",
@@ -8972,7 +8960,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 21
+   "pos": 20
   },
   {
    "weapon": "SVD",

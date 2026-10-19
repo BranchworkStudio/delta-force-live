@@ -1,8 +1,8 @@
 {
- "built": "2026-10-18T09:26:43+00:00",
+ "built": "2026-10-19T10:40:12+00:00",
  "status": "written",
  "note": null,
- "builds": 720,
+ "builds": 719,
  "creators": 9,
  "weapons": 66,
  "guns": 68,
@@ -15,15 +15,15 @@
   "muomuo": 74,
   "siingsong": 52,
   "equalplays": 49,
-  "minda": 44,
+  "minda": 43,
   "deathlapse": 38
  },
  "by_mode": {
-  "operations": 581,
+  "operations": 580,
   "warfare": 139
  },
  "dated": 81,
- "noted": 443,
+ "noted": 442,
  "skipped": {
   "minda credited to Larry": 2,
   "minda credited to Ideologist": 2,
