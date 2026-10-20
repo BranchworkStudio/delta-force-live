@@ -250,22 +250,25 @@
       if (rows && !changed && !again && Date.now() - at < SLOW_MS) return rows;
       again = changed && last !== null;
       last = mark; at = Date.now();
-      // A read that failed must not be served for ten minutes as if it were the answer.
+      // A read that failed must not be served for ten minutes as if it were the answer, so reads
+      // through here throw rather than go soft; the caller softens after the cache has let go.
       try { return rows = await read(...args); } catch (e) { rows = null; throw e; }
     };
   }
   const slowRows = backstop(() => Promise.all([
       // HQ only ever reports the current week, so the newest week_start present is the live one;
       // two weeks back still finds the last week of a player who has not played this one.
-      restAllSoft(`carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&week_start=gte.${new Date(Date.now() - 14 * 864e5).toISOString().slice(0, 10)}&order=week_start.desc,item_value.desc,openid,item_id`),
+      restAll(`carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&week_start=gte.${new Date(Date.now() - 14 * 864e5).toISOString().slice(0, 10)}&order=week_start.desc,item_value.desc,openid,item_id`),
       // The career wall is not range-scoped: it is everything the account has ever found, which is
       // the whole point of it — the dated drop feed above is capped at HQ's latest 50 rows.
-      restAllSoft("red_collection?select=openid,item_id,owned_count,is_new&order=openid,item_id"),
-      restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count"),
+      restAll("red_collection?select=openid,item_id,owned_count,is_new&order=openid,item_id"),
+      rest("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count"),
     ]));
   // "30 days" is two-thirds of a megabyte of matches, and a month barely moves in thirty seconds:
   // it is read again when a new raid turns up, and otherwise on the same ten-minute backstop.
-  const monthRows = backstop((mq, xq) => Promise.all([restAll(mq), restAll(xq)]));
+  // One per mode, so switching to the other mode and back reads neither month again.
+  const months = {};
+  const monthRows = (mode, ...a) => (months[mode] ||= backstop((mq, xq) => Promise.all([restAll(mq), restAll(xq)])))(...a);
   // A `slow` tab module's reads, one backstop per module, on the same mark as slowRows.
   const slowTabs = new Map();
   const tabRows = (t) => Promise.all(t.queries(host).map(restAllSoft));
@@ -289,7 +292,7 @@
     const xq = `match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid,nickname`;
     const ranged = state.range === "30d"
       // `pending` is a raid whose detail had not landed yet: when it lands the month is read again.
-      ? recentQ.then(r => monthRows([session && session.openid, state.mode, r[0] && r[0].openid + "@" + r[0].match_time,
+      ? recentQ.then(r => monthRows(state.mode, [session && session.openid, r[0] && r[0].openid + "@" + r[0].match_time,
           r.filter(x => x.pending).map(x => x.openid).join(",")].join("|"), mq, xq))
       : Promise.all([restAll(mq), restAll(xq)]);
     const [players, [matches, members], reds, pw, latency, sessions, recent, rank, rankSamples, groups, memberships, myGroups] = await Promise.all([
@@ -330,10 +333,10 @@
       reds[0] && reds[0].openid + "@" + reds[0].unlock_time].join("|");
     const slowTabRows = Promise.all(TABS.map(t => {
       if (!wanted(t) || !t.slow) return null;
-      if (!slowTabs.has(t)) slowTabs.set(t, backstop(() => tabRows(t)));
-      return slowTabs.get(t)(mark);
+      if (!slowTabs.has(t)) slowTabs.set(t, backstop(() => Promise.all(t.queries(host).map(restAll))));
+      return slowTabs.get(t)(mark).catch(e => { console.warn(e); return null; });
     }));
-    const [carried, wall, wallSum] = await slowRows(mark);
+    const [carried, wall, wallSum] = await slowRows(mark).catch(e => { console.warn(e); return [[], [], []]; });
     if (seq !== loadSeq) return;
     const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
     state.group = pickGroup(groups, myIds, mine);

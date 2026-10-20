@@ -317,26 +317,29 @@ reads the row through `groups_readable_by_owners`. `group_members` is world-read
 from anything the caller passes. `public_groups` is the anonymous view: names and member
 counts, no codes.
 
-**The read boundary is the board itself** (migrations 0019-0021). Every player-keyed table
+**The read boundary is the board itself** (migrations 0019-0021, 0038). Every player-keyed table
 answers one question:
 
 ```sql
-create function public.shares_group(p_openid text) returns boolean ... as $$
-  select public.my_openid() is not null and (
-    p_openid = public.my_openid()
-    or exists (select 1 from public.group_members a
-               join public.group_members b on b.group_id = a.group_id
-               where a.openid = public.my_openid() and b.openid = p_openid))
+create function public.my_squad() returns setof text ... as $$
+  select public.my_openid() where public.my_openid() is not null
+  union
+  select b.openid from public.group_members a
+  join public.group_members b on b.group_id = a.group_id
+  where a.openid = public.my_openid()
 $$;
+-- every policy: using (openid in (select public.my_squad()))
 ```
 
 — yourself always, and anyone on a board with you. It is `security definer` so a policy on
-`group_members` can ask it without querying the table it guards and recursing.
+`group_members` can ask it without querying the table it guards and recursing. Write it as a set
+(`openid in (select ...)`), never as a per-row function call: Postgres then works the squad out
+once per query. The per-row `shares_group(openid)` it replaced cost about 0.14 ms a row, roughly a
+second for a 30-day board of eight players.
 
-The player-keyed policies and the public views no longer call it per row (migration 0038):
-they ask `openid in (select public.my_squad())`, the same set computed once per query.
-`shares_group` called once per row made a 30-day board cost about 0.14 ms per row, roughly
-a second at eight players, and would have run into the 8 s statement timeout at about seventy.
+`supabase/tests/rls_check.sql` checks the boundary: run it after every migration. It walks
+everything `authenticated` may read, so a new table or view is covered without editing it, and it
+raises naming any that shows a stranger a row or shows a player a row from outside their squad.
 
 The publishable key now reads **nothing at all**: its `select` grants are gone, along with
 every policy that named `anon`. That is deliberate belt-and-braces — the policies alone would
