@@ -11,6 +11,9 @@ const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPAB
 
 const PAGE_SIZE = 20;
 const BACKFILL_PAGES = 15;        // ~300 matches of history per mode, one page per run
+// Matches older than this are neither stored nor kept (migration 0036 deletes them nightly), so the
+// database grows with players, not with time. The board's widest range is the same 30 days.
+const KEEP_MS = 30 * 864e5;
 const DETAILS_PER_RUN = 5;
 const MODES = [1, 2];             // 1 = Operations, 2 = Warfare
 // A player takes ~2.5 s, nearly all of it waiting on HQ, so waiting on several at once is almost
@@ -145,7 +148,8 @@ async function pollOne(row: Row, full: boolean) {
       if (!env || Number(env.code) !== 0) continue;
       const list = env.data?.list ?? [];
       for (const m of list) fresh.push({ ...m, report_type: rt });
-      bf[rt] = list.length < PAGE_SIZE ? "done" : next;
+      const oldest = toInt(list[list.length - 1]?.match_time);
+      bf[rt] = list.length < PAGE_SIZE || (oldest && oldest * 1000 < Date.now() - KEEP_MS) ? "done" : next;
     }
 
     report.matches = await storeMatches(openid, fresh);
@@ -202,7 +206,7 @@ async function storeMatches(openid: string, list: any[]) {
       operator_id: clampStr(m.operator_id, 32), score: toInt(m.score),
       first_seen_at: firstSeen(t),
     };
-  }).filter((r) => r.room_id && r.report_type && r.match_time);
+  }).filter((r) => r.room_id && r.report_type && r.match_time && Date.parse(r.match_time) > Date.now() - KEEP_MS);
   if (!rows.length) return 0;
   // ignoreDuplicates keeps the original first_seen_at when a match is seen again.
   const { data, error } = await supabase.from("matches").upsert(rows, { onConflict: "openid,report_type,room_id", ignoreDuplicates: true }).select("room_id");

@@ -231,9 +231,9 @@
     if (state.range === "today") { const d = new Date(now); d.setHours(4, 0, 0, 0); if (d > now) d.setDate(d.getDate() - 1); return d; } // gaming "day" starts 04:00
     if (state.range === "24h") return new Date(now - 864e5);
     if (state.range === "7d") return new Date(now - 7 * 864e5);
-    return new Date(0);
+    return new Date(now - 30 * 864e5);                      // "30d": all the database keeps
   }
-  const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", all: "all time" })[state.range];
+  const rangeWord = () => ({ today: "today", "24h": "24 h", "7d": "7 days", "30d": "30 days" })[state.range];
 
   // The week's carry-outs and the career red wall are two-thirds of every refresh by weight, and
   // they only ever move because somebody finished a raid. So they are read on the first load, when
@@ -1324,7 +1324,7 @@
     if (ms.length || !last) { el.hidden = true; el.innerHTML = ""; return; }
     el.hidden = false;
     el.innerHTML = `<span>No ${raid(2)} ${state.range === "today" ? "yet today" : "in this range"}. The last one was <b>${ago(last)}</b>.</span>
-      ${state.range === "7d" ? "" : `<button data-jump="7d">Show 7 days</button>`}<button data-jump="all">Show everything</button>`;
+      ${state.range === "today" || state.range === "24h" ? `<button data-jump="7d">Show 7 days</button>` : ""}${state.range === "30d" ? "" : `<button data-jump="30d">Show 30 days</button>`}`;
     el.querySelectorAll("[data-jump]").forEach(b => b.onclick = () => setRange(b.dataset.jump));
   }
 

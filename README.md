@@ -225,6 +225,10 @@ it is waiting on HQ, so 8 players went from ~20 s one after another to ~7 s. Pas
 a minute is ~1,440 rows a day. A second job, `df-cron-history-cleanup` (migration `0031`), deletes
 rows older than seven days at 03:17 UTC every night.
 
+Matches are kept for 30 days, the board's widest range. The poller skips anything older and stops
+its history walk there, and `df-match-retention` (migration `0036`) deletes older matches, with
+their details, at 03:27 UTC every night, so storage grows with players rather than with time.
+
 Nothing is collected by the site itself. The board only reads what the poller stored, and it
 stops refreshing while its tab is hidden (catching up the moment it is shown again), because a
 background tab re-downloading the board every 30 s was the free plan's traffic quota running
@@ -269,7 +273,7 @@ two facts the server checks rather than from a flag of its own:
 A mate who is neither sees boards, *New board*, *Join with a code* and *Leave* — enough to
 squad up with anybody already here, and no way to enlarge the tracker itself.
 
-The first hour also imports your recent history (about 300 matches per mode),
+The first hour also imports your recent history (up to 300 matches per mode, the last 30 days),
 one page per minute, so the site has something to show right away.
 
 ## Repo layout
