@@ -211,7 +211,7 @@
   }
   // PostgREST answers at most max-rows (1000) however large `limit` is, and says nothing about it, so
   // a read that needs every row in range pages through. `path` must carry an order that is total.
-  // shortcut: "All" downloads a board's whole history every refresh; past ~10k raids, sum it server-side.
+  // shortcut: "30 days" downloads the whole month whenever it reads; past ~10k raids a month, sum it server-side.
   async function restAll(path) {
     const out = [];
     for (let off = 0; ; off += 1000) {
@@ -242,13 +242,18 @@
   // writes the match a few seconds before the carry-outs from the same raid: the first read can
   // land in between, and the second is what catches them.
   const SLOW_MS = 10 * 60e3;
-  let slow = null, slowAt = 0, slowMark = null, slowAgain = false;
-  async function slowRows(mark) {
-    const changed = mark !== slowMark;
-    if (slow && !changed && !slowAgain && Date.now() - slowAt < SLOW_MS) return slow;
-    slowAgain = changed && slowMark !== null;
-    slowMark = mark; slowAt = Date.now();
-    slow = await Promise.all([
+  function backstop(read) {
+    let rows = null, at = 0, last = null, again = false;
+    return async (mark, ...args) => {
+      const changed = mark !== last;
+      if (rows && !changed && !again && Date.now() - at < SLOW_MS) return rows;
+      again = changed && last !== null;
+      last = mark; at = Date.now();
+      // A read that failed must not be served for ten minutes as if it were the answer.
+      try { return rows = await read(...args); } catch (e) { rows = null; throw e; }
+    };
+  }
+  const slowRows = backstop(() => Promise.all([
       // HQ only ever reports the current week, so the newest week_start present is the live one;
       // the rest is whatever weeks the poller happened to be running for.
       restSoft("carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&order=week_start.desc,item_value.desc&limit=600"),
@@ -256,9 +261,10 @@
       // the whole point of it — the dated drop feed above is capped at HQ's latest 50 rows.
       restSoft("red_collection?select=openid,item_id,owned_count,is_new&limit=1000"),
       restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count"),
-    ]);
-    return slow;
-  }
+    ]));
+  // "30 days" is two-thirds of a megabyte of matches, and a month barely moves in thirty seconds:
+  // it is read again when a new raid turns up, and otherwise on the same ten-minute backstop.
+  const monthRows = backstop((mq, xq) => Promise.all([restAll(mq), restAll(xq)]));
 
   // Bumped by every load(): one that finishes after a newer one started (a mode click mid-refresh)
   // must not paint its older answer over the newer one.
@@ -272,20 +278,29 @@
     // else, and three refused requests on every page load is noise in the log for nothing.
     const extra = Promise.all(TABS.map(t => t.queries && (typeof t.visible !== "function" || t.visible(host))
       ? Promise.all(t.queries(host).map(restSoft)) : Promise.resolve([])));
-    const [players, matches, members, reds, pw, latency, sessions, recent, rank, rankSamples, groups, memberships, myGroups] = await Promise.all([
+    // Each player's latest raid in the mode, whatever the range: how long ago it was, for when the
+    // chosen range is empty, and the sign that something new turned up.
+    const recentQ = rest(`latest_match?select=openid,match_time&report_type=eq.${state.mode}&order=match_time.desc`);
+    const mq = `matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid`;
+    const xq = `match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid,nickname`;
+    const ranged = state.range === "30d"
+      ? recentQ.then(r => monthRows([session && session.openid, state.mode, r[0] && r[0].openid + "@" + r[0].match_time].join("|"), mq, xq))
+      : Promise.all([restAll(mq), restAll(xq)]);
+    const [players, [matches, members], reds, pw, latency, sessions, recent, rank, rankSamples, groups, memberships, myGroups] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
-      restAll(`matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid`),
-      restAll(`match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid,nickname`),
+      ranged,
       rest("red_drops?select=openid,collection_id,map_id,unlock_time,value,collection_count,first_seen_at&order=unlock_time.desc&limit=60"),
       rest("site_data?select=value,updated_at&key=eq.daily_passwords"),
       rest("match_latency?select=latency_seconds,first_seen_at&order=first_seen_at.desc&limit=50"),
       rest("public_sessions?select=*"),
-      // Unfiltered by range: how long ago the last raid was, for when the chosen range is empty.
-      rest(`matches?select=openid,match_time&report_type=eq.${state.mode}&order=match_time.desc&limit=200`),
+      recentQ,
       rest(`player_rank?select=openid,report_type,rank_score,highest_rank,fetched_at&report_type=eq.${state.mode}`),
-      // Every sample, not just the range: the movement inside a range is measured against the
-      // standing that came before it, which is a sample from outside it.
-      restAll(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&order=taken_at.asc,openid`),
+      // The samples inside the range, led by each player's last one before it: the movement inside
+      // a range is measured against the standing that came before it, which is a sample from outside it.
+      Promise.all([
+        rest(`rpc/rank_baseline?select=openid,taken_at,rank_score&p_mode=${state.mode}&p_since=${since}`),
+        restAll(`rank_samples?select=openid,taken_at,rank_score&report_type=eq.${state.mode}&taken_at=gt.${since}&order=taken_at.asc,openid`),
+      ]).then(([base, inRange]) => base.concat(inRange)),
       // Names and sizes, which anyone may read, and memberships, which say whose rows belong on
       // which board.
       restSoft("public_groups?select=id,name,members,created_by,created_at&order=created_at"),
