@@ -107,7 +107,8 @@
     // A lifetime tally has no time window and exists in neither Operations nor Warfare, so neither
     // picker applies: the range dims in the masthead and the mode picker is not shown at all.
     filters: false,
-    queries: () => ["event_collection?select=openid,item_id,owned_count&event_key=eq." + EVENT + "&limit=2000"],
+    slow: true,
+    queries: () => ["event_collection?select=openid,item_id,owned_count&event_key=eq." + EVENT + "&order=openid,item_id"],
     // The board's headline is match data, which this page is not: on the cards tab the hero states
     // the collection instead. The big number is what is still missing, because that is the only
     // question the page exists to answer and it has to be readable from a second screen.

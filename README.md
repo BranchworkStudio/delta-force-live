@@ -333,6 +333,11 @@ $$;
 — yourself always, and anyone on a board with you. It is `security definer` so a policy on
 `group_members` can ask it without querying the table it guards and recursing.
 
+The player-keyed policies and the public views no longer call it per row (migration 0038):
+they ask `openid in (select public.my_squad())`, the same set computed once per query.
+`shares_group` called once per row made a 30-day board cost about 0.14 ms per row, roughly
+a second at eight players, and would have run into the 8 s statement timeout at about seventy.
+
 The publishable key now reads **nothing at all**: its `select` grants are gone, along with
 every policy that named `anon`. That is deliberate belt-and-braces — the policies alone would
 already return no rows, but with no grant a future table cannot be published by one careless

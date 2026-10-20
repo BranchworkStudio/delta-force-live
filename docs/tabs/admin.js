@@ -271,10 +271,10 @@
     filters: false,               // nothing here is a match, so neither picker means anything
 
     queries: () => [
-      "admin_invites?select=*&order=created_at.desc",
-      "admin_players?select=*&order=enrolled_at.asc.nullsfirst",
-      "admin_sessions?select=*",
-      "admin_build_reports?select=*&order=last_at.desc",
+      "admin_invites?select=*&order=created_at.desc,code",
+      "admin_players?select=*&order=enrolled_at.asc.nullsfirst,openid",
+      "admin_sessions?select=*&order=openid",
+      "admin_build_reports?select=*&order=last_at.desc,code",
     ],
 
     hero(data, h) {

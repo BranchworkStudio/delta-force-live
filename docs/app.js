@@ -226,6 +226,7 @@
   async function restSoft(path) {
     try { return await rest(path); } catch (e) { console.warn(e); return []; }
   }
+  const restAllSoft = (path) => restAll(path).catch(e => { console.warn(e); return []; });
   function rangeStart() {
     const now = new Date();
     if (state.range === "today") { const d = new Date(now); d.setHours(4, 0, 0, 0); if (d > now) d.setDate(d.getDate() - 1); return d; } // gaming "day" starts 04:00
@@ -255,16 +256,19 @@
   }
   const slowRows = backstop(() => Promise.all([
       // HQ only ever reports the current week, so the newest week_start present is the live one;
-      // the rest is whatever weeks the poller happened to be running for.
-      restSoft("carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&order=week_start.desc,item_value.desc&limit=600"),
+      // two weeks back still finds the last week of a player who has not played this one.
+      restAllSoft(`carry_out_week?select=openid,week_start,item_id,item_value,carry_out_count&week_start=gte.${new Date(Date.now() - 14 * 864e5).toISOString().slice(0, 10)}&order=week_start.desc,item_value.desc,openid,item_id`),
       // The career wall is not range-scoped: it is everything the account has ever found, which is
       // the whole point of it — the dated drop feed above is capped at HQ's latest 50 rows.
-      restSoft("red_collection?select=openid,item_id,owned_count,is_new&limit=1000"),
+      restAllSoft("red_collection?select=openid,item_id,owned_count,is_new&order=openid,item_id"),
       restSoft("red_collection_summary?select=openid,type_count,total_count,total_value,weekly_count"),
     ]));
   // "30 days" is two-thirds of a megabyte of matches, and a month barely moves in thirty seconds:
   // it is read again when a new raid turns up, and otherwise on the same ten-minute backstop.
   const monthRows = backstop((mq, xq) => Promise.all([restAll(mq), restAll(xq)]));
+  // A `slow` tab module's reads, one backstop per module, on the same mark as slowRows.
+  const slowTabs = new Map();
+  const tabRows = (t) => Promise.all(t.queries(host).map(restAllSoft));
 
   // Bumped by every load(): one that finishes after a newer one started (a mode click mid-refresh)
   // must not paint its older answer over the newer one.
@@ -276,15 +280,17 @@
     // that cannot load costs its own page and nothing else.
     // A tab the visitor cannot see does not send its reads: the admin views answer 401 to everybody
     // else, and three refused requests on every page load is noise in the log for nothing.
-    const extra = Promise.all(TABS.map(t => t.queries && (typeof t.visible !== "function" || t.visible(host))
-      ? Promise.all(t.queries(host).map(restSoft)) : Promise.resolve([])));
+    const wanted = (t) => t.queries && (typeof t.visible !== "function" || t.visible(host));
+    const extra = Promise.all(TABS.map(t => wanted(t) && !t.slow ? tabRows(t) : Promise.resolve([])));
     // Each player's latest raid in the mode, whatever the range: how long ago it was, for when the
     // chosen range is empty, and the sign that something new turned up.
-    const recentQ = rest(`latest_match?select=openid,match_time&report_type=eq.${state.mode}&order=match_time.desc`);
+    const recentQ = rest(`latest_match?select=openid,match_time,pending&report_type=eq.${state.mode}&order=match_time.desc`);
     const mq = `matches?select=openid,report_type,room_id,match_time,finished_at,match_duration_min,map_id,result,is_leave,kill_count,kill_operator,kill_other,carry_out_value,net_income,operator_id,score,first_seen_at&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid`;
     const xq = `match_members?select=*&report_type=eq.${state.mode}&match_time=gte.${since}&order=match_time.desc,room_id,openid,nickname`;
     const ranged = state.range === "30d"
-      ? recentQ.then(r => monthRows([session && session.openid, state.mode, r[0] && r[0].openid + "@" + r[0].match_time].join("|"), mq, xq))
+      // `pending` is a raid whose detail had not landed yet: when it lands the month is read again.
+      ? recentQ.then(r => monthRows([session && session.openid, state.mode, r[0] && r[0].openid + "@" + r[0].match_time,
+          r.filter(x => x.pending).map(x => x.openid).join(",")].join("|"), mq, xq))
       : Promise.all([restAll(mq), restAll(xq)]);
     const [players, [matches, members], reds, pw, latency, sessions, recent, rank, rankSamples, groups, memberships, myGroups] = await Promise.all([
       rest("public_players?select=*&order=nickname"),
@@ -312,16 +318,22 @@
     // Which board this is. A group is a set of mates who share one; a player in no group has a
     // board of themselves alone, which is what a tracker-only link gives them. It is still a
     // presentation boundary and not a privacy one, but the database boundary agrees with it now:
-    // every policy asks shares_group(openid), so what arrives here is already only the players this
+    // every policy asks openid in my_squad(), so what arrives here is already only the players this
     // session may see. A tracker-only player is still filtered out of the shared board here.
     const mine = ls(CTL_KEY) || (session && session.openid) || null;
     state.me = mine;
     // What "something turned up" is measured by: the newest raid in the mode on show, the newest
     // red find, and who is asking — signing in changes which rows the database lets this browser
     // see, so it has to read them again.
-    const [carried, wall, wallSum] = await slowRows([session && session.openid,
+    const mark = [session && session.openid,
       recent[0] && recent[0].openid + "@" + recent[0].match_time,
-      reds[0] && reds[0].openid + "@" + reds[0].unlock_time].join("|"));
+      reds[0] && reds[0].openid + "@" + reds[0].unlock_time].join("|");
+    const slowTabRows = Promise.all(TABS.map(t => {
+      if (!wanted(t) || !t.slow) return null;
+      if (!slowTabs.has(t)) slowTabs.set(t, backstop(() => tabRows(t)));
+      return slowTabs.get(t)(mark);
+    }));
+    const [carried, wall, wallSum] = await slowRows(mark);
     if (seq !== loadSeq) return;
     const myIds = mine ? memberships.filter(m => m.openid === mine).map(m => m.group_id) : [];
     state.group = pickGroup(groups, myIds, mine);
@@ -352,10 +364,10 @@
       rank: ours(rank), rankSamples: ours(rankSamples), carried: ours(carried), wall: ours(wall), wallSum: ours(wallSum),
       groups, memberships, myGroups: Array.isArray(myGroups) ? myGroups : [],
     });
-    const extraRows = await extra;
+    const [extraRows, slowExtra] = await Promise.all([extra, slowTabRows]);
     if (seq !== loadSeq) return;
     state.tabData = {};
-    TABS.forEach((t, i) => { state.tabData[t.id] = t.scope === "all" ? (extraRows[i] || []) : (extraRows[i] || []).map(ours); });
+    TABS.forEach((t, i) => { const rows = slowExtra[i] || extraRows[i] || []; state.tabData[t.id] = t.scope === "all" ? rows : rows.map(ours); });
     resolveFocus();
     render();
     setStatus("updated " + hhmm(new Date()), true);
@@ -503,7 +515,7 @@
     `<span><span class="tv">${p.v}</span><span class="tl">${esc(p.k)}</span></span>`).join("")}</span>`;
 
   // ---------- render ----------
-  // A visitor with no session reads nothing at all now (every policy asks shares_group()), so an
+  // A visitor with no session reads nothing at all now (every policy asks my_squad()), so an
   // empty board is a locked door rather than a broken page, and it should say so instead of
   // drawing a hero full of dashes.
   // The flow itself, not a link to it: an account that is not linked yet is the only thing this
@@ -565,6 +577,8 @@
   //             the players on this board
   //   visible(host)              false to leave the tab off the bar entirely; absent means always
   //   last      true to sit at the right-hand end of the bar whatever the load order
+  //   slow      true when queries() only move because somebody finished a raid: read on a new
+  //             match or red find, and otherwise every ten minutes, not every refresh
   //   scope     "all" to receive queries() rows unnarrowed — the board filters every module's rows
   //             to the players on this board, which is exactly wrong for a page about everybody
   //   count(rows, host)          a short badge for the tab bar, or null
