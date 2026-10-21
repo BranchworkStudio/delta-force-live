@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20",
+ "updated": "2026-10-21",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -3411,20 +3411,6 @@
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6L93VMC06F3769TRGAG41",
-   "url": "https://www.deltaforce.build/poach",
-   "added": "2026-09-11",
-   "note": "Scoped",
-   "tags": [
-    "650K"
-   ],
-   "pos": 8
-  },
-  {
-   "weapon": "KC-17",
-   "mode": "operations",
-   "creator": "poach",
-   "source": "poach",
    "code": "6LLLGIC06F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-10-19",
@@ -3433,6 +3419,20 @@
     "800K"
    ],
    "pos": 5
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "poach",
+   "source": "poach",
+   "code": "6LLTTFS06F3769TRGAG41",
+   "url": "https://www.deltaforce.build/poach",
+   "added": "2026-10-20",
+   "note": "Scoped",
+   "tags": [
+    "650K"
+   ],
+   "pos": 8
   },
   {
    "weapon": "KC-17",
@@ -6763,9 +6763,9 @@
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6KM9K6006F3769TRGAG41",
+   "code": "6LLVB4806F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-07-16",
+   "added": "2026-10-20",
    "note": "Reflex",
    "tags": [
     "400K"
