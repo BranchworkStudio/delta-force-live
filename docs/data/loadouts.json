@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21",
+ "updated": "2026-10-22",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -3355,20 +3355,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LKAAN404JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "620K"
-   ],
-   "pos": 34
-  },
-  {
-   "weapon": "KC-17",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LKAAOC04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -5903,21 +5889,35 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAK004JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAM404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "Long Barrel",
+   "note": "KC-17",
    "tags": [
-    "740K"
+    "620K"
    ],
-   "pos": 28
+   "pos": 34
   },
   {
    "weapon": "MK47",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAL004JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LMCDC404JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "No Recoil",
+   "tags": [
+    "730K"
+   ],
+   "pos": 32
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LMCDCS04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Short Barrel",
@@ -5931,14 +5931,14 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAM404JR8MA4B021SH",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LMCDDG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "No Recoil",
+   "note": "Long Barrel",
    "tags": [
-    "730K"
+    "740K"
    ],
-   "pos": 32
+   "pos": 28
   },
   {
    "weapon": "MK47",
