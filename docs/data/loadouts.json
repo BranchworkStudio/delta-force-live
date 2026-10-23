@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22",
+ "updated": "2026-10-23",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -5903,20 +5903,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LMCDC404JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "No Recoil",
-   "tags": [
-    "730K"
-   ],
-   "pos": 32
-  },
-  {
-   "weapon": "MK47",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LMCDCS04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -5939,6 +5925,20 @@
     "740K"
    ],
    "pos": 28
+  },
+  {
+   "weapon": "MK47",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LMKQFO04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "No Recoil",
+   "tags": [
+    "730K"
+   ],
+   "pos": 32
   },
   {
    "weapon": "MK47",
