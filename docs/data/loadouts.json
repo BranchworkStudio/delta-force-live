@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23",
+ "updated": "2026-10-25",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -205,7 +205,7 @@
    "tags": [
     "20K"
    ],
-   "pos": 65
+   "pos": 64
   },
   {
    "weapon": ".357",
@@ -349,7 +349,7 @@
    "tags": [
     "54K"
    ],
-   "pos": 57
+   "pos": 56
   },
   {
    "weapon": "AK-12",
@@ -701,7 +701,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 24
+   "pos": 23
   },
   {
    "weapon": "AKM",
@@ -715,7 +715,7 @@
    "tags": [
     "230K"
    ],
-   "pos": 71
+   "pos": 70
   },
   {
    "weapon": "AKM",
@@ -729,7 +729,7 @@
    "tags": [
     "260K"
    ],
-   "pos": 73
+   "pos": 72
   },
   {
    "weapon": "AKM",
@@ -1025,7 +1025,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 26
+   "pos": 25
   },
   {
    "weapon": "AR-57",
@@ -1039,7 +1039,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 61
+   "pos": 60
   },
   {
    "weapon": "AR-57",
@@ -1053,7 +1053,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 27
+   "pos": 26
   },
   {
    "weapon": "AR-57",
@@ -1067,7 +1067,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 25
+   "pos": 24
   },
   {
    "weapon": "AR-57",
@@ -1279,7 +1279,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 62
+   "pos": 61
   },
   {
    "weapon": "AS Val",
@@ -1702,7 +1702,7 @@
    "tags": [
     "160K"
    ],
-   "pos": 69
+   "pos": 68
   },
   {
    "weapon": "AUG",
@@ -1844,7 +1844,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 53
+   "pos": 52
   },
   {
    "weapon": "AWM",
@@ -2188,7 +2188,7 @@
    "tags": [
     "290K"
    ],
-   "pos": 72
+   "pos": 71
   },
   {
    "weapon": "CI-19",
@@ -2326,7 +2326,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 79
+   "pos": 78
   },
   {
    "weapon": "Compound Bow",
@@ -2520,7 +2520,7 @@
    "tags": [
     "100K"
    ],
-   "pos": 58
+   "pos": 57
   },
   {
    "weapon": "G3",
@@ -2598,7 +2598,7 @@
    "tags": [
     "270K"
    ],
-   "pos": 64
+   "pos": 63
   },
   {
    "weapon": "G3",
@@ -2863,7 +2863,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 74
+   "pos": 73
   },
   {
    "weapon": "K416",
@@ -3113,7 +3113,7 @@
    "tags": [
     "250K"
    ],
-   "pos": 67
+   "pos": 66
   },
   {
    "weapon": "K437",
@@ -3376,7 +3376,7 @@
    "tags": [
     "350K"
    ],
-   "pos": 77
+   "pos": 76
   },
   {
    "weapon": "KC-17",
@@ -3390,7 +3390,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 78
+   "pos": 77
   },
   {
    "weapon": "KC-17",
@@ -3548,7 +3548,7 @@
    "tags": [
     "185K"
    ],
-   "pos": 55
+   "pos": 54
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3600,7 +3600,7 @@
    "tags": [
     "162K"
    ],
-   "pos": 44
+   "pos": 43
   },
   {
    "weapon": "M14",
@@ -3795,14 +3795,14 @@
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6L8PSVC06F3769TRGAG41",
+   "code": "6LND5RK06F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-09-10",
+   "added": "2026-10-25",
    "note": "",
    "tags": [
     "800K"
    ],
-   "pos": 31
+   "pos": 30
   },
   {
    "weapon": "M14",
@@ -4004,7 +4004,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 50
+   "pos": 49
   },
   {
    "weapon": "M249",
@@ -4018,7 +4018,7 @@
    "tags": [
     "426K"
    ],
-   "pos": 49
+   "pos": 48
   },
   {
    "weapon": "M249",
@@ -4188,7 +4188,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 47
+   "pos": 46
   },
   {
    "weapon": "M250",
@@ -4398,7 +4398,7 @@
    "tags": [
     "270K"
    ],
-   "pos": 70
+   "pos": 69
   },
   {
    "weapon": "M4A1",
@@ -4719,23 +4719,9 @@
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6JFOAR006F3769TRGAG41",
+   "code": "6LND5UO06F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-03-21",
-   "note": "China",
-   "tags": [
-    "1M"
-   ],
-   "pos": 23
-  },
-  {
-   "weapon": "M7",
-   "mode": "operations",
-   "creator": "poach",
-   "source": "poach",
-   "code": "6LH0OA406F3769TRGAG41",
-   "url": "https://www.deltaforce.build/poach",
-   "added": "2026-10-12",
+   "added": "2026-10-25",
    "note": "",
    "tags": [
     "1M"
@@ -5032,7 +5018,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 52
+   "pos": 51
   },
   {
    "weapon": "M700",
@@ -5046,7 +5032,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 56
+   "pos": 55
   },
   {
    "weapon": "M700",
@@ -5114,7 +5100,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 54
+   "pos": 53
   },
   {
    "weapon": "M82",
@@ -5260,7 +5246,7 @@
    "tags": [
     "240K"
    ],
-   "pos": 76
+   "pos": 75
   },
   {
    "weapon": "MCX LT",
@@ -5411,12 +5397,12 @@
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6L7S1BS06F3769TRGAG41",
+   "code": "6LND5NC06F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-09-07",
+   "added": "2026-10-25",
    "note": "",
    "tags": [
-    "1M"
+    "650K"
    ],
    "pos": 21
   },
@@ -5637,6 +5623,20 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LCCHD004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Full Auto",
+   "tags": [
+    "650K"
+   ],
+   "pos": 5
+  },
+  {
+   "weapon": "MK4",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
    "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LJJMLG04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -5665,20 +5665,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LKAD2G04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "Full Auto",
-   "tags": [
-    "650K"
-   ],
-   "pos": 5
-  },
-  {
-   "weapon": "MK4",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LKAD3O04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -5700,7 +5686,7 @@
    "tags": [
     "200K"
    ],
-   "pos": 75
+   "pos": 74
   },
   {
    "weapon": "MK4",
@@ -5714,7 +5700,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 41
+   "pos": 40
   },
   {
    "weapon": "MK4",
@@ -6054,7 +6040,7 @@
    "tags": [
     "260K"
    ],
-   "pos": 40
+   "pos": 39
   },
   {
    "weapon": "MP5",
@@ -6296,7 +6282,7 @@
    "tags": [
     "350K"
    ],
-   "pos": 34
+   "pos": 33
   },
   {
    "weapon": "MP7",
@@ -6310,7 +6296,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 35
+   "pos": 34
   },
   {
    "weapon": "MP7",
@@ -6556,7 +6542,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 59
+   "pos": 58
   },
   {
    "weapon": "P90",
@@ -6570,7 +6556,7 @@
    "tags": [
     "344K"
    ],
-   "pos": 37
+   "pos": 36
   },
   {
    "weapon": "P90",
@@ -6756,7 +6742,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 48
+   "pos": 47
   },
   {
    "weapon": "PKM",
@@ -6770,7 +6756,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 46
+   "pos": 45
   },
   {
    "weapon": "PKM",
@@ -6846,7 +6832,7 @@
    "tags": [
     "411K"
    ],
-   "pos": 28
+   "pos": 27
   },
   {
    "weapon": "PSG-1",
@@ -7323,7 +7309,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 45
+   "pos": 44
   },
   {
    "weapon": "QJB201",
@@ -7337,7 +7323,7 @@
    "tags": [
     "280K"
    ],
-   "pos": 80
+   "pos": 79
   },
   {
    "weapon": "QJB201",
@@ -7519,7 +7505,7 @@
    "tags": [
     "88K"
    ],
-   "pos": 51
+   "pos": 50
   },
   {
    "weapon": "R93",
@@ -7703,7 +7689,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 66
+   "pos": 65
   },
   {
    "weapon": "RM277",
@@ -7714,7 +7700,9 @@
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-07-15",
    "note": "",
-   "tags": [],
+   "tags": [
+    "450K"
+   ],
    "pos": 0
   },
   {
@@ -8115,7 +8103,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 29
+   "pos": 28
   },
   {
    "weapon": "SKS",
@@ -8245,7 +8233,7 @@
    "tags": [
     "250K"
    ],
-   "pos": 36
+   "pos": 35
   },
   {
    "weapon": "SMG-45",
@@ -8401,7 +8389,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 30
+   "pos": 29
   },
   {
    "weapon": "SR-25",
@@ -8571,7 +8559,7 @@
    "tags": [
     "520K"
    ],
-   "pos": 39
+   "pos": 38
   },
   {
    "weapon": "SR-3M",
@@ -8585,7 +8573,7 @@
    "tags": [
     "220K"
    ],
-   "pos": 38
+   "pos": 37
   },
   {
    "weapon": "SR-3M",
@@ -8831,7 +8819,9 @@
    "url": "https://www.deltaforce.build/poach",
    "added": "2026-07-04",
    "note": "",
-   "tags": [],
+   "tags": [
+    "650K"
+   ],
    "pos": 3
   },
   {
@@ -8988,7 +8978,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 32
+   "pos": 31
   },
   {
    "weapon": "SVD",
@@ -9120,7 +9110,7 @@
    "tags": [
     "600K"
    ],
-   "pos": 42
+   "pos": 41
   },
   {
    "weapon": "Thompson SMG",
@@ -9134,7 +9124,7 @@
    "tags": [
     "600K"
    ],
-   "pos": 43
+   "pos": 42
   },
   {
    "weapon": "Thompson SMG",
@@ -9148,7 +9138,7 @@
    "tags": [
     "200K"
    ],
-   "pos": 68
+   "pos": 67
   },
   {
    "weapon": "Thompson SMG",
@@ -9200,7 +9190,7 @@
    "tags": [
     "229K"
    ],
-   "pos": 63
+   "pos": 62
   },
   {
    "weapon": "UZI",
@@ -9476,7 +9466,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 33
+   "pos": 32
   },
   {
    "weapon": "Vector",
@@ -9538,7 +9528,7 @@
    "tags": [
     "120K"
    ],
-   "pos": 60
+   "pos": 59
   },
   {
    "weapon": "Vityaz",
