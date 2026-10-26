@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -7101,12 +7101,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6LKAD5004JR8MA4B021SH",
+   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6LNLA2404JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
    "tags": [
-    "550K"
+    "410K"
    ],
    "pos": 21
   },
@@ -7115,12 +7115,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6LKAD8804JR8MA4B021SH",
+   "code": "QCQ171 Submachine Gun-Operations (Extraction Mode)-6LNLALC04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
    "tags": [
-    "260K"
+    "240K"
    ],
    "pos": 24
   },
@@ -9431,20 +9431,6 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6LKADJS04JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "",
-   "tags": [
-    "670K"
-   ],
-   "pos": 41
-  },
-  {
-   "weapon": "Vector",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
    "code": "Vector Submachine Gun-Operations (Extraction Mode)-6LKADLC04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -9453,6 +9439,20 @@
     "580K"
    ],
    "pos": 43
+  },
+  {
+   "weapon": "Vector",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "Vector Submachine Gun-Operations (Extraction Mode)-6LNLFA004JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "670K"
+   ],
+   "pos": 41
   },
   {
    "weapon": "Vector",
