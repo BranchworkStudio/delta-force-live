@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26",
+ "updated": "2026-10-27",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -3355,6 +3355,20 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
+   "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LD2T3S04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "",
+   "tags": [
+    "620K"
+   ],
+   "pos": 34
+  },
+  {
+   "weapon": "KC-17",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
    "code": "KC-17 Assault Rifle-Operations (Extraction Mode)-6LKAAOC04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
@@ -5869,20 +5883,6 @@
    "note": "",
    "tags": [],
    "pos": 35
-  },
-  {
-   "weapon": "MK47",
-   "mode": "operations",
-   "creator": "muomuo",
-   "source": "muomuo",
-   "code": "MK47 Assault Rifle-Operations (Extraction Mode)-6LKAAM404JR8MA4B021SH",
-   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
-   "added": null,
-   "note": "KC-17",
-   "tags": [
-    "620K"
-   ],
-   "pos": 34
   },
   {
    "weapon": "MK47",
