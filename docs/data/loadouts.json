@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -427,7 +427,7 @@
    "tags": [
     "430K"
    ],
-   "pos": 60
+   "pos": 62
   },
   {
    "weapon": "AK-12",
@@ -441,7 +441,7 @@
    "tags": [
     "230K"
    ],
-   "pos": 61
+   "pos": 63
   },
   {
    "weapon": "AK-12",
@@ -673,7 +673,7 @@
    "tags": [
     "470K"
    ],
-   "pos": 58
+   "pos": 60
   },
   {
    "weapon": "AKM",
@@ -687,7 +687,7 @@
    "tags": [
     "530K"
    ],
-   "pos": 57
+   "pos": 59
   },
   {
    "weapon": "AKM",
@@ -1223,7 +1223,7 @@
    "tags": [
     "530K"
    ],
-   "pos": 48
+   "pos": 50
   },
   {
    "weapon": "AS Val",
@@ -1251,7 +1251,7 @@
    "tags": [
     "550K"
    ],
-   "pos": 47
+   "pos": 48
   },
   {
    "weapon": "AS Val",
@@ -1265,7 +1265,7 @@
    "tags": [
     "360K"
    ],
-   "pos": 49
+   "pos": 51
   },
   {
    "weapon": "AS Val",
@@ -1660,7 +1660,7 @@
    "tags": [
     "530K"
    ],
-   "pos": 53
+   "pos": 55
   },
   {
    "weapon": "AUG",
@@ -1674,7 +1674,7 @@
    "tags": [
     "260K"
    ],
-   "pos": 54
+   "pos": 56
   },
   {
    "weapon": "AUG",
@@ -2821,7 +2821,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 55
+   "pos": 57
   },
   {
    "weapon": "K416",
@@ -2835,7 +2835,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 56
+   "pos": 58
   },
   {
    "weapon": "K416",
@@ -3788,7 +3788,7 @@
    "tags": [
     "850K"
    ],
-   "pos": 63
+   "pos": 65
   },
   {
    "weapon": "M14",
@@ -3802,7 +3802,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 62
+   "pos": 64
   },
   {
    "weapon": "M14",
@@ -4398,7 +4398,7 @@
    "tags": [
     "420K"
    ],
-   "pos": 59
+   "pos": 61
   },
   {
    "weapon": "M4A1",
@@ -4726,7 +4726,7 @@
    "tags": [
     "830K"
    ],
-   "pos": 52
+   "pos": 54
   },
   {
    "weapon": "M7",
@@ -5376,7 +5376,7 @@
    "tags": [
     "900K"
    ],
-   "pos": 69
+   "pos": 71
   },
   {
    "weapon": "MDR",
@@ -5390,7 +5390,7 @@
    "tags": [
     "930K"
    ],
-   "pos": 70
+   "pos": 72
   },
   {
    "weapon": "MDR",
@@ -5404,7 +5404,7 @@
    "tags": [
     "900K"
    ],
-   "pos": 71
+   "pos": 73
   },
   {
    "weapon": "MDR",
@@ -5679,12 +5679,12 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LKAD3O04JR8MA4B021SH",
+   "code": "MK4 Submachine Gun-Operations (Extraction Mode)-6LO9P2804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "Budget",
    "tags": [
-    "300K"
+    "320K"
    ],
    "pos": 9
   },
@@ -6721,7 +6721,7 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "PKM General Machine Gun-Operations (Extraction Mode)-6LKADU804JR8MA4B021SH",
+   "code": "PKM General Machine Gun-Operations (Extraction Mode)-6LOB7KO04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
    "note": "",
@@ -7885,7 +7885,7 @@
    "tags": [
     "560K"
    ],
-   "pos": 51
+   "pos": 53
   },
   {
    "weapon": "SCAR-H",
@@ -7899,7 +7899,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 50
+   "pos": 52
   },
   {
    "weapon": "SCAR-H",
@@ -8089,7 +8089,7 @@
    "tags": [
     "460K"
    ],
-   "pos": 67
+   "pos": 69
   },
   {
    "weapon": "SKS",
@@ -8361,7 +8361,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 65
+   "pos": 67
   },
   {
    "weapon": "SR-25",
@@ -8375,7 +8375,7 @@
    "tags": [
     "820K"
    ],
-   "pos": 66
+   "pos": 68
   },
   {
    "weapon": "SR-25",
@@ -8808,7 +8808,7 @@
    "tags": [
     "644K"
    ],
-   "pos": 64
+   "pos": 66
   },
   {
    "weapon": "SVCH",
@@ -8964,7 +8964,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 68
+   "pos": 70
   },
   {
    "weapon": "SVD",
@@ -9075,28 +9075,28 @@
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "Thompson SMG-Operations (Extraction Mode)-6LKACQ804JR8MA4B021SH",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6LO9PN804JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "Hipfire",
+   "note": "ADS",
    "tags": [
-    "550K"
+    "560K"
    ],
-   "pos": 72
+   "pos": 49
   },
   {
    "weapon": "Thompson SMG",
    "mode": "operations",
    "creator": "muomuo",
    "source": "muomuo",
-   "code": "Thompson SMG-Operations (Extraction Mode)-6LKACR404JR8MA4B021SH",
+   "code": "Thompson SMG-Operations (Extraction Mode)-6LO9PTK04JR8MA4B021SH",
    "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
    "added": null,
-   "note": "ADS",
+   "note": "Hipfire",
    "tags": [
-    "650K"
+    "550K"
    ],
-   "pos": 73
+   "pos": 47
   },
   {
    "weapon": "Thompson SMG",
