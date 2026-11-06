@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04",
+ "updated": "2026-11-06",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -163,7 +163,7 @@
    "tags": [
     "~50K"
    ],
-   "pos": 77
+   "pos": 76
   },
   {
    "weapon": ".357",
@@ -177,7 +177,7 @@
    "tags": [
     "~300K"
    ],
-   "pos": 76
+   "pos": 75
   },
   {
    "weapon": ".357",
@@ -191,7 +191,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 78
+   "pos": 77
   },
   {
    "weapon": ".357",
@@ -231,7 +231,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 79
+   "pos": 78
   },
   {
    "weapon": "725 Double-Barrel",
@@ -245,7 +245,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 80
+   "pos": 79
   },
   {
    "weapon": "725 Double-Barrel",
@@ -295,7 +295,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 73
+   "pos": 72
   },
   {
    "weapon": "93R",
@@ -309,7 +309,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 71
+   "pos": 70
   },
   {
    "weapon": "93R",
@@ -323,7 +323,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 72
+   "pos": 71
   },
   {
    "weapon": "93R",
@@ -335,7 +335,7 @@
    "added": null,
    "note": "AUTO",
    "tags": [],
-   "pos": 16
+   "pos": 17
   },
   {
    "weapon": "93R",
@@ -659,7 +659,7 @@
    "added": null,
    "note": "DONG",
    "tags": [],
-   "pos": 4
+   "pos": 5
   },
   {
    "weapon": "AKM",
@@ -931,7 +931,7 @@
    "tags": [
     "~600K"
    ],
-   "pos": 42
+   "pos": 41
   },
   {
    "weapon": "AR-57",
@@ -945,7 +945,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 43
+   "pos": 42
   },
   {
    "weapon": "AR-57",
@@ -957,7 +957,7 @@
    "added": null,
    "note": "100% ACCU",
    "tags": [],
-   "pos": 17
+   "pos": 18
   },
   {
    "weapon": "AR-57",
@@ -969,7 +969,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 26
+   "pos": 27
   },
   {
    "weapon": "AR-57",
@@ -1209,7 +1209,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 22
+   "pos": 23
   },
   {
    "weapon": "AS Val",
@@ -1409,20 +1409,6 @@
    "tags": [
     "~450K"
    ],
-   "pos": 38
-  },
-  {
-   "weapon": "ASh-12",
-   "mode": "operations",
-   "creator": "medow",
-   "source": "medow",
-   "code": "ASh-12 Battle Rifle-Operations-6KLJREO03BCACMSNL14PK",
-   "url": "https://medowmafia.com/pages/gun-builds",
-   "added": null,
-   "note": "",
-   "tags": [
-    "~400K"
-   ],
    "pos": 37
   },
   {
@@ -1463,7 +1449,7 @@
    "added": null,
    "note": "LONG ASH",
    "tags": [],
-   "pos": 33
+   "pos": 34
   },
   {
    "weapon": "ASh-12",
@@ -1804,7 +1790,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 87
+   "pos": 86
   },
   {
    "weapon": "AWM",
@@ -1818,7 +1804,7 @@
    "tags": [
     "~800K"
    ],
-   "pos": 88
+   "pos": 87
   },
   {
    "weapon": "AWM",
@@ -1830,7 +1816,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 36
+   "pos": 37
   },
   {
    "weapon": "AWM",
@@ -2146,7 +2132,7 @@
    "added": null,
    "note": "cl-19",
    "tags": [],
-   "pos": 30
+   "pos": 31
   },
   {
    "weapon": "CI-19",
@@ -2288,7 +2274,7 @@
    "tags": [
     "~550K"
    ],
-   "pos": 50
+   "pos": 49
   },
   {
    "weapon": "Compound Bow",
@@ -2302,7 +2288,7 @@
    "tags": [
     "~600K"
    ],
-   "pos": 51
+   "pos": 50
   },
   {
    "weapon": "Compound Bow",
@@ -2314,7 +2300,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 7
+   "pos": 8
   },
   {
    "weapon": "Compound Bow",
@@ -2326,7 +2312,7 @@
    "added": null,
    "note": "MAG",
    "tags": [],
-   "pos": 41
+   "pos": 42
   },
   {
    "weapon": "Compound Bow",
@@ -2400,7 +2386,7 @@
    "added": null,
    "note": "DONG",
    "tags": [],
-   "pos": 29
+   "pos": 30
   },
   {
    "weapon": "FS-12",
@@ -2428,7 +2414,7 @@
    "tags": [
     "~50K"
    ],
-   "pos": 82
+   "pos": 81
   },
   {
    "weapon": "FS-12",
@@ -2442,7 +2428,7 @@
    "tags": [
     "~400K"
    ],
-   "pos": 81
+   "pos": 80
   },
   {
    "weapon": "FS-12",
@@ -2456,7 +2442,7 @@
    "tags": [
     "~450K"
    ],
-   "pos": 84
+   "pos": 83
   },
   {
    "weapon": "FS-12",
@@ -2470,7 +2456,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 83
+   "pos": 82
   },
   {
    "weapon": "FS-12",
@@ -2508,7 +2494,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 74
+   "pos": 73
   },
   {
    "weapon": "G18",
@@ -2520,7 +2506,7 @@
    "added": null,
    "note": "Expensive",
    "tags": [],
-   "pos": 75
+   "pos": 74
   },
   {
    "weapon": "G18",
@@ -2584,7 +2570,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 14
+   "pos": 15
   },
   {
    "weapon": "G3",
@@ -2821,7 +2807,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 34
+   "pos": 35
   },
   {
    "weapon": "K416",
@@ -3522,7 +3508,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 69
+   "pos": 68
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3536,7 +3522,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 68
+   "pos": 67
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3550,7 +3536,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 70
+   "pos": 69
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3562,7 +3548,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 19
+   "pos": 20
   },
   {
    "weapon": "Lever-action Rifle",
@@ -3614,7 +3600,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 85
+   "pos": 84
   },
   {
    "weapon": "M1014",
@@ -3774,7 +3760,7 @@
    "tags": [
     "~400K"
    ],
-   "pos": 60
+   "pos": 59
   },
   {
    "weapon": "M14",
@@ -3788,7 +3774,19 @@
    "tags": [
     "~650K"
    ],
-   "pos": 61
+   "pos": 60
+  },
+  {
+   "weapon": "M14",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "M14 Marksman Rifle-Operations (Extraction Mode)-6LR84HC088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 4
   },
   {
    "weapon": "M14",
@@ -3992,7 +3990,7 @@
    "tags": [
     "~100K"
    ],
-   "pos": 58
+   "pos": 57
   },
   {
    "weapon": "M249",
@@ -4004,7 +4002,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 27
+   "pos": 28
   },
   {
    "weapon": "M249",
@@ -4148,7 +4146,7 @@
    "tags": [
     "~50K"
    ],
-   "pos": 53
+   "pos": 52
   },
   {
    "weapon": "M250",
@@ -4162,7 +4160,7 @@
    "tags": [
     "~1.5M"
    ],
-   "pos": 54
+   "pos": 53
   },
   {
    "weapon": "M250",
@@ -4176,7 +4174,7 @@
    "tags": [
     "~600K"
    ],
-   "pos": 52
+   "pos": 51
   },
   {
    "weapon": "M250",
@@ -4188,7 +4186,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 18
+   "pos": 19
   },
   {
    "weapon": "M250",
@@ -4398,7 +4396,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 32
+   "pos": 33
   },
   {
    "weapon": "M4A1",
@@ -4686,7 +4684,7 @@
    "tags": [
     "~550K"
    ],
-   "pos": 40
+   "pos": 39
   },
   {
    "weapon": "M7",
@@ -4700,7 +4698,7 @@
    "tags": [
     "~300K"
    ],
-   "pos": 41
+   "pos": 40
   },
   {
    "weapon": "M7",
@@ -4714,7 +4712,7 @@
    "tags": [
     "~450K"
    ],
-   "pos": 39
+   "pos": 38
   },
   {
    "weapon": "M7",
@@ -4726,7 +4724,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 25
+   "pos": 26
   },
   {
    "weapon": "M7",
@@ -4936,7 +4934,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 91
+   "pos": 90
   },
   {
    "weapon": "M700",
@@ -4950,7 +4948,7 @@
    "tags": [
     "~990K"
    ],
-   "pos": 90
+   "pos": 89
   },
   {
    "weapon": "M700",
@@ -4964,7 +4962,7 @@
    "tags": [
     "~400K"
    ],
-   "pos": 92
+   "pos": 91
   },
   {
    "weapon": "M700",
@@ -4978,7 +4976,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 89
+   "pos": 88
   },
   {
    "weapon": "M700",
@@ -4990,7 +4988,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 9
+   "pos": 10
   },
   {
    "weapon": "M700",
@@ -5100,7 +5098,7 @@
    "tags": [
     "~1.1M"
    ],
-   "pos": 97
+   "pos": 96
   },
   {
    "weapon": "M82",
@@ -5218,7 +5216,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 28
+   "pos": 29
   },
   {
    "weapon": "MCX LT",
@@ -5376,7 +5374,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 11
+   "pos": 12
   },
   {
    "weapon": "MDR",
@@ -5594,7 +5592,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 99
+   "pos": 98
   },
   {
    "weapon": "MK4",
@@ -5608,7 +5606,7 @@
    "tags": [
     "~550K"
    ],
-   "pos": 98
+   "pos": 97
   },
   {
    "weapon": "MK4",
@@ -5620,7 +5618,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 23
+   "pos": 24
   },
   {
    "weapon": "MK4",
@@ -5632,7 +5630,7 @@
    "added": null,
    "note": "100%ACC",
    "tags": [],
-   "pos": 5
+   "pos": 6
   },
   {
    "weapon": "MK4",
@@ -5644,7 +5642,7 @@
    "added": null,
    "note": "AUTO",
    "tags": [],
-   "pos": 8
+   "pos": 9
   },
   {
    "weapon": "MK4",
@@ -5910,7 +5908,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 35
+   "pos": 36
   },
   {
    "weapon": "MK47",
@@ -6054,7 +6052,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 100
+   "pos": 99
   },
   {
    "weapon": "MP5",
@@ -6242,7 +6240,7 @@
    "tags": [
     "~450K"
    ],
-   "pos": 101
+   "pos": 100
   },
   {
    "weapon": "MP7",
@@ -6256,7 +6254,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 102
+   "pos": 101
   },
   {
    "weapon": "MP7",
@@ -6268,7 +6266,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 31
+   "pos": 32
   },
   {
    "weapon": "MP7",
@@ -6528,7 +6526,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 103
+   "pos": 102
   },
   {
    "weapon": "P90",
@@ -6542,7 +6540,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 104
+   "pos": 103
   },
   {
    "weapon": "P90",
@@ -6728,7 +6726,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 57
+   "pos": 56
   },
   {
    "weapon": "PKM",
@@ -6742,7 +6740,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 56
+   "pos": 55
   },
   {
    "weapon": "PKM",
@@ -6756,7 +6754,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 55
+   "pos": 54
   },
   {
    "weapon": "PKM",
@@ -6860,7 +6858,7 @@
    "tags": [
     "~300K"
    ],
-   "pos": 65
+   "pos": 64
   },
   {
    "weapon": "PSG-1",
@@ -6936,7 +6934,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 39
+   "pos": 40
   },
   {
    "weapon": "PTR-32",
@@ -7124,7 +7122,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 105
+   "pos": 104
   },
   {
    "weapon": "QCQ171",
@@ -7136,7 +7134,7 @@
    "added": null,
    "note": "RIP",
    "tags": [],
-   "pos": 42
+   "pos": 43
   },
   {
    "weapon": "QCQ171",
@@ -7297,7 +7295,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 59
+   "pos": 58
   },
   {
    "weapon": "QJB201",
@@ -7309,7 +7307,7 @@
    "added": null,
    "note": "Hipfire",
    "tags": [],
-   "pos": 24
+   "pos": 25
   },
   {
    "weapon": "QJB201",
@@ -7493,7 +7491,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 94
+   "pos": 93
   },
   {
    "weapon": "R93",
@@ -7507,7 +7505,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 93
+   "pos": 92
   },
   {
    "weapon": "R93",
@@ -7519,7 +7517,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 15
+   "pos": 16
   },
   {
    "weapon": "R93",
@@ -7637,7 +7635,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 46
+   "pos": 45
   },
   {
    "weapon": "RM277",
@@ -7651,7 +7649,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 45
+   "pos": 44
   },
   {
    "weapon": "RM277",
@@ -7665,7 +7663,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 44
+   "pos": 43
   },
   {
    "weapon": "RM277",
@@ -7677,7 +7675,7 @@
    "added": null,
    "note": "2X",
    "tags": [],
-   "pos": 37
+   "pos": 38
   },
   {
    "weapon": "RM277",
@@ -7689,7 +7687,7 @@
    "added": null,
    "note": "1X",
    "tags": [],
-   "pos": 38
+   "pos": 39
   },
   {
    "weapon": "RM277",
@@ -7807,7 +7805,7 @@
    "tags": [
     "~600K"
    ],
-   "pos": 86
+   "pos": 85
   },
   {
    "weapon": "S12K",
@@ -7885,7 +7883,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 49
+   "pos": 48
   },
   {
    "weapon": "SCAR-H",
@@ -7899,7 +7897,7 @@
    "tags": [
     "~550K"
    ],
-   "pos": 48
+   "pos": 47
   },
   {
    "weapon": "SCAR-H",
@@ -7913,7 +7911,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 47
+   "pos": 46
   },
   {
    "weapon": "SCAR-H",
@@ -8117,7 +8115,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 21
+   "pos": 22
   },
   {
    "weapon": "SKS",
@@ -8233,7 +8231,7 @@
    "tags": [
     "~200K"
    ],
-   "pos": 106
+   "pos": 105
   },
   {
    "weapon": "SMG-45",
@@ -8247,7 +8245,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 107
+   "pos": 106
   },
   {
    "weapon": "SMG-45",
@@ -8375,7 +8373,7 @@
    "tags": [
     "~400K"
    ],
-   "pos": 62
+   "pos": 61
   },
   {
    "weapon": "SR-25",
@@ -8389,7 +8387,7 @@
    "tags": [
     "~700K"
    ],
-   "pos": 63
+   "pos": 62
   },
   {
    "weapon": "SR-25",
@@ -8559,7 +8557,7 @@
    "tags": [
     "~50K"
    ],
-   "pos": 108
+   "pos": 107
   },
   {
    "weapon": "SR-3M",
@@ -8730,7 +8728,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 95
+   "pos": 94
   },
   {
    "weapon": "SV-98",
@@ -8744,7 +8742,7 @@
    "tags": [
     "~350K"
    ],
-   "pos": 96
+   "pos": 95
   },
   {
    "weapon": "SV-98",
@@ -8836,7 +8834,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 40
+   "pos": 41
   },
   {
    "weapon": "SVCH",
@@ -8980,7 +8978,7 @@
    "tags": [
     "~400K"
    ],
-   "pos": 64
+   "pos": 63
   },
   {
    "weapon": "SVD",
@@ -8992,7 +8990,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 20
+   "pos": 21
   },
   {
    "weapon": "SVD",
@@ -9098,7 +9096,7 @@
    "tags": [
     "~300K"
    ],
-   "pos": 109
+   "pos": 108
   },
   {
    "weapon": "Thompson SMG",
@@ -9110,7 +9108,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 13
+   "pos": 14
   },
   {
    "weapon": "Thompson SMG",
@@ -9218,7 +9216,7 @@
    "tags": [
     "~250K"
    ],
-   "pos": 110
+   "pos": 109
   },
   {
    "weapon": "UZI",
@@ -9298,7 +9296,7 @@
    "tags": [
     "~450K"
    ],
-   "pos": 66
+   "pos": 65
   },
   {
    "weapon": "VSS",
@@ -9312,7 +9310,7 @@
    "tags": [
     "~150K"
    ],
-   "pos": 67
+   "pos": 66
   },
   {
    "weapon": "VSS",
@@ -9324,7 +9322,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 6
+   "pos": 7
   },
   {
    "weapon": "VSS",
@@ -9414,7 +9412,7 @@
    "tags": [
     "~500K"
    ],
-   "pos": 111
+   "pos": 110
   },
   {
    "weapon": "Vector",
@@ -9428,7 +9426,7 @@
    "tags": [
     "~700K"
    ],
-   "pos": 112
+   "pos": 111
   },
   {
    "weapon": "Vector",
@@ -9442,7 +9440,7 @@
    "tags": [
     "~600K"
    ],
-   "pos": 113
+   "pos": 112
   },
   {
    "weapon": "Vector",
@@ -9454,7 +9452,7 @@
    "added": null,
    "note": "HIPFIRE",
    "tags": [],
-   "pos": 12
+   "pos": 13
   },
   {
    "weapon": "Vector",
@@ -9466,7 +9464,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 10
+   "pos": 11
   },
   {
    "weapon": "Vector",

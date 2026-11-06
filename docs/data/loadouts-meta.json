@@ -1,6 +1,6 @@
 {
- "built": "2026-11-05T13:01:55+00:00",
- "status": "unchanged",
+ "built": "2026-11-06T12:50:30+00:00",
+ "status": "written",
  "note": null,
  "builds": 721,
  "creators": 9,
@@ -10,12 +10,12 @@
  "by_creator": {
   "roguemonkey": 139,
   "leissik": 132,
-  "medow": 114,
+  "medow": 113,
   "poach": 80,
   "muomuo": 74,
   "siingsong": 52,
   "equalplays": 49,
-  "minda": 43,
+  "minda": 44,
   "deathlapse": 38
  },
  "by_mode": {
@@ -36,7 +36,6 @@
   "poach unknown weapon: Layali NORM Destroyer": 1,
   "roguemonkey duplicate code": 1,
   "minda credited to SomeKindaDog": 1,
-  "minda credited to heromikttv": 1,
   "minda credited to Mendo With tweeks": 1,
   "minda credited to Ventiz": 1,
   "minda credited to Haechi": 1,
