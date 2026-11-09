@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06",
+ "updated": "2026-11-09",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -4745,9 +4745,9 @@
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6LND5UO06F3769TRGAG41",
+   "code": "6LS7O7C06F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-10-25",
+   "added": "2026-11-08",
    "note": "",
    "tags": [
     "1M"
@@ -8266,12 +8266,12 @@
    "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6JQOUMK06F3769TRGAG41",
+   "code": "6LS6LSK06F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-04-24",
+   "added": "2026-11-08",
    "note": "",
    "tags": [
-    "250K"
+    "400K"
    ],
    "pos": 35
   },
