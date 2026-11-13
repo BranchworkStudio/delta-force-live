@@ -1,8 +1,8 @@
 {
- "built": "2026-11-12T13:39:30+00:00",
+ "built": "2026-11-13T12:57:45+00:00",
  "status": "written",
  "note": null,
- "builds": 724,
+ "builds": 728,
  "creators": 9,
  "weapons": 67,
  "guns": 69,
@@ -12,18 +12,18 @@
   "leissik": 134,
   "medow": 113,
   "poach": 81,
-  "muomuo": 74,
+  "muomuo": 76,
   "siingsong": 52,
-  "equalplays": 49,
-  "minda": 44,
+  "equalplays": 50,
+  "minda": 45,
   "deathlapse": 38
  },
  "by_mode": {
-  "operations": 585,
+  "operations": 589,
   "warfare": 139
  },
  "dated": 81,
- "noted": 445,
+ "noted": 447,
  "skipped": {
   "kept from the last run: medow": 113,
   "leissik duplicate code": 2,

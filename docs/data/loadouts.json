@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -427,7 +427,7 @@
    "tags": [
     "430K"
    ],
-   "pos": 62
+   "pos": 64
   },
   {
    "weapon": "AK-12",
@@ -441,7 +441,7 @@
    "tags": [
     "230K"
    ],
-   "pos": 63
+   "pos": 65
   },
   {
    "weapon": "AK-12",
@@ -673,7 +673,7 @@
    "tags": [
     "470K"
    ],
-   "pos": 60
+   "pos": 62
   },
   {
    "weapon": "AKM",
@@ -687,7 +687,7 @@
    "tags": [
     "530K"
    ],
-   "pos": 59
+   "pos": 61
   },
   {
    "weapon": "AKM",
@@ -882,6 +882,18 @@
   {
    "weapon": "AN-94",
    "mode": "operations",
+   "creator": "equalplays",
+   "source": "equalplays",
+   "code": "6LTK1D00FA864PI4ID2SG",
+   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 49
+  },
+  {
+   "weapon": "AN-94",
+   "mode": "operations",
    "creator": "leissik",
    "source": "leissik",
    "code": "AN-94 Assault Rifle-Operations (Extraction Mode)-6LSNTBG0FV996DITL6AIU",
@@ -910,11 +922,23 @@
   {
    "weapon": "AN-94",
    "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "AN-94 Assault Rifle-Operations (Extraction Mode)-6LTEG78088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "",
+   "tags": [],
+   "pos": 23
+  },
+  {
+   "weapon": "AN-94",
+   "mode": "operations",
    "creator": "poach",
    "source": "poach",
-   "code": "6LTAJC806F3769TRGAG41",
+   "code": "6LTGGNG06F3769TRGAG41",
    "url": "https://www.deltaforce.build/poach",
-   "added": "2026-11-11",
+   "added": "2026-11-12",
    "note": "",
    "tags": [
     "700K"
@@ -1011,7 +1035,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 27
+   "pos": 28
   },
   {
    "weapon": "AR-57",
@@ -1053,7 +1077,7 @@
    "tags": [
     "522K"
    ],
-   "pos": 16
+   "pos": 15
   },
   {
    "weapon": "AR-57",
@@ -1251,7 +1275,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 23
+   "pos": 24
   },
   {
    "weapon": "AS Val",
@@ -1265,7 +1289,7 @@
    "tags": [
     "530K"
    ],
-   "pos": 50
+   "pos": 52
   },
   {
    "weapon": "AS Val",
@@ -1279,7 +1303,7 @@
    "tags": [
     "800K"
    ],
-   "pos": 46
+   "pos": 48
   },
   {
    "weapon": "AS Val",
@@ -1293,7 +1317,7 @@
    "tags": [
     "550K"
    ],
-   "pos": 48
+   "pos": 50
   },
   {
    "weapon": "AS Val",
@@ -1307,7 +1331,7 @@
    "tags": [
     "360K"
    ],
-   "pos": 51
+   "pos": 53
   },
   {
    "weapon": "AS Val",
@@ -1491,7 +1515,7 @@
    "added": null,
    "note": "LONG ASH",
    "tags": [],
-   "pos": 34
+   "pos": 35
   },
   {
    "weapon": "ASh-12",
@@ -1702,7 +1726,7 @@
    "tags": [
     "530K"
    ],
-   "pos": 55
+   "pos": 57
   },
   {
    "weapon": "AUG",
@@ -1716,7 +1740,7 @@
    "tags": [
     "260K"
    ],
-   "pos": 56
+   "pos": 58
   },
   {
    "weapon": "AUG",
@@ -1858,7 +1882,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 37
+   "pos": 38
   },
   {
    "weapon": "AWM",
@@ -2174,7 +2198,7 @@
    "added": null,
    "note": "cl-19",
    "tags": [],
-   "pos": 31
+   "pos": 32
   },
   {
    "weapon": "CI-19",
@@ -2188,7 +2212,7 @@
    "tags": [
     "560K"
    ],
-   "pos": 42
+   "pos": 44
   },
   {
    "weapon": "CI-19",
@@ -2202,7 +2226,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 44
+   "pos": 46
   },
   {
    "weapon": "CI-19",
@@ -2354,7 +2378,7 @@
    "added": null,
    "note": "MAG",
    "tags": [],
-   "pos": 42
+   "pos": 43
   },
   {
    "weapon": "Compound Bow",
@@ -2428,7 +2452,7 @@
    "added": null,
    "note": "DONG",
    "tags": [],
-   "pos": 30
+   "pos": 31
   },
   {
    "weapon": "FS-12",
@@ -2849,7 +2873,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 35
+   "pos": 36
   },
   {
    "weapon": "K416",
@@ -2863,7 +2887,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 57
+   "pos": 59
   },
   {
    "weapon": "K416",
@@ -2877,7 +2901,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 58
+   "pos": 60
   },
   {
    "weapon": "K416",
@@ -3127,7 +3151,7 @@
    "tags": [
     "950K"
    ],
-   "pos": 38
+   "pos": 40
   },
   {
    "weapon": "K437",
@@ -3141,7 +3165,7 @@
    "tags": [
     "370K"
    ],
-   "pos": 40
+   "pos": 42
   },
   {
    "weapon": "K437",
@@ -3404,7 +3428,7 @@
    "tags": [
     "620K"
    ],
-   "pos": 34
+   "pos": 36
   },
   {
    "weapon": "KC-17",
@@ -3418,7 +3442,7 @@
    "tags": [
     "350K"
    ],
-   "pos": 36
+   "pos": 38
   },
   {
    "weapon": "KC-17",
@@ -3842,7 +3866,7 @@
    "tags": [
     "850K"
    ],
-   "pos": 65
+   "pos": 67
   },
   {
    "weapon": "M14",
@@ -3856,7 +3880,7 @@
    "tags": [
     "1M"
    ],
-   "pos": 64
+   "pos": 66
   },
   {
    "weapon": "M14",
@@ -4044,7 +4068,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 28
+   "pos": 29
   },
   {
    "weapon": "M249",
@@ -4058,7 +4082,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 14
+   "pos": 17
   },
   {
    "weapon": "M249",
@@ -4243,6 +4267,20 @@
     "850K"
    ],
    "pos": 10
+  },
+  {
+   "weapon": "M250",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "M250 General Machine Gun-Operations (Extraction Mode)-6LSRVVO04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Havok",
+   "tags": [
+    "800K"
+   ],
+   "pos": 14
   },
   {
    "weapon": "M250",
@@ -4438,7 +4476,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 33
+   "pos": 34
   },
   {
    "weapon": "M4A1",
@@ -4452,7 +4490,7 @@
    "tags": [
     "420K"
    ],
-   "pos": 61
+   "pos": 63
   },
   {
    "weapon": "M4A1",
@@ -4766,7 +4804,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 26
+   "pos": 27
   },
   {
    "weapon": "M7",
@@ -4780,7 +4818,7 @@
    "tags": [
     "830K"
    ],
-   "pos": 54
+   "pos": 56
   },
   {
    "weapon": "M7",
@@ -5058,7 +5096,7 @@
    "tags": [
     "900K"
    ],
-   "pos": 25
+   "pos": 29
   },
   {
    "weapon": "M700",
@@ -5072,7 +5110,7 @@
    "tags": [
     "800K"
    ],
-   "pos": 22
+   "pos": 26
   },
   {
    "weapon": "M700",
@@ -5258,7 +5296,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 29
+   "pos": 30
   },
   {
    "weapon": "MCX LT",
@@ -5272,7 +5310,7 @@
    "tags": [
     "290K"
    ],
-   "pos": 20
+   "pos": 19
   },
   {
    "weapon": "MCX LT",
@@ -5300,7 +5338,7 @@
    "tags": [
     "420K"
    ],
-   "pos": 26
+   "pos": 27
   },
   {
    "weapon": "MCX LT",
@@ -5430,7 +5468,7 @@
    "tags": [
     "900K"
    ],
-   "pos": 71
+   "pos": 73
   },
   {
    "weapon": "MDR",
@@ -5444,7 +5482,7 @@
    "tags": [
     "930K"
    ],
-   "pos": 72
+   "pos": 74
   },
   {
    "weapon": "MDR",
@@ -5458,7 +5496,7 @@
    "tags": [
     "900K"
    ],
-   "pos": 73
+   "pos": 75
   },
   {
    "weapon": "MDR",
@@ -5660,7 +5698,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 24
+   "pos": 25
   },
   {
    "weapon": "MK4",
@@ -5726,7 +5764,7 @@
    "tags": [
     "600K"
    ],
-   "pos": 17
+   "pos": 16
   },
   {
    "weapon": "MK4",
@@ -5950,7 +5988,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 36
+   "pos": 37
   },
   {
    "weapon": "MK47",
@@ -5964,7 +6002,7 @@
    "tags": [
     "600K"
    ],
-   "pos": 30
+   "pos": 32
   },
   {
    "weapon": "MK47",
@@ -5978,7 +6016,7 @@
    "tags": [
     "740K"
    ],
-   "pos": 28
+   "pos": 30
   },
   {
    "weapon": "MK47",
@@ -5992,7 +6030,7 @@
    "tags": [
     "730K"
    ],
-   "pos": 32
+   "pos": 34
   },
   {
    "weapon": "MK47",
@@ -6308,7 +6346,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 32
+   "pos": 33
   },
   {
    "weapon": "MP7",
@@ -6322,7 +6360,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 31
+   "pos": 33
   },
   {
    "weapon": "MP7",
@@ -6336,7 +6374,7 @@
    "tags": [
     "660K"
    ],
-   "pos": 27
+   "pos": 28
   },
   {
    "weapon": "MP7",
@@ -6350,7 +6388,7 @@
    "tags": [
     "660K"
    ],
-   "pos": 29
+   "pos": 31
   },
   {
    "weapon": "MP7",
@@ -6596,7 +6634,7 @@
    "tags": [
     "420K"
    ],
-   "pos": 37
+   "pos": 39
   },
   {
    "weapon": "P90",
@@ -6610,7 +6648,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 39
+   "pos": 41
   },
   {
    "weapon": "P90",
@@ -6810,7 +6848,21 @@
    "tags": [
     "560K"
    ],
-   "pos": 18
+   "pos": 21
+  },
+  {
+   "weapon": "PKM",
+   "mode": "operations",
+   "creator": "muomuo",
+   "source": "muomuo",
+   "code": "PKM General Machine Gun-Operations (Extraction Mode)-6LSRM8C04JR8MA4B021SH",
+   "url": "https://docs.google.com/spreadsheets/d/1zBJQ8lMxf4syHUnLGhdbiJSn1CX9tQJ0KGwhLOqPOhM/edit?gid=0",
+   "added": null,
+   "note": "Havok",
+   "tags": [
+    "670K"
+   ],
+   "pos": 25
   },
   {
    "weapon": "PKM",
@@ -6976,7 +7028,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 40
+   "pos": 41
   },
   {
    "weapon": "PTR-32",
@@ -7176,7 +7228,7 @@
    "added": null,
    "note": "RIP",
    "tags": [],
-   "pos": 43
+   "pos": 44
   },
   {
    "weapon": "QCQ171",
@@ -7190,7 +7242,7 @@
    "tags": [
     "410K"
    ],
-   "pos": 21
+   "pos": 20
   },
   {
    "weapon": "QCQ171",
@@ -7349,7 +7401,7 @@
    "added": null,
    "note": "Hipfire",
    "tags": [],
-   "pos": 25
+   "pos": 26
   },
   {
    "weapon": "QJB201",
@@ -7573,7 +7625,7 @@
    "tags": [
     "320K"
    ],
-   "pos": 15
+   "pos": 18
   },
   {
    "weapon": "R93",
@@ -7717,7 +7769,7 @@
    "added": null,
    "note": "2X",
    "tags": [],
-   "pos": 38
+   "pos": 39
   },
   {
    "weapon": "RM277",
@@ -7729,7 +7781,7 @@
    "added": null,
    "note": "1X",
    "tags": [],
-   "pos": 39
+   "pos": 40
   },
   {
    "weapon": "RM277",
@@ -7967,7 +8019,7 @@
    "tags": [
     "560K"
    ],
-   "pos": 53
+   "pos": 55
   },
   {
    "weapon": "SCAR-H",
@@ -7981,7 +8033,7 @@
    "tags": [
     "500K"
    ],
-   "pos": 52
+   "pos": 54
   },
   {
    "weapon": "SCAR-H",
@@ -8171,7 +8223,7 @@
    "tags": [
     "460K"
    ],
-   "pos": 69
+   "pos": 71
   },
   {
    "weapon": "SKS",
@@ -8301,7 +8353,7 @@
    "tags": [
     "410K"
    ],
-   "pos": 45
+   "pos": 47
   },
   {
    "weapon": "SMG-45",
@@ -8443,7 +8495,7 @@
    "tags": [
     "700K"
    ],
-   "pos": 67
+   "pos": 69
   },
   {
    "weapon": "SR-25",
@@ -8457,7 +8509,7 @@
    "tags": [
     "820K"
    ],
-   "pos": 68
+   "pos": 70
   },
   {
    "weapon": "SR-25",
@@ -8613,7 +8665,7 @@
    "tags": [
     "400K"
    ],
-   "pos": 33
+   "pos": 35
   },
   {
    "weapon": "SR-3M",
@@ -8627,7 +8679,7 @@
    "tags": [
     "560K"
    ],
-   "pos": 35
+   "pos": 37
   },
   {
    "weapon": "SR-3M",
@@ -8798,7 +8850,7 @@
    "tags": [
     "300K"
    ],
-   "pos": 19
+   "pos": 22
   },
   {
    "weapon": "SV-98",
@@ -8876,7 +8928,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 41
+   "pos": 42
   },
   {
    "weapon": "SVCH",
@@ -8890,7 +8942,7 @@
    "tags": [
     "644K"
    ],
-   "pos": 66
+   "pos": 68
   },
   {
    "weapon": "SVCH",
@@ -9046,7 +9098,7 @@
    "tags": [
     "450K"
    ],
-   "pos": 70
+   "pos": 72
   },
   {
    "weapon": "SVD",
@@ -9164,7 +9216,7 @@
    "tags": [
     "560K"
    ],
-   "pos": 49
+   "pos": 51
   },
   {
    "weapon": "Thompson SMG",
@@ -9178,7 +9230,7 @@
    "tags": [
     "550K"
    ],
-   "pos": 47
+   "pos": 49
   },
   {
    "weapon": "Thompson SMG",
@@ -9520,7 +9572,7 @@
    "tags": [
     "580K"
    ],
-   "pos": 43
+   "pos": 45
   },
   {
    "weapon": "Vector",
@@ -9534,7 +9586,7 @@
    "tags": [
     "670K"
    ],
-   "pos": 41
+   "pos": 43
   },
   {
    "weapon": "Vector",
