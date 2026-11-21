@@ -1,8 +1,8 @@
 {
- "built": "2026-11-20T13:56:06+00:00",
- "status": "unchanged",
+ "built": "2026-11-21T13:20:47+00:00",
+ "status": "written",
  "note": null,
- "builds": 735,
+ "builds": 736,
  "creators": 9,
  "weapons": 67,
  "guns": 69,
@@ -15,11 +15,11 @@
   "muomuo": 77,
   "siingsong": 52,
   "equalplays": 50,
-  "minda": 45,
+  "minda": 46,
   "deathlapse": 38
  },
  "by_mode": {
-  "operations": 596,
+  "operations": 597,
   "warfare": 139
  },
  "dated": 82,
