@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "sources": {
   "leissik": {
    "name": "Leissik's build doc",
@@ -281,7 +281,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 40
+   "pos": 39
   },
   {
    "weapon": "93R",
@@ -373,7 +373,7 @@
    "added": null,
    "note": "Budget",
    "tags": [],
-   "pos": 37
+   "pos": 36
   },
   {
    "weapon": "AK-12",
@@ -563,7 +563,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 46
+   "pos": 45
   },
   {
    "weapon": "AKM",
@@ -889,7 +889,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 49
+   "pos": 48
   },
   {
    "weapon": "AN-94",
@@ -1049,7 +1049,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 29
+   "pos": 30
   },
   {
    "weapon": "AR-57",
@@ -1207,7 +1207,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 31
+   "pos": 30
   },
   {
    "weapon": "AS Val",
@@ -1461,7 +1461,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 45
+   "pos": 44
   },
   {
    "weapon": "ASh-12",
@@ -1543,7 +1543,7 @@
    "added": null,
    "note": "LONG ASH",
    "tags": [],
-   "pos": 36
+   "pos": 37
   },
   {
    "weapon": "ASh-12",
@@ -1641,7 +1641,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 42
+   "pos": 41
   },
   {
    "weapon": "AUG",
@@ -1856,7 +1856,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 22
+   "pos": 19
   },
   {
    "weapon": "AWM",
@@ -1910,7 +1910,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 39
+   "pos": 40
   },
   {
    "weapon": "AWM",
@@ -2226,7 +2226,7 @@
    "added": null,
    "note": "cl-19",
    "tags": [],
-   "pos": 33
+   "pos": 34
   },
   {
    "weapon": "CI-19",
@@ -2354,7 +2354,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 35
+   "pos": 34
   },
   {
    "weapon": "Compound Bow",
@@ -2406,7 +2406,7 @@
    "added": null,
    "note": "MAG",
    "tags": [],
-   "pos": 44
+   "pos": 45
   },
   {
    "weapon": "Compound Bow",
@@ -2468,7 +2468,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 38
+   "pos": 37
   },
   {
    "weapon": "Desert Eagle",
@@ -2480,7 +2480,7 @@
    "added": null,
    "note": "DONG",
    "tags": [],
-   "pos": 32
+   "pos": 33
   },
   {
    "weapon": "FS-12",
@@ -2638,7 +2638,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 34
+   "pos": 33
   },
   {
    "weapon": "G3",
@@ -2776,7 +2776,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 44
+   "pos": 43
   },
   {
    "weapon": "K416",
@@ -2901,7 +2901,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 37
+   "pos": 38
   },
   {
    "weapon": "K416",
@@ -3770,7 +3770,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 14
+   "pos": 11
   },
   {
    "weapon": "M14",
@@ -3996,7 +3996,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 43
+   "pos": 42
   },
   {
    "weapon": "M16A4",
@@ -4110,7 +4110,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 30
+   "pos": 31
   },
   {
    "weapon": "M249",
@@ -4292,7 +4292,7 @@
    "code": "M250 General Machine Gun-Operations (Extraction Mode)-6M0CC0C088K38R05C0LGG",
    "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
    "added": null,
-   "note": "",
+   "note": "special",
    "tags": [],
    "pos": 26
   },
@@ -4408,7 +4408,7 @@
    "added": null,
    "note": "Budget",
    "tags": [],
-   "pos": 47
+   "pos": 46
   },
   {
    "weapon": "M4A1",
@@ -4420,7 +4420,7 @@
    "added": null,
    "note": "Full Build",
    "tags": [],
-   "pos": 48
+   "pos": 47
   },
   {
    "weapon": "M4A1",
@@ -4530,7 +4530,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 35
+   "pos": 36
   },
   {
    "weapon": "M4A1",
@@ -4692,7 +4692,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 41
+   "pos": 40
   },
   {
    "weapon": "M7",
@@ -4872,7 +4872,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 28
+   "pos": 29
   },
   {
    "weapon": "M7",
@@ -4984,7 +4984,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 25
+   "pos": 22
   },
   {
    "weapon": "M700",
@@ -5392,7 +5392,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 31
+   "pos": 32
   },
   {
    "weapon": "MCX LT",
@@ -5988,7 +5988,7 @@
    "added": null,
    "note": "Long Barrel",
    "tags": [],
-   "pos": 18
+   "pos": 17
   },
   {
    "weapon": "MK47",
@@ -6084,7 +6084,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 38
+   "pos": 39
   },
   {
    "weapon": "MK47",
@@ -6442,7 +6442,7 @@
    "added": null,
    "note": "SPECIAL",
    "tags": [],
-   "pos": 34
+   "pos": 35
   },
   {
    "weapon": "MP7",
@@ -6844,7 +6844,7 @@
    "added": null,
    "note": "Budget",
    "tags": [],
-   "pos": 32
+   "pos": 31
   },
   {
    "weapon": "PKM",
@@ -7034,7 +7034,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 5
+   "pos": 2
   },
   {
    "weapon": "PSG-1",
@@ -7098,7 +7098,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 33
+   "pos": 32
   },
   {
    "weapon": "PTR-32",
@@ -7124,7 +7124,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 42
+   "pos": 43
   },
   {
    "weapon": "PTR-32",
@@ -7324,7 +7324,7 @@
    "added": null,
    "note": "RIP",
    "tags": [],
-   "pos": 45
+   "pos": 46
   },
   {
    "weapon": "QCQ171",
@@ -7497,7 +7497,7 @@
    "added": null,
    "note": "Hipfire",
    "tags": [],
-   "pos": 27
+   "pos": 28
   },
   {
    "weapon": "QJB201",
@@ -7639,7 +7639,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 27
+   "pos": 25
   },
   {
    "weapon": "R93",
@@ -7865,7 +7865,7 @@
    "added": null,
    "note": "2X",
    "tags": [],
-   "pos": 40
+   "pos": 41
   },
   {
    "weapon": "RM277",
@@ -7877,7 +7877,7 @@
    "added": null,
    "note": "1X",
    "tags": [],
-   "pos": 41
+   "pos": 42
   },
   {
    "weapon": "RM277",
@@ -8031,7 +8031,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 36
+   "pos": 35
   },
   {
    "weapon": "SCAR-H",
@@ -8203,7 +8203,7 @@
    "added": null,
    "note": "Budget",
    "tags": [],
-   "pos": 39
+   "pos": 38
   },
   {
    "weapon": "SG552",
@@ -8279,7 +8279,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 11
+   "pos": 8
   },
   {
    "weapon": "SKS",
@@ -8393,7 +8393,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 19
+   "pos": 18
   },
   {
    "weapon": "SMG-45",
@@ -8535,7 +8535,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 8
+   "pos": 5
   },
   {
    "weapon": "SR-25",
@@ -8578,6 +8578,18 @@
     "~700K"
    ],
    "pos": 62
+  },
+  {
+   "weapon": "SR-25",
+   "mode": "operations",
+   "creator": "minda",
+   "source": "minda",
+   "code": "SR-25 Marksman Rifle-Operations (Extraction Mode)-6M0DNHK088K38R05C0LGG",
+   "url": "https://docs.google.com/spreadsheets/d/1BTNGwW3vGDMvrmIsd6Sf4RS0rI_gbyK_jBvnV00xDHY/edit",
+   "added": null,
+   "note": "BINARY",
+   "tags": [],
+   "pos": 27
   },
   {
    "weapon": "SR-25",
@@ -8918,7 +8930,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 30
+   "pos": 27
   },
   {
    "weapon": "SV-98",
@@ -8977,18 +8989,6 @@
   {
    "weapon": "SVCH",
    "mode": "operations",
-   "creator": "equalplays",
-   "source": "equalplays",
-   "code": "6L8SSH800G02164FCEV6J",
-   "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ1eGjuiN6XCvjO4Lpo8yv0dkhsC8xTH6Ls24VeV2AOkojE4sZUTOeSJFTgYUAo_GpDKK2OVXzTmKp/pubhtml",
-   "added": null,
-   "note": "",
-   "tags": [],
-   "pos": 2
-  },
-  {
-   "weapon": "SVCH",
-   "mode": "operations",
    "creator": "leissik",
    "source": "leissik",
    "code": "SVCH Marksman Rifle-Operations (Extraction Mode)-6L82LTC0FV996DITL6AIU",
@@ -9038,7 +9038,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 43
+   "pos": 44
   },
   {
    "weapon": "SVCH",
@@ -9126,7 +9126,7 @@
    "added": null,
    "note": "",
    "tags": [],
-   "pos": 17
+   "pos": 14
   },
   {
    "weapon": "SVD",

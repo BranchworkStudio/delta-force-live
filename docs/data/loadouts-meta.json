@@ -1,5 +1,5 @@
 {
- "built": "2026-11-21T13:20:47+00:00",
+ "built": "2026-11-22T13:13:05+00:00",
  "status": "written",
  "note": null,
  "builds": 736,
@@ -14,8 +14,8 @@
   "poach": 82,
   "muomuo": 77,
   "siingsong": 52,
-  "equalplays": 50,
-  "minda": 46,
+  "equalplays": 49,
+  "minda": 47,
   "deathlapse": 38
  },
  "by_mode": {
@@ -23,7 +23,7 @@
   "warfare": 139
  },
  "dated": 82,
- "noted": 449,
+ "noted": 451,
  "skipped": {
   "kept from the last run: medow": 113,
   "leissik duplicate code": 2,
