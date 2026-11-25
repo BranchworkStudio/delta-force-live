@@ -300,8 +300,12 @@ async function mintSession(openid: string, nickname: string | null) {
 
   // An address that existed without us knowing its id — an earlier mint whose bookkeeping failed —
   // is adopted here rather than left to fail forever, and given the claim it was missing.
-  const linked = (link as { user?: { id?: string } } | null)?.user?.id ?? null;
+  const linkedUser = (link as { user?: { id?: string; app_metadata?: { openid?: string } } } | null)?.user;
+  const linked = linkedUser?.id ?? null;
   if (!userId && linked) {
+    // Only a user we minted for this openid may be adopted: an address someone signed up for themselves
+    // has no openid claim, and adopting it would hand them this player's account.
+    if (linkedUser?.app_metadata?.openid !== openid) return null;
     userId = linked;
     await supabase.auth.admin.updateUserById(userId, { app_metadata: { openid } });
   }
